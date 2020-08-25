@@ -21,8 +21,8 @@ function taskAd20() {
     console.log("---------- taskLimit start ----------")
 
     for (var i = 0; i < 10; i++) {
-        if (className("android.widget.Button").text("福利 领金币").exists()) {
-            className("android.widget.Button").text("福利 领金币").click();
+        if (className("android.widget.Button").text("福利").exists()) {
+            className("android.widget.Button").text("福利").click();
             sleep35s();
         }
 

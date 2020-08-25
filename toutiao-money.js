@@ -54,8 +54,8 @@ function taskNovel() {
     click(264, 687, 429, 738);
     sleep3s();
 
-    for (var i = 0; i < 100; i++) {
-        customSleep(5);
+    for (var i = 0; i < 50; i++) {
+        customSleep(1);
         swipeRight();
 
         // // 随机出现奖励金币，但是无法定位，只能先关闭
@@ -77,7 +77,6 @@ function taskNovel() {
 }
 
 // 任务-小视频
-// every 10m
 function taskVideo() {
     console.log("---------- task video start ----------")
 
@@ -97,8 +96,8 @@ function taskVideo() {
     click(24, 1025, 515, 1147);
     sleep3s();
 
-    for (var i = 0; i < 100; i++) {
-        customSleep(getRandomInt(8));
+    for (var i = 0; i < 50; i++) {
+        customSleep(getRandomInt(5));
         swipeRight();
 
         var buttonAd = text("广告");
@@ -115,6 +114,7 @@ function taskVideo() {
 }
 
 // 任务-宝箱
+// every 10m
 function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------")
 
