@@ -1,23 +1,27 @@
 /**
  * 头条-所有金币任务
  */
+var sleeps = require('sleep.js');
+var swipes = require('swipe.js');
+
 main();
 
 function main() {
     initEnv();
 
     launchApp("今日头条极速版");
-    sleep10s();
+    sleeps.s10();
 
-    task();
-    // closeAd();
-
-    console.log("---------- done ----------")
+    while (true) {
+        task();
+    }
 }
 
 // 任务
 function task() {
     console.log("---------- task start ----------")
+
+    swipes.return();
 
     var buttonClickTask = id("ey").className("android.widget.TextView").text("任务");
     if (!buttonClickTask.exists()) {
@@ -26,11 +30,11 @@ function task() {
     }
     console.log("---------- 点击 任务界面 ----------")
     buttonClickTask.findOne().parent().click();
-    sleep3s();
+    sleeps.s3();
 
     taskTreasureBox();
-    taskNovel();
     taskVideo();
+    // taskNovel();
 
     console.log("---------- task end ----------")
 
@@ -48,28 +52,27 @@ function taskNovel() {
     }
     console.log("---------- click novel ----------")
     buttonClickTask.findOne().parent().click();
-    sleep3s();
+    sleeps.s3();
 
     console.log("---------- click last novel ----------")
     click(264, 687, 429, 738);
-    sleep3s();
+    sleeps.s3();
 
     for (var i = 0; i < 50; i++) {
-        customSleep(1);
-        swipeRight();
+        swipes.right200();
+        sleeps.s2to3();
 
         // // 随机出现奖励金币，但是无法定位，只能先关闭
         // click(477, 1637, 603, 1763);
-        // sleep1s();
 
         var buttonAd = id("ant");
         if (buttonAd.exists()) {
             console.log("this's ad, next")
-            swipeRight();
+            swipes.right200();
         }
     }
 
-    swipeReturn();
+    swipes.return();
 
     console.log("---------- task novel end ----------")
 
@@ -87,26 +90,26 @@ function taskVideo() {
     }
     console.log("---------- click video ----------")
     buttonClickTask.findOne().parent().click();
-    sleep3s();
+    sleeps.s3();
 
-    swipeRight();
-    swipeRight();
+    swipes.right();
+    swipes.right();
 
     console.log("---------- click first video ----------")
     click(24, 1025, 515, 1147);
-    sleep3s();
+    sleeps.s3();
 
     for (var i = 0; i < 50; i++) {
-        customSleep(getRandomInt(5));
-        swipeRight();
+        swipes.right();
+        sleeps.s5to10();
 
         var buttonAd = text("广告");
         if (buttonAd.exists()) {
-            swipeRight();
+            swipes.right();
         }
     }
 
-    swipeReturn();
+    swipes.return();
 
     console.log("---------- task video end ----------")
 
@@ -120,7 +123,7 @@ function taskTreasureBox() {
 
     console.log("---------- 点击 宝箱 ----------")
     click(750, 1860, 1038, 2151);
-    sleep3s();
+    sleeps.s3();
 
     var buttonClickAd = className("android.view.View").text("看完视频再领");
     if (!buttonClickAd.exists()) {
@@ -130,7 +133,7 @@ function taskTreasureBox() {
 
     console.log("---------- 点击 视频 ----------")
     buttonClickAd.click();
-    customSleep(35);
+    sleeps.s35to40();
 
     closeAd();
 
@@ -148,7 +151,7 @@ function closeAd() {
 
     console.log("---------- 点击 关闭广告 ----------")
     buttonCloseAd.click();
-    sleep3s();
+    sleeps.s3();
 
 
     console.log("---------- 点击 关闭奖励提醒 ----------")
@@ -164,83 +167,4 @@ function initEnv() {
     auto();
 
     setScreenMetrics(1080, 2340);
-
-    registEventExit();
-}
-
-/**
- * 滑动-退出
- */
-function swipeReturn() {
-    console.log("---------- return ----------")
-    swipe(0, 1000, 500, 1000, 50);
-    sleep3s();
-}
-
-/**
- * 滑动-右到左
- */
-function swipeRight() {
-    swipe(900, 1100, 100, 1100, 500);
-    sleep1s();
-}
-
-/**
- * 滑动-下到上
- */
-function swipeDown() {
-    swipe(500, 1600, 500, 600, 500);
-    sleep1s();
-}
-
-/**
- * 获取随机整数
- */
-function getRandomInt(max) {
-    let value = Math.floor(Math.random() * Math.floor(max));
-    return value >= 2 ? value : 2;
-}
-
-// 延迟执行-x秒
-function customSleep(time) {
-    sleep(time * 1000);
-}
-
-// 延迟执行-1秒
-function sleep1s() {
-    sleep(1 * 1000);
-}
-
-// 延迟执行-3秒
-function sleep3s() {
-    sleep(3 * 1000);
-}
-
-// 延迟执行-5秒
-function sleep5s() {
-    sleep(5 * 1000);
-}
-
-// 延迟执行-10秒
-function sleep10s() {
-    sleep(10 * 1000);
-}
-
-// 延迟执行-30秒
-function sleep30s() {
-    sleep(30 * 1000);
-}
-
-// 延迟执行-35秒
-function sleep35s() {
-    sleep(35 * 1000);
-}
-
-// 监听事件-音量上键退出
-function registEventExit() {
-    events.observeKey();
-    events.onKeyDown("volume_down", function (event) {
-        toast("manual exit");
-        exit();
-    });
 }

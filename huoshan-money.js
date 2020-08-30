@@ -1,26 +1,46 @@
 /**
  * 火山-所有金币任务
  */
+var sleeps = require('sleep.js');
+var swipes = require('swipe.js');
+
 main();
 
 function main() {
     initEnv();
 
     launchApp("火山极速版");
-    sleep10s();
+    sleeps.s10();
 
-    if (!id("xc").exists()) {
-        console.log("---------- 任务界面 nothing ----------")
-  
-        return false;
-    }
+    swipes.return();
 
     console.log("---------- click 任务界面 ----------")
-    id("xc").click();
-    sleep3s();
+    click(621, 2201);
+    sleeps.s3();
 
     taskTreasureBox();
     taskAd20();
+    taskVideo();
+}
+
+// 任务-小视频
+function taskVideo() {
+    console.log("---------- task video start ----------")
+
+    console.log("---------- index page ----------")
+    click(87, 2205);
+    sleeps.s3();
+
+    for (var i = 0; i < 50; i++) {
+        swipes.down();
+        sleeps.s5to10();
+    }
+
+    swipes.return();
+
+    console.log("---------- task video end ----------")
+
+    return true;
 }
 
 // 任务-20次广告
@@ -31,7 +51,11 @@ function taskAd20() {
         var buttonAd = className("android.view.View").text("领100金币");
         if (buttonAd.exists()) {
             buttonAd.click();
-            sleep35s();
+            sleeps.s35to40();
+            closeAd();
+        } else if (className("android.view.View").text("去赚钱").exists()){
+            className("android.view.View").text("去赚钱").click();
+            sleeps.s35to40();
             closeAd();
         }
     }
@@ -42,7 +66,7 @@ function taskAd20() {
 }
 
 // 任务-宝箱
-// every 30m
+// every 10m
 function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------")
 
@@ -53,7 +77,7 @@ function taskTreasureBox() {
     }
     console.log("---------- click 宝箱 ----------")
     buttonBox.findOne().click();
-    sleep1s();
+    sleeps.s1();
 
     var buttonAd = className("android.view.View").text("看视频 金币翻8倍");
     if (!buttonAd.exists()) {
@@ -62,8 +86,7 @@ function taskTreasureBox() {
     }
     console.log("---------- click ad ----------")
     buttonAd.findOne().click();
-    // click(201, 1398, 879, 1584);
-    sleep35s();
+    sleeps.s35to40();
 
     closeAd();
 
@@ -81,7 +104,7 @@ function closeAd() {
     }
     console.log("---------- click ad ----------")
     buttonCloseAd.click();
-    sleep3s();
+    sleeps.s3();
 
     var buttonCloseAdConfirm = id("sp");
     if (!buttonCloseAdConfirm.exists()) {
@@ -90,7 +113,7 @@ function closeAd() {
     }
     console.log("---------- click ad confirm ----------")
     buttonCloseAdConfirm.click();
-    sleep3s();
+    sleeps.s3();
 
     return true;
 }
@@ -102,83 +125,4 @@ function initEnv() {
     auto();
 
     setScreenMetrics(1080, 2340);
-
-    registEventExit();
-}
-
-/**
- * 滑动-退出
- */
-function swipeReturn() {
-    console.log("---------- return ----------")
-    swipe(0, 1000, 500, 1000, 50);
-    sleep3s();
-}
-
-/**
- * 滑动-右到左
- */
-function swipeRight() {
-    swipe(900, 1100, 100, 1100, 500);
-    sleep1s();
-}
-
-/**
- * 滑动-下到上
- */
-function swipeDown() {
-    swipe(500, 1600, 500, 600, 500);
-    sleep1s();
-}
-
-/**
- * 获取随机整数
- */
-function getRandomInt(max) {
-    let value = Math.floor(Math.random() * Math.floor(max));
-    return value >= 2 ? value : 2;
-}
-
-// 延迟执行-x秒
-function customSleep(time) {
-    sleep(time * 1000);
-}
-
-// 延迟执行-1秒
-function sleep1s() {
-    sleep(1 * 1000);
-}
-
-// 延迟执行-3秒
-function sleep3s() {
-    sleep(3 * 1000);
-}
-
-// 延迟执行-5秒
-function sleep5s() {
-    sleep(5 * 1000);
-}
-
-// 延迟执行-10秒
-function sleep10s() {
-    sleep(10 * 1000);
-}
-
-// 延迟执行-30秒
-function sleep30s() {
-    sleep(30 * 1000);
-}
-
-// 延迟执行-35秒
-function sleep35s() {
-    sleep(35 * 1000);
-}
-
-// 监听事件-音量上键退出
-function registEventExit() {
-    events.observeKey();
-    events.onKeyDown("volume_down", function (event) {
-        toast("manual exit");
-        exit();
-    });
 }
