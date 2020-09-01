@@ -1,5 +1,10 @@
-var sleeps = require('sleep.js');
-var swipes = require('swipe.js');
+/**
+ * 临时测试某些功能
+ */
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
+var sleeps = require('function-sleeps.js');
+var swipes = require('function-swipes.js');
 
 var w = floaty.rawWindow(
     <frame gravity="center" bg="#77ff0000">
@@ -8,18 +13,29 @@ var w = floaty.rawWindow(
 );
 w.setSize(1, 1);
 
+
+launchApp("快手极速版");
+sleeps.s1();
+
 // click(59, 1233);
 // swipe(500, 1600, 500, 600, 500);
 
 // swipe(100, 2000, 400, 100, 100);
 
 while (true) {
-    swipes.down1600();
-    sleeps.s10to20();
-}
+    // swipes.refresh();
+    //     swipes.down1600();
+    //     sleeps.s10to20();
 
-// launchApp("快手极速版");
-// sleeps.s1();
+    if (id("left_btn").exists()) {
+        clicks.findOne(id("left_btn"));
+
+        swipes.return();
+    }
+
+
+    sleeps.s3();
+}
 
 // w.setSize(100, 100);
 // w.setPosition(0 + 50, 1036 - 50 );

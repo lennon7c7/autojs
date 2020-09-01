@@ -4,7 +4,7 @@
 var s = {};
 
 /**
- * 滑动-退出
+ * 滑动-返回上一页
  */
 s.return = function () {
     console.log("---------- return ----------")
@@ -26,6 +26,14 @@ s.right = function () {
 s.right200 = function () {
     swipe(900, 200, 100, 200, 500);
     sleep(1 * 1000)
+}
+
+/**
+ * 滑动-刷新
+ */
+s.refresh = function () {
+    swipe(500, 600, 500, 1000, 500);
+    sleep(5 * 1000)
 }
 
 /**

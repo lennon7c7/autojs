@@ -1,27 +1,26 @@
 /**
  * 头条-所有金币任务
  */
-var sleeps = require('sleep.js');
-var swipes = require('swipe.js');
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
+var sleeps = require('function-sleeps.js');
+var swipes = require('function-swipes.js');
 
-main();
+while (true) {
+    main();
+}
 
 function main() {
-    initEnv();
+    others.initEnv();
 
-    launchApp("今日头条极速版");
-    sleeps.s10();
+    others.launchApp('com.ss.android.article.lite');
 
-    while (true) {
-        task();
-    }
+    task();
 }
 
 // 任务
 function task() {
     console.log("---------- task start ----------")
-
-    swipes.return();
 
     var buttonClickTask = id("ey").className("android.widget.TextView").text("任务");
     if (!buttonClickTask.exists()) {
@@ -35,8 +34,32 @@ function task() {
     taskTreasureBox();
     taskVideo();
     // taskNovel();
+    // taskSleep();
 
     console.log("---------- task end ----------")
+
+    return true;
+}
+
+// 任务-睡觉赚钱
+function taskSleep() {
+    console.log("---------- task sleep start ----------")
+
+    var buttonClickTask = className("android.widget.Image").text("睡觉赚钱");
+    if (!buttonClickTask.exists()) {
+        console.log("---------- task sleep nothing ----------")
+        return false;
+    }
+    console.log("---------- click sleep ----------")
+    buttonClickTask.findOne().parent().click();
+    sleeps.s3();
+
+    console.log("---------- click last sleep ----------")
+    clicks.click(264, 687);
+
+    swipes.return();
+
+    console.log("---------- task sleep end ----------")
 
     return true;
 }
@@ -55,15 +78,14 @@ function taskNovel() {
     sleeps.s3();
 
     console.log("---------- click last novel ----------")
-    click(264, 687, 429, 738);
-    sleeps.s3();
+    clicks.click(264, 687);
 
     for (var i = 0; i < 50; i++) {
         swipes.right200();
         sleeps.s2to3();
 
-        // // 随机出现奖励金币，但是无法定位，只能先关闭
-        // click(477, 1637, 603, 1763);
+        // 随机出现奖励金币，但是无法定位，只能先关闭
+        // click(477, 1637);
 
         var buttonAd = id("ant");
         if (buttonAd.exists()) {
@@ -79,7 +101,7 @@ function taskNovel() {
     return true;
 }
 
-// 任务-小视频
+// 任务-视频
 function taskVideo() {
     console.log("---------- task video start ----------")
 
@@ -95,11 +117,12 @@ function taskVideo() {
     swipes.right();
     swipes.right();
 
-    console.log("---------- click first video ----------")
-    click(24, 1025, 515, 1147);
-    sleeps.s3();
+    swipes.refresh();
 
-    for (var i = 0; i < 50; i++) {
+    console.log("---------- click first video ----------")
+    clicks.click(465, 597);
+
+    for (var i = 0; i < 80; i++) {
         swipes.right();
         sleeps.s5to10();
 
@@ -122,8 +145,7 @@ function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------")
 
     console.log("---------- 点击 宝箱 ----------")
-    click(750, 1860, 1038, 2151);
-    sleeps.s3();
+    clicks.click(750 + 100, 1860 + 70);
 
     var buttonClickAd = className("android.view.View").text("看完视频再领");
     if (!buttonClickAd.exists()) {
@@ -155,16 +177,7 @@ function closeAd() {
 
 
     console.log("---------- 点击 关闭奖励提醒 ----------")
-    click(477, 1158, 603, 1284);
+    clicks.click(477, 1158);
 
     return true;
-}
-
-/**
- * 初始化环境
- */
-function initEnv() {
-    auto();
-
-    setScreenMetrics(1080, 2340);
 }

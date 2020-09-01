@@ -5,8 +5,8 @@
  * 2. 无法判断是否处于广告状态
  * 3. 无法判断是否处于游戏完成
  */
-var sleeps = require('sleep.js');
-var swipes = require('swipe.js');
+var sleeps = require('function-sleeps.js');
+var swipes = require('function-swipes.js');
 
 var w = floaty.rawWindow(
     <frame gravity="center" bg="#77ff0000">

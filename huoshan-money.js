@@ -1,8 +1,8 @@
 /**
  * 火山-所有金币任务
  */
-var sleeps = require('sleep.js');
-var swipes = require('swipe.js');
+var sleeps = require('function-sleeps.js');
+var swipes = require('function-swipes.js');
 
 main();
 

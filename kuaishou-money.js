@@ -1,30 +1,35 @@
 /**
  * 快手-所有金币任务
-  * 当前存在问题
+ * 当前存在问题
  * 1. 无法判断是否处于验证码状态
 */
-var sleeps = require('sleep.js');
-var swipes = require('swipe.js');
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
+var sleeps = require('function-sleeps.js');
+var swipes = require('function-swipes.js');
 
-main();
+while (true) {
+    main();
+}
 
 function main() {
-    initEnv();
+    others.initEnv();
 
-    launchApp("快手极速版");
-    sleeps.s10();
+    others.launchApp('com.kuaishou.nebula');
 
-    id("left_btn").findOne().click();
-    sleeps.s3();
+    var buttonMenu = id("left_btn");
+    if (!buttonMenu.exists()) {
+        return false;
+    }
+    clicks.findOne(buttonMenu);
 
     console.log("---------- button 任务界面 ----------")
     id("menu_recycler_view").findOne().children().forEach(child => {
         if (child.findOne(id("title")).text() == "去赚钱") {
-            click(192, 979);
+            clicks.click(192, 979);
             // child.findOne(id("title")).click();
         }
     })
-    sleeps.s3();
 
     taskAd10();
     taskVideo();
@@ -56,7 +61,7 @@ function taskAd10() {
     return true;
 }
 
-// 任务-小视频
+// 任务-视频
 function taskVideo() {
     console.log("---------- task video start ----------")
 
