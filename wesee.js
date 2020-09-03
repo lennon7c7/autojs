@@ -1,18 +1,19 @@
 /**
  * 微视-所有金币任务
  */
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 
-main();
+while (true) {
+    main();
+}
 
 function main() {
-    initEnv();
+    others.initEnv();
 
-    app.launch("com.tencent.weishi");
-    sleeps.s10();
-
-    swipes.return();
+    others.launchApp('com.tencent.weishi');
 
     while (true) {
         task();
@@ -44,13 +45,4 @@ function taskVideo() {
     console.log("---------- task video end ----------")
 
     return true;
-}
-
-/**
- * 初始化环境
- */
-function initEnv() {
-    auto();
-
-    setScreenMetrics(1080, 2340);
 }

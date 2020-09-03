@@ -31,6 +31,8 @@ s.launchApp = function (packageName) {
 
     app.launch(packageName);
     sleep(10 * 1000);
+    swipe(0, 1000, 500, 1000, 50);
+    sleep(3 * 1000);
 }
 
 module.exports = s;
