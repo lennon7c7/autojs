@@ -15,9 +15,7 @@ function main() {
 
     others.launchApp('com.tencent.weishi');
 
-    while (true) {
-        task();
-    }
+    task();
 }
 
 // 任务
