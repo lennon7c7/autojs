@@ -116,6 +116,7 @@ function taskVideo() {
 
     swipes.right();
     swipes.right();
+    swipes.right();
 
     swipes.refresh();
 
@@ -124,7 +125,7 @@ function taskVideo() {
 
     for (var i = 0; i < 80; i++) {
         swipes.right();
-        sleeps.s5to10();
+        sleeps.s10to30();
 
         var buttonAd = text("广告");
         if (buttonAd.exists()) {

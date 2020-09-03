@@ -1,25 +1,25 @@
 /**
  * 火山-所有金币任务
  */
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 
-main();
+while (true) {
+    main();
+}
 
 function main() {
-    initEnv();
+    others.initEnv();
 
-    launchApp("火山极速版");
-    sleeps.s10();
-
-    swipes.return();
+    others.launchApp('com.ss.android.ugc.livelite');
 
     console.log("---------- click 任务界面 ----------")
-    click(621, 2201);
-    sleeps.s3();
+    clicks.click(621, 2201);
 
     taskTreasureBox();
-    taskAd20();
+    // taskAd20();
     taskVideo();
 }
 
@@ -28,8 +28,7 @@ function taskVideo() {
     console.log("---------- task video start ----------")
 
     console.log("---------- index page ----------")
-    click(87, 2205);
-    sleeps.s3();
+    clicks.click(87, 2205);
 
     for (var i = 0; i < 50; i++) {
         swipes.down();
@@ -53,7 +52,7 @@ function taskAd20() {
             buttonAd.click();
             sleeps.s35to40();
             closeAd();
-        } else if (className("android.view.View").text("去赚钱").exists()){
+        } else if (className("android.view.View").text("去赚钱").exists()) {
             className("android.view.View").text("去赚钱").click();
             sleeps.s35to40();
             closeAd();
@@ -66,7 +65,7 @@ function taskAd20() {
 }
 
 // 任务-宝箱
-// every 10m
+// every 20m
 function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------")
 
@@ -116,13 +115,4 @@ function closeAd() {
     sleeps.s3();
 
     return true;
-}
-
-/**
- * 初始化环境
- */
-function initEnv() {
-    auto();
-
-    setScreenMetrics(1080, 2340);
 }
