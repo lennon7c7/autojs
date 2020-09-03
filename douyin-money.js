@@ -1,22 +1,24 @@
 /**
  * 抖音-所有金币任务
  */
+var clicks = require('function-clicks.js');
+var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 
-main();
+while (true) {
+    main()
+}
 
 function main() {
-    initEnv();
+    others.initEnv();
 
-    launchApp("抖音极速版");
-    sleeps.s10();
+    others.launchApp('com.ss.android.ugc.aweme.lite');
 
     swipes.return();
 
     // 任务界面
-    click(427, 2130, 652, 2304);
-    sleeps.s3();
+    clicks.click(427, 2130);
 
     taskTreasureBox();
     taskLimit();
@@ -29,13 +31,11 @@ function taskVideo() {
 
     console.log("---------- index page ----------")
     swipes.return();
-    sleeps.s3();
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 200; i++) {
         swipes.down();
         sleeps.s5to10();
     }
-
 
     console.log("---------- task video end ----------")
 
@@ -70,12 +70,10 @@ function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------")
 
     console.log("---------- 点击 宝箱 ----------")
-    click(801, 2004, 1035, 2238);
-    sleeps.s3();
+    clicks.click(801, 2004);
 
     console.log("---------- 点击 宝箱-视频 ----------")
-    click(231, 1288, 357, 1349);
-    sleeps.s35to40();
+    clicks.click(231, 1288);
 
     closeAd();
 
@@ -96,13 +94,4 @@ function closeAd() {
     sleeps.s3();
 
     return true;
-}
-
-/**
- * 初始化环境
- */
-function initEnv() {
-    auto();
-
-    setScreenMetrics(1080, 2340);
 }
