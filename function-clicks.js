@@ -14,6 +14,14 @@ s.click = function (x, y) {
 /**
  * 元素
  */
+s.clickEl = function (e) {
+    e.click();
+    sleep(3 * 1000);
+}
+
+/**
+ * 元素
+ */
 s.findOne = function (e) {
     e.findOne().click();
     sleep(3 * 1000);

@@ -24,8 +24,8 @@ function task() {
 
     clicks.click(432, 2166);
 
-    // taskTreasureBox();
-    // taskAd();
+    taskTreasureBox();
+    taskAd();
     taskBook();
 
     console.log("---------- task end ----------");

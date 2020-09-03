@@ -23,7 +23,7 @@ function main() {
     clicks.findOne(buttonMenu);
 
     taskProduct();
-    taskRandomPage();
+    // taskRandomPage();
     taskVideo();
 }
 
