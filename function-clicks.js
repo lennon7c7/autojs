@@ -19,4 +19,12 @@ s.findOne = function (e) {
     sleep(3 * 1000);
 }
 
+/**
+ * 元素
+ */
+s.findOneParent = function (e) {
+    e.findOne().parent().click();
+    sleep(3 * 1000);
+}
+
 module.exports = s;

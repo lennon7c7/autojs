@@ -79,12 +79,3 @@ function taskVideo() {
         swipes.down1600();
     }
 }
-
-/**
- * 初始化环境
- */
-function initEnv() {
-    auto();
-
-    setScreenMetrics(1080, 2340);
-}

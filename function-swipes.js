@@ -29,6 +29,22 @@ s.right200 = function () {
 }
 
 /**
+ * 滑动-右到左
+ */
+s.right300 = function () {
+    swipe(900, 300, 100, 300, 500);
+    sleep(1 * 1000)
+}
+
+/**
+ * 滑动-右到左
+ */
+s.right2100 = function () {
+    swipe(900, 2100, 100, 2100, 500);
+    sleep(1 * 1000)
+}
+
+/**
  * 滑动-刷新
  */
 s.refresh = function () {
