@@ -6,12 +6,10 @@ var swipes = require('function-swipes.js');
 main();
 
 function main() {
-
     while (true) {
         // swipes.right200();
 
         swipe(900, 300, 100, 300, 500);
-        sleep(1 * 1000)
-    
+        sleep(1 * 1000);
     }
 }

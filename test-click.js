@@ -9,9 +9,9 @@ function main() {
 
     var buttonClickTask = className("android.view.View").text("看视频赚海量金币");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task ad nothing ----------")
+        console.log("---------- task ad nothing ----------");
         return false;
     }
-    console.log("---------- click ad ----------")
+    console.log("---------- click ad ----------");
     clicks.findOne(buttonClickTask)
 }

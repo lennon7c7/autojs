@@ -18,7 +18,7 @@ function main() {
     swipes.return();
 
     // 任务界面
-    clicks.click(427, 2130);
+    clicks.xy(427, 2130);
 
     taskTreasureBox();
     taskLimit();
@@ -27,9 +27,9 @@ function main() {
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- task video start ----------")
+    console.log("---------- task video start ----------");
 
-    console.log("---------- index page ----------")
+    console.log("---------- index page ----------");
     swipes.return();
 
     for (var i = 0; i < 200; i++) {
@@ -37,7 +37,7 @@ function taskVideo() {
         sleeps.s5to10();
     }
 
-    console.log("---------- task video end ----------")
+    console.log("---------- task video end ----------");
 
     return true;
 }
@@ -45,21 +45,21 @@ function taskVideo() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    console.log("---------- taskLimit start ----------")
+    console.log("---------- taskLimit start ----------");
 
     var buttonCloseAd = className("android.view.View").text("去领取").depth(8);
     if (!buttonCloseAd.exists()) {
-        console.log("---------- taskLimit nothing ----------")
+        console.log("---------- taskLimit nothing ----------");
         return false;
     }
 
-    console.log("---------- 点击 去领取 ----------")
+    console.log("---------- 点击 去领取 ----------");
     buttonCloseAd.click();
     sleeps.s35to40();
 
     closeAd();
 
-    console.log("---------- taskLimit end ----------")
+    console.log("---------- taskLimit end ----------");
 
     return true;
 }
@@ -67,17 +67,17 @@ function taskLimit() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------")
+    console.log("---------- taskTreasureBox start ----------");
 
-    console.log("---------- 点击 宝箱 ----------")
-    clicks.click(801, 2004);
+    console.log("---------- 点击 宝箱 ----------");
+    clicks.xy(801, 2004);
 
-    console.log("---------- 点击 宝箱-视频 ----------")
-    clicks.click(231, 1288);
+    console.log("---------- 点击 宝箱-视频 ----------");
+    clicks.xy(231, 1288);
 
     closeAd();
 
-    console.log("---------- taskTreasureBox end ----------")
+    console.log("---------- taskTreasureBox end ----------");
 
     return true;
 }
@@ -85,11 +85,11 @@ function taskTreasureBox() {
 function closeAd() {
     var buttonCloseAd = className("android.widget.TextView").text("关闭广告");
     if (!buttonCloseAd.exists()) {
-        console.log("---------- closeAd nothing ----------")
+        console.log("---------- closeAd nothing ----------");
         return false;
     }
 
-    console.log("---------- 点击 关闭广告 ----------")
+    console.log("---------- 点击 关闭广告 ----------");
     buttonCloseAd.click();
     sleeps.s3();
 

@@ -2,7 +2,7 @@
  * 快手-所有金币任务
  * 当前存在问题
  * 1. 无法判断是否处于验证码状态
-*/
+ */
 var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
@@ -23,13 +23,10 @@ function main() {
     }
     clicks.findOne(buttonMenu);
 
-    console.log("---------- button 任务界面 ----------")
-    id("menu_recycler_view").findOne().children().forEach(child => {
-        if (child.findOne(id("title")).text() == "去赚钱") {
-            clicks.click(192, 979);
-            // child.findOne(id("title")).click();
-        }
-    })
+    console.log("---------- button 任务界面 ----------");
+    if (text('去赚钱').exists()) {
+        clicks.text('去赚钱');
+    }
 
     taskAd10();
     taskVideo();
@@ -37,7 +34,7 @@ function main() {
 
 // 任务-10次广告
 function taskAd10() {
-    console.log("---------- taskLimit start ----------")
+    console.log("---------- taskLimit start ----------");
 
     for (var i = 0; i < 10; i++) {
         if (className("android.widget.Button").text("福利").exists()) {
@@ -56,26 +53,26 @@ function taskAd10() {
         }
     }
 
-    console.log("---------- taskLimit end ----------")
+    console.log("---------- taskLimit end ----------");
 
     return true;
 }
 
 // 任务-视频
 function taskVideo() {
-    console.log("---------- task video start ----------")
+    console.log("---------- task video start ----------");
 
     var buttonClickTask = className("android.widget.Button").text("去赚钱");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task video nothing ----------")
+        console.log("---------- task video nothing ----------");
         return false;
     }
-    console.log("---------- click video ----------")
+    console.log("---------- click video ----------");
     buttonClickTask.findOne().click();
     sleeps.s3();
 
-    while (true) {
-        sleeps.custom(sleeps.getRandomInt(5));
+    for (var i = 0; i < 1000; i++) {
+        sleeps.s10to30();
         swipes.down1600();
     }
 }

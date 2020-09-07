@@ -20,18 +20,18 @@ function main() {
 
 // 任务
 function task() {
-    console.log("---------- task start ----------")
+    console.log("---------- task start ----------");
 
     taskVideo();
 
-    console.log("---------- task end ----------")
+    console.log("---------- task end ----------");
 
     return true;
 }
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- task video start ----------")
+    console.log("---------- task video start ----------");
 
     for (var i = 0; i < 100000; i++) {
         swipes.down1600();
@@ -40,7 +40,7 @@ function taskVideo() {
 
     swipes.return();
 
-    console.log("---------- task video end ----------")
+    console.log("---------- task video end ----------");
 
     return true;
 }

@@ -20,9 +20,9 @@ function main() {
 
 // 任务
 function task() {
-    console.log("---------- task start ----------")
+    console.log("---------- task start ----------");
 
-    clicks.click(432, 2166);
+    clicks.xy(432, 2166);
 
     taskTreasureBox();
     taskAd();
@@ -35,41 +35,41 @@ function task() {
 
 // 任务-看书
 function taskBook() {
-    console.log("---------- task book start ----------")
+    console.log("---------- task book start ----------");
 
     var buttonClickTask = className("android.widget.RadioButton").text("书架");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task book nothing ----------")
+        console.log("---------- task book nothing ----------");
         return false;
     }
-    console.log("---------- click book ----------")
-    clicks.findOne(buttonClickTask)
+    console.log("---------- click book ----------");
+    clicks.findOne(buttonClickTask);
 
-    clicks.click(72, 906)
+    clicks.xy(72, 906);
 
     for (var i = 0; i < 10000; i++) {
         swipes.right2100();
         sleeps.s2to3();
     }
 
-    console.log("---------- task book end ----------")
+    console.log("---------- task book end ----------");
 
     return true;
 }
 
 // 任务-Ad
 function taskAd() {
-    console.log("---------- task ad start ----------")
+    console.log("---------- task ad start ----------");
 
     for (var i = 0; i < 10; i++) {
         var buttonClickTask = className("android.view.View").text("看视频赚海量金币");
         if (!buttonClickTask.exists()) {
-            console.log("---------- task ad nothing ----------")
+            console.log("---------- task ad nothing ----------");
             return false;
         }
-        console.log("---------- click ad ----------")
-        clicks.findOne(buttonClickTask)
-    
+        console.log("---------- click ad ----------");
+        clicks.findOne(buttonClickTask);
+
         var buttonMute = id("tt_top_mute");
         if (!buttonMute.exists()) {
             return false;
@@ -81,7 +81,7 @@ function taskAd() {
         closeAd();
     }
 
-    console.log("---------- task ad end ----------")
+    console.log("---------- task ad end ----------");
 
     return true;
 }
@@ -89,13 +89,13 @@ function taskAd() {
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------")
+    console.log("---------- taskTreasureBox start ----------");
 
-    console.log("---------- 点击 宝箱 ----------")
-    clicks.click(750 + 100, 1860 + 70);
+    console.log("---------- 点击 宝箱 ----------");
+    clicks.xy(750 + 100, 1860 + 70);
 
-    console.log("---------- 点击 视频 ----------")
-    clicks.click(247, 1170);
+    console.log("---------- 点击 视频 ----------");
+    clicks.xy(247, 1170);
 
     var buttonMute = id("tt_top_mute");
     if (!buttonMute.exists()) {
@@ -107,7 +107,7 @@ function taskTreasureBox() {
 
     closeAd();
 
-    console.log("---------- taskTreasureBox end ----------")
+    console.log("---------- taskTreasureBox end ----------");
 
     return true;
 }
@@ -115,7 +115,7 @@ function taskTreasureBox() {
 function closeAd() {
     var buttonMute = id("tt_video_ad_close_layout");
     if (!buttonMute.exists()) {
-        console.log("---------- closeAd nothing ----------")
+        console.log("---------- closeAd nothing ----------");
         return false;
     }
     clicks.findOne(buttonMute);

@@ -15,8 +15,8 @@ function main() {
 
     others.launchApp('com.ss.android.ugc.livelite');
 
-    console.log("---------- click 任务界面 ----------")
-    clicks.click(621, 2201);
+    console.log("---------- click 任务界面 ----------");
+    clicks.xy(621, 2201);
 
     taskTreasureBox();
     // taskAd20();
@@ -25,10 +25,10 @@ function main() {
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- task video start ----------")
+    console.log("---------- task video start ----------");
 
-    console.log("---------- index page ----------")
-    clicks.click(87, 2205);
+    console.log("---------- index page ----------");
+    clicks.xy(87, 2205);
 
     for (var i = 0; i < 50; i++) {
         swipes.down();
@@ -37,14 +37,14 @@ function taskVideo() {
 
     swipes.return();
 
-    console.log("---------- task video end ----------")
+    console.log("---------- task video end ----------");
 
     return true;
 }
 
 // 任务-20次广告
 function taskAd20() {
-    console.log("---------- taskAd20 start ----------")
+    console.log("---------- taskAd20 start ----------");
 
     for (var i = 0; i < 20; i++) {
         var buttonAd = className("android.view.View").text("领100金币");
@@ -59,7 +59,7 @@ function taskAd20() {
         }
     }
 
-    console.log("---------- taskAd20 end ----------")
+    console.log("---------- taskAd20 end ----------");
 
     return true;
 }
@@ -67,29 +67,29 @@ function taskAd20() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------")
+    console.log("---------- taskTreasureBox start ----------");
 
     var buttonBox = className("android.view.View").text("开宝箱得金币");
     if (!buttonBox.exists()) {
-        console.log("---------- click 宝箱 nothing ----------")
+        console.log("---------- click 宝箱 nothing ----------");
         return false;
     }
-    console.log("---------- click 宝箱 ----------")
+    console.log("---------- click 宝箱 ----------");
     buttonBox.findOne().click();
     sleeps.s1();
 
     var buttonAd = className("android.view.View").text("看视频 金币翻8倍");
     if (!buttonAd.exists()) {
-        console.log("---------- click ad nothing ----------")
+        console.log("---------- click ad nothing ----------");
         return false;
     }
-    console.log("---------- click ad ----------")
+    console.log("---------- click ad ----------");
     buttonAd.findOne().click();
     sleeps.s35to40();
 
     closeAd();
 
-    console.log("---------- taskTreasureBox end ----------")
+    console.log("---------- taskTreasureBox end ----------");
 
     return true;
 }
@@ -98,19 +98,19 @@ function taskTreasureBox() {
 function closeAd() {
     var buttonCloseAd = className("android.widget.TextView").text("关闭广告");
     if (!buttonCloseAd.exists()) {
-        console.log("---------- click ad nothing ----------")
+        console.log("---------- click ad nothing ----------");
         return false;
     }
-    console.log("---------- click ad ----------")
+    console.log("---------- click ad ----------");
     buttonCloseAd.click();
     sleeps.s3();
 
     var buttonCloseAdConfirm = id("sp");
     if (!buttonCloseAdConfirm.exists()) {
-        console.log("---------- close ad confirm nothing ----------")
+        console.log("---------- close ad confirm nothing ----------");
         return false;
     }
-    console.log("---------- click ad confirm ----------")
+    console.log("---------- click ad confirm ----------");
     buttonCloseAdConfirm.click();
     sleeps.s3();
 

@@ -10,7 +10,7 @@ s.return = function () {
     console.log("---------- return ----------")
     swipe(0, 1000, 500, 1000, 50);
     sleep(3 * 1000)
-}
+};
 
 /**
  * 滑动-右到左
@@ -18,7 +18,7 @@ s.return = function () {
 s.right = function () {
     swipe(900, 1100, 100, 1100, 500);
     sleep(1 * 1000)
-}
+};
 
 /**
  * 滑动-右到左
@@ -26,7 +26,7 @@ s.right = function () {
 s.right200 = function () {
     swipe(900, 200, 100, 200, 500);
     sleep(1 * 1000)
-}
+};
 
 /**
  * 滑动-右到左
@@ -34,7 +34,7 @@ s.right200 = function () {
 s.right300 = function () {
     swipe(900, 300, 100, 300, 500);
     sleep(1 * 1000)
-}
+};
 
 /**
  * 滑动-右到左
@@ -42,7 +42,7 @@ s.right300 = function () {
 s.right2100 = function () {
     swipe(900, 2100, 100, 2100, 500);
     sleep(1 * 1000)
-}
+};
 
 /**
  * 滑动-刷新
@@ -50,7 +50,7 @@ s.right2100 = function () {
 s.refresh = function () {
     swipe(500, 600, 500, 1000, 500);
     sleep(5 * 1000)
-}
+};
 
 /**
  * 滑动-下到上
@@ -58,7 +58,7 @@ s.refresh = function () {
 s.down = function () {
     swipe(500, 1600, 500, 600, 500);
     sleep(1 * 1000)
-}
+};
 
 /**
  * 滑动-下到上
@@ -66,6 +66,6 @@ s.down = function () {
 s.down1600 = function () {
     swipe(500, 1700, 500, 100, 500);
     sleep(1 * 1000)
-}
+};
 
 module.exports = s;

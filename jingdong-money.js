@@ -38,7 +38,7 @@ function taskProduct() {
     console.log("---------- task product start ----------");
 
     console.log("---------- button into ----------");
-    clicks.click(807, 1693);
+    clicks.xy(807, 1693);
 
     var buttonMenu = className("android.view.View").desc("赚钱");
     if (buttonMenu.exists()) {
@@ -86,7 +86,7 @@ function taskRandomPage() {
     console.log("---------- task random start ----------");
 
     console.log("---------- button into ----------");
-    clicks.click(807, 1894);
+    clicks.xy(807, 1894);
 
     var buttonMenu = className("android.view.View").desc("赚钱");
     if (buttonMenu.exists()) {
@@ -135,10 +135,10 @@ function taskVideo() {
     console.log("---------- task video start ----------");
 
     console.log("---------- button into ----------");
-    clicks.click(807, 2095);
+    clicks.xy(807, 2095);
 
     console.log("---------- first video into ----------");
-    clicks.click(100, 700);
+    clicks.xy(100, 700);
 
     var buttonMenu = className("android.view.View").desc("赚钱");
     if (buttonMenu.exists()) {

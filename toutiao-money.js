@@ -20,14 +20,14 @@ function main() {
 
 // 任务
 function task() {
-    console.log("---------- task start ----------")
+    console.log("---------- task start ----------");
 
     var buttonClickTask = id("ey").className("android.widget.TextView").text("任务");
     if (!buttonClickTask.exists()) {
-        console.log("---------- 任务界面 nothing ----------")
+        console.log("---------- 任务界面 nothing ----------");
         return false;
     }
-    console.log("---------- 点击 任务界面 ----------")
+    console.log("---------- 点击 任务界面 ----------");
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
@@ -36,49 +36,49 @@ function task() {
     // taskNovel();
     // taskSleep();
 
-    console.log("---------- task end ----------")
+    console.log("---------- task end ----------");
 
     return true;
 }
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    console.log("---------- task sleep start ----------")
+    console.log("---------- task sleep start ----------");
 
     var buttonClickTask = className("android.widget.Image").text("睡觉赚钱");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task sleep nothing ----------")
+        console.log("---------- task sleep nothing ----------");
         return false;
     }
-    console.log("---------- click sleep ----------")
+    console.log("---------- click sleep ----------");
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    console.log("---------- click last sleep ----------")
-    clicks.click(264, 687);
+    console.log("---------- click last sleep ----------");
+    clicks.xy(264, 687);
 
     swipes.return();
 
-    console.log("---------- task sleep end ----------")
+    console.log("---------- task sleep end ----------");
 
     return true;
 }
 
 // 任务-小说
 function taskNovel() {
-    console.log("---------- task novel start ----------")
+    console.log("---------- task novel start ----------");
 
     var buttonClickTask = className("android.widget.Button").text("看小说");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task novel nothing ----------")
+        console.log("---------- task novel nothing ----------");
         return false;
     }
-    console.log("---------- click novel ----------")
+    console.log("---------- click novel ----------");
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    console.log("---------- click last novel ----------")
-    clicks.click(264, 687);
+    console.log("---------- click last novel ----------");
+    clicks.xy(264, 687);
 
     for (var i = 0; i < 50; i++) {
         swipes.right200();
@@ -89,28 +89,28 @@ function taskNovel() {
 
         var buttonAd = id("ant");
         if (buttonAd.exists()) {
-            console.log("this's ad, next")
+            console.log("this's ad, next");
             swipes.right200();
         }
     }
 
     swipes.return();
 
-    console.log("---------- task novel end ----------")
+    console.log("---------- task novel end ----------");
 
     return true;
 }
 
 // 任务-视频
 function taskVideo() {
-    console.log("---------- task video start ----------")
+    console.log("---------- task video start ----------");
 
     var buttonClickTask = className("android.widget.Button").text("去阅读");
     if (!buttonClickTask.exists()) {
-        console.log("---------- task video nothing ----------")
+        console.log("---------- task video nothing ----------");
         return false;
     }
-    console.log("---------- click video ----------")
+    console.log("---------- click video ----------");
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
@@ -120,8 +120,8 @@ function taskVideo() {
 
     swipes.refresh();
 
-    console.log("---------- click first video ----------")
-    clicks.click(465, 597);
+    console.log("---------- click first video ----------");
+    clicks.xy(465, 597);
 
     for (var i = 0; i < 80; i++) {
         swipes.right();
@@ -135,7 +135,7 @@ function taskVideo() {
 
     swipes.return();
 
-    console.log("---------- task video end ----------")
+    console.log("---------- task video end ----------");
 
     return true;
 }
@@ -143,24 +143,24 @@ function taskVideo() {
 // 任务-宝箱
 // every 10m
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------")
+    console.log("---------- taskTreasureBox start ----------");
 
-    console.log("---------- 点击 宝箱 ----------")
-    clicks.click(750 + 100, 1860 + 70);
+    console.log("---------- 点击 宝箱 ----------");
+    clicks.xy(750 + 100, 1860 + 70);
 
     var buttonClickAd = className("android.view.View").text("看完视频再领");
     if (!buttonClickAd.exists()) {
-        console.log("---------- taskTreasureBox nothing ----------")
+        console.log("---------- taskTreasureBox nothing ----------");
         return false;
     }
 
-    console.log("---------- 点击 视频 ----------")
+    console.log("---------- 点击 视频 ----------");
     buttonClickAd.click();
     sleeps.s35to40();
 
     closeAd();
 
-    console.log("---------- taskTreasureBox end ----------")
+    console.log("---------- taskTreasureBox end ----------");
 
     return true;
 }
@@ -168,17 +168,17 @@ function taskTreasureBox() {
 function closeAd() {
     var buttonCloseAd = className("android.widget.LinearLayout");
     if (!buttonCloseAd.exists()) {
-        console.log("---------- closeAd nothing ----------")
+        console.log("---------- closeAd nothing ----------");
         return false;
     }
 
-    console.log("---------- 点击 关闭广告 ----------")
+    console.log("---------- 点击 关闭广告 ----------");
     buttonCloseAd.click();
     sleeps.s3();
 
 
-    console.log("---------- 点击 关闭奖励提醒 ----------")
-    clicks.click(477, 1158);
+    console.log("---------- 点击 关闭奖励提醒 ----------");
+    clicks.xy(477, 1158);
 
     return true;
 }

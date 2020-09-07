@@ -17,26 +17,25 @@ function main() {
 
     task();
 }
+
 function task() {
     if (!text("Discover").exists()) {
         return false;
     }
     toast("点击 发现");
-    click("Discover")
-    sleeps.s3()
+    clicks.text("Discover");
 
     if (!text("Moments").exists()) {
         return false;
     }
     toast("点击 朋友圈");
-    click("Moments")
-    sleeps.s3()
+    clicks.text("Moments");
 
     if (!text("Tap to change album cover").exists()) {
         toast("双击 顶部-更新朋友圈");
-        click(108, 136)
+        click(108, 136);
         sleep(100);
-        clicks.click(108, 136)
+        clicks.xy(108, 136)
     }
 
     for (var i = 0; i < 1000; i++) {
@@ -55,11 +54,10 @@ function clickLikeButton() {
         var comment = item.findOne(desc("Comment"));
         if (comment) {
             comment.click();
-            sleep(200)
+            sleep(200);
 
             // 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，如果找到符合条件的控件则返回该控件；否则返回null
-            click("Like")
-            sleeps.s1()
+            clicks.text("Like");
         }
     });
 

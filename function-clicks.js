@@ -4,20 +4,28 @@
 var s = {};
 
 /**
- * 普通
+ * xy
  */
-s.click = function (x, y) {
+s.xy = function (x, y) {
     click(x, y);
     sleep(3 * 1000);
-}
+};
 
 /**
  * 元素
  */
-s.clickEl = function (e) {
+s.element = function (e) {
     e.click();
     sleep(3 * 1000);
-}
+};
+
+/**
+ * 文本
+ */
+s.text = function (text) {
+    click(text);
+    sleep(3 * 1000);
+};
 
 /**
  * 元素
@@ -25,7 +33,7 @@ s.clickEl = function (e) {
 s.findOne = function (e) {
     e.findOne().click();
     sleep(3 * 1000);
-}
+};
 
 /**
  * 元素
@@ -33,6 +41,6 @@ s.findOne = function (e) {
 s.findOneParent = function (e) {
     e.findOne().parent().click();
     sleep(3 * 1000);
-}
+};
 
 module.exports = s;
