@@ -6,9 +6,7 @@ var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 
-while (true) {
-    main();
-}
+main();
 
 function main() {
     others.initEnv();
@@ -123,14 +121,9 @@ function taskVideo() {
     console.log("---------- click first video ----------");
     clicks.xy(465, 597);
 
-    for (var i = 0; i < 80; i++) {
+    for (var i = 0; i < 50; i++) {
         swipes.right();
         sleeps.s10to30();
-
-        var buttonAd = text("广告");
-        if (buttonAd.exists()) {
-            swipes.right();
-        }
     }
 
     swipes.return();
@@ -147,6 +140,11 @@ function taskTreasureBox() {
 
     console.log("---------- 点击 宝箱 ----------");
     clicks.xy(750 + 100, 1860 + 70);
+
+    if (text("Close").exists()) {
+        clicks.xy(750 + 100, 1860 + 70);
+        return false;
+    }
 
     var buttonClickAd = className("android.view.View").text("看完视频再领");
     if (!buttonClickAd.exists()) {
@@ -175,10 +173,6 @@ function closeAd() {
     console.log("---------- 点击 关闭广告 ----------");
     buttonCloseAd.click();
     sleeps.s3();
-
-
-    console.log("---------- 点击 关闭奖励提醒 ----------");
-    clicks.xy(477, 1158);
 
     return true;
 }
