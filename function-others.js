@@ -33,4 +33,20 @@ s.launchApp = function (packageName) {
     sleep(10 * 1000);
 };
 
+
+/**
+ * 退出应用
+ * @param {string} packageName
+ */
+s.exitApp = function (packageName) {
+    swipe(0, 1000, 500, 1000, 50);
+    sleep(100);
+    swipe(0, 1000, 500, 1000, 50);
+    sleep(100);
+    swipe(0, 1000, 500, 1000, 50);
+    sleep(100);
+    swipe(0, 1000, 500, 1000, 50);
+    sleep(100);
+};
+
 module.exports = s;

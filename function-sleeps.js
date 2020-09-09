@@ -56,6 +56,11 @@ s.s10to30 = function () {
     s.custom(s.getRandom(10, 30));
 };
 
+// 15 ~ 20 秒
+s.s15to20 = function () {
+    s.custom(s.getRandom(15, 30));
+};
+
 // 35 ~ 40 秒
 s.s35to40 = function () {
     s.custom(s.getRandom(35, 40));
