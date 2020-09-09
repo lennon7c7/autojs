@@ -29,10 +29,37 @@ function task() {
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
+    taskLottery();
+    taskSleep();
     taskTreasureBox();
     taskVideo();
     // taskNovel();
-    // taskSleep();
+
+    console.log("---------- task end ----------");
+
+    return true;
+}
+
+// 任务-抽奖
+function taskLottery() {
+    console.log("---------- task start ----------");
+
+    var buttonClickTask = className("android.view.View").text("去抽奖");
+    if (!buttonClickTask.exists()) {
+        console.log("---------- check 去抽奖 nothing ----------");
+        return false;
+    }
+    clicks.findOne(buttonClickTask);
+
+    for (var i = 1; i <= 3; i++) {
+        var buttonClickTask = className("android.view.View").text("今日剩" + i + "次");
+        if (buttonClickTask.exists()) {
+            clicks.findOne(buttonClickTask);
+            swipes.return();
+        }
+    }
+
+    swipes.return();
 
     console.log("---------- task end ----------");
 
@@ -41,7 +68,7 @@ function task() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    console.log("---------- task sleep start ----------");
+    console.log("---------- task start ----------");
 
     var buttonClickTask = className("android.widget.Image").text("睡觉赚钱");
     if (!buttonClickTask.exists()) {
@@ -52,12 +79,24 @@ function taskSleep() {
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    console.log("---------- click last sleep ----------");
-    clicks.xy(264, 687);
+    var buttonClickTask = className("android.view.View").text("我睡醒了");
+    if (buttonClickTask.exists()) {
+        clicks.findOne(buttonClickTask);
+    }
+    
+    var buttonClickTask = className("android.view.View").text("领取3600金币");
+    if (buttonClickTask.exists()) {
+        clicks.findOne(buttonClickTask);
+    }
+        
+    var buttonClickTask = className("android.view.View").text("我要睡了");
+    if (buttonClickTask.exists()) {
+        clicks.findOne(buttonClickTask);
+    }
 
     swipes.return();
 
-    console.log("---------- task sleep end ----------");
+    console.log("---------- task end ----------");
 
     return true;
 }
