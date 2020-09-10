@@ -45,7 +45,7 @@ function taskProduct() {
         return false;
     }
 
-    for (var i = 0; i < 70; i++) {
+    for (var i = 0; i < 50; i++) {
         if (text('今日已完成').exists()) {
             console.log("---------- task product end ----------");
             return true;
@@ -55,7 +55,7 @@ function taskProduct() {
         sleeps.s2to4();
 
         swipes.down1600();
-        sleeps.s2to3();
+        sleeps.s2to4();
 
         swipes.down1600();
         sleeps.s2to5();
@@ -103,7 +103,7 @@ function taskRandomPage() {
         sleeps.s2to4();
 
         swipes.down1600();
-        sleeps.s2to3();
+        sleeps.s2to4();
 
         swipes.down1600();
         sleeps.s2to5();
@@ -138,7 +138,7 @@ function taskVideo() {
     clicks.xy(807, 2095);
 
     console.log("---------- first video into ----------");
-    clicks.xy(100, 700);
+    clicks.xy(469, 1373);
 
     var buttonMenu = className("android.view.View").desc("赚钱");
     if (buttonMenu.exists()) {
@@ -153,6 +153,7 @@ function taskVideo() {
 
         sleeps.s10to20();
         swipes.down1600();
+        sleeps.s2to3();
     }
 
     console.log("---------- task video end ----------");
