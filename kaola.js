@@ -5,42 +5,76 @@ var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.kaola';
 
-main();
+while (true) {
+    main();
+}
 
 function main() {
-    taskRandomPage();
+    var status = taskRandomPage();
+
+    if (status) {
+        exit();
+    }
 }
 
 // 任务-逛商品
 function taskRandomPage() {
-    console.log("---------- task start ----------");
-
     others.initEnv();
 
-    others.launchApp('com.kaola');
-
-    var buttonClickTask = text("领考拉豆");
-    if (!buttonClickTask.exists()) {
-        console.log("---------- click 领考拉豆 nothing ----------");
+    var status = others.launchApp(PACKAGE_NAME);
+    if (!status) {
         return false;
     }
-    clicks.text("领考拉豆");
 
-    var buttonClickTask = text("每日赚豆");
-    if (!buttonClickTask.exists()) {
-        console.log("---------- click 每日赚豆 nothing ----------");
+    if (!clicks.text("领考拉豆")) {
         return false;
     }
-    clicks.text("每日赚豆");
+
+    if (!clicks.text("每日赚豆")) {
+        return false;
+    }
+
+    if (!text('去逛逛').exists() && text('已完成').exists()) {
+        others.exitApp(PACKAGE_NAME);
+        return true;
+    }
 
     for (var i = 0; i < 12; i++) {
-        var buttonClickTask = text("去逛逛");
-        if (!buttonClickTask.exists()) {
-            console.log("---------- click 去逛逛 nothing ----------");
+        if (!clicks.text("去逛逛")) {
             return false;
         }
-        clicks.text("去逛逛");
+
+        if (text("进店浏览15秒得考拉豆").exists()) {
+            for (var j = 0; j < 10; j++) {
+                if (!clicks.text("进店领豆")) {
+                    return false;
+                }
+
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+
+                swipes.return();
+            }
+
+            swipes.return();
+            continue;
+        }
 
         swipes.down();
         sleeps.s2to3();
@@ -62,9 +96,10 @@ function taskRandomPage() {
         swipes.return();
     }
 
-    swipes.exitApp('com.kaola');
-
-    console.log("---------- task end ----------");
+    var status = others.exitApp(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     return true;
 }

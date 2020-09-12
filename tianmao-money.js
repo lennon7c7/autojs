@@ -5,6 +5,7 @@ var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.tmall.wireless';
 
 while (true) {
     main();
@@ -21,7 +22,10 @@ function main() {
 function taskCheckin() {
     others.initEnv();
 
-    others.launchApp('com.tmall.wireless');
+    var status = others.launchApp(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     if (!clicks.text("我")) {
         return false;
@@ -32,7 +36,7 @@ function taskCheckin() {
     }
 
     if (text("明日来领翻倍红包").exists()) {
-        others.exitApp('com.tmall.wireless');
+        others.exitApp(PACKAGE_NAME);
         return true;
     }
 
@@ -40,5 +44,10 @@ function taskCheckin() {
         return false;
     }
 
-    others.exitApp('com.tmall.wireless');
+    var status = others.exitApp(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
+    return true;
 }
