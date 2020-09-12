@@ -24,29 +24,66 @@ s.element = function (e) {
  * @param {string} text
  * @returns {boolean}
  */
-s.text = function (texaa) {
-    if (!texaa) {
+s.text = function (textString) {
+    if (!textString) {
         toastLog("---------- fail: param none exist ----------");
         return false;
     }
 
-    if (!text(texaa).exists()) {
+    if (!text(textString).exists()) {
         toastLog("---------- fail: element none exist ----------");
         return false;
     }
 
 
-    if (click(text(texaa).findOne().bounds().centerX(), text(texaa).findOne().bounds().centerY())) {
+    if (click(text(textString).findOne().bounds().centerX(), text(textString).findOne().bounds().centerY())) {
         sleep(3 * 1000);
         return true;
     }
 
-    if (text(texaa).click()) {
+    if (text(textString).click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    if (text(texaa).findOne().click()) {
+    if (text(textString).findOne().click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+ 
+    toastLog("---------- fail: click ----------");
+
+    return false;
+};
+
+/**
+ * 描述
+ * @param {string} descString
+ * @returns {boolean}
+ */
+s.desc = function (descString) {
+    if (!descString) {
+        toastLog("---------- fail: param none exist ----------");
+        return false;
+    }
+
+    if (!desc(descString).exists()) {
+        toastLog("---------- fail: element none exist ----------");
+        return false;
+    }
+
+
+    if (click(desc(descString).findOne().bounds().centerX(), desc(descString).findOne().bounds().centerY())) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (desc(descString).click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (desc(descString).findOne().click()) {
         sleep(3 * 1000);
         return true;
     }
