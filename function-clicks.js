@@ -21,10 +21,39 @@ s.element = function (e) {
 
 /**
  * 文本
+ * @param {string} text
+ * @returns {boolean}
  */
-s.text = function (text) {
-    click(text);
-    sleep(3 * 1000);
+s.text = function (texaa) {
+    if (!texaa) {
+        toastLog("---------- fail: param none exist ----------");
+        return false;
+    }
+
+    if (!text(texaa).exists()) {
+        toastLog("---------- fail: element none exist ----------");
+        return false;
+    }
+
+
+    if (click(text(texaa).findOne().bounds().centerX(), text(texaa).findOne().bounds().centerY())) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (text(texaa).click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (text(texaa).findOne().click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+ 
+    toastLog("---------- fail: click ----------");
+
+    return false;
 };
 
 /**
