@@ -94,6 +94,43 @@ s.desc = function (descString) {
 };
 
 /**
+ * id
+ * @param {string} descString
+ * @returns {boolean}
+ */
+s.id = function (idString) {
+    if (!idString) {
+        toastLog("---------- fail: param none exist ----------");
+        return false;
+    }
+
+    if (!id(idString).exists()) {
+        toastLog("---------- fail: element none exist ----------");
+        return false;
+    }
+
+
+    if (click(id(idString).findOne().bounds().centerX(), id(idString).findOne().bounds().centerY())) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (id(idString).click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (id(idString).findOne().click()) {
+        sleep(3 * 1000);
+        return true;
+    }
+ 
+    toastLog("---------- fail: click ----------");
+
+    return false;
+};
+
+/**
  * 元素
  */
 s.findOne = function (e) {
