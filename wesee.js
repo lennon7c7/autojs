@@ -22,7 +22,7 @@ function main() {
     status1 = taskVideo();
 
     if (status1) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         exit();
     }
 }
@@ -45,10 +45,10 @@ function taskVideo() {
     if (text('明日再来领现金').exists()) {
         return true
     }
-    swipes.return();
+    others.back();
     clicks.xy(10, 2200);
 
-    swipes.return();
+    others.back();
 
     console.log("---------- taskVideo end ----------");
 

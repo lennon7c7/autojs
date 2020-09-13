@@ -36,7 +36,7 @@ function taskCheckin() {
     }
 
     if (text("明日来领翻倍红包").exists()) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         return true;
     }
 
@@ -44,7 +44,7 @@ function taskCheckin() {
         return false;
     }
 
-    var status = others.exitApp(PACKAGE_NAME);
+    var status = others.clear();
     if (!status) {
         return false;
     }

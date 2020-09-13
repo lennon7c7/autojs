@@ -35,7 +35,7 @@ function taskVideo() {
         sleeps.s5to10();
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- task video end ----------");
 

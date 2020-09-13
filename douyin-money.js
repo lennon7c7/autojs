@@ -16,7 +16,7 @@ function main() {
 
     others.launchApp(PACKAGE_NAME);
 
-    swipes.return();
+    others.back();
 
     // 任务界面
     clicks.xy(479, 2216);
@@ -27,7 +27,7 @@ function main() {
     status4 = taskVideo();
 
     if (status1 && status2 && status3 && status4) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         exit();
     }
 }
@@ -42,15 +42,15 @@ function taskSleep() {
 
     if (clicks.text("我睡醒了")) {
         if (clicks.text("领取1500金币")) {
-            swipes.return();
+            others.back();
             return true;
         }
     } else if (clicks.text("我要睡了")) {
-        swipes.return();
+        others.back();
         return true;
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- taskSleep end ----------");
 
@@ -62,7 +62,7 @@ function taskVideo() {
     console.log("---------- taskVideo start ----------");
 
     console.log("---------- index page ----------");
-    swipes.return();
+    others.back();
 
     for (var i = 0; i < 200; i++) {
         swipes.down();
@@ -118,7 +118,7 @@ function closeAd() {
         return false;
     }
 
-    swipes.return();
+    others.back();
 
     return true;
 }

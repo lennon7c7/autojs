@@ -55,11 +55,11 @@ function taskLottery() {
         var buttonClickTask = className("android.view.View").text("今日剩" + i + "次");
         if (buttonClickTask.exists()) {
             clicks.findOne(buttonClickTask);
-            swipes.return();
+            others.back();
         }
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- task end ----------");
 
@@ -94,7 +94,7 @@ function taskSleep() {
         clicks.findOne(buttonClickTask);
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- task end ----------");
 
@@ -131,7 +131,7 @@ function taskNovel() {
         }
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- task novel end ----------");
 
@@ -165,7 +165,7 @@ function taskVideo() {
         sleeps.s10to30();
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- task video end ----------");
 

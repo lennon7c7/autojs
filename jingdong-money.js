@@ -34,7 +34,7 @@ function main() {
     // status4 = taskCheckin();
 
     if (status1 && status2 && status3) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         exit();
     }
 }
@@ -56,16 +56,16 @@ function taskCheckin() {
     }
 
     if (text('邀好友解锁额外红包').exists()) {
-        swipes.return();
+        others.back();
         return true;
     }
 
     if (text('残忍拒绝').exists()) {
-        swipes.return();
+        others.back();
         return true;
     }
 
-    swipes.return();
+    others.back();
     clicks.text('残忍拒绝');
 
     console.log("---------- taskCheckin end ----------");
@@ -102,7 +102,7 @@ function taskProduct() {
             id("ll_task_bottom_next").click();
             sleeps.s2to3();
         } else {
-            swipes.return();
+            others.back();
         }
     }
 
@@ -111,7 +111,7 @@ function taskProduct() {
             return false;
         }
 
-        swipes.return();
+        others.back();
     }
     console.log("---------- taskProduct end ----------");
 
@@ -147,7 +147,7 @@ function taskRandomPage() {
             id("ll_task_bottom_next").click();
             sleeps.s2to3();
         } else {
-            swipes.return();
+            others.back();
         }
     }
 
@@ -156,7 +156,7 @@ function taskRandomPage() {
             return false;
         }
 
-        swipes.return();
+        others.back();
     }
 
     console.log("---------- taskRandomPage end ----------");

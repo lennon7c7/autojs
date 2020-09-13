@@ -61,10 +61,10 @@ function taskNews() {
             sleeps.s2to3();
         }
 
-        swipes.return();
+        others.back();
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- taskNews end ----------")
 
@@ -85,7 +85,7 @@ function taskVideo() {
         sleeps.s10to20();
     }
 
-    swipes.return();
+    others.back();
 
     console.log("---------- taskVideo end ----------")
 
@@ -100,9 +100,9 @@ function taskAd() {
         if (clicks.text('看视频领金币')) {
             clicks.xy(945, 111);
             sleeps.s60();
-            swipes.return();
-            swipes.return();
-            swipes.return();
+            others.back();
+            others.back();
+            others.back();
         }
     }
 

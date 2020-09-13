@@ -4,15 +4,6 @@
 var s = {};
 
 /**
- * 滑动-返回上一页
- */
-s.return = function () {
-    console.log("---------- return ----------")
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(3 * 1000)
-};
-
-/**
  * 滑动-右到左
  */
 s.right = function () {

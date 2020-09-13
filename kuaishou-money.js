@@ -30,7 +30,7 @@ function main() {
     // status3 = taskVideo();
 
     if (status1) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         exit();
     }
 }
@@ -87,14 +87,14 @@ function taskAd10() {
 function taskVideo() {
     console.log("---------- taskVideo start ----------");
 
-    swipes.return();
-    swipes.return();
+    others.back();
+    others.back();
 
     for (var i = 0; i < 1200; i++) {
         if (text('Drag the slider').exists()) {
             swipe(87, 969, 700, 969, 700);
             sleeps.s2to3();
-            swipes.return();
+            others.back();
         }
 
         swipes.down1600();

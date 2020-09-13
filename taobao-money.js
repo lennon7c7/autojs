@@ -34,7 +34,7 @@ function main() {
     status3 = taskShop();
 
     if (status1 && status2 && status3) {
-        others.exitApp(PACKAGE_NAME);
+        others.clear();
         exit();
     }
 }
@@ -46,7 +46,7 @@ function taskShop() {
     clicks.xy(33, 1404);
 
     if (desc('已完成').find().size() > 2) {
-        swipes.return();
+        others.back();
         return true;
     }
 
@@ -55,7 +55,7 @@ function taskShop() {
             clicks.text('关注+10');
 
             sleeps.s15to20();
-            swipes.return();
+            others.back();
         }
     }
 
@@ -67,12 +67,12 @@ function taskShop() {
             clicks.text('关注+10');
 
             sleeps.s15to20();
-            swipes.return();
+            others.back();
         }
     }
 
     swipes.down();
-    swipes.return();
+    others.back();
 
     toastLog("---------- task end ----------");
 
@@ -84,7 +84,7 @@ function taskHelpFriend() {
     clicks.xy(912, 1203);
 
     if (!text('去助力').exists() && text('去拜访').exists()) {
-        swipes.return();
+        others.back();
         return true;
     }
 
@@ -94,10 +94,10 @@ function taskHelpFriend() {
         }
 
         clicks.xy(393, 567);
-        swipes.return();
+        others.back();
     }
 
-    swipes.return();
+    others.back();
 
     return false;
 }
@@ -105,7 +105,7 @@ function taskHelpFriend() {
 // 任务-金币能量
 function taskMoneyPower() {
     if (!clicks.text("赚金币")) {
-        swipes.return();
+        others.back();
         return false;
     }
 
@@ -115,7 +115,7 @@ function taskMoneyPower() {
             sleeps.s2to3();
             swipes.down();
             sleeps.s15to20();
-            swipes.return();
+            others.back();
             clicks.text("领取奖励");
         }
     }
@@ -125,7 +125,7 @@ function taskMoneyPower() {
         sleeps.s2to3();
         swipes.down();
         sleeps.s15to20();
-        swipes.return();
+        others.back();
         clicks.text("领取奖励");
     }
 
@@ -134,11 +134,11 @@ function taskMoneyPower() {
         sleeps.s2to3();
         swipes.down();
         sleeps.s15to20();
-        swipes.return();
+        others.back();
         clicks.text("领取奖励");
     }
 
-    swipes.return();
+    others.back();
 
     return false;
 }

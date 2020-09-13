@@ -19,22 +19,10 @@ s.initEnv = function () {
  * @returns {boolean}
  */
 s.launchApp = function (packageName) {
-    // 避免当前有应用，先退出一次
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(100);
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(100);
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(100);
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(100);
-    swipe(0, 1000, 500, 1000, 50);
-    sleep(3 * 1000);
-
     for (var i = 0; i < 3; i++) {
         app.launch(packageName);
         sleep(10 * 1000);
-    
+
         if (currentPackage() == packageName) {
             return true;
         }
@@ -48,28 +36,34 @@ s.launchApp = function (packageName) {
     return false;
 };
 
-
 /**
- * 退出应用
- * @param {string} packageName
+ * 返回
  * @returns {boolean}
  */
-s.exitApp = function (packageName) {
-    for (var i = 0; i < 3; i++) {
-        swipe(0, 1000, 500, 1000, 50);
-        sleep(100);
-        swipe(0, 1000, 500, 1000, 50);
-        sleep(100);
-
-        if (currentPackage() != packageName) {
-            return true;
-        }
-    }
-
-    if (currentPackage() == packageName) {
-        toastLog('fail: exit');
+s.back = function () {
+    if (!back()) {
+        toastLog('fail: back');
         return false;
     }
+
+    sleep(2000);
+
+    return true;
+};
+
+/**
+ * 清理应用
+ * @returns {boolean}
+ */
+s.clear = function () {
+    if (!recents()) {
+        toastLog('fail: clear');
+        return false;
+    }
+
+    sleep(2000);
+    clicks.id('clear_all_recents_image_button');
+    sleep(3000);
 
     return true;
 };
