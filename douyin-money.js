@@ -24,9 +24,9 @@ function main() {
     status1 = taskTreasureBox();
     status2 = taskLimit();
     status3 = taskSleep();
-    status4 = taskVideo();
+    // status4 = taskVideo();
 
-    if (status1 && status2 && status3 && status4) {
+    if (status1 && status2 && status3) {
         others.clear();
         exit();
     }

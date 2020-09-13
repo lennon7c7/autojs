@@ -29,10 +29,12 @@ function taskRandomPage() {
     }
 
     if (!clicks.text("领考拉豆")) {
+        toastLog('fail: 领考拉豆');
         return false;
     }
 
     if (!clicks.text("每日赚豆")) {
+        toastLog('fail: 每日赚豆');
         return false;
     }
 
@@ -43,12 +45,14 @@ function taskRandomPage() {
 
     for (var i = 0; i < 12; i++) {
         if (!clicks.text("去逛逛")) {
+            toastLog('fail: 去逛逛');
             return false;
         }
 
         if (text("进店浏览15秒得考拉豆").exists()) {
             for (var j = 0; j < 10; j++) {
                 if (!clicks.text("进店领豆")) {
+                    toastLog('fail: 进店领豆');
                     return false;
                 }
 

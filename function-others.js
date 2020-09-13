@@ -19,6 +19,8 @@ s.initEnv = function () {
  * @returns {boolean}
  */
 s.launchApp = function (packageName) {
+    s.clear();
+
     for (var i = 0; i < 3; i++) {
         app.launch(packageName);
         sleep(10 * 1000);
