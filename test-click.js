@@ -6,17 +6,14 @@ var swipes = require('function-swipes.js');
 main();
 
 function main() {
-    // toastLog(home());
+    // kuaishou
+    setInterval(function () {
+        if (!clicks.text("开宝箱得金币")) {
+            return true;
+        }
 
-    back();
-    // sleeps.s3();
-
-    // if (recents()) {
-    //     sleeps.s1();
-    //     clicks.id('clear_all_recents_image_button');
-    //     sleeps.s3();
-    // }
-    
+        clicks.xy(480, 1620);
+    }, 1000 * 60 * 20);
 
     // clicks.xy(48, 162);
     // others.back();
