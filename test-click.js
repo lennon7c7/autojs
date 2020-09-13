@@ -6,40 +6,26 @@ var swipes = require('function-swipes.js');
 main();
 
 function main() {
-    if (!clicks.text("睡觉赚金币")) {
-        return false;
-    }
+    // toastLog(home());
 
-    if (clicks.text("我睡醒了")) {
-        if (clicks.text("领取1500金币")) {
-            swipes.return();
-            return true;
-        }
-    } else if (clicks.text("我要睡了")) {
-        swipes.return();
-        return true;
-    }
+    back();
+    // sleeps.s3();
 
-    swipes.return();
-
-    return false;
-
-    // if (!clicks.text("去领取")) {
-    //     return false;
+    // if (recents()) {
+    //     sleeps.s1();
+    //     clicks.id('clear_all_recents_image_button');
+    //     sleeps.s3();
     // }
-
-    // if (!clicks.text("看广告视频再赚")) {
-    //     return false;
-    // }
+    
 
     // clicks.xy(48, 162);
-    // swipes.return();
+    // others.back();
 
     // clicks.xy(750, 411);
     // if (text('明日再来领现金').exists()) {
     //     return true
     // }
-    // swipes.return();
+    // others.back();
     // clicks.xy(10, 2200);
 
     // clicks.xy(777, 111);
