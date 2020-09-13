@@ -46,7 +46,7 @@ function taskTreasureBox() {
         return true;
     }
 
-    swipes.return();
+    clicks.xy(480, 1620);
 
     console.log("---------- taskTreasureBox end ----------");
 

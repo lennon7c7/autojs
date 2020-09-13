@@ -1,10 +1,11 @@
 /**
- * 微视-所有金币任务
+ * 微视
  */
 var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.tencent.weishi';
 
 while (true) {
     main();
@@ -13,34 +14,43 @@ while (true) {
 function main() {
     others.initEnv();
 
-    others.launchApp('com.tencent.weishi');
+    var status = others.launchApp(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
-    task();
-}
+    status1 = taskVideo();
 
-// 任务
-function task() {
-    console.log("---------- task start ----------");
-
-    taskVideo();
-
-    console.log("---------- task end ----------");
-
-    return true;
+    if (status1) {
+        others.exitApp(PACKAGE_NAME);
+        exit();
+    }
 }
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- task video start ----------");
+    console.log("---------- taskVideo start ----------");
 
-    for (var i = 0; i < 100000; i++) {
+    clicks.xy(10, 2200);
+
+    for (var i = 0; i < 1000; i++) {
+        clicks.text('取消');
+
         swipes.down1600();
         sleeps.s5to10();
     }
 
+    clicks.xy(888, 2200);
+    clicks.xy(750, 411);
+    if (text('明日再来领现金').exists()) {
+        return true
+    }
+    swipes.return();
+    clicks.xy(10, 2200);
+
     swipes.return();
 
-    console.log("---------- task video end ----------");
+    console.log("---------- taskVideo end ----------");
 
-    return true;
+    return false;
 }

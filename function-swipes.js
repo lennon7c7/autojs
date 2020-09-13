@@ -53,6 +53,14 @@ s.refresh = function () {
 };
 
 /**
+ * 滑动-刷新
+ */
+s.refresh600 = function () {
+    swipe(500, 600, 500, 1200, 500);
+    sleep(5 * 1000)
+};
+
+/**
  * 滑动-下到上
  */
 s.down = function () {

@@ -5,6 +5,7 @@ var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
 
 while (true) {
     main()
@@ -13,21 +14,52 @@ while (true) {
 function main() {
     others.initEnv();
 
-    others.launchApp('com.ss.android.ugc.aweme.lite');
+    others.launchApp(PACKAGE_NAME);
 
     swipes.return();
 
     // 任务界面
-    clicks.xy(427, 2130);
+    clicks.xy(479, 2216);
 
-    taskTreasureBox();
-    taskLimit();
-    taskVideo();
+    status1 = taskTreasureBox();
+    status2 = taskLimit();
+    status3 = taskSleep();
+    status4 = taskVideo();
+
+    if (status1 && status2 && status3 && status4) {
+        others.exitApp(PACKAGE_NAME);
+        exit();
+    }
+}
+
+// 任务-睡觉赚钱
+function taskSleep() {
+    console.log("---------- taskSleep start ----------");
+
+    if (!clicks.text("睡觉赚金币")) {
+        return false;
+    }
+
+    if (clicks.text("我睡醒了")) {
+        if (clicks.text("领取1500金币")) {
+            swipes.return();
+            return true;
+        }
+    } else if (clicks.text("我要睡了")) {
+        swipes.return();
+        return true;
+    }
+
+    swipes.return();
+
+    console.log("---------- taskSleep end ----------");
+
+    return false;
 }
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- task video start ----------");
+    console.log("---------- taskVideo start ----------");
 
     console.log("---------- index page ----------");
     swipes.return();
@@ -37,7 +69,7 @@ function taskVideo() {
         sleeps.s5to10();
     }
 
-    console.log("---------- task video end ----------");
+    console.log("---------- taskVideo end ----------");
 
     return true;
 }
@@ -47,15 +79,9 @@ function taskVideo() {
 function taskLimit() {
     console.log("---------- taskLimit start ----------");
 
-    var buttonCloseAd = className("android.view.View").text("去领取").depth(8);
-    if (!buttonCloseAd.exists()) {
-        console.log("---------- taskLimit nothing ----------");
+    if (!clicks.text("去领取")) {
         return false;
     }
-
-    console.log("---------- 点击 去领取 ----------");
-    buttonCloseAd.click();
-    sleeps.s35to40();
 
     closeAd();
 
@@ -69,11 +95,13 @@ function taskLimit() {
 function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------");
 
-    console.log("---------- 点击 宝箱 ----------");
-    clicks.xy(801, 2004);
+    if (!clicks.text("开宝箱得金币")) {
+        return false;
+    }
 
-    console.log("---------- 点击 宝箱-视频 ----------");
-    clicks.xy(231, 1288);
+    if (!clicks.text("看广告视频再赚")) {
+        return false;
+    }
 
     closeAd();
 
@@ -83,15 +111,14 @@ function taskTreasureBox() {
 }
 
 function closeAd() {
-    var buttonCloseAd = className("android.widget.TextView").text("关闭广告");
-    if (!buttonCloseAd.exists()) {
-        console.log("---------- closeAd nothing ----------");
+    clicks.xy(48, 162);
+    sleeps.s35to40();
+
+    if (!clicks.text('关闭广告')) {
         return false;
     }
 
-    console.log("---------- 点击 关闭广告 ----------");
-    buttonCloseAd.click();
-    sleeps.s3();
+    swipes.return();
 
     return true;
 }
