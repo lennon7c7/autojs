@@ -7,13 +7,13 @@ main();
 
 function main() {
     // kuaishou
-    setInterval(function () {
-        if (!clicks.text("开宝箱得金币")) {
-            return true;
-        }
+    // setInterval(function () {
+    //     if (!clicks.text("开宝箱得金币")) {
+    //         return true;
+    //     }
 
-        clicks.xy(480, 1620);
-    }, 1000 * 60 * 20);
+    //     clicks.xy(480, 1620);
+    // }, 1000 * 60 * 20);
 
     // clicks.xy(48, 162);
     // others.back();
@@ -26,7 +26,8 @@ function main() {
     // clicks.xy(10, 2200);
 
     // clicks.xy(777, 111);
-    // toastLog(id('task_float_base_fl').exists());
+    toastLog(text('已完成').find().size());
+    toastLog(text('去完成').find().size());
     // toastLog(id('vl_type_video_text_title').exists());
     // toastLog(id('vl_type_video_panel_author_text').exists());
     // toastLog(id('vl_type_video_panel_fond_text').exists());

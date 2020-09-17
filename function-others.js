@@ -70,4 +70,23 @@ s.clear = function () {
     return true;
 };
 
+/**
+ * 退出脚本
+ * @returns {boolean}
+ */
+s.exit = function () {
+    if (!recents()) {
+        toastLog('fail: exit');
+        return false;
+    }
+
+    sleep(2000);
+    clicks.id('clear_all_recents_image_button');
+    sleep(3000);
+
+    exit();
+
+    return true;
+};
+
 module.exports = s;

@@ -34,14 +34,13 @@ function main() {
     status3 = taskShop();
 
     if (status1 && status2 && status3) {
-        others.clear();
-        exit();
+        others.exit();
     }
 }
 
 // 任务-逛店铺
 function taskShop() {
-    toastLog("---------- task start ----------");
+    toastLog("---------- taskShop start ----------");
 
     clicks.xy(33, 1404);
 
@@ -74,13 +73,15 @@ function taskShop() {
     swipes.down();
     others.back();
 
-    toastLog("---------- task end ----------");
+    toastLog("---------- taskShop end ----------");
 
     return false;
 }
 
 // 任务-帮好友
 function taskHelpFriend() {
+    toastLog("---------- taskHelpFriend start ----------");
+
     clicks.xy(912, 1203);
 
     if (!text('去助力').exists() && text('去拜访').exists()) {
@@ -99,28 +100,35 @@ function taskHelpFriend() {
 
     others.back();
 
+    toastLog("---------- taskHelpFriend end ----------");
+
     return false;
 }
 
 // 任务-金币能量
 function taskMoneyPower() {
+    toastLog("---------- taskMoneyPower start ----------");
+
     if (!clicks.text("赚金币")) {
         others.back();
         return false;
     }
 
-    for (var i = 0; i < 7; i++) {
-        if (clicks.text("浏览10s 立得")) {
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s15to20();
-            others.back();
-            clicks.text("领取奖励");
-        }
+    if (text('已完成').find().size() > 2 && text('去完成').find().size() < 6) {
+        others.back();
+        return true;
     }
 
     if (clicks.text("浏览10秒立得")) {
+        swipes.down();
+        sleeps.s2to3();
+        swipes.down();
+        sleeps.s15to20();
+        others.back();
+        clicks.text("领取奖励");
+    }
+
+    if (clicks.text("逛10s立得")) {
         swipes.down();
         sleeps.s2to3();
         swipes.down();
@@ -138,7 +146,20 @@ function taskMoneyPower() {
         clicks.text("领取奖励");
     }
 
+    for (var i = 0; i < 7; i++) {
+        if (clicks.text("浏览10s 立得")) {
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s15to20();
+            others.back();
+            clicks.text("领取奖励");
+        }
+    }
+
     others.back();
+  
+    toastLog("---------- taskMoneyPower end ----------");
 
     return false;
 }
