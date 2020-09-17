@@ -22,8 +22,7 @@ function main() {
     status1 = taskVideo();
 
     if (status1) {
-        others.clear();
-        exit();
+        others.exit();
     }
 }
 
@@ -33,7 +32,7 @@ function taskVideo() {
 
     clicks.xy(10, 2200);
 
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 3; i++) {
         clicks.text('取消');
 
         swipes.down1600();
@@ -42,6 +41,7 @@ function taskVideo() {
 
     clicks.xy(888, 2200);
     clicks.xy(750, 411);
+    sleeps.s2to3();
     if (text('明日再来领现金').exists()) {
         return true
     }
