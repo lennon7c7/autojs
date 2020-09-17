@@ -54,6 +54,57 @@ s.back = function () {
 };
 
 /**
+ * 返回次数 2
+ * @returns {boolean}
+ */
+s.back2 = function () {
+    if (!back()) {
+        toastLog('fail: back 1');
+        return false;
+    }
+
+    sleep(3000);
+
+    if (!back()) {
+        toastLog('fail: back 2');
+        return false;
+    }
+
+    sleep(2000);
+
+    return true;
+};
+
+/**
+ * 返回次数 3
+ * @returns {boolean}
+ */
+s.back3 = function () {
+    if (!back()) {
+        toastLog('fail: back 1');
+        return false;
+    }
+
+    sleep(3000);
+
+    if (!back()) {
+        toastLog('fail: back 2');
+        return false;
+    }
+
+    sleep(3000);
+
+    if (!back()) {
+        toastLog('fail: back 3');
+        return false;
+    }
+
+    sleep(2000);
+
+    return true;
+};
+
+/**
  * 清理应用
  * @returns {boolean}
  */

@@ -26,19 +26,81 @@ function main() {
     }
 
     status1 = taskTreasureBox();
-    // status2 = taskAd10();
-    // status3 = taskVideo();
+    status4 = taskAd10();
+    status2 = task0Lottery();
+    status3 = taskVideo();
 
-    if (status1) {
-        others.clear();
-        exit();
+    if (status1 && status2 && status3 && status4) {
+        others.exit();
     }
 }
 
+// 任务-0元抽奖
+function task0Lottery() {
+    console.log("---------- task0Lottery start ----------");
+
+    others.back3();
+
+    if (!clicks.id('left_btn')) {
+        return false;
+    }
+
+    if (!clicks.text('More')) {
+        return false;
+    }
+
+    if (!clicks.text('Kwai Shop')) {
+        return false;
+    }
+
+    if (!clicks.text('0元抽奖')) {
+        return false;
+    }
+
+    if (text('提高中奖率').find().size() == 3) {
+        swipes.down();
+        clicks.xy(396, 1386);
+    }
+
+    if (text('提高中奖率').find().size() == 10) {
+        return true;
+    }
+
+    // switch (text('提高中奖率').find().size()) {
+    //     case 3:
+    //         clicks.text('免费抽')
+    //         swipes.down();
+    //         swipes.down();     
+    //         break;
+    //     default:
+    //         break;
+    // }
+
+    for (var i = 0; i < 10; i++) {
+        if (!clicks.text('免费抽')) {
+            continue;
+        }
+
+        if (!clicks.text('分享活动 立即参与')) {
+            others.back();
+            continue;
+        }
+
+        clicks.xy(207, 1293);
+        app.launch('com.kuaishou.nebula');
+        sleeps.s2to3();
+        others.back();
+    }
+
+    others.back();
+
+    console.log("---------- task0Lottery end ----------");
+
+    return false;
+}
+
 // 任务-宝箱
-// first 5m
-// second 10m
-// 15m、20m
+// every 20m
 function taskTreasureBox() {
     console.log("---------- taskTreasureBox start ----------");
 

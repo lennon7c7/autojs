@@ -12,11 +12,91 @@ while (true) {
 }
 
 function main() {
-    var status = taskRandomPage();
+    status1 = taskRandomPage();
+    status2 = taskPlayground();
 
-    if (status) {
-        exit();
+    if (status1 && status2) {
+        others.exit();
     }
+}
+
+// 任务-考拉乐园
+function taskPlayground() {
+    others.initEnv();
+
+    var status = others.launchApp(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
+    if (!clicks.text('考拉乐园')) {
+        return false;
+    }
+    sleeps.s2to3();
+
+    clicks.text('知道了');
+
+    if (!clicks.text('领金币')) {
+        return false;
+    }
+    
+    if (!text('去逛逛').exists() && text('再逛逛').exists()) {
+        others.clear();
+        return true;
+    }
+
+    for (var i = 0; i < 12; i++) {
+        if (clicks.text('看商品开金币宝箱（0/1）')) {
+            if (clicks.text("打开看看~")) {
+                clicks.text('继续逛商品');
+                others.back();
+            }
+
+            if (clicks.text("立即购买")) {
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                sleeps.s2to3();
+                swipes.down();
+                others.back();
+                sleeps.s2to3();
+
+                if (clicks.text("打开看看~")) {
+                    clicks.text('继续逛商品');
+                    others.back();
+                }
+
+                if (clicks.text("点击查看以下商品开宝箱")) {
+                    others.back();
+                }
+            }
+        }
+    }
+
+    for (var i = 0; i < 17; i++) {
+        if (clicks.text("去逛逛")) {
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s2to3();
+            swipes.down();
+            sleeps.s2to3();
+            others.back();
+        }
+    }
+
+    return false;
 }
 
 // 任务-逛商品

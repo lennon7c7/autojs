@@ -31,7 +31,7 @@ s.text = function (textString) {
     }
 
     if (!text(textString).exists()) {
-        toastLog("---------- fail: element none exist ----------");
+        toastLog("---------- fail: click " + textString + " none exist ----------");
         return false;
     }
 
@@ -51,7 +51,7 @@ s.text = function (textString) {
         return true;
     }
  
-    toastLog("---------- fail: click ----------");
+    toastLog("---------- fail: click " + textString + " ----------");
 
     return false;
 };
