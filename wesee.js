@@ -26,13 +26,63 @@ function main() {
     }
 }
 
+// 任务-签到领红包
+function taskCheckin() {
+    console.log("---------- taskCheckin start ----------");
+
+    clicks.xy(888, 2200);
+    clicks.xy(750, 411);
+    sleeps.s2to3();
+
+    if (text('明日再来领现金').exists()) {
+        others.back2();
+        clicks.xy(10, 2200);
+        return true;
+    }
+
+    if (clicks.text('签到领红包')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('领取 x1')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('领取 x2')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('领取 x3')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('领取 x6')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    others.back();
+    clicks.xy(10, 2200);
+
+    console.log("---------- taskCheckin end ----------");
+
+    return false;
+}
+
 // 任务-小视频
 function taskVideo() {
     console.log("---------- taskVideo start ----------");
 
-    clicks.xy(10, 2200);
+    status = taskCheckin();
+    if (status) {
+        return true;
+    }
 
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1200; i++) {
         if (text('取消').exists()) {
             clicks.text('取消');
         }
@@ -41,49 +91,12 @@ function taskVideo() {
         sleeps.s5to10();
     }
 
-    clicks.xy(888, 2200);
-    clicks.xy(750, 411);
-    sleeps.s2to3();
-  
-    if (text('明日再来领现金').exists()) {
+    status = taskCheckin();
+    if (status) {
         return true;
     }
-    
-    if (clicks.text('签到领红包')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-    
-    if (clicks.text('领取 x1')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-    
-    if (clicks.text('领取 x2')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-    
-    if (clicks.text('领取 x3')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-    
-    if (clicks.text('领取 x6')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-   
-    if (text('明日再来领现金').exists()) {
-        return true;
-    }
-   
-    others.back();
-    clicks.xy(10, 2200);
-
-    others.back();
 
     console.log("---------- taskVideo end ----------");
 
-    return false;
+    return true;
 }
