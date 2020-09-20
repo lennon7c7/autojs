@@ -19,6 +19,9 @@ function main() {
     }
 }
 
+/**
+ * 任务-签到
+ */
 function taskCheckin() {
     others.initEnv();
 

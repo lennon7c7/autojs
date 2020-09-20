@@ -7,9 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.jifen.qukan';
 
-while (true) {
-    main();
-}
+main();
 
 function main() {
     others.initEnv();
@@ -27,7 +25,6 @@ function task() {
     console.log("---------- task start ----------")
 
     if (!clicks.text('任务')) {
-        toastLog('---------- shit happen: task ----------');
         return false;
     }
 
@@ -45,7 +42,6 @@ function taskNews() {
     console.log("---------- taskNews start ----------")
 
     if (!clicks.text('立即阅读')) {
-        toastLog('---------- shit happen: taskNews ----------');
         return false;
     }
 
@@ -96,6 +92,10 @@ function taskVideo() {
 function taskAd() {
     console.log("---------- taskAd start ----------")
 
+    if (text('体验领金币').find().size() > 3) {
+        return true;
+    }
+
     for (var i = 0; i < 5; i++) {
         if (clicks.text('看视频领金币')) {
             clicks.xy(945, 111);
@@ -106,7 +106,12 @@ function taskAd() {
         }
     }
 
+    if (text('体验领金币').find().size() > 3) {
+        return true;
+    }
+
     console.log("---------- taskAd end ----------")
 
-    return true;
+    return false
+        ;
 }

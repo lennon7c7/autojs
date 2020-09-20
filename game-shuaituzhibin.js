@@ -25,6 +25,8 @@ function main() {
     clicks.xy(2200, 50);
 
     task();
+
+    others.exit();
 }
 
 // 任务
