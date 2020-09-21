@@ -7,12 +7,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.immomo.young';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    var status = taskCheckin();
+    status = taskCheckin();
 
     if (status) {
         others.exit();
@@ -38,7 +38,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text("已签").exists()) {
+    if (text('已签').exists()) {
         return true;
     }
 
@@ -46,7 +46,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text("已签").exists()) {
+    if (text('已签').exists()) {
         return true;
     }
 

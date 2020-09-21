@@ -10,18 +10,54 @@ const PACKAGE_NAME = 'com.lwhy.hltzs';
 main();
 
 function main() {
-    // others.initEnv();
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
-    // status = others.launchApp(PACKAGE_NAME);
-    // if (!status) {
-    //     return false;
-    // }
-
+    taskDaily();
     taskCheckin();
-    // taskLimitRedPacket();
-    // taskLimitRedPacket();
-    // taskLuckLottery();
-    // taskOnLineReward();
+    taskLimitRedPacket();
+    taskLuckLottery();
+    taskOnLineReward();
+}
+
+/**
+ * 任务-每日闯关
+ */
+function taskDaily() {
+    toastLog('---------- taskCheckin start ----------');
+
+    toastLog('---------- 每日闯关 ----------');
+    clicks.xy(920, 560);
+
+    for (var i = 0; i < 20; i++) {
+        for (var j = 0; j < 10; j++) {
+            if (text('查看详情').exists()) {
+                break;
+            }
+
+            toastLog('---------- answer right ----------');
+            clicks.xy(1000, 1400);
+
+            toastLog('---------- ramdon redpackage ----------');
+            clicks.xy(860, 610);
+
+            clicks.id('tt_insert_dislike_icon_img');
+
+            if (currentPackage() != 'android') {
+                app.launch(packageName);
+            }
+
+            back()
+        }
+
+        toastLog('---------- 补充体力 ----------');
+        closeAd(540, 850);
+        sleeps.s4();
+    }
+
+    toastLog('---------- taskDaily end ----------');
 }
 
 /**
@@ -30,20 +66,20 @@ function main() {
 function taskCheckin() {
     toastLog('---------- taskCheckin start ----------');
 
-    // toastLog('---------- 每日红包 ----------');
-    // clicks.xy(300, 1500);
+    toastLog('---------- 每日红包 ----------');
+    clicks.xy(300, 1500);
 
-    // toastLog('---------- 前往 ----------');
-    // clicks.xy(880, 1600);
+    toastLog('---------- 前往 ----------');
+    clicks.xy(880, 1600);
 
-    // toastLog('---------- 签到 ----------');
-    // closeAd(550, 1750);
+    toastLog('---------- 签到 ----------');
+    clicks.xy(550, 1750);
 
-    // toastLog('---------- 额外加xxx红包券 ----------');
-    // closeAd(550, 1650);
+    toastLog('---------- 额外加xxx红包券 ----------');
+    closeAd(550, 1650);
 
     toastLog('---------- 关闭 ----------');
-    clicks.xy(950, 550);
+    clicks.xy(920, 560);
 
     toastLog('---------- taskCheckin end ----------');
 }

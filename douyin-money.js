@@ -7,14 +7,15 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
 
-while (true) {
-    main()
+for (var i = 0; i < 3; i++) {
+    main();
 }
 
 function main() {
-    others.initEnv();
-
-    others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     others.back();
 
@@ -36,21 +37,21 @@ function main() {
  * 任务-签到
  */
 function taskCheckin() {
-    console.log("---------- taskCheckin start ----------");
+    log('---------- taskCheckin start ----------');
 
-    if (text("明日签到").exists()) {
+    if (text('明日签到').exists()) {
         return true;
     }
 
-    if (!clicks.text("签到")) {
+    if (!clicks.text('签到')) {
         return false;
     }
 
-    if (text("明日签到").exists()) {
+    if (text('明日签到').exists()) {
         return true;
     }
 
-    console.log("---------- taskCheckin end ----------");
+    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -58,19 +59,19 @@ function taskCheckin() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------");
+    log('---------- taskTreasureBox start ----------');
 
-    if (!clicks.text("开宝箱得金币")) {
+    if (!clicks.text('开宝箱得金币')) {
         return false;
     }
 
-    if (!clicks.text("看广告视频再赚")) {
+    if (!clicks.text('看广告视频再赚')) {
         return false;
     }
 
     closeAd();
 
-    console.log("---------- taskTreasureBox end ----------");
+    log('---------- taskTreasureBox end ----------');
 
     return true;
 }
@@ -78,7 +79,7 @@ function taskTreasureBox() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    console.log("---------- taskLimit start ----------");
+    log('---------- taskLimit start ----------');
 
     if (text('限时任务赚金币').findOne().parent().parent().findOne(text('已领取')) != null) {
         return true;
@@ -90,37 +91,37 @@ function taskLimit() {
 
     closeAd();
 
-    console.log("---------- taskLimit end ----------");
+    log('---------- taskLimit end ----------');
 
     return true;
 }
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    console.log("---------- taskSleep start ----------");
+    log('---------- taskSleep start ----------');
 
-    if (!clicks.text("睡觉赚金币")) {
+    if (!clicks.text('睡觉赚金币')) {
         return false;
     }
 
-    if (clicks.text("我睡醒了")) {
-        if (clicks.text("可领取")) {
+    if (clicks.text('我睡醒了')) {
+        if (clicks.text('可领取')) {
             others.back();
             return true;
         }
-    } else if (clicks.text("我要睡了")) {
+    } else if (clicks.text('我要睡了')) {
         others.back();
         return true;
     }
 
-    console.log("---------- taskSleep end ----------");
+    log('---------- taskSleep end ----------');
 
     return false;
 }
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- taskVideo start ----------");
+    log('---------- taskVideo start ----------');
 
     others.back2();
 
@@ -129,7 +130,7 @@ function taskVideo() {
         sleeps.s5to10();
     }
 
-    console.log("---------- taskVideo end ----------");
+    log('---------- taskVideo end ----------');
 
     return true;
 }

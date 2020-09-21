@@ -7,23 +7,21 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.taobao.taobao';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
 
-    if (!clicks.desc("我的淘宝")) {
+    if (!clicks.desc('我的淘宝')) {
         return false;
     }
 
-    if (!clicks.desc("淘金币")) {
+    if (!clicks.desc('淘金币')) {
         return false;
     }
 
@@ -40,7 +38,7 @@ function main() {
 
 // 任务-逛店铺
 function taskShop() {
-    toastLog("---------- taskShop start ----------");
+    toastLog('---------- taskShop start ----------');
 
     clicks.xy(33, 1404);
 
@@ -73,14 +71,14 @@ function taskShop() {
     swipes.down();
     others.back();
 
-    toastLog("---------- taskShop end ----------");
+    toastLog('---------- taskShop end ----------');
 
     return false;
 }
 
 // 任务-帮好友
 function taskHelpFriend() {
-    toastLog("---------- taskHelpFriend start ----------");
+    toastLog('---------- taskHelpFriend start ----------');
 
     clicks.xy(912, 1203);
 
@@ -100,16 +98,16 @@ function taskHelpFriend() {
 
     others.back();
 
-    toastLog("---------- taskHelpFriend end ----------");
+    toastLog('---------- taskHelpFriend end ----------');
 
     return false;
 }
 
 // 任务-金币能量
 function taskMoneyPower() {
-    toastLog("---------- taskMoneyPower start ----------");
+    toastLog('---------- taskMoneyPower start ----------');
 
-    if (!clicks.text("赚金币")) {
+    if (!clicks.text('赚金币')) {
         others.back();
         return false;
     }
@@ -119,47 +117,47 @@ function taskMoneyPower() {
         return true;
     }
 
-    if (clicks.text("浏览10秒立得")) {
+    if (clicks.text('浏览10秒立得')) {
         swipes.down();
         sleeps.s2to3();
         swipes.down();
         sleeps.s15to20();
         others.back();
-        clicks.text("领取奖励");
+        clicks.text('领取奖励');
     }
 
-    if (clicks.text("逛10s立得")) {
+    if (clicks.text('逛10s立得')) {
         swipes.down();
         sleeps.s2to3();
         swipes.down();
         sleeps.s15to20();
         others.back();
-        clicks.text("领取奖励");
+        clicks.text('领取奖励');
     }
 
-    if (clicks.text("浏览页面立得")) {
+    if (clicks.text('浏览页面立得')) {
         swipes.down();
         sleeps.s2to3();
         swipes.down();
         sleeps.s15to20();
         others.back();
-        clicks.text("领取奖励");
+        clicks.text('领取奖励');
     }
 
     for (var i = 0; i < 7; i++) {
-        if (clicks.text("浏览10s 立得")) {
+        if (clicks.text('浏览10s 立得')) {
             swipes.down();
             sleeps.s2to3();
             swipes.down();
             sleeps.s15to20();
             others.back();
-            clicks.text("领取奖励");
+            clicks.text('领取奖励');
         }
     }
 
     others.back();
   
-    toastLog("---------- taskMoneyPower end ----------");
+    toastLog('---------- taskMoneyPower end ----------');
 
     return false;
 }

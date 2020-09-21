@@ -26,12 +26,12 @@ s.element = function (e) {
  */
 s.text = function (textString) {
     if (!textString) {
-        toastLog("---------- fail: param none exist ----------");
+        toastLog('---------- fail: param none exist ----------');
         return false;
     }
 
     if (!text(textString).exists()) {
-        toastLog("---------- fail: click " + textString + " none exist ----------");
+        toastLog('---------- fail: click ' + textString + ' none exist ----------');
         return false;
     }
 
@@ -51,7 +51,7 @@ s.text = function (textString) {
         return true;
     }
  
-    toastLog("---------- fail: click " + textString + " ----------");
+    toastLog('---------- fail: click ' + textString + ' ----------');
 
     return false;
 };
@@ -63,12 +63,12 @@ s.text = function (textString) {
  */
 s.desc = function (descString) {
     if (!descString) {
-        toastLog("---------- fail: param none exist ----------");
+        toastLog('---------- fail: param none exist ----------');
         return false;
     }
 
     if (!desc(descString).exists()) {
-        toastLog("---------- fail: element none exist ----------");
+        toastLog('---------- fail: element none exist ----------');
         return false;
     }
 
@@ -88,7 +88,7 @@ s.desc = function (descString) {
         return true;
     }
  
-    toastLog("---------- fail: click ----------");
+    toastLog('---------- fail: click ----------');
 
     return false;
 };
@@ -100,12 +100,12 @@ s.desc = function (descString) {
  */
 s.id = function (idString) {
     if (!idString) {
-        toastLog("---------- fail: param none exist ----------");
+        toastLog('---------- fail: param none exist ----------');
         return false;
     }
 
     if (!id(idString).exists()) {
-        toastLog("---------- fail: element none exist ----------");
+        toastLog('---------- fail: element none exist ----------');
         return false;
     }
 
@@ -125,9 +125,17 @@ s.id = function (idString) {
         return true;
     }
  
-    toastLog("---------- fail: click ----------");
+    toastLog('---------- fail: click ----------');
 
     return false;
+};
+
+/**
+ * 如果id元素存在，则点击
+ */
+s.ifIdExists = function (e) {
+    e.findOne().click();
+    sleep(3 * 1000);
 };
 
 /**

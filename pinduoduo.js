@@ -7,12 +7,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    var status = taskCheckin();
+    status = taskCheckin();
 
     if (status) {
         others.exit();

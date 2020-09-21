@@ -7,14 +7,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.tencent.weishi';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    others.initEnv();
-
-    status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -28,7 +26,7 @@ function main() {
 
 // 任务-签到领红包
 function taskCheckin() {
-    console.log("---------- taskCheckin start ----------");
+    log('---------- taskCheckin start ----------');
 
     clicks.xy(888, 2200);
     clicks.xy(750, 411);
@@ -45,22 +43,26 @@ function taskCheckin() {
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x1')) {
+    if (text('领取 x1').exists()) {
+        clicks.text('领取 x1');
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x2')) {
+    if (text('领取 x2').exists()) {
+        clicks.text('领取 x2');
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x3')) {
+    if (text('领取 x3').exists()) {
+        clicks.text('领取 x3');
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x6')) {
+    if (text('领取 x6').exists()) {
+        clicks.text('领取 x6');
         others.back();
         clicks.xy(750, 411);
     }
@@ -68,14 +70,14 @@ function taskCheckin() {
     others.back();
     clicks.xy(10, 2200);
 
-    console.log("---------- taskCheckin end ----------");
+    log('---------- taskCheckin end ----------');
 
     return false;
 }
 
 // 任务-小视频
 function taskVideo() {
-    console.log("---------- taskVideo start ----------");
+    log('---------- taskVideo start ----------');
 
     status = taskCheckin();
     if (status) {
@@ -96,7 +98,7 @@ function taskVideo() {
         return true;
     }
 
-    console.log("---------- taskVideo end ----------");
+    log('---------- taskVideo end ----------');
 
     return true;
 }

@@ -39,6 +39,25 @@ s.launchApp = function (packageName) {
 };
 
 /**
+ * 启动应用
+ * @param {string} packageName
+ * @returns {boolean}
+ */
+s.launch = function (packageName) {
+    s.clear();
+
+    s.initEnv();
+
+    status = app.launch(packageName);
+    sleep(10 * 1000);
+    if (!status) {
+        return false;
+    }
+
+    return true;
+};
+
+/**
  * 返回
  * @returns {boolean}
  */

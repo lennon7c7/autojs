@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.kaola';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
@@ -47,12 +47,12 @@ function taskPlayground() {
 
     for (var i = 0; i < 12; i++) {
         if (clicks.text('看商品开金币宝箱（0/1）')) {
-            if (clicks.text("打开看看~")) {
+            if (clicks.text('打开看看~')) {
                 clicks.text('继续逛商品');
                 others.back();
             }
 
-            if (clicks.text("立即购买")) {
+            if (clicks.text('立即购买')) {
                 sleeps.s2to3();
                 swipes.down();
                 sleeps.s2to3();
@@ -66,12 +66,12 @@ function taskPlayground() {
                 others.back();
                 sleeps.s2to3();
 
-                if (clicks.text("打开看看~")) {
+                if (clicks.text('打开看看~')) {
                     clicks.text('继续逛商品');
                     others.back();
                 }
 
-                if (clicks.text("点击查看以下商品开宝箱")) {
+                if (clicks.text('点击查看以下商品开宝箱')) {
                     others.back();
                 }
             }
@@ -79,7 +79,7 @@ function taskPlayground() {
     }
 
     for (var i = 0; i < 17; i++) {
-        if (clicks.text("去逛逛")) {
+        if (clicks.text('去逛逛')) {
             swipes.down();
             sleeps.s2to3();
             swipes.down();
@@ -108,12 +108,12 @@ function taskRandomPage() {
         return false;
     }
 
-    if (!clicks.text("领考拉豆")) {
+    if (!clicks.text('领考拉豆')) {
         toastLog('fail: 领考拉豆');
         return false;
     }
 
-    if (!clicks.text("每日赚豆")) {
+    if (!clicks.text('每日赚豆')) {
         toastLog('fail: 每日赚豆');
         return false;
     }
@@ -124,14 +124,14 @@ function taskRandomPage() {
     }
 
     for (var i = 0; i < 12; i++) {
-        if (!clicks.text("去逛逛")) {
+        if (!clicks.text('去逛逛')) {
             toastLog('fail: 去逛逛');
             return false;
         }
 
-        if (text("进店浏览15秒得考拉豆").exists()) {
+        if (text('进店浏览15秒得考拉豆').exists()) {
             for (var j = 0; j < 10; j++) {
-                if (!clicks.text("进店领豆")) {
+                if (!clicks.text('进店领豆')) {
                     toastLog('fail: 进店领豆');
                     return false;
                 }

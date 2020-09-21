@@ -7,14 +7,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.jd.jdlite';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -41,7 +39,7 @@ function main() {
 
 // 任务-签到
 function taskCheckin() {
-    console.log("---------- taskCheckin start ----------");
+    log('---------- taskCheckin start ----------');
 
     swipes.down();
     swipes.down();
@@ -68,16 +66,16 @@ function taskCheckin() {
     others.back();
     clicks.text('残忍拒绝');
 
-    console.log("---------- taskCheckin end ----------");
+    log('---------- taskCheckin end ----------');
 
     return false;
 }
 
 // 任务-逛商品赚金币
 function taskProduct() {
-    console.log("---------- taskProduct start ----------");
+    log('---------- taskProduct start ----------');
 
-    console.log("---------- button into ----------");
+    log('---------- button into ----------');
     clicks.xy(807, 1693);
 
     if (desc('赚钱').exists()) {
@@ -98,8 +96,8 @@ function taskProduct() {
         swipes.down1600();
         sleeps.s2to5();
 
-        if (id("ll_task_bottom_next").exists()) {
-            id("ll_task_bottom_next").click();
+        if (id('ll_task_bottom_next').exists()) {
+            id('ll_task_bottom_next').click();
             sleeps.s2to3();
         } else {
             others.back();
@@ -113,16 +111,16 @@ function taskProduct() {
 
         others.back();
     }
-    console.log("---------- taskProduct end ----------");
+    log('---------- taskProduct end ----------');
 
     return true;
 }
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
-    console.log("---------- taskRandomPage start ----------");
+    log('---------- taskRandomPage start ----------');
 
-    console.log("---------- button into ----------");
+    log('---------- button into ----------');
     clicks.xy(807, 1894);
 
     if (desc('赚钱').exists()) {
@@ -143,8 +141,8 @@ function taskRandomPage() {
         swipes.down1600();
         sleeps.s2to5();
 
-        if (id("ll_task_bottom_next").exists()) {
-            id("ll_task_bottom_next").click();
+        if (id('ll_task_bottom_next').exists()) {
+            id('ll_task_bottom_next').click();
             sleeps.s2to3();
         } else {
             others.back();
@@ -159,24 +157,24 @@ function taskRandomPage() {
         others.back();
     }
 
-    console.log("---------- taskRandomPage end ----------");
+    log('---------- taskRandomPage end ----------');
 
     return true;
 }
 
 // 任务-看视频赚金币
 function taskVideo() {
-    console.log("---------- taskVideo start ----------");
+    log('---------- taskVideo start ----------');
 
-    console.log("---------- button into ----------");
+    log('---------- button into ----------');
     clicks.xy(807, 2095);
- 
+
     if (!id('task_float_base_fl').exists()) {
         toastLog('---------- shit happen: taskVideo ----------');
         return false;
     }
 
-    console.log("---------- first video into ----------");
+    log('---------- first video into ----------');
     clicks.xy(469, 1373);
 
     // none sure is in first or not
@@ -197,9 +195,9 @@ function taskVideo() {
         sleeps.s10to20();
         swipes.down1600();
         sleeps.s2to3();
-  }
+    }
 
-    console.log("---------- taskVideo end ----------");
+    log('---------- taskVideo end ----------');
 
     return true;
 }

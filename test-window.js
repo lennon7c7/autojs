@@ -7,19 +7,14 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 
 var w = floaty.rawWindow(
-    <frame gravity="center" bg="#77ff0000">
-        <text id="text" textSize='66sp' >悬浮文字</text>
+    <frame gravity='center' bg='#77ff0000'>
+        <text id='text' textSize='66sp' >悬浮文字</text>
     </frame>
 );
-w.setSize(1, 1);
-
-
-// launchApp("快手极速版");
-// sleeps.s1();
+w.setSize(50, 50);
 
 w.setPosition(0, 0);
-w.setPosition(750 + 100, 1860 + 70);
-// w.setPosition(50, 2000);
+w.setPosition(540, 750);
 // sleeps.s1();
 // w.setPosition(500, 500);
 // sleeps.s1();

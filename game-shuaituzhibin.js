@@ -5,13 +5,15 @@ var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.netease.stzb.netease';
 
 main();
 
 function main() {
-    others.initEnv();
-
-    others.launchApp('com.netease.stzb.netease');
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     // swipe to game
     clicks.xy(1050, 850);

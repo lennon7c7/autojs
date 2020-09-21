@@ -7,12 +7,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.jifen.qukan';
 
-main();
+for (var i = 0; i < 3; i++) {
+    main();
+}
 
 function main() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -22,7 +22,7 @@ function main() {
 
 // 任务
 function task() {
-    console.log("---------- task start ----------")
+    log('---------- task start ----------')
 
     if (!clicks.text('任务')) {
         return false;
@@ -32,14 +32,14 @@ function task() {
     taskVideo();
     taskNews();
 
-    console.log("---------- task end ----------");
+    log('---------- task end ----------');
 
     return true;
 }
 
 // 任务-文章
 function taskNews() {
-    console.log("---------- taskNews start ----------")
+    log('---------- taskNews start ----------')
 
     if (!clicks.text('立即阅读')) {
         return false;
@@ -62,16 +62,16 @@ function taskNews() {
 
     others.back();
 
-    console.log("---------- taskNews end ----------")
+    log('---------- taskNews end ----------')
 
     return true;
 }
 
 // 任务-视频
 function taskVideo() {
-    console.log("---------- taskVideo start ----------")
+    log('---------- taskVideo start ----------')
 
-    if (!clicks.text("观看视频")) {
+    if (!clicks.text('观看视频')) {
         return false;
     }
 
@@ -83,14 +83,14 @@ function taskVideo() {
 
     others.back();
 
-    console.log("---------- taskVideo end ----------")
+    log('---------- taskVideo end ----------')
 
     return true;
 }
 
 // 任务-Ad
 function taskAd() {
-    console.log("---------- taskAd start ----------")
+    log('---------- taskAd start ----------')
 
     if (text('体验领金币').find().size() > 3) {
         return true;
@@ -110,7 +110,7 @@ function taskAd() {
         return true;
     }
 
-    console.log("---------- taskAd end ----------")
+    log('---------- taskAd end ----------')
 
     return false
         ;

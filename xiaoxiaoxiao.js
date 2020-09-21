@@ -17,7 +17,7 @@ while (true) {
         yAdd = 104;
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
-            // console.log("i=", i, " j=", j, " x=", x + xAdd * j, " y=", y + yAdd * i);
+            // log('i=', i, ' j=', j, ' x=', x + xAdd * j, ' y=', y + yAdd * i);
             click(x + xAdd * j, y + yAdd * i);
             sleep(10);
         }

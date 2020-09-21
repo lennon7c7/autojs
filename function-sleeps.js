@@ -81,6 +81,11 @@ s.s3 = function () {
     sleep(3 * 1000);
 };
 
+// 4秒
+s.s4 = function () {
+    sleep(4 * 1000);
+};
+
 // 5秒
 s.s5 = function () {
     sleep(5 * 1000);

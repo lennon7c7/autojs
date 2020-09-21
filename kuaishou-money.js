@@ -9,14 +9,12 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.kuaishou.nebula';
 
-while (true) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
 function main() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -37,7 +35,7 @@ function main() {
 
 // 任务-0元抽奖
 function task0Lottery() {
-    console.log("---------- task0Lottery start ----------");
+    log('---------- task0Lottery start ----------');
 
     others.back3();
 
@@ -94,7 +92,7 @@ function task0Lottery() {
 
     others.back();
 
-    console.log("---------- task0Lottery end ----------");
+    log('---------- task0Lottery end ----------');
 
     return false;
 }
@@ -102,52 +100,52 @@ function task0Lottery() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    console.log("---------- taskTreasureBox start ----------");
+    log('---------- taskTreasureBox start ----------');
 
-    if (!clicks.text("开宝箱得金币")) {
+    if (!clicks.text('开宝箱得金币')) {
         return true;
     }
 
     clicks.xy(480, 1620);
 
-    console.log("---------- taskTreasureBox end ----------");
+    log('---------- taskTreasureBox end ----------');
 
     return true;
 }
 
 // 任务-10次广告
 function taskAd10() {
-    console.log("---------- taskAd10 start ----------");
+    log('---------- taskAd10 start ----------');
 
-    if (text("明日再来").exists()) {
+    if (text('明日再来').exists()) {
         return true;
     }
 
     for (var i = 0; i < 10; i++) {
-        if (className("android.widget.Button").text("福利").exists()) {
-            className("android.widget.Button").text("福利").click();
-        } else if (className("android.widget.Button").text("福利 领金币").exists()) {
-            className("android.widget.Button").text("福利 领金币").click();
+        if (className('android.widget.Button').text('福利').exists()) {
+            className('android.widget.Button').text('福利').click();
+        } else if (className('android.widget.Button').text('福利 领金币').exists()) {
+            className('android.widget.Button').text('福利 领金币').click();
         } else {
             continue;
         }
 
         clicks.id('video_audio_btn');
         sleeps.s35();
-        if (id("video_countdown").exists()) {
-            id("video_countdown").click();
+        if (id('video_countdown').exists()) {
+            id('video_countdown').click();
             sleeps.s3();
         }
     }
 
-    console.log("---------- taskAd10 end ----------");
+    log('---------- taskAd10 end ----------');
 
     return true;
 }
 
 // 任务-视频
 function taskVideo() {
-    console.log("---------- taskVideo start ----------");
+    log('---------- taskVideo start ----------');
 
     others.back();
     others.back();
@@ -163,7 +161,7 @@ function taskVideo() {
         sleeps.s10to30();
     }
 
-    console.log("---------- taskVideo end ----------");
+    log('---------- taskVideo end ----------');
 
     return true;
 }
