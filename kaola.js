@@ -22,9 +22,7 @@ function main() {
 
 // 任务-考拉乐园
 function taskPlayground() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -36,12 +34,18 @@ function taskPlayground() {
 
     clicks.text('知道了');
 
+    for (var i = 0; i < 20; i++) {
+        clicks.text('浏览任务');
+        clicks.text('签到任务');
+        clicks.text('逛商品任务');
+        clicks.text('考拉升级');
+    }
+
     if (!clicks.text('领金币')) {
         return false;
     }
-    
+
     if (!text('去逛逛').exists() && text('再逛逛').exists()) {
-        others.clear();
         return true;
     }
 
@@ -96,62 +100,50 @@ function taskPlayground() {
         }
     }
 
+    if (!text('去逛逛').exists() && text('再逛逛').exists()) {
+        return true;
+    }
+
     return false;
 }
 
 // 任务-逛商品
 function taskRandomPage() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
 
     if (!clicks.text('领考拉豆')) {
-        toastLog('fail: 领考拉豆');
         return false;
     }
 
+    clicks.text('浏览商品');
+    clicks.text('签到');
+
     if (!clicks.text('每日赚豆')) {
-        toastLog('fail: 每日赚豆');
         return false;
     }
 
     if (!text('去逛逛').exists() && text('已完成').exists()) {
-        others.clear();
         return true;
     }
 
     for (var i = 0; i < 12; i++) {
         if (!clicks.text('去逛逛')) {
-            toastLog('fail: 去逛逛');
             return false;
         }
 
         if (text('进店浏览15秒得考拉豆').exists()) {
             for (var j = 0; j < 10; j++) {
                 if (!clicks.text('进店领豆')) {
-                    toastLog('fail: 进店领豆');
                     return false;
                 }
 
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
+                for (var k = 0; k < 8; k++) {
+                    swipes.down();
+                    sleeps.s2to3();
+                }
 
                 others.back();
             }
@@ -160,29 +152,16 @@ function taskRandomPage() {
             continue;
         }
 
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
-        swipes.down();
-        sleeps.s2to3();
+        for (var j = 0; j < 8; j++) {
+            swipes.down();
+            sleeps.s2to3();
+        }
 
         others.back();
     }
 
-    var status = others.clear();
-    if (!status) {
-        return false;
+    if (!text('去逛逛').exists() && text('已完成').exists()) {
+        return true;
     }
 
     return true;
