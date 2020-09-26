@@ -25,9 +25,19 @@ function main() {
         return false;
     }
 
-    sleeps.s2to3();
+    sleeps.s5to10();
+
+    if (text('签到领淘金币').exists()) {
+        clicks.text('签到领淘金币');
+        others.back();
+    }
+
+    for (var i = 0; i < 3; i++) {
+        clicks.text('合力');
+    }
 
     status1 = taskMoneyPower();
+    // status1 = true;
     status2 = taskHelpFriend();
     status3 = taskShop();
 
@@ -49,9 +59,8 @@ function taskShop() {
 
     for (var i = 0; i < 4; i++) {
         if (clicks.desc('逛10秒+10')) {
-            clicks.text('关注+10');
-
             sleeps.s15to20();
+            clicks.text('关注+10');
             others.back();
         }
     }
@@ -68,7 +77,11 @@ function taskShop() {
         }
     }
 
-    swipes.down();
+    if (desc('已完成').find().size() > 2) {
+        others.back();
+        return true;
+    }
+
     others.back();
 
     toastLog('---------- taskShop end ----------');
@@ -96,6 +109,21 @@ function taskHelpFriend() {
         others.back();
     }
 
+    for (var i = 0; i < 6; i++) {
+        if (!clicks.text('喊Ta回来')) {
+            return false;
+        }
+
+        clicks.text('喊Ta回来得');
+
+        others.back();
+    }
+
+    if (!text('去助力').exists() && text('去拜访').exists()) {
+        others.back();
+        return true;
+    }
+
     others.back();
 
     toastLog('---------- taskHelpFriend end ----------');
@@ -117,46 +145,78 @@ function taskMoneyPower() {
         return true;
     }
 
-    if (clicks.text('浏览10秒立得')) {
-        swipes.down();
+    clicks.text('一键领取');
+
+    if (text('今日任务').exists() && clicks.text('浏览10秒立得') && !text('今日任务').exists()) {
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s2to3();
-        swipes.down();
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s15to20();
         others.back();
         clicks.text('领取奖励');
     }
 
-    if (clicks.text('逛10s立得')) {
-        swipes.down();
+    if (text('今日任务').exists() && clicks.text('逛10s立得') && !text('今日任务').exists()) {
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s2to3();
-        swipes.down();
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s15to20();
         others.back();
         clicks.text('领取奖励');
     }
 
-    if (clicks.text('浏览页面立得')) {
-        swipes.down();
+    if (text('今日任务').exists() && clicks.text('浏览页面立得') && !text('今日任务').exists()) {
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s2to3();
-        swipes.down();
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
         sleeps.s15to20();
         others.back();
         clicks.text('领取奖励');
     }
 
     for (var i = 0; i < 7; i++) {
-        if (clicks.text('浏览10s 立得')) {
-            swipes.down();
+        if (text('今日任务').exists() && clicks.text('浏览10s 立得') && !text('今日任务').exists()) {
+            if (!id('taolive_frame_video_layout').exists()) {
+                swipes.down();
+            }
+
             sleeps.s2to3();
-            swipes.down();
+            if (!id('taolive_frame_video_layout').exists()) {
+                swipes.down();
+            }
+
             sleeps.s15to20();
             others.back();
             clicks.text('领取奖励');
         }
     }
+    clicks.text('一键领取');
+
+    if (text('已完成').find().size() > 2 && text('去完成').find().size() < 6) {
+        others.back();
+        return true;
+    }
 
     others.back();
-  
+
     toastLog('---------- taskMoneyPower end ----------');
 
     return false;

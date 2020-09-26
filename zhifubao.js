@@ -29,6 +29,8 @@ function main() {
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
+    toastLog('---------- taskEverydayLottery start ----------');
+
     for (var i = 0; i < 4; i++) {
         if (!clicks.text('天天抽奖-每日领免费福利')) {
             return false;
@@ -47,6 +49,8 @@ function taskEverydayLottery() {
 
     }
 
+    toastLog('---------- taskEverydayLottery end ----------');
+
     return false;
 }
 
@@ -57,6 +61,7 @@ function task0Lottery() {
     log('---------- task0Lottery start ----------');
 
     clicks.xy(676, 795);
+    clicks.desc('关闭');
 
     for (var i = 0; i < 4; i++) {
         clicks.xy(405, 2025);

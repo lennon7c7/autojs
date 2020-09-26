@@ -50,6 +50,10 @@ s.launch = function (packageName) {
 
     status = app.launch(packageName);
     sleep(10 * 1000);
+    s.clear();
+
+    status = app.launch(packageName);
+    sleep(10 * 1000);
     if (!status) {
         return false;
     }
