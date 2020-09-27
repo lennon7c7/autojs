@@ -12,45 +12,70 @@ for (var i = 0; i < 3; i++) {
 }
 
 function main() {
-    others.launch(PACKAGE_NAME);
+    // status = others.launch(PACKAGE_NAME);
+    // if (!status) {
+    //     return false;
+    // }
 
-    task();
+    status = task();
+
+    if (status) {
+        others.exit();
+    }
 }
 
 // 任务
 function task() {
     log('---------- task start ----------');
 
-    var buttonClickTask = id('ey').className('android.widget.TextView').text('任务');
-    if (!buttonClickTask.exists()) {
-        log('---------- 任务界面 nothing ----------');
-        return false;
-    }
-    log('---------- 点击 任务界面 ----------');
-    buttonClickTask.findOne().parent().click();
-    sleeps.s3();
+    // if (!clicks.text('任务') || !text('任务中心').exists()) {
+    //     return false;
+    // }
 
-    taskLottery();
-    // taskSleep();
+    status1 = taskCheckin();
+    status2 = taskLottery();
+    taskSleep();
     taskTreasureBox();
     taskVideo();
     // taskNovel();
 
     log('---------- task end ----------');
 
-    return true;
+    return status1 && status2;
+}
+
+/**
+ * 任务-签到
+ */
+function taskCheckin() {
+    if (text('明日签到').exists()) {
+        return true;
+    }
+
+    if (text('立即签到 +100金币').exists()) {
+        clicks.text('立即签到 +100金币');
+        clicks.xy(477, 1710);
+    }
+
+    if (text('明日签到').exists()) {
+        return true;
+    }
+
+    return false;
 }
 
 // 任务-抽奖
 function taskLottery() {
-    log('---------- task start ----------');
+    log('---------- taskLottery start ----------');
 
-    var buttonClickTask = className('android.view.View').text('去抽奖');
-    if (!buttonClickTask.exists()) {
-        log('---------- check 去抽奖 nothing ----------');
+    if (!clicks.text('去抽奖') || !text('集齐碎片得手机').exists()) {
         return false;
     }
-    clicks.findOne(buttonClickTask);
+
+    if (text('今日次数已用完').exists()) {
+        others.back();
+        return true;
+    }
 
     for (var i = 1; i <= 3; i++) {
         var buttonClickTask = className('android.view.View').text('今日剩' + i + '次');
@@ -59,56 +84,50 @@ function taskLottery() {
             others.back();
         }
     }
+    
+    if (text('今日次数已用完').exists()) {
+        others.back();
+        return true;
+    }
 
     others.back();
 
-    log('---------- task end ----------');
+    log('---------- taskLottery end ----------');
 
-    return true;
+    return false;
 }
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('---------- task start ----------');
+    log('---------- taskSleep start ----------');
 
-    var buttonClickTask = className('android.widget.Image').text('睡觉赚钱');
-    if (!buttonClickTask.exists()) {
-        log('---------- task sleep nothing ----------');
+    clicks.xy(102, 1191);
+    
+    if (!text('睡觉赚金币').exists()) {
         return false;
     }
-    log('---------- click sleep ----------');
-    buttonClickTask.findOne().parent().click();
-    sleeps.s3();
 
-    var buttonClickTask = className('android.view.View').text('我睡醒了');
-    if (buttonClickTask.exists()) {
-        clicks.findOne(buttonClickTask);
-    }
-    
-    var buttonClickTask = className('android.view.View').text('领取3600金币');
-    if (buttonClickTask.exists()) {
-        clicks.findOne(buttonClickTask);
-    }
-        
-    var buttonClickTask = className('android.view.View').text('我要睡了');
-    if (buttonClickTask.exists()) {
-        clicks.findOne(buttonClickTask);
+    if (clicks.text('我睡醒了')) {
+        if (clicks.text('可领取')) {
+            others.back();
+            return true;
+        }
+    } else if (clicks.text('我要睡了')) {
+        others.back();
+        return true;
     }
 
-    others.back();
-
-    log('---------- task end ----------');
+    log('---------- taskSleep end ----------');
 
     return true;
 }
 
 // 任务-小说
 function taskNovel() {
-    log('---------- task novel start ----------');
+    log('---------- taskNovel start ----------');
 
     var buttonClickTask = className('android.widget.Button').text('看小说');
     if (!buttonClickTask.exists()) {
-        log('---------- task novel nothing ----------');
         return false;
     }
     log('---------- click novel ----------');
@@ -134,18 +153,17 @@ function taskNovel() {
 
     others.back();
 
-    log('---------- task novel end ----------');
+    log('---------- taskNovel end ----------');
 
     return true;
 }
 
 // 任务-视频
 function taskVideo() {
-    log('---------- task video start ----------');
+    log('---------- taskVideo start ----------');
 
     var buttonClickTask = className('android.widget.Button').text('去阅读');
     if (!buttonClickTask.exists()) {
-        log('---------- task video nothing ----------');
         return false;
     }
     log('---------- click video ----------');
@@ -168,7 +186,7 @@ function taskVideo() {
 
     others.back();
 
-    log('---------- task video end ----------');
+    log('---------- taskVideo end ----------');
 
     return true;
 }

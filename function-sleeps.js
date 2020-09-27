@@ -3,19 +3,6 @@
  */
 var s = {};
 
-/**
- * 获取随机整数
- */
-s.getRandomInt = function (max) {
-    let value = Math.floor(Math.random() * Math.floor(max));
-    return value >= 2 ? value : 2;
-};
-
-s.getRandom = function (min, max) {
-    let value = Math.floor(Math.random() * Math.floor(max));
-    return value >= min ? value : min;
-};
-
 // x秒
 s.custom = function (time) {
     sleep(time * 1000);
@@ -23,52 +10,52 @@ s.custom = function (time) {
 
 // 2 ~ 3 秒
 s.s2to3 = function () {
-    s.custom(s.getRandomInt(3));
+    s.custom(random(2, 3));
 };
 
 // 2 ~ 4 秒
 s.s2to4 = function () {
-    s.custom(s.getRandomInt(4));
+    s.custom(random(2, 4));
 };
 
 // 2 ~ 5 秒
 s.s2to5 = function () {
-    s.custom(s.getRandomInt(5));
+    s.custom(random(2, 5));
 };
 
 // 2 ~ 10 秒
 s.s2to10 = function () {
-    s.custom(s.getRandomInt(10));
+    s.custom(random(2, 10));
 };
 
 // 5 ~ 10 秒
 s.s5to10 = function () {
-    s.custom(s.getRandom(5, 10));
+    s.custom(random(5, 10));
 };
 
 // 10 ~ 20 秒
 s.s10to20 = function () {
-    s.custom(s.getRandom(10, 20));
+    s.custom(random(10, 20));
 };
 
 // 10 ~ 30 秒
 s.s10to30 = function () {
-    s.custom(s.getRandom(10, 30));
+    s.custom(random(10, 30));
 };
 
 // 15 ~ 20 秒
 s.s15to20 = function () {
-    s.custom(s.getRandom(15, 30));
+    s.custom(random(15, 30));
 };
 
 // 35 ~ 40 秒
 s.s35to40 = function () {
-    s.custom(s.getRandom(35, 40));
+    s.custom(random(35, 40));
 };
 
 // 60 ~ 70 秒
 s.s60to70 = function () {
-    s.custom(s.getRandom(60, 70));
+    s.custom(random(60, 70));
 };
 
 // 1秒

@@ -50,10 +50,6 @@ s.launch = function (packageName) {
 
     status = app.launch(packageName);
     sleep(10 * 1000);
-    s.clear();
-
-    status = app.launch(packageName);
-    sleep(10 * 1000);
     if (!status) {
         return false;
     }
@@ -138,6 +134,7 @@ s.clear = function () {
     }
 
     sleep(2000);
+    clicks.id('clear_all');
     clicks.id('clear_all_recents_image_button');
     sleep(3000);
 

@@ -15,11 +15,37 @@ function main() {
         return false;
     }
 
+    taskCheckinWithdraw();
     taskDaily();
     taskCheckin();
     taskLimitRedPacket();
     taskLuckLottery();
     taskOnLineReward();
+}
+
+/**
+ * 任务-打卡提现
+ */
+function taskCheckinWithdraw() {
+    toastLog('---------- taskCheckinWithdraw start ----------');
+
+    toastLog('---------- 提现 ----------');
+    clicks.xy(445, 425);
+
+    toastLog('---------- 15yuan ----------');
+    clicks.xy(900, 1200);
+
+    closeAd(920, 1820);
+
+    toastLog('---------- close 我的钱包 ----------');
+    clicks.xy(70, 430);
+    back();
+
+    toastLog('---------- close 升级提示 ----------');
+    clicks.xy(1000, 500);
+    back();
+
+    toastLog('---------- taskCheckinWithdraw end ----------');
 }
 
 /**
@@ -37,15 +63,20 @@ function taskDaily() {
                 break;
             }
 
-            toastLog('---------- answer right ----------');
-            clicks.xy(1000, 1400);
+            if (random() > 0.5) {
+                toastLog('---------- answer left ----------');
+                clicks.xy(100, 1400);
+            } else {
+                toastLog('---------- answer right ----------');
+                clicks.xy(1000, 1400);
+            }
 
             toastLog('---------- ramdon redpackage ----------');
             clicks.xy(860, 610);
 
             clicks.id('tt_insert_dislike_icon_img');
 
-            if (currentPackage() != 'android') {
+            if (currentPackage() != packageName) {
                 app.launch(packageName);
             }
 
