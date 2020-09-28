@@ -30,16 +30,16 @@ function main() {
     if (text('签到领淘金币').exists()) {
         clicks.text('签到领淘金币');
         others.back();
+        clicks.desc('淘金币');
     }
 
     for (var i = 0; i < 3; i++) {
         clicks.text('合力');
     }
 
-    status1 = taskMoneyPower();
-    // status1 = true;
     status2 = taskHelpFriend();
     status3 = taskShop();
+    status1 = taskMoneyPower();
 
     if (status1 && status2 && status3) {
         others.exit();
@@ -95,31 +95,27 @@ function taskHelpFriend() {
 
     clicks.xy(912, 1203);
 
-    if (!text('去助力').exists() && text('去拜访').exists()) {
+    if (!text('去助力').exists() && !text('喊Ta回来').exists() && text('去拜访').exists()) {
         others.back();
         return true;
     }
 
     for (var i = 0; i < 6; i++) {
-        if (!clicks.text('去助力')) {
-            return false;
+        if (clicks.text('去助力')) {
+            clicks.xy(393, 567);
+            others.back();
         }
-
-        clicks.xy(393, 567);
-        others.back();
     }
 
     for (var i = 0; i < 6; i++) {
-        if (!clicks.text('喊Ta回来')) {
-            return false;
+        if (clicks.text('喊Ta回来')) {
+            clicks.xy(393, 507);
+            clicks.xy(393, 567);
+            others.back();
         }
-
-        clicks.text('喊Ta回来得');
-
-        others.back();
     }
 
-    if (!text('去助力').exists() && text('去拜访').exists()) {
+    if (!text('去助力').exists() && !text('喊Ta回来').exists() && text('去拜访').exists()) {
         others.back();
         return true;
     }
@@ -140,7 +136,7 @@ function taskMoneyPower() {
         return false;
     }
 
-    if (text('已完成').find().size() > 2 && text('去完成').find().size() < 6) {
+    if (text('已完成').find().size() > 3 && text('去完成').find().size() < 6) {
         others.back();
         return true;
     }
@@ -159,6 +155,9 @@ function taskMoneyPower() {
 
         sleeps.s15to20();
         others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
         clicks.text('领取奖励');
     }
 
@@ -174,6 +173,9 @@ function taskMoneyPower() {
 
         sleeps.s15to20();
         others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
         clicks.text('领取奖励');
     }
 
@@ -189,6 +191,9 @@ function taskMoneyPower() {
 
         sleeps.s15to20();
         others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
         clicks.text('领取奖励');
     }
 
@@ -205,12 +210,34 @@ function taskMoneyPower() {
 
             sleeps.s15to20();
             others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
             clicks.text('领取奖励');
         }
     }
+
+    if (text('今日任务').exists() && clicks.text('边逛边领大额金币') && !text('今日任务').exists()) {
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
+        sleeps.s2to3();
+        if (!id('taolive_frame_video_layout').exists()) {
+            swipes.down();
+        }
+
+        sleeps.s15to20();
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.text('领取奖励');
+    }
+
     clicks.text('一键领取');
 
-    if (text('已完成').find().size() > 2 && text('去完成').find().size() < 6) {
+    if (text('已完成').find().size() > 3 && text('去完成').find().size() < 6) {
         others.back();
         return true;
     }

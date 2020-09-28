@@ -11,7 +11,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'love.match.set';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 1000000; i++) {
     main();
 }
 
@@ -40,7 +40,7 @@ function taskClick() {
                 xAdd = 100;
             var y = 1900,
                 yAdd = 100;
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 8; i++) {
                 for (var j = 0; j < 10; j++) {
                     if (currentPackage() != PACKAGE_NAME) {
                         app.launch(PACKAGE_NAME);
@@ -64,7 +64,7 @@ function taskClick() {
                     } else if (isPageGaming()) {
                         // log('isPageGaming');
                         click(x + xAdd * j, y - yAdd * i);
-                        sleep(10);
+                        sleep(5);
                     } else {
                         log('else');
                     }
