@@ -17,36 +17,29 @@ function main() {
         return false;
     }
 
-    task();
-}
-
-// 任务
-function task() {
-    log('---------- task start ----------')
 
     if (!clicks.text('任务')) {
         return false;
     }
 
-    taskAd();
-    taskVideo();
-    taskNews();
+    status1 = taskAd();
+    status2 = taskVideo();
+    status3 = taskNews();
 
-    log('---------- task end ----------');
-
-    return true;
+    if (status1 && status2 && status3) {
+        others.exit();
+    }
 }
 
 // 任务-文章
 function taskNews() {
-    log('---------- taskNews start ----------')
+    log('---------- taskNews start ----------');
 
     if (!clicks.text('立即阅读')) {
         return false;
     }
 
     clicks.xy(24, 120);
-
 
     for (var i = 0; i < 10; i++) {
         swipes.refresh600();
@@ -62,14 +55,14 @@ function taskNews() {
 
     others.back();
 
-    log('---------- taskNews end ----------')
+    log('---------- taskNews end ----------');
 
-    return true;
+    return false;
 }
 
 // 任务-视频
 function taskVideo() {
-    log('---------- taskVideo start ----------')
+    log('---------- taskVideo start ----------');
 
     if (!clicks.text('观看视频')) {
         return false;
@@ -79,25 +72,30 @@ function taskVideo() {
         swipes.refresh600();
         clicks.xy(495, 457);
         sleeps.s10to20();
+
+        clicks.xy(852, 1800);
+        if (text('恭喜获得').exists() || text('阅读收益').exists()) {
+            others.back();
+        }
     }
 
     others.back();
 
-    log('---------- taskVideo end ----------')
+    log('---------- taskVideo end ----------');
 
-    return true;
+    return false;
 }
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------')
+    log('---------- taskAd start ----------');
 
     if (text('体验领金币').find().size() > 3) {
         return true;
     }
 
     for (var i = 0; i < 5; i++) {
-        if (clicks.text('看视频领金币')) {
+        if (text('日常任务').exists() && clicks.text('看视频领金币') && !text('日常任务').exists()) {
             clicks.xy(945, 111);
             sleeps.s60();
             others.back();
@@ -110,8 +108,7 @@ function taskAd() {
         return true;
     }
 
-    log('---------- taskAd end ----------')
+    log('---------- taskAd end ----------');
 
-    return false
-        ;
+    return false;
 }

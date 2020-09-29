@@ -150,7 +150,7 @@ function taskVideo() {
     others.back();
     others.back();
 
-    for (var i = 0; i < 1200; i++) {
+    for (var i = 0; i < 12; i++) {
         if (text('Drag the slider').exists()) {
             swipe(87, 969, 700, 969, 700);
             sleeps.s2to3();

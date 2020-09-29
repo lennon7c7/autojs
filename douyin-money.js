@@ -125,7 +125,7 @@ function taskVideo() {
 
     others.back2();
 
-    for (var i = 0; i < 1200; i++) {
+    for (var i = 0; i < 12; i++) {
         swipes.down();
         sleeps.s5to10();
     }

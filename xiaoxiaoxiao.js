@@ -11,7 +11,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'love.match.set';
 
-for (var i = 0; i < 1000000; i++) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
@@ -34,40 +34,38 @@ function taskClick() {
         back();
     }
 
-    for (var g = 0; g < 10; g++) {
-        for (var h = 0; h < 10; h++) {
-            var x = 100,
-                xAdd = 100;
-            var y = 1900,
-                yAdd = 100;
-            for (var i = 0; i < 8; i++) {
-                for (var j = 0; j < 10; j++) {
-                    if (currentPackage() != PACKAGE_NAME) {
-                        app.launch(PACKAGE_NAME);
-                        sleeps.s2to3();
-                    } else if (isPageRewardDouble()) {
-                        log('isPageRewardDouble');
-                        sleep(4000);
-                        clicks.xy(540, 1040);
-                        clicks.xy(520, 1320);
-                    } else if (isPageAdBottom()) {
-                        log('isPageAdBottom');
-                        sleep(4000);
-                        clicks.xy(540, 1040);
-                    } else if (isPageAdFull()) {
-                        log('isPageAdFull');
-                        sleeps.s60to70();
-                        clicks.id('tt_video_ad_close_layout');
-                    } else if (id('tt_insert_dislike_icon_img').exists()) {
-                        log('tt_insert_dislike_icon_img');
-                        clicks.id('tt_insert_dislike_icon_img');
-                    } else if (isPageGaming()) {
-                        // log('isPageGaming');
-                        click(x + xAdd * j, y - yAdd * i);
-                        sleep(5);
-                    } else {
-                        log('else');
-                    }
+    while (true) {
+        var x = 100,
+            xAdd = 100;
+        var y = 1900,
+            yAdd = 100;
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 10; j++) {
+                if (currentPackage() != PACKAGE_NAME) {
+                    app.launch(PACKAGE_NAME);
+                    sleeps.s2to3();
+                } else if (isPageRewardDouble()) {
+                    log('isPageRewardDouble');
+                    sleep(4000);
+                    clicks.xy(540, 1040);
+                    clicks.xy(520, 1320);
+                } else if (isPageAdBottom()) {
+                    log('isPageAdBottom');
+                    sleep(4000);
+                    clicks.xy(540, 1040);
+                } else if (isPageAdFull()) {
+                    log('isPageAdFull');
+                    sleeps.s60to70();
+                    clicks.id('tt_video_ad_close_layout');
+                } else if (id('tt_insert_dislike_icon_img').exists()) {
+                    log('tt_insert_dislike_icon_img');
+                    clicks.id('tt_insert_dislike_icon_img');
+                } else if (isPageGaming()) {
+                    // log('isPageGaming');
+                    click(x + xAdd * j, y - yAdd * i);
+                    sleep(5);
+                } else {
+                    log('else');
                 }
             }
         }
@@ -93,7 +91,7 @@ function isPageAdBottom() {
 }
 
 function isPageAdFull() {
-    if (id('tt_video_progress').exists() && className('android.view.View').find().size() > 20) {
+    if (className('android.view.View').find().size() > 20) {
         return true;
     }
 
