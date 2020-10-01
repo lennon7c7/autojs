@@ -28,10 +28,10 @@ function taskClick() {
         return false;
     }
 
+    back();
     if (className('android.widget.ImageView').exists()) {
         toastLog('重新开始');
         clicks.xy(550, 1200);
-        back();
     }
 
     while (true) {
@@ -55,8 +55,10 @@ function taskClick() {
                     clicks.xy(540, 1040);
                 } else if (isPageAdFull()) {
                     log('isPageAdFull');
+                    clicks.xy(186, 195);
                     sleeps.s60to70();
                     clicks.id('tt_video_ad_close_layout');
+                    clicks.xy(924, 162);
                 } else if (id('tt_insert_dislike_icon_img').exists()) {
                     log('tt_insert_dislike_icon_img');
                     clicks.id('tt_insert_dislike_icon_img');

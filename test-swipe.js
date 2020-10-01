@@ -6,11 +6,14 @@ var swipes = require('function-swipes.js');
 main();
 
 function main() {
-    toastLog(id('ad_click').exists());
-    toastLog(id('btn_down').exists());
-    toastLog(id('text_title').exists());
-    toastLog(id('text_desc').exists());
-    toastLog(text('查看详情').exists());
+    // clicks.xy(765, 1253);
+    clicks.text('去施肥，赚更多肥料');
+
+    // toastLog(id('ad_click').exists());
+    // toastLog(id('btn_down').exists());
+    // toastLog(id('text_title').exists());
+    // toastLog(id('text_desc').exists());
+    // toastLog(text('查看详情').exists());
     // clicks.id('tt_insert_dislike_icon_img');
 
     // swipe(500, 600, 500, 1200, 500);

@@ -12,10 +12,10 @@ for (var i = 0; i < 3; i++) {
 }
 
 function main() {
-    // status = others.launch(PACKAGE_NAME);
-    // if (!status) {
-    //     return false;
-    // }
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     status = task();
 
@@ -28,9 +28,9 @@ function main() {
 function task() {
     log('---------- task start ----------');
 
-    // if (!clicks.text('任务') || !text('任务中心').exists()) {
-    //     return false;
-    // }
+    if (!clicks.text('任务') || !text('任务中心').exists()) {
+        return false;
+    }
 
     status1 = taskCheckin();
     status2 = taskLottery();
@@ -175,6 +175,7 @@ function taskVideo() {
     swipes.right();
 
     swipes.refresh();
+    
 
     log('---------- click first video ----------');
     clicks.xy(465, 597);

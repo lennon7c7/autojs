@@ -62,6 +62,14 @@ s.down = function () {
 /**
  * 滑动-下到上
  */
+s.down900 = function () {
+    swipe(500, 1000, 500, 100, 300);
+    sleep(1 * 1000)
+};
+
+/**
+ * 滑动-下到上
+ */
 s.down1600 = function () {
     swipe(500, 1700, 500, 100, 500);
     sleep(1 * 1000)

@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.taobao.taobao';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -33,6 +33,8 @@ function main() {
         clicks.desc('淘金币');
     }
 
+    clicks.text('购后返 ');
+
     for (var i = 0; i < 3; i++) {
         clicks.text('合力');
     }
@@ -50,9 +52,9 @@ function main() {
 function taskShop() {
     toastLog('---------- taskShop start ----------');
 
-    clicks.xy(33, 1404);
+    text('赚金币').exists() && clicks.xy(33, 1404);
 
-    if (desc('已完成').find().size() > 2) {
+    if (desc('已完成').find().size() > 6) {
         others.back();
         return true;
     }
@@ -61,28 +63,38 @@ function taskShop() {
         if (clicks.desc('逛10秒+10')) {
             sleeps.s15to20();
             clicks.text('关注+10');
-            others.back();
+            !desc('金币好店').exists() && others.back();
         }
     }
 
-    swipes.down();
-    swipes.down();
+    desc('金币好店').exists() && swipes.down();
+    desc('金币好店').exists() && swipes.down();
 
     for (var i = 0; i < 3; i++) {
         if (clicks.desc('逛10秒+10')) {
-            clicks.text('关注+10');
-
             sleeps.s15to20();
-            others.back();
+            clicks.text('关注+10');
+            !desc('金币好店').exists() && others.back();
+        }
+    }
+ 
+    desc('金币好店').exists() && swipes.down();
+    desc('金币好店').exists() && swipes.down();
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.desc('逛10秒+10')) {
+            sleeps.s15to20();
+            clicks.text('关注+10');
+            !desc('金币好店').exists() && others.back();
         }
     }
 
-    if (desc('已完成').find().size() > 2) {
+    if (desc('已完成').find().size() > 6) {
         others.back();
         return true;
     }
 
-    others.back();
+    desc('金币好店').exists() && others.back();
 
     toastLog('---------- taskShop end ----------');
 
@@ -136,79 +148,38 @@ function taskMoneyPower() {
         return false;
     }
 
-    if (text('已完成').find().size() > 3 && text('去完成').find().size() < 6) {
+    if (text('已完成').find().size() > 8 && text('去完成').find().size() < 5) {
         others.back();
         return true;
     }
 
     clicks.text('一键领取');
 
-    if (text('今日任务').exists() && clicks.text('浏览10秒立得') && !text('今日任务').exists()) {
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
-        }
+    if (text('每日7点/12点/18点可领').exists()) {
+        buttonClick = text('每日7点/12点/18点可领').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
 
-        sleeps.s2to3();
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
+            clicks.text('领取奖励');
         }
-
-        sleeps.s15to20();
-        others.back();
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.text('领取奖励');
     }
 
-    if (text('今日任务').exists() && clicks.text('逛10s立得') && !text('今日任务').exists()) {
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
-        }
+    if (text('来访就可以拿').exists()) {
+        buttonClick = text('来访就可以拿').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
 
-        sleeps.s2to3();
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
+            clicks.text('领取奖励');
         }
-
-        sleeps.s15to20();
-        others.back();
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.text('领取奖励');
     }
 
-    if (text('今日任务').exists() && clicks.text('浏览页面立得') && !text('今日任务').exists()) {
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
-        }
-
-        sleeps.s2to3();
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
-        }
-
-        sleeps.s15to20();
-        others.back();
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.text('领取奖励');
-    }
-
-    for (var i = 0; i < 7; i++) {
-        if (text('今日任务').exists() && clicks.text('浏览10s 立得') && !text('今日任务').exists()) {
-            if (!id('taolive_frame_video_layout').exists()) {
-                swipes.down();
-            }
-
+    if (text('逛菜鸟裹裹领寄件券（0/1）').exists()) {
+        buttonClick = text('逛菜鸟裹裹领寄件券（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
             sleeps.s2to3();
-            if (!id('taolive_frame_video_layout').exists()) {
-                swipes.down();
-            }
 
-            sleeps.s15to20();
+            clicks.text('去领券');
             others.back();
             if (!text('今日任务').exists()) {
                 return false;
@@ -217,27 +188,151 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('今日任务').exists() && clicks.text('边逛边领大额金币') && !text('今日任务').exists()) {
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
+    if (text('每日使用拍立淘立得').exists()) {
+        buttonClick = text('每日使用拍立淘立得').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+
+            clicks.id('scan_icon');
+            others.back2();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('逛农场领免费水果（0/1）').exists()) {
+        buttonClick = text('逛农场领免费水果（0/1）').findOne().parent().parent().findOne(text('去施肥'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            sleeps.s5to10();
+
+            clicks.xy(765, 1253);
+            clicks.text('去施肥，赚更多肥料');
+            clicks.xy(560, 1660);
+            others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('淘宝人生逛街领能量（0/1）').exists()) {
+        buttonClick = text('淘宝人生逛街领能量（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            sleeps.s10to20();
+
+            clicks.xy(530, 1200);
+            clicks.xy(530, 1300);
+            clicks.xy(530, 1410);
+
+            for (var i = 1; i < 5; i++) {
+                others.back();
+                clicks.xy(530, 1000 + (i * 100));
+                if (text('今日任务').exists()) {
+                    break;
+                }
+            }
+
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('查看淘宝成就月账单（0/1）').exists()) {
+        buttonClick = text('查看淘宝成就月账单（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+
+            if (text('月度账单').exists()) {
+                clicks.text('月度账单');
+                others.back();
+            }
+            others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('签到领话费充值金（0/1）').exists()) {
+        buttonClick = text('签到领话费充值金（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            sleeps.s10();
+            clicks.text('立即收下');
+            others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    for (var i = 0; i < 15; i++) {
+        buttonClick = null;
+        if (text('边逛边领大额金币').exists()) {
+            buttonClick = text('边逛边领大额金币').findOne().parent().parent().findOne(text('去完成'));
         }
 
-        sleeps.s2to3();
-        if (!id('taolive_frame_video_layout').exists()) {
-            swipes.down();
+        if (buttonClick == null && text('浏览页面立得').exists()) {
+            buttonClick = text('浏览页面立得').findOne().parent().parent().findOne(text('去完成'));
         }
 
-        sleeps.s15to20();
-        others.back();
-        if (!text('今日任务').exists()) {
-            return false;
+        if (buttonClick == null && text('浏览10s立得').exists()) {
+            buttonClick = text('浏览10s立得').findOne().parent().parent().findOne(text('去完成'));
         }
-        clicks.text('领取奖励');
+
+        if (buttonClick == null && text('浏览10s 立得').exists()) {
+            buttonClick = text('浏览10s 立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('浏览10秒立得').exists()) {
+            buttonClick = text('浏览10秒立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('浏览10秒 立得').exists()) {
+            buttonClick = text('浏览10秒 立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('逛10s立得').exists()) {
+            buttonClick = text('逛10s立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('逛10s 立得').exists()) {
+            buttonClick = text('逛10s 立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+
+            for (var j = 0; j < 6; j++) {
+                if (!id('taolive_frame_video_layout').exists()) {
+                    swipes.down();
+                }
+                sleeps.s2to3();
+            }
+
+            others.back();
+            if (text('回到淘宝').exists()) {
+                clicks.text('回到淘宝');
+            }
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
     }
 
     clicks.text('一键领取');
 
-    if (text('已完成').find().size() > 3 && text('去完成').find().size() < 6) {
+    if (text('已完成').find().size() > 8 && text('去完成').find().size() < 5) {
         others.back();
         return true;
     }
