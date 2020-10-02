@@ -46,7 +46,6 @@ function taskEverydayLottery() {
                 return true;
             }
         }
-
     }
 
     toastLog('---------- taskEverydayLottery end ----------');
@@ -60,11 +59,15 @@ function taskEverydayLottery() {
 function task0Lottery() {
     log('---------- task0Lottery start ----------');
 
-    clicks.xy(676, 795);
+    if (!text("Yu'E Bao").exists()) {
+        return false;
+    }
+
+    clicks.text("Yu'E Bao");
     clicks.desc('关闭');
 
     for (var i = 0; i < 4; i++) {
-        clicks.xy(405, 2025);
+        clicks.text('一分惊喜');
 
         if (clicks.text('0元抽奖')) {
             if (clicks.text('今日抽奖机会已用完')) {
@@ -73,11 +76,11 @@ function task0Lottery() {
                 return true;
             }
 
-            clicks.text('暂不进店')
+            clicks.text('暂不进店');
         }
 
         if (clicks.text('0元抽奖')) {
-            clicks.text('关注')
+            clicks.text('关注');
             others.back();
         }
     }

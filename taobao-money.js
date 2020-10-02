@@ -105,7 +105,7 @@ function taskShop() {
 function taskHelpFriend() {
     toastLog('---------- taskHelpFriend start ----------');
 
-    clicks.xy(912, 1203);
+    text('赚金币').exists() && clicks.xy(912, 1203);
 
     if (!text('去助力').exists() && !text('喊Ta回来').exists() && text('去拜访').exists()) {
         others.back();
@@ -148,7 +148,7 @@ function taskMoneyPower() {
         return false;
     }
 
-    if (text('已完成').find().size() > 8 && text('去完成').find().size() < 5) {
+    if (text('已完成').find().size() > 7 && text('去完成').find().size() < 5) {
         others.back();
         return true;
     }
@@ -332,7 +332,7 @@ function taskMoneyPower() {
 
     clicks.text('一键领取');
 
-    if (text('已完成').find().size() > 8 && text('去完成').find().size() < 5) {
+    if (text('已完成').find().size() > 7 && text('去完成').find().size() < 5) {
         others.back();
         return true;
     }

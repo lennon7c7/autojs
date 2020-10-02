@@ -118,6 +118,7 @@ function taskRandomPage() {
         return false;
     }
 
+    clicks.text('关注店铺');
     clicks.text('浏览商品');
     clicks.text('签到');
 
@@ -157,6 +158,12 @@ function taskRandomPage() {
             sleeps.s2to3();
         }
 
+        others.back();
+    }
+
+    if (clicks.text('去关注')) {
+        clicks.text('关注');
+        clicks.text('已关注');
         others.back();
     }
 

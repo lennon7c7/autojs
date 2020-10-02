@@ -28,11 +28,12 @@ function taskClick() {
         return false;
     }
 
-    back();
     if (className('android.widget.ImageView').exists()) {
         toastLog('重新开始');
         clicks.xy(550, 1200);
     }
+
+    others.back();
 
     while (true) {
         var x = 100,
@@ -68,6 +69,7 @@ function taskClick() {
                     sleep(5);
                 } else {
                     log('else');
+                    others.back();
                 }
             }
         }
