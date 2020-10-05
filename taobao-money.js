@@ -77,7 +77,7 @@ function taskShop() {
             !desc('金币好店').exists() && others.back();
         }
     }
- 
+
     desc('金币好店').exists() && swipes.down();
     desc('金币好店').exists() && swipes.down();
 
@@ -148,11 +148,6 @@ function taskMoneyPower() {
         return false;
     }
 
-    if (text('已完成').find().size() > 7 && text('去完成').find().size() < 5) {
-        others.back();
-        return true;
-    }
-
     clicks.text('一键领取');
 
     if (text('每日7点/12点/18点可领').exists()) {
@@ -194,6 +189,7 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
 
             clicks.id('scan_icon');
+            clicks.text('继续上传');
             others.back2();
             if (!text('今日任务').exists()) {
                 return false;
@@ -208,6 +204,7 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
             sleeps.s5to10();
 
+            clicks.text('签到领取');
             clicks.xy(765, 1253);
             clicks.text('去施肥，赚更多肥料');
             clicks.xy(560, 1660);
@@ -275,6 +272,38 @@ function taskMoneyPower() {
         }
     }
 
+    if (text('开启通知权限领能量（0/1）').exists()) {
+        buttonClick = text('开启通知权限领能量（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+
+            notifications();
+            sleeps.s1();
+            clicks.text('Manage notifications');
+            setText('手机淘宝');
+            sleeps.s1();
+            clicks.id('notification_package_text');
+            className('android.widget.Switch').click();
+            sleeps.s1();
+            others.back3();
+
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+
+            notifications();
+            sleeps.s1();
+            clicks.text('Manage notifications');
+            setText('手机淘宝');
+            sleeps.s1();
+            clicks.id('notification_package_text');
+            className('android.widget.Switch').click();
+            sleeps.s1();
+            others.back2();
+        }
+    }
+
     for (var i = 0; i < 15; i++) {
         buttonClick = null;
         if (text('边逛边领大额金币').exists()) {
@@ -312,7 +341,7 @@ function taskMoneyPower() {
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            for (var j = 0; j < 6; j++) {
+            for (var j = 0; j < 7; j++) {
                 if (!id('taolive_frame_video_layout').exists()) {
                     swipes.down();
                 }
@@ -332,14 +361,9 @@ function taskMoneyPower() {
 
     clicks.text('一键领取');
 
-    if (text('已完成').find().size() > 7 && text('去完成').find().size() < 5) {
-        others.back();
-        return true;
-    }
-
     others.back();
 
     toastLog('---------- taskMoneyPower end ----------');
 
-    return false;
+    return true;
 }

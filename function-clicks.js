@@ -36,7 +36,10 @@ s.text = function (textString) {
     }
 
 
-    if (click(text(textString).findOne().bounds().centerX(), text(textString).findOne().bounds().centerY())) {
+    element = text(textString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
         sleep(3 * 1000);
         return true;
     }
@@ -50,7 +53,7 @@ s.text = function (textString) {
         sleep(3 * 1000);
         return true;
     }
- 
+
     toastLog('---------- fail: click ' + textString + ' ----------');
 
     return false;
@@ -73,7 +76,10 @@ s.desc = function (descString) {
     }
 
 
-    if (click(desc(descString).findOne().bounds().centerX(), desc(descString).findOne().bounds().centerY())) {
+    element = desc(descString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
         sleep(3 * 1000);
         return true;
     }
@@ -87,7 +93,7 @@ s.desc = function (descString) {
         sleep(3 * 1000);
         return true;
     }
- 
+
     toastLog('---------- fail: click ----------');
 
     return false;
@@ -109,8 +115,10 @@ s.id = function (idString) {
         return false;
     }
 
-
-    if (click(id(idString).findOne().bounds().centerX(), id(idString).findOne().bounds().centerY())) {
+    element = id(idString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
         sleep(3 * 1000);
         return true;
     }
@@ -124,7 +132,7 @@ s.id = function (idString) {
         sleep(3 * 1000);
         return true;
     }
- 
+
     toastLog('---------- fail: click ----------');
 
     return false;

@@ -45,10 +45,6 @@ function taskPlayground() {
         return false;
     }
 
-    if (!text('去逛逛').exists() && text('再逛逛').exists()) {
-        return true;
-    }
-
     for (var i = 0; i < 12; i++) {
         if (clicks.text('看商品开金币宝箱（0/1）')) {
             if (clicks.text('打开看看~')) {
@@ -100,10 +96,6 @@ function taskPlayground() {
         }
     }
 
-    if (!text('去逛逛').exists() && text('再逛逛').exists()) {
-        return true;
-    }
-
     return false;
 }
 
@@ -126,7 +118,7 @@ function taskRandomPage() {
         return false;
     }
 
-    if (!text('去逛逛').exists() && text('已完成').exists()) {
+    if (text('已完成').find().size() > 7) {
         return true;
     }
 
@@ -167,7 +159,7 @@ function taskRandomPage() {
         others.back();
     }
 
-    if (!text('去逛逛').exists() && text('已完成').exists()) {
+    if (text('已完成').find().size() > 7) {
         return true;
     }
 

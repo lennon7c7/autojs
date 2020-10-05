@@ -7,20 +7,21 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.lwhy.hltzs';
 
-main();
+for (var i = 0; i < 10; i++) {
+    main();
+}
 
 function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    taskCheckinWithdraw();
-    taskDaily();
-    taskCheckin();
-    taskLimitRedPacket();
+    status1 = taskDaily();
+    // taskCheckinWithdraw();
+    // taskCheckin();
+    // taskLimitRedPacket();
     taskLuckLottery();
     taskOnLineReward();
+
+    if (status1) {
+        others.exit();
+    }
 }
 
 /**
@@ -28,6 +29,11 @@ function main() {
  */
 function taskCheckinWithdraw() {
     toastLog('---------- taskCheckinWithdraw start ----------');
+
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     toastLog('---------- 提现 ----------');
     clicks.xy(445, 425);
@@ -52,43 +58,57 @@ function taskCheckinWithdraw() {
  * 任务-每日闯关
  */
 function taskDaily() {
-    toastLog('---------- taskCheckin start ----------');
+    toastLog('---------- taskDaily start ----------');
+
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     toastLog('---------- 每日闯关 ----------');
     clicks.xy(920, 560);
 
-    for (var i = 0; i < 20; i++) {
-        for (var j = 0; j < 10; j++) {
-            if (text('查看详情').exists()) {
-                break;
+    for (var i = 0; i < 100000; i++) {
+        if (currentPackage() != PACKAGE_NAME && currentPackage() != 'android') {
+            log('---------- ', currentPackage(), ' ----------');
+            app.launch(PACKAGE_NAME);
+            sleeps.s3();
+            if (currentPackage() != PACKAGE_NAME && currentPackage() != 'android') {
+                return false;
+            }
+        } else if (id('tt_insert_dislike_icon_img').exists()) {
+            clicks.id('tt_insert_dislike_icon_img');
+        } else if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
+            log('---------- 补充体力 ----------');
+            sleeps.s3();
+            if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
+                return true;
             }
 
+            closeAd(540, 850);
+        } else if (id('bxm_sdk_iv_close').exists()) {
+            clicks.id('bxm_sdk_iv_close');
+        } else if (id('tt_video_progress').exists()) {
+            clicks.id('tt_video_ad_close_layout');
+        } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
+            && className('android.widget.ImageView').find().size() == 0) {
+            log('---------- random redpackage video ----------');
+            closeAd(600, 1660);
+            // } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
+        } else {
+            log('---------- random answer ----------');
             if (random() > 0.5) {
-                toastLog('---------- answer left ----------');
                 clicks.xy(100, 1400);
             } else {
-                toastLog('---------- answer right ----------');
                 clicks.xy(1000, 1400);
             }
-
-            toastLog('---------- ramdon redpackage ----------');
-            clicks.xy(860, 610);
-
-            clicks.id('tt_insert_dislike_icon_img');
-
-            if (currentPackage() != packageName) {
-                app.launch(packageName);
-            }
-
-            back()
+            back();
         }
-
-        toastLog('---------- 补充体力 ----------');
-        closeAd(540, 850);
-        sleeps.s4();
     }
 
     toastLog('---------- taskDaily end ----------');
+
+    return false;
 }
 
 /**
@@ -96,6 +116,11 @@ function taskDaily() {
  */
 function taskCheckin() {
     toastLog('---------- taskCheckin start ----------');
+
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -121,6 +146,14 @@ function taskCheckin() {
 function taskLimitRedPacket() {
     toastLog('---------- taskLimitRedPacket start ----------');
 
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
+    toastLog('---------- 每日红包 ----------');
+    clicks.xy(300, 1500);
+
     toastLog('---------- 领取 ----------');
     clicks.xy(880, 1000);
 
@@ -136,7 +169,16 @@ function taskLimitRedPacket() {
 function taskOnLineReward() {
     toastLog('---------- taskOnLineReward start ----------');
 
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
+    toastLog('---------- 每日红包 ----------');
+    clicks.xy(300, 1500);
+
     for (var i = 0; i < 4; i++) {
+        back();
         toastLog('---------- 领取 ----------');
         clicks.xy(900, 1800);
 
@@ -153,6 +195,11 @@ function taskOnLineReward() {
 function taskLuckLottery() {
     toastLog('---------- taskLuckLottery start ----------');
 
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
 
@@ -160,11 +207,12 @@ function taskLuckLottery() {
     clicks.xy(880, 1300);
 
     for (var i = 0; i < 4; i++) {
+        back();
         toastLog('---------- 免费抽奖 ----------');
         closeAd(550, 1650);
 
         toastLog('---------- 好的 ----------');
-        sleeps.s5to10();
+        sleeps.s10();
         clicks.xy(530, 1350);
     }
 
@@ -194,13 +242,25 @@ function taskLuckLottery() {
 function closeAd(x, y) {
     clicks.xy(x, y);
 
-    sleeps.s60to70();
+    sleeps.s30();
 
-    others.back();
-    if (!clicks.id('tt_video_ad_close_layout')) {
-        toastLog('---------- click fail: closeAd ----------');
-        return false;
+    for (var i = 0; i < 30; i++) {
+        if (id('tt_video_ad_close_layout').exists()) {
+            clicks.id('tt_video_ad_close_layout');
+            if (!id('tt_video_ad_close_layout').exists()) {
+                break;
+            }
+        } else if (text('腾讯社交联盟广告').exists()) {
+            clicks.xy(60, 147);
+            if (!text('腾讯社交联盟广告').exists()) {
+                break;
+            }
+        }
+
+        sleeps.s1();
     }
+
+    sleeps.s3();
 
     return true;
 }
