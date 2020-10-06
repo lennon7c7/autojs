@@ -1,15 +1,11 @@
 /**
- * 爱上消消消
- * 当前存在问题
- * 1. 某些点击失效
- * 2. 无法判断是否处于广告状态
- * 3. 无法判断是否处于游戏完成
+ * 考拉消消赚
  */
 var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'love.match.set';
+const PACKAGE_NAME = 'feka.games.koala.cancellation.pop.star.puzzle.android';
 
 for (var i = 0; i < 3; i++) {
     main();
@@ -23,53 +19,50 @@ function main() {
 }
 // 任务-点击
 function taskClick() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
+    // status = others.launch(PACKAGE_NAME);
+    // if (!status) {
+    //     return false;
+    // }
 
-    toastLog('重新开始');
-    clicks.xy(550, 1200);
+    // toastLog('第x关 开始');
+    // clicks.xy(530, 1730);
 
-    others.back();
+    // others.back();
 
     while (true) {
-        var x = 100,
+        var x = 150,
             xAdd = 100;
-        var y = 1900,
+        var y = 1700,
             yAdd = 100;
-        for (var i = 0; i < 8; i++) {
-            for (var j = 0; j < 10; j++) {
-                if (currentPackage() != PACKAGE_NAME) {
+        for (var i = 0; i < 9; i++) {
+            for (var j = 0; j < 9; j++) {
+                if (false) {
+
+                    // } else if (id('ad_root').exists()) {
+                    //     log('isPageAdBottom');
+                    //     sleep(4000);
+                    //     clicks.xy(540, 1240);
+                    // } else if (id('backBtn').exists()) {
+                    //     clicks.id('backBtn');
+                } else if (currentPackage() != PACKAGE_NAME) {
                     app.launch(PACKAGE_NAME);
-                    sleeps.s2to3();
-                } else if (isPageRewardDouble()) {
-                    log('isPageRewardDouble');
-                    clicks.xy(540, 1040);
-                    clicks.xy(520, 1320);
-                    others.back();
-                } else if (isPageAdBottom()) {
-                    log('isPageAdBottom');
-                    clicks.xy(540, 1040);
-                    others.back();
-                } else if (isPageAdFull()) {
+                    sleeps.s5to10();
+                } else if (id('closeBtn').exists()) {
+                    clicks.id('closeBtn');
+                } else if (className('android.widget.LinearLayout').exists() || text('广告').exists() || text('下载').exists() || text('关闭').exists()) {
                     log('isPageAdFull');
-                    clicks.xy(186, 195);
+                    clicks.xy(520, 1120);
                     sleeps.s60to70();
                     clicks.id('tt_video_ad_close_layout');
+                    clicks.xy(186, 195);
                     clicks.xy(924, 162);
                     others.back();
-                } else if (id('tt_insert_dislike_icon_img').exists()) {
-                    log('tt_insert_dislike_icon_img');
-                    clicks.id('tt_insert_dislike_icon_img');
-                    others.back();
-                } else if (isPageGaming()) {
-                    // log('isPageGaming');
+                    // back
+                    clicks.xy(60, 160);
+                    clicks.xy(60, 160);
+                } else {
                     click(x + xAdd * j, y - yAdd * i);
                     sleep(5);
-                } else {
-                    log('else');
-                    others.back();
                 }
             }
         }

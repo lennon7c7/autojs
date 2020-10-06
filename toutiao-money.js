@@ -84,7 +84,7 @@ function taskLottery() {
             others.back();
         }
     }
-    
+
     if (text('今日次数已用完').exists()) {
         others.back();
         return true;
@@ -101,21 +101,19 @@ function taskLottery() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    clicks.xy(102, 1191);
-    
+    text('任务中心').exists() && clicks.xy(102, 1191);
+
     if (!text('睡觉赚金币').exists()) {
         return false;
     }
 
-    if (clicks.text('我睡醒了')) {
-        if (clicks.text('可领取')) {
-            others.back();
-            return true;
-        }
-    } else if (clicks.text('我要睡了')) {
+    text('睡觉赚金币').exists() && clicks.xy(429, 984);
+    if (clicks.text('我要睡了')) {
         others.back();
         return true;
     }
+
+    others.back();
 
     log('---------- taskSleep end ----------');
 
@@ -175,12 +173,11 @@ function taskVideo() {
     swipes.right();
 
     swipes.refresh();
-    
 
     log('---------- click first video ----------');
-    clicks.xy(465, 597);
+    text('热榜').exists() && text('抗疫').exists() && text('小视频').exists() && text('南宁').exists() && clicks.xy(465, 597);
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 500; i++) {
         swipes.right();
         sleeps.s10to30();
     }
@@ -198,7 +195,7 @@ function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
     log('---------- 点击 宝箱 ----------');
-    clicks.xy(750 + 100, 1860 + 70);
+    text('任务中心').exists() && clicks.xy(750 + 100, 1860 + 70);
 
     if (text('Close').exists()) {
         clicks.xy(750 + 100, 1860 + 70);

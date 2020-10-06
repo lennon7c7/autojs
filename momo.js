@@ -23,9 +23,7 @@ function main() {
  * 任务-签到
  */
 function taskCheckin() {
-    others.initEnv();
-
-    var status = others.launchApp(PACKAGE_NAME);
+    status = others.launchApp(PACKAGE_NAME);
     if (!status) {
         return false;
     }

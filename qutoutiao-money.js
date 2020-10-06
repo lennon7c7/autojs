@@ -39,7 +39,7 @@ function taskNews() {
         return false;
     }
 
-    clicks.xy(24, 120);
+    text('日常任务').exists() && clicks.xy(24, 120);
 
     for (var i = 0; i < 10; i++) {
         swipes.refresh600();
@@ -90,10 +90,6 @@ function taskVideo() {
 function taskAd() {
     log('---------- taskAd start ----------');
 
-    if (text('体验领金币').find().size() > 3) {
-        return true;
-    }
-
     for (var i = 0; i < 5; i++) {
         if (text('日常任务').exists() && clicks.text('看视频领金币') && !text('日常任务').exists()) {
             clicks.xy(945, 111);
@@ -102,10 +98,6 @@ function taskAd() {
             others.back();
             others.back();
         }
-    }
-
-    if (text('体验领金币').find().size() > 3) {
-        return true;
     }
 
     log('---------- taskAd end ----------');

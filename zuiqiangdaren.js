@@ -16,8 +16,8 @@ function main() {
     // taskCheckinWithdraw();
     // taskCheckin();
     // taskLimitRedPacket();
-    taskLuckLottery();
-    taskOnLineReward();
+    // taskLuckLottery();
+    // taskOnLineReward();
 
     if (status1) {
         others.exit();
@@ -68,6 +68,11 @@ function taskDaily() {
     toastLog('---------- 每日闯关 ----------');
     clicks.xy(920, 560);
 
+    clicks.xy(1032, 2199);
+    if (text('不感兴趣').exists()) {
+        clicks.text('不感兴趣');
+    }
+
     for (var i = 0; i < 100000; i++) {
         if (currentPackage() != PACKAGE_NAME && currentPackage() != 'android') {
             log('---------- ', currentPackage(), ' ----------');
@@ -80,13 +85,13 @@ function taskDaily() {
             clicks.id('tt_insert_dislike_icon_img');
         } else if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
             log('---------- 补充体力 ----------');
-            sleeps.s3();
+
+            closeAd(540, 850);
+ 
             if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
                 return true;
             }
-
-            closeAd(540, 850);
-        } else if (id('bxm_sdk_iv_close').exists()) {
+       } else if (id('bxm_sdk_iv_close').exists()) {
             clicks.id('bxm_sdk_iv_close');
         } else if (id('tt_video_progress').exists()) {
             clicks.id('tt_video_ad_close_layout');

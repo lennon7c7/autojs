@@ -31,7 +31,7 @@ function main() {
 function taskEverydayLottery() {
     toastLog('---------- taskEverydayLottery start ----------');
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         if (!clicks.text('天天抽奖-每日领免费福利')) {
             return false;
         }
@@ -65,8 +65,9 @@ function task0Lottery() {
 
     clicks.text("Yu'E Bao");
     clicks.desc('关闭');
+    clicks.desc('立即抽奖');
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.text('一分惊喜');
 
         if (clicks.text('0元抽奖')) {

@@ -12,6 +12,64 @@ s.xy = function (x, y) {
 };
 
 /**
+ * 根据 文本 查找 xy
+ * @param {string} text
+ * @returns {boolean}
+ */
+s.xyByText = function (textString) {
+    if (!textString) {
+        toastLog('---------- fail: param none exist ----------');
+        return false;
+    }
+
+    if (!text(textString).exists()) {
+        toastLog('---------- fail: click ' + textString + ' none exist ----------');
+        return false;
+    }
+
+    element = text(textString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    toastLog('---------- fail: click ' + textString + ' ----------');
+
+    return false;
+};
+
+/**
+ * 根据 id 查找 xy
+ * @param {string} idString
+ * @returns {boolean}
+ */
+s.xyById = function (idString) {
+    if (!idString) {
+        toastLog('---------- fail: param none exist ----------');
+        return false;
+    }
+
+    if (!id(idString).exists()) {
+        toastLog('---------- fail: element none exist ----------');
+        return false;
+    }
+
+    element = id(idString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    toastLog('---------- fail: click ----------');
+
+    return false;
+};
+
+/**
  * 元素
  */
 s.element = function (e) {
@@ -101,7 +159,7 @@ s.desc = function (descString) {
 
 /**
  * id
- * @param {string} descString
+ * @param {string} idString
  * @returns {boolean}
  */
 s.id = function (idString) {
