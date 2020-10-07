@@ -53,18 +53,12 @@ function taskPlayground() {
             }
 
             if (clicks.text('立即购买')) {
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
-                sleeps.s2to3();
-                swipes.down();
+                for (var k = 0; k < 8; k++) {
+                    swipes.down();
+                    sleeps.s2to3();
+                }
+
                 others.back();
-                sleeps.s2to3();
 
                 if (clicks.text('打开看看~')) {
                     clicks.text('继续逛商品');
@@ -80,18 +74,11 @@ function taskPlayground() {
 
     for (var i = 0; i < 17; i++) {
         if (clicks.text('去逛逛')) {
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s2to3();
-            swipes.down();
-            sleeps.s2to3();
+            for (var k = 0; k < 8; k++) {
+                swipes.down();
+                sleeps.s2to3();
+            }
+
             others.back();
         }
     }

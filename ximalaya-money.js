@@ -79,6 +79,8 @@ function taskNews() {
         return false;
     }
 
+    scrollDown();
+
     for (var i = 0; i < 10; i++) {
         if (text('一边看新闻一边赚金币').exists() && text('一边看新闻一边赚金币').findOne().parent().findOne(text('去阅读')) != null) {
             clicks.xyByText('一边看新闻一边赚金币');
@@ -128,6 +130,8 @@ function taskLottery() {
     if (!clicks.text('福利') || !text('每日福利').exists()) {
         return false;
     }
+
+    scrollDown();
 
     if (!text('幸运大转盘').exists() || text('幸运大转盘').findOne().parent().findOne(text('去抽奖')) == null) {
         others.back();

@@ -100,5 +100,5 @@ function taskVideo() {
 
     log('---------- taskVideo end ----------');
 
-    return true;
+    return false;
 }
