@@ -7,27 +7,34 @@ var s = {};
  * xy
  */
 s.xy = function (x, y) {
+    if (x <= 0 && y <= 0) {
+        log('---------- fail: x=', x, ' y=', y, ' ----------');
+        return false;
+    }
+
     click(x, y);
     sleep(3 * 1000);
+
+    return true;
 };
 
 /**
- * 根据 文本 查找 xy
- * @param {string} text
+ * 根据 text 查找 xy
+ * @param {string} myString
  * @returns {boolean}
  */
-s.xyByText = function (textString) {
-    if (!textString) {
-        toastLog('---------- fail: param none exist ----------');
+s.xyByText = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (!text(textString).exists()) {
-        toastLog('---------- fail: click ' + textString + ' none exist ----------');
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
 
-    element = text(textString).findOne().bounds();
+    element = text(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
@@ -35,28 +42,28 @@ s.xyByText = function (textString) {
         return true;
     }
 
-    toastLog('---------- fail: click ' + textString + ' ----------');
+    log('---------- fail: click ', myString, ' ----------');
 
     return false;
 };
 
 /**
  * 根据 id 查找 xy
- * @param {string} idString
+ * @param {string} myString
  * @returns {boolean}
  */
-s.xyById = function (idString) {
-    if (!idString) {
-        toastLog('---------- fail: param none exist ----------');
+s.xyById = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (!id(idString).exists()) {
-        toastLog('---------- fail: element none exist ----------');
+    if (!id(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
 
-    element = id(idString).findOne().bounds();
+    element = id(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
@@ -64,7 +71,36 @@ s.xyById = function (idString) {
         return true;
     }
 
-    toastLog('---------- fail: click ----------');
+    log('---------- fail: click ', myString, ' ----------');
+
+    return false;
+};
+
+/**
+ * 根据 desc 查找 xy
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.xyByDesc = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (!desc(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    element = desc(myString).findOne().bounds();
+    x = element.centerX();
+    y = element.centerY();
+    if (x >= 0 && y >= 0 && click(x, y)) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    log('---------- fail: click ', myString, ' ----------');
 
     return false;
 };
@@ -79,22 +115,26 @@ s.element = function (e) {
 
 /**
  * 文本
- * @param {string} text
+ * @param {string} myString
  * @returns {boolean}
  */
-s.text = function (textString) {
-    if (!textString) {
-        toastLog('---------- fail: param none exist ----------');
+s.text = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (!text(textString).exists()) {
-        toastLog('---------- fail: click ' + textString + ' none exist ----------');
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
 
+    if (text(myString).click()) {
+        sleep(3 * 1000);
+        return true;
+    }
 
-    element = text(textString).findOne().bounds();
+    element = text(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
@@ -102,39 +142,47 @@ s.text = function (textString) {
         return true;
     }
 
-    if (text(textString).click()) {
+    if (text(myString).findOne().click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    if (text(textString).findOne().click()) {
-        sleep(3 * 1000);
-        return true;
-    }
-
-    toastLog('---------- fail: click ' + textString + ' ----------');
+    log('---------- fail: click ', myString, ' ----------');
 
     return false;
 };
 
 /**
- * 描述
- * @param {string} descString
+ * 文本-元素存在则点击
+ * @param {string} myString
  * @returns {boolean}
  */
-s.desc = function (descString) {
-    if (!descString) {
-        toastLog('---------- fail: param none exist ----------');
+s.textIfExists = function (myString) {
+    if (myString == '' || !text(myString).exists()) {
         return false;
     }
 
-    if (!desc(descString).exists()) {
-        toastLog('---------- fail: element none exist ----------');
+    return s.text(myString);
+};
+
+/**
+ * 描述
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.desc = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (!desc(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
 
 
-    element = desc(descString).findOne().bounds();
+    element = desc(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
@@ -142,38 +190,38 @@ s.desc = function (descString) {
         return true;
     }
 
-    if (desc(descString).click()) {
+    if (desc(myString).click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    if (desc(descString).findOne().click()) {
+    if (desc(myString).findOne().click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    toastLog('---------- fail: click ----------');
+    log('---------- fail: click ', myString, ' ----------');
 
     return false;
 };
 
 /**
  * id
- * @param {string} idString
+ * @param {string} myString
  * @returns {boolean}
  */
-s.id = function (idString) {
-    if (!idString) {
-        toastLog('---------- fail: param none exist ----------');
+s.id = function (myString) {
+    if (myString == '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (!id(idString).exists()) {
-        toastLog('---------- fail: element none exist ----------');
+    if (!id(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
 
-    element = id(idString).findOne().bounds();
+    element = id(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
@@ -181,27 +229,19 @@ s.id = function (idString) {
         return true;
     }
 
-    if (id(idString).click()) {
+    if (id(myString).click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    if (id(idString).findOne().click()) {
+    if (id(myString).findOne().click()) {
         sleep(3 * 1000);
         return true;
     }
 
-    toastLog('---------- fail: click ----------');
+    log('---------- fail: click ', myString, ' ----------');
 
     return false;
-};
-
-/**
- * 如果id元素存在，则点击
- */
-s.ifIdExists = function (e) {
-    e.findOne().click();
-    sleep(3 * 1000);
 };
 
 /**
@@ -209,14 +249,6 @@ s.ifIdExists = function (e) {
  */
 s.findOne = function (e) {
     e.findOne().click();
-    sleep(3 * 1000);
-};
-
-/**
- * 元素
- */
-s.findOneParent = function (e) {
-    e.findOne().parent().click();
     sleep(3 * 1000);
 };
 

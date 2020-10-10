@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.kaola';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 30; i++) {
     main();
 }
 
@@ -105,49 +105,39 @@ function taskRandomPage() {
         return false;
     }
 
-    if (text('已完成').find().size() > 7) {
-        return true;
-    }
-
     for (var i = 0; i < 12; i++) {
-        if (!clicks.text('去逛逛')) {
-            return false;
-        }
+        if (clicks.text('去逛逛')) {
+            if (text('进店浏览15秒得考拉豆').exists()) {
+                for (var j = 0; j < 10; j++) {
+                    if (!clicks.text('进店领豆')) {
+                        return false;
+                    }
 
-        if (text('进店浏览15秒得考拉豆').exists()) {
-            for (var j = 0; j < 10; j++) {
-                if (!clicks.text('进店领豆')) {
-                    return false;
-                }
+                    for (var k = 0; k < 8; k++) {
+                        swipes.down();
+                        sleeps.s2to3();
+                    }
 
-                for (var k = 0; k < 8; k++) {
-                    swipes.down();
-                    sleeps.s2to3();
+                    others.back();
                 }
 
                 others.back();
+                continue;
             }
 
-            others.back();
-            continue;
+            for (var j = 0; j < 8; j++) {
+                swipes.down();
+                sleeps.s2to3();
+            }
         }
-
-        for (var j = 0; j < 8; j++) {
-            swipes.down();
-            sleeps.s2to3();
-        }
-
-        others.back();
     }
 
-    if (clicks.text('去关注')) {
+    if (text('去关注').exists()) {
+        clicks.text('去关注');
+        sleeps.s2to3();
         clicks.text('关注');
         clicks.text('已关注');
         others.back();
-    }
-
-    if (text('已完成').find().size() > 7) {
-        return true;
     }
 
     return true;

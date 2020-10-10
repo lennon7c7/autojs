@@ -107,11 +107,6 @@ function taskHelpFriend() {
 
     text('赚金币').exists() && clicks.xy(912, 1203);
 
-    if (!text('去助力').exists() && !text('喊Ta回来').exists() && text('去拜访').exists()) {
-        others.back();
-        return true;
-    }
-
     for (var i = 0; i < 6; i++) {
         if (clicks.text('去助力')) {
             clicks.xy(393, 567);
@@ -127,16 +122,11 @@ function taskHelpFriend() {
         }
     }
 
-    if (!text('去助力').exists() && !text('喊Ta回来').exists() && text('去拜访').exists()) {
-        others.back();
-        return true;
-    }
-
     others.back();
 
     toastLog('---------- taskHelpFriend end ----------');
 
-    return false;
+    return true;
 }
 
 // 任务-金币能量
@@ -222,11 +212,11 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
             sleeps.s10to20();
 
-            clicks.xy(530, 1200);
-            clicks.xy(530, 1300);
-            clicks.xy(530, 1410);
+            for (var i = 1; i < 8; i++) {
+                clicks.xy(530, 1000 + (i * 100));
+            }
 
-            for (var i = 1; i < 5; i++) {
+            for (var i = 1; i < 8; i++) {
                 others.back();
                 clicks.xy(530, 1000 + (i * 100));
                 if (text('今日任务').exists()) {
@@ -264,6 +254,29 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
             sleeps.s10();
             clicks.text('立即收下');
+            others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('淘宝成就签到（0/1）').exists()) {
+        buttonClick = text('淘宝成就签到（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            if (clicks.text('成就礼包')) {
+                clicks.text('我收下了')
+            }
+            if (text('成就签到').exists()) {
+                buttonClick = text('成就签到').findOne().parent().findOne(className('android.widget.Button'));
+                if (buttonClick != null) {
+                    clicks.element(buttonClick);
+                    clicks.text('我收下了')
+                }
+            }
+
             others.back();
             if (!text('今日任务').exists()) {
                 return false;

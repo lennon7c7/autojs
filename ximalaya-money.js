@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ximalaya.ting.lite';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 30; i++) {
     main();
 }
 
@@ -18,9 +18,9 @@ function main() {
     }
 
     status1 = taskCheckin();
-    status2 = taskVideo();
     status3 = taskNews();
     status4 = taskLottery();
+    status2 = taskVideo();
 
     if (status1 && status2 && status3 && status4) {
         others.exit();
@@ -52,9 +52,25 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 3; i++) {
+    if (text('看视频').exists()) {
+        clicks.text('看视频');
+        sleeps.s35to40();
+
+        if (id('tt_video_ad_close_layout').exists()) {
+            clicks.id('tt_video_ad_close_layout');
+        }
+
+        others.back3();
+    }
+
+    for (var i = 0; i < 30; i++) {
         buttonClick = null;
         if (text('看一次赚50金币').exists()) {
+            buttonClick = text('看一次赚50金币').findOne().parent().findOne(text('已完成'));
+            if (buttonClick != null) {
+                return true;
+            }
+
             buttonClick = text('看一次赚50金币').findOne().parent().findOne(text('去观看'));
         }
         if (buttonClick != null) {
@@ -66,7 +82,7 @@ function taskVideo() {
 
     log('---------- taskVideo end ----------');
 
-    return true;
+    return false;
 }
 
 /**
@@ -81,7 +97,7 @@ function taskNews() {
 
     scrollDown();
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 100; i++) {
         if (text('一边看新闻一边赚金币').exists() && text('一边看新闻一边赚金币').findOne().parent().findOne(text('去阅读')) != null) {
             clicks.xyByText('一边看新闻一边赚金币');
 
@@ -90,10 +106,10 @@ function taskNews() {
                 return true;
             }
 
-            sleeps.s60to70();
+            sleeps.s35to40();
             for (var j = 0; j < 100; j++) {
                 scrollDown();
-                sleeps.s2to3();
+                sleeps.s1();
 
                 if (text('closebtn').exists()) {
                     clicks.text('closebtn');
@@ -139,7 +155,7 @@ function taskLottery() {
     }
 
     clicks.xyByText('幸运大转盘');
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 100; i++) {
         if (text('今日剩余抽奖次数：0').exists()) {
             others.back();
             return true;
