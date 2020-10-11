@@ -129,15 +129,15 @@ s.text = function (myString) {
         return false;
     }
 
-    if (text(myString).click()) {
-        sleep(3 * 1000);
-        return true;
-    }
-
     element = text(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0 && click(x, y)) {
+        sleep(3 * 1000);
+        return true;
+    }
+
+    if (text(myString).click()) {
         sleep(3 * 1000);
         return true;
     }

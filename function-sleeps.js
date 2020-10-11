@@ -83,6 +83,10 @@ s.s10 = function () {
     sleep(10 * 1000);
 };
 
+s.s15 = function () {
+    sleep(15 * 1000);
+};
+
 // 30秒
 s.s30 = function () {
     sleep(30 * 1000);

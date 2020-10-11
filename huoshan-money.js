@@ -17,9 +17,6 @@ function main() {
         return false;
     }
 
-    log('---------- click 任务界面 ----------');
-    clicks.xy(621, 2201);
-
     taskTreasureBox();
     // taskAd20();
     taskVideo();
@@ -27,19 +24,25 @@ function main() {
 
 // 任务-小视频
 function taskVideo() {
-    log('---------- task video start ----------');
+    log('---------- taskVideo start ----------');
 
-    log('---------- index page ----------');
-    clicks.xy(87, 2205);
+    if (!clicks.text('首页')) {
+        return false;
+    }
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 500; i++) {
         swipes.down();
-        sleeps.s5to10();
+        if (text('13S').exists()) {
+            sleeps.s15();
+            clicks.text('领取')
+        } else {
+            sleeps.s2to3();
+        }
     }
 
     others.back();
 
-    log('---------- task video end ----------');
+    log('---------- taskVideo end ----------');
 
     return true;
 }
@@ -71,25 +74,16 @@ function taskAd20() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    var buttonBox = className('android.view.View').text('开宝箱得金币');
-    if (!buttonBox.exists()) {
-        log('---------- click 宝箱 nothing ----------');
+    if (!clicks.text('红包')) {
         return false;
     }
-    log('---------- click 宝箱 ----------');
-    buttonBox.findOne().click();
-    sleeps.s1();
 
-    var buttonAd = className('android.view.View').text('看视频 金币翻8倍');
-    if (!buttonAd.exists()) {
-        log('---------- click ad nothing ----------');
-        return false;
+    clicks.text('开宝箱得金币');
+    if (clicks.text('看视频 金币翻8倍')) {
+        sleeps.s35to40();
+        closeAd();
     }
-    log('---------- click ad ----------');
-    buttonAd.findOne().click();
-    sleeps.s35to40();
-
-    closeAd();
+    clicks.text('javascript:;')
 
     log('---------- taskTreasureBox end ----------');
 
@@ -98,23 +92,8 @@ function taskTreasureBox() {
 
 // 关闭广告
 function closeAd() {
-    var buttonCloseAd = className('android.widget.TextView').text('关闭广告');
-    if (!buttonCloseAd.exists()) {
-        log('---------- click ad nothing ----------');
-        return false;
-    }
-    log('---------- click ad ----------');
-    buttonCloseAd.click();
-    sleeps.s3();
-
-    var buttonCloseAdConfirm = id('sp');
-    if (!buttonCloseAdConfirm.exists()) {
-        log('---------- close ad confirm nothing ----------');
-        return false;
-    }
-    log('---------- click ad confirm ----------');
-    buttonCloseAdConfirm.click();
-    sleeps.s3();
+    clicks.text('关闭广告');
+    clicks.id('sp');
 
     return true;
 }

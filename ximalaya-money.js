@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ximalaya.ting.lite';
 
-for (var i = 0; i < 30; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -63,7 +63,7 @@ function taskVideo() {
         others.back3();
     }
 
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 10; i++) {
         buttonClick = null;
         if (text('看一次赚50金币').exists()) {
             buttonClick = text('看一次赚50金币').findOne().parent().findOne(text('已完成'));
@@ -97,7 +97,7 @@ function taskNews() {
 
     scrollDown();
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 10; i++) {
         if (text('一边看新闻一边赚金币').exists() && text('一边看新闻一边赚金币').findOne().parent().findOne(text('去阅读')) != null) {
             clicks.xyByText('一边看新闻一边赚金币');
 
@@ -155,7 +155,7 @@ function taskLottery() {
     }
 
     clicks.xyByText('幸运大转盘');
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 10; i++) {
         if (text('今日剩余抽奖次数：0').exists()) {
             others.back();
             return true;

@@ -54,6 +54,7 @@ function taskShop() {
 
     text('赚金币').exists() && clicks.xy(33, 1404);
 
+    sleeps.s5to10();
     if (desc('已完成').find().size() > 6) {
         others.back();
         return true;
@@ -107,6 +108,7 @@ function taskHelpFriend() {
 
     text('赚金币').exists() && clicks.xy(912, 1203);
 
+    sleeps.s5to10();
     for (var i = 0; i < 6; i++) {
         if (clicks.text('去助力')) {
             clicks.xy(393, 567);
@@ -138,6 +140,7 @@ function taskMoneyPower() {
         return false;
     }
 
+    sleeps.s5to10();
     clicks.text('一键领取');
 
     if (text('每日7点/12点/18点可领').exists()) {
