@@ -36,6 +36,8 @@ function task() {
     status2 = taskLottery();
     taskSleep();
     taskTreasureBox();
+    taskTaobao();
+    taskSearch();
     taskVideo();
     // taskNovel();
 
@@ -62,6 +64,58 @@ function taskCheckin() {
     }
 
     return false;
+}
+
+/**
+ * 任务-今日搜索任务
+ */
+function taskSearch() {
+    log('---------- taskSearch start ----------');
+
+    if (!text('今日搜索任务').exists()) {
+        return false;
+    }
+
+    buttonClick = text('今日搜索任务').findOne().parent().parent().findOne(text('去搜索'));
+    if (buttonClick == null) {
+        return false;
+    }
+
+    clicks.element(buttonClick);
+    myKeyword = className('android.widget.EditText').findOne().text();
+    for (var i = 0; i < 3; i++) {
+        clicks.desc('清除');
+        setText(myKeyword.split(',')[i]);
+        clicks.text('搜索');
+    }
+    others.back2();
+
+    log('---------- taskSearch end ----------');
+
+    return true;
+}
+
+/**
+ * 任务-淘宝
+ */
+function taskTaobao() {
+    log('---------- taskTaobao start ----------');
+
+    if (!text('去淘宝抽购物红包').exists()) {
+        return false;
+    }
+
+    buttonClick = text('去淘宝抽购物红包').findOne().parent().parent().findOne(text('去抽奖'));
+    if (buttonClick == null) {
+        return false;
+    }
+
+    clicks.element(buttonClick);
+    others.back();
+
+    log('---------- taskTaobao end ----------');
+
+    return true;
 }
 
 // 任务-抽奖
@@ -101,14 +155,15 @@ function taskLottery() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    text('任务中心').exists() && clicks.xy(102, 1191);
-
-    if (!text('睡觉赚金币').exists()) {
+    if (!clicks.text('睡觉赚钱')) {
         return false;
     }
 
-    text('睡觉赚金币').exists() && clicks.xy(429, 984);
     if (clicks.text('我要睡了')) {
+        others.back();
+        return true;
+    } else if (clicks.text('我睡醒了')) {
+        clicks.xy(429, 984);
         others.back();
         return true;
     }
@@ -160,13 +215,9 @@ function taskNovel() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    var buttonClickTask = className('android.widget.Button').text('去阅读');
-    if (!buttonClickTask.exists()) {
+    if (!clicks.text('去阅读')) {
         return false;
     }
-    log('---------- click video ----------');
-    buttonClickTask.findOne().parent().click();
-    sleeps.s3();
 
     swipes.right();
     swipes.right();
@@ -174,12 +225,16 @@ function taskVideo() {
 
     swipes.refresh();
 
-    log('---------- click first video ----------');
     text('热榜').exists() && text('抗疫').exists() && text('小视频').exists() && text('南宁').exists() && clicks.xy(465, 597);
 
-    for (var i = 0; i < 500; i++) {
+    for (var i = 0; i < 100; i++) {
         swipes.right();
-        sleeps.s10to30();
+        elementParent = className('android.widget.FrameLayout').findOne();
+        if (elementParent.find(className('android.widget.RelativeLayout')).size() <= 9) {
+            continue;
+        } else {
+            sleeps.s2to10();
+        }
     }
 
     others.back();

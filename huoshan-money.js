@@ -36,7 +36,7 @@ function taskVideo() {
             sleeps.s15();
             clicks.text('领取')
         } else {
-            sleeps.s2to3();
+            sleeps.s2to10();
         }
     }
 

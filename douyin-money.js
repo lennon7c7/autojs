@@ -127,7 +127,7 @@ function taskVideo() {
 
     for (var i = 0; i < 12; i++) {
         swipes.down();
-        sleeps.s5to10();
+        sleeps.s2to10();
     }
 
     log('---------- taskVideo end ----------');

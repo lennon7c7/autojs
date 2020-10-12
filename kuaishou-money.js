@@ -19,6 +19,7 @@ function main() {
         return false;
     }
 
+    others.back();
     if (!clicks.id('redFloat')) {
         return false;
     }
@@ -155,10 +156,14 @@ function taskVideo() {
             swipe(87, 969, 700, 969, 700);
             sleeps.s2to3();
             others.back();
-        }
-
+        } 
+        
         swipes.down1600();
-        sleeps.s10to30();
+        if (className('android.widget.FrameLayout').find().size() < 4) {
+            continue;
+        } else {
+            sleeps.s2to10();
+        }
     }
 
     log('---------- taskVideo end ----------');

@@ -33,17 +33,18 @@ function taskAd() {
     log('---------- taskAd start ----------');
 
     for (var i = 0; i < 100; i++) {
-        if (clicks.textIfExists('看视频赚金币') || clicks.textIfExists('看视频最高再赚60金币') || clicks.textIfExists('赚更多金币')
-            || clicks.textIfExists('看视频奖励翻倍')
-        ) {
-            if (text('恭喜您已完成今日视频观看任务').exists()) {
-                others.back();
-                return true;
-            }
+        clicks.textIfExists('看视频赚金币');
+        clicks.textIfExists('看视频最高再赚60金币');
+        clicks.textIfExists('赚更多金币');
+        clicks.textIfExists('看视频奖励翻倍');
 
-            sleeps.s35to40();
+        if (text('恭喜您已完成今日视频观看任务').exists()) {
             others.back();
+            return true;
         }
+
+        sleeps.s35to40();
+        others.back();
     }
 
     log('---------- taskAd end ----------');
