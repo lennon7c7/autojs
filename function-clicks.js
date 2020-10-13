@@ -4,6 +4,26 @@
 var s = {};
 
 /**
+ * width and height
+ */
+s.wh = function (width, height) {
+    className('android.widget.FrameLayout').find().forEach((value, key) => {
+        if (value.bounds().width() != width || value.bounds().height() != height) {
+            return false;
+        }
+
+        value.click();
+        sleep(3 * 1000);
+
+        return true;
+    });
+
+    log('---------- fail: width=', width, ' height=', height, ' ----------');
+
+    return false;
+};
+
+/**
  * xy
  */
 s.xy = function (x, y) {
@@ -111,6 +131,8 @@ s.xyByDesc = function (myString) {
 s.element = function (e) {
     e.click();
     sleep(3 * 1000);
+
+    return true;
 };
 
 /**

@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.kaola';
 
-for (var i = 0; i < 30; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -45,42 +45,46 @@ function taskPlayground() {
         return false;
     }
 
-    for (var i = 0; i < 12; i++) {
-        if (clicks.text('看商品开金币宝箱（0/1）')) {
-            if (clicks.text('打开看看~')) {
-                clicks.text('继续逛商品');
-                others.back();
-            }
-
-            if (clicks.text('立即购买')) {
-                for (var k = 0; k < 8; k++) {
-                    swipes.down();
-                    sleeps.s2to3();
-                }
-
-                others.back();
-
-                if (clicks.text('打开看看~')) {
-                    clicks.text('继续逛商品');
-                    others.back();
-                }
-
-                if (clicks.text('点击查看以下商品开宝箱')) {
-                    others.back();
-                }
-            }
+    for (var i = 0; i < 20; i++) {
+        if (!clicks.text('看商品开金币宝箱（0/1）')) {
+            return false;
         }
-    }
 
-    for (var i = 0; i < 17; i++) {
-        if (clicks.text('去逛逛')) {
+        if (clicks.text('打开看看~')) {
+            clicks.text('继续逛商品');
+            others.back();
+        }
+
+        if (clicks.text('立即购买')) {
             for (var k = 0; k < 8; k++) {
                 swipes.down();
                 sleeps.s2to3();
             }
 
             others.back();
+
+            if (clicks.text('打开看看~')) {
+                clicks.text('继续逛商品');
+                others.back();
+            }
+
+            if (clicks.text('点击查看以下商品开宝箱')) {
+                others.back();
+            }
         }
+    }
+
+    for (var i = 0; i < 20; i++) {
+        if (!clicks.text('去逛逛')) {
+            return false;
+        }
+
+        for (var k = 0; k < 8; k++) {
+            swipes.down();
+            sleeps.s2to3();
+        }
+
+        others.back();
     }
 
     return false;
@@ -105,31 +109,33 @@ function taskRandomPage() {
         return false;
     }
 
-    for (var i = 0; i < 12; i++) {
-        if (clicks.text('去逛逛')) {
-            if (text('进店浏览15秒得考拉豆').exists()) {
-                for (var j = 0; j < 10; j++) {
-                    if (!clicks.text('进店领豆')) {
-                        return false;
-                    }
+    for (var i = 0; i < 20; i++) {
+        if (!text('去逛逛').exists()) {
+            return false;
+        }
 
-                    for (var k = 0; k < 8; k++) {
-                        swipes.down();
-                        sleeps.s2to3();
-                    }
+        clicks.text('去逛逛');
+        if (text('进店浏览15秒得考拉豆').exists()) {
+            for (var j = 0; j < 10; j++) {
+                if (!clicks.text('进店领豆')) {
+                    return false;
+                }
 
-                    others.back();
+                for (var k = 0; k < 8; k++) {
+                    swipes.down();
+                    sleeps.s2to3();
                 }
 
                 others.back();
-                continue;
             }
-
+        } else {
             for (var j = 0; j < 8; j++) {
                 swipes.down();
                 sleeps.s2to3();
             }
         }
+
+        others.back();
     }
 
     if (text('去关注').exists()) {

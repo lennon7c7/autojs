@@ -123,20 +123,15 @@ function taskAd10() {
     }
 
     for (var i = 0; i < 10; i++) {
-        if (className('android.widget.Button').text('福利').exists()) {
-            className('android.widget.Button').text('福利').click();
-        } else if (className('android.widget.Button').text('福利 领金币').exists()) {
-            className('android.widget.Button').text('福利 领金币').click();
+        if (clicks.element(className('android.widget.Button').text('福利'))) {
+        } else if (clicks.element(className('android.widget.Button').text('福利 领金币'))) {
         } else {
             continue;
         }
 
         clicks.id('video_audio_btn');
-        sleeps.s35();
-        if (id('video_countdown').exists()) {
-            id('video_countdown').click();
-            sleeps.s3();
-        }
+        sleeps.s35to40();
+        clicks.id('video_countdown');
     }
 
     log('---------- taskAd10 end ----------');
@@ -156,8 +151,8 @@ function taskVideo() {
             swipe(87, 969, 700, 969, 700);
             sleeps.s2to3();
             others.back();
-        } 
-        
+        }
+
         swipes.down1600();
         if (className('android.widget.FrameLayout').find().size() < 4) {
             continue;

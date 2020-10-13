@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -20,9 +20,12 @@ function main() {
     others.back();
 
     // 任务界面
-    clicks.xy(479, 2216);
+    if (clicks.wh(276, 309)) {
+        return false;
+    }
 
     status0 = taskCheckin();
+    status00 = taskCashout();
     status1 = taskTreasureBox();
     status2 = taskLimit();
     status3 = taskSleep();
@@ -56,6 +59,31 @@ function taskCheckin() {
     return false;
 }
 
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('---------- taskCashout start ----------');
+
+    if (!clicks.text('去提现')) {
+        return false;
+    }
+
+    if (!clicks.text('每天可提')) {
+        return false;
+    }
+
+    if (!clicks.text('立即提现')) {
+        return false;
+    }
+
+    others.back2();
+
+    log('---------- taskCashout end ----------');
+
+    return true;
+}
+
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
@@ -84,7 +112,7 @@ function taskLimit() {
     if (text('限时任务赚金币').findOne().parent().parent().findOne(text('已领取')) != null) {
         return true;
     }
-    
+
     if (!clicks.text('限时任务赚金币')) {
         return false;
     }
@@ -125,7 +153,7 @@ function taskVideo() {
 
     others.back2();
 
-    for (var i = 0; i < 12; i++) {
+    for (var i = 0; i < 10; i++) {
         swipes.down();
         sleeps.s2to10();
     }
@@ -140,6 +168,8 @@ function closeAd() {
     sleeps.s35to40();
 
     if (!clicks.text('关闭广告')) {
+        others.back();
+   
         return false;
     }
 

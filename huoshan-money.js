@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ss.android.ugc.livelite';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -17,9 +17,37 @@ function main() {
         return false;
     }
 
-    taskTreasureBox();
+    others.back();
+    status1 = taskTreasureBox();
+    status2 = taskShare();
     // taskAd20();
-    taskVideo();
+    status3 = taskSleep();
+    status4 = taskVideo();
+
+    if (status1 && status2 && status3 && status4) {
+        others.clear();
+        exit();
+    }
+}
+
+// 任务-睡觉赚钱
+function taskSleep() {
+    log('---------- taskSleep start ----------');
+
+    if (!clicks.text('睡觉赚金币')) {
+        return false;
+    }
+
+    if (clicks.text('我要睡了')) {
+    } else if (clicks.text('我睡醒了')) {
+    }
+
+    clicks.text('可领取');
+    others.back();
+
+    log('---------- taskSleep end ----------');
+
+    return true;
 }
 
 // 任务-小视频
@@ -43,6 +71,33 @@ function taskVideo() {
     others.back();
 
     log('---------- taskVideo end ----------');
+
+    return true;
+}
+
+// 任务-晒收入
+function taskShare() {
+    log('---------- taskShare start ----------');
+
+    for (var i = 0; i < 4; i++) {
+        if (!clicks.element(text('晒收入').findOne().parent().find(text('领200金币')))) {
+            return false;
+        }
+
+        if (!clicks.text('微信')) {
+            return false;
+        }
+
+        if (!clicks.text('去粘贴')) {
+            return false;
+        }
+
+        others.back();
+    }
+
+    others.back();
+
+    log('---------- taskShare end ----------');
 
     return true;
 }

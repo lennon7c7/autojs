@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.baidu.searchbox.lite';
 
-for (var i = 0; i < 30; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
