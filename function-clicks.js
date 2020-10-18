@@ -39,6 +39,54 @@ s.xy = function (x, y) {
 };
 
 /**
+ * 批量点击-类似淘宝消消乐类型那种
+ * @param {int} x 行起始位置
+ * @param {int} y 列起始位置
+ * @param {int} offset 偏移量
+ * @param {int} step 行列的数目
+ */
+s.xiaoxiao = function (x, y, offset, step) {
+    xAdd = offset;
+    yAdd = offset;
+
+    for (var i = 0; i < step; i++) {
+        for (var j = 0; j < step; j++) {
+            // top
+            if (i != (step - 1)) {
+                click(x + xAdd * j, y - yAdd * i);
+                sleep(300);
+                click(x + xAdd * j, y - yAdd * i - yAdd);
+                sleep(300);
+            }
+
+            // right
+            if (i != (step - 1)) {
+                click(x + xAdd * j, y - yAdd * i);
+                sleep(300);
+                click(x + xAdd * j + xAdd, y - yAdd * i);
+                sleep(300);
+            }
+
+            // bottom
+            if (i != 0) {
+                click(x + xAdd * j, y - yAdd * i);
+                sleep(300);
+                click(x + xAdd * j, y - yAdd * i + yAdd);
+                sleep(300);
+            }
+
+            // left
+            if (j > 0) {
+                click(x + xAdd * j, y - yAdd * i);
+                sleep(300);
+                click(x + xAdd * j - xAdd, y - yAdd * i);
+                sleep(300);
+            }
+        }
+    }
+}
+
+/**
  * 根据 text 查找 xy
  * @param {string} myString
  * @returns {boolean}

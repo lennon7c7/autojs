@@ -22,9 +22,8 @@ function main() {
     status2 = taskShare();
     // taskAd20();
     status3 = taskSleep();
-    status4 = taskVideo();
 
-    if (status1 && status2 && status3 && status4) {
+    if (status1 && status2 && status3) {
         others.clear();
         exit();
     }
@@ -46,31 +45,6 @@ function taskSleep() {
     others.back();
 
     log('---------- taskSleep end ----------');
-
-    return true;
-}
-
-// 任务-小视频
-function taskVideo() {
-    log('---------- taskVideo start ----------');
-
-    if (!clicks.text('首页')) {
-        return false;
-    }
-
-    for (var i = 0; i < 500; i++) {
-        swipes.down();
-        if (text('13S').exists()) {
-            sleeps.s15();
-            clicks.text('领取')
-        } else {
-            sleeps.s2to10();
-        }
-    }
-
-    others.back();
-
-    log('---------- taskVideo end ----------');
 
     return true;
 }

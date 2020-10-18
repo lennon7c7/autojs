@@ -375,6 +375,34 @@ function taskMoneyPower() {
         }
     }
 
+    if (text('逛省钱消消乐拿红包（0/1）').exists()) {
+        buttonClick = text('逛省钱消消乐拿红包（0/1）').findOne().parent().parent().findOne(text('去完成'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            sleeps.s10();
+            clicks.xiaoxiao(102, 1702, 110, 9);
+            others.back();
+            clicks.xy(700, 1500);
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
+    if (text('浏览15s立得').exists()) {
+        buttonClick = text('浏览15s立得').findOne().parent().parent().findOne(text('去领取'));
+        if (text('今日任务').exists() && buttonClick != null) {
+            clicks.element(buttonClick);
+            sleeps.s15to20();
+            others.back();
+            if (!text('今日任务').exists()) {
+                return false;
+            }
+            clicks.text('领取奖励');
+        }
+    }
+
     clicks.text('一键领取');
 
     others.back();

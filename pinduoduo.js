@@ -23,7 +23,7 @@ function main() {
  * 任务-签到
  */
 function taskCheckin() {
-    status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }

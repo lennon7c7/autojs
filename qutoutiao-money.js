@@ -17,7 +17,6 @@ function main() {
         return false;
     }
 
-
     if (!clicks.text('任务')) {
         return false;
     }

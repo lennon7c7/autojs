@@ -17,6 +17,7 @@ function main() {
         return false;
     }
 
+    clicks.text('Later');
     status1 = task0Lottery();
     status2 = taskEverydayLottery();
 

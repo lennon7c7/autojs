@@ -18,31 +18,6 @@ s.initEnv = function () {
  * @param {string} packageName
  * @returns {boolean}
  */
-s.launchApp = function (packageName) {
-    s.clear();
-
-    for (var i = 0; i < 3; i++) {
-        app.launch(packageName);
-        sleep(10 * 1000);
-
-        if (currentPackage() == packageName) {
-            return true;
-        }
-    }
-
-    if (currentPackage() != packageName) {
-        toastLog('fail: launch');
-        return false;
-    }
-
-    return false;
-};
-
-/**
- * 启动应用
- * @param {string} packageName
- * @returns {boolean}
- */
 s.launch = function (packageName) {
     s.clear();
 

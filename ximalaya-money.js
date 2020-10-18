@@ -17,7 +17,7 @@ function main() {
         return false;
     }
 
-    others.back();
+    others.back2();
 
     status1 = taskCheckin();
     status3 = taskNews();

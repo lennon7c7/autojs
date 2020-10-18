@@ -23,7 +23,7 @@ function main() {
  * 任务-签到
  */
 function taskCheckin() {
-    status = others.launchApp(PACKAGE_NAME);
+    status = others.launch(PACKAGE_NAME);
     if (!status) {
         return false;
     }
@@ -43,6 +43,7 @@ function taskCheckin() {
     if (!clicks.text('立即签到领现金')) {
         return false;
     }
+    sleeps.s2to3();
 
     if (text('已签').exists()) {
         return true;
