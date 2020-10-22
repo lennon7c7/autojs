@@ -17,6 +17,7 @@ function main() {
         return false;
     }
 
+    others.back();
     if (!clicks.text('任务') && !clicks.text('去签到')) {
         return false;
     }
@@ -32,18 +33,25 @@ function main() {
 function taskAd() {
     log('---------- taskAd start ----------');
 
-    for (var i = 0; i < 100; i++) {
-        clicks.textIfExists('看视频赚金币');
+    for (var i = 0; i < 50; i++) {
         clicks.textIfExists('看视频最高再赚60金币');
         clicks.textIfExists('赚更多金币');
         clicks.textIfExists('看视频奖励翻倍');
+        clicks.textIfExists('看视频赚金币');
 
         if (text('恭喜您已完成今日视频观看任务').exists()) {
             others.back();
             return true;
         }
 
-        sleeps.s35to40();
+        sleeps.s15();
+        for (var j = 0; j < 10; j++) {
+            sleeps.s3();
+            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+                others.back();
+                break;
+            }
+        }
         others.back();
     }
 

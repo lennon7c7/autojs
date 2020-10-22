@@ -6,8 +6,8 @@ var s = {};
 /**
  * width and height
  */
-s.wh = function (width, height) {
-    className('android.widget.FrameLayout').find().forEach((value, key) => {
+s.elementWidthHeight = function (element, width, height) {
+    element.find().forEach((value, key) => {
         if (value.bounds().width() != width || value.bounds().height() != height) {
             return false;
         }

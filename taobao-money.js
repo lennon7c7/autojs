@@ -26,6 +26,8 @@ function main() {
     }
 
     sleeps.s5to10();
+    
+    clicks.text("签到领金币");
 
     if (text('签到领淘金币').exists()) {
         clicks.text('签到领淘金币');
@@ -354,10 +356,18 @@ function taskMoneyPower() {
             buttonClick = text('逛10s 立得').findOne().parent().parent().findOne(text('去完成'));
         }
 
+        if (buttonClick == null && text('浏览15s 立得').exists()) {
+            buttonClick = text('浏览15s 立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('浏览15s 立得').exists()) {
+            buttonClick = text('浏览15s 立得').findOne().parent().parent().findOne(text('去完成'));
+        }
+
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            for (var j = 0; j < 7; j++) {
+            for (var j = 0; j < 8; j++) {
                 if (!id('taolive_frame_video_layout').exists()) {
                     swipes.down();
                 }
@@ -383,19 +393,6 @@ function taskMoneyPower() {
             clicks.xiaoxiao(102, 1702, 110, 9);
             others.back();
             clicks.xy(700, 1500);
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.text('领取奖励');
-        }
-    }
-
-    if (text('浏览15s立得').exists()) {
-        buttonClick = text('浏览15s立得').findOne().parent().parent().findOne(text('去领取'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s15to20();
-            others.back();
             if (!text('今日任务').exists()) {
                 return false;
             }

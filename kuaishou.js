@@ -19,17 +19,16 @@ function main() {
         return false;
     }
 
-    others.back();
+    others.back2();
     if (!clicks.id('redFloat')) {
         return false;
     }
 
     status1 = taskTreasureBox();
-    status4 = taskAd10();
-    status2 = task0Lottery();
-    status3 = taskVideo();
+    status2 = taskAd10();
+    // status3 = task0Lottery();
 
-    if (status1 && status2 && status3 && status4) {
+    if (status1 && status2) {
         others.exit();
     }
 }
@@ -135,33 +134,6 @@ function taskAd10() {
     }
 
     log('---------- taskAd10 end ----------');
-
-    return true;
-}
-
-// 任务-视频
-function taskVideo() {
-    log('---------- taskVideo start ----------');
-
-    others.back();
-    others.back();
-
-    for (var i = 0; i < 1200; i++) {
-        if (text('Drag the slider').exists()) {
-            swipe(87, 969, 700, 969, 700);
-            sleeps.s2to3();
-            others.back();
-        }
-
-        swipes.down1600();
-        if (className('android.widget.FrameLayout').find().size() < 4) {
-            continue;
-        } else {
-            sleeps.s2to10();
-        }
-    }
-
-    log('---------- taskVideo end ----------');
 
     return true;
 }

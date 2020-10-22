@@ -42,11 +42,13 @@ function taskVideo() {
             sleeps.s15();
             clicks.text('领取')
         } else if (text('剩余2次').exists()) {
+            swipes.refresh600();
             sleeps.s10();
             clicks.text('剩余2次');
         } else if (text('剩余1次').exists()) {
+            swipes.refresh600();
             sleeps.s10();
-            clicks.text('剩余1次'); Í
+            clicks.text('剩余1次');
         } else {
             continue;
         }

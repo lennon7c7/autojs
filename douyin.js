@@ -20,18 +20,17 @@ function main() {
     others.back();
 
     // 任务界面
-    if (clicks.wh(276, 309)) {
+    if (clicks.elementWidthHeight(className('android.widget.FrameLayout'), 276, 309)) {
         return false;
     }
 
     status0 = taskCheckin();
-    status00 = taskCashout();
+    // status00 = taskCashout();
     status1 = taskTreasureBox();
     status2 = taskLimit();
     status3 = taskSleep();
-    status4 = taskVideo();
 
-    if (status0 && status1 && status2 && status3 && status4) {
+    if (status0 && status1 && status2 && status3) {
         others.exit();
     }
 }
@@ -145,22 +144,6 @@ function taskSleep() {
     log('---------- taskSleep end ----------');
 
     return false;
-}
-
-// 任务-小视频
-function taskVideo() {
-    log('---------- taskVideo start ----------');
-
-    others.back2();
-
-    for (var i = 0; i < 10; i++) {
-        swipes.down();
-        sleeps.s2to10();
-    }
-
-    log('---------- taskVideo end ----------');
-
-    return true;
 }
 
 function closeAd() {

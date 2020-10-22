@@ -24,7 +24,7 @@ s.launch = function (packageName) {
     s.initEnv();
 
     status = app.launch(packageName);
-    sleep(10 * 1000);
+    sleep(15 * 1000);
     if (!status) {
         return false;
     }

@@ -46,8 +46,22 @@ function taskPlayground() {
     }
 
     for (var i = 0; i < 20; i++) {
+        if (!clicks.text('去逛逛')) {
+            continue;
+        }
+
+        for (var k = 0; k < 8; k++) {
+            swipes.down();
+            sleeps.s2to3();
+        }
+
+        others.back();
+    }
+
+
+    for (var i = 0; i < 20; i++) {
         if (!clicks.text('看商品开金币宝箱（0/1）')) {
-            return false;
+            continue;
         }
 
         if (clicks.text('打开看看~')) {
@@ -74,20 +88,7 @@ function taskPlayground() {
         }
     }
 
-    for (var i = 0; i < 20; i++) {
-        if (!clicks.text('去逛逛')) {
-            return false;
-        }
-
-        for (var k = 0; k < 8; k++) {
-            swipes.down();
-            sleeps.s2to3();
-        }
-
-        others.back();
-    }
-
-    return false;
+    return true;
 }
 
 // 任务-逛商品
@@ -103,15 +104,13 @@ function taskRandomPage() {
 
     clicks.text('关注店铺');
     clicks.text('浏览商品');
-    clicks.text('签到');
+    clicks.text('今日签到');
 
-    if (!clicks.text('每日赚豆')) {
-        return false;
-    }
+    clicks.xy(930, 1030);
 
     for (var i = 0; i < 20; i++) {
         if (!text('去逛逛').exists()) {
-            return false;
+            continue;
         }
 
         clicks.text('去逛逛');
