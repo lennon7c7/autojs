@@ -30,7 +30,7 @@ function main() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    if (!clicks.text('首页')) {
+    if (!clicks.centerXyByText('首页')) {
         return false;
     }
 
@@ -40,15 +40,15 @@ function taskVideo() {
             || text('10S').exists() || text('9S').exists() || text('8S').exists()
         ) {
             sleeps.s15();
-            clicks.text('领取')
+            clicks.centerXyByText('领取')
         } else if (text('剩余2次').exists()) {
             swipes.refresh600();
             sleeps.s10();
-            clicks.text('剩余2次');
+            clicks.centerXyByText('剩余2次');
         } else if (text('剩余1次').exists()) {
             swipes.refresh600();
             sleeps.s10();
-            clicks.text('剩余1次');
+            clicks.centerXyByText('剩余1次');
         } else {
             continue;
         }

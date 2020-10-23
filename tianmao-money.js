@@ -28,11 +28,11 @@ function taskCheckin() {
         return false;
     }
 
-    if (!clicks.text('我')) {
+    if (!clicks.centerXyByText('我')) {
         return false;
     }
 
-    if (!clicks.text('红包签到')) {
+    if (!clicks.centerXyByText('红包签到')) {
         return false;
     }
 
@@ -40,7 +40,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.text('点击领取今日奖励')) {
+    if (!clicks.centerXyByText('点击领取今日奖励')) {
         return false;
     }
 

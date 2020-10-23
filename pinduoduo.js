@@ -28,7 +28,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (!clicks.text('现金签到')) {
+    if (!clicks.centerXyByText('现金签到')) {
         return false;
     }
     sleeps.s2to3();
@@ -37,7 +37,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.text('立即签到')) {
+    if (!clicks.centerXyByText('立即签到')) {
         return false;
     }
 

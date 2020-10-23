@@ -34,7 +34,7 @@ function main() {
 // 任务
 function task() {
     taskCallHero();
-    taskPk();
+    // taskPk();
 
     return true;
 }

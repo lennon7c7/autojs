@@ -28,11 +28,13 @@ function taskCheckin() {
         return false;
     }
 
-    if (!clicks.id('maintab_layout_profile')) {
+    clicks.centerXyByText('稍后更新');
+
+    if (!clicks.centerXyById('maintab_layout_profile')) {
         return false;
     }
 
-    if (!clicks.id('ad_banner_page')) {
+    if (!clicks.centerXyById('ad_banner_page')) {
         return false;
     }
 
@@ -40,7 +42,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.text('立即签到领现金')) {
+    if (!clicks.centerXyByText('立即签到领现金')) {
         return false;
     }
     sleeps.s2to3();

@@ -17,7 +17,7 @@ function main() {
         return false;
     }
 
-    if (!clicks.desc('赚钱')) {
+    if (!clicks.centerXyByDesc('赚钱')) {
         return true;
     }
 
@@ -45,11 +45,11 @@ function taskCheckin() {
     swipes.down();
     swipes.down();
 
-    if (!clicks.text('去签到')) {
+    if (!clicks.centerXyByText('去签到')) {
         return false;
     }
 
-    if (!clicks.text('立即签到')) {
+    if (!clicks.centerXyByText('立即签到')) {
         return false;
     }
 
@@ -64,7 +64,7 @@ function taskCheckin() {
     }
 
     others.back();
-    clicks.text('残忍拒绝');
+    clicks.centerXyByText('残忍拒绝');
 
     log('---------- taskCheckin end ----------');
 

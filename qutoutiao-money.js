@@ -17,7 +17,7 @@ function main() {
         return false;
     }
 
-    if (!clicks.text('任务')) {
+    if (!clicks.centerXyByText('任务')) {
         return false;
     }
 
@@ -34,7 +34,7 @@ function main() {
 function taskNews() {
     log('---------- taskNews start ----------');
 
-    if (!clicks.text('立即阅读')) {
+    if (!clicks.centerXyByText('立即阅读')) {
         return false;
     }
 
@@ -63,7 +63,7 @@ function taskNews() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    if (!clicks.text('观看视频')) {
+    if (!clicks.centerXyByText('观看视频')) {
         return false;
     }
 
@@ -90,7 +90,7 @@ function taskAd() {
     log('---------- taskAd start ----------');
 
     for (var i = 0; i < 5; i++) {
-        if (text('日常任务').exists() && clicks.text('看视频领金币') && !text('日常任务').exists()) {
+        if (text('日常任务').exists() && clicks.centerXyByText('看视频领金币') && !text('日常任务').exists()) {
             clicks.xy(945, 111);
             sleeps.s60();
             others.back();

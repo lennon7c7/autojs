@@ -17,28 +17,28 @@ function main() {
         return false;
     }
 
-    if (!clicks.desc('我的淘宝')) {
+    if (!clicks.centerXyByDesc('我的淘宝')) {
         return false;
     }
 
-    if (!clicks.desc('淘金币')) {
+    if (!clicks.centerXyByDesc('淘金币')) {
         return false;
     }
 
     sleeps.s5to10();
     
-    clicks.text("签到领金币");
+    clicks.centerXyByText("签到领金币");
 
     if (text('签到领淘金币').exists()) {
-        clicks.text('签到领淘金币');
+        clicks.centerXyByText('签到领淘金币');
         others.back();
-        clicks.desc('淘金币');
+        clicks.centerXyByDesc('淘金币');
     }
 
-    clicks.text('购后返 ');
+    clicks.centerXyByText('购后返 ');
 
     for (var i = 0; i < 3; i++) {
-        clicks.text('合力');
+        clicks.centerXyByText('合力');
     }
 
     status2 = taskHelpFriend();
@@ -63,9 +63,9 @@ function taskShop() {
     }
 
     for (var i = 0; i < 4; i++) {
-        if (clicks.desc('逛10秒+10')) {
+        if (clicks.centerXyByDesc('逛10秒+10')) {
             sleeps.s15to20();
-            clicks.text('关注+10');
+            clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
         }
     }
@@ -74,9 +74,9 @@ function taskShop() {
     desc('金币好店').exists() && swipes.down();
 
     for (var i = 0; i < 3; i++) {
-        if (clicks.desc('逛10秒+10')) {
+        if (clicks.centerXyByDesc('逛10秒+10')) {
             sleeps.s15to20();
-            clicks.text('关注+10');
+            clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
         }
     }
@@ -85,9 +85,9 @@ function taskShop() {
     desc('金币好店').exists() && swipes.down();
 
     for (var i = 0; i < 3; i++) {
-        if (clicks.desc('逛10秒+10')) {
+        if (clicks.centerXyByDesc('逛10秒+10')) {
             sleeps.s15to20();
-            clicks.text('关注+10');
+            clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
         }
     }
@@ -112,14 +112,14 @@ function taskHelpFriend() {
 
     sleeps.s5to10();
     for (var i = 0; i < 6; i++) {
-        if (clicks.text('去助力')) {
+        if (clicks.centerXyByText('去助力')) {
             clicks.xy(393, 567);
             others.back();
         }
     }
 
     for (var i = 0; i < 6; i++) {
-        if (clicks.text('喊Ta回来')) {
+        if (clicks.centerXyByText('喊Ta回来')) {
             clicks.xy(393, 507);
             clicks.xy(393, 567);
             others.back();
@@ -137,20 +137,20 @@ function taskHelpFriend() {
 function taskMoneyPower() {
     toastLog('---------- taskMoneyPower start ----------');
 
-    if (!clicks.text('赚金币')) {
+    if (!clicks.centerXyByText('赚金币')) {
         others.back();
         return false;
     }
 
     sleeps.s5to10();
-    clicks.text('一键领取');
+    clicks.centerXyByText('一键领取');
 
     if (text('每日7点/12点/18点可领').exists()) {
         buttonClick = text('每日7点/12点/18点可领').findOne().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -159,7 +159,7 @@ function taskMoneyPower() {
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -169,12 +169,12 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
             sleeps.s2to3();
 
-            clicks.text('去领券');
+            clicks.centerXyByText('去领券');
             others.back();
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -183,13 +183,13 @@ function taskMoneyPower() {
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            clicks.id('scan_icon');
-            clicks.text('继续上传');
+            clicks.centerXyById('scan_icon');
+            clicks.centerXyByText('继续上传');
             others.back2();
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -199,15 +199,15 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
             sleeps.s5to10();
 
-            clicks.text('签到领取');
+            clicks.centerXyByText('签到领取');
             clicks.xy(765, 1253);
-            clicks.text('去施肥，赚更多肥料');
+            clicks.centerXyByText('去施肥，赚更多肥料');
             clicks.xy(560, 1660);
             others.back();
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -232,7 +232,7 @@ function taskMoneyPower() {
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -242,14 +242,14 @@ function taskMoneyPower() {
             clicks.element(buttonClick);
 
             if (text('月度账单').exists()) {
-                clicks.text('月度账单');
+                clicks.centerXyByText('月度账单');
                 others.back();
             }
             others.back();
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -258,12 +258,12 @@ function taskMoneyPower() {
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s10();
-            clicks.text('立即收下');
+            clicks.centerXyByText('立即收下');
             others.back();
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -271,14 +271,14 @@ function taskMoneyPower() {
         buttonClick = text('淘宝成就签到（0/1）').findOne().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
-            if (clicks.text('成就礼包')) {
-                clicks.text('我收下了')
+            if (clicks.centerXyByText('成就礼包')) {
+                clicks.centerXyByText('我收下了')
             }
             if (text('成就签到').exists()) {
                 buttonClick = text('成就签到').findOne().parent().findOne(className('android.widget.Button'));
                 if (buttonClick != null) {
                     clicks.element(buttonClick);
-                    clicks.text('我收下了')
+                    clicks.centerXyByText('我收下了')
                 }
             }
 
@@ -286,7 +286,7 @@ function taskMoneyPower() {
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -297,10 +297,10 @@ function taskMoneyPower() {
 
             notifications();
             sleeps.s1();
-            clicks.text('Manage notifications');
+            clicks.centerXyByText('Manage notifications');
             setText('手机淘宝');
             sleeps.s1();
-            clicks.id('notification_package_text');
+            clicks.centerXyById('notification_package_text');
             className('android.widget.Switch').click();
             sleeps.s1();
             others.back3();
@@ -308,14 +308,14 @@ function taskMoneyPower() {
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
 
             notifications();
             sleeps.s1();
-            clicks.text('Manage notifications');
+            clicks.centerXyByText('Manage notifications');
             setText('手机淘宝');
             sleeps.s1();
-            clicks.id('notification_package_text');
+            clicks.centerXyById('notification_package_text');
             className('android.widget.Switch').click();
             sleeps.s1();
             others.back2();
@@ -376,12 +376,12 @@ function taskMoneyPower() {
 
             others.back();
             if (text('回到淘宝').exists()) {
-                clicks.text('回到淘宝');
+                clicks.centerXyByText('回到淘宝');
             }
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
@@ -396,11 +396,11 @@ function taskMoneyPower() {
             if (!text('今日任务').exists()) {
                 return false;
             }
-            clicks.text('领取奖励');
+            clicks.centerXyByText('领取奖励');
         }
     }
 
-    clicks.text('一键领取');
+    clicks.centerXyByText('一键领取');
 
     others.back();
 

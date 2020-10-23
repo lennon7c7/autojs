@@ -109,8 +109,13 @@ s.clear = function () {
     }
 
     sleep(2000);
-    clicks.id('clear_all');
-    clicks.id('clear_all_recents_image_button');
+
+    if (clicks.idIfExists('clear_all')) {
+
+    } else if (clicks.idIfExists('clear_all_recents_image_button')) {
+
+    }
+
     sleep(3000);
 
     return true;
@@ -127,7 +132,7 @@ s.exit = function () {
     }
 
     sleep(2000);
-    clicks.id('clear_all_recents_image_button');
+    clicks.centerXyById('clear_all_recents_image_button');
     sleep(3000);
 
     exit();

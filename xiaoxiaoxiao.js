@@ -56,12 +56,12 @@ function taskClick() {
                     log('isPageAdFull');
                     clicks.xy(186, 195);
                     sleeps.s60to70();
-                    clicks.id('tt_video_ad_close_layout');
+                    clicks.centerXyById('tt_video_ad_close_layout');
                     clicks.xy(924, 162);
                     others.back();
                 } else if (id('tt_insert_dislike_icon_img').exists()) {
                     log('tt_insert_dislike_icon_img');
-                    clicks.id('tt_insert_dislike_icon_img');
+                    clicks.centerXyById('tt_insert_dislike_icon_img');
                     others.back();
                 } else if (isPageGaming()) {
                     // log('isPageGaming');

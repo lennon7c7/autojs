@@ -17,7 +17,7 @@ function main() {
         return false;
     }
 
-    clicks.text('Later');
+    clicks.centerXyByText('Later');
     status1 = task0Lottery();
     status2 = taskEverydayLottery();
 
@@ -33,16 +33,16 @@ function taskEverydayLottery() {
     toastLog('---------- taskEverydayLottery start ----------');
 
     for (var i = 0; i < 5; i++) {
-        if (!clicks.text('天天抽奖-每日领免费福利')) {
+        if (!clicks.centerXyByText('天天抽奖-每日领免费福利')) {
             return false;
         }
 
-        if (clicks.text('0元抽奖')) {
-            if (clicks.text('参与抽奖')) {
+        if (clicks.centerXyByText('0元抽奖')) {
+            if (clicks.centerXyByText('参与抽奖')) {
                 others.back2();
             }
 
-            if (clicks.text('去领卡')) {
+            if (clicks.centerXyByText('去领卡')) {
                 others.back2();
                 return true;
             }
@@ -64,25 +64,25 @@ function task0Lottery() {
         return false;
     }
 
-    clicks.text("Yu'E Bao");
-    clicks.desc('关闭');
-    clicks.desc('立即抽奖');
+    clicks.centerXyByText("Yu'E Bao");
+    clicks.centerXyByDesc('关闭');
+    clicks.centerXyByDesc('立即抽奖');
 
     for (var i = 0; i < 5; i++) {
-        clicks.text('一分惊喜');
+        clicks.centerXyByText('一分惊喜');
 
-        if (clicks.text('0元抽奖')) {
-            if (clicks.text('今日抽奖机会已用完')) {
+        if (clicks.centerXyByText('0元抽奖')) {
+            if (clicks.centerXyByText('今日抽奖机会已用完')) {
                 others.back2();
 
                 return true;
             }
 
-            clicks.text('暂不进店');
+            clicks.centerXyByText('暂不进店');
         }
 
-        if (clicks.text('0元抽奖')) {
-            clicks.text('关注');
+        if (clicks.centerXyByText('0元抽奖')) {
+            clicks.centerXyByText('关注');
             others.back();
         }
     }

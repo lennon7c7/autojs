@@ -38,33 +38,41 @@ function taskCheckin() {
         return true;
     }
 
-    if (clicks.text('签到领红包')) {
+    if (clicks.centerXyByText('签到领红包')) {
         others.back();
         clicks.xy(750, 411);
     }
 
     if (text('领取 x1').exists()) {
-        clicks.text('领取 x1');
+        clicks.centerXyByText('领取 x1');
         others.back();
         clicks.xy(750, 411);
     }
 
     if (text('领取 x2').exists()) {
-        clicks.text('领取 x2');
+        clicks.centerXyByText('领取 x2');
         others.back();
         clicks.xy(750, 411);
     }
 
     if (text('领取 x3').exists()) {
-        clicks.text('领取 x3');
+        clicks.centerXyByText('领取 x3');
         others.back();
         clicks.xy(750, 411);
     }
 
     if (text('领取 x6').exists()) {
-        clicks.text('领取 x6');
+        clicks.centerXyByText('领取 x6');
         others.back();
         clicks.xy(750, 411);
+    }
+
+    if (text('提现').exists()) {
+        clicks.text('提现');
+        if (text('去提现').exists()) {
+            clicks.text('去提现');
+            others.back2();
+        }
     }
 
     others.back();
@@ -86,7 +94,7 @@ function taskVideo() {
 
     for (var i = 0; i < 1200; i++) {
         if (text('取消').exists()) {
-            clicks.text('取消');
+            clicks.centerXyByText('取消');
         }
 
         swipes.down1600();

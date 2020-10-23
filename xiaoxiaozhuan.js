@@ -43,17 +43,17 @@ function taskClick() {
                     //     sleep(4000);
                     //     clicks.xy(540, 1240);
                     // } else if (id('backBtn').exists()) {
-                    //     clicks.id('backBtn');
+                    //     clicks.centerXyById('backBtn');
                 } else if (currentPackage() != PACKAGE_NAME) {
                     app.launch(PACKAGE_NAME);
                     sleeps.s5to10();
                 } else if (id('closeBtn').exists()) {
-                    clicks.id('closeBtn');
+                    clicks.centerXyById('closeBtn');
                 } else if (className('android.widget.LinearLayout').exists() || text('广告').exists() || text('下载').exists() || text('关闭').exists()) {
                     log('isPageAdFull');
                     clicks.xy(520, 1120);
                     sleeps.s60to70();
-                    clicks.id('tt_video_ad_close_layout');
+                    clicks.centerXyById('tt_video_ad_close_layout');
                     clicks.xy(186, 195);
                     clicks.xy(924, 162);
                     others.back();

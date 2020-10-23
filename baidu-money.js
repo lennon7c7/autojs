@@ -18,7 +18,7 @@ function main() {
     }
 
     others.back();
-    if (!clicks.text('任务') && !clicks.text('去签到')) {
+    if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
         return false;
     }
 

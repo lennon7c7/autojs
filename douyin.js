@@ -7,7 +7,7 @@ var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
 const PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 3; i++) {
     main();
 }
 
@@ -45,7 +45,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.text('签到')) {
+    if (!clicks.centerXyByText('签到')) {
         return false;
     }
 
@@ -64,15 +64,15 @@ function taskCheckin() {
 function taskCashout() {
     log('---------- taskCashout start ----------');
 
-    if (!clicks.text('去提现')) {
+    if (!clicks.centerXyByText('去提现')) {
         return false;
     }
 
-    if (!clicks.text('每天可提')) {
+    if (!clicks.centerXyByText('每天可提')) {
         return false;
     }
 
-    if (!clicks.text('立即提现')) {
+    if (!clicks.centerXyByText('立即提现')) {
         return false;
     }
 
@@ -88,11 +88,11 @@ function taskCashout() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    if (!clicks.text('开宝箱得金币')) {
+    if (!clicks.centerXyByText('开宝箱得金币')) {
         return false;
     }
 
-    if (!clicks.text('看广告视频再赚')) {
+    if (!clicks.centerXyByText('看广告视频再赚')) {
         return false;
     }
 
@@ -112,7 +112,7 @@ function taskLimit() {
         return true;
     }
 
-    if (!clicks.text('限时任务赚金币')) {
+    if (!clicks.centerXyByText('限时任务赚金币')) {
         return false;
     }
 
@@ -127,16 +127,16 @@ function taskLimit() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    if (!clicks.text('睡觉赚金币')) {
+    if (!clicks.centerXyByText('睡觉赚金币')) {
         return false;
     }
 
-    if (clicks.text('我睡醒了')) {
-        if (clicks.text('可领取')) {
+    if (clicks.centerXyByText('我睡醒了')) {
+        if (clicks.centerXyByText('可领取')) {
             others.back();
             return true;
         }
-    } else if (clicks.text('我要睡了')) {
+    } else if (clicks.centerXyByText('我要睡了')) {
         others.back();
         return true;
     }
@@ -150,7 +150,7 @@ function closeAd() {
     clicks.xy(48, 162);
     sleeps.s35to40();
 
-    if (!clicks.text('关闭广告')) {
+    if (!clicks.centerXyByText('关闭广告')) {
         others.back();
    
         return false;

@@ -17,11 +17,11 @@ function main() {
     //     return false;
     // }
 
-    // if (!clicks.desc('我的淘宝')) {
+    // if (!clicks.centerXyByDesc('我的淘宝')) {
     //     return false;
     // }
 
-    // if (!clicks.desc('关注店铺')) {
+    // if (!clicks.centerXyByDesc('关注店铺')) {
     //     return false;
     // }
 

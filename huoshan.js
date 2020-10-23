@@ -33,15 +33,15 @@ function main() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    if (!clicks.text('睡觉赚金币')) {
+    if (!clicks.centerXyByText('睡觉赚金币')) {
         return false;
     }
 
-    if (clicks.text('我要睡了')) {
-    } else if (clicks.text('我睡醒了')) {
+    if (clicks.centerXyByText('我要睡了')) {
+    } else if (clicks.centerXyByText('我睡醒了')) {
     }
 
-    clicks.text('可领取');
+    clicks.centerXyByText('可领取');
     others.back();
 
     log('---------- taskSleep end ----------');
@@ -58,11 +58,11 @@ function taskShare() {
             return false;
         }
 
-        if (!clicks.text('微信')) {
+        if (!clicks.centerXyByText('微信')) {
             return false;
         }
 
-        if (!clicks.text('去粘贴')) {
+        if (!clicks.centerXyByText('去粘贴')) {
             return false;
         }
 
@@ -103,16 +103,16 @@ function taskAd20() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    if (!clicks.text('红包')) {
+    if (!clicks.centerXyByText('红包')) {
         return false;
     }
 
-    clicks.text('开宝箱得金币');
-    if (clicks.text('看视频 金币翻8倍')) {
+    clicks.centerXyByText('开宝箱得金币');
+    if (clicks.centerXyByText('看视频 金币翻8倍')) {
         sleeps.s35to40();
         closeAd();
     }
-    clicks.text('javascript:;')
+    clicks.centerXyByText('javascript:;')
 
     log('---------- taskTreasureBox end ----------');
 
@@ -121,8 +121,8 @@ function taskTreasureBox() {
 
 // 关闭广告
 function closeAd() {
-    clicks.text('关闭广告');
-    clicks.id('sp');
+    clicks.centerXyByText('关闭广告');
+    clicks.centerXyById('sp');
 
     return true;
 }

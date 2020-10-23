@@ -70,7 +70,7 @@ function taskDaily() {
 
     clicks.xy(1032, 2199);
     if (text('不感兴趣').exists()) {
-        clicks.text('不感兴趣');
+        clicks.centerXyByText('不感兴趣');
     }
 
     for (var i = 0; i < 100000; i++) {
@@ -82,7 +82,7 @@ function taskDaily() {
                 return false;
             }
         } else if (id('tt_insert_dislike_icon_img').exists()) {
-            clicks.id('tt_insert_dislike_icon_img');
+            clicks.centerXyById('tt_insert_dislike_icon_img');
         } else if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
             log('---------- 补充体力 ----------');
 
@@ -92,9 +92,9 @@ function taskDaily() {
                 return true;
             }
        } else if (id('bxm_sdk_iv_close').exists()) {
-            clicks.id('bxm_sdk_iv_close');
+            clicks.centerXyById('bxm_sdk_iv_close');
         } else if (id('tt_video_progress').exists()) {
-            clicks.id('tt_video_ad_close_layout');
+            clicks.centerXyById('tt_video_ad_close_layout');
         } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
             && className('android.widget.ImageView').find().size() == 0) {
             log('---------- random redpackage video ----------');
@@ -251,7 +251,7 @@ function closeAd(x, y) {
 
     for (var i = 0; i < 30; i++) {
         if (id('tt_video_ad_close_layout').exists()) {
-            clicks.id('tt_video_ad_close_layout');
+            clicks.centerXyById('tt_video_ad_close_layout');
             if (!id('tt_video_ad_close_layout').exists()) {
                 break;
             }

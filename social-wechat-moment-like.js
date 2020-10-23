@@ -23,13 +23,13 @@ function task() {
         return false;
     }
     toast('点击 发现');
-    clicks.text('Discover');
+    clicks.centerXyByText('Discover');
 
     if (!text('Moments').exists()) {
         return false;
     }
     toast('点击 朋友圈');
-    clicks.text('Moments');
+    clicks.centerXyByText('Moments');
 
     if (!text('Tap to change album cover').exists()) {
         toast('双击 顶部-更新朋友圈');
@@ -57,7 +57,7 @@ function clickLikeButton() {
             sleep(200);
 
             // 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，如果找到符合条件的控件则返回该控件；否则返回null
-            clicks.text('Like');
+            clicks.centerXyByText('Like');
         }
     });
 

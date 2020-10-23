@@ -32,39 +32,39 @@ function taskClear() {
     toastLog('---------- taskClear start ----------');
 
     others.back();
-    if (!clicks.text('我的')) {
+    if (!clicks.centerXyByText('我的')) {
         return false;
     }
 
-    if (!clicks.text('更多任务')) {
+    if (!clicks.centerXyByText('更多任务')) {
         return false;
     }
 
-    if (clicks.text('立即签到')) {
-        clicks.text('知道了');
+    if (clicks.centerXyByText('立即签到')) {
+        clicks.centerXyByText('知道了');
     }
 
-    if (clicks.text('领奖励')) {
-        clicks.text('知道了');
+    if (clicks.centerXyByText('领奖励')) {
+        clicks.centerXyByText('知道了');
     }
 
     if (text('完成1次手机空间清理（1/1）').exists()) {
         return true;
     }
 
-    if (!clicks.text('去清理')) {
+    if (!clicks.centerXyByText('去清理')) {
         return false;
     }
     sleeps.s2to3();
 
-    if (!clicks.text('放心清理')) {
+    if (!clicks.centerXyByText('放心清理')) {
         return false;
     }
 
     others.back2();
 
-    if (clicks.text('领奖励')) {
-        clicks.text('知道了');
+    if (clicks.centerXyByText('领奖励')) {
+        clicks.centerXyByText('知道了');
     }
 
     toastLog('---------- taskClear end ----------');
@@ -82,7 +82,7 @@ function taskNews() {
         return true;
     }
 
-    if (!clicks.text('去阅读') && !clicks.text('继续')) {
+    if (!clicks.centerXyByText('去阅读') && !clicks.centerXyByText('继续')) {
         return false;
     }
 
@@ -102,15 +102,15 @@ function taskNews() {
         others.back();
     }
 
-    if (!clicks.text('我的')) {
+    if (!clicks.centerXyByText('我的')) {
         return false;
     }
 
-    if (!clicks.text('更多任务')) {
+    if (!clicks.centerXyByText('更多任务')) {
         return false;
     }
 
-    clicks.text('领奖励');
+    clicks.centerXyByText('领奖励');
 
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
         return true;

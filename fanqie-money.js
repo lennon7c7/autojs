@@ -17,73 +17,67 @@ function main() {
         return false;
     }
 
-    task();
+    status = task();
+
+    if (status) {
+        others.exit();
+    }
 }
 
 // 任务
 function task() {
     log('---------- task start ----------');
 
-    clicks.xy(432, 2166);
+    if (!clicks.centerXyByText('福利')) {
+        return false;
+    }
 
-    taskTreasureBox();
-    taskAd();
-    taskBook();
+    status1 = taskTreasureBox();
+    status2 = taskAd();
+    // taskBook();
 
     log('---------- task end ----------');
 
-    return true;
+    return status1 && status2;
 }
 
 // 任务-看书
 function taskBook() {
-    log('---------- task book start ----------');
+    log('---------- taskBook start ----------');
 
-    var buttonClickTask = className('android.widget.RadioButton').text('书架');
-    if (!buttonClickTask.exists()) {
-        log('---------- task book nothing ----------');
+    if (!clicks.centerXyByText('微信')) {
         return false;
     }
-    log('---------- click book ----------');
-    clicks.findOne(buttonClickTask);
+
+    if (!clicks.centerXyByText('书架')) {
+        return false;
+    }
 
     clicks.xy(72, 906);
 
-    for (var i = 0; i < 10000; i++) {
+    for (var i = 0; i < 1000; i++) {
         swipes.right2100();
         sleeps.s2to3();
     }
 
-    log('---------- task book end ----------');
+    log('---------- taskBook end ----------');
 
     return true;
 }
 
 // 任务-Ad
 function taskAd() {
-    log('---------- task ad start ----------');
+    log('---------- taskAd start ----------');
 
     for (var i = 0; i < 10; i++) {
-        var buttonClickTask = className('android.view.View').text('看视频赚海量金币');
-        if (!buttonClickTask.exists()) {
-            log('---------- task ad nothing ----------');
-            return false;
+        if (!clicks.text('立即观看')) {
+            continue;
         }
-        log('---------- click ad ----------');
-        clicks.findOne(buttonClickTask);
-
-        var buttonMute = id('tt_top_mute');
-        if (!buttonMute.exists()) {
-            return false;
-        }
-        clicks.findOne(buttonMute);
-
-        sleeps.s35to40();
-
+  
         closeAd();
     }
 
-    log('---------- task ad end ----------');
+    log('---------- taskAd end ----------');
 
     return true;
 }
@@ -93,21 +87,15 @@ function taskAd() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    log('---------- 点击 宝箱 ----------');
-    clicks.xy(750 + 100, 1860 + 70);
-
-    log('---------- 点击 视频 ----------');
-    clicks.xy(247, 1170);
-
-    var buttonMute = id('tt_top_mute');
-    if (!buttonMute.exists()) {
-        return false;
+    if (text('开宝箱得金币').find().size() == 1) {
+        return true;
     }
-    clicks.findOne(buttonMute);
 
-    sleeps.s35to40();
+    if (!clicks.text('开宝箱得金币')) {
+        return true;
+    }
 
-    closeAd();
+    others.back();
 
     log('---------- taskTreasureBox end ----------');
 
@@ -115,12 +103,11 @@ function taskTreasureBox() {
 }
 
 function closeAd() {
-    var buttonMute = id('tt_video_ad_close_layout');
-    if (!buttonMute.exists()) {
-        log('---------- closeAd nothing ----------');
-        return false;
-    }
-    clicks.findOne(buttonMute);
+    clicks.centerXyById('tt_top_mute');
+
+    sleeps.s35to40();
+
+    clicks.centerXyById('tt_video_ad_close_layout');
 
     return true;
 }

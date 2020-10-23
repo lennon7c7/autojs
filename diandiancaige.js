@@ -28,7 +28,7 @@ function main() {
  * 任务-回答
  */
 function taskAnswer() {
-    clicks.text('取消');
+    clicks.centerXyByText('取消');
 
     for (var i = 0; i < 12000; i++) {
         if (id('recycler_question').find().size() > 0) {
@@ -48,20 +48,20 @@ function taskAnswer() {
         }
 
         if (id('tv_get_reward').exists()) {
-            clicks.id('tv_get_reward');
+            clicks.centerXyById('tv_get_reward');
         }
         if (text('领奖，开始下一首').exists()) {
-            clicks.text('领奖，开始下一首');
+            clicks.centerXyByText('领奖，开始下一首');
         }
 
         if (id('tv_next_music').exists()) {
-            clicks.id('tv_next_music');
+            clicks.centerXyById('tv_next_music');
         }
         if (text('下一首').exists()) {
-            clicks.text('下一首');
+            clicks.centerXyByText('下一首');
         }
         if (text('下一首，继续赚钱').exists()) {
-            clicks.text('下一首，继续赚钱');
+            clicks.centerXyByText('下一首，继续赚钱');
         }
 
         if (!id('tv_question_title').exists()) {
@@ -70,7 +70,7 @@ function taskAnswer() {
         }
 
         if (id('tt_video_ad_close_layout').exists()) {
-            clicks.id('tt_video_ad_close_layout');
+            clicks.centerXyById('tt_video_ad_close_layout');
         }
 
         sleeps.s2to3();

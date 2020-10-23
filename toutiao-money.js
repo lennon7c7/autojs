@@ -28,8 +28,12 @@ function main() {
 function task() {
     log('---------- task start ----------');
 
-    if (!clicks.text('任务') || !text('任务中心').exists()) {
+    if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
         return false;
+    }
+
+    if (text('看视频再领').exists()) {
+        clicks.xy(477, 1710);
     }
 
     status1 = taskCheckin();
@@ -50,18 +54,22 @@ function task() {
  * 任务-签到
  */
 function taskCheckin() {
+    log('---------- taskCheckin start ----------');
+
     if (text('明日签到').exists()) {
         return true;
     }
 
     if (text('立即签到 +100金币').exists()) {
-        clicks.text('立即签到 +100金币');
+        clicks.centerXyByText('立即签到 +100金币');
         clicks.xy(477, 1710);
     }
 
     if (text('明日签到').exists()) {
         return true;
     }
+
+    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -84,9 +92,9 @@ function taskSearch() {
     clicks.element(buttonClick);
     myKeyword = className('android.widget.EditText').findOne().text();
     for (var i = 0; i < 3; i++) {
-        clicks.desc('清除');
+        clicks.centerXyByDesc('清除');
         setText(myKeyword.split(',')[i]);
-        clicks.text('搜索');
+        clicks.centerXyByText('搜索');
     }
     others.back2();
 
@@ -122,7 +130,7 @@ function taskTaobao() {
 function taskLottery() {
     log('---------- taskLottery start ----------');
 
-    if (!clicks.text('去抽奖') || !text('集齐碎片得手机').exists()) {
+    if (!clicks.centerXyByText('去抽奖') || !text('集齐碎片得手机').exists()) {
         return false;
     }
 
@@ -132,9 +140,7 @@ function taskLottery() {
     }
 
     for (var i = 1; i <= 3; i++) {
-        var buttonClickTask = className('android.view.View').text('今日剩' + i + '次');
-        if (buttonClickTask.exists()) {
-            clicks.findOne(buttonClickTask);
+        if (clicks.text('今日剩' + i + '次')) {
             others.back();
         }
     }
@@ -155,14 +161,14 @@ function taskLottery() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    if (!clicks.text('睡觉赚钱')) {
+    if (!clicks.centerXyByText('睡觉赚钱')) {
         return false;
     }
 
-    if (clicks.text('我要睡了')) {
+    if (clicks.centerXyByText('我要睡了')) {
         others.back();
         return true;
-    } else if (clicks.text('我睡醒了')) {
+    } else if (clicks.centerXyByText('我睡醒了')) {
         clicks.xy(429, 984);
         others.back();
         return true;
@@ -215,7 +221,7 @@ function taskNovel() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    if (!clicks.text('去阅读')) {
+    if (!clicks.centerXyByText('去阅读')) {
         return false;
     }
 

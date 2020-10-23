@@ -20,7 +20,7 @@ function main() {
     }
 
     others.back2();
-    if (!clicks.id('redFloat')) {
+    if (!clicks.centerXyById('redFloat')) {
         return false;
     }
 
@@ -39,19 +39,19 @@ function task0Lottery() {
 
     others.back3();
 
-    if (!clicks.id('left_btn')) {
+    if (!clicks.centerXyById('left_btn')) {
         return false;
     }
 
-    if (!clicks.text('More')) {
+    if (!clicks.centerXyByText('More')) {
         return false;
     }
 
-    if (!clicks.text('Kwai Shop')) {
+    if (!clicks.centerXyByText('Kwai Shop')) {
         return false;
     }
 
-    if (!clicks.text('0元抽奖')) {
+    if (!clicks.centerXyByText('0元抽奖')) {
         return false;
     }
 
@@ -66,7 +66,7 @@ function task0Lottery() {
 
     // switch (text('提高中奖率').find().size()) {
     //     case 3:
-    //         clicks.text('免费抽')
+    //         clicks.centerXyByText('免费抽')
     //         swipes.down();
     //         swipes.down();     
     //         break;
@@ -75,11 +75,11 @@ function task0Lottery() {
     // }
 
     for (var i = 0; i < 10; i++) {
-        if (!clicks.text('免费抽')) {
+        if (!clicks.centerXyByText('免费抽')) {
             continue;
         }
 
-        if (!clicks.text('分享活动 立即参与')) {
+        if (!clicks.centerXyByText('分享活动 立即参与')) {
             others.back();
             continue;
         }
@@ -102,7 +102,7 @@ function task0Lottery() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    if (!clicks.text('开宝箱得金币')) {
+    if (!clicks.centerXyByText('开宝箱得金币')) {
         return true;
     }
 
@@ -128,9 +128,9 @@ function taskAd10() {
             continue;
         }
 
-        clicks.id('video_audio_btn');
+        clicks.centerXyById('video_audio_btn');
         sleeps.s35to40();
-        clicks.id('video_countdown');
+        clicks.centerXyById('video_countdown');
     }
 
     log('---------- taskAd10 end ----------');
