@@ -17,6 +17,7 @@ function main() {
         return false;
     }
 
+    others.back();
     status = taskVideo();
 
     if (status) {
@@ -32,47 +33,54 @@ function taskCheckin() {
     clicks.xy(750, 411);
     sleeps.s2to3();
 
-    if (text('明日再来领现金').exists()) {
-        others.back2();
-        clicks.xy(10, 2200);
+    if (text('明日再领现金').exists() || text('明日再来领现金').exists()) {
         return true;
     }
 
-    if (clicks.centerXyByText('签到领红包')) {
+    if (clicks.text('签到领红包')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (text('领取 x1').exists()) {
-        clicks.centerXyByText('领取 x1');
+    if (clicks.text('领取 x1')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (text('领取 x2').exists()) {
-        clicks.centerXyByText('领取 x2');
+    if (clicks.text('领取 x2')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (text('领取 x3').exists()) {
-        clicks.centerXyByText('领取 x3');
+    if (clicks.text('领取 x3')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (text('领取 x6').exists()) {
-        clicks.centerXyByText('领取 x6');
+    if (clicks.text('领取 x4')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (text('提现').exists()) {
-        clicks.text('提现');
-        if (text('去提现').exists()) {
-            clicks.text('去提现');
-            others.back2();
+    if (clicks.text('领取 x5')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('领取 x6')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (clicks.text('提现')) {
+        if (clicks.text('去提现')) {
+            others.back();
         }
+        others.back();
+    }
+
+    if (text('明日再领现金').exists() || text('明日再来领现金').exists()) {
+        return true;
     }
 
     others.back();
@@ -94,11 +102,11 @@ function taskVideo() {
 
     for (var i = 0; i < 1200; i++) {
         if (text('取消').exists()) {
-            clicks.centerXyByText('取消');
+            clicks.text('取消');
         }
 
         swipes.down1600();
-        sleeps.s5to10();
+        sleeps.s2to10();
     }
 
     status = taskCheckin();

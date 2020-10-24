@@ -90,6 +90,14 @@ s.xiaoxiao = function (x, y, offset, step) {
  * 元素
  */
 s.element = function (e) {
+    if (e.exists != undefined && !e.exists()) {
+        return false;
+    }
+
+    if (e.size != undefined && e.size() == 0) {
+        return false;
+    }
+
     e.click();
     sleep(3 * 1000);
 

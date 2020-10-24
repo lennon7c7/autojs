@@ -55,8 +55,9 @@ function taskPlayground() {
                 clicks.centerXyByText('继续逛商品');
             } else if (clicks.centerXyByText('立即购买')) {
                 others.back2();
-                continue;
             }
+
+            continue;
         } else {
             for (var k = 0; k < 8; k++) {
                 swipes.down();

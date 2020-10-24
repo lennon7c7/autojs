@@ -161,17 +161,13 @@ function taskLottery() {
 function taskSleep() {
     log('---------- taskSleep start ----------');
 
-    if (!clicks.centerXyByText('睡觉赚钱')) {
+    if (!clicks.text('睡觉赚钱')) {
         return false;
     }
 
-    if (clicks.centerXyByText('我要睡了')) {
-        others.back();
-        return true;
-    } else if (clicks.centerXyByText('我睡醒了')) {
+    if (clicks.text('我要睡了')) {
+    } else if (clicks.text('我睡醒了') || (!text('我要睡了').exists() && !text('我睡醒了').exists())) {
         clicks.xy(429, 984);
-        others.back();
-        return true;
     }
 
     others.back();
@@ -255,23 +251,20 @@ function taskVideo() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    log('---------- 点击 宝箱 ----------');
-    text('任务中心').exists() && clicks.xy(750 + 100, 1860 + 70);
+    if (!text('任务中心').exists()) {
+        return false;
+    }
+
+    clicks.xy(750 + 100, 1860 + 70);
 
     if (text('Close').exists()) {
         clicks.xy(750 + 100, 1860 + 70);
         return false;
     }
 
-    var buttonClickAd = className('android.view.View').text('看完视频再领');
-    if (!buttonClickAd.exists()) {
-        log('---------- taskTreasureBox nothing ----------');
+    if (!clicks.text('看完视频再领')) {
         return false;
     }
-
-    log('---------- 点击 视频 ----------');
-    buttonClickAd.click();
-    sleeps.s35to40();
 
     closeAd();
 
@@ -281,15 +274,9 @@ function taskTreasureBox() {
 }
 
 function closeAd() {
-    var buttonCloseAd = className('android.widget.LinearLayout');
-    if (!buttonCloseAd.exists()) {
-        log('---------- closeAd nothing ----------');
-        return false;
-    }
+    sleeps.s35to40();
 
-    log('---------- 点击 关闭广告 ----------');
-    buttonCloseAd.click();
-    sleeps.s3();
+    clicks.element(className('android.widget.LinearLayout'));
 
     return true;
 }
