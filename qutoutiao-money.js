@@ -22,8 +22,8 @@ function main() {
     }
 
     status1 = taskAd();
-    status2 = taskVideo();
-    status3 = taskNews();
+    // status2 = taskVideo();
+    // status3 = taskNews();
 
     if (status1 && status2 && status3) {
         others.exit();
@@ -90,12 +90,11 @@ function taskAd() {
     log('---------- taskAd start ----------');
 
     for (var i = 0; i < 5; i++) {
-        if (text('日常任务').exists() && clicks.centerXyByText('看视频领金币') && !text('日常任务').exists()) {
-            clicks.xy(945, 111);
-            sleeps.s60();
-            others.back();
-            others.back();
-            others.back();
+        if (text('日常任务').exists() && clicks.text('看视频领金币') && !text('日常任务').exists()) {
+            sleeps.s3();
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+            sleeps.s50();
+            others.back3();
         }
     }
 

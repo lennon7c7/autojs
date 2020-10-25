@@ -7,6 +7,7 @@ var s = {};
  * 查询 元素 列表，再根据 宽、高 点击
  */
 s.elementWidthHeight = function (element, width, height) {
+    isOk = false;
     element.find().forEach((value, key) => {
         if (value.bounds().width() != width || value.bounds().height() != height) {
             return false;
@@ -15,10 +16,14 @@ s.elementWidthHeight = function (element, width, height) {
         value.click();
         sleep(3 * 1000);
 
-        return true;
+        isOk = true;
     });
 
-    log('---------- fail: width=', width, ' height=', height, ' ----------');
+    if (isOk) {
+        return true;
+    }
+
+    log('---------- fail: width =', width, ' height =', height, ' ----------');
 
     return false;
 };
@@ -28,7 +33,7 @@ s.elementWidthHeight = function (element, width, height) {
  */
 s.xy = function (x, y) {
     if (x <= 0 && y <= 0) {
-        log('---------- fail: x=', x, ' y=', y, ' ----------');
+        log('---------- fail: x =', x, ' y =', y, ' ----------');
         return false;
     }
 

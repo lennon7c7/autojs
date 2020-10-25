@@ -53,27 +53,37 @@ function taskSleep() {
 function taskShare() {
     log('---------- taskShare start ----------');
 
+    if (text('晒收入').findOne().parent().find(text('已完成')).size() == 1) {
+        return true;
+    }
+
+    if (!clicks.element(text('晒收入').findOne().parent().find(text('领200金币')))) {
+        return false;
+    }
+
+    if (!clicks.text('微信')) {
+        clicks.text('javascript:;');
+        return false;
+    }
+
     for (var i = 0; i < 4; i++) {
-        if (!clicks.element(text('晒收入').findOne().parent().find(text('领200金币')))) {
-            return false;
-        }
-
-        if (!clicks.centerXyByText('微信')) {
-            return false;
-        }
-
-        if (!clicks.centerXyByText('去粘贴')) {
+        if (!clicks.text('去粘贴')) {
+            clicks.text('javascript:;');
             return false;
         }
 
         others.back();
     }
 
-    others.back();
+    clicks.text('javascript:;');
+
+    if (text('晒收入').findOne().parent().find(text('已完成')).size() == 1) {
+        return true;
+    }
 
     log('---------- taskShare end ----------');
 
-    return true;
+    return false;
 }
 
 // 任务-20次广告
@@ -112,7 +122,7 @@ function taskTreasureBox() {
         sleeps.s35to40();
         closeAd();
     }
-    clicks.centerXyByText('javascript:;')
+    clicks.text('javascript:;')
 
     log('---------- taskTreasureBox end ----------');
 

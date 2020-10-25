@@ -12,6 +12,11 @@ for (var i = 0; i < 10; i++) {
 }
 
 function main() {
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
+
     status1 = taskRandomPage();
     status2 = taskPlayground();
 
@@ -22,17 +27,15 @@ function main() {
 
 // 任务-考拉乐园
 function taskPlayground() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
+    log('---------- taskPlayground start ----------');
 
+    others.back3();
     if (!clicks.centerXyByText('考拉乐园')) {
         return false;
     }
     sleeps.s2to3();
 
-    clicks.centerXyByText('知道了');
+    clicks.text('知道了');
 
     for (var i = 0; i < 10; i++) {
         clicks.textIfExists('浏览任务');
@@ -41,19 +44,23 @@ function taskPlayground() {
         clicks.textIfExists('考拉升级');
     }
 
-    if (!clicks.centerXyByText('领金币')) {
+    if (!clicks.text('领金币')) {
         return false;
     }
 
+    if (text('再逛逛').exists() && !text('去逛逛').exists()) {
+        return true;
+    }
+
     for (var i = 0; i < 40; i++) {
-        if (!clicks.centerXyByText('去逛逛')) {
+        if (!clicks.text('去逛逛')) {
             continue;
         }
 
         if (text('点击查看以下商品开宝箱').exists()) {
-            if (clicks.centerXyByText('打开看看~')) {
-                clicks.centerXyByText('继续逛商品');
-            } else if (clicks.centerXyByText('立即购买')) {
+            if (clicks.text('打开看看~')) {
+                clicks.text('继续逛商品');
+            } else if (clicks.text('立即购买')) {
                 others.back2();
             }
 
@@ -68,35 +75,44 @@ function taskPlayground() {
         others.back();
     }
 
-    return true;
+    if (text('再逛逛').exists() && !text('去逛逛').exists()) {
+        return true;
+    }
+
+    log('---------- taskPlayground end ----------');
+
+    return false;
 }
 
-// 任务-逛商品
+// 任务-领考拉豆
 function taskRandomPage() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
+    log('---------- taskRandomPage start ----------');
 
     if (!clicks.centerXyByText('领考拉豆')) {
         return false;
     }
+    sleeps.s2to3();
 
+    clicks.textIfExists('下单购物');
     clicks.textIfExists('关注店铺');
     clicks.textIfExists('浏览商品');
     clicks.textIfExists('今日签到');
 
     clicks.xy(930, 1030);
 
+    if (text('已完成').exists() && !text('去逛逛').exists()) {
+        return true;
+    }
+
     for (var i = 0; i < 20; i++) {
         if (!text('去逛逛').exists()) {
             continue;
         }
 
-        clicks.centerXyByText('去逛逛');
+        clicks.text('去逛逛');
         if (text('进店浏览15秒得考拉豆').exists()) {
-            for (var j = 0; j < 10; j++) {
-                if (!clicks.centerXyByText('进店领豆')) {
+            for (var j = 0; j < 20; j++) {
+                if (!clicks.text('进店领豆')) {
                     return false;
                 }
 
@@ -119,12 +135,18 @@ function taskRandomPage() {
     }
 
     if (text('去关注').exists()) {
-        clicks.centerXyByText('去关注');
+        clicks.text('去关注');
         sleeps.s2to3();
-        clicks.centerXyByText('关注');
-        clicks.centerXyByText('已关注');
+        clicks.text('关注');
+        clicks.text('已关注');
         others.back();
     }
 
-    return true;
+    if (text('已完成').exists() && !text('去逛逛').exists()) {
+        return true;
+    }
+
+    log('---------- taskRandomPage end ----------');
+
+    return false;
 }
