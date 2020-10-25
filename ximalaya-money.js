@@ -20,9 +20,9 @@ function main() {
     others.back2();
 
     status1 = taskCheckin();
+    status2 = taskVideo();
     status3 = taskNews();
     status4 = taskLottery();
-    status2 = taskVideo();
 
     if (status1 && status2 && status3 && status4) {
         others.exit();
@@ -54,8 +54,8 @@ function taskVideo() {
         return false;
     }
 
-    if (text('看视频').exists()) {
-        clicks.centerXyByText('看视频');
+    if (clicks.centerXyByText('看视频')) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
         sleeps.s35to40();
 
         if (id('tt_video_ad_close_layout').exists()) {
@@ -77,6 +77,7 @@ function taskVideo() {
         }
         if (buttonClick != null) {
             clicks.centerXyByText('看一次赚50金币');
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
             sleeps.s35to40();
             others.back3();
         }
@@ -99,39 +100,28 @@ function taskNews() {
 
     scrollDown();
 
-    for (var i = 0; i < 10; i++) {
-        if (text('一边看新闻一边赚金币').exists() && text('一边看新闻一边赚金币').findOne().parent().findOne(text('去阅读')) != null) {
-            clicks.centerXyByText('一边看新闻一边赚金币');
+    for (var i = 0; i < 20; i++) {
+        if (!clicks.centerXyByText('去阅读')) {
+            return false;
+        }
 
-            if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
-                others.back();
-                return true;
-            }
+        if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
+            others.back();
+            return true;
+        }
 
-            sleeps.s35to40();
-            clicks.centerXyByText('确定');
-            for (var j = 0; j < 100; j++) {
-                scrollDown();
-                sleeps.s1();
+        clicks.textIfExists('确定');
+        sleeps.s50();
 
-                if (text('closebtn').exists()) {
-                    clicks.centerXyByText('closebtn');
-                } else if (text('返回').exists()) {
-                    clicks.centerXyByText('返回');
-                    break;
-                } else if (desc('关闭').exists()) {
-                    clicks.centerXyByDesc('关闭');
-                    break;
-                } else if (currentPackage() != PACKAGE_NAME) {
-                    app.launch(PACKAGE_NAME);
-                    sleeps.s5to10();
-                }
+        for (var j = 0; j < 3; j++) {
+            text('天天热点').exists() && clicks.xy(30, 1400) && others.back();
+        }
 
-                if (text('确定').exists()) {
-                    others.back();
-                    break;
-                }
-            }
+        others.back();
+
+        if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
+            others.back();
+            return true;
         }
     }
 
@@ -164,14 +154,17 @@ function taskLottery() {
             return true;
         }
 
-        if (text('trigger').exists()) {
-            clicks.centerXyByText('trigger');
-            !text('trigger').exists() && clicks.xy(780, 246);
-            !text('trigger').exists() && sleeps.s10();
-            for (var j = 0; j < 10; j++) {
-                !text('trigger').exists() && others.back();
-                !text('trigger').exists() && sleeps.s5to10();
-            }
+        if (!text('trigger').exists()) {
+            continue;
+        }
+
+        clicks.centerXyByText('trigger');
+        !text('trigger').exists() && clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+        !text('trigger').exists() && clicks.xy(780, 246);
+        !text('trigger').exists() && sleeps.s10();
+        for (var j = 0; j < 10; j++) {
+            !text('trigger').exists() && others.back();
+            !text('trigger').exists() && sleeps.s5to10();
         }
     }
 

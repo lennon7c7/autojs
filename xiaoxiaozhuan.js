@@ -19,15 +19,15 @@ function main() {
 }
 // 任务-点击
 function taskClick() {
-    // status = others.launch(PACKAGE_NAME);
-    // if (!status) {
-    //     return false;
-    // }
+    status = others.launch(PACKAGE_NAME);
+    if (!status) {
+        return false;
+    }
 
-    // toastLog('第x关 开始');
-    // clicks.xy(530, 1730);
+    toastLog('第x关 开始');
+    clicks.xy(530, 1730);
 
-    // others.back();
+    others.back();
 
     while (true) {
         var x = 150,
@@ -36,24 +36,23 @@ function taskClick() {
             yAdd = 100;
         for (var i = 0; i < 9; i++) {
             for (var j = 0; j < 9; j++) {
-                if (false) {
-
-                    // } else if (id('ad_root').exists()) {
-                    //     log('isPageAdBottom');
-                    //     sleep(4000);
-                    //     clicks.xy(540, 1240);
-                    // } else if (id('backBtn').exists()) {
-                    //     clicks.centerXyById('backBtn');
-                } else if (currentPackage() != PACKAGE_NAME) {
+                if (currentPackage() != PACKAGE_NAME) {
                     app.launch(PACKAGE_NAME);
                     sleeps.s5to10();
                 } else if (id('closeBtn').exists()) {
                     clicks.centerXyById('closeBtn');
                 } else if (className('android.widget.LinearLayout').exists() || text('广告').exists() || text('下载').exists() || text('关闭').exists()) {
-                    log('isPageAdFull');
+                    log('---------- isPageAdFull ----------');
                     clicks.xy(520, 1120);
+
+                    clicks.elementWidthHeight(className('android.view.View'), 90, 90);
+                    clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+                    clicks.id('close_volume');
+
                     sleeps.s60to70();
+               
                     clicks.centerXyById('tt_video_ad_close_layout');
+                    clicks.id('left_close');
                     clicks.xy(186, 195);
                     clicks.xy(924, 162);
                     others.back();
