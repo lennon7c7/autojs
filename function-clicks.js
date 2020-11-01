@@ -23,7 +23,7 @@ s.elementWidthHeight = function (element, width, height) {
         return true;
     }
 
-    log('---------- fail: width =', width, ' height =', height, ' ----------');
+    log('---------- fail: element =', element, ' width =', width, ' height =', height, ' ----------');
 
     return false;
 };

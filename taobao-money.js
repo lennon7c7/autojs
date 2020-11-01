@@ -38,7 +38,7 @@ function main() {
     clicks.centerXyByText('购后返 ');
 
     for (var i = 0; i < 3; i++) {
-        clicks.centerXyByText('合力');
+        clicks.textIfExists('合力');
     }
 
     status2 = taskHelpFriend();
@@ -375,9 +375,8 @@ function taskMoneyPower() {
             }
 
             others.back();
-            if (text('回到淘宝').exists()) {
-                clicks.centerXyByText('回到淘宝');
-            }
+            clicks.textIfExists('回到淘宝');
+            clicks.textIfExists('继续退出');
             if (!text('今日任务').exists()) {
                 return false;
             }

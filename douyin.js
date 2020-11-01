@@ -20,12 +20,12 @@ function main() {
     others.back();
 
     // 任务界面
-    if (clicks.elementWidthHeight(className('android.widget.FrameLayout'), 276, 309)) {
+    if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 276, 309)) {
         return false;
     }
 
     status0 = taskCheckin();
-    // status00 = taskCashout();
+    taskCashout();
     status1 = taskTreasureBox();
     status2 = taskLimit();
     status3 = taskSleep();
@@ -131,19 +131,16 @@ function taskSleep() {
         return false;
     }
 
-    if (clicks.centerXyByText('我睡醒了')) {
-        if (clicks.centerXyByText('可领取')) {
-            others.back();
-            return true;
-        }
-    } else if (clicks.centerXyByText('我要睡了')) {
-        others.back();
-        return true;
+    if (clicks.centerXyByText('我要睡了')) {
+    } else if (clicks.centerXyByText('我睡醒了')) {
     }
+
+    clicks.centerXyByText('可领取');
+    others.back();
 
     log('---------- taskSleep end ----------');
 
-    return false;
+    return true;
 }
 
 function closeAd() {
@@ -152,7 +149,7 @@ function closeAd() {
 
     if (!clicks.centerXyByText('关闭广告')) {
         others.back();
-   
+
         return false;
     }
 

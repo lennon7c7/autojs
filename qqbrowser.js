@@ -40,11 +40,12 @@ function taskClear() {
         return false;
     }
 
-    if (clicks.centerXyByText('立即签到')) {
+    swipes.down();
+    if (clicks.textIfExists('立即签到')) {
         clicks.centerXyByText('知道了');
     }
 
-    if (clicks.centerXyByText('领奖励')) {
+    if (clicks.textIfExists('领奖励')) {
         clicks.centerXyByText('知道了');
     }
 
@@ -78,17 +79,18 @@ function taskClear() {
 function taskNews() {
     toastLog('---------- taskNews start ----------');
 
+    swipes.down();
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
         return true;
     }
 
-    if (!clicks.centerXyByText('去阅读') && !clicks.centerXyByText('继续')) {
+    if (!clicks.textIfExists('去阅读') && !clicks.textIfExists('继续')) {
         return false;
     }
 
     for (var i = 0; i < 20; i++) {
-        others.back();
-        clicks.xy(36, 1348);
+        text('首页').exists() && swipes.refresh();
+        text('首页').exists() && clicks.xy(36, 1348);
         for (var j = 0; j < 8; j++) {
             swipes.down();
             sleeps.s2to3();

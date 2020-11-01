@@ -41,6 +41,14 @@ s.s15to20 = function () {
     s.custom(random(15, 30));
 };
 
+s.s20to25 = function () {
+    s.custom(random(20, 25));
+};
+
+s.s30to35 = function () {
+    s.custom(random(30, 35));
+};
+
 s.s35to40 = function () {
     s.custom(random(35, 40));
 };

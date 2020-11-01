@@ -35,7 +35,7 @@ function taskPlayground() {
     }
     sleeps.s2to3();
 
-    clicks.text('知道了');
+    clicks.textIfExists('知道了');
 
     for (var i = 0; i < 10; i++) {
         clicks.textIfExists('浏览任务');
@@ -53,15 +53,17 @@ function taskPlayground() {
     }
 
     for (var i = 0; i < 40; i++) {
-        if (!clicks.text('去逛逛')) {
+        if (!clicks.textIfExists('去逛逛')) {
             continue;
         }
 
         if (text('点击查看以下商品开宝箱').exists()) {
-            if (clicks.text('打开看看~')) {
+            if (clicks.textIfExists('打开看看~') || clicks.textIfExists('打开看看～')) {
                 clicks.text('继续逛商品');
             } else if (clicks.text('立即购买')) {
                 others.back2();
+            } else {
+                others.back();
             }
 
             continue;
@@ -98,7 +100,7 @@ function taskRandomPage() {
     clicks.textIfExists('浏览商品');
     clicks.textIfExists('今日签到');
 
-    clicks.xy(930, 1030);
+    text('10豆免费抽').exists() && clicks.xy(930, 1030);
 
     if (text('已完成').exists() && !text('去逛逛').exists()) {
         return true;

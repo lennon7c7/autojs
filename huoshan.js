@@ -22,11 +22,38 @@ function main() {
     status2 = taskShare();
     // taskAd20();
     status3 = taskSleep();
+    taskCashout();
 
     if (status1 && status2 && status3) {
         others.clear();
         exit();
     }
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('---------- taskCashout start ----------');
+
+    if (!clicks.text('立即提现')) {
+        return false;
+    }
+
+    if (!clicks.text('0.20')) {
+        return false;
+    }
+
+    if (text('余额不足，快去做任务赚钱吧！').exists()) {
+        others.back();
+        return true;
+    }
+
+    others.back2();
+
+    log('---------- taskCashout end ----------');
+
+    return true;
 }
 
 // 任务-睡觉赚钱

@@ -1,13 +1,13 @@
 /**
- * 抖音-所有金币任务
+ * 百度
  */
 var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
+const PACKAGE_NAME = 'com.baidu.searchbox.lite';
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 10; i++) {
     main();
 }
 
@@ -17,9 +17,9 @@ function main() {
         return false;
     }
 
-    status = taskVideo();
+    status1 = taskVideo();
 
-    if (status) {
+    if (status1) {
         others.exit();
     }
 }
@@ -28,16 +28,15 @@ function main() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    others.back2();
+    others.back();
+    if (!clicks.centerXyByText('好看视频')) {
+        return false;
+    }
 
-    for (var i = 0; i < 1200; i++) {
-        swipes.down();
-
-        if (text('点击进入直播间').exists()) {
-            continue;
-        }
-
-        sleeps.s2to10();
+    for (var i = 0; i < 10000; i++) {
+        swipes.refresh600();
+        clicks.xy(477, 577);
+        sleeps.s30to35();
     }
 
     log('---------- taskVideo end ----------');

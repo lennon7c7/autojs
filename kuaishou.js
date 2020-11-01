@@ -24,6 +24,7 @@ function main() {
         return false;
     }
 
+    status0 = taskCheckin();
     status1 = taskTreasureBox();
     status2 = taskAd10();
     // status3 = task0Lottery();
@@ -31,6 +32,31 @@ function main() {
     if (status1 && status2) {
         others.exit();
     }
+}
+
+/**
+ * 任务-签到
+ */
+function taskCheckin() {
+    log('---------- taskCheckin start ----------');
+
+    if (text('去查看').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('去签到') || !clicks.text('立即签到')) {
+        return false;
+    }
+
+    clicks.xy(93, 387);
+
+    if (text('去查看').exists()) {
+        return true;
+    }
+
+    log('---------- taskCheckin end ----------');
+
+    return false;
 }
 
 // 任务-0元抽奖
@@ -121,7 +147,7 @@ function taskAd10() {
         return true;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 3; i++) {
         if (clicks.element(className('android.widget.Button').text('福利'))) {
         } else if (clicks.element(className('android.widget.Button').text('福利 领金币'))) {
         } else {
@@ -131,6 +157,7 @@ function taskAd10() {
         clicks.centerXyById('video_audio_btn');
         sleeps.s35to40();
         clicks.centerXyById('video_countdown');
+        clicks.centerXyById('video_close_icon');
     }
 
     log('---------- taskAd10 end ----------');
