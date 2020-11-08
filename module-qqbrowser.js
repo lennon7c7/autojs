@@ -1,29 +1,13 @@
 /**
- * QQ浏览器
+ * QQ浏览器-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.tencent.mtt';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 10; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    status1 = taskClear();
-    status2 = taskNews();
-
-    if (status1 && status2) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.tencent.mtt';
 
 /**
  * 任务-清理
@@ -68,8 +52,6 @@ function taskClear() {
         clicks.centerXyByText('知道了');
     }
 
-    toastLog('---------- taskClear end ----------');
-
     return false;
 }
 
@@ -90,7 +72,7 @@ function taskNews() {
 
     for (var i = 0; i < 20; i++) {
         text('首页').exists() && swipes.refresh();
-        text('首页').exists() && clicks.xy(36, 1348);
+        text('首页').exists() && clicks.xy(345, 1048);
         for (var j = 0; j < 8; j++) {
             swipes.down();
             sleeps.s2to3();
@@ -118,7 +100,28 @@ function taskNews() {
         return true;
     }
 
-    toastLog('---------- taskNews end ----------');
-
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status1 = taskClear();
+        status2 = taskNews();
+
+        if (status1 && status2) {
+            return true;
+        }
+    }
+
+    others.send('qqbrowser');
+
+    return false;
+};
+
+module.exports = s;

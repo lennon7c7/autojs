@@ -1,38 +1,15 @@
 /**
- * 快手-所有金币任务
+ * 快手-任务
  * 当前存在问题
  * 1. 无法判断是否成功通过验证码（就随便滑动，瞎蒙呗）
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.kuaishou.nebula';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    others.back2();
-    if (!clicks.centerXyById('redFloat')) {
-        return false;
-    }
-
-    status0 = taskCheckin();
-    status1 = taskTreasureBox();
-    status2 = taskAd10();
-    // status3 = task0Lottery();
-
-    if (status1 && status2) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.kuaishou.nebula';
 
 /**
  * 任务-签到
@@ -53,8 +30,6 @@ function taskCheckin() {
     if (text('去查看').exists()) {
         return true;
     }
-
-    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -118,8 +93,6 @@ function task0Lottery() {
 
     others.back();
 
-    log('---------- task0Lottery end ----------');
-
     return false;
 }
 
@@ -133,8 +106,6 @@ function taskTreasureBox() {
     }
 
     clicks.xy(480, 1620);
-
-    log('---------- taskTreasureBox end ----------');
 
     return true;
 }
@@ -160,7 +131,60 @@ function taskAd10() {
         clicks.centerXyById('video_close_icon');
     }
 
-    log('---------- taskAd10 end ----------');
+    return true;
+}
+
+// 任务-视频
+function taskVideo() {
+    log('---------- taskVideo start ----------');
+
+    others.back();
+
+    for (var i = 0; i < 10; i++) {
+        if (text('Drag the slider').exists()) {
+            swipe(87, 969, 700, 969, 700);
+            sleeps.s2to3();
+            others.back();
+        }
+
+        swipes.down1600();
+        if (className('android.widget.FrameLayout').find().size() < 4) {
+            continue;
+        } else {
+            sleeps.s2to10();
+        }
+    }
 
     return true;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        others.back2();
+        if (!clicks.centerXyById('redFloat')) {
+            return false;
+        }
+    
+        status0 = taskCheckin();
+        status1 = taskTreasureBox();
+        status2 = taskAd10();
+        // status3 = task0Lottery();
+        taskVideo();
+    
+        if (status0 && status1 && status2) {
+                return true;
+        }
+    }
+
+    others.send('kuaishou');
+
+    return false;
+};
+
+module.exports = s;

@@ -6,35 +6,30 @@ var swipes = require('function-swipes.js');
 main();
 
 function main() {
-    toastLog(currentPackage());
-  
 
-    // clicks.xy(750, 411);
-    // if (text('明日再来领现金').exists()) {
-    //     return true
+    // clicks.id('close_volume');
+
+
+
+
+    // clicks.text('签到');
+    // clicks.text('领取奖励');
+    // for (var i = 0; i < 40; i++) {
+    //     if (!clicks.text('去浏览')) {
+    //         sleeps.s3();
+    //         continue;
+    //     }
+
+    //     sleeps.s20();
+
+    //     others.back();
     // }
-    // others.back();
-    // clicks.xy(10, 2200);
+    // clicks.text('领取奖励');
+    // clicks.text('领取奖励');
 
-    // clicks.xy(777, 111);
-    // toastLog(text('已完成').find().size());
-    // toastLog(text('去完成').find().size());
-    // toastLog(id('vl_type_video_text_title').exists());
-    // toastLog(id('vl_type_video_panel_author_text').exists());
-    // toastLog(id('vl_type_video_panel_fond_text').exists());
-    // toastLog(text('开宝箱得金币').exists());
-    // toastLog(clicks.id('redFloat'));
-    // toastLog(clicks.text('取消'));
 
-    // id('video_audio_btn').click();
-    // clicks.id('video_audio_btn');
-    // var buttonClickTask = className('android.view.View').text('看视频赚海量金币');
-    // if (!buttonClickTask.exists()) {
-    //     log('---------- task ad nothing ----------');
-    //     return false;
-    // }
-    // log('---------- click ad ----------');
-    // clicks.findOne(buttonClickTask)
+
+   
 }
 
 /**
@@ -48,7 +43,7 @@ function closeAd(x, y) {
     sleeps.s60to70();
 
     others.back();
-    if (!clicks.id('tt_video_ad_close_layout')) {
+    if (!clicks.centerXyById('tt_video_ad_close_layout')) {
         toastLog('---------- click fail: closeAd ----------');
         return false;
     }

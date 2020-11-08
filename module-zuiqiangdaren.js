@@ -1,39 +1,19 @@
 /**
- * 最强答人-所有金币任务
+ * 天猫-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.lwhy.hltzs';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 10; i++) {
-    main();
-}
-
-function main() {
-    status1 = taskDaily();
-    // taskCheckinWithdraw();
-    // taskCheckin();
-    // taskLimitRedPacket();
-    // taskLuckLottery();
-    // taskOnLineReward();
-
-    if (status1) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.lwhy.hltzs';
 
 /**
  * 任务-打卡提现
  */
 function taskCheckinWithdraw() {
     toastLog('---------- taskCheckinWithdraw start ----------');
-
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
 
     toastLog('---------- 提现 ----------');
     clicks.xy(445, 425);
@@ -60,11 +40,6 @@ function taskCheckinWithdraw() {
 function taskDaily() {
     toastLog('---------- taskDaily start ----------');
 
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
     toastLog('---------- 每日闯关 ----------');
     clicks.xy(920, 560);
 
@@ -74,11 +49,11 @@ function taskDaily() {
     }
 
     for (var i = 0; i < 100000; i++) {
-        if (currentPackage() != PACKAGE_NAME && currentPackage() != 'android') {
+        if (currentPackage() != s.PACKAGE_NAME && currentPackage() != 'android') {
             log('---------- ', currentPackage(), ' ----------');
-            app.launch(PACKAGE_NAME);
+            app.launch(s.PACKAGE_NAME);
             sleeps.s3();
-            if (currentPackage() != PACKAGE_NAME && currentPackage() != 'android') {
+            if (currentPackage() != s.PACKAGE_NAME && currentPackage() != 'android') {
                 return false;
             }
         } else if (id('tt_insert_dislike_icon_img').exists()) {
@@ -87,11 +62,11 @@ function taskDaily() {
             log('---------- 补充体力 ----------');
 
             closeAd(540, 850);
- 
+
             if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
                 return true;
             }
-       } else if (id('bxm_sdk_iv_close').exists()) {
+        } else if (id('bxm_sdk_iv_close').exists()) {
             clicks.centerXyById('bxm_sdk_iv_close');
         } else if (id('tt_video_progress').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
@@ -122,11 +97,6 @@ function taskDaily() {
 function taskCheckin() {
     toastLog('---------- taskCheckin start ----------');
 
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
 
@@ -151,11 +121,6 @@ function taskCheckin() {
 function taskLimitRedPacket() {
     toastLog('---------- taskLimitRedPacket start ----------');
 
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
 
@@ -173,11 +138,6 @@ function taskLimitRedPacket() {
  */
 function taskOnLineReward() {
     toastLog('---------- taskOnLineReward start ----------');
-
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
 
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -199,11 +159,6 @@ function taskOnLineReward() {
  */
 function taskLuckLottery() {
     toastLog('---------- taskLuckLottery start ----------');
-
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
 
     toastLog('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -269,3 +224,30 @@ function closeAd(x, y) {
 
     return true;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status1 = taskDaily();
+        // taskCheckinWithdraw();
+        // taskCheckin();
+        // taskLimitRedPacket();
+        // taskLuckLottery();
+        // taskOnLineReward();
+
+        if (status1) {
+            return true;
+        }
+    }
+
+    others.send('zuiqiangdaren');
+
+    return false;
+};
+
+module.exports = s;

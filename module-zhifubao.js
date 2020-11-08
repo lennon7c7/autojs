@@ -1,30 +1,13 @@
 /**
- * 支付宝
+ * 支付宝-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.eg.android.AlipayGphone';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    clicks.centerXyByText('Later');
-    status1 = task0Lottery();
-    status2 = taskEverydayLottery();
-
-    if (status1 && status2) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
 
 /**
  * 任务-天天抽奖
@@ -48,8 +31,6 @@ function taskEverydayLottery() {
             }
         }
     }
-
-    toastLog('---------- taskEverydayLottery end ----------');
 
     return false;
 }
@@ -89,7 +70,29 @@ function task0Lottery() {
 
     others.back2();
 
-    log('---------- task0Lottery start ----------');
-
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        clicks.centerXyByText('Later');
+        status1 = task0Lottery();
+        status2 = taskEverydayLottery();
+    
+        if (status1 && status2) {
+                return true;
+        }
+    }
+
+    others.send('zhifubao');
+
+    return false;
+};
+
+module.exports = s;

@@ -1,33 +1,13 @@
 /**
- * 喜马拉雅
+ * 喜马拉雅-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.ximalaya.ting.lite';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 10; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    others.back2();
-
-    status1 = taskCheckin();
-    status2 = taskVideo();
-    status3 = taskNews();
-    status4 = taskLottery();
-
-    if (status1 && status2 && status3 && status4) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.ximalaya.ting.lite';
 
 /**
  * 任务-签到
@@ -38,8 +18,6 @@ function taskCheckin() {
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
     }
-
-    toastLog('---------- taskCheckin end ----------');
 
     return true;
 }
@@ -83,8 +61,6 @@ function taskVideo() {
         }
     }
 
-    log('---------- taskVideo end ----------');
-
     return false;
 }
 
@@ -124,8 +100,6 @@ function taskNews() {
             return true;
         }
     }
-
-    log('---------- taskNews end ----------');
 
     return false;
 }
@@ -168,7 +142,32 @@ function taskLottery() {
         }
     }
 
-    log('---------- taskLottery end ----------');
-
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        others.back();
+
+        status1 = taskCheckin();
+        status2 = taskVideo();
+        status3 = taskNews();
+        status4 = taskLottery();
+    
+        if (status1 && status2 && status3 && status4) {
+                return true;
+        }
+    }
+
+    others.send('ximalaya');
+
+    return false;
+};
+
+module.exports = s;

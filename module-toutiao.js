@@ -1,54 +1,13 @@
 /**
- * 头条-所有金币任务
+ * 头条-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.ss.android.article.lite';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    clicks.textIfExists('以后再说');
-    status = task();
-
-    if (status) {
-        others.exit();
-    }
-}
-
-// 任务
-function task() {
-    log('---------- task start ----------');
-
-    if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
-        return false;
-    }
-
-    if (text('看视频再领').exists()) {
-        clicks.xy(477, 1710);
-    }
-
-    status1 = taskCheckin();
-    status2 = taskLottery();
-    taskSleep();
-    taskTreasureBox();
-    taskTaobao();
-    taskSearch();
-    // taskNovel();
-
-    log('---------- task end ----------');
-
-    return status1 && status2;
-}
+var s = {};
+s.PACKAGE_NAME = 'com.ss.android.article.lite';
 
 /**
  * 任务-签到
@@ -68,8 +27,6 @@ function taskCheckin() {
     if (text('明日签到').exists()) {
         return true;
     }
-
-    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -98,8 +55,6 @@ function taskSearch() {
     }
     others.back2();
 
-    log('---------- taskSearch end ----------');
-
     return true;
 }
 
@@ -120,8 +75,6 @@ function taskTaobao() {
 
     clicks.element(buttonClick);
     others.back();
-
-    log('---------- taskTaobao end ----------');
 
     return true;
 }
@@ -152,8 +105,6 @@ function taskLottery() {
 
     others.back();
 
-    log('---------- taskLottery end ----------');
-
     return false;
 }
 
@@ -171,8 +122,6 @@ function taskSleep() {
     }
 
     others.back();
-
-    log('---------- taskSleep end ----------');
 
     return true;
 }
@@ -208,8 +157,6 @@ function taskNovel() {
 
     others.back();
 
-    log('---------- taskNovel end ----------');
-
     return true;
 }
 
@@ -235,8 +182,6 @@ function taskTreasureBox() {
 
     closeAd();
 
-    log('---------- taskTreasureBox end ----------');
-
     return true;
 }
 
@@ -247,3 +192,113 @@ function closeAd() {
 
     return true;
 }
+
+
+// 任务-新闻
+function taskNews() {
+    log('---------- taskNews start ----------');
+
+
+    for (var i = 0; i < 10; i++) {
+        swipes.refresh();
+        clicks.xy(145, 707);
+
+        for (var j = 0; j < 8; j++) {
+            swipes.down();
+            sleeps.s2to3();
+        }
+        others.back();
+    }
+
+    return true;
+}
+
+// 任务-视频
+function taskVideo() {
+    log('---------- taskVideo start ----------');
+
+    swipes.right();
+    swipes.right();
+    swipes.right();
+
+    for (var i = 0; i < 10; i++) {
+        swipes.refresh();
+        clicks.xy(477, 577);
+        sleeps.s20();
+
+        for (var j = 0; j < 60; j++) {
+            clicks.textIfExists('关闭广告');
+
+            if (text('分享到').exists() && text('重播').exists()) {
+                swipes.refresh();
+                break;
+            }
+
+            sleeps.s10();
+        }
+    }
+
+    return true;
+}
+
+// 任务-小视频
+function taskLittleVideo() {
+    log('---------- taskVideo start ----------');
+
+    swipes.right();
+    swipes.refresh();
+
+    text('小视频').exists() && text('南宁').exists() && clicks.xy(465, 597);
+
+    for (var i = 0; i < 10; i++) {
+        swipes.right();
+        elementParent = className('android.widget.FrameLayout').findOne();
+        if (elementParent.find(className('android.widget.RelativeLayout')).size() <= 9) {
+            continue;
+        } else {
+            sleeps.s2to10();
+        }
+    }
+
+    others.back();
+
+    return true;
+}
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        clicks.textIfExists('以后再说');
+        if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
+            return false;
+        }
+
+        if (text('看视频再领').exists()) {
+            clicks.xy(477, 1710);
+        }
+
+        status1 = taskCheckin();
+        status2 = taskLottery();
+        taskSleep();
+        taskTreasureBox();
+        taskTaobao();
+        taskSearch();
+        // taskNovel();
+        taskNews();
+
+        if (status1 && status2) {
+            return true;
+        }
+    }
+
+    others.send('toutiao');
+
+    return false;
+};
+
+module.exports = s;

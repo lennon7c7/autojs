@@ -1,41 +1,13 @@
 /**
- * 抖音火山
+ * 抖音火山-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.ss.android.ugc.live';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    clicks.textIfExists('以后再说');
-    others.back2();
-    scrollUp();
-    if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('火苗管理')) {
-        return false;
-    }
-
-    status0 = taskCheckin();
-    taskCashout();
-    taskLimit();
-
-    if (status0) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.ss.android.ugc.live';
 
 /**
  * 任务-签到
@@ -46,12 +18,6 @@ function taskCheckin() {
     if (text('明日签到').exists()) {
         return true;
     }
-
-    if (text('明日签到').exists()) {
-        return true;
-    }
-
-    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -81,8 +47,6 @@ function taskCashout() {
 
     others.back3();
 
-    log('---------- taskCashout end ----------');
-
     return true;
 }
 
@@ -97,9 +61,7 @@ function taskLimit() {
 
     closeAd();
 
-    log('---------- taskLimit end ----------');
-
-    return true;
+    return false;
 }
 
 function closeAd() {
@@ -114,3 +76,38 @@ function closeAd() {
 
     return true;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        clicks.textIfExists('以后再说');
+        others.back2();
+        scrollUp();
+        if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
+            return false;
+        }
+
+        if (!clicks.centerXyByText('火苗管理')) {
+            return false;
+        }
+
+        status0 = taskCheckin();
+        taskCashout();
+        taskLimit();
+
+        if (status0) {
+            return true;
+        }
+    }
+
+    others.send('douyinhuoshan');
+
+    return false;
+};
+
+module.exports = s;

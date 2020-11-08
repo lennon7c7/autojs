@@ -110,13 +110,38 @@ s.clear = function () {
 
     sleep(2000);
 
-    if (clicks.idIfExists('clear_all')) {
-
-    } else if (clicks.idIfExists('clear_all_recents_image_button')) {
-
+    if (id('clear_all').exists()) {
+        id('clear_all').click();
+    } else if (id('clear_all_recents_image_button').exists()) {
+        id('clear_all_recents_image_button').click();
     }
 
     sleep(3000);
+
+    return true;
+};
+
+/**
+ * 发送报警信息
+ * @param {string} message 
+ * @returns {boolean}
+ */
+s.send = function (message) {
+    url = 'https://oapi.dingtalk.com/robot/send?access_token=9189c02ffd38ffaf091bcc3a07558c83cf961780360e73ccbfcb24dd25db95fd';
+    response = http.postJson(url, {
+        'msgtype': 'markdown',
+        'markdown': {
+            'title': '监控报警',
+            'text': '#### ' + message
+        }
+    });
+ 
+    responseJson = response.body.json();
+    if (responseJson.errcode != 0 || responseJson.errmsg != 'ok') {
+        log('---------- dingtalk log error ----------');
+
+        return false;
+    }
 
     return true;
 };
@@ -132,10 +157,26 @@ s.exit = function () {
     }
 
     sleep(2000);
-    clicks.centerXyById('clear_all_recents_image_button');
+    id('clear_all_recents_image_button').click();
     sleep(3000);
 
     exit();
+
+    return true;
+};
+
+/**
+ * 一键锁屏
+ * @returns {boolean}
+ */
+s.lockScreen = function () {
+    if (!home()) {
+        toastLog('fail: home');
+        return false;
+    }
+
+    sleep(2000);
+    desc('一键锁屏').click();
 
     return true;
 };

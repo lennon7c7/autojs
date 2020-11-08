@@ -1,29 +1,13 @@
 /**
- * 微视
+ * 微视-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.tencent.weishi';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    others.back();
-    status = taskVideo();
-
-    if (status) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.tencent.weishi';
 
 // 任务-签到领红包
 function taskCheckin() {
@@ -86,8 +70,6 @@ function taskCheckin() {
     others.back();
     clicks.xy(10, 2200);
 
-    log('---------- taskCheckin end ----------');
-
     return false;
 }
 
@@ -100,13 +82,16 @@ function taskVideo() {
         return true;
     }
 
-    for (var i = 0; i < 1200; i++) {
-        if (text('取消').exists()) {
-            clicks.text('取消');
+    clicks.textIfExists('取消');
+
+    for (var i = 0; i < 200; i++) {
+        if (!text('关注').exists() || !text('推荐').exists() || !className('android.widget.ProgressBar').exists()) {
+            return false;
         }
 
         swipes.down1600();
-        sleeps.s2to10();
+        sleeps.s2to5();
+        swipes.refresh1300();
     }
 
     status = taskCheckin();
@@ -114,7 +99,28 @@ function taskVideo() {
         return true;
     }
 
-    log('---------- taskVideo end ----------');
-
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        others.back();
+        status = taskVideo();
+
+        if (status) {
+            return true;
+        }
+    }
+
+    others.send('weishi');
+
+    return false;
+};
+
+module.exports = s;

@@ -1,34 +1,13 @@
 /**
- * 火山-所有金币任务
+ * 火山-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.ss.android.ugc.livelite';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 10; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    others.back();
-    status1 = taskTreasureBox();
-    status2 = taskShare();
-    // taskAd20();
-    status3 = taskSleep();
-    taskCashout();
-
-    if (status1 && status2 && status3) {
-        others.clear();
-        exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.ss.android.ugc.livelite';
 
 /**
  * 任务-提现
@@ -36,11 +15,15 @@ function main() {
 function taskCashout() {
     log('---------- taskCashout start ----------');
 
-    if (!clicks.text('立即提现')) {
+    if (text('0.2元提现').findOne().parent().findOne(text('已完成'))) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
         return false;
     }
 
-    if (!clicks.text('0.20')) {
+    if (!clicks.centerXyByText('0.20')) {
         return false;
     }
 
@@ -51,9 +34,11 @@ function taskCashout() {
 
     others.back2();
 
-    log('---------- taskCashout end ----------');
+    if (text('0.2元提现').findOne().parent().findOne(text('已完成'))) {
+        return true;
+    }
 
-    return true;
+    return false;
 }
 
 // 任务-睡觉赚钱
@@ -70,8 +55,6 @@ function taskSleep() {
 
     clicks.centerXyByText('可领取');
     others.back();
-
-    log('---------- taskSleep end ----------');
 
     return true;
 }
@@ -108,8 +91,6 @@ function taskShare() {
         return true;
     }
 
-    log('---------- taskShare end ----------');
-
     return false;
 }
 
@@ -121,16 +102,12 @@ function taskAd20() {
         var buttonAd = className('android.view.View').text('领100金币');
         if (buttonAd.exists()) {
             buttonAd.click();
-            sleeps.s35to40();
             closeAd();
         } else if (className('android.view.View').text('去赚钱').exists()) {
             className('android.view.View').text('去赚钱').click();
-            sleeps.s35to40();
             closeAd();
         }
     }
-
-    log('---------- taskAd20 end ----------');
 
     return true;
 }
@@ -144,22 +121,87 @@ function taskTreasureBox() {
         return false;
     }
 
-    clicks.centerXyByText('开宝箱得金币');
+    if (text('开宝箱得金币').find().size() == 1) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('开宝箱得金币')) {
+        return false;
+    }
+
     if (clicks.centerXyByText('看视频 金币翻8倍')) {
-        sleeps.s35to40();
         closeAd();
     }
     clicks.text('javascript:;')
 
-    log('---------- taskTreasureBox end ----------');
+    if (text('开宝箱得金币').find().size() == 1) {
+        return true;
+    }
 
-    return true;
+    return false;
 }
 
 // 关闭广告
 function closeAd() {
+    sleeps.s35to40();
     clicks.centerXyByText('关闭广告');
     clicks.centerXyById('sp');
 
     return true;
 }
+
+// 任务-小视频
+function taskVideo() {
+    log('---------- taskVideo start ----------');
+
+    for (var i = 0; i < 10; i++) {
+        if (!clicks.centerXyByText('首页')) {
+            return false;
+        }
+
+        if (text('15S').exists() || text('14S').exists() || text('13S').exists() || text('12S').exists() || text('11S').exists()
+            || text('10S').exists() || text('9S').exists() || text('8S').exists()
+        ) {
+            sleeps.s15();
+            clicks.centerXyByText('领取')
+        } else if (text('剩余2次').exists()) {
+            swipes.refresh600();
+            clicks.centerXyByText('剩余2次');
+        } else if (text('剩余1次').exists()) {
+            swipes.refresh600();
+            clicks.centerXyByText('剩余1次');
+        } else {
+            sleeps.s2to5();
+        }
+    }
+
+    return true;
+}
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        others.back();
+        status0 = taskTreasureBox();
+        taskShare();
+        taskAd20();
+        taskSleep();
+        taskCashout();
+        taskVideo();
+
+        if (status0) {
+            return true;
+        }
+    }
+
+    others.send('huoshan');
+
+    return false;
+};
+
+module.exports = s;

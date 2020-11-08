@@ -2,29 +2,39 @@ var clicks = require('function-clicks.js');
 var others = require('function-others.js');
 var sleeps = require('function-sleeps.js');
 var swipes = require('function-swipes.js');
+const PACKAGE_NAME = 'com.taobao.taobao';
 
 main();
 
 function main() {
-    // clicks.xy(765, 1253);
-    clicks.text('去施肥，赚更多肥料');
 
-    // toastLog(id('ad_click').exists());
-    // toastLog(id('btn_down').exists());
-    // toastLog(id('text_title').exists());
-    // toastLog(id('text_desc').exists());
-    // toastLog(text('查看详情').exists());
-    // clicks.id('tt_insert_dislike_icon_img');
 
-    // swipe(500, 600, 500, 1200, 500);
-    // if (text('tt_video_ad_close_layout').exists()) {
-    //     swipe(87, 969, 700, 969, 700);
-    // }
 
-    // while (true) {
-    //     swipes.down();
 
-    //     swipe(900, 300, 100, 300, 500);
-    //     sleep(1 * 1000);
+
+    // scrollUp();
+    // scrollDown();
+
+
+    // clicks.centerXyById('update_cancel_tv');
+
+    // clicks.xiaoxiao(102, 1702, 110, 9);
+
+    // if (text('去天猫APP赢红包（0/1）').exists()) {
+    //     buttonClick = text('去天猫APP赢红包（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    //     if (text('今日任务').exists() && buttonClick != null) {
+    //         clicks.element(buttonClick);
+    //         sleeps.s30();
+    //         clicks.centerXyByText('收下投注并关注店铺');
+    //         clicks.centerXyByText('点击免费夺宝');
+    //         app.launch(PACKAGE_NAME);
+    //         sleeps.s2to3();
+    //         others.back();
+
+    //         if (!text('今日任务').exists()) {
+    //             return false;
+    //         }
+    //         clicks.centerXyByText('领取奖励');
+    //     }
     // }
 }

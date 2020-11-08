@@ -1,34 +1,13 @@
 /**
- * 趣头条-所有金币任务
+ * 趣头条-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.jifen.qukan';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('任务')) {
-        return false;
-    }
-
-    status1 = taskAd();
-    // status2 = taskVideo();
-    // status3 = taskNews();
-
-    if (status1) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.jifen.qukan';
 
 // 任务-文章
 function taskNews() {
@@ -54,8 +33,6 @@ function taskNews() {
 
     others.back();
 
-    log('---------- taskNews end ----------');
-
     return false;
 }
 
@@ -80,8 +57,6 @@ function taskVideo() {
 
     others.back();
 
-    log('---------- taskVideo end ----------');
-
     return false;
 }
 
@@ -98,7 +73,32 @@ function taskAd() {
         }
     }
 
-    log('---------- taskAd end ----------');
-
     return true;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        if (!clicks.centerXyByText('任务')) {
+            return false;
+        }
+
+        status0 = taskVideo();
+        status1 = taskNews();
+
+        if (status0 && status1) {
+            return true;
+        }
+    }
+
+    others.send('qutoutiao');
+
+    return false;
+};
+
+module.exports = s;

@@ -1,29 +1,13 @@
 /**
  * 考拉海购-任务
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.kaola';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-for (var i = 0; i < 10; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    status1 = taskRandomPage();
-    status2 = taskPlayground();
-
-    if (status1 && status2) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.kaola';
 
 // 任务-考拉乐园
 function taskPlayground() {
@@ -59,14 +43,18 @@ function taskPlayground() {
 
         if (text('点击查看以下商品开宝箱').exists()) {
             if (clicks.textIfExists('打开看看~') || clicks.textIfExists('打开看看～')) {
-                clicks.text('继续逛商品');
             } else if (clicks.text('立即购买')) {
-                others.back2();
-            } else {
                 others.back();
+                if (!text('点击查看以下商品开宝箱').exists()) {
+                    others.back();
+                }
+                if (!text('点击查看以下商品开宝箱').exists()) {
+                    others.back();
+                }
+                if (!text('点击查看以下商品开宝箱').exists()) {
+                    others.back();
+                }
             }
-
-            continue;
         } else {
             for (var k = 0; k < 8; k++) {
                 swipes.down();
@@ -81,8 +69,6 @@ function taskPlayground() {
         return true;
     }
 
-    log('---------- taskPlayground end ----------');
-
     return false;
 }
 
@@ -90,6 +76,7 @@ function taskPlayground() {
 function taskRandomPage() {
     log('---------- taskRandomPage start ----------');
 
+    others.back3();
     if (!clicks.centerXyByText('领考拉豆')) {
         return false;
     }
@@ -107,11 +94,10 @@ function taskRandomPage() {
     }
 
     for (var i = 0; i < 20; i++) {
-        if (!text('去逛逛').exists()) {
+        if (!clicks.textIfExists('去逛逛')) {
             continue;
         }
 
-        clicks.text('去逛逛');
         if (text('进店浏览15秒得考拉豆').exists()) {
             for (var j = 0; j < 20; j++) {
                 if (!clicks.text('进店领豆')) {
@@ -148,7 +134,58 @@ function taskRandomPage() {
         return true;
     }
 
-    log('---------- taskRandomPage end ----------');
+    return false;
+}
+
+// 任务-抽奖
+function taskLottery() {
+    log('---------- taskLottery start ----------');
+
+    others.back2();
+    if (!clicks.centerXyByText('天天抽奖')) {
+        return false;
+    }
+    sleeps.s2to3();
+
+    if (text('已参与').exists() && !text('0元抽').exists()) {
+        return true;
+    }
+
+    for (var i = 0; i < 2; i++) {
+        if (!clicks.textIfExists('0元抽')) {
+            return false;
+        }
+
+        others.back();
+    }
+
+    if (text('已参与').exists() && !text('0元抽').exists()) {
+        return true;
+    }
 
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status1 = taskPlayground();
+        status0 = taskRandomPage();
+        status2 = taskLottery();
+
+        if (status0 && status1 && status2) {
+            return true;
+        }
+    }
+
+    others.send('kaola');
+
+    return false;
+};
+
+module.exports = s;

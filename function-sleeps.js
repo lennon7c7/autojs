@@ -74,6 +74,10 @@ s.s5 = function () {
     sleep(5 * 1000);
 };
 
+s.s8 = function () {
+    sleep(8 * 1000);
+};
+
 s.s10 = function () {
     sleep(10 * 1000);
 };
