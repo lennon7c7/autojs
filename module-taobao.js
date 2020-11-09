@@ -361,6 +361,29 @@ function taskMoneyPower() {
     return true;
 }
 
+// 任务-取消关注店铺
+function taskCancelShop() {
+    log('---------- taskCancelShop start ----------');
+
+    others.back2();
+
+    if (!clicks.centerXyByDesc('我的淘宝')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByDesc('关注店铺')) {
+        return false;
+    }
+
+    for (var i = 0; i < 100; i++) {
+        desc('个关注店铺的宝贝上新').exists() && click(986, 565);
+        sleep(500);
+        desc('个关注店铺的宝贝上新').exists() && click(986, 565);
+        sleeps.s2to3();
+    }
+
+    return true;
+}
 
 /**
  * 入口-开始调用

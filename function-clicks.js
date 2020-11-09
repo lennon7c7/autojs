@@ -259,6 +259,48 @@ s.centerXyById = function (myString) {
 };
 
 /**
+ * 根据 当前元素 的 祖先级元素 去点击
+ * @param {string} currentElement
+ * @param {string} parentElement
+ * @returns {boolean}
+ */
+s.parents = function (currentElement, parentsElement) {
+    if (currentElement.find().size() == 0) {
+        log('---------- fail: currentElement =', currentElement, ' none exist ----------');
+        return false;
+    }
+
+    element = currentElement.findOne().parent().parent().findOne(parentsElement);
+    if (element == null || !s.element(element)) {
+        log('---------- fail: parentElement =', parentsElement, ' none exist ----------');
+        return false;
+    }
+
+    return true;
+};
+
+/**
+ * 根据 当前元素 的 父级元素 去点击
+ * @param {string} currentElement
+ * @param {string} parentElement
+ * @returns {boolean}
+ */
+s.parent = function (currentElement, parentElement) {
+    if (currentElement.find().size() == 0) {
+        log('---------- fail: currentElement =', currentElement, ' none exist ----------');
+        return false;
+    }
+
+    element = currentElement.findOne().parent().findOne(parentElement);
+    if (element == null || !s.element(element)) {
+        log('---------- fail: parentElement =', parentElement, ' none exist ----------');
+        return false;
+    }
+
+    return true;
+};
+
+/**
  * id
  * @param {string} myString
  * @returns {boolean}

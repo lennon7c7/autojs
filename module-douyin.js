@@ -36,7 +36,7 @@ function taskCheckin() {
 function taskCashout() {
     log('---------- taskCashout start ----------');
 
-    if (clicks.element(text('0.3元提现').findOne().parent().parent().findOne(text('已完成')))) {
+    if (clicks.parents(text('0.3元提现'), text('已完成'))) {
         return true;
     }
 
@@ -54,7 +54,7 @@ function taskCashout() {
 
     others.back2();
 
-    if (clicks.element(text('0.3元提现').findOne().parent().parent().findOne(text('已完成')))) {
+    if (clicks.parents(text('0.3元提现'), text('已完成'))) {
         return true;
     }
 
@@ -92,7 +92,7 @@ function taskTreasureBox() {
 function taskLimit() {
     log('---------- taskLimit start ----------');
 
-    if (text('限时任务赚金币').findOne().parent().parent().findOne(text('已领取'))) {
+    if (clicks.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
     }
 
@@ -102,7 +102,7 @@ function taskLimit() {
 
     closeAd();
 
-    if (text('限时任务赚金币').findOne().parent().parent().findOne(text('已领取'))) {
+    if (clicks.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
     }
 
