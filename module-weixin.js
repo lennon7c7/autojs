@@ -1,35 +1,26 @@
 /**
- * 社交-微信-朋友圈-点赞
+ * 微信-任务
+ * 我的系统语言是英文，所以需要的自己替换成中文
  */
-var clicks = require('function-clicks.js');
-var others = require('function-others.js');
-var sleeps = require('function-sleeps.js');
-var swipes = require('function-swipes.js');
-const PACKAGE_NAME = 'com.tencent.mm';
+var clicks = require('./function-clicks.js');
+var others = require('./function-others.js');
+var sleeps = require('./function-sleeps.js');
+var swipes = require('./function-swipes.js');
 
-main();
+var s = {};
+s.PACKAGE_NAME = 'com.tencent.mm';
 
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
+/**
+ * 任务-朋友圈-点赞
+ */
+function taskMomentLike() {
+    if (!clicks.centerXyByText('Discover')) {
         return false;
     }
 
-    task();
-}
-
-function task() {
-    if (!text('Discover').exists()) {
+    if (!clicks.centerXyByText('Moments')) {
         return false;
     }
-    toast('点击 发现');
-    clicks.centerXyByText('Discover');
-
-    if (!text('Moments').exists()) {
-        return false;
-    }
-    toast('点击 朋友圈');
-    clicks.centerXyByText('Moments');
 
     if (!text('Tap to change album cover').exists()) {
         toast('双击 顶部-更新朋友圈');
@@ -38,9 +29,11 @@ function task() {
         clicks.xy(108, 136)
     }
 
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 50; i++) {
         clickLikeButton();
     }
+
+    return true;
 }
 
 // 点赞当前页面的动态
@@ -65,3 +58,23 @@ function clickLikeButton() {
     scrollDown();
     sleeps.s2to5();
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status = taskMomentLike();
+
+        if (status) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+module.exports = s;
