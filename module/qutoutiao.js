@@ -1,10 +1,10 @@
 /**
  * 趣头条-任务
  */
-var clicks = require('./function-clicks.js');
-var others = require('./function-others.js');
-var sleeps = require('./function-sleeps.js');
-var swipes = require('./function-swipes.js');
+var clicks = require('../function/clicks.js');
+var others = require('../function/others.js');
+var sleeps = require('../function/sleeps.js');
+var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.jifen.qukan';

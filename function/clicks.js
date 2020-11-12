@@ -3,7 +3,7 @@
  */
 var s = {};
 
-/**
+/**1
  * 查询 元素 列表，再根据 宽、高 点击
  */
 s.elementWidthHeight = function (element, width, height) {

@@ -3,10 +3,10 @@
  * 当前存在问题
  * 1. 无法判断是否成功通过验证码（就随便滑动，瞎蒙呗）
  */
-var clicks = require('./function-clicks.js');
-var others = require('./function-others.js');
-var sleeps = require('./function-sleeps.js');
-var swipes = require('./function-swipes.js');
+var clicks = require('../function/clicks.js');
+var others = require('../function/others.js');
+var sleeps = require('../function/sleeps.js');
+var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.kuaishou.nebula';

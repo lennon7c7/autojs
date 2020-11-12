@@ -4,6 +4,41 @@
 var s = {};
 
 /**
+ * 修复文件分类目录存放
+ * 因为PC保存子目录有BUG，所以只能用那么low的方法
+ * @returns {boolean}
+ */
+s.fixDir = function () {
+    oldDir = files.cwd() + '/';
+
+    newDir = oldDir + 'function/';
+    filename = ['clicks.js', 'others.js', 'sleeps.js', 'swipes.js'];
+    filename.forEach((value, key) => {
+        if (!files.exists(oldDir + value)) {
+            return false;
+        }
+
+        status = files.move(oldDir + value, newDir + value);
+        if (!status) {
+            log('files.move error: ' + value);
+        }
+    });
+
+    newDir = oldDir + 'module/';
+    filename = ['baidu.js', 'douyin.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'kaola.js', 'kuaishou.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js', 'qqbrowser.js', 'qutoutiao.js', 'tianmao.js', 'taobao.js', 'toutiao.js', 'weishi.js', 'ximalaya.js', 'zhifubao.js', 'zuiqiangdaren.js'];
+    filename.forEach((value, key) => {
+        if (!files.exists(oldDir + value)) {
+            return false;
+        }
+
+        status = files.move(oldDir + value, newDir + value);
+        if (!status) {
+            log('files.move error: ' + value);
+        }
+    });
+};
+
+/**
  * 初始化环境
  * @returns {boolean}
  */
@@ -11,6 +46,8 @@ s.initEnv = function () {
     auto();
 
     setScreenMetrics(1080, 2340);
+
+    s.fixDir();
 };
 
 /**
@@ -135,7 +172,7 @@ s.send = function (message) {
             'text': '#### ' + message
         }
     });
- 
+
     responseJson = response.body.json();
     if (responseJson.errcode != 0 || responseJson.errmsg != 'ok') {
         log('---------- dingtalk log error ----------');
