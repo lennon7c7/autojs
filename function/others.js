@@ -74,12 +74,8 @@ s.launch = function (packageName) {
  * @returns {boolean}
  */
 s.back = function () {
-    if (!back()) {
-        toastLog('fail: back');
-        return false;
-    }
-
-    sleep(2000);
+    back();
+    sleep(3000);
 
     return true;
 };
@@ -89,19 +85,10 @@ s.back = function () {
  * @returns {boolean}
  */
 s.back2 = function () {
-    if (!back()) {
-        toastLog('fail: back 1');
-        return false;
+    for (var i = 0; i < 2; i++) {
+        back();
+        sleep(3000);
     }
-
-    sleep(3000);
-
-    if (!back()) {
-        toastLog('fail: back 2');
-        return false;
-    }
-
-    sleep(2000);
 
     return true;
 };
@@ -111,26 +98,23 @@ s.back2 = function () {
  * @returns {boolean}
  */
 s.back3 = function () {
-    if (!back()) {
-        toastLog('fail: back 1');
-        return false;
+    for (var i = 0; i < 3; i++) {
+        back();
+        sleep(3000);
     }
 
-    sleep(3000);
+    return true;
+};
 
-    if (!back()) {
-        toastLog('fail: back 2');
-        return false;
+/**
+ * 返回次数 6
+ * @returns {boolean}
+ */
+s.back6 = function () {
+    for (var i = 0; i < 7; i++) {
+        back();
+        sleep(3000);
     }
-
-    sleep(3000);
-
-    if (!back()) {
-        toastLog('fail: back 3');
-        return false;
-    }
-
-    sleep(2000);
 
     return true;
 };
