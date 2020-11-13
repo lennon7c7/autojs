@@ -15,7 +15,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.livelite';
 function taskCashout() {
     log('---------- taskCashout start ----------');
 
-    if (text('0.2元提现').findOne().parent().findOne(text('已完成'))) {
+    if (clicks.parent(text('0.2元提现'), text('已完成'))) {
         return true;
     }
 
@@ -34,7 +34,7 @@ function taskCashout() {
 
     others.back2();
 
-    if (text('0.2元提现').findOne().parent().findOne(text('已完成'))) {
+    if (clicks.parent(text('0.2元提现'), text('已完成'))) {
         return true;
     }
 

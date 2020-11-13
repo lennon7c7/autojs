@@ -94,7 +94,7 @@ s.start = function () {
         }
     }
 
-    others.send('qqbrowser');
+    others.send('tencentnews');
 
     return false;
 };
