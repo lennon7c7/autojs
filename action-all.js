@@ -4,7 +4,7 @@
 baidu = require('module/baidu.js');
 baidu.start();
 
-douyin = require('module/douyin.js');
+douyin = require('module/douyinlite.js');
 douyin.start();
 
 douyinhuoshan = require('module/douyinhuoshan.js');

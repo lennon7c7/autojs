@@ -1,5 +1,5 @@
 /**
- * 抖音-任务
+ * 抖音极速版-任务
  */
 var clicks = require('../function/clicks.js');
 var others = require('../function/others.js');
@@ -190,7 +190,7 @@ s.start = function () {
         }
     }
 
-    others.send('douyin');
+    others.send('douyinlite');
 
     return false;
 };
