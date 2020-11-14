@@ -1,5 +1,5 @@
 /**
- * 头条-任务
+ * 头条极速版-任务
  */
 var clicks = require('../function/clicks.js');
 var others = require('../function/others.js');
@@ -198,10 +198,23 @@ function closeAd() {
 function taskNews() {
     log('---------- taskNews start ----------');
 
+    others.back();
+    
+    if (!clicks.textIfExists('去阅读')) {
+        return true;
+    }
 
     for (var i = 0; i < 10; i++) {
-        swipes.refresh();
-        clicks.xy(145, 707);
+        if (!text('首页').exists() || !text('我的').exists()) {
+            log('---------- error ----------');
+            return false;
+        }
+
+        if (!clicks.centerXyByText('首页')) {
+            return false;
+        }
+
+        clicks.xy(145, 888);
 
         for (var j = 0; j < 8; j++) {
             swipes.down();
@@ -282,8 +295,8 @@ s.start = function () {
             clicks.xy(477, 1710);
         }
 
-        status1 = taskCheckin();
-        status2 = taskLottery();
+        status0 = taskCheckin();
+        // status2 = taskLottery();
         taskSleep();
         taskTreasureBox();
         taskTaobao();
@@ -291,7 +304,7 @@ s.start = function () {
         // taskNovel();
         taskNews();
 
-        if (status1 && status2) {
+        if (status0) {
             return true;
         }
     }
