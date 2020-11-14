@@ -25,7 +25,7 @@ s.fixDir = function () {
     });
 
     newDir = oldDir + 'module/';
-    filename = ['baidu.js', 'douyin.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'kaola.js', 'kuaishou.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js', 'qqbrowser.js', 'qutoutiao.js', 'tianmao.js', 'taobao.js', 'tencentnews.js', 'toutiao.js', 'weishi.js', 'ximalaya.js', 'zhifubao.js', 'zuiqiangdaren.js'];
+    filename = ['baidu.js', 'diandiancaige.js', 'douyin.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'kaola.js', 'kuaishou.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js', 'qqbrowser.js', 'qutoutiao.js', 'tianmao.js', 'taobao.js', 'tencentnews.js', 'toutiao.js', 'weishi.js', 'ximalaya.js', 'zhifubao.js', 'zuiqiangdaren.js'];
     filename.forEach((value, key) => {
         if (!files.exists(oldDir + value)) {
             return false;

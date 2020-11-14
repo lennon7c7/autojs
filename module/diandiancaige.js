@@ -1,28 +1,15 @@
 /**
- * 点点猜歌
+ * 点点猜歌-任务
+ * 当前存在问题
+ * 1. 刷到3000多首的时候就没有歌曲，不知道是我被黑还是数据库只有很少的歌曲
  */
 var clicks = require('function/clicks.js');
 var others = require('function/others.js');
 var sleeps = require('function/sleeps.js');
 var swipes = require('function/swipes.js');
-const PACKAGE_NAME = 'com.red.answer';
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    status0 = taskAnswer();
-
-    if (status0) {
-        others.exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.red.answer';
 
 /**
  * 任务-回答
@@ -30,7 +17,7 @@ function main() {
 function taskAnswer() {
     clicks.centerXyByText('取消');
 
-    for (var i = 0; i < 12000; i++) {
+    for (var i = 0; i < 1200; i++) {
         if (id('recycler_question').find().size() > 0) {
             id('recycler_question').findOne().children().forEach((value, key) => {
                 if (key == random(0, 2)) {
@@ -78,3 +65,25 @@ function taskAnswer() {
  
     return false;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status = taskAnswer();
+
+        if (status) {
+            return true;
+        }
+    }
+
+    others.send('diandiancaige');
+
+    return false;
+};
+
+module.exports = s;
