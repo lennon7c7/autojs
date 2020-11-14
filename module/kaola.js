@@ -93,7 +93,7 @@ function taskRandomPage() {
         return true;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 40; i++) {
         if (!clicks.textIfExists('去逛逛')) {
             continue;
         }
@@ -111,6 +111,17 @@ function taskRandomPage() {
 
                 others.back();
             }
+        } else if (clicks.textIfExists('去看看')) {
+            for (var j = 0; j < 6; j++) {
+                others.back();
+
+                if (text('去看看').exists()) {
+                    break;
+                }
+            }
+
+            clicks.textIfExists('快打开看看吧~');
+            others.back();
         } else {
             for (var j = 0; j < 8; j++) {
                 swipes.down();
