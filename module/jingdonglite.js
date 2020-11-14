@@ -1,41 +1,15 @@
 /**
- * 京东-所有金币任务
+ * 京东极速版-任务
+ * 当前存在问题
+ * 1. 我的号被制裁了，刷视频才得1金币，现在不知道怎么处理
  */
 var clicks = require('function/clicks.js');
 var others = require('function/others.js');
 var sleeps = require('function/sleeps.js');
 var swipes = require('function/swipes.js');
-const PACKAGE_NAME = 'com.jd.jdlite';
 
-for (var i = 0; i < 3; i++) {
-    main();
-}
-
-function main() {
-    status = others.launch(PACKAGE_NAME);
-    if (!status) {
-        return false;
-    }
-
-    if (!clicks.centerXyByDesc('赚钱')) {
-        return true;
-    }
-
-    // 多出的另外一个是：新手任务-开启通知
-    if (text('已完成').find().size() === 4) {
-        exit();
-    }
-
-    status1 = taskProduct();
-    status2 = taskRandomPage();
-    status3 = taskVideo();
-    // status4 = taskCheckin();
-
-    if (status1 && status2 && status3) {
-        others.clear();
-        exit();
-    }
-}
+var s = {};
+s.PACKAGE_NAME = 'com.jd.jdlite';
 
 // 任务-签到
 function taskCheckin() {
@@ -65,8 +39,6 @@ function taskCheckin() {
 
     others.back();
     clicks.centerXyByText('残忍拒绝');
-
-    log('---------- taskCheckin end ----------');
 
     return false;
 }
@@ -111,7 +83,6 @@ function taskProduct() {
 
         others.back();
     }
-    log('---------- taskProduct end ----------');
 
     return true;
 }
@@ -157,8 +128,6 @@ function taskRandomPage() {
         others.back();
     }
 
-    log('---------- taskRandomPage end ----------');
-
     return true;
 }
 
@@ -197,7 +166,39 @@ function taskVideo() {
         sleeps.s2to3();
     }
 
-    log('---------- taskVideo end ----------');
-
     return true;
 }
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 3; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        if (!clicks.centerXyByDesc('赚钱')) {
+            return true;
+        }
+
+        // 多出的另外一个是：新手任务-开启通知
+        if (text('已完成').find().size() === 4) {
+            exit();
+        }
+
+        status1 = taskProduct();
+        status2 = taskRandomPage();
+        status3 = taskVideo();
+        // status4 = taskCheckin();
+
+        if (status1 && status2 && status3) {
+            return true;
+        }
+    }
+
+    others.send('jingdonglite');
+
+    return false;
+};
+
+module.exports = s;
