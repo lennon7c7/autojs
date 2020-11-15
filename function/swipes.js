@@ -83,4 +83,12 @@ s.down1600 = function () {
     sleep(1 * 1000)
 };
 
+/**
+ * 滑动-下到上
+ */
+s.down2200 = function () {
+    swipe(500, 2250, 500, 50, 500);
+    sleep(1 * 1000)
+};
+
 module.exports = s;

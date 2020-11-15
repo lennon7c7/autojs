@@ -107,6 +107,19 @@ s.back3 = function () {
 };
 
 /**
+ * 返回次数 4
+ * @returns {boolean}
+ */
+s.back4 = function () {
+    for (var i = 0; i < 5; i++) {
+        back();
+        sleep(3000);
+    }
+
+    return true;
+};
+
+/**
  * 返回次数 6
  * @returns {boolean}
  */

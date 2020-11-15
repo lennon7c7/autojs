@@ -128,7 +128,8 @@ s.centerXyByText = function (myString) {
     element = text(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
-    if (x >= 0 && y >= 0 && click(x, y)) {
+    if (x >= 0 && y >= 0) {
+        click(x, y);
         sleep(3 * 1000);
         return true;
     }
@@ -192,7 +193,8 @@ s.centerXyByDesc = function (myString) {
     element = desc(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
-    if (x >= 0 && y >= 0 && click(x, y)) {
+    if (x >= 0 && y >= 0) {
+        click(x, y);
         sleep(3 * 1000);
         return true;
     }
@@ -243,7 +245,8 @@ s.centerXyById = function (myString) {
     element = id(myString).findOne().bounds();
     x = element.centerX();
     y = element.centerY();
-    if (x >= 0 && y >= 0 && click(x, y)) {
+    if (x >= 0 && y >= 0) {
+        click(x, y);
         sleep(3 * 1000);
         return true;
     }
