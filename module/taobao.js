@@ -173,12 +173,12 @@ function taskMoneyPower() {
             sleeps.s10to20();
 
             for (var i = 1; i < 8; i++) {
-                clicks.xy(530, 1000 + (i * 100));
+                clicks.xy(500, 1000 + (i * 100));
             }
 
             for (var i = 1; i < 8; i++) {
                 others.back();
-                clicks.xy(530, 1000 + (i * 100));
+                clicks.xy(500, 1000 + (i * 100));
                 if (text('今日任务').exists()) {
                     break;
                 }
