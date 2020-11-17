@@ -15,10 +15,11 @@ s.PACKAGE_NAME = 'com.tencent.news';
 function taskCheckin() {
     log('---------- taskCheckin start ----------');
 
-    if (!clicks.centerXyByText('我的')) {
+    if (!clicks.centerXyByText('我的 ')) {
         return false;
     }
 
+    others.back();
     clicks.text('立即打卡');
 
     return true;
@@ -31,7 +32,7 @@ function taskVideo() {
     others.back();
 
     for (var i = 0; i < 11; i++) {
-        if (!text('新闻').exists() || !text('视频').exists() || !text('我的').exists()) {
+        if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
             log('---------- error ----------');
             return false;
         }
@@ -54,7 +55,7 @@ function taskNews() {
     others.back();
 
     for (var i = 0; i < 11; i++) {
-        if (!text('新闻').exists() || !text('视频').exists() || !text('我的').exists()) {
+        if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
             log('---------- error ----------');
             return false;
         }
@@ -84,6 +85,8 @@ function taskNews() {
 s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
+
+        clicks.centerXyByDesc('Tencent news');
 
         status0 = taskCheckin();
         status1 = taskVideo();

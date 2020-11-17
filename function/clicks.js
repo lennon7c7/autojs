@@ -3,7 +3,7 @@
  */
 var s = {};
 
-/**1
+/**
  * 查询 元素 列表，再根据 宽、高 点击
  */
 s.elementWidthHeight = function (element, width, height) {
@@ -224,6 +224,19 @@ s.desc = function (myString) {
     sleep(3 * 1000);
 
     return true;
+};
+
+/**
+ * 描述-元素存在则点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.descIfExists = function (myString) {
+    if (myString == '' || !desc(myString).exists()) {
+        return false;
+    }
+
+    return s.desc(myString);
 };
 
 /**
