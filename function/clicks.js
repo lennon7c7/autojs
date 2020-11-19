@@ -13,7 +13,12 @@ s.elementWidthHeight = function (element, width, height) {
             return false;
         }
 
-        value.click();
+        if (value.clickable() === false) {
+            click(value.bounds().centerX(), value.bounds().centerY());
+        } else {
+            value.click();
+        }
+
         sleep(3 * 1000);
 
         isOk = true;

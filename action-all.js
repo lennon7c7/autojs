@@ -49,6 +49,9 @@ taobao.start();
 tencentnews = require('module/tencentnews.js');
 tencentnews.start();
 
+tencentnow = require('module/tencentnow.js');
+tencentnow.start();
+
 toutiao = require('module/toutiao.js');
 toutiao.start();
 
