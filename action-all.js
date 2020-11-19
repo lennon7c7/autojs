@@ -16,6 +16,9 @@ fanqie.start();
 huoshan = require('module/huoshan.js');
 huoshan.start();
 
+jingdonglite = require('module/jingdonglite.js');
+jingdonglite.start();
+
 kaola = require('module/kaola.js');
 kaola.start();
 

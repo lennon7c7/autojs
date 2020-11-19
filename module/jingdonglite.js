@@ -1,12 +1,12 @@
 /**
  * 京东极速版-任务
  * 当前存在问题
- * 1. 我的号被制裁了，刷视频才得1金币，现在不知道怎么处理
+ * 1. 使用高版本的可能会被制裁了，刷视频只能获得1金币，使用v1.0.0能正常刷
  */
-var clicks = require('function/clicks.js');
-var others = require('function/others.js');
-var sleeps = require('function/sleeps.js');
-var swipes = require('function/swipes.js');
+var clicks = require('../function/clicks.js');
+var others = require('../function/others.js');
+var sleeps = require('../function/sleeps.js');
+var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.jd.jdlite';
@@ -15,29 +15,25 @@ s.PACKAGE_NAME = 'com.jd.jdlite';
 function taskCheckin() {
     log('---------- taskCheckin start ----------');
 
-    swipes.down();
-    swipes.down();
-    swipes.down();
-
-    if (!clicks.centerXyByText('去签到')) {
+    if (!clicks.centerXyByText('现金签到')) {
         return false;
+    }
+
+    if (text('邀好友解锁额外红包').exists() || text('残忍拒绝').exists()) {
+        others.back();
+        return true;
     }
 
     if (!clicks.centerXyByText('立即签到')) {
         return false;
     }
 
-    if (text('邀好友解锁额外红包').exists()) {
-        others.back();
-        return true;
-    }
-
-    if (text('残忍拒绝').exists()) {
-        others.back();
-        return true;
-    }
-
     others.back();
+    if (text('邀好友解锁额外红包').exists() || text('残忍拒绝').exists()) {
+        others.back();
+        return true;
+    }
+
     clicks.centerXyByText('残忍拒绝');
 
     return false;
@@ -47,41 +43,37 @@ function taskCheckin() {
 function taskProduct() {
     log('---------- taskProduct start ----------');
 
-    log('---------- button into ----------');
-    clicks.xy(807, 1693);
+    others.back3();
+    if (!clicks.centerXyByDesc('我的')) {
+        return false;
+    }
 
-    if (desc('赚钱').exists()) {
+    if (clicks.parent(text('逛商品赚金币'), text('已完成'))) {
         return true;
     }
 
-    for (var i = 0; i < 50; i++) {
+    if (!clicks.parent(text('逛商品赚金币'), text('去赚钱'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
 
-        swipes.down1600();
-        sleeps.s2to4();
-
-        swipes.down1600();
-        sleeps.s2to4();
-
-        swipes.down1600();
-        sleeps.s2to5();
-
-        if (id('ll_task_bottom_next').exists()) {
-            id('ll_task_bottom_next').click();
-            sleeps.s2to3();
-        } else {
-            others.back();
-        }
-    }
-
-    for (var i = 0; i < 5; i++) {
-        if (desc('赚钱').exists()) {
+        if (!text('加入购物车').exists() || !text('立即购买').exists()) {
+            log('---------- error ----------');
             return false;
         }
 
-        others.back();
+        for (var j = 0; j < 3; j++) {
+            swipes.down1600();
+            sleeps.s2to4();
+        }
+
+        if (!clicks.centerXyByText('看商品继续')) {
+            break;
+        }
     }
 
     return true;
@@ -91,41 +83,32 @@ function taskProduct() {
 function taskRandomPage() {
     log('---------- taskRandomPage start ----------');
 
-    log('---------- button into ----------');
-    clicks.xy(807, 1894);
+    others.back3();
+    if (!clicks.centerXyByDesc('我的')) {
+        return false;
+    }
 
-    if (desc('赚钱').exists()) {
+    if (clicks.parent(text('逛活动赚金币'), text('已完成'))) {
         return true;
     }
 
-    for (var i = 0; i < 20; i++) {
+    if (!clicks.parent(text('逛活动赚金币'), text('去赚钱'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
 
-        swipes.down1600();
-        sleeps.s2to4();
-
-        swipes.down1600();
-        sleeps.s2to4();
-
-        swipes.down1600();
-        sleeps.s2to5();
-
-        if (id('ll_task_bottom_next').exists()) {
-            id('ll_task_bottom_next').click();
-            sleeps.s2to3();
-        } else {
-            others.back();
+        for (var j = 0; j < 3; j++) {
+            swipes.down1600();
+            sleeps.s2to4();
         }
-    }
 
-    for (var i = 0; i < 5; i++) {
-        if (desc('赚钱').exists()) {
+        if (!clicks.id('ll_task_bottom_next')) {
             return false;
         }
-
-        others.back();
     }
 
     return true;
@@ -135,8 +118,19 @@ function taskRandomPage() {
 function taskVideo() {
     log('---------- taskVideo start ----------');
 
-    log('---------- button into ----------');
-    clicks.xy(807, 2095);
+    others.back3();
+    if (!clicks.centerXyByDesc('我的')) {
+        return false;
+    }
+
+    if (clicks.parent(text('看视频赚金币'), text('已完成'))) {
+        return true;
+    }
+
+    if (!clicks.parent(text('看视频赚金币'), text('去赚钱'))) {
+        log('---------- error ----------');
+        return false;
+    }
 
     if (!id('task_float_base_fl').exists()) {
         toastLog('---------- shit happen: taskVideo ----------');
@@ -151,7 +145,7 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 1200; i++) {
+    for (var i = 0; i < 10; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
@@ -177,21 +171,12 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        if (!clicks.centerXyByDesc('赚钱')) {
-            return true;
-        }
-
-        // 多出的另外一个是：新手任务-开启通知
-        if (text('已完成').find().size() === 4) {
-            exit();
-        }
-
+        status0 = taskCheckin();
         status1 = taskProduct();
         status2 = taskRandomPage();
         status3 = taskVideo();
-        // status4 = taskCheckin();
 
-        if (status1 && status2 && status3) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }
