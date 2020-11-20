@@ -63,7 +63,7 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
         if (!text('推荐').exists() || !text('小视频').exists()) {
             log('---------- error ----------');
             return false;
@@ -81,11 +81,7 @@ function taskVideo() {
         return false;
     }
 
-    if (text('观看视频').findOne().parent().parent().findOne(text('已完成'))) {
-        return true;
-    }
-
-    return false;
+    return true;
 }
 
 // 任务-看新闻
@@ -106,7 +102,7 @@ function taskNews() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
         if (!text('百度').exists() || !text('任务').exists() || !text('我的').exists()) {
             log('---------- error ----------');
             return false;
@@ -129,10 +125,6 @@ function taskNews() {
 
     if (!clicks.centerXyByText('任务')) {
         return false;
-    }
-
-    if (text('阅读资讯').findOne().parent().parent().findOne(text('已完成'))) {
-        return true;
     }
 
     return true;

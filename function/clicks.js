@@ -9,7 +9,7 @@ var s = {};
 s.elementWidthHeight = function (element, width, height) {
     isOk = false;
     element.find().forEach((value, key) => {
-        if (value.bounds().width() != width || value.bounds().height() != height) {
+        if (value.bounds().width() !== width || value.bounds().height() !== height) {
             return false;
         }
 
@@ -62,7 +62,7 @@ s.xiaoxiao = function (x, y, offset, step) {
     for (var i = 0; i < step; i++) {
         for (var j = 0; j < step; j++) {
             // top
-            if (i != (step - 1)) {
+            if (i !== (step - 1)) {
                 click(x + xAdd * j, y - yAdd * i);
                 sleep(300);
                 click(x + xAdd * j, y - yAdd * i - yAdd);
@@ -70,7 +70,7 @@ s.xiaoxiao = function (x, y, offset, step) {
             }
 
             // right
-            if (i != (step - 1)) {
+            if (i !== (step - 1)) {
                 click(x + xAdd * j, y - yAdd * i);
                 sleep(300);
                 click(x + xAdd * j + xAdd, y - yAdd * i);
@@ -78,7 +78,7 @@ s.xiaoxiao = function (x, y, offset, step) {
             }
 
             // bottom
-            if (i != 0) {
+            if (i !== 0) {
                 click(x + xAdd * j, y - yAdd * i);
                 sleep(300);
                 click(x + xAdd * j, y - yAdd * i + yAdd);
@@ -100,11 +100,11 @@ s.xiaoxiao = function (x, y, offset, step) {
  * 元素
  */
 s.element = function (e) {
-    if (e.exists != undefined && !e.exists()) {
+    if (e.exists !== undefined && !e.exists()) {
         return false;
     }
 
-    if (e.size != undefined && e.size() == 0) {
+    if (e.size !== undefined && e.size() === 0) {
         return false;
     }
 
@@ -120,7 +120,7 @@ s.element = function (e) {
  * @returns {boolean}
  */
 s.centerXyByText = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -150,7 +150,7 @@ s.centerXyByText = function (myString) {
  * @returns {boolean}
  */
 s.text = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -172,7 +172,7 @@ s.text = function (myString) {
  * @returns {boolean}
  */
 s.textIfExists = function (myString) {
-    if (myString == '' || !text(myString).exists()) {
+    if (myString === '' || !text(myString).exists()) {
         return false;
     }
 
@@ -185,7 +185,7 @@ s.textIfExists = function (myString) {
  * @returns {boolean}
  */
 s.centerXyByDesc = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -215,7 +215,7 @@ s.centerXyByDesc = function (myString) {
  * @returns {boolean}
  */
 s.desc = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -237,7 +237,7 @@ s.desc = function (myString) {
  * @returns {boolean}
  */
 s.descIfExists = function (myString) {
-    if (myString == '' || !desc(myString).exists()) {
+    if (myString === '' || !desc(myString).exists()) {
         return false;
     }
 
@@ -250,7 +250,7 @@ s.descIfExists = function (myString) {
  * @returns {boolean}
  */
 s.centerXyById = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -282,18 +282,18 @@ s.centerXyById = function (myString) {
 /**
  * 根据 当前元素 的 祖先级元素 去点击
  * @param {string} currentElement
- * @param {string} parentElement
+ * @param {string} parentsElement
  * @returns {boolean}
  */
 s.parents = function (currentElement, parentsElement) {
-    if (currentElement.find().size() == 0) {
+    if (currentElement.find().size() === 0) {
         log('---------- fail: currentElement =', currentElement, ' none exist ----------');
         return false;
     }
 
     element = currentElement.findOne().parent().parent().findOne(parentsElement);
     if (element == null || !s.element(element)) {
-        log('---------- fail: parentElement =', parentsElement, ' none exist ----------');
+        log('---------- fail: parentsElement =', parentsElement, ' none exist ----------');
         return false;
     }
 
@@ -307,7 +307,7 @@ s.parents = function (currentElement, parentsElement) {
  * @returns {boolean}
  */
 s.parent = function (currentElement, parentElement) {
-    if (currentElement.find().size() == 0) {
+    if (currentElement.find().size() === 0) {
         log('---------- fail: currentElement =', currentElement, ' none exist ----------');
         return false;
     }
@@ -327,7 +327,7 @@ s.parent = function (currentElement, parentElement) {
  * @returns {boolean}
  */
 s.id = function (myString) {
-    if (myString == '') {
+    if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
@@ -349,7 +349,7 @@ s.id = function (myString) {
  * @returns {boolean}
  */
 s.idIfExists = function (myString) {
-    if (myString == '' || !id(myString).exists()) {
+    if (myString === '' || !id(myString).exists()) {
         return false;
     }
 
