@@ -118,7 +118,7 @@ function taskAd10() {
         return true;
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         if (clicks.element(className('android.widget.Button').text('福利'))) {
         } else if (clicks.element(className('android.widget.Button').text('福利 领金币'))) {
         } else {

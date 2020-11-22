@@ -13,6 +13,8 @@ s.PACKAGE_NAME = 'com.tmall.wireless';
  * 任务-签到
  */
 function taskCheckin() {
+    log('---------- taskCheckin start ----------');
+
     if (!clicks.centerXyByText('我')) {
         return false;
     }
@@ -21,7 +23,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists()) {
+    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists()) {
         return true;
     }
 
@@ -30,6 +32,10 @@ function taskCheckin() {
     }
 
     if (text('开心收下，明天继续领').exists()) {
+        return true;
+    }
+    
+    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists()) {
         return true;
     }
 

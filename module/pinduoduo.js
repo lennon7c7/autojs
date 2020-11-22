@@ -13,7 +13,7 @@ s.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
  * 任务-签到
  */
 function taskCheckin() {
-    if (!clicks.centerXyByText('现金签到')) {
+    if (!clicks.centerXyByText('现金签到') && !clicks.centerXyByText('签到领钱')) {
         return false;
     }
     sleeps.s2to3();

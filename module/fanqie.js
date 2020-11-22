@@ -45,7 +45,9 @@ function taskTreasureBox() {
         return false;
     }
 
-    others.back();
+    clicks.element(textStartsWith('看视频再领'));
+
+    closeAd();
 
     if (text('开宝箱得金币').find().size() == 1) {
         return true;

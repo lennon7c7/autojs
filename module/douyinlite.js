@@ -49,7 +49,8 @@ function taskCashout() {
     }
 
     if (!clicks.centerXyByText('立即提现')) {
-        return false;
+        others.back();
+        return true;
     }
 
     others.back2();
