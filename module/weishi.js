@@ -14,6 +14,15 @@ function taskCheckin() {
     log('---------- taskCheckin start ----------');
 
     clicks.xy(888, 2200);
+
+    if (text('微信登录').exists()) {
+        clicks.centerXyByText('微信登录');
+
+        if (text('Confirm Login').exists()) {
+            clicks.centerXyByText('Confirm Login');
+        }
+    }
+
     clicks.xy(750, 411);
     sleeps.s2to3();
 
@@ -21,43 +30,19 @@ function taskCheckin() {
         return true;
     }
 
-    if (clicks.text('签到领红包')) {
+    if (clicks.textIfExists('签到领红包')) {
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x1')) {
+    if (textStartsWith('领取 ').exists()) {
+        clicks.element(textStartsWith('领取 '));
         others.back();
         clicks.xy(750, 411);
     }
 
-    if (clicks.text('领取 x2')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.text('领取 x3')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.text('领取 x4')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.text('领取 x5')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.text('领取 x6')) {
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.text('提现')) {
-        if (clicks.text('去提现')) {
+    if (clicks.textIfExists('提现')) {
+        if (clicks.textIfExists('去提现')) {
             others.back();
         }
         others.back();
