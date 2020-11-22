@@ -158,6 +158,29 @@ function taskVideo() {
     return true;
 }
 
+// 任务-活动任务
+function taskActivity() {
+    log('---------- taskActivity start ----------');
+
+    others.back3();
+    if (!clicks.centerXyByDesc('赚钱')) {
+        return false;
+    }
+
+    scrollDown();
+
+    activityArray = ['免费领', '去赚钱', '去签到', '去参加', '去抽奖'];
+    for (var i = 0; i < activityArray.length; i++) {
+        if (clicks.textIfExists([activityArray[i]])) {
+            others.back();
+            clicks.textIfExists('残忍拒绝');
+            clicks.textIfExists('残忍离开');
+        }
+    }
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -170,8 +193,9 @@ s.start = function () {
         status1 = taskProduct();
         status2 = taskRandomPage();
         status3 = taskVideo();
+        status4 = taskActivity();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
     }
