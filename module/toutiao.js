@@ -199,7 +199,7 @@ function taskNews() {
     log('---------- taskNews start ----------');
 
     others.back();
-    
+
     if (!clicks.textIfExists('去阅读')) {
         return true;
     }
@@ -292,7 +292,8 @@ s.start = function () {
         }
 
         if (text('看视频再领').exists()) {
-            clicks.xy(477, 1710);
+            clicks.text('看完视频再领');
+            closeAd();
         }
 
         status0 = taskCheckin();
@@ -312,6 +313,21 @@ s.start = function () {
     others.send('toutiao');
 
     return false;
+};
+
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    clicks.textIfExists('以后再说');
+    if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
+        return false;
+    }
+
+    taskTreasureBox();
 };
 
 module.exports = s;

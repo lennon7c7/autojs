@@ -196,4 +196,21 @@ s.start = function () {
     return false;
 };
 
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    others.back();
+
+    // 任务界面
+    if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234)) {
+        return false;
+    }
+
+    taskTreasureBox();
+};
+
 module.exports = s;

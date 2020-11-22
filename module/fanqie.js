@@ -37,6 +37,11 @@ function taskAd() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
+    if (textStartsWith('看视频再领').exists()) {
+        clicks.element(textStartsWith('看视频再领'));
+        closeAd();
+    }
+
     if (text('开宝箱得金币').find().size() == 1) {
         return true;
     }
@@ -127,6 +132,20 @@ s.start = function () {
     others.send('fanqie');
 
     return false;
+};
+
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    if (!clicks.centerXyByText('福利')) {
+        return false;
+    }
+
+    taskTreasureBox();
 };
 
 module.exports = s;

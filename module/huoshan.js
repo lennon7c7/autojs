@@ -204,4 +204,16 @@ s.start = function () {
     return false;
 };
 
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    others.back();
+
+    taskTreasureBox();
+};
+
 module.exports = s;
