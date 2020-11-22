@@ -52,7 +52,7 @@ function taskProduct() {
         return true;
     }
 
-    if (!clicks.parent(text('逛商品赚金币'), text('去赚钱'))) {
+    if (!clicks.centerXyByText('逛商品赚金币')) {
         return false;
     }
 
@@ -61,12 +61,7 @@ function taskProduct() {
             return true;
         }
 
-        if (!text('加入购物车').exists() || !text('立即购买').exists()) {
-            log('---------- error ----------');
-            return false;
-        }
-
-        for (var j = 0; j < 3; j++) {
+        for (var j = 0; j < 4; j++) {
             swipes.down1600();
             sleeps.s2to4();
         }
@@ -92,7 +87,7 @@ function taskRandomPage() {
         return true;
     }
 
-    if (!clicks.parent(text('逛活动赚金币'), text('去赚钱'))) {
+    if (!clicks.centerXyByText('逛活动赚金币')) {
         return false;
     }
 
@@ -101,12 +96,12 @@ function taskRandomPage() {
             return true;
         }
 
-        for (var j = 0; j < 3; j++) {
+        for (var j = 0; j < 4; j++) {
             swipes.down1600();
             sleeps.s2to4();
         }
 
-        if (!clicks.id('ll_task_bottom_next')) {
+        if (!clicks.centerXyById('ll_task_bottom_next')) {
             return false;
         }
     }
@@ -127,7 +122,7 @@ function taskVideo() {
         return true;
     }
 
-    if (!clicks.parent(text('看视频赚金币'), text('去赚钱'))) {
+    if (!clicks.centerXyByText('看视频赚金币')) {
         log('---------- error ----------');
         return false;
     }
