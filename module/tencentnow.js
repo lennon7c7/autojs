@@ -26,7 +26,7 @@ function taskCheckin() {
     if (text('今日已签到').exists()) {
         return true;
     }
-  
+
     if (!clicks.centerXyByText('签到领取红包')) {
         return false;
     }
@@ -39,6 +39,74 @@ function taskCheckin() {
 }
 
 /**
+ * 随机答题抢红包
+ */
+s.redPackage = function () {
+    log('---------- redPackage start ----------');
+
+    others.back3();
+
+    for (var i = 0; i < 600; i++) {
+        if (clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
+            scrollDown();
+            sleeps.s3();
+        }
+
+        if (!clicks.centerXyByText('换一批')) {
+            others.back();
+            continue;
+        }
+
+        if (!clicks.centerXyByText('去领取')) {
+            others.back();
+            continue;
+        }
+
+        sleeps.s3();
+        textStartsWith('NOW ID:').exists() && clicks.xy(30, 471);
+        sleeps.s3();
+
+        if (!clicks.element(textStartsWith('发答案领红包'))) {
+            others.back();
+            continue;
+        }
+
+        wordArray = ['hi', '美女', 'no', '加油', '不知道', '可能', '好', '恩', '真爱', '路过', '打酱油',
+            '中国欧阳兄弟', '中国第一名', '中国第一', '中国红包', '哈哈', '嘿嘿', '我爱中国', '中国加油',
+            ':-D', ':-*', '╭（╯_╰）╭', '(=^_^=)', '<※', '*\(^_^)/*', 'b（￣▽￣）d', '>3<',
+            '主播加油', '主播最棒', '主播威武', '主播厉害', '主播好酷', '主播好美'];
+        setText(wordArray[random(0, wordArray.length - 1)]);
+        sleeps.s2to3();
+        clicks.text('发送');
+
+        textStartsWith('NOW ID:').exists() && clicks.xy(30, 471);
+
+        if (!text('已参与，等待抢红包').exists()) {
+            others.back2();
+            continue;
+        }
+
+        for (var j = 0; j < 3000; j++) {
+            sleep(100);
+            if (!text('活动主页>').exists()) {
+                text('最高').exists() && clicks.xy(769, 1466);
+                text('最高').exists() && clicks.xy(769, 1466);
+
+                others.back2();
+                break;
+            }
+
+            if (text('首页').exists()) {
+                break;
+            }
+        }
+
+        others.back();
+        clicks.textIfExists('直接退出');
+    }
+};
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -46,10 +114,14 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
+        others.back3();
+
+        clicks.textIfExists('我知道了');
+
         if (!clicks.centerXyByText('首页')) {
             return false;
         }
-    
+
         status0 = taskCheckin();
 
         if (status0) {
