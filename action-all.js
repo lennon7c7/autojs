@@ -40,6 +40,9 @@ qqbrowser.start();
 qutoutiao = require('module/qutoutiao.js');
 qutoutiao.start();
 
+shuqi = require('module/shuqi.js');
+shuqi.start();
+
 tianmao = require('module/tianmao.js');
 tianmao.start();
 
