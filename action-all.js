@@ -67,5 +67,8 @@ ximalaya.start();
 zhifubao = require('module/zhifubao.js');
 zhifubao.start();
 
+zhongqingkandian = require('module/zhongqingkandian.js');
+zhongqingkandian.start();
+
 zuiqiangdaren = require('module/zuiqiangdaren.js');
 zuiqiangdaren.start();
