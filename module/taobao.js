@@ -22,7 +22,8 @@ function taskShop() {
     }
 
     for (var i = 0; i < 4; i++) {
-        if (clicks.centerXyByDesc('逛10秒+10')) {
+        if (desc('逛10秒+10').exists()) {
+            clicks.centerXyByDesc('逛10秒+10');
             sleeps.s15to20();
             clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
@@ -33,7 +34,8 @@ function taskShop() {
     desc('金币好店').exists() && swipes.down();
 
     for (var i = 0; i < 3; i++) {
-        if (clicks.centerXyByDesc('逛10秒+10')) {
+        if (desc('逛10秒+10').exists()) {
+            clicks.centerXyByDesc('逛10秒+10');
             sleeps.s15to20();
             clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
@@ -44,7 +46,8 @@ function taskShop() {
     desc('金币好店').exists() && swipes.down();
 
     for (var i = 0; i < 3; i++) {
-        if (clicks.centerXyByDesc('逛10秒+10')) {
+        if (desc('逛10秒+10').exists()) {
+            clicks.centerXyByDesc('逛10秒+10');
             sleeps.s15to20();
             clicks.centerXyByText('关注+10');
             !desc('金币好店').exists() && others.back();
@@ -69,14 +72,16 @@ function taskHelpFriend() {
 
     sleeps.s5to10();
     for (var i = 0; i < 6; i++) {
-        if (clicks.centerXyByText('去助力')) {
+        if (text('去助力').exists()) {
+            clicks.centerXyByText('去助力');
             clicks.xy(393, 567);
             others.back();
         }
     }
 
     for (var i = 0; i < 6; i++) {
-        if (clicks.centerXyByText('喊Ta回来')) {
+        if (text('喊Ta回来').exists()) {
+            clicks.centerXyByText('喊Ta回来');
             clicks.xy(393, 507);
             clicks.xy(393, 567);
             others.back();
@@ -403,7 +408,9 @@ s.start = function () {
 
         sleeps.s5to10();
 
-        clicks.centerXyByText("签到领金币");
+        if (text('签到领金币').exists()) {
+            clicks.centerXyByText('签到领金币');
+        }
 
         if (text('签到领淘金币').exists()) {
             clicks.centerXyByText('签到领淘金币');
@@ -411,7 +418,9 @@ s.start = function () {
             clicks.centerXyByDesc('淘金币');
         }
 
-        clicks.centerXyByText('购后返 ');
+        if (text('购后返 ').exists()) {
+            clicks.centerXyByText('购后返 ');
+        }
 
         for (var i = 0; i < 3; i++) {
             clicks.textIfExists('合力');

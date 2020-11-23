@@ -112,7 +112,7 @@ function taskNews() {
             return false;
         }
 
-        clicks.xy(345, 1048);
+        clicks.xy(345, 1345);
 
         sleeps.s8();
         swipes.down();
@@ -139,8 +139,8 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskAd();
-        status1 = taskVideo();
         status2 = taskNews();
+        status1 = taskVideo();
 
         if (status0 && status1 && status2) {
             return true;
