@@ -211,6 +211,7 @@ s.cron = function () {
     }
 
     taskTreasureBox();
+    taskLimit();
 };
 
 module.exports = s;

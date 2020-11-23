@@ -108,7 +108,11 @@ s.element = function (e) {
         return false;
     }
 
-    e.click();
+    if (e.clickable() === false) {
+        click(e.bounds().centerX(), e.bounds().centerY());
+    } else {
+        e.click();
+    }
     sleep(3 * 1000);
 
     return true;

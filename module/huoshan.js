@@ -129,7 +129,7 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (clicks.centerXyByText('看视频 金币翻8倍')) {
+    if (clicks.element(textStartsWith('看视频'))) {
         closeAd();
     }
     clicks.text('javascript:;')
@@ -214,6 +214,7 @@ s.cron = function () {
     others.back();
 
     taskTreasureBox();
+    taskAd20();
 };
 
 module.exports = s;

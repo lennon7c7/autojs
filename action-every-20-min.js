@@ -8,6 +8,9 @@ setInterval(function () {
 }, 1200 * 1000);
 
 function main() {
+    douyinhuoshan = require('module/douyinhuoshan.js');
+    douyinhuoshan.cron();
+
     douyinlite = require('module/douyinlite.js');
     douyinlite.cron();
 

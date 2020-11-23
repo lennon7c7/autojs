@@ -110,4 +110,25 @@ s.start = function () {
     return false;
 };
 
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    clicks.textIfExists('以后再说');
+    others.back2();
+    scrollUp();
+    if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('火苗管理')) {
+        return false;
+    }
+
+    taskLimit();
+};
+
 module.exports = s;
