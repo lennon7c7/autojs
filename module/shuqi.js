@@ -29,7 +29,7 @@ function taskAd() {
             clicks.xy(924, 162);
         }
     }
-    
+
     if (text('明日继续领金币').exists()) {
         return true;
     }

@@ -160,7 +160,7 @@ s.clear = function () {
 
 /**
  * 发送报警信息
- * @param {string} message 
+ * @param {string} message
  * @returns {boolean}
  */
 s.send = function (message) {
@@ -174,7 +174,7 @@ s.send = function (message) {
     });
 
     responseJson = response.body.json();
-    if (responseJson.errcode != 0 || responseJson.errmsg != 'ok') {
+    if (responseJson.errcode !== 0 || responseJson.errmsg !== 'ok') {
         log('---------- dingtalk log error ----------');
 
         return false;

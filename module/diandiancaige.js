@@ -20,7 +20,7 @@ function taskAnswer() {
     for (var i = 0; i < 1200; i++) {
         if (id('recycler_question').find().size() > 0) {
             id('recycler_question').findOne().children().forEach((value, key) => {
-                if (key == random(0, 2)) {
+                if (key === random(0, 2)) {
                     target = value.findOne(id('tv_answer'));
                     if (target != null && click(text(target.text()).findOne().bounds().centerX(), text(target.text()).findOne().bounds().centerY())) {
                         sleeps.s5to10();
@@ -62,7 +62,7 @@ function taskAnswer() {
 
         sleeps.s2to3();
     }
- 
+
     return false;
 }
 

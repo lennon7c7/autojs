@@ -15,14 +15,24 @@ s.PACKAGE_NAME = 'com.tencent.news';
 function taskCheckin() {
     log('---------- taskCheckin start ----------');
 
+    others.back();
+
     if (!clicks.centerXyByText('我的 ')) {
         return false;
+    }
+
+    if (text('阅读任务开关').exists()) {
+        return true;
     }
 
     others.back();
     clicks.text('立即打卡');
 
-    return true;
+    if (text('阅读任务开关').exists()) {
+        return true;
+    }
+
+    return false;
 }
 
 // 任务-观看视频
@@ -30,6 +40,10 @@ function taskVideo() {
     log('---------- taskVideo start ----------');
 
     others.back();
+
+    if (!text('去阅读').exists()) {
+        return true;
+    }
 
     for (var i = 0; i < 11; i++) {
         if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
@@ -53,6 +67,10 @@ function taskNews() {
     log('---------- taskNews start ----------');
 
     others.back();
+
+    if (!text('去观看').exists()) {
+        return true;
+    }
 
     for (var i = 0; i < 11; i++) {
         if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {

@@ -34,7 +34,7 @@ function taskCheckin() {
     if (text('开心收下，明天继续领').exists()) {
         return true;
     }
-    
+
     if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists()) {
         return true;
     }

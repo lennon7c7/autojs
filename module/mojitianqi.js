@@ -57,7 +57,7 @@ function closeAd() {
 s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
-        
+
         if (!clicks.centerXyByText('福利')) {
             return false;
         }

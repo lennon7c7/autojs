@@ -98,8 +98,8 @@ function taskAd() {
 
 /**
  * 关闭广告
- * @param {int} x 
- * @param {int} y 
+ * @param {int} x
+ * @param {int} y
  */
 function closeAd() {
     sleeps.s60to70();

@@ -56,12 +56,12 @@ function task0Lottery() {
         return false;
     }
 
-    if (text('提高中奖率').find().size() == 3) {
+    if (text('提高中奖率').find().size() === 3) {
         swipes.down();
         clicks.xy(396, 1386);
     }
 
-    if (text('提高中奖率').find().size() == 10) {
+    if (text('提高中奖率').find().size() === 10) {
         return true;
     }
 
@@ -69,7 +69,7 @@ function task0Lottery() {
     //     case 3:
     //         clicks.centerXyByText('免费抽')
     //         swipes.down();
-    //         swipes.down();     
+    //         swipes.down();
     //         break;
     //     default:
     //         break;
@@ -149,7 +149,7 @@ function taskVideo() {
 
         swipes.down1600();
         if (className('android.widget.FrameLayout').find().size() < 4) {
-            continue;
+
         } else {
             sleeps.s2to10();
         }
@@ -170,15 +170,15 @@ s.start = function () {
         if (!clicks.centerXyById('redFloat')) {
             return false;
         }
-    
+
         status0 = taskCheckin();
         status1 = taskTreasureBox();
         status2 = taskAd10();
         // status3 = task0Lottery();
         taskVideo();
-    
+
         if (status0 && status1 && status2) {
-                return true;
+            return true;
         }
     }
 

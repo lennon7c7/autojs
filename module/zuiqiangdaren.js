@@ -49,11 +49,11 @@ function taskDaily() {
     }
 
     for (var i = 0; i < 100000; i++) {
-        if (currentPackage() != s.PACKAGE_NAME && currentPackage() != 'android') {
+        if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
             log('---------- ', currentPackage(), ' ----------');
             app.launch(s.PACKAGE_NAME);
             sleeps.s3();
-            if (currentPackage() != s.PACKAGE_NAME && currentPackage() != 'android') {
+            if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
                 return false;
             }
         } else if (id('tt_insert_dislike_icon_img').exists()) {
@@ -70,8 +70,8 @@ function taskDaily() {
             clicks.centerXyById('bxm_sdk_iv_close');
         } else if (id('tt_video_progress').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
-        } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
-            && className('android.widget.ImageView').find().size() == 0) {
+        } else if (className('android.widget.FrameLayout').find().size() === 1 && className('android.view.View').find().size() === 1
+            && className('android.widget.ImageView').find().size() === 0) {
             log('---------- random redpackage video ----------');
             closeAd(600, 1660);
             // } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
@@ -196,8 +196,8 @@ function taskLuckLottery() {
 
 /**
  * 关闭广告
- * @param {int} x 
- * @param {int} y 
+ * @param {int} x
+ * @param {int} y
  */
 function closeAd(x, y) {
     clicks.xy(x, y);

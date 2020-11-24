@@ -94,7 +94,7 @@ s.xiaoxiao = function (x, y, offset, step) {
             }
         }
     }
-}
+};
 
 /**
  * 元素
@@ -102,9 +102,7 @@ s.xiaoxiao = function (x, y, offset, step) {
 s.element = function (e) {
     if (e.exists !== undefined && !e.exists()) {
         return false;
-    }
-
-    if (e.size !== undefined && e.size() === 0) {
+    } else if (e.size !== undefined && e.size() === 0) {
         return false;
     }
 
@@ -164,7 +162,7 @@ s.text = function (myString) {
         return false;
     }
 
-    text(myString).click()
+    text(myString).click();
     sleep(3 * 1000);
 
     return true;
@@ -229,7 +227,7 @@ s.desc = function (myString) {
         return false;
     }
 
-    desc(myString).click()
+    desc(myString).click();
     sleep(3 * 1000);
 
     return true;
@@ -341,7 +339,7 @@ s.id = function (myString) {
         return false;
     }
 
-    id(myString).click()
+    id(myString).click();
     sleep(3 * 1000);
 
     return true;

@@ -159,9 +159,9 @@ s.start = function () {
         status2 = taskVideo();
         status3 = taskNews();
         status4 = taskLottery();
-    
+
         if (status1 && status2 && status3 && status4) {
-                return true;
+            return true;
         }
     }
 

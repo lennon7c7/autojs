@@ -84,9 +84,9 @@ s.start = function () {
         clicks.centerXyByText('Later');
         status1 = task0Lottery();
         status2 = taskEverydayLottery();
-    
+
         if (status1 && status2) {
-                return true;
+            return true;
         }
     }
 

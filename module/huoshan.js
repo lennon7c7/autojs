@@ -63,7 +63,7 @@ function taskSleep() {
 function taskShare() {
     log('---------- taskShare start ----------');
 
-    if (text('晒收入').findOne().parent().find(text('已完成')).size() == 1) {
+    if (text('晒收入').findOne().parent().find(text('已完成')).size() === 1) {
         return true;
     }
 
@@ -87,7 +87,7 @@ function taskShare() {
 
     clicks.text('javascript:;');
 
-    if (text('晒收入').findOne().parent().find(text('已完成')).size() == 1) {
+    if (text('晒收入').findOne().parent().find(text('已完成')).size() === 1) {
         return true;
     }
 
@@ -121,7 +121,7 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 
@@ -132,9 +132,9 @@ function taskTreasureBox() {
     if (clicks.element(textStartsWith('看视频'))) {
         closeAd();
     }
-    clicks.text('javascript:;')
+    clicks.text('javascript:;');
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 

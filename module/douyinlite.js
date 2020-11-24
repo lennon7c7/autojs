@@ -67,7 +67,7 @@ function taskCashout() {
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 
@@ -81,7 +81,7 @@ function taskTreasureBox() {
 
     closeAd();
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 
@@ -138,7 +138,7 @@ function taskVideo() {
         if (!text('关注').exists() || !text('推荐').exists() || !text('首页').exists()) {
             return false;
         }
-        
+
         if (text('点击进入直播间').exists()) {
             continue;
         }
