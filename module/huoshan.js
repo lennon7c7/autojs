@@ -121,6 +121,10 @@ function taskTreasureBox() {
         return false;
     }
 
+    if (clicks.element(textStartsWith('看广告'))) {
+        closeAd();
+    }
+
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
@@ -143,9 +147,21 @@ function taskTreasureBox() {
 
 // 关闭广告
 function closeAd() {
+    if (id('tt_top_mute').exists()) {
+        clicks.centerXyById('tt_top_mute');
+    }
+
     sleeps.s35to40();
-    clicks.centerXyByText('关闭广告');
-    clicks.centerXyById('sp');
+
+    if (id('ksad_end_close_btn').exists()) {
+        clicks.centerXyById('ksad_end_close_btn');
+    } else if (id('tt_video_ad_close_layout').exists()) {
+        clicks.centerXyById('tt_video_ad_close_layout');
+    } else if (id('sp').exists()) {
+        clicks.centerXyById('sp');
+    } else if (text('关闭广告').exists()) {
+        clicks.centerXyByText('关闭广告');
+    }
 
     return true;
 }
