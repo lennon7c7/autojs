@@ -187,4 +187,20 @@ s.start = function () {
     return false;
 };
 
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    others.back2();
+    if (!clicks.centerXyById('redFloat')) {
+        return false;
+    }
+
+    taskTreasureBox();
+    taskAd10();
+};
+
 module.exports = s;
