@@ -68,6 +68,14 @@ s.refresh1300 = function () {
 };
 
 /**
+ * 滑动-刷新
+ */
+s.refresh1500 = function () {
+    swipe(500, 400, 500, 1900, 500);
+    sleep(5 * 1000)
+};
+
+/**
  * 滑动-下到上
  */
 s.down = function () {

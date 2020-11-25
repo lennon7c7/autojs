@@ -106,7 +106,7 @@ function taskMoneyPower() {
     clicks.centerXyByText('一键领取');
 
     if (text('每日7点/12点/18点可领').exists()) {
-        buttonClick = text('每日7点/12点/18点可领').findOne().parent().parent().findOne(text('去完成'));
+        buttonClick = text('每日7点/12点/18点可领').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
@@ -115,7 +115,7 @@ function taskMoneyPower() {
     }
 
     if (text('来访就可以拿').exists()) {
-        buttonClick = text('来访就可以拿').findOne().parent().parent().findOne(text('去完成'));
+        buttonClick = text('来访就可以拿').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
@@ -123,8 +123,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛菜鸟裹裹领寄件券（0/1）').exists()) {
-        buttonClick = text('逛菜鸟裹裹领寄件券（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('逛菜鸟裹裹领寄件券(0/1)').exists()) {
+        buttonClick = text('逛菜鸟裹裹领寄件券(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s2to3();
@@ -139,7 +139,7 @@ function taskMoneyPower() {
     }
 
     if (text('每日使用拍立淘立得').exists()) {
-        buttonClick = text('每日使用拍立淘立得').findOne().parent().parent().findOne(text('去完成'));
+        buttonClick = text('每日使用拍立淘立得').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
@@ -153,8 +153,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛农场领免费水果（0/1）').exists()) {
-        buttonClick = text('逛农场领免费水果（0/1）').findOne().parent().parent().findOne(text('去施肥'));
+    if (text('逛农场领免费水果(0/1)').exists()) {
+        buttonClick = text('逛农场领免费水果(0/1)').findOne().parent().parent().findOne(text('去施肥'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s5to10();
@@ -171,8 +171,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('淘宝人生逛街领能量（0/1）').exists()) {
-        buttonClick = text('淘宝人生逛街领能量（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('淘宝人生逛街领能量(0/1)').exists()) {
+        buttonClick = text('淘宝人生逛街领能量(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s10to20();
@@ -196,8 +196,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('查看淘宝成就月账单（0/1）').exists()) {
-        buttonClick = text('查看淘宝成就月账单（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('查看淘宝成就月账单(0/1)').exists()) {
+        buttonClick = text('查看淘宝成就月账单(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
@@ -213,8 +213,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('签到领话费充值金（0/1）').exists()) {
-        buttonClick = text('签到领话费充值金（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('签到领话费充值金(0/1)').exists()) {
+        buttonClick = text('签到领话费充值金(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s10();
@@ -227,8 +227,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('淘宝成就签到（0/1）').exists()) {
-        buttonClick = text('淘宝成就签到（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('淘宝成就签到(0/1)').exists()) {
+        buttonClick = text('淘宝成就签到(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             if (clicks.centerXyByText('成就礼包')) {
@@ -250,8 +250,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('开启通知权限领能量（0/1）').exists()) {
-        buttonClick = text('开启通知权限领能量（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('开启通知权限领能量(0/1)').exists()) {
+        buttonClick = text('开启通知权限领能量(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
@@ -285,43 +285,47 @@ function taskMoneyPower() {
     for (var i = 0; i < 15; i++) {
         buttonClick = null;
         if (text('边逛边领大额金币').exists()) {
-            buttonClick = text('边逛边领大额金币').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('边逛边领大额金币').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览页面立得').exists()) {
-            buttonClick = text('浏览页面立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览页面立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览10s立得').exists()) {
-            buttonClick = text('浏览10s立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览10s立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览10s 立得').exists()) {
-            buttonClick = text('浏览10s 立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        }
+
+        if (buttonClick == null && text('浏览10s 立得').exists()) {
+            buttonClick = text('浏览10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览10秒立得').exists()) {
-            buttonClick = text('浏览10秒立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览10秒立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览10秒 立得').exists()) {
-            buttonClick = text('浏览10秒 立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览10秒 立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('逛10s立得').exists()) {
-            buttonClick = text('逛10s立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('逛10s立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('逛10s 立得').exists()) {
-            buttonClick = text('逛10s 立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('逛10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览15s 立得').exists()) {
-            buttonClick = text('浏览15s 立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览15s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (buttonClick == null && text('浏览15s 立得').exists()) {
-            buttonClick = text('浏览15s 立得').findOne().parent().parent().findOne(text('去完成'));
+            buttonClick = text('浏览15s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (text('今日任务').exists() && buttonClick != null) {
@@ -344,8 +348,8 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛省钱消消乐拿红包（0/1）').exists()) {
-        buttonClick = text('逛省钱消消乐拿红包（0/1）').findOne().parent().parent().findOne(text('去完成'));
+    if (text('逛省钱消消乐拿红包(0/1)').exists()) {
+        buttonClick = text('逛省钱消消乐拿红包(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
             sleeps.s10();
