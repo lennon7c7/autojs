@@ -46,6 +46,14 @@ s.refresh = function () {
 /**
  * 滑动-刷新
  */
+s.refresh400_100 = function () {
+    swipe(500, 600, 500, 1000, 100);
+    sleep(5 * 1000)
+};
+
+/**
+ * 滑动-刷新
+ */
 s.refresh600 = function () {
     swipe(500, 600, 500, 1200, 500);
     sleep(5 * 1000)
@@ -72,6 +80,14 @@ s.down = function () {
  */
 s.down900 = function () {
     swipe(500, 1000, 500, 100, 300);
+    sleep(1 * 1000)
+};
+
+/**
+ * 滑动-下到上
+ */
+s.down1000_100 = function () {
+    swipe(500, 1600, 500, 600, 100);
     sleep(1 * 1000)
 };
 

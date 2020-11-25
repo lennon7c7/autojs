@@ -67,7 +67,7 @@ function taskShare() {
         return true;
     }
 
-    if (!clicks.element(text('晒收入').findOne().parent().find(text('领200金币')))) {
+    if (!clicks.parent(text('晒收入'), text('领200金币'))) {
         return false;
     }
 

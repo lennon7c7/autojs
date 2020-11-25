@@ -4,11 +4,11 @@
 baidu = require('module/baidu.js');
 baidu.start();
 
-douyinlite = require('module/douyinlite.js');
-douyinlite.start();
-
 douyinhuoshan = require('module/douyinhuoshan.js');
 douyinhuoshan.start();
+
+douyinlite = require('module/douyinlite.js');
+douyinlite.start();
 
 fanqie = require('module/fanqie.js');
 fanqie.start();

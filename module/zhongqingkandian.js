@@ -58,9 +58,9 @@ function taskNews() {
 
         for (var j = 0; j < 3; j++) {
             sleeps.s2to3();
-            swipes.down();
+            swipes.down1000_100();
             sleeps.s2to3();
-            swipes.refresh();
+            swipes.refresh400_100();
         }
 
         others.back();

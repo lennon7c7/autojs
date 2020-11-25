@@ -56,7 +56,7 @@ function taskProduct() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 50; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
