@@ -37,6 +37,34 @@ function taskAd() {
     return false;
 }
 
+// 任务-分享
+function taskShare() {
+    log('---------- taskShare start ----------');
+
+    for (var i = 0; i < 5; i++) {
+        clicks.textIfExists('领取奖励');
+    }
+
+    if (text('今日已领取').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('每日邀请书友一起读赚金币')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('微信好友')) {
+        others.back();
+        return false;
+    }
+
+    if (text('今日已领取').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -46,8 +74,9 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskAd();
+        status1 = taskShare();
 
-        if (status0) {
+        if (status0 && status1) {
             return true;
         }
     }
