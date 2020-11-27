@@ -96,20 +96,6 @@ function task0Lottery() {
     return false;
 }
 
-// 任务-宝箱
-// every 20m
-function taskTreasureBox() {
-    log('---------- taskTreasureBox start ----------');
-
-    if (!clicks.centerXyByText('开宝箱得金币')) {
-        return true;
-    }
-
-    clicks.xy(480, 1620);
-
-    return true;
-}
-
 // 任务-10次广告
 function taskAd10() {
     log('---------- taskAd10 start ----------');
@@ -206,13 +192,12 @@ s.start = function () {
         }
 
         status0 = taskCheckin();
-        status1 = taskTreasureBox();
         status2 = taskAd10();
         // status3 = task0Lottery();
         status4 = taskLive();
         taskVideo();
 
-        if (status0 && status1 && status2 && status4) {
+        if (status0 && status2 && status4) {
             return true;
         }
     }
@@ -220,22 +205,6 @@ s.start = function () {
     others.send('kuaishou');
 
     return false;
-};
-
-/**
- * 定时入口调用
- * @returns {boolean}
- */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
-
-    others.back2();
-    if (!clicks.centerXyById('redFloat')) {
-        return false;
-    }
-
-    taskTreasureBox();
-    taskAd10();
 };
 
 module.exports = s;

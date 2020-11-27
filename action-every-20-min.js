@@ -20,9 +20,6 @@ function main() {
     huoshan = require('module/huoshan.js');
     huoshan.cron();
 
-    kuaishou = require('module/kuaishou.js');
-    kuaishou.cron();
-
     qqreader = require('module/qqreader.js');
     qqreader.cron();
 
