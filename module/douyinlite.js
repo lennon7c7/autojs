@@ -2,6 +2,7 @@
  * 抖音极速版-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -93,7 +94,7 @@ function taskTreasureBox() {
 function taskLimit() {
     log('---------- taskLimit start ----------');
 
-    if (clicks.parents(text('限时任务赚金币'), text('已领取'))) {
+    if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
     }
 
@@ -103,7 +104,7 @@ function taskLimit() {
 
     closeAd();
 
-    if (clicks.parents(text('限时任务赚金币'), text('已领取'))) {
+    if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
     }
 

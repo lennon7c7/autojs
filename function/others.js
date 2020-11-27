@@ -12,7 +12,7 @@ s.fixDir = function () {
     oldDir = files.cwd() + '/';
 
     newDir = oldDir + 'function/';
-    filename = ['clicks.js', 'others.js', 'sleeps.js', 'swipes.js'];
+    filename = ['clicks.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js'];
     filename.forEach((value, key) => {
         if (!files.exists(oldDir + value)) {
             return false;
