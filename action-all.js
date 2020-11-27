@@ -40,6 +40,9 @@ pinduoduo.start();
 qqbrowser = require('module/qqbrowser.js');
 qqbrowser.start();
 
+qqreader = require('module/qqreader.js');
+qqreader.start();
+
 qutoutiao = require('module/qutoutiao.js');
 qutoutiao.start();
 

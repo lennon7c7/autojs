@@ -23,6 +23,9 @@ function main() {
     kuaishou = require('module/kuaishou.js');
     kuaishou.cron();
 
+    qqreader = require('module/qqreader.js');
+    qqreader.cron();
+
     toutiao = require('module/toutiao.js');
     toutiao.cron();
 }
