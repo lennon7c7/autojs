@@ -134,6 +134,40 @@ function taskAd10() {
     return true;
 }
 
+// 任务-直播
+function taskLive() {
+    log('---------- taskLive start ----------');
+
+    if (text('看直播').find().size() === 1) {
+        return true;
+    }
+
+    for (var i = 0; i < 11; i++) {
+        if (text('看直播').find().size() === 1) {
+            return true;
+        }
+
+        text('看直播').find().forEach((value, key) => {
+            if (key !== 1) {
+                return false;
+            }
+
+            value.click();
+            return true
+        });
+
+        sleeps.s35();
+        others.back();
+        clicks.idIfExists('exit_btn');
+    }
+
+    if (text('看直播').find().size() === 1) {
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-视频
 function taskVideo() {
     log('---------- taskVideo start ----------');
@@ -175,9 +209,10 @@ s.start = function () {
         status1 = taskTreasureBox();
         status2 = taskAd10();
         // status3 = task0Lottery();
+        status4 = taskLive();
         taskVideo();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status4) {
             return true;
         }
     }
