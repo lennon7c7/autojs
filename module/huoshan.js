@@ -72,20 +72,20 @@ function taskShare() {
     }
 
     if (!clicks.text('微信')) {
-        clicks.text('javascript:;');
+        clicks.textIfExists('javascript:;');
         return false;
     }
 
     for (var i = 0; i < 4; i++) {
         if (!clicks.text('去粘贴')) {
-            clicks.text('javascript:;');
+            clicks.textIfExists('javascript:;');
             return false;
         }
 
         others.back();
     }
 
-    clicks.text('javascript:;');
+    clicks.textIfExists('javascript:;');
 
     if (text('晒收入').findOne().parent().find(text('已完成')).size() === 1) {
         return true;
@@ -121,9 +121,14 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (clicks.element(textStartsWith('看广告'))) {
+    if (textStartsWith('看广告').exists()) {
+        clicks.element(textStartsWith('看广告'));
         closeAd();
     }
+
+    clicks.xy(945,485);
+    clicks.xy(945,485);
+    others.back();
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -136,7 +141,7 @@ function taskTreasureBox() {
     if (clicks.element(textStartsWith('看视频'))) {
         closeAd();
     }
-    clicks.text('javascript:;');
+    clicks.textIfExists('javascript:;');
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
