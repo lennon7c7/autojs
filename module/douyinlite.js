@@ -119,11 +119,13 @@ function taskSleep() {
         return false;
     }
 
-    if (clicks.centerXyByText('我要睡了')) {
-    } else if (clicks.centerXyByText('我睡醒了')) {
+    if (text('我要睡了').exists() && clicks.centerXyByText('我要睡了')) {
+    } else if (text('我睡醒了').exists() && clicks.centerXyByText('我睡醒了')) {
     }
 
-    clicks.centerXyByText('可领取');
+    if (text('可领取').exists()) {
+        clicks.centerXyByText('可领取');
+    }
     others.back();
 
     return true;

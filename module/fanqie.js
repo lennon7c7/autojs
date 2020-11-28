@@ -2,6 +2,7 @@
  * 番茄-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -65,19 +66,21 @@ function taskTreasureBox() {
 function taskAddBook() {
     log('---------- taskAddBook start ----------');
 
-    if (text('加入书架').findOne().parent().parent().findOne(text('已完成'))) {
+    if (exists.parents(text('加入书架'), text('已完成'))) {
         return true;
     }
 
     if (!clicks.text('去书城')) {
         return false;
     }
+    sleeps.s5to10();
 
     if (!clicks.text('推荐')) {
         return false;
     }
+    sleeps.s5to10();
 
-    if (!clicks.xy(492, 1970)) {
+    if (!clicks.text('1')) {
         return false;
     }
 
@@ -91,7 +94,7 @@ function taskAddBook() {
         return false;
     }
 
-    if (text('加入书架').findOne().parent().parent().findOne(text('已完成'))) {
+    if (exists.parents(text('加入书架'), text('已完成'))) {
         return true;
     }
 

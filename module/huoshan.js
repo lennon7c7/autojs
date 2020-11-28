@@ -2,6 +2,7 @@
  * 火山-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -15,7 +16,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.livelite';
 function taskCashout() {
     log('---------- taskCashout start ----------');
 
-    if (clicks.parent(text('0.2元提现'), text('已完成'))) {
+    if (exists.parent(text('0.2元提现'), text('已完成'))) {
         return true;
     }
 
@@ -34,7 +35,7 @@ function taskCashout() {
 
     others.back2();
 
-    if (clicks.parent(text('0.2元提现'), text('已完成'))) {
+    if (exists.parent(text('0.2元提现'), text('已完成'))) {
         return true;
     }
 
@@ -49,11 +50,13 @@ function taskSleep() {
         return false;
     }
 
-    if (clicks.centerXyByText('我要睡了')) {
-    } else if (clicks.centerXyByText('我睡醒了')) {
+    if (text('我要睡了').exists() && clicks.centerXyByText('我要睡了')) {
+    } else if (text('我睡醒了').exists() && clicks.centerXyByText('我睡醒了')) {
     }
 
-    clicks.centerXyByText('可领取');
+    if (text('可领取').exists()) {
+        clicks.centerXyByText('可领取');
+    }
     others.back();
 
     return true;
@@ -63,7 +66,7 @@ function taskSleep() {
 function taskShare() {
     log('---------- taskShare start ----------');
 
-    if (text('晒收入').findOne().parent().find(text('已完成')).size() === 1) {
+    if (exists.parent(text('晒收入'), text('已完成'))) {
         return true;
     }
 
@@ -87,7 +90,7 @@ function taskShare() {
 
     clicks.textIfExists('javascript:;');
 
-    if (text('晒收入').findOne().parent().find(text('已完成')).size() === 1) {
+    if (exists.parent(text('晒收入'), text('已完成'))) {
         return true;
     }
 
@@ -99,12 +102,9 @@ function taskAd20() {
     log('---------- taskAd20 start ----------');
 
     for (var i = 0; i < 20; i++) {
-        var buttonAd = className('android.view.View').text('领100金币');
-        if (buttonAd.exists()) {
-            buttonAd.click();
+        if (clicks.textIfExists('领100金币')) {
             closeAd();
-        } else if (className('android.view.View').text('去赚钱').exists()) {
-            className('android.view.View').text('去赚钱').click();
+        } else if (clicks.textIfExists('去赚钱')) {
             closeAd();
         }
     }

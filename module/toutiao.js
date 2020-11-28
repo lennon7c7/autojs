@@ -116,8 +116,8 @@ function taskSleep() {
         return false;
     }
 
-    if (clicks.text('我要睡了')) {
-    } else if (clicks.text('我睡醒了') || (!text('我要睡了').exists() && !text('我睡醒了').exists())) {
+    if (clicks.textIfExists('我要睡了')) {
+    } else if (clicks.textIfExists('我睡醒了') || (!text('我要睡了').exists() && !text('我睡醒了').exists())) {
         clicks.xy(429, 984);
     }
 

@@ -104,7 +104,9 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        clicks.centerXyByDesc('Tencent news');
+        if (desc('Tencent news').exists()) {
+            clicks.centerXyByDesc('Tencent news');
+        }
 
         status0 = taskCheckin();
         status1 = taskVideo();

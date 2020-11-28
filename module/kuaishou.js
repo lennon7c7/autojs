@@ -105,16 +105,22 @@ function taskAd10() {
     }
 
     for (var i = 0; i < 10; i++) {
-        if (clicks.element(className('android.widget.Button').text('福利'))) {
-        } else if (clicks.element(className('android.widget.Button').text('福利 领金币'))) {
+        if (text('福利').exists() && clicks.element(className('android.widget.Button').text('福利'))) {
+        } else if (text('福利 领金币').exists() && clicks.element(className('android.widget.Button').text('福利 领金币'))) {
         } else {
             continue;
         }
 
-        clicks.centerXyById('video_audio_btn');
+        if (id('video_audio_btn').exists()) {
+            clicks.centerXyById('video_audio_btn');
+        }
         sleeps.s35to40();
-        clicks.centerXyById('video_countdown');
-        clicks.centerXyById('video_close_icon');
+        if (id('video_countdown').exists()) {
+            clicks.centerXyById('video_countdown');
+        }
+        if (id('video_close_icon').exists()) {
+            clicks.centerXyById('video_close_icon');
+        }
     }
 
     return true;

@@ -2,6 +2,7 @@
  * 墨迹天气-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.moji.mjweather.light';
 function taskAd() {
     log('---------- taskAd start ----------');
 
-    if (clicks.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
+    if (exists.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
         return true;
     }
 
@@ -22,7 +23,7 @@ function taskAd() {
     }
 
     for (var i = 1; i < 10; i++) {
-        if (!clicks.centerXyByText('进行中' + i + '/9')) {
+        if (!text('进行中' + i + '/9').exists() || !clicks.centerXyByText('进行中' + i + '/9')) {
             continue;
         }
 
@@ -33,7 +34,7 @@ function taskAd() {
         return false;
     }
 
-    if (clicks.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
+    if (exists.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
         return true;
     }
 
@@ -67,9 +68,9 @@ s.start = function () {
 
         status = taskAd();
 
-        clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('领奖励');
-        if (clicks.centerXyByText('去查看')) {
+        text('领奖励').exists() && clicks.centerXyByText('领奖励');
+        text('领奖励').exists() && clicks.centerXyByText('领奖励');
+        if (text('去查看').exists() && clicks.centerXyByText('去查看')) {
             others.back();
             clicks.centerXyByText('领金币');
             clicks.centerXyByText('领奖励');
