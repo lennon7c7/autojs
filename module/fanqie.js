@@ -34,7 +34,7 @@ function taskAd() {
 }
 
 // 任务-宝箱
-// every 1h
+// every 20m
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
@@ -80,7 +80,7 @@ function taskAddBook() {
     }
     sleeps.s5to10();
 
-    if (!clicks.text('1')) {
+    if (!clicks.centerXyByText(1)) {
         return false;
     }
 

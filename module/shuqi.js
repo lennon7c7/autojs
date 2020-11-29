@@ -58,6 +58,8 @@ function taskShare() {
         return false;
     }
 
+    others.back();
+
     if (text('今日已领取').exists()) {
         return true;
     }

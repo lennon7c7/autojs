@@ -14,7 +14,7 @@ s.PACKAGE_NAME = 'com.qq.reader';
 function taskTreasureBox() {
     log('---------- taskTreasureBox start ----------');
 
-    if (textEndsWith('后可领').exists()) {
+    if (textEndsWith('后可领').exists() || text('明天再领').exists()) {
         return true;
     }
 
@@ -22,7 +22,7 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (textEndsWith('后可领').exists()) {
+    if (textEndsWith('后可领').exists() || text('明天再领').exists()) {
         return true;
     }
 
