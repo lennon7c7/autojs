@@ -2,6 +2,7 @@
  * QQ浏览器-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.tencent.mtt';
  * 任务-清理
  */
 function taskClear() {
-    toastLog('---------- taskClear start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskClear start ----------');
 
     others.back();
     if (!clicks.centerXyByText('我的')) {
@@ -59,7 +60,7 @@ function taskClear() {
  * 任务-新闻
  */
 function taskNews() {
-    toastLog('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     swipes.down();
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {

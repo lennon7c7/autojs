@@ -2,6 +2,7 @@
  * 中青看点-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'cn.youth.news';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     others.back2();
 
@@ -37,7 +38,7 @@ function taskCheckin() {
 
 // 任务-看新闻
 function taskNews() {
-    log('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     others.back();
 
@@ -56,7 +57,7 @@ function taskNews() {
 
         clicks.xy(608, 608);
 
-        for (var j = 0; j < 3; j++) {
+        for (var j = 0; j < 5; j++) {
             sleeps.s2to3();
             swipes.down1000_100();
             sleeps.s2to3();
@@ -71,7 +72,7 @@ function taskNews() {
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     others.back2();
 
@@ -106,7 +107,7 @@ function closeAd() {
 
     others.back();
     if (!clicks.centerXyById('tt_video_ad_close_layout')) {
-        log('---------- click fail: closeAd ----------');
+        log('----------', s.PACKAGE_NAME, 'click fail: closeAd ----------');
         return false;
     }
 

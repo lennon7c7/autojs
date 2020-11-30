@@ -12,9 +12,9 @@ s.PACKAGE_NAME = 'com.dragon.read';
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (text('看视频赚海量金币').findOne().parent().parent().findOne(text('已完成'))) {
+    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
         return true;
     }
 
@@ -26,7 +26,7 @@ function taskAd() {
         closeAd();
     }
 
-    if (text('看视频赚海量金币').findOne().parent().parent().findOne(text('已完成'))) {
+    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
         return true;
     }
 
@@ -36,14 +36,14 @@ function taskAd() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('---------- taskTreasureBox start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (textStartsWith('看视频再领').exists()) {
         clicks.element(textStartsWith('看视频再领'));
         closeAd();
     }
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 
@@ -55,7 +55,7 @@ function taskTreasureBox() {
 
     closeAd();
 
-    if (text('开宝箱得金币').find().size() == 1) {
+    if (text('开宝箱得金币').find().size() === 1) {
         return true;
     }
 
@@ -64,7 +64,7 @@ function taskTreasureBox() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('---------- taskAddBook start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAddBook start ----------');
 
     if (exists.parents(text('加入书架'), text('已完成'))) {
         return true;
@@ -73,12 +73,6 @@ function taskAddBook() {
     if (!clicks.text('去书城')) {
         return false;
     }
-    sleeps.s5to10();
-
-    if (!clicks.text('推荐')) {
-        return false;
-    }
-    sleeps.s5to10();
 
     if (!clicks.centerXyByText(1)) {
         return false;
@@ -95,6 +89,7 @@ function taskAddBook() {
     }
 
     if (exists.parents(text('加入书架'), text('已完成'))) {
+        clicks.centerXyByText('书架') && clicks.centerXyByText('编辑') && clicks.xy(258, 612) && clicks.centerXyByText('删除(1)') && clicks.centerXyByText('确认');
         return true;
     }
 

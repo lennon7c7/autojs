@@ -3,6 +3,7 @@
  * 我的系统语言是英文，所以需要的自己替换成中文
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');

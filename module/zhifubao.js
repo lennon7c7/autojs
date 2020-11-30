@@ -2,6 +2,7 @@
  * 支付宝-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
-    toastLog('---------- taskEverydayLottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskEverydayLottery start ----------');
 
     for (var i = 0; i < 5; i++) {
         if (!clicks.centerXyByText('天天抽奖-每日领免费福利')) {
@@ -39,7 +40,7 @@ function taskEverydayLottery() {
  * 任务-0元抽奖
  */
 function task0Lottery() {
-    log('---------- task0Lottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
     if (!text("Yu'E Bao").exists()) {
         return false;

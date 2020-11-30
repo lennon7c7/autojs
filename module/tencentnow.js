@@ -2,6 +2,7 @@
  * 腾讯NOW直播-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.tencent.now';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
         return false;
@@ -42,7 +43,7 @@ function taskCheckin() {
  * 随机答题抢红包
  */
 s.redPackage = function () {
-    log('---------- redPackage start ----------');
+    log('----------', s.PACKAGE_NAME, 'redPackage start ----------');
 
     others.back3();
 

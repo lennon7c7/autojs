@@ -2,6 +2,7 @@
  * 天猫-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.tmall.wireless';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!clicks.centerXyByText('我')) {
         return false;

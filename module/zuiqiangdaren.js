@@ -2,6 +2,7 @@
  * 天猫-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,34 +14,32 @@ s.PACKAGE_NAME = 'com.lwhy.hltzs';
  * 任务-打卡提现
  */
 function taskCheckinWithdraw() {
-    toastLog('---------- taskCheckinWithdraw start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckinWithdraw start ----------');
 
-    toastLog('---------- 提现 ----------');
+    log('----------', s.PACKAGE_NAME, '提现 ----------');
     clicks.xy(445, 425);
 
-    toastLog('---------- 15yuan ----------');
+    log('----------', s.PACKAGE_NAME, '15yuan ----------');
     clicks.xy(900, 1200);
 
     closeAd(920, 1820);
 
-    toastLog('---------- close 我的钱包 ----------');
+    log('----------', s.PACKAGE_NAME, 'close 我的钱包 ----------');
     clicks.xy(70, 430);
     back();
 
-    toastLog('---------- close 升级提示 ----------');
+    log('----------', s.PACKAGE_NAME, 'close 升级提示 ----------');
     clicks.xy(1000, 500);
     back();
-
-    toastLog('---------- taskCheckinWithdraw end ----------');
 }
 
 /**
  * 任务-每日闯关
  */
 function taskDaily() {
-    toastLog('---------- taskDaily start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskDaily start ----------');
 
-    toastLog('---------- 每日闯关 ----------');
+    log('----------', s.PACKAGE_NAME, '每日闯关 ----------');
     clicks.xy(920, 560);
 
     clicks.xy(1032, 2199);
@@ -50,7 +49,7 @@ function taskDaily() {
 
     for (var i = 0; i < 100000; i++) {
         if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
-            log('---------- ', currentPackage(), ' ----------');
+            log('----------', s.PACKAGE_NAME, '', currentPackage(), ' ----------');
             app.launch(s.PACKAGE_NAME);
             sleeps.s3();
             if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
@@ -59,7 +58,7 @@ function taskDaily() {
         } else if (id('tt_insert_dislike_icon_img').exists()) {
             clicks.centerXyById('tt_insert_dislike_icon_img');
         } else if (id('tv_listitem_ad_title').exists() || (text('查看详情').exists())) {
-            log('---------- 补充体力 ----------');
+            log('----------', s.PACKAGE_NAME, '补充体力 ----------');
 
             closeAd(540, 850);
 
@@ -72,11 +71,9 @@ function taskDaily() {
             clicks.centerXyById('tt_video_ad_close_layout');
         } else if (className('android.widget.FrameLayout').find().size() === 1 && className('android.view.View').find().size() === 1
             && className('android.widget.ImageView').find().size() === 0) {
-            log('---------- random redpackage video ----------');
+            log('----------', s.PACKAGE_NAME, 'random redpackage video ----------');
             closeAd(600, 1660);
-            // } else if (className('android.widget.FrameLayout').find().size() == 1 && className('android.view.View').find().size() == 1
         } else {
-            log('---------- random answer ----------');
             if (random() > 0.5) {
                 clicks.xy(100, 1400);
             } else {
@@ -86,8 +83,6 @@ function taskDaily() {
         }
     }
 
-    toastLog('---------- taskDaily end ----------');
-
     return false;
 }
 
@@ -95,103 +90,95 @@ function taskDaily() {
  * 任务-签到
  */
 function taskCheckin() {
-    toastLog('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    toastLog('---------- 每日红包 ----------');
+    log('----------', s.PACKAGE_NAME, '每日红包 ----------');
     clicks.xy(300, 1500);
 
-    toastLog('---------- 前往 ----------');
+    log('----------', s.PACKAGE_NAME, '前往 ----------');
     clicks.xy(880, 1600);
 
-    toastLog('---------- 签到 ----------');
+    log('----------', s.PACKAGE_NAME, '签到 ----------');
     clicks.xy(550, 1750);
 
-    toastLog('---------- 额外加xxx红包券 ----------');
+    log('----------', s.PACKAGE_NAME, '额外加xxx红包券 ----------');
     closeAd(550, 1650);
 
-    toastLog('---------- 关闭 ----------');
+    log('----------', s.PACKAGE_NAME, '关闭 ----------');
     clicks.xy(920, 560);
-
-    toastLog('---------- taskCheckin end ----------');
 }
 
 /**
  * 任务-限时红包
  */
 function taskLimitRedPacket() {
-    toastLog('---------- taskLimitRedPacket start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLimitRedPacket start ----------');
 
-    toastLog('---------- 每日红包 ----------');
+    log('----------', s.PACKAGE_NAME, '每日红包 ----------');
     clicks.xy(300, 1500);
 
-    toastLog('---------- 领取 ----------');
+    log('----------', s.PACKAGE_NAME, '领取 ----------');
     clicks.xy(880, 1000);
 
-    toastLog('---------- 额外加xxx红包券 ----------');
+    log('----------', s.PACKAGE_NAME, '额外加xxx红包券 ----------');
     closeAd(550, 1650);
-
-    toastLog('---------- taskLimitRedPacket end ----------');
 }
 
 /**
  * 任务-在线奖励
  */
 function taskOnLineReward() {
-    toastLog('---------- taskOnLineReward start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskOnLineReward start ----------');
 
-    toastLog('---------- 每日红包 ----------');
+    log('----------', s.PACKAGE_NAME, '每日红包 ----------');
     clicks.xy(300, 1500);
 
     for (var i = 0; i < 4; i++) {
         back();
-        toastLog('---------- 领取 ----------');
+        log('----------', s.PACKAGE_NAME, '领取 ----------');
         clicks.xy(900, 1800);
 
-        toastLog('---------- 额外加xxx红包券 ----------');
+        log('----------', s.PACKAGE_NAME, '额外加xxx红包券 ----------');
         closeAd(550, 1650);
     }
-
-    toastLog('---------- taskOnLineReward end ----------');
 }
 
 /**
  * 任务-幸运转盘
  */
 function taskLuckLottery() {
-    toastLog('---------- taskLuckLottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLuckLottery start ----------');
 
-    toastLog('---------- 每日红包 ----------');
+    log('----------', s.PACKAGE_NAME, '每日红包 ----------');
     clicks.xy(300, 1500);
 
-    toastLog('---------- 前往 ----------');
+    log('----------', s.PACKAGE_NAME, '前往 ----------');
     clicks.xy(880, 1300);
 
     for (var i = 0; i < 4; i++) {
         back();
-        toastLog('---------- 免费抽奖 ----------');
+        log('----------', s.PACKAGE_NAME, '免费抽奖 ----------');
         closeAd(550, 1650);
 
-        toastLog('---------- 好的 ----------');
+        log('----------', s.PACKAGE_NAME, '好的 ----------');
         sleeps.s10();
         clicks.xy(530, 1350);
     }
 
-    toastLog('---------- 返回 ----------');
+    log('----------', s.PACKAGE_NAME, '返回 ----------');
     clicks.xy(110, 330);
 
-    toastLog('---------- 日常任务-每日幸运转盘抽奖10次奖励 ----------');
+    log('----------', s.PACKAGE_NAME, '日常任务-每日幸运转盘抽奖10次奖励 ----------');
     clicks.xy(880, 700);
 
-    toastLog('---------- 领取 ----------');
+    log('----------', s.PACKAGE_NAME, '领取 ----------');
     clicks.xy(880, 1000);
 
-    toastLog('---------- 获得奖励 ----------');
+    log('----------', s.PACKAGE_NAME, '获得奖励 ----------');
     closeAd(550, 1650);
 
-    toastLog('---------- 日常任务-关闭 ----------');
+    log('----------', s.PACKAGE_NAME, '日常任务-关闭 ----------');
     clicks.xy(950, 550);
-
-    toastLog('---------- taskLuckLottery end ----------');
 }
 
 /**

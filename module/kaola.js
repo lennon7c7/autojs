@@ -2,6 +2,7 @@
  * 考拉海购-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.kaola';
 
 // 任务-考拉乐园
 function taskPlayground() {
-    log('---------- taskPlayground start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskPlayground start ----------');
 
     others.back3();
     if (!clicks.centerXyByText('考拉乐园')) {
@@ -74,7 +75,7 @@ function taskPlayground() {
 
 // 任务-领考拉豆
 function taskRandomPage() {
-    log('---------- taskRandomPage start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
 
     others.back3();
     if (!clicks.centerXyByText('领考拉豆')) {
@@ -150,7 +151,7 @@ function taskRandomPage() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('---------- taskLottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
     others.back2();
     if (!clicks.centerXyByText('天天抽奖')) {

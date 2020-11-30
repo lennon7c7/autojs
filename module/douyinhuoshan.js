@@ -2,6 +2,7 @@
  * 抖音火山-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.live';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -26,10 +27,15 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('---------- taskCashout start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!clicks.text('去提现')) {
         return false;
+    }
+
+    if (text('当前余额不足，邀请好友最高赚36元').exists()) {
+        others.back();
+        return true;
     }
 
     if (!clicks.text('0.2元')) {
@@ -53,7 +59,7 @@ function taskCashout() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('---------- taskLimit start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
     if (!clicks.textIfExists('去领取')) {
         return false;

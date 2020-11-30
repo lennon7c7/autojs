@@ -2,6 +2,7 @@
  * 淘宝-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.taobao.taobao';
 
 // 任务-逛店铺
 function taskShop() {
-    toastLog('---------- taskShop start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskShop start ----------');
 
     text('赚金币').exists() && clicks.xy(33, 1404);
 
@@ -66,7 +67,7 @@ function taskShop() {
 
 // 任务-帮好友
 function taskHelpFriend() {
-    toastLog('---------- taskHelpFriend start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskHelpFriend start ----------');
 
     text('赚金币').exists() && clicks.xy(912, 1203);
 
@@ -95,7 +96,7 @@ function taskHelpFriend() {
 
 // 任务-金币能量
 function taskMoneyPower() {
-    toastLog('---------- taskMoneyPower start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskMoneyPower start ----------');
 
     if (!clicks.centerXyByText('赚金币')) {
         others.back();
@@ -372,7 +373,7 @@ function taskMoneyPower() {
 
 // 任务-取消关注店铺
 function taskCancelShop() {
-    log('---------- taskCancelShop start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCancelShop start ----------');
 
     others.back2();
 
@@ -431,10 +432,10 @@ s.start = function () {
         }
 
         status2 = taskHelpFriend();
-        status3 = taskShop();
+        // status3 = taskShop();
         status1 = taskMoneyPower();
 
-        if (status1 && status2 && status3) {
+        if (status1 && status2) {
             return true;
         }
     }

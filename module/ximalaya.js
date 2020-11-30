@@ -2,6 +2,7 @@
  * 喜马拉雅-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.ximalaya.ting.lite';
  * 任务-签到
  */
 function taskCheckin() {
-    toastLog('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
@@ -26,7 +27,7 @@ function taskCheckin() {
  * 任务-视频
  */
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
@@ -43,22 +44,25 @@ function taskVideo() {
         others.back3();
     }
 
-    for (var i = 0; i < 10; i++) {
-        buttonClick = null;
-        if (text('看一次赚50金币').exists()) {
-            buttonClick = text('看一次赚50金币').findOne().parent().findOne(text('已完成'));
-            if (buttonClick != null) {
-                return true;
-            }
+    if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
+        return true;
+    }
 
-            buttonClick = text('看一次赚50金币').findOne().parent().findOne(text('去观看'));
+    for (var i = 0; i < 10; i++) {
+        if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
+            return true;
         }
-        if (buttonClick != null) {
+
+        if (exists.parent(text('看一次赚50金币'), text('去观看'))) {
             clicks.centerXyByText('看一次赚50金币');
             clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
             sleeps.s35to40();
             others.back3();
         }
+    }
+
+    if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
+        return true;
     }
 
     return false;
@@ -68,7 +72,7 @@ function taskVideo() {
  * 任务-新闻
  */
 function taskNews() {
-    log('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
@@ -108,7 +112,7 @@ function taskNews() {
  * 任务-抽奖
  */
 function taskLottery() {
-    log('---------- taskLottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;

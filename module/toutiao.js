@@ -2,6 +2,7 @@
  * 头条极速版-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,15 +14,19 @@ s.PACKAGE_NAME = 'com.ss.android.article.lite';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
     }
 
-    if (text('立即签到 +100金币').exists()) {
-        clicks.centerXyByText('立即签到 +100金币');
-        clicks.xy(477, 1710);
+    if (textStartsWith('立即签到').exists()) {
+        clicks.element(textStartsWith('立即签到'));
+    }
+
+    if (text('看视频再领').exists()) {
+        clicks.centerXyByText('看视频再领');
+        closeAd();
     }
 
     if (text('明日签到').exists()) {
@@ -35,18 +40,16 @@ function taskCheckin() {
  * 任务-今日搜索任务
  */
 function taskSearch() {
-    log('---------- taskSearch start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskSearch start ----------');
 
     if (!text('今日搜索任务').exists()) {
         return false;
     }
 
-    buttonClick = text('今日搜索任务').findOne().parent().parent().findOne(text('去搜索'));
-    if (buttonClick == null) {
+    if (!clicks.parents(text('今日搜索任务'), text('去搜索'))) {
         return false;
     }
 
-    clicks.element(buttonClick);
     myKeyword = className('android.widget.EditText').findOne().text();
     for (var i = 0; i < 3; i++) {
         clicks.centerXyByDesc('清除');
@@ -62,18 +65,16 @@ function taskSearch() {
  * 任务-淘宝
  */
 function taskTaobao() {
-    log('---------- taskTaobao start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskTaobao start ----------');
 
     if (!text('去淘宝抽购物红包').exists()) {
         return false;
     }
 
-    buttonClick = text('去淘宝抽购物红包').findOne().parent().parent().findOne(text('去抽奖'));
-    if (buttonClick == null) {
+    if (!clicks.parents(text('去淘宝抽购物红包'), text('去抽奖'))) {
         return false;
     }
 
-    clicks.element(buttonClick);
     others.back();
 
     return true;
@@ -81,7 +82,7 @@ function taskTaobao() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('---------- taskLottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!clicks.centerXyByText('去抽奖') || !text('集齐碎片得手机').exists()) {
         return false;
@@ -110,7 +111,7 @@ function taskLottery() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('---------- taskSleep start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
 
     if (!clicks.text('睡觉赚钱')) {
         return false;
@@ -128,17 +129,17 @@ function taskSleep() {
 
 // 任务-小说
 function taskNovel() {
-    log('---------- taskNovel start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNovel start ----------');
 
     var buttonClickTask = className('android.widget.Button').text('看小说');
     if (!buttonClickTask.exists()) {
         return false;
     }
-    log('---------- click novel ----------');
+    log('----------', s.PACKAGE_NAME, 'click novel ----------');
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    log('---------- click last novel ----------');
+    log('----------', s.PACKAGE_NAME, 'click last novel ----------');
     clicks.xy(264, 687);
 
     for (var i = 0; i < 50; i++) {
@@ -163,7 +164,7 @@ function taskNovel() {
 // 任务-宝箱
 // every 10m
 function taskTreasureBox() {
-    log('---------- taskTreasureBox start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (!text('任务中心').exists()) {
         return false;
@@ -196,7 +197,7 @@ function closeAd() {
 
 // 任务-新闻
 function taskNews() {
-    log('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     others.back();
 
@@ -228,7 +229,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.right();
@@ -256,7 +257,7 @@ function taskVideo() {
 
 // 任务-小视频
 function taskLittleVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.refresh();

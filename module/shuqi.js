@@ -2,6 +2,7 @@
  * 书旗免费小说-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.shuqi.controller';
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     others.back2();
 
@@ -39,7 +40,7 @@ function taskAd() {
 
 // 任务-分享
 function taskShare() {
-    log('---------- taskShare start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
 
     for (var i = 0; i < 5; i++) {
         clicks.textIfExists('领取奖励');

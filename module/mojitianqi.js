@@ -12,7 +12,7 @@ s.PACKAGE_NAME = 'com.moji.mjweather.light';
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     if (exists.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
         return true;

@@ -2,6 +2,7 @@
  * 陌陌-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,11 @@ s.PACKAGE_NAME = 'com.immomo.young';
  * 任务-签到
  */
 function taskCheckin() {
-    clicks.centerXyByText('稍后更新');
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (text('稍后更新').exists()) {
+        clicks.centerXyByText('稍后更新');
+    }
 
     if (!clicks.centerXyById('maintab_layout_profile')) {
         return false;

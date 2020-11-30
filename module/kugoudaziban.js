@@ -2,6 +2,7 @@
  * 酷狗大字版-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.kugou.android.elder';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明天签到').exists()) {
         return true;
@@ -33,7 +34,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     for (var i = 0; i < 20; i++) {
         if (!clicks.textIfExists('去赚钱')) {

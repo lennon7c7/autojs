@@ -2,6 +2,7 @@
  * 微视-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.tencent.weishi';
 
 // 任务-签到领红包
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     clicks.xy(888, 2200);
 
@@ -60,7 +61,7 @@ function taskCheckin() {
 
 // 任务-小视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     status = taskCheckin();
     if (status) {

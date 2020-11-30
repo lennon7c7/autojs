@@ -14,7 +14,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -35,9 +35,9 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('---------- taskCashout start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    if (clicks.parents(text('0.3元提现'), text('已完成'))) {
+    if (exists.parents(text('0.3元提现'), text('已完成'))) {
         return true;
     }
 
@@ -56,7 +56,7 @@ function taskCashout() {
 
     others.back2();
 
-    if (clicks.parents(text('0.3元提现'), text('已完成'))) {
+    if (exists.parents(text('0.3元提现'), text('已完成'))) {
         return true;
     }
 
@@ -66,7 +66,7 @@ function taskCashout() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('---------- taskTreasureBox start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -92,7 +92,7 @@ function taskTreasureBox() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('---------- taskLimit start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
     if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
@@ -113,7 +113,7 @@ function taskLimit() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('---------- taskSleep start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
 
     if (!clicks.centerXyByText('睡觉赚金币')) {
         return false;
@@ -133,7 +133,7 @@ function taskSleep() {
 
 // 任务-小视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     others.back2();
 

@@ -4,6 +4,7 @@
  * 1. 使用高版本的可能会被制裁了，刷视频只能获得1金币，使用v1.0.0能正常刷
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -13,7 +14,7 @@ s.PACKAGE_NAME = 'com.jd.jdlite';
 
 // 任务-签到
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!clicks.centerXyByText('现金签到')) {
         return false;
@@ -41,7 +42,7 @@ function taskCheckin() {
 
 // 任务-逛商品赚金币
 function taskProduct() {
-    log('---------- taskProduct start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskProduct start ----------');
 
     others.back3();
     if (!clicks.centerXyByDesc('我的')) {
@@ -76,7 +77,7 @@ function taskProduct() {
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
-    log('---------- taskRandomPage start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
 
     others.back3();
     if (!clicks.centerXyByDesc('我的')) {
@@ -111,7 +112,7 @@ function taskRandomPage() {
 
 // 任务-看视频赚金币
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     others.back3();
     if (!clicks.centerXyByDesc('我的')) {
@@ -128,11 +129,11 @@ function taskVideo() {
     }
 
     if (!id('task_float_base_fl').exists()) {
-        toastLog('---------- shit happen: taskVideo ----------');
+        log('----------', s.PACKAGE_NAME, 'shit happen: taskVideo ----------');
         return false;
     }
 
-    log('---------- first video into ----------');
+    log('----------', s.PACKAGE_NAME, 'first video into ----------');
     clicks.xy(469, 1373);
 
     // none sure is in first or not
@@ -146,7 +147,7 @@ function taskVideo() {
         }
 
         if (!id('progressbar2').exists() && !text('金币大宝箱').exists()) {
-            toastLog('---------- shit happen: taskVideo ----------');
+            log('----------', s.PACKAGE_NAME, 'shit happen: taskVideo ----------');
             return false;
         }
 
@@ -160,7 +161,7 @@ function taskVideo() {
 
 // 任务-活动任务
 function taskActivity() {
-    log('---------- taskActivity start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskActivity start ----------');
 
     others.back3();
     if (!clicks.centerXyByDesc('赚钱')) {

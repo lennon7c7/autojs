@@ -2,6 +2,7 @@
  * 百度-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.baidu.searchbox.lite';
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, ' taskAd start ----------');
 
     others.back();
 
@@ -47,7 +48,7 @@ function taskAd() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     others.back();
 
@@ -55,7 +56,7 @@ function taskVideo() {
         return false;
     }
 
-    if (text('观看视频').findOne().parent().parent().findOne(text('已完成'))) {
+    if (!exists.parents(text('观看视频'), text('已完成'))) {
         return true;
     }
 
@@ -86,7 +87,7 @@ function taskVideo() {
 
 // 任务-看新闻
 function taskNews() {
-    log('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     others.back();
 
@@ -94,7 +95,7 @@ function taskNews() {
         return false;
     }
 
-    if (text('阅读资讯').findOne().parent().parent().findOne(text('已完成'))) {
+    if (!exists.parents(text('阅读资讯'), text('已完成'))) {
         return true;
     }
 

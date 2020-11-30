@@ -4,6 +4,7 @@
  * 1. 无法判断是否成功通过验证码（就随便滑动，瞎蒙呗）
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -15,7 +16,7 @@ s.PACKAGE_NAME = 'com.kuaishou.nebula';
  * 任务-签到
  */
 function taskCheckin() {
-    log('---------- taskCheckin start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('去查看').exists()) {
         return true;
@@ -36,7 +37,7 @@ function taskCheckin() {
 
 // 任务-0元抽奖
 function task0Lottery() {
-    log('---------- task0Lottery start ----------');
+    log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
     others.back3();
 
@@ -98,7 +99,7 @@ function task0Lottery() {
 
 // 任务-10次广告
 function taskAd10() {
-    log('---------- taskAd10 start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd10 start ----------');
 
     if (text('明日再来').exists()) {
         return true;
@@ -128,7 +129,7 @@ function taskAd10() {
 
 // 任务-直播
 function taskLive() {
-    log('---------- taskLive start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
 
     if (text('看直播').find().size() === 1) {
         return true;
@@ -162,7 +163,7 @@ function taskLive() {
 
 // 任务-视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     others.back();
 

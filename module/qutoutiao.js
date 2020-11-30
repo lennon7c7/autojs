@@ -2,6 +2,7 @@
  * 趣头条-任务
  */
 var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
 var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
@@ -11,7 +12,7 @@ s.PACKAGE_NAME = 'com.jifen.qukan';
 
 // 任务-文章
 function taskNews() {
-    log('---------- taskNews start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!clicks.centerXyByText('立即阅读')) {
         return false;
@@ -38,7 +39,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!clicks.centerXyByText('观看视频')) {
         return false;
@@ -62,7 +63,7 @@ function taskVideo() {
 
 // 任务-Ad
 function taskAd() {
-    log('---------- taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     for (var i = 0; i < 4; i++) {
         if (text('日常任务').exists() && clicks.centerXyByText('看视频领金币') && !text('日常任务').exists()) {

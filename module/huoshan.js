@@ -14,7 +14,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.livelite';
  * 任务-提现
  */
 function taskCashout() {
-    log('---------- taskCashout start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (exists.parent(text('0.2元提现'), text('已完成'))) {
         return true;
@@ -44,7 +44,7 @@ function taskCashout() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('---------- taskSleep start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
 
     if (!clicks.centerXyByText('睡觉赚金币')) {
         return false;
@@ -64,7 +64,7 @@ function taskSleep() {
 
 // 任务-晒收入
 function taskShare() {
-    log('---------- taskShare start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
 
     if (exists.parent(text('晒收入'), text('已完成'))) {
         return true;
@@ -99,7 +99,7 @@ function taskShare() {
 
 // 任务-20次广告
 function taskAd20() {
-    log('---------- taskAd20 start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd20 start ----------');
 
     for (var i = 0; i < 20; i++) {
         if (clicks.textIfExists('领100金币')) {
@@ -115,7 +115,7 @@ function taskAd20() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('---------- taskTreasureBox start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (!clicks.centerXyByText('红包')) {
         return false;
@@ -173,7 +173,7 @@ function closeAd() {
 
 // 任务-小视频
 function taskVideo() {
-    log('---------- taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     for (var i = 0; i < 10; i++) {
         if (!clicks.centerXyByText('首页')) {
