@@ -18,12 +18,12 @@ function taskAd() {
         return true;
     }
 
-    if (clicks.centerXyByText('看视频')) {
+    if (text('看视频').exists() && clicks.centerXyByText('看视频')) {
         closeAd();
     }
 
     for (var i = 1; i < 10; i++) {
-        if (!text('进行中' + i + '/9').exists() || !clicks.centerXyByText('进行中' + i + '/9')) {
+        if (!text('进行中' + i + '/7').exists() || !clicks.centerXyByText('进行中' + i + '/7')) {
             continue;
         }
 
@@ -42,11 +42,15 @@ function taskAd() {
 }
 
 function closeAd() {
-    clicks.centerXyById('tt_top_mute');
+    if (id('tt_top_mute').exists()) {
+        clicks.centerXyById('tt_top_mute');
+    }
 
     sleeps.s35to40();
 
-    clicks.centerXyById('tt_video_ad_close_layout');
+    if (id('tt_video_ad_close_layout').exists()) {
+        clicks.centerXyById('tt_video_ad_close_layout');
+    }
 
     return true;
 }
@@ -72,8 +76,8 @@ s.start = function () {
         text('领奖励').exists() && clicks.centerXyByText('领奖励');
         if (text('去查看').exists() && clicks.centerXyByText('去查看')) {
             others.back();
-            clicks.centerXyByText('领金币');
-            clicks.centerXyByText('领奖励');
+            text('领金币').exists() && clicks.centerXyByText('领金币');
+            text('领奖励').exists() && clicks.centerXyByText('领奖励');
         }
 
         if (status) {
