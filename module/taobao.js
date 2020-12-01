@@ -104,7 +104,9 @@ function taskMoneyPower() {
     }
 
     sleeps.s5to10();
-    clicks.centerXyByText('一键领取');
+    if (text('领取奖励').exists()) {
+        clicks.centerXyByText('领取奖励');
+    }
 
     if (text('每日7点/12点/18点可领').exists()) {
         buttonClick = text('每日7点/12点/18点可领').findOne().parent().parent().parent().findOne(text('去完成'));
@@ -124,19 +126,15 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛菜鸟裹裹领寄件券(0/1)').exists()) {
-        buttonClick = text('逛菜鸟裹裹领寄件券(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s2to3();
+    if (clicks.textIfExists('逛菜鸟裹裹领寄件券(0/1)')) {
+        sleeps.s2to3();
 
-            clicks.centerXyByText('去领券');
-            others.back();
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
+        clicks.centerXyByText('去领券');
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
         }
+        clicks.centerXyByText('领取奖励');
     }
 
     if (text('每日使用拍立淘立得').exists()) {
@@ -154,137 +152,115 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛农场领免费水果(0/1)').exists()) {
-        buttonClick = text('逛农场领免费水果(0/1)').findOne().parent().parent().findOne(text('去施肥'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s5to10();
+    if (clicks.textIfExists('逛农场领免费水果(0/1)')) {
+        sleeps.s5to10();
 
-            clicks.centerXyByText('签到领取');
-            clicks.xy(765, 1253);
-            clicks.centerXyByText('去施肥，赚更多肥料');
-            clicks.xy(560, 1660);
+        clicks.centerXyByText('签到领取');
+        clicks.xy(765, 1253);
+        clicks.centerXyByText('去施肥，赚更多肥料');
+        clicks.xy(560, 1660);
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('淘宝人生逛街领能量(0/1)')) {
+        sleeps.s10to20();
+
+        for (var i = 1; i < 8; i++) {
+            clicks.xy(500, 1000 + (i * 100));
+        }
+
+        for (var i = 1; i < 8; i++) {
             others.back();
-            if (!text('今日任务').exists()) {
-                return false;
+            clicks.xy(500, 1000 + (i * 100));
+            if (text('今日任务').exists()) {
+                break;
             }
-            clicks.centerXyByText('领取奖励');
         }
+
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
     }
 
-    if (text('淘宝人生逛街领能量(0/1)').exists()) {
-        buttonClick = text('淘宝人生逛街领能量(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s10to20();
-
-            for (var i = 1; i < 8; i++) {
-                clicks.xy(500, 1000 + (i * 100));
-            }
-
-            for (var i = 1; i < 8; i++) {
-                others.back();
-                clicks.xy(500, 1000 + (i * 100));
-                if (text('今日任务').exists()) {
-                    break;
-                }
-            }
-
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
-        }
-    }
-
-    if (text('查看淘宝成就月账单(0/1)').exists()) {
-        buttonClick = text('查看淘宝成就月账单(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-
-            if (text('月度账单').exists()) {
-                clicks.centerXyByText('月度账单');
-                others.back();
-            }
+    if (clicks.textIfExists('查看淘宝成就月账单(0/1)')) {
+        if (text('月度账单').exists()) {
+            clicks.centerXyByText('月度账单');
             others.back();
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
         }
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
     }
 
-    if (text('签到领话费充值金(0/1)').exists()) {
-        buttonClick = text('签到领话费充值金(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s10();
-            clicks.centerXyByText('立即收下');
-            others.back();
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
+    if (clicks.textIfExists('签到领话费充值金(0/1)')) {
+        sleeps.s10();
+        clicks.centerXyByText('立即收下');
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
         }
+        clicks.centerXyByText('领取奖励');
     }
 
-    if (text('淘宝成就签到(0/1)').exists()) {
-        buttonClick = text('淘宝成就签到(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            if (clicks.centerXyByText('成就礼包')) {
+    if (clicks.textIfExists('淘宝成就签到(0/1)')) {
+        if (clicks.centerXyByText('成就礼包')) {
+            clicks.centerXyByText('我收下了')
+        }
+        if (text('成就签到').exists()) {
+            buttonClick = text('成就签到').findOne().parent().findOne(className('android.widget.Button'));
+            if (buttonClick != null) {
+                clicks.element(buttonClick);
                 clicks.centerXyByText('我收下了')
             }
-            if (text('成就签到').exists()) {
-                buttonClick = text('成就签到').findOne().parent().findOne(className('android.widget.Button'));
-                if (buttonClick != null) {
-                    clicks.element(buttonClick);
-                    clicks.centerXyByText('我收下了')
-                }
-            }
-
-            others.back();
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
         }
+
+        others.back();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
     }
 
-    if (text('开启通知权限领能量(0/1)').exists()) {
-        buttonClick = text('开启通知权限领能量(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
+    if (clicks.textIfExists('开启通知权限领能量(0/1)')) {
+        notifications();
+        sleeps.s1();
+        clicks.centerXyByText('Manage notifications');
+        setText('手机淘宝');
+        sleeps.s1();
+        clicks.centerXyById('notification_package_text');
+        className('android.widget.Switch').click();
+        sleeps.s1();
+        others.back3();
 
-            notifications();
-            sleeps.s1();
-            clicks.centerXyByText('Manage notifications');
-            setText('手机淘宝');
-            sleeps.s1();
-            clicks.centerXyById('notification_package_text');
-            className('android.widget.Switch').click();
-            sleeps.s1();
-            others.back3();
-
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
-
-            notifications();
-            sleeps.s1();
-            clicks.centerXyByText('Manage notifications');
-            setText('手机淘宝');
-            sleeps.s1();
-            clicks.centerXyById('notification_package_text');
-            className('android.widget.Switch').click();
-            sleeps.s1();
-            others.back2();
+        if (!text('今日任务').exists()) {
+            return false;
         }
+        clicks.centerXyByText('领取奖励');
+
+        notifications();
+        sleeps.s1();
+        clicks.centerXyByText('Manage notifications');
+        setText('手机淘宝');
+        sleeps.s1();
+        clicks.centerXyById('notification_package_text');
+        className('android.widget.Switch').click();
+        sleeps.s1();
+        others.back2();
     }
 
     for (var i = 0; i < 15; i++) {
         buttonClick = null;
+        if (text('逛好店即领').exists()) {
+            buttonClick = text('逛好店即领').findOne().parent().parent().parent().findOne(text('去完成'));
+        }
+
         if (text('边逛边领大额金币').exists()) {
             buttonClick = text('边逛边领大额金币').findOne().parent().parent().parent().findOne(text('去完成'));
         }
@@ -349,22 +325,20 @@ function taskMoneyPower() {
         }
     }
 
-    if (text('逛省钱消消乐拿红包(0/1)').exists()) {
-        buttonClick = text('逛省钱消消乐拿红包(0/1)').findOne().parent().parent().parent().findOne(text('去完成'));
-        if (text('今日任务').exists() && buttonClick != null) {
-            clicks.element(buttonClick);
-            sleeps.s10();
-            clicks.xiaoxiao(102, 1702, 110, 9);
-            others.back();
-            clicks.xy(700, 1500);
-            if (!text('今日任务').exists()) {
-                return false;
-            }
-            clicks.centerXyByText('领取奖励');
+    if (clicks.textIfExists('逛省钱消消乐拿红包(0/1)')) {
+        sleeps.s10();
+        clicks.xiaoxiao(102, 1702, 110, 9);
+        others.back();
+        clicks.xy(700, 1500);
+        if (!text('今日任务').exists()) {
+            return false;
         }
+        clicks.centerXyByText('领取奖励');
     }
 
-    clicks.centerXyByText('一键领取');
+    if (text('领取奖励').exists()) {
+        clicks.centerXyByText('领取奖励');
+    }
 
     others.back();
 

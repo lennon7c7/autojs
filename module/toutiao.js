@@ -201,7 +201,7 @@ function taskNews() {
 
     others.back();
 
-    if (!clicks.textIfExists('去阅读')) {
+    if (text('继续阅读').exists() || !clicks.textIfExists('去阅读')) {
         return true;
     }
 
