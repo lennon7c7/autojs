@@ -97,6 +97,43 @@ function taskAd() {
     return false;
 }
 
+// 任务-抽奖
+function taskLottery() {
+    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+
+    others.back2();
+
+    if (!clicks.centerXyByText('任务')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('抽奖赚')) {
+        return false;
+    }
+
+    if (text('0').exists()) {
+        return true
+    }
+
+    for (var i = 0; i < 100; i++) {
+        if (text('0').exists()) {
+            return true
+        }
+
+        clicks.centerXyByText('抽奖赚');
+
+        click(318, 822);
+
+        others.back();
+    }
+
+    if (text('0').exists()) {
+        return true
+    }
+
+    return false;
+}
+
 /**
  * 关闭广告
  * @param {int} x
@@ -130,8 +167,9 @@ s.start = function () {
         status0 = taskCheckin();
         taskNews();
         status1 = taskAd();
+        status2 = taskLottery();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
