@@ -36,6 +36,38 @@ function taskCheckin() {
     return false;
 }
 
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    others.back();
+
+    if (!clicks.centerXyByText('任务')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('0.1元天天提')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
+        return false;
+    }
+
+    if (text('提现成功').exists() || text('我知道了').exists() || text('马上去赚钱').exists()) {
+        others.back2();
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-看新闻
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
@@ -165,11 +197,12 @@ s.start = function () {
         sleeps.s10();
 
         status0 = taskCheckin();
+        status3 = taskCashout();
         taskNews();
         status1 = taskAd();
         status2 = taskLottery();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }

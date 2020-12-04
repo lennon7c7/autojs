@@ -23,18 +23,53 @@ function taskCheckin() {
     }
     sleeps.s2to3();
 
-    if (text('还有现金权益待领取').exists() || text('提现').exists()) {
+    if (text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
         return true;
     }
 
-    if (text('签到领现金').exists() && clicks.elementWidthHeight(text('签到领现金'), 264, 123)) {
+    if (text('立即签到').exists() && clicks.centerXyByText('立即签到')) {
+    } else if (text('签到领现金').exists() && clicks.elementWidthHeight(text('签到领现金'), 264, 123)) {
     } else if (text('签到领钱').exists() && clicks.centerXyByText('签到领钱')) {
     } else if (others.back() && text('立即签到').exists() && clicks.centerXyByText('立即签到')) {
     } else {
         return false;
     }
 
-    if (text('还有现金权益待领取').exists() || text('提现').exists()) {
+    if (text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    !text('签到领钱').exists() && others.back();
+
+    if (text('现金签到').exists() && clicks.centerXyByText('现金签到')) {
+    } else if (text('签到领钱').exists() && clicks.centerXyByText('签到领钱')) {
+    } else {
+        return false;
+    }
+    sleeps.s2to3();
+
+    if (text('今日已提').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('提现')) {
+        return false;
+    }
+
+    if (text('打款中，24小时内到账').exists()) {
         return true;
     }
 
@@ -49,9 +84,10 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status = taskCheckin();
+        status0 = taskCheckin();
+        status1 = taskCashout();
 
-        if (status) {
+        if (status0 && status1) {
             return true;
         }
     }
