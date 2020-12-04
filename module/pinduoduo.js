@@ -77,6 +77,40 @@ function taskCashout() {
 }
 
 /**
+ * 任务-摸猫
+ */
+function taskCat() {
+    log('----------', s.PACKAGE_NAME, 'taskCat start ----------');
+
+    if (!clicks.textIfExists('招财猫')) {
+        return false;
+    }
+    sleeps.s2to5();
+
+    clicks.text('领猫粮');
+
+    if (exists.parent(text('逛街60秒免费拿'), text('去完成'))) {
+        clicks.parent(text('逛街60秒免费拿'), text('去完成'));
+
+        for (var i = 0; i < 60; i++) {
+            text('猫粮商店').exists() && swipes.down();
+        }
+        text('猫粮商店').exists() && others.back();
+    }
+
+    if (text('100').exists() && text('喂养').exists()) {
+        clicks.text('喂养');
+
+        clicks.text('赚现金');
+        if (text('摸一摸').exists()) {
+            clicks.text('摸一摸');
+        }
+    }
+
+    return true;
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -86,8 +120,9 @@ s.start = function () {
 
         status0 = taskCheckin();
         status1 = taskCashout();
+        status2 = taskCat();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
