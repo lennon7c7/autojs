@@ -97,6 +97,45 @@ function taskNews() {
     return true;
 }
 
+// 任务-NOW直播红包
+function taskRedpackNow() {
+    log('----------', s.PACKAGE_NAME, 'taskRedpackNow start ----------');
+
+    others.back();
+
+    if (!clicks.centerXyByText('我的 ')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('我的红包')) {
+        return false;
+    }
+
+    if (text('已领取').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('立即领取')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('正在派发红包')) {
+        return false;
+    }
+    sleeps.s5();
+    others.back2();
+    back();
+    back();
+    sleeps.s3();
+    others.back();
+
+    if (text('已领取').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -112,8 +151,9 @@ s.start = function () {
         status0 = taskCheckin();
         status1 = taskVideo();
         status2 = taskNews();
+        status3 = taskRedpackNow();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }
