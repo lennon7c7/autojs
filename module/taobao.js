@@ -336,6 +336,38 @@ function taskMoneyPower() {
         clicks.centerXyByText('领取奖励');
     }
 
+    if (clicks.textIfExists('逛蚂蚁庄园喂小鸡(0/1)')) {
+        others.back2();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
+        sleeps.s5();
+        others.back();
+        back();
+        back();
+        sleeps.s3();
+        others.back();
+
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('欢乐造1212元大红包(0/1)')) {
+        sleeps.s15();
+        others.back2();
+
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
     if (text('领取奖励').exists()) {
         clicks.centerXyByText('领取奖励');
     }

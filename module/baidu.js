@@ -28,7 +28,7 @@ function taskAd() {
 
         if (text('恭喜您已完成今日视频观看任务').exists()) {
             others.back();
-            return true;
+            break;
         }
 
         sleeps.s15();
@@ -43,7 +43,98 @@ function taskAd() {
         others.back();
     }
 
-    return false;
+    for (var i = 0; i < 20; i++) {
+        clicks.centerXyByText('看视频赚金币');
+
+        if (text('恭喜您已完成今日视频观看任务').exists()) {
+            others.back();
+            break;
+        }
+
+        sleeps.s15();
+        for (var j = 0; j < 10; j++) {
+            sleeps.s3();
+            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+                others.back();
+                break;
+            }
+        }
+
+        others.back();
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
+
+    if (!clicks.centerXyByText('轻松赚金币')) {
+        return false;
+    }
+    sleeps.s2to3();
+    for (var i = 0; i < 20; i++) {
+        clicks.centerXyByText('看视频赚金币');
+
+        if (text('恭喜您已完成今日视频观看任务').exists()) {
+            others.back();
+            break;
+        }
+
+        sleeps.s15();
+        for (var j = 0; j < 10; j++) {
+            sleeps.s3();
+            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+                others.back();
+                break;
+            }
+        }
+
+        sleeps.s4();
+    }
+    others.back();
+    
+    swipes.down();
+      for (var i = 0; i < 20; i++) {
+        clicks.centerXyByText('免费送金币');
+
+        if (text('恭喜您已完成今日视频观看任务').exists()) {
+            others.back();
+            break;
+        }
+
+        sleeps.s15();
+        for (var j = 0; j < 10; j++) {
+            sleeps.s3();
+            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+                others.back();
+                break;
+            }
+        }
+
+        others.back();
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
+
+    swipes.down();
+    swipes.down();
+    for (var i = 0; i < 20; i++) {
+        clicks.centerXyByText('疯狂领金币');
+
+        if (text('恭喜您已完成今日视频观看任务').exists()) {
+            others.back();
+            break;
+        }
+
+        sleeps.s15();
+        for (var j = 0; j < 10; j++) {
+            sleeps.s3();
+            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+                others.back();
+                break;
+            }
+        }
+
+        others.back();
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
+
+    return true;
 }
 
 // 任务-观看视频

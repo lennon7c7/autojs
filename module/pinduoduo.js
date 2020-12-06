@@ -57,7 +57,7 @@ function taskCashout() {
     }
     sleeps.s2to3();
 
-    if (text('今日已提').exists()) {
+    if (text('今日已提').exists() || text('去解锁').exists()) {
         return true;
     }
 
