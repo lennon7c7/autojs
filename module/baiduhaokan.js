@@ -133,6 +133,8 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
+        others.back();
+
         if (!clicks.centerXyByText('我的') || !clicks.centerXyByText('任务中心')) {
             return false;
         }

@@ -34,25 +34,14 @@ function taskTreasureBox() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (text('每次都拿金币，已看10/10').exists()) {
-        return true;
-    }
-
     for (var i = 0; i < 11; i++) {
         if (text('每次都拿金币，已看10/10').exists()) {
             return true;
         }
 
-        if (!clicks.centerXyByText('马上看')) {
-            others.back();
-            continue;
-        }
+        clicks.centerXyByText('马上看');
 
         closeAd();
-    }
-
-    if (text('每次都拿金币，已看10/10').exists()) {
-        return true;
     }
 
     return false;
@@ -83,15 +72,24 @@ function taskAddBook() {
     return false;
 }
 
-// 关闭广告
+/**
+ * 关闭广告
+ * @returns {boolean}
+ */
 function closeAd() {
     if (id('tt_top_mute').exists()) {
         clicks.centerXyById('tt_top_mute');
     }
 
-    sleeps.s60to70();
+    sleeps.s30();
+    for (var j = 0; j < 10; j++) {
+        sleeps.s3();
+        others.back();
 
-    others.back();
+        if (text('书架').exists() && text('我的').exists()) {
+            return true;
+        }
+    }
 
     return false;
 }

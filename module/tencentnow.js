@@ -20,11 +20,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (!clicks.centerXyByText('每日签到>')) {
-        return false;
-    }
-
-    if (text('今日已签到').exists()) {
+    if (textEndsWith('已签到').exists()) {
         return true;
     }
 
@@ -32,7 +28,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('今日已签到').exists()) {
+    if (textEndsWith('已签到').exists()) {
         return true;
     }
 
@@ -120,6 +116,10 @@ s.start = function () {
         clicks.textIfExists('我知道了');
 
         if (!clicks.centerXyByText('首页')) {
+            return false;
+        }
+
+        if (!clicks.centerXyByText('热门')) {
             return false;
         }
 

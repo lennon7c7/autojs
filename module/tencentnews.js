@@ -46,7 +46,7 @@ function taskVideo() {
         return true;
     }
 
-    for (var i = 0; i < 11; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
             log('---------- error ----------');
             return false;
@@ -73,7 +73,7 @@ function taskNews() {
         return true;
     }
 
-    for (var i = 0; i < 11; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
             log('---------- error ----------');
             return false;
@@ -145,7 +145,7 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         if (desc('Tencent news').exists()) {
-            clicks.centerXyByDesc('Tencent news');
+            clicks.desc('Tencent news');
         }
 
         status0 = taskCheckin();

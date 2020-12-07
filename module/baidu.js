@@ -21,24 +21,18 @@ function taskAd() {
     }
 
     for (var i = 0; i < 20; i++) {
-        clicks.textIfExists('看视频最高再赚60金币');
-        clicks.textIfExists('赚更多金币');
-        clicks.textIfExists('看视频奖励翻倍');
         clicks.textIfExists('看视频赚金币');
+        clicks.textIfExists('看视频再赚60金币');
+        clicks.textIfExists('看视频最高再赚60金币');
+        clicks.textIfExists('看视频奖励翻倍');
+        clicks.textIfExists('赚更多金币');
 
-        if (text('恭喜您已完成今日视频观看任务').exists()) {
+        if (textStartsWith('恭喜您').exists()) {
             others.back();
             break;
         }
 
-        sleeps.s15();
-        for (var j = 0; j < 10; j++) {
-            sleeps.s3();
-            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-                others.back();
-                break;
-            }
-        }
+        closeAd();
 
         others.back();
     }
@@ -46,19 +40,12 @@ function taskAd() {
     for (var i = 0; i < 20; i++) {
         clicks.centerXyByText('看视频赚金币');
 
-        if (text('恭喜您已完成今日视频观看任务').exists()) {
+        if (textStartsWith('恭喜您').exists()) {
             others.back();
             break;
         }
 
-        sleeps.s15();
-        for (var j = 0; j < 10; j++) {
-            sleeps.s3();
-            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-                others.back();
-                break;
-            }
-        }
+        closeAd();
 
         others.back();
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
@@ -71,41 +58,27 @@ function taskAd() {
     for (var i = 0; i < 20; i++) {
         clicks.centerXyByText('看视频赚金币');
 
-        if (text('恭喜您已完成今日视频观看任务').exists()) {
+        if (textStartsWith('恭喜您').exists()) {
             others.back();
             break;
         }
 
-        sleeps.s15();
-        for (var j = 0; j < 10; j++) {
-            sleeps.s3();
-            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-                others.back();
-                break;
-            }
-        }
+        closeAd();
 
         sleeps.s4();
     }
     others.back();
-    
+
     swipes.down();
-      for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 20; i++) {
         clicks.centerXyByText('免费送金币');
 
-        if (text('恭喜您已完成今日视频观看任务').exists()) {
+        if (textStartsWith('恭喜您').exists()) {
             others.back();
             break;
         }
 
-        sleeps.s15();
-        for (var j = 0; j < 10; j++) {
-            sleeps.s3();
-            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-                others.back();
-                break;
-            }
-        }
+        closeAd();
 
         others.back();
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
@@ -116,19 +89,12 @@ function taskAd() {
     for (var i = 0; i < 20; i++) {
         clicks.centerXyByText('疯狂领金币');
 
-        if (text('恭喜您已完成今日视频观看任务').exists()) {
+        if (textStartsWith('恭喜您').exists()) {
             others.back();
             break;
         }
 
-        sleeps.s15();
-        for (var j = 0; j < 10; j++) {
-            sleeps.s3();
-            if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-                others.back();
-                break;
-            }
-        }
+        closeAd();
 
         others.back();
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
@@ -220,6 +186,21 @@ function taskNews() {
     }
 
     return true;
+}
+
+// 关闭Ad
+function closeAd() {
+    sleeps.s20();
+    clicks.textIfExists('取消');
+    for (var j = 0; j < 15; j++) {
+        sleeps.s3();
+        if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
+            others.back();
+            return true;
+        }
+    }
+
+    return false;
 }
 
 /**

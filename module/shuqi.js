@@ -20,19 +20,16 @@ function taskAd() {
         return false;
     }
 
-    if (text('明日继续领金币').exists()) {
-        return true;
-    }
-
     for (var i = 0; i < 20; i++) {
-        if (clicks.textIfExists('快速得百万金币')) {
-            sleeps.s35to40();
-            clicks.xy(924, 162);
+        if (text('明日继续领金币').exists()) {
+            return true;
         }
-    }
 
-    if (text('明日继续领金币').exists()) {
-        return true;
+        if (!clicks.text('快速得百万金币')) {
+            continue;
+        }
+
+        closeAd();
     }
 
     return false;
@@ -63,6 +60,28 @@ function taskShare() {
 
     if (text('今日已领取').exists()) {
         return true;
+    }
+
+    return false;
+}
+
+/**
+ * 关闭广告
+ * @returns {boolean}
+ */
+function closeAd() {
+    if (id('tt_top_mute').exists()) {
+        clicks.centerXyById('tt_top_mute');
+    }
+
+    sleeps.s30();
+    for (var j = 0; j < 10; j++) {
+        sleeps.s3();
+        others.back();
+
+        if (text('书架').exists() && text('我的').exists()) {
+            return true;
+        }
     }
 
     return false;

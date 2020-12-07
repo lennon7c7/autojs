@@ -24,28 +24,19 @@ function taskCheckin() {
 }
 
 /**
- * 任务-视频
+ * 任务-Ad
  */
-function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+function taskAd() {
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
     }
 
-    if (clicks.centerXyByText('看视频')) {
+    if (text('看视频').exists() && clicks.centerXyByText('看视频')) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
-        sleeps.s35to40();
 
-        if (id('tt_video_ad_close_layout').exists()) {
-            clicks.centerXyById('tt_video_ad_close_layout');
-        }
-
-        others.back3();
-    }
-
-    if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
-        return true;
+        closeAd();
     }
 
     for (var i = 0; i < 10; i++) {
@@ -53,16 +44,11 @@ function taskVideo() {
             return true;
         }
 
-        if (exists.parent(text('看一次赚50金币'), text('去观看'))) {
-            clicks.centerXyByText('看一次赚50金币');
-            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
-            sleeps.s35to40();
-            others.back3();
+        if (!clicks.centerXyByText('看一次赚50金币')) {
+            continue;
         }
-    }
 
-    if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
-        return true;
+        closeAd();
     }
 
     return false;
@@ -79,6 +65,10 @@ function taskNews() {
     }
 
     scrollDown();
+
+    if (!text('去阅读').exists()) {
+        return true;
+    }
 
     for (var i = 0; i < 20; i++) {
         if (!clicks.centerXyByText('去阅读')) {
@@ -150,6 +140,33 @@ function taskLottery() {
 }
 
 /**
+ * 关闭广告
+ * @returns {boolean}
+ */
+function closeAd() {
+    if (id('tt_top_mute').exists()) {
+        clicks.centerXyById('tt_top_mute');
+    }
+
+    sleeps.s30();
+    for (var j = 0; j < 10; j++) {
+        sleeps.s3();
+        others.back();
+
+        if (id('tt_video_ad_close_layout').exists()) {
+            clicks.centerXyById('tt_video_ad_close_layout');
+
+            sleeps.s2to3();
+            others.back();
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -160,7 +177,7 @@ s.start = function () {
         others.back();
 
         status1 = taskCheckin();
-        status2 = taskVideo();
+        status2 = taskAd();
         status3 = taskNews();
         status4 = taskLottery();
 
