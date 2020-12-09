@@ -30,7 +30,7 @@ function taskMomentLike() {
         clicks.xy(108, 136)
     }
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 100; i++) {
         clickLikeButton();
     }
 
@@ -61,6 +61,66 @@ function clickLikeButton() {
 }
 
 /**
+ * 任务-小程序-抽奖
+ */
+function taskRedPackage() {
+    if (!clicks.centerXyByText('Discover')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('Mini Programs')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('点赞抽奖')) {
+        return false;
+    }
+    sleeps.s10();
+    if (!clicks.centerXyByText('参与抽奖')) {
+        return false;
+    }
+
+    for (var i = 0; i < 20; i++) {
+        if (text('暂无相关抽奖推荐').exists()) {
+            log('---------- no shit ----------');
+            break;
+        } else if (clicks.textIfExists('参与抽奖')) {
+            closeAd();
+        }
+
+        if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103)) {
+            clicks.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103);
+        }
+
+        clicks.textIfExists('更多抽奖');
+    }
+    others.back();
+
+    return true;
+}
+
+// 关闭Ad
+function closeAd() {
+    sleeps.s3();
+    if (!text('关闭').exists()) {
+        return true;
+    }
+
+    clicks.xy(815, 66);
+    sleeps.s20();
+    for (var j = 0; j < 15; j++) {
+        sleeps.s3();
+        if (text('已获得奖励').exists()) {
+            clicks.centerXyByText('关闭');
+            clicks.centerXyByText('我知道了');
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -76,6 +136,14 @@ s.start = function () {
     }
 
     return false;
+};
+
+/**
+ * 任务-朋友圈-点赞
+ */
+s.autoLike = function () {
+    others.launch(s.PACKAGE_NAME);
+    taskMomentLike();
 };
 
 module.exports = s;
