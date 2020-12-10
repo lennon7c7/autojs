@@ -38,6 +38,10 @@ function taskAd() {
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
+    if (!clicks.centerXyByText('福利')) {
+        return false;
+    }
+
     if (textStartsWith('看视频再领').exists()) {
         clicks.element(textStartsWith('看视频再领'));
         closeAd();
@@ -74,9 +78,8 @@ function taskAddBook() {
         return false;
     }
 
-    if (!clicks.centerXyByText(1)) {
-        return false;
-    }
+    clicks.xy(309, 788);
+    sleeps.s2to3();
 
     if (!clicks.text('加入书架')) {
         return false;
@@ -114,10 +117,6 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        if (!clicks.centerXyByText('福利')) {
-            return false;
-        }
-
         status0 = taskTreasureBox();
         status1 = taskAd();
         status2 = taskAddBook();
@@ -138,10 +137,6 @@ s.start = function () {
  */
 s.cron = function () {
     others.launch(s.PACKAGE_NAME);
-
-    if (!clicks.centerXyByText('福利')) {
-        return false;
-    }
 
     taskTreasureBox();
 };

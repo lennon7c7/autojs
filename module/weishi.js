@@ -53,6 +53,22 @@ function taskCheckin() {
         return true;
     }
 
+    // 红包
+    scrollDown();
+    scrollDown();
+    scrollDown();
+    clicks.element(text('查看').find()[3]);
+    clicks.centerXyByText('前往腾讯新闻领取');
+    sleeps.s3();
+    others.back3();
+    back();
+    back();
+    sleeps.s3();
+    others.back();
+
+    clicks.element(text('查看').find()[4]);
+    others.back();
+
     others.back();
     clicks.xy(10, 2200);
 

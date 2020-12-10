@@ -78,6 +78,11 @@ function taskNews() {
         return false;
     }
 
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        clicks.centerXyByText('开心收下');
+    }
+
     if (!clicks.centerXyByText('去阅读')) {
         return false;
     }

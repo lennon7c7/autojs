@@ -100,9 +100,13 @@ s.xiaoxiao = function (x, y, offset, step) {
  * 元素
  */
 s.element = function (e) {
-    if (e.exists !== undefined && !e.exists()) {
+    if (e === undefined) {
+        return false;
+    } else if (e.exists !== undefined && !e.exists()) {
+        log('---------- fail: param ', e, ' none exist ----------');
         return false;
     } else if (e.size !== undefined && e.size() === 0) {
+        log('---------- fail: param ', e, ' none exist ----------');
         return false;
     }
 

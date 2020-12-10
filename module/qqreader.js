@@ -102,13 +102,23 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
+        others.back2();
+        clicks.textIfExists('取消');
+
         if (!clicks.centerXyByText('免费')) {
             return false;
         }
 
-        if (!clicks.centerXyByText('福利')) {
-            return false;
-        }
+        scrollUp();
+        sleeps.s1();
+        scrollUp();
+        sleeps.s1();
+        scrollUp();
+        sleeps.s1();
+        scrollDown();
+        sleeps.s1();
+
+        clicks.textIfExists('继续领金币');
 
         swipes.down();
 
@@ -119,6 +129,8 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
+
+        log(status0, status1, status2);
     }
 
     others.send('qqreader');
@@ -133,13 +145,23 @@ s.start = function () {
 s.cron = function () {
     others.launch(s.PACKAGE_NAME);
 
+    others.back2();
+    clicks.textIfExists('取消');
+
     if (!clicks.centerXyByText('免费')) {
         return false;
     }
 
-    if (!clicks.centerXyByText('福利')) {
-        return false;
-    }
+    scrollUp();
+    sleeps.s1();
+    scrollUp();
+    sleeps.s1();
+    scrollUp();
+    sleeps.s1();
+    scrollDown();
+    sleeps.s1();
+
+    clicks.textIfExists('继续领金币');
 
     swipes.down();
 

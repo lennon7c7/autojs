@@ -119,21 +119,20 @@ function taskVideo() {
         return false;
     }
 
-    if (clicks.parent(text('看视频赚金币'), text('已完成'))) {
+    if (exists.parent(text('看视频赚金币'), text('已完成'))) {
         return true;
     }
 
     if (!clicks.centerXyByText('看视频赚金币')) {
-        log('---------- error ----------');
         return false;
     }
 
     if (!id('task_float_base_fl').exists()) {
-        log('----------', s.PACKAGE_NAME, 'shit happen: taskVideo ----------');
+        log('---------- shit happen: task_float_base_fl ----------');
         return false;
     }
 
-    log('----------', s.PACKAGE_NAME, 'first video into ----------');
+    // first video into
     clicks.xy(469, 1373);
 
     // none sure is in first or not
@@ -141,22 +140,18 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 60; i++) {
         if (text('今日已完成').exists()) {
             return true;
-        }
-
-        if (!id('progressbar2').exists() && !text('金币大宝箱').exists()) {
-            log('----------', s.PACKAGE_NAME, 'shit happen: taskVideo ----------');
+        } else if (!id('vi_btn_close').exists()) {
+            log('---------- shit happen: progressbar2 ----------');
             return false;
         }
 
         sleeps.s10to20();
-        swipes.down1600();
-        sleeps.s2to3();
     }
 
-    return true;
+    return false;
 }
 
 // 任务-活动任务

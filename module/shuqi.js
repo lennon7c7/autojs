@@ -15,6 +15,7 @@ function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     others.back2();
+    clicks.textIfExists('取消');
 
     if (!clicks.centerXyByText('福利')) {
         return false;
