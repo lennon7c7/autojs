@@ -67,6 +67,9 @@ tencentnow.start();
 toutiao = require('module/toutiao.js');
 toutiao.start();
 
+uc = require('module/uc.js');
+uc.start();
+
 weishi = require('module/weishi.js');
 weishi.start();
 

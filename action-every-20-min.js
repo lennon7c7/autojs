@@ -25,4 +25,7 @@ function main() {
 
     toutiao = require('module/toutiao.js');
     toutiao.cron();
+
+    uc = require('module/uc.js');
+    uc.cron();
 }

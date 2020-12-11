@@ -29,6 +29,7 @@ s.fixDir = function () {
         'kaola.js', 'kuaishou.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
+        'uc.js',
         'weishi.js', 'weixin.js', 'ximalaya.js', 'zhifubao.js', 'zhongqingkandian.js', 'zuiqiangdaren.js'];
     filename.forEach((value, key) => {
         if (!files.exists(oldDir + value)) {
