@@ -10,6 +10,28 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.baidu.searchbox.lite';
 
+// 任务-限时
+// every 20m
+function taskLimit() {
+    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+
+    others.back();
+
+    if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
+        return false;
+    }
+
+    if (text('看视频领金币').exists() && click(99, 468, 234, 603) && !text('看视频领金币').exists()) {
+        closeAd();
+    }
+  
+    if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
+
+    return true;
+}
+
 // 任务-Ad
 function taskAd() {
     log('----------', s.PACKAGE_NAME, ' taskAd start ----------');
@@ -192,6 +214,7 @@ function taskNews() {
 function closeAd() {
     sleeps.s20();
     clicks.textIfExists('取消');
+    clicks.textIfExists('拒绝');
     for (var j = 0; j < 15; j++) {
         sleeps.s3();
         if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
@@ -211,11 +234,12 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status0 = taskAd();
+        status0 = taskLimit();
+        status1 = taskAd();
         status2 = taskNews();
-        status1 = taskVideo();
+        status3 = taskVideo();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }
@@ -223,6 +247,16 @@ s.start = function () {
     others.send('baidu');
 
     return false;
+};
+
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    taskLimit();
 };
 
 module.exports = s;

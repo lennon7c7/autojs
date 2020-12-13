@@ -8,6 +8,12 @@ setInterval(function () {
 }, 1200 * 1000);
 
 function main() {
+    baidu = require('module/baidu.js');
+    baidu.cron();
+
+    baiduhaokan = require('module/baiduhaokan.js');
+    baiduhaokan.cron();
+
     douyinhuoshan = require('module/douyinhuoshan.js');
     douyinhuoshan.cron();
 

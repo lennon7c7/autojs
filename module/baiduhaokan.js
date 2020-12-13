@@ -15,6 +15,16 @@ s.PACKAGE_NAME = 'com.baidu.haokan';
 function taskLimit() {
     log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
+    others.back();
+
+    if (!clicks.centerXyByText('我的')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('任务中心')) {
+        return false;
+    }
+
     if (click(99, 600, 234, 735) && !text('领现金').exists()) {
         closeAd();
     }
@@ -29,7 +39,7 @@ function taskLimit() {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
     }
 
-    return false;
+    return true;
 }
 
 // 任务-Ad
@@ -114,6 +124,7 @@ function taskAd() {
 function closeAd() {
     sleeps.s20();
     clicks.textIfExists('取消');
+    clicks.textIfExists('拒绝');
     for (var j = 0; j < 15; j++) {
         sleeps.s3();
         if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
@@ -133,12 +144,6 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        others.back();
-
-        if (!clicks.centerXyByText('我的') || !clicks.centerXyByText('任务中心')) {
-            return false;
-        }
-
         status0 = taskLimit();
         status1 = taskAd();
 
@@ -150,6 +155,16 @@ s.start = function () {
     others.send('baiduhaokan');
 
     return false;
+};
+
+/**
+ * 定时入口调用
+ * @returns {boolean}
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    taskLimit();
 };
 
 module.exports = s;
