@@ -86,25 +86,24 @@ function taskAd() {
     }
 
     text('领现金').exists() && swipes.down();
-    if (!clicks.centerXyByText('轻松赚金币')) {
-        return false;
-    }
-    sleeps.s2to3();
-    for (var i = 0; i < 20; i++) {
-        clicks.centerXyByText('看视频赚金币');
+    if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
+        sleeps.s2to3();
+        for (var i = 0; i < 20; i++) {
+            clicks.centerXyByText('看视频赚金币');
 
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
+            if (textStartsWith('恭喜您').exists()) {
+                others.back();
+                break;
+            }
+
+            closeAd();
+
+            sleeps.s4();
         }
-
-        closeAd();
-
-        sleeps.s4();
-    }
-    others.back();
-    if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        others.back();
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
     }
 
     for (var i = 0; i < 20; i++) {
