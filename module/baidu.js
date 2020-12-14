@@ -24,9 +24,44 @@ function taskLimit() {
     if (text('看视频领金币').exists() && click(99, 468, 234, 603) && !text('看视频领金币').exists()) {
         closeAd();
     }
-  
+
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
+
+    return true;
+}
+
+// 任务-打开应用
+function taskOpenApp() {
+    log('----------', s.PACKAGE_NAME, 'taskOpenApp start ----------');
+
+    if (!text('限时专享').exists()) {
+        return true
+    }
+
+    if (clicks.textIfExists('打开好看视频')) {
+        sleeps.s3();
+        others.back();
+        back();
+        back();
+        sleeps.s3();
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
+    }
+
+    if (clicks.textIfExists('打开全民小视频')) {
+        clicks.text('redpack_haokan');
+        sleeps.s3();
+        others.back();
+        back();
+        back();
+        sleeps.s3();
+        others.back();
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
     }
 
     return true;
@@ -235,11 +270,12 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskLimit();
-        status1 = taskAd();
-        status2 = taskNews();
-        status3 = taskVideo();
+        status1 = taskOpenApp();
+        status2 = taskAd();
+        status3 = taskNews();
+        status4 = taskVideo();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
     }
