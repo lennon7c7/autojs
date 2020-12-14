@@ -34,4 +34,7 @@ function main() {
 
     uc = require('module/uc.js');
     uc.cron();
+
+    zhongqingkandian = require('module/zhongqingkandian.js');
+    zhongqingkandian.cron();
 }

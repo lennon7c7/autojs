@@ -10,6 +10,26 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'cn.youth.news';
 
+// 任务-限时
+// every 20m
+function taskLimit() {
+    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+
+    clicks.textIfExists('我知道了');
+    sleeps.s10();
+
+    others.back();
+
+    text('我的').exists() && clicks.xy(850, 150);
+
+    text('我的').exists() && clicks.xy(850, 150);
+    if (!text('我的').exists()) {
+        closeAd();
+    }
+
+    return true;
+}
+
 /**
  * 任务-签到
  */
@@ -173,15 +193,13 @@ function taskLottery() {
 
 /**
  * 关闭广告
- * @param {int} x
- * @param {int} y
  */
 function closeAd() {
     sleeps.s60to70();
 
     others.back();
     if (!clicks.centerXyById('tt_video_ad_close_layout')) {
-        log('----------', s.PACKAGE_NAME, 'click fail: closeAd ----------');
+        log('---------- click fail: closeAd ----------');
         return false;
     }
 
@@ -198,16 +216,14 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        clicks.textIfExists('我知道了');
-        sleeps.s10();
-
+        status4 = taskLimit();
         status0 = taskCheckin();
         status3 = taskCashout();
         taskNews();
         status1 = taskAd();
         status2 = taskLottery();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
     }
@@ -215,6 +231,15 @@ s.start = function () {
     others.send('zhongqingkandian');
 
     return false;
+};
+
+/**
+ * 定时入口调用
+ */
+s.cron = function () {
+    others.launch(s.PACKAGE_NAME);
+
+    taskLimit();
 };
 
 module.exports = s;
