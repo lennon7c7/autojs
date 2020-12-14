@@ -172,7 +172,7 @@ function taskLottery() {
         return true
     }
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 110; i++) {
         if (text('0').exists()) {
             return true
         }
@@ -180,8 +180,7 @@ function taskLottery() {
         clicks.centerXyByText('抽奖赚');
 
         click(318, 822);
-
-        others.back();
+        back();
     }
 
     if (text('0').exists()) {
@@ -189,6 +188,47 @@ function taskLottery() {
     }
 
     return false;
+}
+
+// 任务-抽奖ad
+function taskLotteryAd() {
+    log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
+
+    others.back2();
+
+    if (!clicks.centerXyByText('任务')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('抽奖赚')) {
+        return false;
+    }
+
+    if (!text('0').exists()) {
+        return false
+    }
+
+    clicks.xy(220, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
+    }
+
+    clicks.xy(440, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
+    }
+
+    clicks.xy(660, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
+    }
+
+    clicks.xy(880, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
+    }
+  
+    return true;
 }
 
 /**
@@ -222,6 +262,7 @@ s.start = function () {
         taskNews();
         status1 = taskAd();
         status2 = taskLottery();
+        taskLotteryAd();
 
         if (status0 && status1 && status2 && status3 && status4) {
             return true;
