@@ -95,10 +95,56 @@ function taskNews() {
         return false;
     }
 
-    clicks.centerXyByText('领奖励');
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
+    }
 
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
         return true;
+    }
+
+    return false;
+}
+
+// 任务-Ad
+function taskAd() {
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
+    }
+
+    if (text('观看2个视频得10金币（2/2）').exists()) {
+        return true;
+    }
+
+    if (text('去观看').exists() && clicks.centerXyByText('去观看')) {
+        closeAd();
+    }
+
+    if (text('继续').exists() && clicks.centerXyByText('继续')) {
+        closeAd();
+    }
+
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
+    }
+
+    if (text('观看2个视频得10金币（2/2）').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+// 关闭Ad
+function closeAd() {
+    sleeps.s20();
+    for (var j = 0; j < 15; j++) {
+        others.back();
+        if (text('福利中心').exists()) {
+            return true;
+        }
     }
 
     return false;
@@ -112,10 +158,11 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status1 = taskClear();
-        status2 = taskNews();
+        status0 = taskClear();
+        status1 = taskNews();
+        status2 = taskAd();
 
-        if (status1 && status2) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
