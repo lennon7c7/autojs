@@ -15,6 +15,26 @@ s.PACKAGE_NAME = 'com.qq.reader';
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
+    others.back2();
+    clicks.textIfExists('取消');
+
+    if (!clicks.centerXyByText('免费')) {
+        return false;
+    }
+
+    scrollUp();
+    sleeps.s1();
+    scrollUp();
+    sleeps.s1();
+    scrollUp();
+    sleeps.s1();
+    scrollDown();
+    sleeps.s1();
+
+    clicks.textIfExists('继续领金币');
+
+    swipes.down();
+
     if (textEndsWith('后可领').exists() || text('明天再领').exists()) {
         return true;
     }
@@ -102,26 +122,6 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        others.back2();
-        clicks.textIfExists('取消');
-
-        if (!clicks.centerXyByText('免费')) {
-            return false;
-        }
-
-        scrollUp();
-        sleeps.s1();
-        scrollUp();
-        sleeps.s1();
-        scrollUp();
-        sleeps.s1();
-        scrollDown();
-        sleeps.s1();
-
-        clicks.textIfExists('继续领金币');
-
-        swipes.down();
-
         status0 = taskTreasureBox();
         status2 = taskAd();
         status1 = taskAddBook();
@@ -129,8 +129,6 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
-
-        log(status0, status1, status2);
     }
 
     others.send('qqreader');
@@ -144,26 +142,6 @@ s.start = function () {
  */
 s.cron = function () {
     others.launch(s.PACKAGE_NAME);
-
-    others.back2();
-    clicks.textIfExists('取消');
-
-    if (!clicks.centerXyByText('免费')) {
-        return false;
-    }
-
-    scrollUp();
-    sleeps.s1();
-    scrollUp();
-    sleeps.s1();
-    scrollUp();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
-
-    clicks.textIfExists('继续领金币');
-
-    swipes.down();
 
     taskTreasureBox();
 };

@@ -55,8 +55,11 @@ function taskCheckin() {
 
     // 红包
     scrollDown();
+    sleeps.s1();
     scrollDown();
+    sleeps.s1();
     scrollDown();
+    sleeps.s1();
     clicks.element(text('查看').find()[3]);
     clicks.centerXyByText('前往腾讯新闻领取');
     sleeps.s3();
@@ -78,6 +81,8 @@ function taskCheckin() {
 // 任务-小视频
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+
+    others.back();
 
     status = taskCheckin();
     if (status) {
@@ -112,7 +117,6 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        others.back();
         status = taskVideo();
 
         if (status) {

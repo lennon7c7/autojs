@@ -49,6 +49,16 @@ s.xy = function (x, y) {
 };
 
 /**
+ * x1y1x2y2
+ */
+s.x1y1x2y2 = function (x1, y1, x2, y2) {
+    click(x1, y1, x2, y2);
+    sleep(3 * 1000);
+
+    return true;
+};
+
+/**
  * 批量点击-类似淘宝消消乐类型那种
  * @param {int} x 行起始位置
  * @param {int} y 列起始位置

@@ -21,7 +21,7 @@ function taskLimit() {
         return false;
     }
 
-    if (text('看视频领金币').exists() && click(99, 468, 234, 603) && !text('看视频领金币').exists()) {
+    if (text('看视频领金币').exists() && clicks.x1y1x2y2(99, 468, 234, 603) && !text('看视频领金币').exists()) {
         closeAd();
     }
 
@@ -69,7 +69,7 @@ function taskOpenApp() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, ' taskAd start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     others.back();
 
@@ -105,7 +105,9 @@ function taskAd() {
         closeAd();
 
         others.back();
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
     }
 
     if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
@@ -137,7 +139,9 @@ function taskAd() {
         closeAd();
 
         others.back();
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
     }
 
     swipes.down();
@@ -153,7 +157,9 @@ function taskAd() {
         closeAd();
 
         others.back();
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        }
     }
 
     return true;

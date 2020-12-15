@@ -14,13 +14,25 @@ s.PACKAGE_NAME = 'com.jifen.qukan';
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    if (!clicks.centerXyByText('立即阅读')) {
+    if (text('点击展开更多').exists()) {
+        clicks.centerXyByText('点击展开更多');
+    }
+
+    if (!text('立即阅读').exists() || !clicks.centerXyByText('立即阅读')) {
         return false;
     }
 
-    text('日常任务').exists() && clicks.xy(24, 120);
+    if (!text('日常任务').exists()) {
+        return false;
+    }
+
+    clicks.xy(24, 120);
 
     for (var i = 0; i < 10; i++) {
+        if (!text('任务').exists()) {
+            return false;
+        }
+
         swipes.refresh600();
         clicks.xy(0, 811);
 
@@ -41,11 +53,19 @@ function taskNews() {
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    if (!clicks.centerXyByText('观看视频')) {
+    if (text('点击展开更多').exists()) {
+        clicks.centerXyByText('点击展开更多');
+    }
+
+    if (!text('观看视频').exists() || !clicks.centerXyByText('观看视频')) {
         return false;
     }
 
     for (var i = 0; i < 10; i++) {
+        if (!text('任务').exists()) {
+            return false;
+        }
+
         swipes.refresh600();
         clicks.xy(495, 457);
         sleeps.s10to20();
@@ -66,12 +86,18 @@ function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
     for (var i = 0; i < 4; i++) {
-        if (text('日常任务').exists() && clicks.centerXyByText('看视频领金币') && !text('日常任务').exists()) {
-            sleeps.s3();
-            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
-            sleeps.s50();
-            others.back2();
+        if (!text('看视频领金币').exists()) {
+            return true;
         }
+
+        if (!clicks.centerXyByText('看视频领金币') || text('日常任务').exists()) {
+            continue;
+        }
+
+        sleeps.s3();
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+        sleeps.s50();
+        others.back2();
     }
 
     return true;
@@ -91,8 +117,9 @@ s.start = function () {
 
         status0 = taskVideo();
         status1 = taskNews();
+        status2 = taskAd();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }

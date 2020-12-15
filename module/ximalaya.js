@@ -104,7 +104,7 @@ function taskNews() {
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
-    if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
+    if (!text('福利').exists() || !clicks.centerXyByText('福利') || !text('每日福利').exists()) {
         return false;
     }
 
@@ -127,7 +127,11 @@ function taskLottery() {
         }
 
         clicks.centerXyByText('trigger');
-        !text('trigger').exists() && clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+
+        if (!text('trigger').exists() && exists.elementWidthHeight(className('android.widget.ImageView'), 90, 90)) {
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+        }
+
         !text('trigger').exists() && clicks.xy(780, 246);
         !text('trigger').exists() && sleeps.s10();
         for (var j = 0; j < 10; j++) {
