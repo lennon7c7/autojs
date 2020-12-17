@@ -11,10 +11,49 @@ var s = {};
 s.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
 
 /**
+ * 任务-签到
+ */
+function taskCheckin() {
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+
+    if (text('Later').exists()) {
+        clicks.centerXyByText('Later');
+    }
+
+    if (!text('Me').exists() || !clicks.centerXyByText('Me')) {
+        return false;
+    }
+
+    if (!text('Membership').exists() || !clicks.centerXyByText('Membership')) {
+        return false;
+    }
+
+    if (!text('每日赚积分').exists() || !clicks.centerXyByText('每日赚积分')) {
+        return false;
+    }
+
+    if (!text('签到领积分').exists()) {
+        return true;
+    }
+
+    if (text('签到领积分').exists() && !clicks.centerXyByText('签到领积分')) {
+        return false;
+    }
+
+    if (!text('签到领积分').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
     log('----------', s.PACKAGE_NAME, 'taskEverydayLottery start ----------');
+
+    gotoHomePage();
 
     for (var i = 0; i < 5; i++) {
         if (!clicks.centerXyByText('天天抽奖-每日领免费福利')) {
@@ -27,7 +66,6 @@ function taskEverydayLottery() {
             }
 
             if (clicks.centerXyByText('去领卡')) {
-                others.back2();
                 return true;
             }
         }
@@ -42,6 +80,8 @@ function taskEverydayLottery() {
 function task0Lottery() {
     log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
+    gotoHomePage();
+
     if (!text("Yu'E Bao").exists()) {
         return false;
     }
@@ -55,8 +95,6 @@ function task0Lottery() {
 
         if (clicks.centerXyByText('0元抽奖')) {
             if (clicks.centerXyByText('今日抽奖机会已用完')) {
-                others.back2();
-
                 return true;
             }
 
@@ -69,7 +107,24 @@ function task0Lottery() {
         }
     }
 
-    others.back2();
+    return false;
+}
+
+/**
+ * 回到首页
+ */
+function gotoHomePage() {
+    if (text('Me').exists()) {
+        return true;
+    }
+
+    for (var i = 0; i < 5; i++) {
+        others.back();
+
+        if (text('Me').exists()) {
+            return true;
+        }
+    }
 
     return false;
 }
@@ -82,11 +137,11 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        clicks.centerXyByText('Later');
+        status0 = taskCheckin();
         status1 = task0Lottery();
         status2 = taskEverydayLottery();
 
-        if (status1 && status2) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
