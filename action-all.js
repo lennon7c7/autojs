@@ -7,6 +7,9 @@ baidu.start();
 baiduhaokan = require('module/baiduhaokan.js');
 baiduhaokan.start();
 
+baidutieba = require('module/baidutieba.js');
+baidutieba.start();
+
 douyinhuoshan = require('module/douyinhuoshan.js');
 douyinhuoshan.start();
 

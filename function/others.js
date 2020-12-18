@@ -25,7 +25,8 @@ s.fixDir = function () {
     });
 
     newDir = oldDir + 'module/';
-    filename = ['baidu.js', 'baiduhaokan.js', 'diandiancaige.js', 'douyinlite.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'jingdonglite.js',
+    filename = ['baidu.js', 'baiduhaokan.js', 'baidutieba.js',
+        'diandiancaige.js', 'douyinlite.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'jingdonglite.js',
         'kaola.js', 'kuaishou.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
