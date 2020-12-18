@@ -55,6 +55,10 @@ function taskEverydayLottery() {
 
     gotoHomePage();
 
+    if (!text('Home').exists() || !clicks.centerXyByText('Home')) {
+        return false;
+    }
+
     for (var i = 0; i < 5; i++) {
         if (!clicks.centerXyByText('天天抽奖-每日领免费福利')) {
             return false;
@@ -81,6 +85,10 @@ function task0Lottery() {
     log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
     gotoHomePage();
+
+    if (!text('Home').exists() || !clicks.centerXyByText('Home')) {
+        return false;
+    }
 
     if (!text("Yu'E Bao").exists()) {
         return false;
