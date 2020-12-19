@@ -77,7 +77,7 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.textIfExists('看视频赚金币');
         clicks.textIfExists('看视频再赚60金币');
         clicks.textIfExists('看视频最高再赚60金币');
@@ -93,8 +93,11 @@ function taskAd() {
 
         others.back();
     }
+    if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.centerXyByText('看视频赚金币');
 
         if (textStartsWith('恭喜您').exists()) {
@@ -104,7 +107,6 @@ function taskAd() {
 
         closeAd();
 
-        others.back();
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
@@ -112,7 +114,7 @@ function taskAd() {
 
     if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
         sleeps.s2to3();
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 5; i++) {
             clicks.centerXyByText('看视频赚金币');
 
             if (textStartsWith('恭喜您').exists()) {
@@ -121,14 +123,12 @@ function taskAd() {
             }
 
             closeAd();
-
-            sleeps.s4();
         }
         others.back();
     }
 
     swipes.down();
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.centerXyByText('免费送金币');
 
         if (textStartsWith('恭喜您').exists()) {
@@ -138,7 +138,6 @@ function taskAd() {
 
         closeAd();
 
-        others.back();
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
@@ -146,7 +145,7 @@ function taskAd() {
 
     swipes.down();
     swipes.down();
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.centerXyByText('疯狂领金币');
 
         if (textStartsWith('恭喜您').exists()) {
@@ -156,7 +155,6 @@ function taskAd() {
 
         closeAd();
 
-        others.back();
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
@@ -220,6 +218,10 @@ function taskNews() {
 
     if (!clicks.text('阅读资讯')) {
         return false;
+    }
+
+    if (text('128金币').exists() && clicks.centerXyByText('128金币')) {
+        others.back();
     }
 
     for (var i = 0; i < 10; i++) {

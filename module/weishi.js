@@ -10,81 +10,39 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.weishi';
 
-// 任务-签到领红包
-function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+/**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+function taskLogin() {
+    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+
+    others.back();
 
     clicks.xy(888, 2200);
 
-    if (text('微信登录').exists()) {
-        clicks.centerXyByText('微信登录');
-
-        if (text('Confirm Login').exists()) {
-            clicks.centerXyByText('Confirm Login');
-        }
-    }
-
-    clicks.xy(750, 411);
-    sleeps.s2to3();
-
-    if (text('明日再领现金').exists() || text('明日再来领现金').exists()) {
+    if (text('编辑资料').exists()) {
         return true;
     }
 
-    if (clicks.textIfExists('签到领红包')) {
-        others.back();
-        clicks.xy(750, 411);
+    clicks.centerXyByText('微信登录');
+
+    if (text('Confirm Login').exists()) {
+        clicks.centerXyByText('Confirm Login');
     }
 
-    if (textStartsWith('领取 ').exists()) {
-        clicks.element(textStartsWith('领取 '));
-        others.back();
-        clicks.xy(750, 411);
-    }
-
-    if (clicks.textIfExists('提现')) {
-        if (clicks.textIfExists('去提现')) {
-            others.back();
-        }
-        others.back();
-    }
-
-    if (text('明日再领现金').exists() || text('明日再来领现金').exists()) {
+    if (text('编辑资料').exists()) {
         return true;
     }
-
-    // 红包
-    scrollDown();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
-    clicks.element(text('查看').find()[3]);
-    clicks.centerXyByText('前往腾讯新闻领取');
-    sleeps.s3();
-    others.back3();
-    back();
-    back();
-    sleeps.s3();
-    others.back();
-
-    clicks.element(text('查看').find()[4]);
-    others.back();
-
-    others.back();
-    clicks.xy(10, 2200);
 
     return false;
 }
 
-// 任务-小视频
+// 任务-视频
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back();
-
-    status = taskCheckin();
+    status = checkVideo();
     if (status) {
         return true;
     }
@@ -101,7 +59,7 @@ function taskVideo() {
         swipes.refresh1300();
     }
 
-    status = taskCheckin();
+    status = checkVideo();
     if (status) {
         return true;
     }
@@ -109,17 +67,108 @@ function taskVideo() {
     return false;
 }
 
+function checkVideo() {
+    others.back2();
+
+    clicks.xy(750, 411);
+    sleeps.s2to3();
+
+    if (textStartsWith('明日再').exists()) {
+        return true;
+    }
+
+    if (clicks.textIfExists('签到领红包')) {
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (textStartsWith('领取 ').exists()) {
+        clicks.element(textStartsWith('领取 '));
+        others.back();
+        clicks.xy(750, 411);
+    }
+
+    if (textStartsWith('明日再').exists()) {
+        return true;
+    }
+
+    clicks.text('看视频领红包');
+
+    return false;
+}
+
+// 任务-领红包
+function taskRedpack() {
+    log('----------', s.PACKAGE_NAME, 'taskRedpack start ----------');
+
+    others.back2();
+
+    clicks.xy(888, 2200);
+
+    clicks.xy(750, 411);
+    sleeps.s2to3();
+
+    // 红包
+    scrollDown();
+    sleeps.s1();
+    scrollDown();
+    sleeps.s1();
+    scrollDown();
+    sleeps.s1();
+  
+    clicks.element(text('查看').find()[2]);
+    clicks.centerXyByText('前往腾讯新闻领取');
+    sleeps.s3();
+    others.back3();
+    back();
+    back();
+    sleeps.s3();
+    others.back();
+
+    clicks.element(text('查看').find()[5]);
+    others.back2();
+
+    return true;
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    others.back2();
+
+    clicks.xy(888, 2200);
+
+    if (!text('编辑资料').exists()) {
+        return false;
+    }
+
+    clicks.xy(750, 411);
+    sleeps.s2to3();
+
+    if (clicks.textIfExists('提现') && clicks.textIfExists('去提现')) {
+        return true;
+    }
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 5; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status = taskVideo();
+        status0 = taskLogin();
+        status1 = taskVideo();
+        status2 = taskRedpack();
+        status3 = taskCashout();
 
-        if (status) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }

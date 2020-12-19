@@ -90,9 +90,9 @@ function taskAd() {
         }
     }
 
+    text('领现金').exists() && swipes.down();
+    text('领现金').exists() && swipes.down();
     for (var i = 0; i < 5; i++) {
-        text('领现金').exists() && swipes.down();
-        text('领现金').exists() && swipes.down();
         clicks.centerXyByText('疯狂领金币');
 
         if (textStartsWith('恭喜您').exists()) {
@@ -107,9 +107,8 @@ function taskAd() {
         }
     }
 
+    text('领现金').exists() && swipes.down();
     for (var i = 0; i < 5; i++) {
-        text('领现金').exists() && swipes.down();
-        text('领现金').exists() && swipes.down();
         clicks.centerXyByText('看视频赚金币');
 
         if (textStartsWith('恭喜您').exists()) {

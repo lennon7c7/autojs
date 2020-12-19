@@ -10,29 +10,6 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.dragon.read';
 
-// 任务-Ad
-function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
-
-    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
-        return true;
-    }
-
-    for (var i = 0; i < 10; i++) {
-        if (!clicks.text('立即观看')) {
-            return false;
-        }
-
-        closeAd();
-    }
-
-    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
-        return true;
-    }
-
-    return false;
-}
-
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
@@ -60,6 +37,29 @@ function taskTreasureBox() {
     closeAd();
 
     if (text('开宝箱得金币').find().size() === 1) {
+        return true;
+    }
+
+    return false;
+}
+
+// 任务-Ad
+function taskAd() {
+    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+
+    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
+        return true;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (!clicks.text('立即观看')) {
+            return false;
+        }
+
+        closeAd();
+    }
+
+    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
         return true;
     }
 

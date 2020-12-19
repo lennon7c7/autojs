@@ -56,7 +56,7 @@ function taskOpenApp() {
 
     if (clicks.textIfExists('打开百度贴吧')) {
         clicks.text('redpack_haokan');
-        sleeps.s3();
+        sleeps.s10();
         others.back();
         back();
         back();
@@ -91,7 +91,7 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         clicks.textIfExists('看视频赚金币');
         clicks.textIfExists('看视频再赚60金币');
         clicks.textIfExists('看视频最高再赚60金币');
@@ -105,11 +105,14 @@ function taskAd() {
 
         closeAd();
     }
+    if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    }
 
     text('领现金').exists() && swipes.down();
     if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
         sleeps.s2to3();
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 5; i++) {
             clicks.centerXyByText('看视频赚金币');
 
             if (textStartsWith('恭喜您').exists()) {
@@ -127,7 +130,7 @@ function taskAd() {
         }
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         text('领现金').exists() && swipes.down();
         text('领现金').exists() && swipes.down();
         clicks.centerXyByText('免费送金币');
@@ -144,7 +147,7 @@ function taskAd() {
         }
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
         text('领现金').exists() && swipes.down();
         text('领现金').exists() && swipes.down();
         clicks.centerXyByText('疯狂领金币');
