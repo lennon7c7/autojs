@@ -16,9 +16,7 @@ s.PACKAGE_NAME = 'com.tencent.news';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('我的 ')) {
+    if (!others.backToElement(text('我的 '))) {
         return false;
     }
 
@@ -40,9 +38,21 @@ function taskCheckin() {
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back();
+    if (!others.backToElement(text('我的 '))) {
+        return false;
+    }
 
-    if (!text('去阅读').exists()) {
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('福利任务').exists() && !text('去阅读').exists()) {
         return true;
     }
 
@@ -52,12 +62,26 @@ function taskVideo() {
             return false;
         }
 
-        if (!clicks.centerXyByText('视频')) {
-            return false;
-        }
-
         clicks.xy(477, 577);
         sleeps.s30to35();
+
+        if (!others.backToElement(text('视频'))) {
+            return false;
+        }
+    }
+
+    if (!others.backToElement(text('我的 '))) {
+        return false;
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
     }
 
     return true;
@@ -67,19 +91,27 @@ function taskVideo() {
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    others.back();
+    if (!others.backToElement(text('我的 '))) {
+        return false;
+    }
 
-    if (!text('去观看').exists()) {
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('福利任务').exists() && !text('去观看').exists()) {
         return true;
     }
 
     for (var i = 0; i < 20; i++) {
         if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
             log('---------- error ----------');
-            return false;
-        }
-
-        if (!clicks.centerXyByText('新闻')) {
             return false;
         }
 
@@ -91,6 +123,22 @@ function taskNews() {
         swipes.refresh();
         sleeps.s10();
 
+        if (!others.backToElement(text('新闻'))) {
+            return false;
+        }
+    }
+
+    if (!others.backToElement(text('我的 '))) {
+        return false;
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
+        others.back();
+    }
+
+    if (text('领取').exists()) {
+        clicks.text('领取');
         others.back();
     }
 
@@ -101,9 +149,7 @@ function taskNews() {
 function taskRedpackNow() {
     log('----------', s.PACKAGE_NAME, 'taskRedpackNow start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('我的 ')) {
+    if (!others.backToElement(text('我的 '))) {
         return false;
     }
 
@@ -144,13 +190,11 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        if (desc('Tencent news').exists()) {
-            clicks.desc('Tencent news');
-        }
+        clicks.descIfExists('Tencent news');
 
         status0 = taskCheckin();
-        status1 = taskVideo();
-        status2 = taskNews();
+        status1 = taskNews();
+        status2 = taskVideo();
         status3 = taskRedpackNow();
 
         if (status0 && status1 && status2 && status3) {

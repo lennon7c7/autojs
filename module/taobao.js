@@ -345,7 +345,7 @@ function taskMoneyPower() {
     }
 
     if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
-        sleeps.s5();
+        sleeps.s10();
         others.back();
         back();
         back();
@@ -406,7 +406,7 @@ function taskCancelShop() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         if (!clicks.centerXyByDesc('我的淘宝')) {

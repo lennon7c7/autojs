@@ -20,7 +20,9 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.centerXyByText('签到')) {
+    if (textStartsWith('立即签到').exists()) {
+        clicks.element(textStartsWith('立即签到'));
+    } else if (!clicks.centerXyByText('签到')) {
         return false;
     }
 

@@ -36,6 +36,10 @@ function taskLimit() {
 function taskOpenApp() {
     log('----------', s.PACKAGE_NAME, 'taskOpenApp start ----------');
 
+    if (!others.backToElement(text('任务'))) {
+        return false;
+    }
+
     if (!text('限时专享').exists()) {
         return true
     }
@@ -71,9 +75,7 @@ function taskOpenApp() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -167,9 +169,7 @@ function taskAd() {
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -206,9 +206,7 @@ function taskVideo() {
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -230,11 +228,11 @@ function taskNews() {
             return false;
         }
 
-        if (!clicks.centerXyByText('百度')) {
-            return false;
-        }
-
         clicks.xy(345, 1345);
+
+        if (!text('关注').exists() && others.backToElement(text('百度'))) {
+            continue
+        }
 
         sleeps.s8();
         swipes.down();
@@ -242,7 +240,9 @@ function taskNews() {
         swipes.refresh();
         sleeps.s10();
 
-        others.back();
+        if (!others.backToElement(text('百度'))) {
+            return false;
+        }
     }
 
     if (!clicks.centerXyByText('任务')) {

@@ -23,43 +23,14 @@ function taskCheckin() {
     return false;
 }
 
-/**
- * 任务-提现
- */
-function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
-
-    if (!clicks.text('去提现')) {
-        return false;
-    }
-
-    if (text('当前余额不足，邀请好友最高赚36元').exists()) {
-        others.back();
-        return true;
-    }
-
-    if (!clicks.text('0.2元')) {
-        return false;
-    }
-
-    if (text('当前余额不足，邀请好友最高赚36元').exists()) {
-        others.back();
-        return true;
-    }
-
-    if (!clicks.centerXyByText('立即提现')) {
-        return false;
-    }
-
-    others.back3();
-
-    return true;
-}
-
 // 任务-限时
 // every 20m
 function taskLimit() {
     log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+
+    if (!others.backToElement(text('火苗管理'))) {
+        return false;
+    }
 
     if (!clicks.textIfExists('去领取')) {
         return false;
@@ -68,6 +39,39 @@ function taskLimit() {
     closeAd();
 
     return false;
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!others.backToElement(text('火苗管理'))) {
+        return false;
+    }
+
+    if (!clicks.text('去提现')) {
+        return false;
+    }
+
+    if (text('当前余额不足，邀请好友最高赚36元').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('0.2元')) {
+        return false;
+    }
+
+    if (text('当前余额不足，邀请好友最高赚36元').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
+        return false;
+    }
+
+    return true;
 }
 
 function closeAd() {
@@ -92,6 +96,7 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         clicks.textIfExists('以后再说');
+    
         others.back2();
         scrollUp();
         if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
@@ -103,8 +108,8 @@ s.start = function () {
         }
 
         status0 = taskCheckin();
-        taskCashout();
         taskLimit();
+        taskCashout();
 
         if (status0) {
             return true;
@@ -124,6 +129,7 @@ s.cron = function () {
     others.launch(s.PACKAGE_NAME);
 
     clicks.textIfExists('以后再说');
+  
     others.back2();
     scrollUp();
     if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {

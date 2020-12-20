@@ -16,8 +16,13 @@ s.PACKAGE_NAME = 'com.ximalaya.ting.lite';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
+    if (!others.backToElement(text('福利'))) {
         return false;
+    }
+
+    if (textStartsWith('看视频再领').exists()) {
+        clicks.element(textStartsWith('看视频再领'));
+        closeAd();
     }
 
     return true;
@@ -29,12 +34,14 @@ function taskCheckin() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
+    if (!others.backToElement(text('福利'))) {
         return false;
     }
 
     if (text('看视频').exists() && clicks.centerXyByText('看视频')) {
-        clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+        if (exists.elementWidthHeight(className('android.widget.ImageView'), 90, 90)) {
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+        }
 
         closeAd();
     }
@@ -60,7 +67,7 @@ function taskAd() {
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    if (!clicks.centerXyByText('福利') || !text('每日福利').exists()) {
+    if (!others.backToElement(text('福利'))) {
         return false;
     }
 
@@ -76,7 +83,6 @@ function taskNews() {
         }
 
         if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
-            others.back();
             return true;
         }
 
@@ -90,7 +96,6 @@ function taskNews() {
         others.back();
 
         if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
-            others.back();
             return true;
         }
     }
@@ -104,21 +109,19 @@ function taskNews() {
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
-    if (!text('福利').exists() || !clicks.centerXyByText('福利') || !text('每日福利').exists()) {
+    if (!others.backToElement(text('福利'))) {
         return false;
     }
 
     scrollDown();
 
     if (!text('幸运大转盘').exists() || text('幸运大转盘').findOne().parent().findOne(text('去抽奖')) == null) {
-        others.back();
         return false;
     }
 
     clicks.centerXyByText('幸运大转盘');
     for (var i = 0; i < 10; i++) {
         if (text('今日剩余抽奖次数：0').exists()) {
-            others.back();
             return true;
         }
 

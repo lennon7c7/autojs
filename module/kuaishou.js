@@ -22,7 +22,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.text('去签到') || !clicks.text('立即签到')) {
+    if (!clicks.text('去签到') && !clicks.text('立即签到')) {
         return false;
     }
 
@@ -87,7 +87,7 @@ function task0Lottery() {
         }
 
         clicks.xy(207, 1293);
-        app.launch('com.kuaishou.nebula');
+        app.launch(s.PACKAGE_NAME);
         sleeps.s2to3();
         others.back();
     }
@@ -131,10 +131,6 @@ function taskAd10() {
 function taskLive() {
     log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
 
-    if (text('看直播').find().size() === 1) {
-        return true;
-    }
-
     for (var i = 0; i < 11; i++) {
         if (text('看直播').find().size() === 1) {
             return true;
@@ -152,10 +148,6 @@ function taskLive() {
         sleeps.s35();
         others.back();
         clicks.idIfExists('exit_btn');
-    }
-
-    if (text('看直播').find().size() === 1) {
-        return true;
     }
 
     return false;
