@@ -139,6 +139,34 @@ s.back6 = function () {
 };
 
 /**
+ * 回到指定元素存在的页面
+ * @param {int} element 指定元素
+ * @returns {boolean}
+ */
+s.backToElement = function (element) {
+    if (!element || element.exists === undefined) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (element.exists()) {
+            element = element.findOne().bounds();
+            x = element.centerX();
+            y = element.centerY();
+            if (x >= 0 && y >= 0) {
+                click(x, y);
+                sleep(3 * 1000);
+                return true;
+            }
+        }
+  
+        s.back();
+    }
+
+    return false;
+}
+
+/**
  * 清理应用
  * @returns {boolean}
  */

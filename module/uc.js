@@ -14,9 +14,7 @@ s.PACKAGE_NAME = 'com.UCMobile';
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
-    others.back3();
-
-    if (!clicks.centerXyByText('我 的')) {
+    if (!others.backToElement(text('我 的'))) {
         return false;
     }
 
@@ -51,7 +49,9 @@ function taskTreasureBox() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    clicks.centerXyByDesc('明天预计可领');
+    if (!others.backToElement(desc('明天预计可领'))) {
+        return false;
+    }
 
     for (var i = 0; i < 20; i++) {
         if (desc('领取').exists()) {
@@ -79,7 +79,33 @@ function taskAd() {
 function taskCashout() {
     log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    if (!clicks.centerXyByDesc('提现')) {
+    if (!others.backToElement(desc('提现'))) {
+        return false;
+    }
+
+    if (!descStartsWith('约').exists()) {
+        return false;
+    }
+    currentMoney = descStartsWith('约').findOne().contentDescription;
+    currentMoney = currentMoney.toString();
+    currentMoney = currentMoney.replace(/约/, '');
+    currentMoney = currentMoney.replace(/元/, '');
+    currentMoney = currentMoney * 100;
+    if (currentMoney <= 0) {
+        return true;
+    }
+
+    currentHours = new Date().getHours();
+    if (currentHours < 18 || currentHours > 23) {
+        return true;
+    }
+
+    if (!clicks.centerXyByDesc('兑现金')) {
+        return false;
+    }
+    setText(currentMoney);
+    sleeps.s1();
+    if (!clicks.desc('立即兑换')) {
         return false;
     }
 

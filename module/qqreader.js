@@ -15,21 +15,9 @@ s.PACKAGE_NAME = 'com.qq.reader';
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
-    others.back2();
-    clicks.textIfExists('取消');
-
-    if (!clicks.centerXyByText('免费')) {
+    if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
     }
-
-    scrollUp();
-    sleeps.s1();
-    scrollUp();
-    sleeps.s1();
-    scrollUp();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
 
     clicks.textIfExists('继续领金币');
 
@@ -54,6 +42,10 @@ function taskTreasureBox() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
+    if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
+        return false;
+    }
+
     for (var i = 0; i < 11; i++) {
         if (text('每次都拿金币，已看10/10').exists()) {
             return true;
@@ -70,6 +62,10 @@ function taskAd() {
 // 任务-添加书籍
 function taskAddBook() {
     log('----------', s.PACKAGE_NAME, 'taskAddBook start ----------');
+
+    if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
+        return false;
+    }
 
     if (exists.parent(text('将书籍加入书架即可获得金币'), text('明天再来'))) {
         return true;
@@ -90,6 +86,31 @@ function taskAddBook() {
     }
 
     return false;
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
+        return false;
+    }
+
+    if (!clicks.text('现金收益')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+  
+    if (!clicks.centerXyByText('提现 ¥ 15.00')) {
+        return false;
+    }
+
+    return true;
 }
 
 /**
@@ -123,10 +144,11 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
-        status2 = taskAd();
-        status1 = taskAddBook();
+        status1 = taskAd();
+        status2 = taskAddBook();
+        status3 = taskCashout();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }

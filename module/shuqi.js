@@ -14,14 +14,11 @@ s.PACKAGE_NAME = 'com.shuqi.controller';
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    others.back2();
-    clicks.textIfExists('取消');
-
-    if (!clicks.centerXyByText('福利')) {
+    if (!others.backToElement(text('福利'))) {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
         if (text('明日继续领金币').exists()) {
             return true;
         }
@@ -40,8 +37,8 @@ function taskAd() {
 function taskShare() {
     log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
 
-    for (var i = 0; i < 5; i++) {
-        clicks.textIfExists('领取奖励');
+    if (!others.backToElement(text('福利'))) {
+        return false;
     }
 
     if (text('今日已领取').exists()) {
@@ -64,6 +61,32 @@ function taskShare() {
     }
 
     return false;
+}
+
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 5; i++) {
+        clicks.textIfExists('领取奖励');
+    }
+
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+    sleeps.s5();
+  
+    if (!clicks.centerXyByText('立即提现')) {
+        return false;
+    }
+
+    return true;
 }
 
 /**
@@ -98,8 +121,9 @@ s.start = function () {
 
         status0 = taskAd();
         status1 = taskShare();
+        status2 = taskCashout();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
