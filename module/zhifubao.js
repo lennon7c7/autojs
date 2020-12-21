@@ -20,7 +20,7 @@ function taskCheckin() {
         clicks.centerXyByText('Later');
     }
 
-    if (!text('Me').exists() || !clicks.centerXyByText('Me')) {
+    if (!others.backToElement(text('Me'))) {
         return false;
     }
 
@@ -53,9 +53,7 @@ function taskCheckin() {
 function taskEverydayLottery() {
     log('----------', s.PACKAGE_NAME, 'taskEverydayLottery start ----------');
 
-    gotoHomePage();
-
-    if (!text('Home').exists() || !clicks.centerXyByText('Home')) {
+    if (!others.backToElement(text('Home'))) {
         return false;
     }
 
@@ -64,14 +62,16 @@ function taskEverydayLottery() {
             return false;
         }
 
-        if (clicks.centerXyByText('0元抽奖')) {
-            if (clicks.centerXyByText('参与抽奖')) {
-                others.back2();
-            }
+        if (!clicks.centerXyByText('0元抽奖')) {
+            return false;
+        }
 
-            if (clicks.centerXyByText('去领卡')) {
-                return true;
-            }
+        if (text('去领卡').exists()) {
+            return true;
+        }
+
+        if (clicks.centerXyByText('参与抽奖')) {
+            others.back2();
         }
     }
 
@@ -84,19 +84,23 @@ function taskEverydayLottery() {
 function task0Lottery() {
     log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
-    gotoHomePage();
-
-    if (!text('Home').exists() || !clicks.centerXyByText('Home')) {
+    if (!others.backToElement(text('Home'))) {
         return false;
     }
 
-    if (!text("Yu'E Bao").exists()) {
+    if (!clicks.centerXyByText("Yu'E Bao")) {
+        return false;
+    }
+    others.back();
+
+    if (!clicks.centerXyByText("Yu'E Bao")) {
         return false;
     }
 
-    clicks.centerXyByText("Yu'E Bao");
-    clicks.centerXyByDesc('关闭');
-    clicks.centerXyByDesc('立即抽奖');
+    if (!clicks.centerXyByText('一分惊喜')) {
+        return false;
+    }
+    others.back();
 
     for (var i = 0; i < 5; i++) {
         clicks.centerXyByText('一分惊喜');
@@ -112,25 +116,6 @@ function task0Lottery() {
         if (clicks.centerXyByText('0元抽奖')) {
             clicks.centerXyByText('关注');
             others.back();
-        }
-    }
-
-    return false;
-}
-
-/**
- * 回到首页
- */
-function gotoHomePage() {
-    if (text('Me').exists()) {
-        return true;
-    }
-
-    for (var i = 0; i < 5; i++) {
-        others.back();
-
-        if (text('Me').exists()) {
-            return true;
         }
     }
 

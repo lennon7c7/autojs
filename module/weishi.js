@@ -88,6 +88,12 @@ function checkVideo() {
         clicks.xy(750, 411);
     }
 
+    if (textStartsWith('领取 ').exists()) {
+        clicks.element(textStartsWith('领取 '));
+        others.back();
+        clicks.xy(750, 411);
+    }
+
     if (textStartsWith('明日再').exists()) {
         return true;
     }
@@ -115,7 +121,7 @@ function taskRedpack() {
     sleeps.s1();
     scrollDown();
     sleeps.s1();
-  
+
     clicks.element(text('查看').find()[2]);
     clicks.centerXyByText('前往腾讯新闻领取');
     sleeps.s3();

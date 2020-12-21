@@ -15,7 +15,7 @@ s.PACKAGE_NAME = 'com.dragon.read';
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
-    if (!clicks.centerXyByText('福利')) {
+    if (!others.backToElement(text('福利'))) {
         return false;
     }
 
@@ -47,6 +47,10 @@ function taskTreasureBox() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
+
     if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
         return true;
     }
@@ -69,6 +73,10 @@ function taskAd() {
 // 任务-添加书籍
 function taskAddBook() {
     log('----------', s.PACKAGE_NAME, 'taskAddBook start ----------');
+
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
 
     if (exists.parents(text('加入书架'), text('已完成'))) {
         return true;
