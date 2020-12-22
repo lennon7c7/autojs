@@ -107,6 +107,35 @@ function taskAddBook() {
     return false;
 }
 
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
+
+    if (!clicks.text('现金金额：')) {
+        return false;
+    }
+
+    if (!clicks.text('去提现')) {
+        return false;
+    }
+
+    if (textStartsWith('当前余额不足').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('提现15.00元')) {
+        return false;
+    }
+
+    return true;
+}
+
 function closeAd() {
     clicks.centerXyById('tt_top_mute');
 
@@ -122,14 +151,15 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 9; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
         status1 = taskAd();
         status2 = taskAddBook();
+        status3 = taskCashout();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
     }
