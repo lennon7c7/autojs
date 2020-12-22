@@ -37,9 +37,7 @@ function taskLimit() {
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -63,9 +61,7 @@ function taskCheckin() {
 function taskCashout() {
     log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -93,9 +89,7 @@ function taskCashout() {
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -109,12 +103,16 @@ function taskNews() {
         others.back();
     }
 
+    if (text('每日任务').exists() && !text('去阅读').exists()) {
+        return true;
+    }
+
     if (!clicks.centerXyByText('去阅读')) {
         return false;
     }
 
     for (var i = 0; i < 10; i++) {
-        if (!clicks.centerXyByText('刷新')) {
+        if (!others.backToElement(text('刷新'))) {
             return false;
         }
 
@@ -126,8 +124,6 @@ function taskNews() {
             sleeps.s2to3();
             swipes.refresh400_100();
         }
-
-        others.back();
     }
 
     return true;
@@ -137,14 +133,21 @@ function taskNews() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
-    if (text('看福利视频 (5 /5)')) {
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        clicks.centerXyByText('开心收下');
+    }
+
+    if (text('看福利视频 (5 /5)').exists()) {
         return true
+    }
+
+    if (text('每日任务').exists() && !textStartsWith('看福利视频').exists()) {
+        return true;
     }
 
     for (var i = 0; i < 5; i++) {
@@ -153,8 +156,17 @@ function taskAd() {
         }
     }
 
-    if (text('看福利视频 (5 /5)')) {
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        clicks.centerXyByText('开心收下');
+    }
+
+    if (text('看福利视频 (5 /5)').exists()) {
         return true
+    }
+
+    if (text('每日任务').exists() && !textStartsWith('看福利视频').exists()) {
+        return true;
     }
 
     return false;
@@ -164,18 +176,17 @@ function taskAd() {
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
     if (!clicks.centerXyByText('抽奖赚')) {
         return false;
     }
+    others.back();
 
-    if (text('0').exists()) {
-        return true
+    if (!clicks.centerXyByText('抽奖赚')) {
+        return false;
     }
 
     for (var i = 0; i < 110; i++) {
@@ -189,10 +200,6 @@ function taskLottery() {
         back();
     }
 
-    if (text('0').exists()) {
-        return true
-    }
-
     return false;
 }
 
@@ -200,9 +207,7 @@ function taskLottery() {
 function taskLotteryAd() {
     log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -233,7 +238,7 @@ function taskLotteryAd() {
     if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
     }
-  
+
     return true;
 }
 
@@ -241,9 +246,7 @@ function taskLotteryAd() {
 function taskKankanzhuang() {
     log('----------', s.PACKAGE_NAME, 'taskKankanzhuang start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByText('任务')) {
+    if (!others.backToElement(text('任务'))) {
         return false;
     }
 
@@ -327,12 +330,14 @@ function taskKankanzhuang() {
  * 关闭广告
  */
 function closeAd() {
-    sleeps.s60to70();
+    sleeps.s20();
 
-    others.back();
-    if (!clicks.centerXyById('tt_video_ad_close_layout')) {
-        log('---------- click fail: closeAd ----------');
-        return false;
+    for (var j = 0; j < 15; j++) {
+        sleeps.s3();
+        if (id('tt_video_ad_close_layout').exists()) {
+            clicks.centerXyById('tt_video_ad_close_layout');
+            return true;
+        }
     }
 
     others.back2();
@@ -345,7 +350,7 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 24; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status4 = taskLimit();

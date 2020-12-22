@@ -24,8 +24,8 @@ function taskTreasureBox() {
         closeAd();
     }
 
-    clicks.xy(945,485);
-    clicks.xy(945,485);
+    clicks.xy(945, 485);
+    clicks.xy(945, 485);
     others.back();
 
     if (text('开宝箱得金币').find().size() === 1) {
@@ -168,11 +168,13 @@ function taskCashout() {
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
+    if (!others.backToElement(text('首页'))) {
+        return false;
+    }
+
     for (var i = 0; i < 10; i++) {
-        if (!others.backToElement(text('首页'))) {
-            return false;
-        }
-    
+        swipes.down1600();
+
         if (text('15S').exists() || text('14S').exists() || text('13S').exists() || text('12S').exists() || text('11S').exists()
             || text('10S').exists() || text('9S').exists() || text('8S').exists()
         ) {
@@ -218,7 +220,7 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 18; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
