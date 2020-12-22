@@ -1,17 +1,19 @@
 /**
- * 抖音-抓取用户数据
- * 因为无法解决接口解密，所以只能用那么low的方法
+ * 抖音-任务
  */
-var clicks = require('function/clicks.js');
-var others = require('function/others.js');
-var sleeps = require('function/sleeps.js');
-var swipes = require('function/swipes.js');
+var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
+var others = require('../function/others.js');
+var sleeps = require('../function/sleeps.js');
+var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.ss.android.ugc.aweme';
 
-main();
-
+/**
+ * 抓取用户数据
+ * 因为无法解决接口解密，所以只能用那么low的方法
+ */
 function intoDetailPage() {
     isOk = false;
     className('android.view.ViewGroup').find().forEach((value, key) => {
@@ -149,8 +151,14 @@ function getSaleData() {
     return saleData;
 }
 
-function main() {
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
     others.launch(s.PACKAGE_NAME);
+
+    storages.remove('tmp');
     others.back3();
 
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 126, 132)) {
@@ -175,4 +183,13 @@ function main() {
         swipes.down2200();
         sleeps.s3();
     }
+
+    // 用户, 抖音号, 获赞, 关注, 粉丝, 已售
+    filename = files.cwd() + '/douyin.txt';
+    log(files.read(filename));
 }
+
+return false;
+};
+
+module.exports = s;
