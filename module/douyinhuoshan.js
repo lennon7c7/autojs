@@ -10,6 +10,22 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.ss.android.ugc.live';
 
+// 任务-视频
+function taskVideo() {
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');    
+
+    for (var i = 0; i < 10; i++) {
+        if (text('点击进入直播间').exists()) {
+            continue;
+        }
+
+        swipes.down1600();
+        sleeps.s2to5();
+    }
+
+    return false;
+}
+
 /**
  * 任务-签到
  */
@@ -97,6 +113,8 @@ s.start = function () {
 
         clicks.textIfExists('以后再说');
     
+        taskVideo();
+     
         others.back2();
         scrollUp();
         if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
