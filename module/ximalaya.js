@@ -181,8 +181,6 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        others.back();
-
         status1 = taskCheckin();
         status2 = taskAd();
         status3 = taskNews();

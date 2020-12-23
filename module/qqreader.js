@@ -46,7 +46,7 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 11; i++) {
+    for (var i = 0; i < 21; i++) {
         if (text('每次都拿金币，已看10/10').exists()) {
             return true;
         }
@@ -140,7 +140,7 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 12; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();

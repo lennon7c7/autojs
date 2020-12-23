@@ -86,38 +86,31 @@ function taskAd() {
         clicks.textIfExists('看视频奖励翻倍');
         clicks.textIfExists('赚更多金币');
 
+        if (text('任务').exists()) {
+            break;
+        }
+
         if (textStartsWith('恭喜您').exists()) {
-            others.back();
             break;
         }
 
         closeAd();
+    }
 
-        others.back();
+    if (!others.backToElement(text('任务'))) {
+        return false;
     }
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
     }
 
-    for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('看视频赚金币');
-
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
-        }
-
-        closeAd();
-
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
-        }
-    }
-
-    if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
-        sleeps.s2to3();
+    if (text('看视频赚金币').exists()) {
         for (var i = 0; i < 5; i++) {
-            clicks.centerXyByText('看视频赚金币');
+            clicks.text('看视频赚金币');
+
+            if (text('任务').exists()) {
+                break;
+            }
 
             if (textStartsWith('恭喜您').exists()) {
                 others.back();
@@ -125,40 +118,75 @@ function taskAd() {
             }
 
             closeAd();
-        }
-        others.back();
-    }
 
-    swipes.down();
-    for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('免费送金币');
-
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
         }
 
-        closeAd();
-
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        if (!others.backToElement(text('任务'))) {
+            return false;
         }
     }
 
-    swipes.down();
-    swipes.down();
-    for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('疯狂领金币');
+    if (text('轻松赚金币').exists() && clicks.text('轻松赚金币')) {
+        sleeps.s2to3();
+        for (var i = 0; i < 5; i++) {
+            clicks.centerXyByText('看视频赚金币');
 
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
+            if (text('看视频赚金币').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
         }
 
-        closeAd();
+        if (!others.backToElement(text('任务'))) {
+            return false;
+        }
+    }
 
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    if (text('免费送金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('免费送金币');
+
+            if (text('任务').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
+        }
+    }
+
+    if (text('疯狂领金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('疯狂领金币');
+
+            if (text('任务').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
         }
     }
 
@@ -273,7 +301,7 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 15; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskLimit();

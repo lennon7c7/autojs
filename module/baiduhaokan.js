@@ -15,9 +15,7 @@ s.PACKAGE_NAME = 'com.baidu.haokan';
 function taskLimit() {
     log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('我的')) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
@@ -46,7 +44,7 @@ function taskLimit() {
 function taskOpenApp() {
     log('----------', s.PACKAGE_NAME, 'taskOpenApp start ----------');
 
-    if (!text('领现金').exists()) {
+    if (!others.backToElement(text('领现金'))) {
         return false;
     }
 
@@ -87,7 +85,7 @@ function taskOpenApp() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (!text('领现金').exists()) {
+    if (!others.backToElement(text('领现金'))) {
         return false;
     }
 
@@ -98,25 +96,35 @@ function taskAd() {
         clicks.textIfExists('看视频奖励翻倍');
         clicks.textIfExists('赚更多金币');
 
+        if (text('领现金').exists()) {
+            break;
+        }
+
         if (textStartsWith('恭喜您').exists()) {
-            others.back();
             break;
         }
 
         closeAd();
     }
+
+    if (!others.backToElement(text('领现金'))) {
+        return false;
+    }
+
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
     }
 
-    text('领现金').exists() && swipes.down();
-    if (text('轻松赚金币').exists() && clicks.centerXyByText('轻松赚金币')) {
+    if (text('轻松赚金币').exists() && clicks.text('轻松赚金币')) {
         sleeps.s2to3();
         for (var i = 0; i < 5; i++) {
             clicks.centerXyByText('看视频赚金币');
 
+            if (text('看视频赚金币').exists()) {
+                break;
+            }
+
             if (textStartsWith('恭喜您').exists()) {
-                others.back();
                 break;
             }
 
@@ -124,43 +132,61 @@ function taskAd() {
 
             sleeps.s4();
         }
-        others.back();
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+
+        if (!others.backToElement(text('领现金'))) {
+            return false;
         }
-    }
-
-    for (var i = 0; i < 5; i++) {
-        text('领现金').exists() && swipes.down();
-        text('领现金').exists() && swipes.down();
-        clicks.centerXyByText('免费送金币');
-
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
-        }
-
-        closeAd();
 
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
     }
 
-    for (var i = 0; i < 5; i++) {
-        text('领现金').exists() && swipes.down();
-        text('领现金').exists() && swipes.down();
-        clicks.centerXyByText('疯狂领金币');
+    if (text('免费送金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('免费送金币');
 
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
+            if (text('领现金').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
         }
 
-        closeAd();
+        if (!others.backToElement(text('领现金'))) {
+            return false;
+        }
+    }
 
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    if (text('疯狂领金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('疯狂领金币');
+
+            if (text('领现金').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
+        }
+
+        if (!others.backToElement(text('领现金'))) {
+            return false;
         }
     }
 

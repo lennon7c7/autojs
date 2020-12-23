@@ -15,9 +15,7 @@ s.PACKAGE_NAME = 'com.baidu.tieba';
 function taskLimit() {
     log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
-    others.back();
-
-    if (!clicks.centerXyByText('我的')) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
@@ -51,16 +49,19 @@ function taskLimit() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (!text('领现金').exists()) {
+    if (!others.backToElement(text('领现金'))) {
         return false;
     }
 
     if (text('免费送金币').exists()) {
         for (var i = 0; i < 5; i++) {
-            clicks.centerXyByText('免费送金币');
+            clicks.text('免费送金币');
+
+            if (text('领现金').exists()) {
+                break;
+            }
 
             if (textStartsWith('恭喜您').exists()) {
-                others.back();
                 break;
             }
 
@@ -70,56 +71,77 @@ function taskAd() {
                 clicks.elementWidthHeight(className('android.view.View'), 84, 81);
             }
         }
+
+        if (!others.backToElement(text('领现金'))) {
+            return false;
+        }
     }
 
-    if (text('试玩领金币').exists() && clicks.centerXyByText('试玩领金币')) {
+    if (text('试玩领金币').exists() && clicks.text('试玩领金币')) {
         sleeps.s2to3();
         for (var i = 0; i < 5; i++) {
-            clicks.centerXyByText('看视频赚金币');
+            clicks.text('看视频赚金币');
+
+            if (text('看视频赚金币').exists()) {
+                break;
+            }
 
             if (textStartsWith('恭喜您').exists()) {
-                others.back();
                 break;
             }
 
             closeAd();
         }
-        others.back();
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+
+        if (!others.backToElement(text('领现金'))) {
+            return false;
         }
-    }
-
-    text('领现金').exists() && swipes.down();
-    text('领现金').exists() && swipes.down();
-    for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('疯狂领金币');
-
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
-        }
-
-        closeAd();
 
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
     }
 
-    text('领现金').exists() && swipes.down();
-    for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('看视频赚金币');
+    if (text('疯狂领金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('疯狂领金币');
 
-        if (textStartsWith('恭喜您').exists()) {
-            others.back();
-            break;
+            if (text('领现金').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
         }
+        if (!others.backToElement(text('领现金'))) {
+            return false;
+        }
+    }
 
-        closeAd();
+    if (text('看视频赚金币').exists()) {
+        for (var i = 0; i < 5; i++) {
+            clicks.text('看视频赚金币');
 
-        if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            if (text('领现金').exists()) {
+                break;
+            }
+
+            if (textStartsWith('恭喜您').exists()) {
+                break;
+            }
+
+            closeAd();
+
+            if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            }
         }
     }
 
