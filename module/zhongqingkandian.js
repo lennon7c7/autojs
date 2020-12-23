@@ -129,6 +129,53 @@ function taskNews() {
     return true;
 }
 
+// 任务-观看视频
+function taskVideo() {
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+
+    if (!others.backToElement(text('任务'))) {
+        return false;
+    }
+
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        clicks.centerXyByText('开心收下');
+    }
+
+    if (text('每日任务').exists() && !text('去阅读').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('去观看')) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (!others.backToElement(text('刷新'))) {
+            return false;
+        }
+
+        clicks.xy(477, 577);
+
+        if (text('转发朋友圈').exists() && !text('刷新').exists()) {
+            return false;
+        }
+
+        sleeps.s30();
+    }
+
+    if (!others.backToElement(text('任务'))) {
+        return false;
+    }
+
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        clicks.centerXyByText('开心收下');
+    }
+
+    return true;
+}
+
 // 任务-Ad
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
