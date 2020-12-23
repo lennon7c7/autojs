@@ -73,6 +73,33 @@ function taskAd() {
     return false;
 }
 
+// 任务-Game
+function taskGame() {
+    log('----------', s.PACKAGE_NAME, 'taskGame start ----------');
+
+    for (var i = 0; i < 20; i++) {
+        if (desc('领取').exists()) {
+            clicks.centerXyByDesc('领取');
+        }
+
+        if (desc('明天预计可领').exists() && !desc('去完成').exists()) {
+            return true;
+        }
+
+        clicks.centerXyByDesc('去完成');
+        for (var j = 0; j < 12; j++) {
+            sleeps.s10();
+            swipes.down();
+        }
+
+        for (var j = 0; j < 3; j++) {
+            !desc('明天预计可领').exists() && others.back();
+        }
+    }
+
+    return false;
+}
+
 /**
  * 任务-提现
  */
@@ -127,6 +154,7 @@ function taskCashout() {
  * @returns {boolean}
  */
 function closeAd() {
+    sleeps.s3();
     if (id('tt_top_mute').exists()) {
         clicks.centerXyById('tt_top_mute');
     }
@@ -158,11 +186,14 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 12; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
         status1 = taskAd();
+        if (status1) {
+            taskGame();
+        }
         status2 = taskCashout();
 
         if (status0 && status1 && status2) {
