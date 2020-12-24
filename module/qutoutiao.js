@@ -43,7 +43,7 @@ function taskNews() {
         }
     }
 
-    return false;
+    return true;
 }
 
 // 任务-视频
@@ -75,7 +75,7 @@ function taskVideo() {
         sleeps.s10to20();
     }
 
-    return false;
+    return true;
 }
 
 // 任务-Ad
@@ -104,6 +104,27 @@ function taskAd() {
     return true;
 }
 
+// 任务-视频滑动
+function taskVideoSwipe() {
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+
+    if (!others.backToElement(text('小视频'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        text('小视频').exists() && swipes.down1600();
+
+        if (textStartsWith('观看该视频可获得').exists()) {
+            sleeps.s25();
+        } else if (text('小视频').exists()) {
+            sleeps.s2to5();
+        }
+    }
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -115,6 +136,7 @@ s.start = function () {
         status0 = taskVideo();
         status1 = taskNews();
         status2 = taskAd();
+        taskVideoSwipe();
 
         if (status0 && status1 && status2) {
             return true;

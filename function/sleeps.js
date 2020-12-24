@@ -90,6 +90,10 @@ s.s20 = function () {
     sleep(20 * 1000);
 };
 
+s.s25 = function () {
+    sleep(25 * 1000);
+};
+
 s.s30 = function () {
     sleep(30 * 1000);
 };
