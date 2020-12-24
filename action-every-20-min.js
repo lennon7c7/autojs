@@ -26,6 +26,9 @@ function main() {
     fanqie = require('module/fanqie.js');
     fanqie.cron();
 
+    fanqiechangting = require('module/fanqiechangting.js');
+    fanqiechangting.cron();
+
     huoshan = require('module/huoshan.js');
     huoshan.cron();
 

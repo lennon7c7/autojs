@@ -19,6 +19,9 @@ douyinlite.start();
 fanqie = require('module/fanqie.js');
 fanqie.start();
 
+fanqiechangting = require('module/fanqiechangting.js');
+fanqiechangting.start();
+
 huoshan = require('module/huoshan.js');
 huoshan.start();
 

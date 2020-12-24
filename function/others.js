@@ -26,7 +26,8 @@ s.fixDir = function () {
 
     newDir = oldDir + 'module/';
     filename = ['baidu.js', 'baiduhaokan.js', 'baidutieba.js',
-        'diandiancaige.js', 'douyin.js', , 'douyinlite.js', 'douyinhuoshan.js', 'fanqie.js', 'huoshan.js', 'jingdonglite.js',
+        'diandiancaige.js', 'douyin.js', 'douyinlite.js', 'douyinhuoshan.js',
+        'fanqie.js', 'fanqiechangting.js', 'huoshan.js', 'jingdonglite.js',
         'kaola.js', 'kuaishou.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
@@ -159,12 +160,12 @@ s.backToElement = function (element) {
                 return true;
             }
         }
-  
+
         s.back();
     }
 
     return false;
-}
+};
 
 /**
  * 清理应用
