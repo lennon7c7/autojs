@@ -85,7 +85,7 @@ function taskCashout() {
         return true;
     }
 
-    if (!clicks.centerXyByText('提现15.00元')) {
+    if (!clicks.centerXyByText('15.00')) {
         return false;
     }
 

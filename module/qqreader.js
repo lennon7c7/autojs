@@ -46,8 +46,8 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 21; i++) {
-        if (text('每次都拿金币，已看10/10').exists()) {
+    for (var i = 0; i < 20; i++) {
+        if (text('每次都拿金币，已看20/20').exists()) {
             return true;
         }
 
@@ -105,7 +105,7 @@ function taskCashout() {
     if (!clicks.centerXyByText('去提现')) {
         return false;
     }
-  
+
     if (!clicks.centerXyByText('提现 ¥ 15.00')) {
         return false;
     }

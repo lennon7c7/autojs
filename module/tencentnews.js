@@ -157,15 +157,13 @@ function taskRedpackNow() {
         return false;
     }
 
-    if (text('已领取').exists()) {
-        return true;
-    }
-
-    if (!clicks.centerXyByText('立即领取')) {
+    if (!clicks.centerXyByText('NOW直播红包')) {
         return false;
     }
 
-    if (!clicks.centerXyByText('正在派发红包')) {
+    if (text('正在派发红包').exists() && !clicks.centerXyByText('正在派发红包')) {
+        return false;
+    } else if (text('下载NOW直播提现').exists() && !clicks.centerXyByText('下载NOW直播提现')) {
         return false;
     }
     sleeps.s5();
@@ -175,11 +173,7 @@ function taskRedpackNow() {
     sleeps.s3();
     others.back();
 
-    if (text('已领取').exists()) {
-        return true;
-    }
-
-    return false;
+    return true;
 }
 
 /**
