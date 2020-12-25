@@ -37,6 +37,13 @@ function taskPlayground() {
         return true;
     }
 
+    element = textStartsWith('去华为应用市场写评论（0/1）');
+    if (element.exists()) {
+        clicks.text(element.findOne().text());
+        clicks.text('去评论');
+        others.back();
+    }
+
     for (var i = 0; i < 40; i++) {
         if (!clicks.textIfExists('去逛逛')) {
             continue;

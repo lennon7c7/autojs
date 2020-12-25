@@ -302,7 +302,7 @@ function taskKankanzhuang() {
     }
     sleeps.s3();
 
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 72; i++) {
         if (!text('去完成').exists() && !text('进行中').exists()) {
             break;
         }
@@ -317,8 +317,12 @@ function taskKankanzhuang() {
 
         if (id('pop_close').exists()) {
             clicks.id('pop_close');
+        } else if (id('big_pic_close_btn').exists()) {
+            clicks.id('big_pic_close_btn');
         } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
             clicks.elementWidthHeight(className('android.view.View'), 90, 90);
+        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
+            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
         }
 
         randomClick = random();
@@ -330,11 +334,19 @@ function taskKankanzhuang() {
             clicks.xy(1000, 1400);
         }
 
+        if (!others.backToPackageName(s.PACKAGE_NAME)) {
+            return false;
+        }
+
         sleeps.s3();
         if (id('pop_close').exists()) {
             clicks.id('pop_close');
+        } else if (id('big_pic_close_btn').exists()) {
+            clicks.id('big_pic_close_btn');
         } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
             clicks.elementWidthHeight(className('android.view.View'), 90, 90);
+        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
+            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
         }
 
         clicks.textIfExists('展开全文');
@@ -402,10 +414,13 @@ s.start = function () {
 
         status4 = taskLimit();
         status0 = taskCheckin();
-        taskNews();
         status1 = taskAd();
         status2 = taskLottery();
-        taskLotteryAd();
+        if (status2) {
+            taskLotteryAd();
+        }
+        taskNews();
+        taskVideo();
         taskKankanzhuang();
         status3 = taskCashout();
 

@@ -54,8 +54,8 @@ function taskCashout() {
         return false;
     }
 
-    if (!text('已经连续签到21天').exists()) {
-        return false;
+    if (text('签到领现金').exists() && !text('已经连续签到21天').exists()) {
+        return true;
     }
 
     swipes.down();

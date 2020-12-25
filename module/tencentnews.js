@@ -20,14 +20,17 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('阅读任务开关').exists()) {
+    if (!others.backToElement(text('我的金币'))) {
+        return false;
+    }
+
+    if (text('我的日签卡').exists()) {
         return true;
     }
 
-    others.back();
     clicks.text('立即打卡');
 
-    if (text('阅读任务开关').exists()) {
+    if (text('我的日签卡').exists()) {
         return true;
     }
 

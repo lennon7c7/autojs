@@ -24,7 +24,9 @@ function taskCheckin() {
         return false;
     }
 
-    if (!text('Membership').exists() || !clicks.centerXyByText('Membership')) {
+    if (text('Membership').exists() && !clicks.centerXyByText('Membership')) {
+        return false;
+    } else if (text('支付宝会员').exists() && !clicks.centerXyByText('支付宝会员')) {
         return false;
     }
 
@@ -127,7 +129,7 @@ function task0Lottery() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 6; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();

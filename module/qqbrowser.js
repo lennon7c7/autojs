@@ -114,6 +114,10 @@ function taskAd() {
         clicks.centerXyByText('知道了');
     }
 
+    if (text('福利中心').exists() && !textStartsWith('观看2个视频得').exists()) {
+        return true;
+    }
+
     if (text('观看2个视频得10金币（2/2）').exists()) {
         return true;
     }

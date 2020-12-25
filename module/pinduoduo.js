@@ -115,7 +115,7 @@ function taskCat() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 6; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();

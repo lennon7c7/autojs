@@ -27,7 +27,7 @@ function taskTreasureBox() {
         return true;
     }
 
-    if (!clicks.centerXyByText('开宝箱得金币')) {
+    if (!clicks.text('开宝箱得金币')) {
         return false;
     }
 

@@ -168,6 +168,31 @@ s.backToElement = function (element) {
 };
 
 /**
+ * 回到指定包名
+ * @param {string} packageName 指定包名
+ * @returns {boolean}
+ */
+s.backToPackageName = function (packageName) {
+    if (packageName === '') {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        app.launch(packageName);
+        sleep(3 * 1000);
+        if (currentPackage() !== packageName) {
+            continue
+        }
+
+        if (currentPackage() === packageName) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+/**
  * 清理应用
  * @returns {boolean}
  */
