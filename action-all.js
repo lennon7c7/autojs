@@ -22,6 +22,9 @@ fanqie.start();
 fanqiechangting = require('module/fanqiechangting.js');
 fanqiechangting.start();
 
+huohuoshipin = require('module/huohuoshipin.js');
+huohuoshipin.start();
+
 huoshan = require('module/huoshan.js');
 huoshan.start();
 

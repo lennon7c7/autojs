@@ -27,7 +27,8 @@ s.fixDir = function () {
     newDir = oldDir + 'module/';
     filename = ['baidu.js', 'baiduhaokan.js', 'baidutieba.js',
         'diandiancaige.js', 'douyin.js', 'douyinlite.js', 'douyinhuoshan.js',
-        'fanqie.js', 'fanqiechangting.js', 'huoshan.js', 'jingdonglite.js',
+        'fanqie.js', 'fanqiechangting.js', 
+        'huohuoshipin.js', 'huoshan.js', 'jingdonglite.js',
         'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
