@@ -28,7 +28,7 @@ s.fixDir = function () {
     filename = ['baidu.js', 'baiduhaokan.js', 'baidutieba.js',
         'diandiancaige.js', 'douyin.js', 'douyinlite.js', 'douyinhuoshan.js',
         'fanqie.js', 'fanqiechangting.js', 'huoshan.js', 'jingdonglite.js',
-        'kaola.js', 'kuaishou.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
+        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
         'uc.js',
@@ -141,7 +141,7 @@ s.back6 = function () {
 
 /**
  * 回到指定元素存在的页面
- * @param {int} element 指定元素
+ * @param {string} element 指定元素
  * @returns {boolean}
  */
 s.backToElement = function (element) {
@@ -191,6 +191,46 @@ s.backToPackageName = function (packageName) {
 
     return false;
 };
+
+/**
+ * 关闭广告，并返回到指定元素存在的页面
+ * @param {string} element 指定元素
+ * @returns {boolean}
+ */
+s.closeAdBackToElement = function (element) {
+    if (id('tt_top_mute').exists()) {
+        clicks.centerXyById('tt_top_mute');
+    }
+
+    sleeps.s30();
+    for (var i = 0; i < 10; i++) {
+        sleeps.s3();
+
+        if (id('ksad_end_close_btn').exists()) {
+            clicks.centerXyById('ksad_end_close_btn');
+            return true;
+        } else if (id('tt_video_ad_close_layout').exists()) {
+            clicks.centerXyById('tt_video_ad_close_layout');
+            return true;
+        } else if (id('sp').exists()) {
+            clicks.centerXyById('sp');
+            return true;
+        } else if (text('关闭广告').exists()) {
+            clicks.centerXyByText('关闭广告');
+            return true;
+        }
+    }
+
+    for (var i = 0; i < 10; i++) {
+        others.back();
+
+        if (element.exists()) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 /**
  * 清理应用

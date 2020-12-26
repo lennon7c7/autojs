@@ -34,6 +34,9 @@ kaola.start();
 kuaishou = require('module/kuaishou.js');
 kuaishou.start();
 
+kuaiyin = require('module/kuaiyin.js');
+kuaiyin.start();
+
 kugoudaziban = require('module/kugoudaziban.js');
 kugoudaziban.start();
 
