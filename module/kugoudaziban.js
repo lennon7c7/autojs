@@ -16,6 +16,12 @@ s.PACKAGE_NAME = 'com.kugou.android.elder';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
+    if (!others.backToElement(text('赚钱'))) {
+        return false;
+    }
+
+    swipes.down();
+
     if (text('明天签到').exists()) {
         return true;
     }
@@ -36,33 +42,17 @@ function taskCheckin() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
+    if (!others.backToElement(text('赚钱'))) {
+        return false;
+    }
+
     for (var i = 0; i < 20; i++) {
         if (!clicks.textIfExists('去赚钱')) {
             break;
         }
 
-        closeAd();
+        others.closeAdBackToElement(text('明天签到'));
     }
-
-    return true;
-}
-
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s35to40();
-
-    if (id('ksad_end_close_btn').exists()) {
-        clicks.centerXyById('ksad_end_close_btn');
-    } else if (id('tt_video_ad_close_layout').exists()) {
-        clicks.centerXyById('tt_video_ad_close_layout');
-    } else {
-        others.back();
-    }
-
-    others.back();
 
     return true;
 }
@@ -74,14 +64,6 @@ function closeAd() {
 s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
-
-        others.back();
-
-        if (!clicks.centerXyByText('赚钱')) {
-            return false;
-        }
-
-        swipes.down();
 
         status0 = taskCheckin();
         status1 = taskAd();

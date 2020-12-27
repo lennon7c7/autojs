@@ -1,5 +1,6 @@
 /**
  * 书旗免费小说-任务
+ * @version 11.2.4.122
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');

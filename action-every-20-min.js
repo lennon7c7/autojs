@@ -17,8 +17,8 @@ function main() {
     baidutieba = require('module/baidutieba.js');
     baidutieba.cron();
 
-    douyinhuoshan = require('module/douyinhuoshan.js');
-    douyinhuoshan.cron();
+    // douyinhuoshan = require('module/douyinhuoshan.js');
+    // douyinhuoshan.cron();
 
     douyinlite = require('module/douyinlite.js');
     douyinlite.cron();

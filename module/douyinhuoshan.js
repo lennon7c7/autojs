@@ -52,7 +52,7 @@ function taskLimit() {
         return false;
     }
 
-    closeAd();
+    others.closeAdBackToElement(text('火苗管理'));
 
     return false;
 }
@@ -90,19 +90,6 @@ function taskCashout() {
     return true;
 }
 
-function closeAd() {
-    clicks.xy(48, 162);
-    sleeps.s35to40();
-
-    if (!clicks.centerXyByText('关闭广告')) {
-        others.back();
-
-        return false;
-    }
-
-    return true;
-}
-
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -126,7 +113,7 @@ s.start = function () {
         }
 
         status0 = taskCheckin();
-        taskLimit();
+        // taskLimit();
         taskCashout();
 
         if (status0) {

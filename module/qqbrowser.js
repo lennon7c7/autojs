@@ -16,8 +16,7 @@ s.PACKAGE_NAME = 'com.tencent.mtt';
 function taskClear() {
     log('----------', s.PACKAGE_NAME, 'taskClear start ----------');
 
-    others.back();
-    if (!clicks.centerXyByText('我的')) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
@@ -123,11 +122,11 @@ function taskAd() {
     }
 
     if (text('去观看').exists() && clicks.centerXyByText('去观看')) {
-        closeAd();
+        others.closeAdBackToElement(text('福利中心'));
     }
 
     if (text('继续').exists() && clicks.centerXyByText('继续')) {
-        closeAd();
+        others.closeAdBackToElement(text('福利中心'));
     }
 
     if (clicks.textIfExists('领奖励')) {
@@ -136,19 +135,6 @@ function taskAd() {
 
     if (text('观看2个视频得10金币（2/2）').exists()) {
         return true;
-    }
-
-    return false;
-}
-
-// 关闭Ad
-function closeAd() {
-    sleeps.s20();
-    for (var j = 0; j < 15; j++) {
-        others.back();
-        if (text('福利中心').exists()) {
-            return true;
-        }
     }
 
     return false;

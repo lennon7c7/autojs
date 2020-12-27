@@ -82,7 +82,7 @@ function taskTreasureBox() {
         return false;
     }
 
-    closeAd();
+    others.closeAdBackToElement(text('开宝箱得金币'));
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -104,7 +104,7 @@ function taskLimit() {
         return false;
     }
 
-    closeAd();
+    others.closeAdBackToElement(text('限时任务赚金币'));
 
     if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
@@ -128,7 +128,6 @@ function taskSleep() {
     if (text('可领取').exists()) {
         clicks.centerXyByText('可领取');
     }
-    others.back();
 
     return true;
 }
@@ -156,39 +155,30 @@ function taskVideo() {
     return false;
 }
 
-function closeAd() {
-    clicks.xy(48, 162);
-    sleeps.s35to40();
-
-    if (!clicks.centerXyByText('关闭广告')) {
-        others.back();
-
-        return false;
-    }
-
-    return true;
-}
-
 /**
  * 入口-开始调用
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 12; i++) {
         others.launch(s.PACKAGE_NAME);
 
         others.back();
 
         // 任务界面
-        if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234)) {
-            return false;
+        if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 216, 216)) {
+            clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 216);
+        } else if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234)) {
+            clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234);
+        } else {
+            continue;
         }
 
         status0 = taskCheckin();
-        taskCashout();
         status1 = taskTreasureBox();
         status2 = taskLimit();
         taskSleep();
+        taskCashout();
         taskVideo();
 
         if (status0 && status1 && status2) {
@@ -210,8 +200,11 @@ s.cron = function () {
 
     others.back();
 
-    // 任务界面
-    if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234)) {
+    if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 216, 216)) {
+        clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 216);
+    } else if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234)) {
+        clicks.elementWidthHeight(className('android.widget.FrameLayout'), 216, 234);
+    } else {
         return false;
     }
 

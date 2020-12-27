@@ -40,7 +40,7 @@ function taskOpenApp() {
         return false;
     }
 
-    if (!text('限时专享').exists()) {
+    if (text('日常任务').exists() && !text('限时专享').exists()) {
         return true
     }
 

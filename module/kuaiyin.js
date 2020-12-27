@@ -57,7 +57,7 @@ function taskAd4() {
 
         clicks.centerXyByText('立即观看');
 
-        others.closeAdBackToElement(text('我的钱包'));
+        others.closeAdBackToElement(text('福利'));
     }
 
     return false;

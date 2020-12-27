@@ -49,11 +49,6 @@ s.redPackage = function () {
             sleeps.s3();
         }
 
-        if (!clicks.centerXyByText('换一批')) {
-            others.back();
-            continue;
-        }
-
         if (!clicks.centerXyByText('去领取')) {
             others.back();
             continue;

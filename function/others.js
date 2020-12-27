@@ -1,6 +1,8 @@
 /**
  * 一些比较杂的功能不好分类，就放这里吧
  */
+var clicks = require('./clicks.js');
+var sleeps = require('./sleeps.js');
 var s = {};
 
 /**
@@ -27,7 +29,7 @@ s.fixDir = function () {
     newDir = oldDir + 'module/';
     filename = ['baidu.js', 'baiduhaokan.js', 'baidutieba.js',
         'diandiancaige.js', 'douyin.js', 'douyinlite.js', 'douyinhuoshan.js',
-        'fanqie.js', 'fanqiechangting.js', 
+        'fanqie.js', 'fanqiechangting.js',
         'huohuoshipin.js', 'huoshan.js', 'jingdonglite.js',
         'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
@@ -201,6 +203,8 @@ s.backToPackageName = function (packageName) {
 s.closeAdBackToElement = function (element) {
     if (id('tt_top_mute').exists()) {
         clicks.centerXyById('tt_top_mute');
+    } else if (id('video_audio_btn').exists()) {
+        clicks.centerXyById('video_audio_btn');
     }
 
     sleeps.s30();
@@ -209,25 +213,34 @@ s.closeAdBackToElement = function (element) {
 
         if (id('ksad_end_close_btn').exists()) {
             clicks.centerXyById('ksad_end_close_btn');
-            return true;
+            break;
         } else if (id('tt_video_ad_close_layout').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
-            return true;
+            break;
         } else if (id('sp').exists()) {
             clicks.centerXyById('sp');
-            return true;
+            break;
+        } else if (text('关闭').exists()) {
+            clicks.centerXyByText('关闭');
+            break;
         } else if (text('关闭广告').exists()) {
             clicks.centerXyByText('关闭广告');
-            return true;
+            break;
+        } else if (id('video_countdown').exists()) {
+            clicks.centerXyById('video_countdown');
+            break;
+        } else if (id('video_close_icon').exists()) {
+            clicks.centerXyById('video_close_icon');
+            break;
         }
     }
 
     for (var i = 0; i < 10; i++) {
-        others.back();
-
         if (element.exists()) {
             return true;
         }
+
+        s.back();
     }
 
     return false;

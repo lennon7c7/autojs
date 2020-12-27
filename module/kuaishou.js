@@ -18,6 +18,11 @@ s.PACKAGE_NAME = 'com.kuaishou.nebula';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
+    others.back2();
+    if (!clicks.centerXyById('redFloat')) {
+        return false;
+    }
+
     if (text('去查看').exists()) {
         return true;
     }
@@ -101,6 +106,10 @@ function task0Lottery() {
 function taskAd10() {
     log('----------', s.PACKAGE_NAME, 'taskAd10 start ----------');
 
+    if (!others.backToElement(text('日常任务'))) {
+        return false;
+    }
+
     if (text('明日再来').exists()) {
         return true;
     }
@@ -112,16 +121,7 @@ function taskAd10() {
             continue;
         }
 
-        if (id('video_audio_btn').exists()) {
-            clicks.centerXyById('video_audio_btn');
-        }
-        sleeps.s35to40();
-        if (id('video_countdown').exists()) {
-            clicks.centerXyById('video_countdown');
-        }
-        if (id('video_close_icon').exists()) {
-            clicks.centerXyById('video_close_icon');
-        }
+        others.closeAdBackToElement(text('日常任务'));
     }
 
     return true;
@@ -130,6 +130,10 @@ function taskAd10() {
 // 任务-直播
 function taskLive() {
     log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
+
+    if (!others.backToElement(text('日常任务'))) {
+        return false;
+    }
 
     for (var i = 0; i < 11; i++) {
         if (text('看直播').find().size() === 1) {
@@ -157,7 +161,7 @@ function taskLive() {
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back();
+    others.back3();
 
     for (var i = 0; i < 10; i++) {
         if (text('Drag the slider').exists()) {
@@ -184,11 +188,6 @@ function taskVideo() {
 s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
-
-        others.back2();
-        if (!clicks.centerXyById('redFloat')) {
-            return false;
-        }
 
         status0 = taskCheckin();
         status2 = taskAd10();

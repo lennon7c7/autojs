@@ -25,7 +25,7 @@ function taskLimit() {
     text('我的').exists() && clicks.xy(850, 150);
     others.back();
     if (!text('我的').exists()) {
-        closeAd();
+        others.closeAdBackToElement(text('我的'));
     }
 
     return true;
@@ -46,39 +46,12 @@ function taskCheckin() {
     }
 
     clicks.xy(135, 720);
-    clicks.element(textStartsWith('看视频翻'));
+
+    if (textStartsWith('看视频翻').exists()) {
+        clicks.element(textStartsWith('看视频翻'));
+    }
 
     if (textStartsWith('明日签到').exists()) {
-        return true;
-    }
-
-    return false;
-}
-
-/**
- * 任务-提现
- */
-function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
-
-    if (!others.backToElement(text('任务'))) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('去提现')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('0.1元天天提')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('立即提现')) {
-        return false;
-    }
-
-    if (text('提现成功').exists() || text('我知道了').exists() || text('马上去赚钱').exists()) {
-        others.back2();
         return true;
     }
 
@@ -111,7 +84,7 @@ function taskNews() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!others.backToElement(text('刷新'))) {
             return false;
         }
@@ -142,7 +115,7 @@ function taskVideo() {
         clicks.centerXyByText('开心收下');
     }
 
-    if (text('每日任务').exists() && !text('去阅读').exists()) {
+    if (text('每日任务').exists() && !text('去观看').exists()) {
         return true;
     }
 
@@ -150,7 +123,7 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!others.backToElement(text('刷新'))) {
             return false;
         }
@@ -189,17 +162,17 @@ function taskAd() {
         clicks.centerXyByText('开心收下');
     }
 
-    if (text('看福利视频 (5 /5)').exists()) {
-        return true
-    }
-
-    if (text('每日任务').exists() && !textStartsWith('看福利视频').exists()) {
-        return true;
-    }
-
     for (var i = 0; i < 5; i++) {
+        if (text('看福利视频 (5 /5)').exists()) {
+            break;
+        }
+
+        if (text('每日任务').exists() && !textStartsWith('看福利视频').exists()) {
+            break;
+        }
+
         if (clicks.parents(textStartsWith('看福利视频'), text('去完成'))) {
-            closeAd();
+            others.closeAdBackToElement(text('每日任务'));
         }
     }
 
@@ -208,15 +181,7 @@ function taskAd() {
         clicks.centerXyByText('开心收下');
     }
 
-    if (text('看福利视频 (5 /5)').exists()) {
-        return true
-    }
-
-    if (text('每日任务').exists() && !textStartsWith('看福利视频').exists()) {
-        return true;
-    }
-
-    return false;
+    return true;
 }
 
 // 任务-抽奖
@@ -266,22 +231,30 @@ function taskLotteryAd() {
         return false
     }
 
-    clicks.xy(220, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (clicks.xy(220, 1850) && !text('天天抽奖').exists()) {
+        others.closeAdBackToElement(text('天天抽奖'));
+    }
     if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
     }
 
-    clicks.xy(440, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (clicks.xy(440, 1850) && !text('天天抽奖').exists()) {
+        others.closeAdBackToElement(text('天天抽奖'));
+    }
     if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
     }
 
-    clicks.xy(660, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (clicks.xy(660, 1850) && !text('天天抽奖').exists()) {
+        others.closeAdBackToElement(text('天天抽奖'));
+    }
     if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
     }
 
-    clicks.xy(880, 1850) && !text('天天抽奖').exists() && closeAd();
+    if (clicks.xy(880, 1850) && !text('天天抽奖').exists()) {
+        others.closeAdBackToElement(text('天天抽奖'));
+    }
     if (exists.elementWidthHeight(className('android.widget.ImageView'), 135, 150)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 135, 150);
     }
@@ -317,8 +290,8 @@ function taskKankanzhuang() {
 
         if (id('pop_close').exists()) {
             clicks.id('pop_close');
-        } else if (id('big_pic_close_btn').exists()) {
-            clicks.id('big_pic_close_btn');
+        } else if (text('closebtn').exists()) {
+            clicks.centerXyByText('closebtn');
         } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
             clicks.elementWidthHeight(className('android.view.View'), 90, 90);
         } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
@@ -327,11 +300,11 @@ function taskKankanzhuang() {
 
         randomClick = random();
         if (randomClick > 0.7) {
-            clicks.xy(100, 400);
+            clicks.xy(100, 350);
         } else if (randomClick > 0.3) {
-            clicks.xy(100, 900);
+            clicks.xy(100, 850);
         } else {
-            clicks.xy(1000, 1400);
+            clicks.xy(100, 1250);
         }
 
         if (!others.backToPackageName(s.PACKAGE_NAME)) {
@@ -341,8 +314,8 @@ function taskKankanzhuang() {
         sleeps.s3();
         if (id('pop_close').exists()) {
             clicks.id('pop_close');
-        } else if (id('big_pic_close_btn').exists()) {
-            clicks.id('big_pic_close_btn');
+        } else if (text('closebtn').exists()) {
+            clicks.centerXyByText('closebtn');
         } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
             clicks.elementWidthHeight(className('android.view.View'), 90, 90);
         } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
@@ -373,7 +346,7 @@ function taskKankanzhuang() {
 
         clicks.text('点击领取');
         if (!text('看看赚').exists()) {
-            closeAd();
+            others.closeAdBackToElement(text('看看赚'));
         }
     }
 
@@ -386,22 +359,32 @@ function taskKankanzhuang() {
 }
 
 /**
- * 关闭广告
+ * 任务-提现
  */
-function closeAd() {
-    sleeps.s20();
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    for (var j = 0; j < 15; j++) {
-        sleeps.s3();
-        if (id('tt_video_ad_close_layout').exists()) {
-            clicks.centerXyById('tt_video_ad_close_layout');
-            return true;
-        }
+    if (!others.backToElement(text('任务'))) {
+        return false;
     }
 
-    others.back2();
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
 
-    return true;
+    if (!clicks.centerXyByText('0.1元天天提')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
+        return false;
+    }
+
+    if (text('提现成功').exists() || text('我知道了').exists() || text('马上去赚钱').exists()) {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -414,13 +397,13 @@ s.start = function () {
 
         status4 = taskLimit();
         status0 = taskCheckin();
+        taskNews();
+        taskVideo();
         status1 = taskAd();
         status2 = taskLottery();
         if (status2) {
             taskLotteryAd();
         }
-        taskNews();
-        taskVideo();
         taskKankanzhuang();
         status3 = taskCashout();
 
