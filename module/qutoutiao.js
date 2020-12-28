@@ -35,12 +35,14 @@ function taskNews() {
             return false;
         }
 
-        clicks.xy(500, 1000);
+        clicks.xy(300, 1300);
 
         for (var j = 0; j < 4; j++) {
             swipes.down();
             sleeps.s2to3();
         }
+  
+        reward();
     }
 
     return true;
@@ -71,8 +73,10 @@ function taskVideo() {
             return false;
         }
 
+        sleeps.s2to3();
         clicks.xy(495, 457);
         sleeps.s10to20();
+        reward();
     }
 
     return true;
@@ -87,18 +91,15 @@ function taskAd() {
     }
 
     for (var i = 0; i < 4; i++) {
-        if (!text('看视频领金币').exists()) {
+        if (text('日常任务').exists() && !text('看视频领金币').exists()) {
             return true;
         }
 
-        if (!clicks.centerXyByText('看视频领金币') || text('日常任务').exists()) {
+        if (!clicks.centerXyByText('看视频领金币')) {
             continue;
         }
 
-        sleeps.s3();
-        clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
-        sleeps.s50();
-        others.back2();
+        others.closeAdBackToElement(text('日常任务'));
     }
 
     return true;
@@ -120,9 +121,21 @@ function taskVideoSwipe() {
         } else if (text('小视频').exists()) {
             sleeps.s2to5();
         }
+ 
+        reward();
     }
 
     return true;
+}
+
+// 阅读奖励
+function reward() {
+    if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 210, 240)) {
+        clicks.elementWidthHeight(className('android.widget.FrameLayout'), 210, 240);
+        if (exists.elementWidthHeight(className('android.widget.TextView'), 120, 120)) {
+            clicks.elementWidthHeight(className('android.widget.TextView'), 120, 120);
+        }
+    }
 }
 
 /**
@@ -130,7 +143,7 @@ function taskVideoSwipe() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskVideo();

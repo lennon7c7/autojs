@@ -16,12 +16,22 @@ s.PACKAGE_NAME = 'com.jd.jdlite';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
+    if (!others.backToElement(desc('首页'))) {
+        return false;
+    }
+
     if (!clicks.centerXyByText('现金签到')) {
         return false;
     }
 
-    if (text('邀好友解锁额外红包').exists() || text('残忍拒绝').exists()) {
+    if (text('邀好友解锁额外红包').exists()) {
         others.back();
+        if (text('残忍拒绝').exists()) {
+            clicks.centerXyByText('残忍拒绝');
+        } else if (text('残忍离开').exists()) {
+            clicks.centerXyByText('残忍离开');
+        }
+
         return true;
     }
 
@@ -29,13 +39,16 @@ function taskCheckin() {
         return false;
     }
 
-    others.back();
-    if (text('邀好友解锁额外红包').exists() || text('残忍拒绝').exists()) {
+    if (text('邀好友解锁额外红包').exists()) {
         others.back();
+        if (text('残忍拒绝').exists()) {
+            clicks.centerXyByText('残忍拒绝');
+        } else if (text('残忍离开').exists()) {
+            clicks.centerXyByText('残忍离开');
+        }
+
         return true;
     }
-
-    clicks.centerXyByText('残忍拒绝');
 
     return false;
 }
@@ -44,12 +57,11 @@ function taskCheckin() {
 function taskProduct() {
     log('----------', s.PACKAGE_NAME, 'taskProduct start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByDesc('我的')) {
+    if (!others.backToElement(desc('我的'))) {
         return false;
     }
 
-    if (clicks.parent(text('逛商品赚金币'), text('已完成'))) {
+    if (exists.parent(text('逛商品赚金币'), text('已完成'))) {
         return true;
     }
 
@@ -57,7 +69,7 @@ function taskProduct() {
         return false;
     }
 
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < 60; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
@@ -72,19 +84,18 @@ function taskProduct() {
         }
     }
 
-    return true;
+    return false;
 }
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
     log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByDesc('我的')) {
+    if (!others.backToElement(desc('我的'))) {
         return false;
     }
 
-    if (clicks.parent(text('逛活动赚金币'), text('已完成'))) {
+    if (exists.parent(text('逛活动赚金币'), text('已完成'))) {
         return true;
     }
 
@@ -92,7 +103,7 @@ function taskRandomPage() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         if (text('今日已完成').exists()) {
             return true;
         }
@@ -107,15 +118,14 @@ function taskRandomPage() {
         }
     }
 
-    return true;
+    return false;
 }
 
 // 任务-看视频赚金币
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByDesc('我的')) {
+    if (!others.backToElement(desc('我的'))) {
         return false;
     }
 
@@ -127,28 +137,18 @@ function taskVideo() {
         return false;
     }
 
-    if (!id('task_float_base_fl').exists()) {
-        log('---------- shit happen: task_float_base_fl ----------');
-        return false;
-    }
-
     // first video into
     clicks.xy(469, 1373);
 
-    // none sure is in first or not
-    if (desc('赚钱').exists()) {
-        return false;
-    }
-
-    for (var i = 0; i < 60; i++) {
+    for (var i = 0; i < 100; i++) {
         if (text('今日已完成').exists()) {
             return true;
-        } else if (!id('vi_btn_close').exists()) {
-            log('---------- shit happen: progressbar2 ----------');
+        } else if (id('vi_btn_close').exists() && !text('分享').exists()) {
+            log('---------- shit happen: video ----------');
             return false;
         }
 
-        sleeps.s10to20();
+        sleeps.s10();
     }
 
     return false;
@@ -158,8 +158,7 @@ function taskVideo() {
 function taskActivity() {
     log('----------', s.PACKAGE_NAME, 'taskActivity start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByDesc('赚钱')) {
+    if (!others.backToElement(desc('赚钱'))) {
         return false;
     }
 
@@ -182,7 +181,7 @@ function taskActivity() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();

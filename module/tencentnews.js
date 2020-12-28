@@ -28,7 +28,9 @@ function taskCheckin() {
         return true;
     }
 
-    clicks.text('立即打卡');
+    if (!clicks.text('立即签到')) {
+        return false;
+    }
 
     if (text('我的日签卡').exists()) {
         return true;

@@ -17,6 +17,10 @@ function taskLimit() {
 
     others.back();
 
+    if (desc('关闭').exists()) {
+        clicks.centerXyByDesc('关闭');
+    }
+
     if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
         return false;
     }

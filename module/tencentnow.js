@@ -16,6 +16,17 @@ s.PACKAGE_NAME = 'com.tencent.now';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
+    others.back3();
+
+    clicks.textIfExists('我知道了');
+
+    if (!clicks.centerXyByText('首页')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('热门')) {
+        return false;
+    }
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
         return false;
     }
@@ -105,18 +116,6 @@ s.redPackage = function () {
 s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
-
-        others.back3();
-
-        clicks.textIfExists('我知道了');
-
-        if (!clicks.centerXyByText('首页')) {
-            return false;
-        }
-
-        if (!clicks.centerXyByText('热门')) {
-            return false;
-        }
 
         status0 = taskCheckin();
 

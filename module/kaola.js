@@ -14,10 +14,10 @@ s.PACKAGE_NAME = 'com.kaola';
 function taskPlayground() {
     log('----------', s.PACKAGE_NAME, 'taskPlayground start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByText('考拉乐园')) {
+    if (!others.backToElement(text('考拉乐园'))) {
         return false;
     }
+
     sleeps.s2to3();
 
     clicks.textIfExists('知道了');
@@ -84,10 +84,10 @@ function taskPlayground() {
 function taskRandomPage() {
     log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
 
-    others.back3();
-    if (!clicks.centerXyByText('领考拉豆')) {
+    if (!others.backToElement(text('领考拉豆'))) {
         return false;
     }
+
     sleeps.s2to3();
 
     clicks.textIfExists('下单购物');
@@ -97,60 +97,33 @@ function taskRandomPage() {
 
     text('10豆免费抽').exists() && clicks.xy(930, 1030);
 
-    if (text('已完成').exists() && !text('去逛逛').exists()) {
-        return true;
-    }
-
     for (var i = 0; i < 40; i++) {
-        if (!clicks.textIfExists('去逛逛')) {
+        if (!others.backToElement(text('每日赚豆'))) {
+            return false;
+        }
+
+        if (text('已完成').exists() && !text('去逛逛').exists()) {
+            return true;
+        } else if (clicks.textIfExists('去关注')) {
+            sleeps.s2to3();
+            clicks.text('关注');
+            clicks.text('已关注');
+            continue;
+        } else if (!clicks.textIfExists('去逛逛')) {
             continue;
         }
 
-        if (text('进店浏览15秒得考拉豆').exists()) {
-            for (var j = 0; j < 20; j++) {
-                if (!clicks.text('进店领豆')) {
-                    return false;
-                }
-
-                for (var k = 0; k < 8; k++) {
-                    swipes.down();
-                    sleeps.s2to3();
-                }
-
-                others.back();
-            }
+        if (clicks.textIfExists('进店领豆')) {
         } else if (clicks.textIfExists('去看看')) {
-            for (var j = 0; j < 6; j++) {
-                others.back();
-
-                if (text('去看看').exists()) {
-                    break;
-                }
-            }
-
             clicks.textIfExists('快打开看看吧~');
-            others.back();
-        } else {
-            for (var j = 0; j < 8; j++) {
-                swipes.down();
-                sleeps.s2to3();
-            }
         }
 
-        others.back();
+        for (var j = 0; j < 8; j++) {
+            swipes.down();
+            sleeps.s2to3();
+        }
+
         clicks.textIfExists('下次再说');
-    }
-
-    if (text('去关注').exists()) {
-        clicks.text('去关注');
-        sleeps.s2to3();
-        clicks.text('关注');
-        clicks.text('已关注');
-        others.back();
-    }
-
-    if (text('已完成').exists() && !text('去逛逛').exists()) {
-        return true;
     }
 
     return false;
@@ -160,10 +133,10 @@ function taskRandomPage() {
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
-    others.back2();
-    if (!clicks.centerXyByText('天天抽奖')) {
+    if (!others.backToElement(text('天天抽奖'))) {
         return false;
     }
+
     sleeps.s2to3();
 
     if (text('已参与').exists() && !text('0元抽').exists()) {
@@ -190,7 +163,7 @@ function taskLottery() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 9; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status1 = taskPlayground();

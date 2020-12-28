@@ -22,6 +22,10 @@ function taskTreasureBox() {
         return false;
     }
 
+    if (exists.elementWidthHeight(className('android.widget.ImageView'), 144, 144)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 144, 144);
+    }
+
     if (desc('全部领取').exists()) {
         clicks.centerXyByDesc('全部领取');
     }
@@ -63,7 +67,7 @@ function taskAd() {
         }
 
         clicks.centerXyByDesc('去完成');
-        closeAd();
+        others.closeAdBackToElement(desc('明天预计可领'));
 
         if (desc('领取').exists()) {
             clicks.centerXyByDesc('领取');
@@ -77,7 +81,7 @@ function taskAd() {
 function taskGame() {
     log('----------', s.PACKAGE_NAME, 'taskGame start ----------');
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 6; i++) {
         if (desc('领取').exists()) {
             clicks.centerXyByDesc('领取');
         }
@@ -150,38 +154,6 @@ function taskCashout() {
 }
 
 /**
- * 关闭广告
- * @returns {boolean}
- */
-function closeAd() {
-    sleeps.s3();
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s15();
-    for (var j = 0; j < 15; j++) {
-        sleeps.s3();
-
-        if (id('ksad_end_close_btn').exists()) {
-            clicks.centerXyById('ksad_end_close_btn');
-            return true;
-        } else if (id('tt_video_ad_close_layout').exists()) {
-            clicks.centerXyById('tt_video_ad_close_layout');
-            return true;
-        } else if (id('sp').exists()) {
-            clicks.centerXyById('sp');
-            return true;
-        } else if (text('关闭广告').exists()) {
-            clicks.centerXyByText('关闭广告');
-            return true;
-        }
-    }
-
-    return false;
-}
-
-/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -192,7 +164,7 @@ s.start = function () {
         status0 = taskTreasureBox();
         status1 = taskAd();
         if (status1) {
-            taskGame();
+            status1 = taskGame();
         }
         status2 = taskCashout();
 
