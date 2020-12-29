@@ -16,26 +16,35 @@ s.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    if (text('现金签到').exists() && clicks.centerXyByText('现金签到')) {
-    } else if (text('签到领钱').exists() && clicks.centerXyByText('签到领钱')) {
-    } else {
-        return false;
+    if (text('现金签到').exists()) {
+        if (!others.backToElement(text('现金签到'))) {
+            return false;
+        }
+    } else if (text('签到领钱').exists()) {
+        if (!others.backToElement(text('现金签到'))) {
+            return false;
+        }
+    } else if (text('签到').exists()) {
+        if (!others.backToElement(text('签到'))) {
+            return false;
+        }
     }
     sleeps.s2to3();
 
-    if (text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+    if (text('今日已提').exists() || text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
         return true;
     }
 
-    if (text('立即签到').exists() && clicks.centerXyByText('立即签到')) {
-    } else if (text('签到领现金').exists() && clicks.elementWidthHeight(text('签到领现金'), 264, 123)) {
-    } else if (text('签到领钱').exists() && clicks.centerXyByText('签到领钱')) {
-    } else if (others.back() && text('立即签到').exists() && clicks.centerXyByText('立即签到')) {
-    } else {
-        return false;
+    if (text('立即签到').exists()) {
+        clicks.centerXyByText('立即签到');
+    } else if (text('签到领现金').exists()) {
+        clicks.elementWidthHeight(text('签到领现金'), 264, 123);
+    } else if (text('签到领钱').exists()) {
+        clicks.centerXyByText('签到领钱');
     }
 
-    if (text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+    if (textStartsWith('签到成功').exists() || text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+        clicks.textIfExists('稍后再提');
         return true;
     }
 
@@ -48,28 +57,18 @@ function taskCheckin() {
 function taskCashout() {
     log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    !text('签到领钱').exists() && others.back();
-
-    if (text('现金签到').exists() && clicks.centerXyByText('现金签到')) {
-    } else if (text('签到领钱').exists() && clicks.centerXyByText('签到领钱')) {
-    } else {
-        return false;
-    }
-    sleeps.s2to3();
-
     if (text('今日已提').exists() || text('去解锁').exists()) {
         return true;
     }
 
-    if (!clicks.centerXyByText('去提现')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('提现')) {
-        return false;
+    if (textStartsWith('确认提现').exists() && text('提现').exists()) {
+        clicks.centerXyByText('提现');
+    } else if (text('微信提现特权').exists() && text('去提现').exists()) {
+        clicks.centerXyByText('去提现');
     }
 
     if (text('打款中，24小时内到账').exists()) {
+        clicks.centerXyByText('我知道了');
         return true;
     }
 
@@ -82,29 +81,56 @@ function taskCashout() {
 function taskCat() {
     log('----------', s.PACKAGE_NAME, 'taskCat start ----------');
 
-    if (!clicks.textIfExists('招财猫')) {
+    if (!others.backToElement(text('招财猫'))) {
         return false;
     }
     sleeps.s2to5();
 
     clicks.text('领猫粮');
+    sleeps.s2to5();
 
     if (exists.parent(text('逛街60秒免费拿'), text('去完成'))) {
         clicks.parent(text('逛街60秒免费拿'), text('去完成'));
 
-        for (var i = 0; i < 60; i++) {
-            text('猫粮商店').exists() && swipes.down();
+        for (var i = 0; i < 66; i++) {
+            swipes.down();
         }
-        text('猫粮商店').exists() && others.back();
+
+        if (!others.backToElement(text('领猫粮'))) {
+            return false;
+        }
     }
 
-    if (text('100').exists() && text('喂养').exists()) {
-        clicks.text('喂养');
+    if (exists.parents(text('浏览活动得猫粮免费领'), text('去完成'))) {
+        clicks.parents(text('浏览活动得猫粮免费领'), text('去完成'));
 
-        clicks.text('赚现金');
-        if (text('摸一摸').exists()) {
-            clicks.text('摸一摸');
+        for (var i = 0; i < 66; i++) {
+            swipes.down();
+            if (exists.elementWidthHeight(className('android.widget.Button'), 90, 87)) {
+                clicks.elementWidthHeight(className('android.widget.Button'), 90, 87);
+            }
         }
+
+        if (!others.backToElement(text('领猫粮'))) {
+            return false;
+        }
+    }
+
+    if (exists.parent(text('去免费领路费'), text('去完成'))) {
+        clicks.parent(text('去免费领路费'), text('去完成'));
+
+        if (!others.backToElement(text('领猫粮'))) {
+            return false;
+        }
+        clicks.textIfExists('领取');
+    }
+
+    if (clicks.textIfExists('喂养')) {
+        clicks.textIfExists('喂养100克猫粮');
+        
+        clicks.textIfExists('赚现金');
+        clicks.textIfExists('赚签到金');
+        clicks.textIfExists('摸一摸');
     }
 
     return true;
