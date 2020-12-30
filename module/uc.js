@@ -18,7 +18,9 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (!clicks.element(descEndsWith('明天领更多'))) {
+    if (descEndsWith('天天领现金').exists() && !clicks.element(descEndsWith('天天领现金'))) {
+        return false;
+    } else if (descEndsWith('明天领更多').exists() && !clicks.element(descEndsWith('明天领更多'))) {
         return false;
     }
 

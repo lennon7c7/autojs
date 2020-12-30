@@ -66,10 +66,13 @@ s.initEnv = function () {
  * @returns {boolean}
  */
 s.launch = function (packageName) {
-    s.clear();
-
     s.initEnv();
 
+    if (currentPackage() === packageName) {
+        return true;
+    }
+
+    s.clear();
     status = app.launch(packageName);
     sleep(15 * 1000);
     if (!status) {
@@ -206,6 +209,7 @@ s.closeAdBackToElement = function (element) {
     } else if (id('video_audio_btn').exists()) {
         clicks.centerXyById('video_audio_btn');
     }
+    s.muteMusicVolume();
 
     sleeps.s30();
     for (var i = 0; i < 10; i++) {
@@ -244,7 +248,7 @@ s.closeAdBackToElement = function (element) {
     }
 
     return false;
-}
+};
 
 /**
  * 清理应用
@@ -325,6 +329,20 @@ s.lockScreen = function () {
 
     sleep(2000);
     desc('一键锁屏').click();
+
+    return true;
+};
+
+/**
+ * 设置当前媒体音量 为 静音
+ * @returns {boolean}
+ */
+s.muteMusicVolume = function () {
+    if (device.getMusicVolume() === 0) {
+        return true;
+    }
+
+    device.setMusicVolume(0);
 
     return true;
 };

@@ -25,7 +25,7 @@ function taskAd10() {
         others.closeAdBackToElement(text('福利'));
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 1; i++) {
         if (!others.backToElement(text('福利'))) {
             return false;
         }
@@ -35,7 +35,7 @@ function taskAd10() {
         others.closeAdBackToElement(text('福利'));
     }
 
-    return false;
+    return true;
 }
 
 // 任务-Ad
@@ -73,11 +73,7 @@ function taskCashout() {
         return false;
     }
 
-    if (!id('cashEarn').exists()) {
-        return false;
-    }
-    currentMoney = id('cashEarn').findOne().text();
-    if (currentMoney < 1) {
+    if (!exists.moneyEgt1(id('cashEarn'))) {
         return true;
     }
 
