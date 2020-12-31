@@ -1,5 +1,6 @@
 /**
  * QQ阅读-任务
+ * @version 7.5.3
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -51,9 +52,13 @@ function taskAd() {
             return true;
         }
 
-        clicks.centerXyByText('马上看');
+        if (!clicks.text('马上看')) {
+            return false;
+        }
 
-        closeAd();
+        if (!others.closeAdBackToElement(text('日常福利'))) {
+            return false;
+        }
     }
 
     return false;
@@ -111,28 +116,6 @@ function taskCashout() {
     }
 
     return true;
-}
-
-/**
- * 关闭广告
- * @returns {boolean}
- */
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s30();
-    for (var j = 0; j < 10; j++) {
-        sleeps.s3();
-        others.back();
-
-        if (text('书架').exists() && text('我的').exists()) {
-            return true;
-        }
-    }
-
-    return false;
 }
 
 /**

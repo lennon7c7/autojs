@@ -21,7 +21,10 @@ function taskTreasureBox() {
 
     if (textStartsWith('看广告').exists()) {
         clicks.element(textStartsWith('看广告'));
-        closeAd();
+
+        if (!others.closeAdBackToElement(text('红包'))) {
+            return false;
+        }
     }
 
     clicks.xy(945, 485);
@@ -37,7 +40,9 @@ function taskTreasureBox() {
     }
 
     if (clicks.element(textStartsWith('看视频'))) {
-        closeAd();
+        if (!others.closeAdBackToElement(text('红包'))) {
+            return false;
+        }
     }
     clicks.textIfExists('javascript:;');
 
@@ -58,9 +63,13 @@ function taskAd20() {
 
     for (var i = 0; i < 20; i++) {
         if (clicks.textIfExists('领100金币')) {
-            closeAd();
+            if (!others.closeAdBackToElement(text('红包'))) {
+                return false;
+            }
         } else if (clicks.textIfExists('去赚钱')) {
-            closeAd();
+            if (!others.closeAdBackToElement(text('红包'))) {
+                return false;
+            }
         }
     }
 
@@ -189,27 +198,6 @@ function taskVideo() {
         } else {
             sleeps.s2to5();
         }
-    }
-
-    return true;
-}
-
-// 关闭广告
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s35to40();
-
-    if (id('ksad_end_close_btn').exists()) {
-        clicks.centerXyById('ksad_end_close_btn');
-    } else if (id('tt_video_ad_close_layout').exists()) {
-        clicks.centerXyById('tt_video_ad_close_layout');
-    } else if (id('sp').exists()) {
-        clicks.centerXyById('sp');
-    } else if (text('关闭广告').exists()) {
-        clicks.centerXyByText('关闭广告');
     }
 
     return true;

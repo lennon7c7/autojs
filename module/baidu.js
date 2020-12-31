@@ -49,6 +49,7 @@ function taskOpenApp() {
     }
 
     if (clicks.textIfExists('打开好看视频')) {
+        clicks.textIfExists('取消');
         sleeps.s3();
         others.back();
         back();
@@ -60,6 +61,7 @@ function taskOpenApp() {
     }
 
     if (clicks.textIfExists('打开全民小视频')) {
+        clicks.textIfExists('取消');
         clicks.text('redpack_haokan');
         sleeps.s3();
         others.back();
@@ -255,14 +257,13 @@ function taskNews() {
     }
 
     for (var i = 0; i < 10; i++) {
-        if (!text('百度').exists() || !text('任务').exists() || !text('我的').exists()) {
-            log('---------- error ----------');
+        if (!others.backToElement(text('百度'))) {
             return false;
         }
 
         clicks.xy(345, 1345);
 
-        if (!text('关注').exists() && others.backToElement(text('百度'))) {
+        if (!text('关注').exists()) {
             continue
         }
 
@@ -271,10 +272,6 @@ function taskNews() {
         sleeps.s10();
         swipes.refresh();
         sleeps.s10();
-
-        if (!others.backToElement(text('百度'))) {
-            return false;
-        }
     }
 
     if (!clicks.centerXyByText('任务')) {

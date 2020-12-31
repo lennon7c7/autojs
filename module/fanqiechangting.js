@@ -20,8 +20,13 @@ function taskTreasureBox() {
     }
 
     if (textStartsWith('看视频再领').exists()) {
-        clicks.element(textStartsWith('看视频再领'));
-        closeAd();
+        if (!clicks.element(textStartsWith('看视频再领'))) {
+            return false;
+        }
+
+        if (!others.closeAdBackToElement(text('福利'))) {
+            return false;
+        }
     }
 
     if (!clicks.text('图片')) {
@@ -29,8 +34,13 @@ function taskTreasureBox() {
     }
 
     if (textStartsWith('看视频领取').exists()) {
-        clicks.element(textStartsWith('看视频领取'));
-        closeAd();
+        if (!clicks.element(textStartsWith('看视频再领'))) {
+            return false;
+        }
+
+        if (!others.closeAdBackToElement(text('福利'))) {
+            return false;
+        }
     }
 
     return true;
@@ -48,12 +58,14 @@ function taskAd() {
         return true;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 11; i++) {
         if (!clicks.textIfExists('立即观看')) {
             return false;
         }
 
-        closeAd();
+        if (!others.closeAdBackToElement(text('福利'))) {
+            return false;
+        }
     }
 
     if (exists.parents(text('看视频赚金币'), text('已完成'))) {
@@ -73,6 +85,10 @@ function taskCashout() {
         return false;
     }
 
+    if (!exists.moneyEgt15(textContains('.'))) {
+        return true;
+    }
+
     if (!clicks.text('现金金额：')) {
         return false;
     }
@@ -87,25 +103,6 @@ function taskCashout() {
 
     if (!clicks.centerXyByText('15.00')) {
         return false;
-    }
-
-    return true;
-}
-
-function closeAd() {
-    sleeps.s3();
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s20();
-
-    for (var j = 0; j < 15; j++) {
-        sleeps.s3();
-        if (id('tt_video_ad_close_layout').exists()) {
-            clicks.centerXyById('tt_video_ad_close_layout');
-            return true;
-        }
     }
 
     return true;

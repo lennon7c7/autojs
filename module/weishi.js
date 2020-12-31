@@ -115,12 +115,7 @@ function taskRedpack() {
     sleeps.s2to3();
 
     // 红包
-    scrollDown();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
-    scrollDown();
-    sleeps.s1();
+    swipes.scrollDown3();
 
     clicks.element(text('查看').find()[2]);
     clicks.centerXyByText('前往腾讯新闻领取');

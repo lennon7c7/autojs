@@ -51,7 +51,9 @@ function taskAd() {
             break;
         }
 
-        others.closeAdBackToElement(text('明天签到'));
+        if (!others.closeAdBackToElement(text('明天签到'))) {
+            return false;
+        }
     }
 
     return true;
@@ -62,7 +64,7 @@ function taskAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 6; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();

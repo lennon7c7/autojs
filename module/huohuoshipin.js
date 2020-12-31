@@ -63,9 +63,13 @@ function taskAd() {
             return true;
         }
 
-        clicks.centerXyByText('领取');
-
-        others.closeAdBackToElement(textStartsWith('恭喜获得'));
+        if (!clicks.centerXyByText('领取')) {
+            return false;
+        }
+    
+        if (!others.closeAdBackToElement(textStartsWith('恭喜获得'))) {
+            return false;
+        }
 
         if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 66, 66)) {
             clicks.elementWidthHeight(className('android.widget.FrameLayout'), 66, 66);

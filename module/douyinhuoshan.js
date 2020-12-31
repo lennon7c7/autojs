@@ -67,6 +67,10 @@ function taskCashout() {
         return false;
     }
 
+    if (!exists.moneyEgt02(className('android.view.View').textStartsWith('约'))) {
+        return true;
+    }
+
     if (!clicks.text('去提现')) {
         return false;
     }

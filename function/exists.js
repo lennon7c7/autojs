@@ -61,14 +61,51 @@ s.money = function (element) {
 };
 
 /**
+ * 查询 金额 元素的值是否 ≥ money
+ * @param element
+ * @param {number} currentMoney
+ * @returns {number}
+ */
+s.moneyEgt = function (element, currentMoney) {
+    money = s.money(element);
+
+    return money >= currentMoney;
+};
+
+/**
  * 查询 金额 元素的值是否 ≥ 0.01
  * @param element
  * @returns {number}
  */
 s.moneyEgt001 = function (element) {
-    money = s.money(element);
+    return s.moneyEgt(element, 0.01);
+};
 
-    return money >= 0.01;
+/**
+ * 查询 金额 元素的值是否 ≥ 0.02
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt002 = function (element) {
+    return s.moneyEgt(element, 0.02);
+};
+
+/**
+ * 查询 金额 元素的值是否 ≥ 0.1
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt01 = function (element) {
+    return s.moneyEgt(element, 0.1);
+};
+
+/**
+ * 查询 金额 元素的值是否 ≥ 0.2
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt02 = function (element) {
+    return s.moneyEgt(element, 0.2);
 };
 
 /**
@@ -77,9 +114,16 @@ s.moneyEgt001 = function (element) {
  * @returns {number}
  */
 s.moneyEgt1 = function (element) {
-    money = s.money(element);
+    return s.moneyEgt(element, 1);
+};
 
-    return money >= 1;
+/**
+ * 查询 金额 元素的值是否 ≥ 15
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt15 = function (element) {
+    return s.moneyEgt(element, 15);
 };
 
 /**
@@ -87,10 +131,8 @@ s.moneyEgt1 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt1 = function (element) {
-    money = s.money(element);
-
-    return money >= 100;
+s.moneyEgt100 = function (element) {
+    return s.moneyEgt(element, 100);
 };
 
 /**
@@ -129,6 +171,28 @@ s.parent = function (currentElement, parentElement) {
     }
 
     return true;
+};
+
+/**
+ * 回到指定元素存在的页面
+ * @param {string} element 指定元素
+ * @returns {boolean}
+ */
+s.backToElement = function (element) {
+    if (!element || element.exists === undefined) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (element.exists()) {
+            return true;
+        }
+
+        back();
+        sleep(3 * 1000);
+    }
+
+    return false;
 };
 
 module.exports = s;

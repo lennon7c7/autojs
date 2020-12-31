@@ -78,6 +78,32 @@ s.refresh1500 = function () {
 /**
  * 滑动-下到上
  */
+s.scrollDown = function () {
+    scrollDown();
+    sleep(1 * 1000);
+};
+
+/**
+ * 滑动-下到上
+ */
+s.scrollDown2 = function () {
+    for (var i = 0; i < 2; i++) {
+        s.scrollDown();
+    }
+};
+
+/**
+ * 滑动-下到上
+ */
+s.scrollDown3 = function () {
+    for (var i = 0; i < 3; i++) {
+        s.scrollDown();
+    }
+};
+
+/**
+ * 滑动-下到上
+ */
 s.down = function () {
     swipe(500, 1600, 500, 600, 500);
     sleep(1 * 1000)

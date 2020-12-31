@@ -55,10 +55,14 @@ function taskAd4() {
             return true;
         }
 
-        clicks.centerXyByText('立即观看');
-
-        others.closeAdBackToElement(text('福利'));
-    }
+        if (!clicks.centerXyByText('立即观看')) {
+            return false;
+        }
+ 
+        if (!others.closeAdBackToElement(text('福利'))) {
+            return false;
+        }
+   }
 
     return false;
 }
@@ -82,6 +86,10 @@ function taskCashout() {
     }
 
     if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
         return false;
     }
 

@@ -90,7 +90,7 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         if (text('日常任务').exists() && !text('看视频领金币').exists()) {
             return true;
         }
@@ -99,8 +99,10 @@ function taskAd() {
             continue;
         }
 
-        others.closeAdBackToElement(text('日常任务'));
-    }
+        if (!others.closeAdBackToElement(text('日常任务'))) {
+            return false;
+        }
+  }
 
     return true;
 }

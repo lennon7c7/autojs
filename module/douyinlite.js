@@ -33,38 +33,6 @@ function taskCheckin() {
     return false;
 }
 
-/**
- * 任务-提现
- */
-function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
-
-    if (exists.parents(text('0.3元提现'), text('已完成'))) {
-        return true;
-    }
-
-    if (!clicks.centerXyByText('去提现')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('每天可提')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('立即提现')) {
-        others.back();
-        return true;
-    }
-
-    others.back2();
-
-    if (exists.parents(text('0.3元提现'), text('已完成'))) {
-        return true;
-    }
-
-    return false;
-}
-
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
@@ -82,7 +50,9 @@ function taskTreasureBox() {
         return false;
     }
 
-    others.closeAdBackToElement(text('开宝箱得金币'));
+    if (!others.closeAdBackToElement(text('开宝箱得金币'))) {
+        return false;
+    }
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -96,6 +66,10 @@ function taskTreasureBox() {
 function taskLimit() {
     log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
 
+    if (!exists.backToElement(text('现金收益'))) {
+        return false;
+    }
+
     if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
     }
@@ -104,7 +78,9 @@ function taskLimit() {
         return false;
     }
 
-    others.closeAdBackToElement(text('限时任务赚金币'));
+    if (!others.closeAdBackToElement(text('限时任务赚金币'))) {
+        return false;
+    }
 
     if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
         return true;
@@ -116,6 +92,10 @@ function taskLimit() {
 // 任务-睡觉赚钱
 function taskSleep() {
     log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
+
+    if (!exists.backToElement(text('现金收益'))) {
+        return false;
+    }
 
     if (!clicks.centerXyByText('睡觉赚金币')) {
         return false;
@@ -132,11 +112,50 @@ function taskSleep() {
     return true;
 }
 
+/**
+ * 任务-提现
+ */
+function taskCashout() {
+    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!exists.backToElement(text('现金收益'))) {
+        return false;
+    }
+
+    if (exists.parents(text('0.3元提现'), text('已完成'))) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('去提现')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('每天可提')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('立即提现')) {
+        return true;
+    }
+
+    if (!exists.backToElement(text('现金收益'))) {
+        return false;
+    }
+
+    if (exists.parents(text('0.3元提现'), text('已完成'))) {
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-小视频
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
-    others.back2();
+    if (!clicks.backToElement(text('首页'))) {
+        return false;
+    }
 
     for (var i = 0; i < 10; i++) {
         if (!text('关注').exists() || !text('推荐').exists() || !text('首页').exists()) {

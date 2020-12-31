@@ -19,16 +19,18 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 11; i++) {
         if (text('明日继续领金币').exists()) {
             return true;
         }
 
         if (!clicks.text('快速得百万金币')) {
-            continue;
+            return false;
         }
 
-        closeAd();
+        if (!others.closeAdBackToElement(text('福利'))) {
+            return false;
+        }
     }
 
     return false;
@@ -51,11 +53,12 @@ function taskShare() {
     }
 
     if (!clicks.centerXyByText('微信好友')) {
-        others.back();
         return false;
     }
 
-    others.back();
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
 
     if (text('今日已领取').exists()) {
         return true;
@@ -82,7 +85,7 @@ function taskCashout() {
         return false;
     }
     sleeps.s5();
-  
+
     if (!clicks.centerXyByText('立即提现')) {
         return false;
     }
@@ -91,33 +94,11 @@ function taskCashout() {
 }
 
 /**
- * 关闭广告
- * @returns {boolean}
- */
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s30();
-    for (var j = 0; j < 10; j++) {
-        sleeps.s3();
-        others.back();
-
-        if (text('书架').exists() && text('我的').exists()) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-/**
  * 入口-开始调用
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskAd();

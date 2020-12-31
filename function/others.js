@@ -3,6 +3,7 @@
  */
 var clicks = require('./clicks.js');
 var sleeps = require('./sleeps.js');
+var swipes = require('./swipes.js');
 var s = {};
 
 /**
@@ -204,14 +205,19 @@ s.backToPackageName = function (packageName) {
  * @returns {boolean}
  */
 s.closeAdBackToElement = function (element) {
+    s.muteMusicVolume();
     if (id('tt_top_mute').exists()) {
         clicks.centerXyById('tt_top_mute');
     } else if (id('video_audio_btn').exists()) {
         clicks.centerXyById('video_audio_btn');
     }
-    s.muteMusicVolume();
 
     sleeps.s30();
+
+    if (textStartsWith('浏览').exists()) {
+        swipes.down();
+    }
+
     for (var i = 0; i < 10; i++) {
         sleeps.s3();
 
@@ -266,6 +272,10 @@ s.clear = function () {
         id('clear_all').click();
     } else if (id('clear_all_recents_image_button').exists()) {
         id('clear_all_recents_image_button').click();
+    } else if (id('recent_igmbutton_clear_all').exists()) {
+        id('recent_igmbutton_clear_all').click();
+    } else if (id('stack_clear_all').exists()) {
+        id('stack_clear_all').click();
     }
 
     sleep(3000);

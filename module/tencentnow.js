@@ -56,8 +56,7 @@ s.redPackage = function () {
 
     for (var i = 0; i < 600; i++) {
         if (clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
-            scrollDown();
-            sleeps.s3();
+            swipes.scrollDown();
         }
 
         if (!clicks.centerXyByText('去领取')) {

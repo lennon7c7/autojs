@@ -41,10 +41,13 @@ function taskPlayground() {
     if (element.exists()) {
         clicks.text(element.findOne().text());
         clicks.text('去评论');
-        others.back();
     }
 
     for (var i = 0; i < 40; i++) {
+        if (!others.backToElement(text('今日'))) {
+            return false;
+        }
+
         if (!clicks.textIfExists('去逛逛')) {
             continue;
         }
@@ -52,16 +55,6 @@ function taskPlayground() {
         if (text('点击查看以下商品开宝箱').exists()) {
             if (clicks.textIfExists('打开看看~') || clicks.textIfExists('打开看看～')) {
             } else if (clicks.text('立即购买')) {
-                others.back();
-                if (!text('点击查看以下商品开宝箱').exists()) {
-                    others.back();
-                }
-                if (!text('点击查看以下商品开宝箱').exists()) {
-                    others.back();
-                }
-                if (!text('点击查看以下商品开宝箱').exists()) {
-                    others.back();
-                }
             }
         } else {
             for (var k = 0; k < 8; k++) {
@@ -69,8 +62,6 @@ function taskPlayground() {
                 sleeps.s2to3();
             }
         }
-
-        others.back();
     }
 
     if (text('再逛逛').exists() && !text('去逛逛').exists()) {

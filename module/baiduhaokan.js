@@ -54,6 +54,7 @@ function taskOpenApp() {
 
     if (clicks.textIfExists('打开百度贴吧')) {
         clicks.text('redpack_haokan');
+        clicks.textIfExists('取消');
         sleeps.s10();
         others.back();
         back();
@@ -67,6 +68,7 @@ function taskOpenApp() {
 
     if (clicks.textIfExists('打开全民小视频')) {
         clicks.text('redpack_haokan');
+        clicks.textIfExists('取消');
         sleeps.s3();
         others.back();
         back();

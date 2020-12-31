@@ -63,7 +63,9 @@ function taskCashout() {
 
     if (textStartsWith('确认提现').exists() && text('提现').exists()) {
         clicks.centerXyByText('提现');
-    } else if (text('微信提现特权').exists() && text('去提现').exists()) {
+    }
+
+    if (text('微信提现特权').exists() && text('去提现').exists()) {
         clicks.centerXyByText('去提现');
     }
 
@@ -127,7 +129,7 @@ function taskCat() {
 
     if (clicks.textIfExists('喂养')) {
         clicks.textIfExists('喂养100克猫粮');
-        
+
         clicks.textIfExists('赚现金');
         clicks.textIfExists('赚签到金');
         clicks.textIfExists('摸一摸');

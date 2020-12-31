@@ -18,8 +18,7 @@ s.PACKAGE_NAME = 'com.kuaishou.nebula';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    others.back2();
-    if (!clicks.centerXyById('redFloat')) {
+    if (!others.backToElement(id('redFloat'))) {
         return false;
     }
 
@@ -121,8 +120,10 @@ function taskAd10() {
             continue;
         }
 
-        others.closeAdBackToElement(text('日常任务'));
-    }
+        if (!others.closeAdBackToElement(text('日常任务'))) {
+            return false;
+        }
+      }
 
     return true;
 }
@@ -186,7 +187,7 @@ function taskVideo() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();

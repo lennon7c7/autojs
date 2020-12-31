@@ -169,8 +169,7 @@ s.start = function () {
     sleeps.s2to3();
     clicks.xy(144, 306);
 
-    scrollDown();
-    scrollDown();
+    swipes.scrollDown2();
 
     for (var i = 0; i < 30; i++) {
         if (!text('用户').exists()) {

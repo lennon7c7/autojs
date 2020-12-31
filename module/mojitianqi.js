@@ -14,12 +14,18 @@ s.PACKAGE_NAME = 'com.moji.mjweather.light';
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
+
+    swipes.scrollDown();
+
     if (exists.parent(text('看福利视频，赚更多金币'), text('已完成'))) {
         return true;
     }
 
     if (text('看视频').exists() && clicks.centerXyByText('看视频')) {
-        closeAd();
+        others.closeAdBackToElement(text('日常任务'));
     }
 
     for (var i = 1; i < 10; i++) {
@@ -27,7 +33,7 @@ function taskAd() {
             continue;
         }
 
-        closeAd();
+        others.closeAdBackToElement(text('日常任务'));
     }
 
     if (!clicks.centerXyByText('领金币')) {
@@ -41,18 +47,72 @@ function taskAd() {
     return false;
 }
 
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
+// 任务-看每日天气
+function taskEverydayWeather() {
+    log('----------', s.PACKAGE_NAME, 'taskEverydayWeather start ----------');
+
+    if (!others.backToElement(text('福利'))) {
+        return false;
     }
 
-    sleeps.s35to40();
-
-    if (id('tt_video_ad_close_layout').exists()) {
-        clicks.centerXyById('tt_video_ad_close_layout');
+    if (exists.parent(text('看每日天气'), text('已完成'))) {
+        return true;
     }
 
-    return true;
+    if (text('去查看').exists() && clicks.centerXyByText('去查看')) {
+        if (!others.backToElement(text('福利'))) {
+            return false;
+        }
+    }
+
+    text('领奖励').exists() && clicks.centerXyByText('领奖励');
+    text('领金币').exists() && clicks.centerXyByText('领金币');
+
+    if (text('翻倍金币').exists() && clicks.centerXyByText('翻倍金币')) {
+        if (!others.closeAdBackToElement(text('日常任务'))) {
+            return false;
+        }
+    }
+
+    if (exists.parent(text('看每日天气'), text('已完成'))) {
+        return true;
+    }
+
+    return false;
+}
+
+// 任务-看短时天气
+function taskShortWeather() {
+    log('----------', s.PACKAGE_NAME, 'taskShortWeather start ----------');
+
+    if (!others.backToElement(text('福利'))) {
+        return false;
+    }
+
+    if (exists.parent(text('看短时天气'), text('已完成'))) {
+        return true;
+    }
+
+    if (text('去查看').exists() && clicks.centerXyByText('去查看')) {
+        if (!others.backToElement(text('福利'))) {
+            return false;
+        }
+    }
+
+    text('领奖励').exists() && clicks.centerXyByText('领奖励');
+    text('领金币').exists() && clicks.centerXyByText('领金币');
+
+    if (text('翻倍金币').exists() && clicks.centerXyByText('翻倍金币')) {
+        if (!others.closeAdBackToElement(text('日常任务'))) {
+            return false;
+        }
+    }
+
+    if (exists.parent(text('看短时天气'), text('已完成'))) {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -63,24 +123,11 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        if (!clicks.centerXyByText('福利')) {
-            return false;
-        }
+        status0 = taskAd();
+        status1 = taskShortWeather();
+        status2 = taskEverydayWeather();
 
-        scrollDown();
-        sleep(2 * 1000);
-
-        status = taskAd();
-
-        text('领奖励').exists() && clicks.centerXyByText('领奖励');
-        text('领奖励').exists() && clicks.centerXyByText('领奖励');
-        if (text('去查看').exists() && clicks.centerXyByText('去查看')) {
-            others.back();
-            text('领金币').exists() && clicks.centerXyByText('领金币');
-            text('领奖励').exists() && clicks.centerXyByText('领奖励');
-        }
-
-        if (status) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }

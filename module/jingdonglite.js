@@ -20,7 +20,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (!clicks.centerXyByText('现金签到')) {
+    if (text('现金签到').exists() && !clicks.centerXyByText('现金签到')) {
         return false;
     }
 
@@ -35,7 +35,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.centerXyByText('立即签到')) {
+    if (text('立即签到').exists() && !clicks.centerXyByText('立即签到')) {
         return false;
     }
 
@@ -162,9 +162,9 @@ function taskActivity() {
         return false;
     }
 
-    scrollDown();
+    swipes.scrollDown();
 
-    activityArray = ['免费领', '去赚钱', '去签到', '去参加', '去抽奖'];
+    activityArray = ['免费领', '去赚钱', '去参加', '去抽奖', '去签到'];
     for (var i = 0; i < activityArray.length; i++) {
         if (clicks.textIfExists([activityArray[i]])) {
             others.back();

@@ -1,5 +1,6 @@
 /**
  * uc浏览器-任务
+ * @version 13.1.9.1099
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -68,11 +69,12 @@ function taskAd() {
             return true;
         }
 
-        clicks.centerXyByDesc('去完成');
-        others.closeAdBackToElement(desc('明天预计可领'));
+        if (!clicks.centerXyByDesc('去完成')) {
+            return false;
+        }
 
-        if (desc('领取').exists()) {
-            clicks.centerXyByDesc('领取');
+        if (!others.closeAdBackToElement(desc('明天预计可领'))) {
+            return false;
         }
     }
 
@@ -92,7 +94,10 @@ function taskGame() {
             return true;
         }
 
-        clicks.centerXyByDesc('去完成');
+        if (!clicks.centerXyByDesc('去完成')) {
+            return false;
+        }
+
         for (var j = 0; j < 12; j++) {
             sleeps.s10();
             swipes.down();
@@ -116,15 +121,7 @@ function taskCashout() {
         return false;
     }
 
-    if (!descStartsWith('约').exists()) {
-        return false;
-    }
-    currentMoney = descStartsWith('约').findOne().contentDescription;
-    currentMoney = currentMoney.toString();
-    currentMoney = currentMoney.replace(/约/, '');
-    currentMoney = currentMoney.replace(/元/, '');
-    currentMoney = currentMoney * 100;
-    if (currentMoney <= 0) {
+    if (!exists.moneyEgt1(descStartsWith('约'))) {
         return true;
     }
 

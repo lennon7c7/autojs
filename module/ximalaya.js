@@ -71,7 +71,7 @@ function taskNews() {
         return false;
     }
 
-    scrollDown();
+    swipes.scrollDown();
 
     if (!text('去阅读').exists()) {
         return true;
@@ -113,7 +113,7 @@ function taskLottery() {
         return false;
     }
 
-    scrollDown();
+    swipes.scrollDown();
 
     if (!text('幸运大转盘').exists() || text('幸运大转盘').findOne().parent().findOne(text('去抽奖')) == null) {
         return false;

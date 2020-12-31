@@ -372,4 +372,33 @@ s.idIfExists = function (myString) {
     return s.id(myString);
 };
 
+/**
+ * 回到指定元素存在的页面
+ * @param {string} element 指定元素
+ * @returns {boolean}
+ */
+s.backToElement = function (element) {
+    if (!element || element.exists === undefined) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (element.exists()) {
+            element = element.findOne().bounds();
+            x = element.centerX();
+            y = element.centerY();
+            if (x >= 0 && y >= 0) {
+                click(x, y);
+                sleep(3 * 1000);
+                return true;
+            }
+        }
+
+        back();
+        sleep(3 * 1000);
+    }
+
+    return false;
+};
+
 module.exports = s;
