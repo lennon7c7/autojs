@@ -133,7 +133,7 @@ function taskCashout() {
     if (!clicks.centerXyByDesc('兑现金')) {
         return false;
     }
-    setText(currentMoney);
+    setText(exists.money(descStartsWith('约')) * 100);
     sleeps.s1();
     if (!clicks.desc('立即兑换')) {
         return false;

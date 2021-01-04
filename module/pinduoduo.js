@@ -16,18 +16,12 @@ s.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    if (text('现金签到').exists()) {
-        if (!others.backToElement(text('现金签到'))) {
-            return false;
-        }
-    } else if (text('签到领钱').exists()) {
-        if (!others.backToElement(text('现金签到'))) {
-            return false;
-        }
-    } else if (text('签到').exists()) {
-        if (!others.backToElement(text('签到'))) {
-            return false;
-        }
+    if (text('现金签到').exists() && !others.backToElement(text('现金签到'))) {
+        return false;
+    } else if (text('签到领钱').exists() && !others.backToElement(text('现金签到'))) {
+        return false;
+    } else if (text('签到').exists() && !others.backToElement(text('签到'))) {
+        return false;
     }
     sleeps.s2to3();
 
@@ -133,6 +127,7 @@ function taskCat() {
         clicks.textIfExists('赚现金');
         clicks.textIfExists('赚签到金');
         clicks.textIfExists('摸一摸');
+        clicks.textIfExists('去签到');
     }
 
     return true;
@@ -143,7 +138,7 @@ function taskCat() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();
@@ -153,6 +148,8 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send('pinduoduo');

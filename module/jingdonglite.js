@@ -193,6 +193,8 @@ s.start = function () {
         if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send('jingdonglite');

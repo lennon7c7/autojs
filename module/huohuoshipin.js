@@ -66,7 +66,7 @@ function taskAd() {
         if (!clicks.centerXyByText('领取')) {
             return false;
         }
-    
+
         if (!others.closeAdBackToElement(textStartsWith('恭喜获得'))) {
             return false;
         }
@@ -93,6 +93,8 @@ s.start = function () {
         if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send('huohuoshipin');

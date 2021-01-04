@@ -69,6 +69,34 @@ function taskShop() {
 function taskHelpFriend() {
     log('----------', s.PACKAGE_NAME, 'taskHelpFriend start ----------');
 
+    if (!others.backToElement(desc('我的淘宝'))) {
+        return false;
+    }
+
+    if (!clicks.centerXyByDesc('淘金币')) {
+        return false;
+    }
+
+    sleeps.s5to10();
+
+    if (text('签到领金币').exists()) {
+        clicks.centerXyByText('签到领金币');
+    }
+
+    if (text('签到领淘金币').exists()) {
+        clicks.centerXyByText('签到领淘金币');
+        others.back();
+        clicks.centerXyByDesc('淘金币');
+    }
+
+    if (text('购后返 ').exists()) {
+        clicks.centerXyByText('购后返 ');
+    }
+
+    for (var i = 0; i < 3; i++) {
+        clicks.textIfExists('合力');
+    }
+
     text('赚金币').exists() && clicks.xy(912, 1203);
 
     sleeps.s5to10();
@@ -89,8 +117,6 @@ function taskHelpFriend() {
         }
     }
 
-    others.back();
-
     return true;
 }
 
@@ -98,8 +124,7 @@ function taskHelpFriend() {
 function taskMoneyPower() {
     log('----------', s.PACKAGE_NAME, 'taskMoneyPower start ----------');
 
-    if (!clicks.centerXyByText('赚金币')) {
-        others.back();
+    if (!others.backToElement(text('赚金币'))) {
         return false;
     }
 
@@ -372,8 +397,6 @@ function taskMoneyPower() {
         clicks.centerXyByText('领取奖励');
     }
 
-    others.back();
-
     return true;
 }
 
@@ -381,9 +404,7 @@ function taskMoneyPower() {
 function taskCancelShop() {
     log('----------', s.PACKAGE_NAME, 'taskCancelShop start ----------');
 
-    others.back2();
-
-    if (!clicks.centerXyByDesc('我的淘宝')) {
+    if (!others.backToElement(desc('我的淘宝'))) {
         return false;
     }
 
@@ -409,41 +430,15 @@ s.start = function () {
     for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        if (!clicks.centerXyByDesc('我的淘宝')) {
-            return false;
-        }
-
-        if (!clicks.centerXyByDesc('淘金币')) {
-            return false;
-        }
-
-        sleeps.s5to10();
-
-        if (text('签到领金币').exists()) {
-            clicks.centerXyByText('签到领金币');
-        }
-
-        if (text('签到领淘金币').exists()) {
-            clicks.centerXyByText('签到领淘金币');
-            others.back();
-            clicks.centerXyByDesc('淘金币');
-        }
-
-        if (text('购后返 ').exists()) {
-            clicks.centerXyByText('购后返 ');
-        }
-
-        for (var i = 0; i < 3; i++) {
-            clicks.textIfExists('合力');
-        }
-
-        status2 = taskHelpFriend();
+        status0 = taskHelpFriend();
         // status3 = taskShop();
         status1 = taskMoneyPower();
 
-        if (status1 && status2) {
+        if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send('taobao');
