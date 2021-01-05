@@ -1,5 +1,6 @@
 /**
  * 微视-任务
+ * @version 8.6.0.588
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -70,8 +71,9 @@ function taskVideo() {
 function checkVideo() {
     others.back2();
 
-    clicks.xy(750, 411);
-    sleeps.s2to3();
+    if (!clicks.centerXyByText('福利中心')) {
+        return false;
+    }
 
     if (textStartsWith('明日再').exists()) {
         return true;
@@ -111,23 +113,39 @@ function taskRedpack() {
 
     clicks.xy(888, 2200);
 
-    clicks.xy(750, 411);
-    sleeps.s2to3();
+    if (!clicks.centerXyByText('福利中心')) {
+        return false;
+    }
 
-    // 红包
     swipes.scrollDown3();
 
-    clicks.element(text('查看').find()[2]);
-    clicks.centerXyByText('前往腾讯新闻领取');
-    sleeps.s3();
-    others.back3();
-    back();
-    back();
-    sleeps.s3();
-    others.back();
+    for (var i = 0; i < desc('查看').find().size(); i++) {
+        clicks.element(desc('查看').find()[i]);
+        sleeps.s3();
+        if (desc('前往腾讯新闻领取').exists()) {
+            clicks.centerXyByDesc('前往腾讯新闻领取');
+            sleeps.s3();
+            others.back3();
+            back();
+            back();
+        }
 
-    clicks.element(text('查看').find()[5]);
-    others.back2();
+        exists.backToElement(desc('任务中心'));
+    }
+
+    for (var i = 0; i < text('查看').find().size(); i++) {
+        clicks.element(text('查看').find()[i]);
+        sleeps.s3();
+        if (text('前往腾讯新闻领取').exists()) {
+            clicks.centerXyByText('前往腾讯新闻领取');
+            sleeps.s3();
+            others.back3();
+            back();
+            back();
+        }
+
+        exists.backToElement(text('任务中心'));
+    }
 
     return true;
 }
@@ -142,12 +160,9 @@ function taskCashout() {
 
     clicks.xy(888, 2200);
 
-    if (!text('编辑资料').exists()) {
+    if (!clicks.centerXyByText('福利中心')) {
         return false;
     }
-
-    clicks.xy(750, 411);
-    sleeps.s2to3();
 
     if (clicks.textIfExists('提现') && clicks.textIfExists('去提现')) {
         return true;

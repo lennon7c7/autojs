@@ -21,7 +21,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('今日已提').exists() || text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+    if (text('今日已提').exists() || text('去解锁').exists()) {
         return true;
     }
 
@@ -33,7 +33,7 @@ function taskCheckin() {
         clicks.centerXyByText('签到领钱');
     }
 
-    if (textStartsWith('签到成功').exists() || text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
+    if (textStartsWith('签到成功').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
         clicks.textIfExists('稍后再提');
         return true;
     }
