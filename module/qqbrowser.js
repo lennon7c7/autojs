@@ -157,6 +157,10 @@ function taskNews() {
         return false;
     }
 
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
+    }
+
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
         return true;
     }
@@ -167,7 +171,6 @@ function taskNews() {
     }
 
     for (var i = 0; i < 20; i++) {
-        // 特殊：此处点击首页元素，某些型号有可能会造成异常
         text('首页').exists() && swipes.refresh();
         text('首页').exists() && clicks.xy(345, 1048);
         for (var j = 0; j < 8; j++) {
@@ -176,10 +179,9 @@ function taskNews() {
         }
 
         if (text('任务完成，点击领取金币').exists()) {
-            others.back();
             break;
         }
-
+  
         others.back();
     }
 

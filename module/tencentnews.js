@@ -115,8 +115,7 @@ function taskNews() {
     }
 
     for (var i = 0; i < 20; i++) {
-        if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
-            log('---------- error ----------');
+        if (!others.backToElement(text('新闻'))) {
             return false;
         }
 
@@ -127,10 +126,6 @@ function taskNews() {
         sleeps.s10();
         swipes.refresh();
         sleeps.s10();
-
-        if (!others.backToElement(text('新闻'))) {
-            return false;
-        }
     }
 
     if (!others.backToElement(text('我的 '))) {

@@ -157,7 +157,7 @@ s.backToElement = function (element) {
     }
 
     for (var i = 0; i < 10; i++) {
-        if (element.exists()) {
+        if (element.exists && element.exists()) {
             element = element.findOne().bounds();
             x = element.centerX();
             y = element.centerY();

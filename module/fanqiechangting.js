@@ -34,7 +34,7 @@ function taskTreasureBox() {
     }
 
     if (textStartsWith('看视频领取').exists()) {
-        if (!clicks.element(textStartsWith('看视频再领'))) {
+        if (!clicks.element(textStartsWith('看视频领取'))) {
             return false;
         }
 
@@ -123,7 +123,9 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
-    }
+ 
+        others.clear();
+   }
 
     others.send('fanqiechangting');
 

@@ -1,5 +1,6 @@
 /**
  * 拼多多-任务
+ * @version 5.45.0
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -16,14 +17,9 @@ s.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    if (text('现金签到').exists() && !others.backToElement(text('现金签到'))) {
-        return false;
-    } else if (text('签到领钱').exists() && !others.backToElement(text('现金签到'))) {
-        return false;
-    } else if (text('签到').exists() && !others.backToElement(text('签到'))) {
+    if (!others.backToElement(id('name').text('签到'))) {
         return false;
     }
-    sleeps.s2to3();
 
     if (text('今日已提').exists() || text('还有现金权益待领取').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
         return true;
@@ -50,6 +46,10 @@ function taskCheckin() {
  */
 function taskCashout() {
     log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+
+    if (!others.backToElement(id('name').text('签到'))) {
+        return false;
+    }
 
     if (text('今日已提').exists() || text('去解锁').exists()) {
         return true;
@@ -143,9 +143,9 @@ s.start = function () {
 
         status0 = taskCheckin();
         status1 = taskCashout();
-        status2 = taskCat();
+        // status2 = taskCat();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1) {
             return true;
         }
 
