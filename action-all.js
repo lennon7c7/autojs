@@ -31,6 +31,9 @@ huoshan.start();
 jingdonglite = require('module/jingdonglite.js');
 jingdonglite.start();
 
+jukandian = require('module/jukandian.js');
+jukandian.start();
+
 kaola = require('module/kaola.js');
 kaola.start();
 
