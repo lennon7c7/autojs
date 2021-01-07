@@ -1,0 +1,110 @@
+/**
+ * 计步宝-任务
+ */
+var clicks = require('../function/clicks.js');
+var exists = require('../function/exists.js');
+var others = require('../function/others.js');
+var sleeps = require('../function/sleeps.js');
+var swipes = require('../function/swipes.js');
+
+var s = {};
+s.PACKAGE_NAME = 'com.starbaba.countstep';
+
+/**
+ * 任务-签到
+ */
+function taskCheckin() {
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+
+    if (text('高级签到').exists() && clicks.text('高级签到')) {
+        if (!others.closeAdBackToElement(id('continue_btn'))) {
+            return false;
+        }
+    }
+
+    if (text('继续赚钱').exists() && !clicks.text('继续赚钱')) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * 任务-大转盘
+ */
+function taskLottery() {
+    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+
+    if (!others.backToElement(text('个人页'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 66; i++) {
+        if (!others.backToElement(text('大转盘'))) {
+            return false;
+        }
+
+        if (text('剩余次数:0次').exists()) {
+            return true
+        }
+
+        clicks.idIfExists('sceneAdSdk_startBtn');
+        clicks.idIfExists('close_btn');
+    }
+
+    return false;
+}
+
+/**
+ * 任务-大转盘Ad
+ */
+function taskLotteryAd() {
+    log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
+
+    for (var i = 0; i < 5; i++) {
+        if (text('close_btn:0次').exists()) {
+            clicks.centerXyById('close_btn');
+        }
+
+        if (text('剩余次数:0次').exists() && !text('lottie_view').exists()) {
+            return true
+        }
+
+        clicks.textIfExists('scene_ad_sdk_rewardItem');
+        clicks.id('lottie_view');
+
+        if (!others.closeAdBackToElement(text('继续赚钱'))) {
+            return false;
+        }
+
+        clicks.text('继续赚钱');
+    }
+
+    return false;
+}
+
+/**
+ * 入口-开始调用
+ * @returns {boolean}
+ */
+s.start = function () {
+    for (var i = 0; i < 10; i++) {
+        others.launch(s.PACKAGE_NAME);
+
+        status0 = taskCheckin();
+        status1 = taskLottery();
+        if (status1) {
+            status1 = taskLotteryAd();
+        }
+
+        if (status0 && status1) {
+            return true;
+        }
+    }
+
+    others.send('jibubao');
+
+    return false;
+};
+
+module.exports = s;

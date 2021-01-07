@@ -32,7 +32,7 @@ s.fixDir = function () {
         'diandiancaige.js', 'douyin.js', 'douyinlite.js', 'douyinhuoshan.js',
         'fanqie.js', 'fanqiechangting.js',
         'huohuoshipin.js', 'huoshan.js',
-        'jingdonglite.js', 'jukandian.js',
+        'jibubao.js', 'jingdonglite.js', 'jukandian.js',
         'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 'mojitianqi.js', 'momo.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',

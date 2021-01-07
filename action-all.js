@@ -28,6 +28,9 @@ huohuoshipin.start();
 huoshan = require('module/huoshan.js');
 huoshan.start();
 
+jibubao = require('module/jibubao.js');
+jibubao.start();
+
 jingdonglite = require('module/jingdonglite.js');
 jingdonglite.start();
 
