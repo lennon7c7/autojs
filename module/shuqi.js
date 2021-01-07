@@ -24,7 +24,7 @@ function taskAd() {
             return true;
         }
 
-        if (!clicks.text('快速得百万金币')) {
+        if (!clicks.centerXyByText('快速得百万金币')) {
             return false;
         }
 
@@ -40,7 +40,7 @@ function taskAd() {
 function taskShare() {
     log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!exists.backToElement(text('福利'))) {
         return false;
     }
 
@@ -73,12 +73,16 @@ function taskShare() {
 function taskCashout() {
     log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!exists.backToElement(text('福利'))) {
         return false;
     }
 
     for (var i = 0; i < 5; i++) {
         clicks.textIfExists('领取奖励');
+    }
+
+    if (!exists.moneyEgt5(textStartsWith('约'))) {
+        return true;
     }
 
     if (!clicks.centerXyByText('去提现')) {
@@ -89,6 +93,8 @@ function taskCashout() {
     if (!clicks.centerXyByText('立即提现')) {
         return false;
     }
+
+    // 需要短信验证码
 
     return true;
 }
@@ -103,9 +109,8 @@ s.start = function () {
 
         status0 = taskAd();
         status1 = taskShare();
-        status2 = taskCashout();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1) {
             return true;
         }
     }

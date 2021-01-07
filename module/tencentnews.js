@@ -61,18 +61,13 @@ function taskVideo() {
         return true;
     }
 
-    for (var i = 0; i < 20; i++) {
-        if (!text('新闻').exists() || !text('视频').exists() || !text('我的 ').exists()) {
-            log('---------- error ----------');
+    for (var i = 0; i < 10; i++) {
+        if (!others.backToElement(text('视频'))) {
             return false;
         }
 
         clicks.xy(477, 577);
         sleeps.s30to35();
-
-        if (!others.backToElement(text('视频'))) {
-            return false;
-        }
     }
 
     if (!others.backToElement(text('我的 '))) {
@@ -114,7 +109,7 @@ function taskNews() {
         return true;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
         if (!others.backToElement(text('新闻'))) {
             return false;
         }

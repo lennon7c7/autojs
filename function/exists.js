@@ -35,9 +35,11 @@ s.money = function (element) {
         return money;
     }
 
-    currentMoney = element.findOne().contentDescription;
+    currentMoney = element.findOne(300).contentDescription;
     if (currentMoney !== "" && currentMoney !== null) {
         currentMoney = currentMoney.toString();
+        currentMoney = currentMoney.replace(/¥/, '');
+        currentMoney = currentMoney.replace(/￥/, '');
         currentMoney = currentMoney.replace(/约/, '');
         currentMoney = currentMoney.replace(/元/, '');
         currentMoney = currentMoney.trim();
@@ -47,11 +49,13 @@ s.money = function (element) {
         }
     }
 
-    currentMoney = element.findOne().text();
+    currentMoney = element.findOne(300).text();
     if (currentMoney === "" || currentMoney === null) {
         return money;
     }
     currentMoney = currentMoney.toString();
+    currentMoney = currentMoney.replace(/¥/, '');
+    currentMoney = currentMoney.replace(/￥/, '');
     currentMoney = currentMoney.replace(/约/, '');
     currentMoney = currentMoney.replace(/元/, '');
     currentMoney = currentMoney.trim();
@@ -118,6 +122,24 @@ s.moneyEgt1 = function (element) {
 };
 
 /**
+ * 查询 金额 元素的值是否 ≥ 5
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt5 = function (element) {
+    return s.moneyEgt(element, 5);
+};
+
+/**
+ * 查询 金额 元素的值是否 ≥ 10
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt10 = function (element) {
+    return s.moneyEgt(element, 10);
+};
+
+/**
  * 查询 金额 元素的值是否 ≥ 15
  * @param element
  * @returns {number}
@@ -136,6 +158,15 @@ s.moneyEgt100 = function (element) {
 };
 
 /**
+ * 查询 金额 元素的值是否 ≥ 50000
+ * @param element
+ * @returns {number}
+ */
+s.moneyEgt50000 = function (element) {
+    return s.moneyEgt(element, 50000);
+};
+
+/**
  * 根据 当前元素 的 祖先级元素 去判断元素是否存在
  * @param {string} currentElement
  * @param {string} parentsElement
@@ -146,7 +177,7 @@ s.parents = function (currentElement, parentsElement) {
         return false;
     }
 
-    element = currentElement.findOne().parent().parent().findOne(parentsElement);
+    element = currentElement.findOne(300).parent().parent().findOne(parentsElement);
     if (element == null) {
         return false;
     }
@@ -165,7 +196,7 @@ s.parent = function (currentElement, parentElement) {
         return false;
     }
 
-    element = currentElement.findOne().parent().findOne(parentElement);
+    element = currentElement.findOne(300).parent().findOne(parentElement);
     if (element == null) {
         return false;
     }

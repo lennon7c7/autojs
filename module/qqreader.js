@@ -16,6 +16,7 @@ s.PACKAGE_NAME = 'com.qq.reader';
 function taskTreasureBox() {
     log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
+    clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
     }
@@ -43,6 +44,7 @@ function taskTreasureBox() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
+    clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
     }
@@ -101,6 +103,10 @@ function taskCashout() {
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
+    }
+
+    if (!exists.moneyEgt15(textContains('15.'))) {
+        return true;
     }
 
     if (!clicks.text('现金收益')) {

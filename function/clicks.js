@@ -146,7 +146,7 @@ s.centerXyByText = function (myString) {
         return false;
     }
 
-    element = text(myString).findOne().bounds();
+    element = text(myString).findOne(300).bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0) {
@@ -211,7 +211,7 @@ s.centerXyByDesc = function (myString) {
         return false;
     }
 
-    element = desc(myString).findOne().bounds();
+    element = desc(myString).findOne(300).bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0) {
@@ -276,7 +276,7 @@ s.centerXyById = function (myString) {
         return false;
     }
 
-    element = id(myString).findOne().bounds();
+    element = id(myString).findOne(300).bounds();
     x = element.centerX();
     y = element.centerY();
     if (x >= 0 && y >= 0) {
@@ -307,7 +307,7 @@ s.parents = function (currentElement, parentsElement) {
         return false;
     }
 
-    element = currentElement.findOne().parent().parent().findOne(parentsElement);
+    element = currentElement.findOne(300).parent().parent().findOne(parentsElement);
     if (element == null || !s.element(element)) {
         log('---------- fail: parentsElement =', parentsElement, ' none exist ----------');
         return false;
@@ -328,7 +328,7 @@ s.parent = function (currentElement, parentElement) {
         return false;
     }
 
-    element = currentElement.findOne().parent().findOne(parentElement);
+    element = currentElement.findOne(300).parent().findOne(parentElement);
     if (element == null || !s.element(element)) {
         log('---------- fail: parentElement =', parentElement, ' none exist ----------');
         return false;
@@ -384,7 +384,7 @@ s.backToElement = function (element) {
 
     for (var i = 0; i < 10; i++) {
         if (element.exists()) {
-            element = element.findOne().bounds();
+            element = element.findOne(300).bounds();
             x = element.centerX();
             y = element.centerY();
             if (x >= 0 && y >= 0) {
