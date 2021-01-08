@@ -30,12 +30,19 @@ function taskLimit() {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
     }
 
-    if (text('领现金').exists() && clicks.x1y1x2y2(597, 600, 732, 735) && !text('领现金').exists()) {
+    if (text('领现金').exists() && clicks.x1y1x2y2(348, 600, 483, 735) && !text('领现金').exists()) {
         closeAd();
     }
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
         clicks.elementWidthHeight(className('android.view.View'), 84, 81);
     }
+
+    // if (text('领现金').exists() && clicks.x1y1x2y2(597, 600, 732, 735) && !text('领现金').exists()) {
+    //     closeAd();
+    // }
+    // if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
+    //     clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+    // }
 
     return true;
 }
@@ -54,13 +61,16 @@ function taskOpenApp() {
 
     if (clicks.textIfExists('打开百度贴吧')) {
         clicks.text('redpack_haokan');
-        clicks.textIfExists('取消');
-        sleeps.s10();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
-        others.back();
+        if (clicks.textIfExists('取消')) {
+            others.back();
+        } else {
+            sleeps.s10();
+            others.back2();
+            back();
+            back();
+            sleeps.s3();
+            others.back();
+        }
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }
@@ -68,13 +78,16 @@ function taskOpenApp() {
 
     if (clicks.textIfExists('打开全民小视频')) {
         clicks.text('redpack_haokan');
-        clicks.textIfExists('取消');
-        sleeps.s3();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
-        others.back();
+        if (clicks.textIfExists('取消')) {
+            others.back();
+        } else {
+            sleeps.s3();
+            others.back2();
+            back();
+            back();
+            sleeps.s3();
+            others.back();
+        }
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
             clicks.elementWidthHeight(className('android.view.View'), 84, 81);
         }

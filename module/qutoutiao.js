@@ -23,7 +23,7 @@ function taskNews() {
     }
 
     if (text('日常任务').exists() && !text('立即阅读').exists()) {
-        return false;
+        return true;
     }
 
     if (!clicks.centerXyByText('立即阅读')) {
@@ -41,7 +41,7 @@ function taskNews() {
             swipes.down();
             sleeps.s2to3();
         }
-  
+
         reward();
     }
 
@@ -61,7 +61,7 @@ function taskVideo() {
     }
 
     if (text('日常任务').exists() && !text('观看视频').exists()) {
-        return false;
+        return true;
     }
 
     if (!clicks.centerXyByText('观看视频')) {
@@ -96,20 +96,20 @@ function taskAd() {
         }
 
         if (!clicks.centerXyByText('看视频领金币')) {
-            continue;
+            return false;
         }
 
         if (!others.closeAdBackToElement(text('日常任务'))) {
             return false;
         }
-  }
+    }
 
     return true;
 }
 
 // 任务-视频滑动
 function taskVideoSwipe() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', s.PACKAGE_NAME, 'taskVideoSwipe start ----------');
 
     if (!others.backToElement(text('小视频'))) {
         return false;
@@ -123,7 +123,7 @@ function taskVideoSwipe() {
         } else if (text('小视频').exists()) {
             sleeps.s2to5();
         }
- 
+
         reward();
     }
 
