@@ -1,6 +1,5 @@
 /**
  * 书旗免费小说-任务
- * @version 11.2.4.122
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -10,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.shuqi.controller';
+s.VERSION = '11.2.4.122';
 
 // 任务-Ad
 function taskAd() {
@@ -24,7 +24,11 @@ function taskAd() {
             return true;
         }
 
-        if (!clicks.centerXyByText('快速得百万金币')) {
+        if (text('快速得百万金币').exists() && !clicks.centerXyByText('快速得百万金币')) {
+            return false;
+        } else if (desc('快速得百万金币').exists() && !clicks.centerXyByDesc('快速得百万金币')) {
+            return false;
+        } else {
             return false;
         }
 

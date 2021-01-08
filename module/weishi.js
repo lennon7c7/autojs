@@ -1,6 +1,5 @@
 /**
  * 微视-任务
- * @version 8.6.0.588
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -10,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.weishi';
+s.VERSION = '8.6.0.588';
 
 /**
  * 任务-登录
