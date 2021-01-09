@@ -61,26 +61,21 @@ function taskLottery() {
 function taskLotteryAd() {
     log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
 
-    for (var i = 0; i < 5; i++) {
-        if (text('close_btn:0次').exists()) {
-            clicks.centerXyById('close_btn');
+    for (var i = 0; i < id('scene_ad_sdk_rewardItem').find().size(); i++) {
+        if (!clicks.element(id('scene_ad_sdk_rewardItem').find()[i])) {
+            return false;
         }
+   
+        clicks.xy(300, 1300);
 
-        if (text('剩余次数:0次').exists() && !text('lottie_view').exists()) {
-            return true
-        }
-
-        clicks.textIfExists('scene_ad_sdk_rewardItem');
-        clicks.id('lottie_view');
-
-        if (!others.closeAdBackToElement(text('继续赚钱'))) {
+        if (!text('剩余次数:0次').exists() && !others.closeAdBackToElement(text('继续赚钱'))) {
             return false;
         }
 
         clicks.text('继续赚钱');
     }
 
-    return false;
+    return true;
 }
 
 /**
@@ -100,6 +95,8 @@ s.start = function () {
         if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send('jibubao');
