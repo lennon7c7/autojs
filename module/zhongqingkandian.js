@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'cn.youth.news';
+s.VERSION = '2.5.4';
 
 // 任务-限时
 // every 20m

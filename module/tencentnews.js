@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.news';
+s.VERSION = '11.2.4.122';
 
 /**
  * 任务-签到

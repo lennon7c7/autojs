@@ -9,6 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.now';
+s.VERSION = '1.56.0.42';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400aead0ff3d2179fb76fb.apk';
 
 /**
  * 任务-签到
@@ -35,7 +37,9 @@ function taskCheckin() {
         return true;
     }
 
-    if (!clicks.centerXyByText('签到领取红包')) {
+    if (!clicks.textIfExists('签到领取红包')) {
+        return false;
+    } else if (!clicks.textIfExists('签到') || !clicks.textIfExists('签到领取红包')) {
         return false;
     }
 

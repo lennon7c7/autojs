@@ -11,6 +11,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.kuaishou.nebula';
+s.VERSION = '3.0.40.619';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b7323978560407c768984d.apk';
 
 /**
  * 任务-签到
