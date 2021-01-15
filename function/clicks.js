@@ -161,6 +161,138 @@ s.centerXyByText = function (myString) {
 };
 
 /**
+ * 根据 文本 元素的rect去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.rectByText = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    element = text(myString).findOne(300).bounds();
+    click(element.left, element.top, element.right, element.bottom);
+    sleep(3 * 1000);
+
+    return true;
+};
+/**
+ * 根据 最后的文本 元素的rect去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.rectByLastText = function (myString) {
+    elementAll = text(myString).find();
+    lastOne = elementAll.size();
+    elementAll.forEach((value, key) => {
+        if ((key + 1) != lastOne) {
+            return;
+        }
+
+        element = value.bounds();
+        click(element.left, element.top, element.right, element.bottom);
+        sleep(3 * 1000);
+    });
+
+    return true;
+};
+
+/**
+ * 根据 秒素 元素的rect去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.rectByDesc = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    element = desc(myString).findOne(300).bounds();
+    click(element.left, element.top, element.right, element.bottom);
+    sleep(3 * 1000);
+
+    return true;
+};
+
+/**
+ * 根据 文本 or 描述 元素去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.textOrDesc = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (text(myString).exists() && !s.text(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    } else if (desc(myString).exists() && !s.desc(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    return true;
+};
+
+/**
+ * 根据 文本 or 描述 元素的宽高去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.centerXyByTextOrDesc = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (text(myString).exists() && !s.centerXyByText(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    } else if (desc(myString).exists() && !s.centerXyByDesc(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    return true;
+};
+
+/**
+ * 根据 文本 or 描述 元素的rect去点击
+ * @param {string} myString
+ * @returns {boolean}
+ */
+s.rectByTextOrDesc = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (text(myString).exists() && !s.rectByText(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    } else if (desc(myString).exists() && !s.rectByDesc(myString)) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    return true;
+};
+
+/**
  * 文本
  * @param {string} myString
  * @returns {boolean}
@@ -392,6 +524,30 @@ s.backToElement = function (element) {
                 sleep(3 * 1000);
                 return true;
             }
+        }
+
+        back();
+        sleep(3 * 1000);
+    }
+
+    return false;
+};
+
+/**
+ * 回到指定元素存在的页面
+ * @param {string} myString 指定元素text or desc
+ * @returns {boolean}
+ */
+s.backToElementTextOrDesc = function (myString) {
+    if (!myString) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (text(myString).exists() && s.rectByText(myString)) {
+            return true;
+        } else if (desc(myString).exists() && s.rectByDesc(myString)) {
+            return true;
         }
 
         back();

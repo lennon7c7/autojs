@@ -270,16 +270,14 @@ s.clear = function () {
     sleep(2000);
 
     if (id('clear_all').exists()) {
-        id('clear_all').click();
+        clicks.centerXyById('clear_all');
     } else if (id('clear_all_recents_image_button').exists()) {
-        id('clear_all_recents_image_button').click();
+        clicks.centerXyById('clear_all_recents_image_button');
     } else if (id('recent_igmbutton_clear_all').exists()) {
-        id('recent_igmbutton_clear_all').click();
+        clicks.centerXyById('recent_igmbutton_clear_all');
     } else if (id('stack_clear_all').exists()) {
-        id('stack_clear_all').click();
+        clicks.centerXyById('stack_clear_all');
     }
-
-    sleep(3000);
 
     return true;
 };

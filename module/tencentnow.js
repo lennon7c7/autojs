@@ -18,17 +18,14 @@ s.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400aead0ff3d
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    others.back3();
-
-    clicks.textIfExists('我知道了');
-
-    if (!clicks.centerXyByText('首页')) {
+    if (!clicks.backToElement(text('首页'))) {
         return false;
     }
 
     if (!clicks.centerXyByText('热门')) {
         return false;
     }
+  
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
         return false;
     }
@@ -125,7 +122,9 @@ s.start = function () {
         if (status0) {
             return true;
         }
-    }
+ 
+        others.clear();
+   }
 
     others.send(s.PACKAGE_NAME);
 

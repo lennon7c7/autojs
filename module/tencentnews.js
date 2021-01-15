@@ -9,13 +9,16 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.news';
-s.VERSION = '11.2.4.122';
+s.VERSION = '6.2.70';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a31ad9f63ef739b4f251.apk';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+
+    clicks.descIfExists('Tencent news');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
