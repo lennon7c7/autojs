@@ -19,7 +19,9 @@ function taskTreasureBox() {
         return false;
     }
 
-    if (descEndsWith('天天领现金').exists() && !clicks.element(descEndsWith('天天领现金'))) {
+    if (text('已签到').exists() && !clicks.centerXyByText('已签到')) {
+        return false;
+    } else if (descEndsWith('天天领现金').exists() && !clicks.element(descEndsWith('天天领现金'))) {
         return false;
     } else if (descEndsWith('明天领更多').exists() && !clicks.element(descEndsWith('明天领更多'))) {
         return false;
