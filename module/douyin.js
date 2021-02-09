@@ -188,7 +188,4 @@ s.start = function () {
     log(files.read(filename));
 }
 
-return false;
-};
-
 module.exports = s;
