@@ -40,6 +40,29 @@ function taskTreasureBox() {
     return false;
 }
 
+/**
+ * 任务-签到
+ */
+function taskCheckin() {
+    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+
+    if (text('今日已领').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('打卡领金币')) {
+        return false;
+    }
+
+    others.back();
+
+    if (text('今日已领').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-Ad
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
@@ -133,11 +156,12 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
+        status4 = taskCheckin();
         status1 = taskAd();
         status2 = taskAddBook();
         status3 = taskCashout();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
     }
