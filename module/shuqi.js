@@ -119,7 +119,7 @@ s.start = function () {
         }
     }
 
-    others.send('shuqi');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

@@ -75,7 +75,7 @@ s.start = function () {
         }
     }
 
-    others.send('kugoudaziban');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

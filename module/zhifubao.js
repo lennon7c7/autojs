@@ -141,7 +141,7 @@ s.start = function () {
         }
     }
 
-    others.send('zhifubao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

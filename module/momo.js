@@ -98,7 +98,7 @@ s.start = function () {
         }
     }
 
-    others.send('momo');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

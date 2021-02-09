@@ -203,7 +203,7 @@ s.start = function () {
         }
     }
 
-    others.send('kuaishou');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

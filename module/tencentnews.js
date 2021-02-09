@@ -188,7 +188,7 @@ s.start = function () {
         }
     }
 
-    others.send('tencentnews');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

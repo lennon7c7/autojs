@@ -189,7 +189,7 @@ s.start = function () {
         }
     }
 
-    others.send('weishi');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

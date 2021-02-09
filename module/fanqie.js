@@ -169,7 +169,7 @@ s.start = function () {
         }
     }
 
-    others.send('fanqie');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

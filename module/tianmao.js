@@ -58,7 +58,7 @@ s.start = function () {
         }
     }
 
-    others.send('tianmao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

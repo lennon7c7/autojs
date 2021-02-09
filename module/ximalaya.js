@@ -191,7 +191,7 @@ s.start = function () {
         }
     }
 
-    others.send('ximalaya');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

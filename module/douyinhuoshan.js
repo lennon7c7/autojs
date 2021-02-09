@@ -12,7 +12,7 @@ s.PACKAGE_NAME = 'com.ss.android.ugc.live';
 
 // 任务-视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');    
+    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
 
     for (var i = 0; i < 10; i++) {
         if (text('点击进入直播间').exists()) {
@@ -103,9 +103,9 @@ s.start = function () {
         others.launch(s.PACKAGE_NAME);
 
         clicks.textIfExists('以后再说');
-    
+
         taskVideo();
-     
+
         others.back2();
         scrollUp();
         if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {
@@ -125,7 +125,7 @@ s.start = function () {
         }
     }
 
-    others.send('douyinhuoshan');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };
@@ -138,7 +138,7 @@ s.cron = function () {
     others.launch(s.PACKAGE_NAME);
 
     clicks.textIfExists('以后再说');
-  
+
     others.back2();
     scrollUp();
     if (!clicks.elementWidthHeight(className('android.view.ViewGroup'), 150, 120)) {

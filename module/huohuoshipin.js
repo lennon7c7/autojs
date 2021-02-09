@@ -97,7 +97,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send('huohuoshipin');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

@@ -205,7 +205,7 @@ s.start = function () {
         }
     }
 
-    others.send('douyinlite');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

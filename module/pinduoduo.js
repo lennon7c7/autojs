@@ -152,7 +152,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send('pinduoduo');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

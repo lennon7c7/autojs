@@ -166,7 +166,7 @@ s.start = function () {
         }
     }
 
-    others.send('kaola');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

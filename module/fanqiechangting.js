@@ -123,11 +123,11 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
- 
+
         others.clear();
    }
 
-    others.send('fanqiechangting');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

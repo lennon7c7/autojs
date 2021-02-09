@@ -413,7 +413,7 @@ s.start = function () {
         }
     }
 
-    others.send('zhongqingkandian');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

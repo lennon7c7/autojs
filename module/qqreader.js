@@ -166,7 +166,7 @@ s.start = function () {
         }
     }
 
-    others.send('qqreader');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

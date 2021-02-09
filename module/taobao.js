@@ -441,7 +441,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send('taobao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

@@ -197,7 +197,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send('jingdonglite');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

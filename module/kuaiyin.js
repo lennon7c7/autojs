@@ -58,7 +58,7 @@ function taskAd4() {
         if (!clicks.centerXyByText('立即观看')) {
             return false;
         }
- 
+
         if (!others.closeAdBackToElement(text('福利'))) {
             return false;
         }
@@ -113,7 +113,7 @@ s.start = function () {
         }
     }
 
-    others.send('kuaiyin');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

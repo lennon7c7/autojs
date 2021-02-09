@@ -223,7 +223,7 @@ s.start = function () {
         }
     }
 
-    others.send('huoshan');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

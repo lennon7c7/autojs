@@ -158,7 +158,7 @@ s.start = function () {
         }
     }
 
-    others.send('qutoutiao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

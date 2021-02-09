@@ -181,7 +181,7 @@ function taskNews() {
         if (text('任务完成，点击领取金币').exists()) {
             break;
         }
-  
+
         others.back();
     }
 
@@ -223,7 +223,7 @@ s.start = function () {
         }
     }
 
-    others.send('qqbrowser');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

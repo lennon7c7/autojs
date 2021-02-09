@@ -180,7 +180,7 @@ s.start = function () {
         }
     }
 
-    others.send('baidutieba');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

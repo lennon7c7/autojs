@@ -241,7 +241,7 @@ s.start = function () {
         }
     }
 
-    others.send('baiduhaokan');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

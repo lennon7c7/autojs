@@ -268,7 +268,7 @@ function taskLittleVideo() {
         swipes.right();
         elementParent = className('android.widget.FrameLayout').findOne();
         if (elementParent.find(className('android.widget.RelativeLayout')).size() <= 9) {
-            continue;
+
         } else {
             sleeps.s2to10();
         }
@@ -311,7 +311,7 @@ s.start = function () {
         }
     }
 
-    others.send('toutiao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

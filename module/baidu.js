@@ -316,7 +316,7 @@ s.start = function () {
         }
     }
 
-    others.send('baidu');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

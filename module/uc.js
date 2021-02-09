@@ -174,7 +174,7 @@ s.start = function () {
         }
     }
 
-    others.send('uc');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

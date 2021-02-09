@@ -132,7 +132,7 @@ s.start = function () {
         }
     }
 
-    others.send('mojitianqi');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

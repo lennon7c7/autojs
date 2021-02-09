@@ -72,7 +72,7 @@ s.start = function () {
         }
     }
 
-    others.send('jukandian');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

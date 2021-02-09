@@ -127,7 +127,7 @@ s.start = function () {
         }
     }
 
-    others.send('tencentnow');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

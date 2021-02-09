@@ -239,7 +239,7 @@ s.start = function () {
         }
     }
 
-    // others.send('zuiqiangdaren');
+    // others.send(s.PACKAGE_NAME);
 
     return false;
 };

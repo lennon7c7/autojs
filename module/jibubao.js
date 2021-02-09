@@ -65,7 +65,7 @@ function taskLotteryAd() {
         if (!clicks.element(id('scene_ad_sdk_rewardItem').find()[i])) {
             return false;
         }
-   
+
         clicks.xy(300, 1300);
 
         if (!text('剩余次数:0次').exists() && !others.closeAdBackToElement(text('继续赚钱'))) {
@@ -99,7 +99,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send('jibubao');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };

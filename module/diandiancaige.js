@@ -82,7 +82,7 @@ s.start = function () {
         }
     }
 
-    others.send('diandiancaige');
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };
