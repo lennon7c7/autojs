@@ -45,8 +45,12 @@ function taskCheckin() {
 function taskClear() {
     log('----------', s.PACKAGE_NAME, 'taskClear start ----------');
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
+    }
+
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
     }
 
     if (text('完成1次手机空间清理（1/1）').exists()) {
@@ -64,7 +68,7 @@ function taskClear() {
     }
     sleeps.s2to3();
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
     }
 
@@ -83,8 +87,12 @@ function taskClear() {
 function taskAd() {
     log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
+    }
+
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
     }
 
     if (text('福利中心').exists() && !textStartsWith('观看2个视频得').exists()) {
@@ -119,8 +127,12 @@ function taskAd() {
 function taskSearch() {
     log('----------', s.PACKAGE_NAME, 'taskSearch start ----------');
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
+    }
+
+    if (clicks.textIfExists('领奖励')) {
+        clicks.centerXyByText('知道了');
     }
 
     if (text('逛5秒或点击任意内容（1/1）').exists()) {
@@ -132,7 +144,7 @@ function taskSearch() {
         sleeps.s10();
     }
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
     }
 
@@ -153,7 +165,7 @@ function taskSearch() {
 function taskNews() {
     log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
 
-    if (!others.backToElement(text('福利中心'))) {
+    if (!exists.backToElement(text('福利中心'))) {
         return false;
     }
 
