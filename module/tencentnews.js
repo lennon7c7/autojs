@@ -149,11 +149,7 @@ function taskRedpackNow() {
         return false;
     }
 
-    if (!clicks.centerXyByText('我的红包')) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('NOW直播红包')) {
+    if (!clicks.text('最高5元到账')) {
         return false;
     }
 
@@ -183,11 +179,11 @@ s.start = function () {
         clicks.descIfExists('Tencent news');
 
         status0 = taskCheckin();
-        status1 = taskNews();
-        status2 = taskVideo();
+        // status1 = taskNews();
+        // status2 = taskVideo();
         status3 = taskRedpackNow();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status3) {
             return true;
         }
     }
