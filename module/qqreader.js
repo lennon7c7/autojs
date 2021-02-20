@@ -152,7 +152,7 @@ function taskCashout() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 12; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
@@ -164,6 +164,8 @@ s.start = function () {
         if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);

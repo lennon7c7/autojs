@@ -82,7 +82,7 @@ function taskNews() {
             return false;
         }
 
-        if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
+        if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
             return true;
         }
 
@@ -95,7 +95,7 @@ function taskNews() {
 
         others.back();
 
-        if (text('今日任务已全部完成9次，明天再来吧~').exists()) {
+        if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
             return true;
         }
     }
@@ -109,7 +109,7 @@ function taskNews() {
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!exists.backToElement(text('每日福利'))) {
         return false;
     }
 
@@ -178,7 +178,7 @@ function closeAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status1 = taskCheckin();
@@ -189,6 +189,8 @@ s.start = function () {
         if (status1 && status2 && status3 && status4) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);

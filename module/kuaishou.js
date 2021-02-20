@@ -125,7 +125,7 @@ function taskAd10() {
         if (!others.closeAdBackToElement(text('日常任务'))) {
             return false;
         }
-      }
+    }
 
     return true;
 }
@@ -201,6 +201,8 @@ s.start = function () {
         if (status0 && status2 && status4) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);

@@ -62,7 +62,7 @@ function taskAd4() {
         if (!others.closeAdBackToElement(text('福利'))) {
             return false;
         }
-   }
+    }
 
     return false;
 }
@@ -101,7 +101,7 @@ function taskCashout() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskAd10();
@@ -111,6 +111,8 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);

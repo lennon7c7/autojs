@@ -117,6 +117,8 @@ s.start = function () {
         if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);

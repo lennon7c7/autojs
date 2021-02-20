@@ -237,6 +237,9 @@ s.closeAdBackToElement = function (element) {
         } else if (text('关闭广告').exists()) {
             clicks.centerXyByText('关闭广告');
             break;
+        } else if (text('关闭试玩').exists()) {
+            clicks.centerXyByText('关闭试玩');
+            break;
         } else if (id('video_countdown').exists()) {
             clicks.centerXyById('video_countdown');
             break;

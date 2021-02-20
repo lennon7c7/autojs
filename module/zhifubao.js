@@ -72,6 +72,10 @@ function taskEverydayLottery() {
             return true;
         }
 
+        if (text('去逛逛').exists() && clicks.centerXyByText('去逛逛')) {
+            others.back();
+        }
+
         if (clicks.centerXyByText('参与抽奖')) {
             others.back2();
         }
@@ -129,16 +133,18 @@ function task0Lottery() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status0 = taskCheckin();
         status1 = task0Lottery();
         status2 = taskEverydayLottery();
+        status0 = taskCheckin();
 
         if (status0 && status1 && status2) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);
