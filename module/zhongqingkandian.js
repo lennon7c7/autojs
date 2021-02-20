@@ -185,6 +185,53 @@ function taskAd() {
     return true;
 }
 
+// 任务-火爆转发
+function taskShare() {
+    log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
+
+    if (!clicks.backToElement(text('我的'))) {
+        return false;
+    }
+
+    if (!clicks.rectByText('火爆转发')) {
+        return false;
+    }
+    sleeps.s2to3();
+
+    if (!clicks.rectByText('转发赚钱')) {
+        return false;
+    }
+
+    if (!clicks.rectByText('share-4327')) {
+        return false;
+    }
+
+    if (!clicks.rectByText('Share')) {
+        return false;
+    }
+
+    if (!clicks.rectByText('Stay in WeChat')) {
+        return false;
+    }
+
+    if (!clicks.rectByText('share-4327')) {
+        return false;
+    }
+
+    if (!clicks.rectByLastText('中青看点')) {
+        return false;
+    }
+
+    clicks.textIfExists('点击查看全文');
+
+    swipes.down();
+
+    app.launch(s.PACKAGE_NAME);
+    sleep(10 * 1000);
+
+    return true
+}
+
 // 任务-抽奖
 function taskLottery() {
     log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
@@ -401,10 +448,11 @@ s.start = function () {
         taskNews();
         taskVideo();
         status1 = taskAd();
-        status2 = taskLottery();
-        if (status2) {
-            taskLotteryAd();
-        }
+        // status2 = taskLottery();
+        // if (status2) {
+        //     taskLotteryAd();
+        // }
+        status2 = taskShare();
         taskKankanzhuang();
         status3 = taskCashout();
 
