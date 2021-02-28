@@ -21,7 +21,7 @@ function taskLogin() {
 
     others.back();
 
-    clicks.xy(888, 2200);
+    toPageMe();
 
     if (text('编辑资料').exists()) {
         return true;
@@ -112,7 +112,7 @@ function taskRedpack() {
 
     others.back2();
 
-    clicks.xy(888, 2200);
+    toPageMe();
 
     if (!clicks.centerXyByText('福利中心')) {
         return false;
@@ -159,7 +159,7 @@ function taskCashout() {
 
     others.back2();
 
-    clicks.xy(888, 2200);
+    toPageMe();
 
     if (!clicks.centerXyByText('福利中心')) {
         return false;
@@ -170,6 +170,20 @@ function taskCashout() {
     }
 
     return true;
+}
+
+/**
+ * 跳转页面-我
+ */
+function toPageMe() {
+    // 页面-我
+    className('android.widget.LinearLayout').find().forEach((value, key) => {
+        if (value.childCount() !== 5) {
+            return
+        }
+
+        clicks.element(value.child(4));
+    });
 }
 
 /**

@@ -43,7 +43,7 @@ function taskPlayground() {
         clicks.text('去评论');
     }
 
-    for (var i = 0; i < 40; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!others.backToElement(text('今日'))) {
             return false;
         }
@@ -88,7 +88,7 @@ function taskRandomPage() {
 
     text('10豆免费抽').exists() && clicks.xy(930, 1030);
 
-    for (var i = 0; i < 40; i++) {
+    for (var i = 0; i < 20; i++) {
         if (!others.backToElement(text('每日赚豆'))) {
             return false;
         }
@@ -154,7 +154,7 @@ function taskLottery() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status1 = taskPlayground();
@@ -164,6 +164,8 @@ s.start = function () {
         if (status0 && status1 && status2) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(s.PACKAGE_NAME);
