@@ -10,6 +10,7 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.tencent.weishi';
 s.VERSION = '8.6.0.588';
+s.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db983efb3cead37706774.apk';
 
 /**
  * 任务-登录
