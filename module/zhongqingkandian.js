@@ -9,7 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'cn.youth.news';
-s.VERSION = '2.5.4';
+s.VERSION = '2.4.6';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/09/04/3/120_f074497d052d75bf003c1f10f13e24c5.apk';
 
 // 任务-限时
 // every 20m
