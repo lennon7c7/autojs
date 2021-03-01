@@ -30,7 +30,7 @@ function taskMomentLike() {
         clicks.xy(108, 136)
     }
 
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 10; i++) {
         clickLikeButton();
     }
 
