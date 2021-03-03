@@ -73,30 +73,19 @@ function taskNews() {
 
     swipes.scrollDown();
 
-    if (!text('去阅读').exists()) {
-        return true;
-    }
-
-    for (var i = 0; i < 20; i++) {
-        if (!clicks.centerXyByText('去阅读')) {
+    for (var i = 0; i < 5; i++) {
+        if (!clicks.backToElement(text('去阅读'))) {
             return false;
         }
 
-        if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
-            return true;
-        }
-
-        clicks.textIfExists('确定');
         sleeps.s50();
+        for (var j = 0; j < 10; j++) {
+            if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
+                return true;
+            }
 
-        for (var j = 0; j < 3; j++) {
-            text('天天热点').exists() && clicks.xy(30, 1400) && others.back();
-        }
-
-        others.back();
-
-        if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
-            return true;
+            clicks.xy(500, 800);
+            others.back();
         }
     }
 
