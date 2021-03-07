@@ -350,6 +350,10 @@ s.lockScreen = function () {
  * @returns {boolean}
  */
 s.muteMusicVolume = function () {
+    // 因为存在BUG情况，所以还是暂时禁用
+    // 有时候不仅不能静音，还会开声音
+    return true;
+
     if (device.getMusicVolume() === 0) {
         return true;
     }
