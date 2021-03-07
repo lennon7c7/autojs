@@ -9,6 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.kuaiyin.player';
+s.VERSION = '4.00.01';
+s.APK = 'https://android-apps.pp.cn/fs08/2021/01/30/1/122_4b2b07f21638d3e320db17e5dbb7ce46.apk';
 
 // 任务-Ad
 function taskAd10() {
@@ -33,6 +35,7 @@ function taskAd10() {
         clicks.centerXyByText('看视频赚钱');
 
         others.closeAdBackToElement(text('福利'));
+        clicks.idIfExists('tv_close_bottom');
     }
 
     return true;
@@ -59,9 +62,8 @@ function taskAd4() {
             return false;
         }
 
-        if (!others.closeAdBackToElement(text('福利'))) {
-            return false;
-        }
+        others.closeAdBackToElement(text('福利'));
+        clicks.idIfExists('tv_close_bottom');
     }
 
     return false;
