@@ -10,6 +10,7 @@ var swipes = require('../function/swipes.js');
 var s = {};
 s.PACKAGE_NAME = 'com.shuqi.controller';
 s.VERSION = '11.2.4.122';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
 
 // 任务-Ad
 function taskAd() {
