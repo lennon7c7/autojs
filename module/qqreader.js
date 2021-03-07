@@ -10,6 +10,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.qq.reader';
+s.VERSION = '7.5.3.888';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca153ea385c33783b1a588.apk';
 
 // 任务-宝箱
 // every 1h
