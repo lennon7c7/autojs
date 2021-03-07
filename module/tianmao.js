@@ -9,6 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.tmall.wireless';
+s.VERSION = '9.10.0';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728e6c4ad7c98e4d02e857.apk';
 
 /**
  * 任务-签到
@@ -16,7 +18,7 @@ s.PACKAGE_NAME = 'com.tmall.wireless';
 function taskCheckin() {
     log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
 
-    if (!clicks.centerXyByText('我')) {
+    if (!others.backToElement(text('我'))) {
         return false;
     }
 
