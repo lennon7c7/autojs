@@ -9,6 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
+s.VERSION = '10.1.99.7000';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk';
 
 /**
  * 任务-签到
@@ -25,8 +27,6 @@ function taskCheckin() {
     }
 
     if (text('Membership').exists() && !clicks.centerXyByText('Membership')) {
-        return false;
-    } else if (text('支付宝会员').exists() && !clicks.centerXyByText('支付宝会员')) {
         return false;
     }
 
@@ -55,31 +55,59 @@ function taskCheckin() {
 function taskEverydayLottery() {
     log('----------', s.PACKAGE_NAME, 'taskEverydayLottery start ----------');
 
-    if (!others.backToElement(text('Home'))) {
+    if (!clicks.backToElement(text('Home'))) {
         return false;
     }
 
-    for (var i = 0; i < 5; i++) {
-        if (!clicks.centerXyByText('天天抽奖-每日领免费福利')) {
-            return false;
-        }
-
-        if (!clicks.centerXyByText('0元抽奖')) {
-            return false;
-        }
-
-        if (text('去领卡').exists()) {
-            return true;
-        }
-
-        if (text('去逛逛').exists() && clicks.centerXyByText('去逛逛')) {
-            others.back();
-        }
-
-        if (clicks.centerXyByText('参与抽奖')) {
-            others.back2();
-        }
+    if (!clicks.backToElement(text('天天抽奖-每日领免费福利'))) {
+        return false;
     }
+
+    for (var i = 0; i < 20; i++) {
+        if (!clicks.backToElement(text('抽奖机会'))) {
+            return false;
+        }
+
+        buttonTextList = [
+            '逛一逛', '现在抢', '立即去', '加马力',
+            '去领取', '去种树', '去看看',
+            '领好礼', '领金币',
+        ];
+        buttonTextList.forEach((value) => {
+            clicks.textIfExists('领取');
+
+            if (!text(value).exists()) {
+                return false;
+            }
+
+            if (!clicks.text(value)) {
+                return false;
+            }
+
+            sleeps.s15to20();
+            others.back();
+        });
+    }
+
+    // for (var i = 0; i < 5; i++) {
+    //     if (!clicks.backToElement(text('天天抽奖-每日领免费福利'))) {
+    //         return false;
+    //     }
+
+    //     if (!clicks.centerXyByText('0元抽奖')) {
+    //         return false;
+    //     }
+
+    //     if (text('去领卡').exists()) {
+    //         return true;
+    //     }
+
+    //     if (text('去逛逛').exists() && clicks.centerXyByText('去逛逛')) {
+    //         others.back();
+    //     }
+
+    //     clicks.centerXyByText('参与抽奖');
+    // }
 
     return false;
 }
@@ -90,7 +118,7 @@ function taskEverydayLottery() {
 function task0Lottery() {
     log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
-    if (!others.backToElement(text('Home'))) {
+    if (!clicks.backToElement(text('Home'))) {
         return false;
     }
 
@@ -109,7 +137,9 @@ function task0Lottery() {
     others.back();
 
     for (var i = 0; i < 5; i++) {
-        clicks.centerXyByText('一分惊喜');
+        if (!clicks.backToElement(text('一分惊喜'))) {
+            return false;
+        }
 
         if (clicks.centerXyByText('0元抽奖')) {
             if (clicks.centerXyByText('今日抽奖机会已用完')) {
@@ -121,7 +151,6 @@ function task0Lottery() {
 
         if (clicks.centerXyByText('0元抽奖')) {
             clicks.centerXyByText('关注');
-            others.back();
         }
     }
 
