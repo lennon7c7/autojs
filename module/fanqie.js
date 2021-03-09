@@ -9,6 +9,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.dragon.read';
+s.VERSION = '3.1.1';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/07/19/8/120_187f19f4e3c69034c128773d04bf5382.apk';
 
 // 任务-宝箱
 // every 20m
