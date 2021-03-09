@@ -47,7 +47,11 @@ function taskCheckin() {
         return true;
     }
 
-    clicks.xy(135, 720);
+    clicks.textIfExists('签到领现金');
+
+    if (clicks.textIfExists('青豆翻倍')) {
+        others.closeAdBackToElement(text('任务'));
+    }
 
     if (textStartsWith('看视频翻').exists()) {
         clicks.element(textStartsWith('看视频翻'));
@@ -76,6 +80,10 @@ function taskNews() {
     if (text('幸运奖励').exists()) {
         clicks.centerXyByText('幸运奖励');
         others.back();
+    }
+
+    if (clicks.textIfExists('青豆翻倍')) {
+        others.closeAdBackToElement(text('任务'));
     }
 
     if (text('每日任务').exists() && !text('去阅读').exists()) {
@@ -449,10 +457,10 @@ s.start = function () {
         taskNews();
         taskVideo();
         status1 = taskAd();
-        // status2 = taskLottery();
-        // if (status2) {
-        //     taskLotteryAd();
-        // }
+        status2 = taskLottery();
+        if (status2) {
+            taskLotteryAd();
+        }
         status2 = taskShare();
         taskKankanzhuang();
         status3 = taskCashout();
