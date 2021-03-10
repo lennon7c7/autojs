@@ -26,7 +26,7 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists()) {
+    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists() || text('明日两倍').exists()) {
         return true;
     }
 
@@ -38,7 +38,7 @@ function taskCheckin() {
         return true;
     }
 
-    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists()) {
+    if (text('明日来领翻倍红包').exists() || text('记得明天再来哦').exists() || text('明日再来').exists() || text('明日两倍').exists()) {
         return true;
     }
 
