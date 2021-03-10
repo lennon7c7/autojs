@@ -13,6 +13,28 @@ s.VERSION = '1.56.0.42';
 s.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400aead0ff3d2179fb76fb.apk';
 
 /**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+function taskLogin() {
+    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+
+    if (!text('微信登录').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('微信登录')) {
+        return false;
+    }
+
+    if (!clicks.text('Agree')) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 任务-签到
  */
 function taskCheckin() {
@@ -25,7 +47,7 @@ function taskCheckin() {
     if (!clicks.centerXyByText('热门')) {
         return false;
     }
-  
+
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 219, 273)) {
         return false;
     }
@@ -114,17 +136,18 @@ s.redPackage = function () {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status0 = taskCheckin();
+        status0 = taskLogin();
+        status1 = taskCheckin();
 
-        if (status0) {
+        if (status0 && status1) {
             return true;
         }
- 
+
         others.clear();
-   }
+    }
 
     others.send(s.PACKAGE_NAME);
 
