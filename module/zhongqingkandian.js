@@ -53,6 +53,10 @@ function taskCheckin() {
         others.closeAdBackToElement(text('任务'));
     }
 
+    if (textStartsWith('看视频再赚').exists() && clicks.element(textStartsWith('看视频再赚'))) {
+        others.closeAdBackToElement(text('任务'));
+    }
+
     if (textStartsWith('看视频翻').exists()) {
         clicks.element(textStartsWith('看视频翻'));
     }
@@ -74,7 +78,6 @@ function taskNews() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     if (text('幸运奖励').exists()) {
@@ -122,7 +125,6 @@ function taskVideo() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     if (text('每日任务').exists() && !text('去观看').exists()) {
@@ -153,7 +155,6 @@ function taskVideo() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     return true;
@@ -169,7 +170,6 @@ function taskAd() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     for (var i = 0; i < 5; i++) {
@@ -188,7 +188,6 @@ function taskAd() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     return true;
@@ -323,6 +322,9 @@ function taskLotteryAd() {
 function taskKankanzhuang() {
     log('----------', s.PACKAGE_NAME, 'taskKankanzhuang start ----------');
 
+    app.launch(s.PACKAGE_NAME);
+    sleep(10 * 1000);
+
     if (!others.backToElement(text('任务'))) {
         return false;
     }
@@ -409,7 +411,6 @@ function taskKankanzhuang() {
 
     if (text('领奖励').exists()) {
         clicks.centerXyByText('领奖励');
-        clicks.centerXyByText('开心收下');
     }
 
     return false;
