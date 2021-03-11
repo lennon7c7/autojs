@@ -68,10 +68,16 @@ function taskEverydayLottery() {
             return false;
         }
 
+        if (text('已领卡').find().size() > 10) {
+            break;
+        }
+
         buttonTextList = [
-            '逛一逛', '现在抢', '立即去', '加马力',
+            '逛一逛', '现在抢', '加马力', '开宝箱',
             '去领取', '去种树', '去看看',
             '领好礼', '领金币',
+            '立即去', '立即兑',  
+
         ];
         buttonTextList.forEach((value) => {
             clicks.textIfExists('领取');
@@ -89,25 +95,25 @@ function taskEverydayLottery() {
         });
     }
 
-    // for (var i = 0; i < 5; i++) {
-    //     if (!clicks.backToElement(text('天天抽奖-每日领免费福利'))) {
-    //         return false;
-    //     }
+    for (var i = 0; i < 5; i++) {
+        if (!clicks.backToElement(text('天天抽奖-每日领免费福利'))) {
+            return false;
+        }
 
-    //     if (!clicks.centerXyByText('0元抽奖')) {
-    //         return false;
-    //     }
+        if (!clicks.centerXyByText('0元抽奖')) {
+            return true;
+        }
 
-    //     if (text('去领卡').exists()) {
-    //         return true;
-    //     }
+        if (text('去领卡').exists()) {
+            return true;
+        }
 
-    //     if (text('去逛逛').exists() && clicks.centerXyByText('去逛逛')) {
-    //         others.back();
-    //     }
+        if (text('去逛逛').exists() && clicks.centerXyByText('去逛逛')) {
+            others.back();
+        }
 
-    //     clicks.centerXyByText('参与抽奖');
-    // }
+        clicks.centerXyByText('参与抽奖');
+    }
 
     return false;
 }
