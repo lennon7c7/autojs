@@ -44,7 +44,7 @@ function taskPlayground() {
     }
 
     for (var i = 0; i < 20; i++) {
-        if (!others.backToElement(text('今日'))) {
+        if (!exists.backToElement(text('今日'))) {
             return false;
         }
 
@@ -57,6 +57,11 @@ function taskPlayground() {
             } else if (clicks.text('立即购买')) {
             }
         } else {
+            if (text('考拉海购-404错误页').exists()) {
+                clicks.textIfExists('返回首页');
+                return true;
+            }
+
             for (var k = 0; k < 8; k++) {
                 swipes.down();
                 sleeps.s2to3();
@@ -64,7 +69,8 @@ function taskPlayground() {
         }
     }
 
-    if (text('再逛逛').exists() && !text('去逛逛').exists()) {
+    if ((text('再逛逛').exists() && !text('去逛逛').exists()) ||
+        text('再逛逛').find().size() >= 5) {
         return true;
     }
 
@@ -107,6 +113,11 @@ function taskRandomPage() {
         if (clicks.textIfExists('进店领豆')) {
         } else if (clicks.textIfExists('去看看')) {
             clicks.textIfExists('快打开看看吧~');
+        }
+
+        if (text('考拉海购-404错误页').exists()) {
+            clicks.textIfExists('返回首页');
+            return true;
         }
 
         for (var j = 0; j < 8; j++) {
