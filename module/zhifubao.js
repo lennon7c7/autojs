@@ -50,6 +50,29 @@ function taskCheckin() {
 }
 
 /**
+ * 任务-逛15秒赚积分
+ */
+function task15s() {
+    log('----------', s.PACKAGE_NAME, 'task15s start ----------');
+
+    if (!clicks.text('逛15秒赚积分')) {
+        return false;
+    }
+
+    if (text('每日赚积分').exists() && textContains('已完成浏览任务').exists()) {
+        return true;
+    }
+
+    sleeps.s15();
+
+    if (text('每日赚积分').exists() && textContains('已完成浏览任务').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
@@ -76,7 +99,7 @@ function taskEverydayLottery() {
             '逛一逛', '现在抢', '加马力', '开宝箱',
             '去领取', '去种树', '去看看',
             '领好礼', '领金币',
-            '立即去', '立即兑',  
+            '立即去', '立即兑',
 
         ];
         buttonTextList.forEach((value) => {
@@ -174,8 +197,9 @@ s.start = function () {
         status1 = task0Lottery();
         status2 = taskEverydayLottery();
         status0 = taskCheckin();
+        status3 = task15s();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1 && status2 && status3) {
             return true;
         }
 
