@@ -222,8 +222,15 @@ function taskShare() {
         return false;
     }
 
-    if (!clicks.rectByText('share-4327')) {
+    if (text('share-4327').exists() && !clicks.rectByText('share-4327')) {
         return false;
+    } else {
+        // 因为无法查询元素，所以用土办法
+        !text('中青看点').exists() && clicks.xy(500, 250) && !text('中青看点').exists() && others.back();
+        !text('中青看点').exists() && clicks.xy(500, 500) && !text('中青看点').exists() && others.back();
+        !text('中青看点').exists() && clicks.xy(500, 750) && !text('中青看点').exists() && others.back();
+        !text('中青看点').exists() && clicks.xy(500, 900) && !text('中青看点').exists() && others.back();
+        !text('中青看点').exists() && clicks.xy(500, 1050) && !text('中青看点').exists() && others.back();
     }
 
     if (!clicks.rectByLastText('中青看点')) {
