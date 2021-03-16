@@ -215,7 +215,7 @@ s.closeAdBackToElement = function (element) {
 
     sleeps.s30();
 
-    if (textStartsWith('浏览').exists()) {
+    if (textContains('浏览').exists()) {
         swipes.down();
     }
 
@@ -224,6 +224,9 @@ s.closeAdBackToElement = function (element) {
 
         if (id('ksad_end_close_btn').exists()) {
             clicks.centerXyById('ksad_end_close_btn');
+            break;
+        } else if (id('tt_video_ad_close').exists()) {
+            clicks.centerXyById('tt_video_ad_close');
             break;
         } else if (id('tt_video_ad_close_layout').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
@@ -248,6 +251,8 @@ s.closeAdBackToElement = function (element) {
             break;
         }
     }
+
+    clicks.xy(944, 188);
 
     for (var i = 0; i < 10; i++) {
         if (element.exists()) {
