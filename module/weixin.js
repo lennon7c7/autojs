@@ -120,6 +120,34 @@ function closeAd() {
     return false;
 }
 
+// 任务-必看严选
+function taskReadBiKanYanXuan() {
+    log('----------', s.PACKAGE_NAME, 'taskRead start ----------');
+
+    if (!clicks.backToElement(text('必看严选'))) {
+        return false;
+    }
+
+    if (!clicks.rectByText('今日阅读赚钱已开启~')) {
+        return false;
+    }
+
+    for (var i = 0; i < 20; i++) {
+        sleeps.s15to20();
+
+        if (text('开始阅读').exists()) {
+            clicks.text('开始阅读');
+            continue;
+        } else if (text('今日阅读已达上限').exists() || text('今日阅读已达上限').exists() || text('倒计时结束后即可阅读').exists()) {
+            return true;
+        }
+
+        others.back();
+    }
+
+    return false;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -128,12 +156,15 @@ s.start = function () {
     for (var i = 0; i < 3; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status = taskMomentLike();
+        status0 = taskReadBiKanYanXuan();
+        status1 = taskMomentLike();
 
-        if (status) {
+        if (status0 && status1) {
             return true;
         }
     }
+
+    others.send(s.PACKAGE_NAME);
 
     return false;
 };
