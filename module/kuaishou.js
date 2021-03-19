@@ -160,6 +160,33 @@ function taskLive() {
     return false;
 }
 
+// 任务-打开小程序
+function taskOpenMP() {
+    log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
+
+    if (!others.backToElement(text('日常任务'))) {
+        return false;
+    }
+
+    if (!text('去打开').exists()) {
+        return true;
+    }
+
+    if (!clicks.text('去打开')) {
+        return false;
+    }
+
+    if (!others.backToElement(text('日常任务'))) {
+        return false;
+    }
+
+    if (!text('去打开').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-视频
 function taskVideo() {
     log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
@@ -196,6 +223,7 @@ s.start = function () {
         status2 = taskAd10();
         // status3 = task0Lottery();
         status4 = taskLive();
+        taskOpenMP();
         taskVideo();
 
         if (status0 && status2 && status4) {
