@@ -30,11 +30,12 @@ function taskCheckin() {
         return false;
     }
 
+    clicks.textIfExists('全部领取');
     if (!text('每日赚积分').exists() || !clicks.centerXyByText('每日赚积分')) {
         return false;
     }
 
-    if (!text('签到领积分').exists()) {
+    if (text('每日赚积分').exists() && !text('签到领积分').exists()) {
         return true;
     }
 
@@ -86,18 +87,18 @@ function taskEverydayLottery() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 3; i++) {
         if (!clicks.backToElement(text('抽奖机会'))) {
             return false;
         }
 
-        if (text('已领卡').find().size() > 10) {
+        if (text('已领卡').find().size() > 6) {
             break;
         }
 
         buttonTextList = [
             '逛一逛', '现在抢', '加马力', '开宝箱',
-            '去领取', '去种树', '去看看',
+            '去领取', '去种树', '去看看', '去抽卡',
             '领好礼', '领金币',
             '立即去', '立即兑',
 
@@ -147,6 +148,9 @@ function taskEverydayLottery() {
 function task0Lottery() {
     log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
 
+    back();
+    back();
+
     if (!clicks.backToElement(text('Home'))) {
         return false;
     }
@@ -171,6 +175,10 @@ function task0Lottery() {
         }
 
         if (clicks.centerXyByText('0元抽奖')) {
+            if (text('关注').exists()) {
+                clicks.centerXyByText('关注');
+            }
+         
             if (clicks.centerXyByText('今日抽奖机会已用完')) {
                 return true;
             }
@@ -194,12 +202,12 @@ s.start = function () {
     for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
-        status1 = task0Lottery();
-        status2 = taskEverydayLottery();
         status0 = taskCheckin();
-        status3 = task15s();
+        status1 = task15s();
+        task0Lottery();
+        taskEverydayLottery();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1) {
             return true;
         }
 
