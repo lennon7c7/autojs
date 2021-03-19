@@ -217,9 +217,7 @@ s.closeAdBackToElement = function (element) {
 
     sleeps.s30();
 
-    if (textContains('浏览').exists()) {
-        swipes.down();
-    }
+    swipes.down();
 
     for (var i = 0; i < 10; i++) {
         sleeps.s3();
