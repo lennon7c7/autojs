@@ -58,7 +58,7 @@ function taskVideo() {
 
         swipes.down1600();
         sleeps.s2to5();
-        swipes.refresh1300();
+        swipes.refresh1500();
     }
 
     status = checkVideo();
