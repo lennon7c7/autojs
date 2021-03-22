@@ -26,12 +26,13 @@ function taskCheckin() {
         return false;
     }
 
-    if (text('Membership').exists() && !clicks.centerXyByText('Membership')) {
+    if (!clicks.centerXyByText('Membership')) {
         return false;
     }
 
+    sleeps.s2to3();
     clicks.textIfExists('全部领取');
-    if (!text('每日赚积分').exists() || !clicks.centerXyByText('每日赚积分')) {
+    if (!clicks.centerXyByText('每日赚积分')) {
         return false;
     }
 
@@ -39,11 +40,11 @@ function taskCheckin() {
         return true;
     }
 
-    if (text('签到领积分').exists() && !clicks.centerXyByText('签到领积分')) {
+    if (!clicks.centerXyByText('签到领积分')) {
         return false;
     }
 
-    if (!text('签到领积分').exists()) {
+    if (text('每日赚积分').exists() && !text('签到领积分').exists()) {
         return true;
     }
 

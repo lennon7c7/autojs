@@ -25,12 +25,12 @@ function taskAd() {
             return true;
         }
 
-        if (text('快速得百万金币').exists() && !clicks.centerXyByText('快速得百万金币')) {
+        if (!clicks.centerXyByTextOrDesc('快速得百万金币')) {
             return false;
-        } else if (desc('快速得百万金币').exists() && !clicks.centerXyByDesc('快速得百万金币')) {
-            return false;
-        } else {
-            return false;
+        }
+
+        if (text('快速得百万金币').exists()) {
+            continue;
         }
 
         if (!others.closeAdBackToElement(text('福利'))) {
