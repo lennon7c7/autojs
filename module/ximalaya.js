@@ -25,6 +25,11 @@ function taskCheckin() {
         closeAd();
     }
 
+    if (text('立即补签').exists()) {
+        clicks.centerXyByText('立即补签');
+        closeAd();
+    }
+
     return true;
 }
 
