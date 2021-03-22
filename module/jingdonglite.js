@@ -11,6 +11,8 @@ var swipes = require('../function/swipes.js');
 
 var s = {};
 s.PACKAGE_NAME = 'com.jd.jdlite';
+s.VERSION = '1.0.0';
+s.APK = 'https://android-apps.pp.cn/fs08/2020/05/07/7/110_8ea7cfa54ea9714d64d0a1d96087a151.apk';
 
 // 任务-签到
 function taskCheckin() {
@@ -22,14 +24,14 @@ function taskCheckin() {
 
     if (text('现金签到').exists() && !clicks.centerXyByText('现金签到')) {
         return false;
+    } else if (text('签到领现金').exists() && !clicks.centerXyByText('签到领现金')) {
+        return false;
     }
 
     if (text('邀好友解锁额外红包').exists()) {
         others.back();
-        if (text('残忍拒绝').exists()) {
-            clicks.centerXyByText('残忍拒绝');
-        } else if (text('残忍离开').exists()) {
-            clicks.centerXyByText('残忍离开');
+        if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
+        } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
         }
 
         return true;
@@ -41,10 +43,8 @@ function taskCheckin() {
 
     if (text('邀好友解锁额外红包').exists()) {
         others.back();
-        if (text('残忍拒绝').exists()) {
-            clicks.centerXyByText('残忍拒绝');
-        } else if (text('残忍离开').exists()) {
-            clicks.centerXyByText('残忍离开');
+        if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
+        } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
         }
 
         return true;
@@ -56,6 +56,10 @@ function taskCheckin() {
 // 任务-逛商品赚金币
 function taskProduct() {
     log('----------', s.PACKAGE_NAME, 'taskProduct start ----------');
+
+    if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
+    } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
+    }
 
     if (!others.backToElement(desc('我的'))) {
         return false;
