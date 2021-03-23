@@ -13,6 +13,32 @@ s.VERSION = '6.2.70';
 s.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a31ad9f63ef739b4f251.apk';
 
 /**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+ function taskLogin() {
+    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+
+    if (text('我的红包').exists() && !desc('微信').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByDesc('微信')) {
+        return false;
+    }
+
+    if (text('Agree').exists() && !clicks.text('Agree')) {
+        return false;
+    }
+
+    if (text('我的红包').exists() && !desc('微信').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * 任务-签到
  */
 function taskCheckin() {
@@ -21,6 +47,10 @@ function taskCheckin() {
     clicks.descIfExists('Tencent news');
 
     if (!others.backToElement(text('我的 '))) {
+        return false;
+    }
+
+    if (!taskLogin()) {
         return false;
     }
 
