@@ -11,6 +11,36 @@ var s = {};
 s.PACKAGE_NAME = 'com.jt.hanhan.video';
 
 /**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+ function taskLogin() {
+    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+
+    if (text('日常任务').exists() && !text('登录领取最高28元红包').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('登录领取最高28元红包')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('微信一键登录')) {
+        return false;
+    }
+
+    if (text('Agree').exists() && !clicks.text('Agree')) {
+        return false;
+    }
+
+    if (text('日常任务').exists() && !text('登录领取最高28元红包').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * 任务-签到
  */
 function taskCheckin() {
@@ -58,6 +88,10 @@ function taskAd() {
         return false;
     }
 
+    if (!taskLogin()) {
+        return false;
+    }
+
     for (var i = 0; i < 10; i++) {
         if (text('日常任务').exists() && !text('领取').exists()) {
             return true;
@@ -84,7 +118,7 @@ function taskAd() {
  * @returns {boolean}
  */
 s.start = function () {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 10; i++) {
         others.launch(s.PACKAGE_NAME);
 
         status0 = taskCheckin();
