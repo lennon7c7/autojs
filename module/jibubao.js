@@ -1,5 +1,7 @@
 /**
  * 计步宝-任务
+ * 当前存在问题
+ * 1. 当金额大于17元时，可能会被制裁，只能获得1金币
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
