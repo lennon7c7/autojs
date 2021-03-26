@@ -33,8 +33,8 @@ s.fixDir = function () {
         'fanqie.js', 'fanqiechangting.js',
         'huohuoshipin.js', 'huoshan.js',
         'jibubao.js', 'jingdonglite.js', 'jukandian.js',
-        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 
-        'mojitianqi.js', 'momo.js', 
+        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js',
+        'mojitianqi.js', 'momo.js',
         'oupenglite.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
         'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
@@ -230,6 +230,10 @@ s.closeAdBackToElement = function (element) {
             break;
         } else if (id('tt_video_ad_close_layout').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
+            break;
+        } else if (idContains('tt_video_ad_close_layout').exists()) {
+            idContains('tt_video_ad_close_layout').click();
+            sleep(3 * 1000);
             break;
         } else if (id('sp').exists()) {
             clicks.centerXyById('sp');
