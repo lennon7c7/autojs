@@ -33,11 +33,11 @@ s.fixDir = function () {
         'fanqie.js', 'fanqiechangting.js',
         'huohuoshipin.js', 'huoshan.js',
         'jibubao.js', 'jingdonglite.js', 'jukandian.js',
-        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js', 
-        'mojitianqi.js', 'momo.js', 
+        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js',
+        'mojitianqi.js', 'momo.js',
         'oupenglite.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
-        'taobao.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
+        'taobao.js', 'taobaolive.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
         'uc.js',
         'weishi.js', 'weixin.js', 'ximalaya.js', 'zhifubao.js', 'zhongqingkandian.js', 'zuiqiangdaren.js'];
     filename.forEach((value, key) => {

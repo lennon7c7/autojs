@@ -85,6 +85,9 @@ tianmao.start();
 taobao = require('module/taobao.js');
 taobao.start();
 
+taobaolive = require('module/taobaolive.js');
+taobaolive.start();
+
 tencentnews = require('module/tencentnews.js');
 tencentnews.start();
 
