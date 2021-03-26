@@ -61,6 +61,11 @@ s.initEnv = function () {
 
     setScreenMetrics(1080, 2340);
 
+    // 设置当前亮度模式为手动亮度
+    device.setBrightnessMode(0);
+    // 设置当前手动亮度为最暗
+    device.setBrightness(0);
+
     s.fixDir();
 };
 
