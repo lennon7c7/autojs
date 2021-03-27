@@ -423,6 +423,159 @@ function taskKankanzhuang() {
     return false;
 }
 
+// 任务-点击小程序
+function taskClickMP() {
+    log('----------', s.PACKAGE_NAME, 'taskClickMP start ----------');
+
+    for (var i = 0; i < 5; i++) {
+        app.launch(s.PACKAGE_NAME);
+        sleep(10 * 1000);
+
+        if (!clicks.backToElement(text('任务'))) {
+            return false;
+        }
+
+        if (text('领奖励').exists()) {
+            clicks.centerXyByText('领奖励');
+        }
+
+        if (text('任务').exists() && !exists.parent(text('完成4次新闻赚任务，额外奖励120青豆'), text('去阅读'))) {
+            return true;
+        }
+
+        if (!clicks.parent(text('完成4次新闻赚任务，额外奖励120青豆'), text('去阅读'))) {
+            return false;
+        }
+
+        if (!clicks.text('小程序')) {
+            return false;
+        }
+
+        second = 30;
+        if (textContains('180秒').exists()) {
+            second = 180;
+        } else if (textContains('120秒').exists()) {
+            second = 120;
+        } else if (textContains('60秒').exists()) {
+            second = 60;
+        }
+
+        if (!clicks.centerXyByText('免费赚金币')) {
+            return false;
+        }
+
+        clicks.textIfExists('立即体验');
+        clicks.textIfExists('立即体验');
+        if (text('立即体验').exists()) {
+            clicks.centerXyByText('立即体验');
+        }
+        if (text('立即体验').exists()) {
+            clicks.centerXyByText('立即体验');
+        }
+
+        clicks.textIfExists('Allow');
+        clicks.textIfExists('Allow');
+        if (text('Allow').exists()) {
+            clicks.centerXyByText('Allow');
+        }
+        if (text('Allow').exists()) {
+            clicks.centerXyByText('Allow');
+        }
+
+        sleeps.s10();
+        clicks.textIfExists('允许');
+        clicks.textIfExists('允许');
+        if (text('允许').exists()) {
+            clicks.centerXyByText('允许');
+        }
+        if (text('允许').exists()) {
+            clicks.centerXyByText('允许');
+        }
+        sleeps.s10();
+        // clicks.textIfExists('Allow');
+
+        if (second === 180) {
+            sleeps.s180to190();
+        } else if (second === 120) {
+            sleeps.s120to130();
+        } else if (second === 60) {
+            sleeps.s60to70();
+        } else {
+            sleeps.s35to40();
+        }
+    }
+
+    return false;
+}
+
+// 任务-点击任意6个内容
+function taskClick6() {
+    log('----------', s.PACKAGE_NAME, 'taskNews6 start ----------');
+
+    clicks.textIfExists('188');
+    clicks.textIfExists('288');
+    clicks.textIfExists('368');
+    clicks.textIfExists('展开');
+
+    for (var i = 0; i < 66; i++) {
+        if (!clicks.backToElement(text('任务'))) {
+            return false;
+        }
+
+        clicks.textIfExists('领奖励');
+
+        if (text('任务').exists() && !exists.parent(text('点击任意6个内容，阅读完成即可领取青豆'), text('去完成'))) {
+            return true;
+        }
+
+        if (!clicks.parent(text('点击任意6个内容，阅读完成即可领取青豆'), text('去完成'))) {
+            return false;
+        }
+
+        if (id('pop_close').exists()) {
+            clicks.id('pop_close');
+        } else if (text('closebtn').exists()) {
+            clicks.centerXyByText('closebtn');
+        } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
+            clicks.elementWidthHeight(className('android.view.View'), 90, 90);
+        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
+            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
+        }
+
+        randomClick = random();
+        if (randomClick > 0.7) {
+            clicks.xy(100, 350);
+        } else if (randomClick > 0.3) {
+            clicks.xy(100, 850);
+        } else {
+            clicks.xy(100, 1250);
+        }
+
+        if (!others.backToPackageName(s.PACKAGE_NAME)) {
+            return false;
+        }
+
+        sleeps.s3();
+        if (id('pop_close').exists()) {
+            clicks.id('pop_close');
+        } else if (text('closebtn').exists()) {
+            clicks.centerXyByText('closebtn');
+        } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
+            clicks.elementWidthHeight(className('android.view.View'), 90, 90);
+        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
+            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
+        }
+
+        clicks.textIfExists('展开全文');
+        clicks.textIfExists('点击阅读全文');
+        swipes.down();
+        clicks.textIfExists('加载更多');
+        sleeps.s10();
+    }
+
+    return false;
+}
+
 /**
  * 任务-提现
  */
@@ -471,6 +624,8 @@ s.start = function () {
         }
         status2 = taskShare();
         taskKankanzhuang();
+        taskClickMP();
+        taskClick6();
         status3 = taskCashout();
 
         if (status0 && status1 && status2 && status3 && status4) {

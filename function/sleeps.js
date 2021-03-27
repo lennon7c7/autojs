@@ -57,6 +57,14 @@ s.s60to70 = function () {
     s.custom(random(60, 70));
 };
 
+s.s120to130 = function () {
+    s.custom(random(120, 130));
+};
+
+s.s180to190 = function () {
+    s.custom(random(180, 190));
+};
+
 // 1秒
 s.s1 = function () {
     sleep(1 * 1000);

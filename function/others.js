@@ -61,6 +61,11 @@ s.initEnv = function () {
 
     setScreenMetrics(1080, 2340);
 
+    // 设置当前亮度模式为手动亮度
+    device.setBrightnessMode(0);
+    // 设置当前手动亮度为最暗
+    device.setBrightness(0);
+
     s.fixDir();
 };
 
@@ -230,6 +235,10 @@ s.closeAdBackToElement = function (element) {
             break;
         } else if (id('tt_video_ad_close_layout').exists()) {
             clicks.centerXyById('tt_video_ad_close_layout');
+            break;
+        } else if (idContains('tt_video_ad_close_layout').exists()) {
+            idContains('tt_video_ad_close_layout').click();
+            sleep(3 * 1000);
             break;
         } else if (id('sp').exists()) {
             clicks.centerXyById('sp');
