@@ -9,16 +9,16 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.kuaishou.nebula';
-s.VERSION = '3.0.40.619';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b7323978560407c768984d.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.kuaishou.nebula';
+currentAPP.VERSION = '3.0.40.619';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b7323978560407c768984d.apk';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(id('redFloat'))) {
         return false;
@@ -43,7 +43,7 @@ function taskCheckin() {
 
 // 任务-0元抽奖
 function task0Lottery() {
-    log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'task0Lottery start ----------');
 
     others.back3();
 
@@ -93,7 +93,7 @@ function task0Lottery() {
         }
 
         clicks.xy(207, 1293);
-        app.launch(s.PACKAGE_NAME);
+        app.launch(currentAPP.PACKAGE_NAME);
         sleeps.s2to3();
         others.back();
     }
@@ -105,7 +105,7 @@ function task0Lottery() {
 
 // 任务-10次广告
 function taskAd10() {
-    log('----------', s.PACKAGE_NAME, 'taskAd10 start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd10 start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -132,7 +132,7 @@ function taskAd10() {
 
 // 任务-直播
 function taskLive() {
-    log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLive start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -162,7 +162,7 @@ function taskLive() {
 
 // 任务-打开小程序
 function taskOpenMP() {
-    log('----------', s.PACKAGE_NAME, 'taskLive start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLive start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -189,7 +189,7 @@ function taskOpenMP() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     others.back3();
 
@@ -215,9 +215,9 @@ function taskVideo() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status2 = taskAd10();
@@ -233,9 +233,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

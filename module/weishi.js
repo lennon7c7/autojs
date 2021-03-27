@@ -7,17 +7,17 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tencent.weishi';
-s.VERSION = '8.6.0.588';
-s.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db983efb3cead37706774.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tencent.weishi';
+currentAPP.VERSION = '8.6.0.588';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db983efb3cead37706774.apk';
 
 /**
  * 任务-登录
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLogin start ----------');
 
     others.back();
 
@@ -42,7 +42,7 @@ function taskLogin() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     status = checkVideo();
     if (status) {
@@ -108,7 +108,7 @@ function checkVideo() {
 
 // 任务-领红包
 function taskRedpack() {
-    log('----------', s.PACKAGE_NAME, 'taskRedpack start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskRedpack start ----------');
 
     others.back2();
 
@@ -155,7 +155,7 @@ function taskRedpack() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     others.back2();
 
@@ -190,9 +190,9 @@ function toPageMe() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskLogin();
         status1 = taskVideo();
@@ -206,9 +206,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -1,12 +1,12 @@
 /**
  * 功能集合-点击
  */
-var s = {};
+var clicks = {};
 
 /**
  * 查询 元素 列表，再根据 宽、高 点击
  */
-s.elementWidthHeight = function (element, width, height) {
+clicks.elementWidthHeight = function (element, width, height) {
     isOk = false;
     element.find().forEach((value, key) => {
         if (value.bounds().width() !== width || value.bounds().height() !== height) {
@@ -36,7 +36,7 @@ s.elementWidthHeight = function (element, width, height) {
 /**
  * xy
  */
-s.xy = function (x, y) {
+clicks.xy = function (x, y) {
     if (x <= 0 && y <= 0) {
         log('---------- fail: x =', x, ' y =', y, ' ----------');
         return false;
@@ -51,7 +51,7 @@ s.xy = function (x, y) {
 /**
  * x1y1x2y2
  */
-s.x1y1x2y2 = function (x1, y1, x2, y2) {
+clicks.x1y1x2y2 = function (x1, y1, x2, y2) {
     click(x1, y1, x2, y2);
     sleep(3 * 1000);
 
@@ -65,7 +65,7 @@ s.x1y1x2y2 = function (x1, y1, x2, y2) {
  * @param {int} offset 偏移量
  * @param {int} step 行列的数目
  */
-s.xiaoxiao = function (x, y, offset, step) {
+clicks.xiaoxiao = function (x, y, offset, step) {
     xAdd = offset;
     yAdd = offset;
 
@@ -109,7 +109,7 @@ s.xiaoxiao = function (x, y, offset, step) {
 /**
  * 元素
  */
-s.element = function (e) {
+clicks.element = function (e) {
     if (e === undefined) {
         return false;
     } else if (e.exists !== undefined && !e.exists()) {
@@ -135,7 +135,7 @@ s.element = function (e) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.centerXyByText = function (myString) {
+clicks.centerXyByText = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -165,7 +165,7 @@ s.centerXyByText = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.rectByText = function (myString) {
+clicks.rectByText = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -187,7 +187,7 @@ s.rectByText = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.rectByLastText = function (myString) {
+clicks.rectByLastText = function (myString) {
     elementAll = text(myString).find();
     lastOne = elementAll.size();
     elementAll.forEach((value, key) => {
@@ -208,7 +208,7 @@ s.rectByLastText = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.rectByDesc = function (myString) {
+clicks.rectByDesc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -231,16 +231,16 @@ s.rectByDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.textOrDesc = function (myString) {
+clicks.textOrDesc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (text(myString).exists() && !s.text(myString)) {
+    if (text(myString).exists() && !clicks.text(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
-    } else if (desc(myString).exists() && !s.desc(myString)) {
+    } else if (desc(myString).exists() && !clicks.desc(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
@@ -253,16 +253,16 @@ s.textOrDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.centerXyByTextOrDesc = function (myString) {
+clicks.centerXyByTextOrDesc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (text(myString).exists() && !s.centerXyByText(myString)) {
+    if (text(myString).exists() && !clicks.centerXyByText(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
-    } else if (desc(myString).exists() && !s.centerXyByDesc(myString)) {
+    } else if (desc(myString).exists() && !clicks.centerXyByDesc(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
@@ -275,16 +275,16 @@ s.centerXyByTextOrDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.rectByTextOrDesc = function (myString) {
+clicks.rectByTextOrDesc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
     }
 
-    if (text(myString).exists() && !s.rectByText(myString)) {
+    if (text(myString).exists() && !clicks.rectByText(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
-    } else if (desc(myString).exists() && !s.rectByDesc(myString)) {
+    } else if (desc(myString).exists() && !clicks.rectByDesc(myString)) {
         log('---------- fail: element ', myString, ' none exist ----------');
         return false;
     }
@@ -297,7 +297,7 @@ s.rectByTextOrDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.text = function (myString) {
+clicks.text = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -319,12 +319,12 @@ s.text = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.textIfExists = function (myString) {
+clicks.textIfExists = function (myString) {
     if (myString === '' || !text(myString).exists()) {
         return false;
     }
 
-    return s.text(myString);
+    return clicks.text(myString);
 };
 
 /**
@@ -332,7 +332,7 @@ s.textIfExists = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.centerXyByDesc = function (myString) {
+clicks.centerXyByDesc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -362,7 +362,7 @@ s.centerXyByDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.desc = function (myString) {
+clicks.desc = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -384,12 +384,12 @@ s.desc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.descIfExists = function (myString) {
+clicks.descIfExists = function (myString) {
     if (myString === '' || !desc(myString).exists()) {
         return false;
     }
 
-    return s.desc(myString);
+    return clicks.desc(myString);
 };
 
 /**
@@ -397,7 +397,7 @@ s.descIfExists = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.centerXyById = function (myString) {
+clicks.centerXyById = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -433,14 +433,14 @@ s.centerXyById = function (myString) {
  * @param {string} parentsElement
  * @returns {boolean}
  */
-s.parents = function (currentElement, parentsElement) {
+clicks.parents = function (currentElement, parentsElement) {
     if (currentElement.find().size() === 0) {
         log('---------- fail: currentElement =', currentElement, ' none exist ----------');
         return false;
     }
 
     element = currentElement.findOne(300).parent().parent().findOne(parentsElement);
-    if (element == null || !s.element(element)) {
+    if (element == null || !clicks.element(element)) {
         log('---------- fail: parentsElement =', parentsElement, ' none exist ----------');
         return false;
     }
@@ -454,14 +454,14 @@ s.parents = function (currentElement, parentsElement) {
  * @param {string} parentElement
  * @returns {boolean}
  */
-s.parent = function (currentElement, parentElement) {
+clicks.parent = function (currentElement, parentElement) {
     if (currentElement.find().size() === 0) {
         log('---------- fail: currentElement =', currentElement, ' none exist ----------');
         return false;
     }
 
     element = currentElement.findOne(300).parent().findOne(parentElement);
-    if (element == null || !s.element(element)) {
+    if (element == null || !clicks.element(element)) {
         log('---------- fail: parentElement =', parentElement, ' none exist ----------');
         return false;
     }
@@ -474,7 +474,7 @@ s.parent = function (currentElement, parentElement) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.id = function (myString) {
+clicks.id = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -496,12 +496,12 @@ s.id = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-s.idIfExists = function (myString) {
+clicks.idIfExists = function (myString) {
     if (myString === '' || !id(myString).exists()) {
         return false;
     }
 
-    return s.id(myString);
+    return clicks.id(myString);
 };
 
 /**
@@ -509,7 +509,7 @@ s.idIfExists = function (myString) {
  * @param {string} element 指定元素
  * @returns {boolean}
  */
-s.backToElement = function (element) {
+clicks.backToElement = function (element) {
     if (!element || element.exists === undefined) {
         return false;
     }
@@ -538,15 +538,15 @@ s.backToElement = function (element) {
  * @param {string} myString 指定元素text or desc
  * @returns {boolean}
  */
-s.backToElementTextOrDesc = function (myString) {
+clicks.backToElementTextOrDesc = function (myString) {
     if (!myString) {
         return false;
     }
 
     for (var i = 0; i < 10; i++) {
-        if (text(myString).exists() && s.rectByText(myString)) {
+        if (text(myString).exists() && clicks.rectByText(myString)) {
             return true;
-        } else if (desc(myString).exists() && s.rectByDesc(myString)) {
+        } else if (desc(myString).exists() && clicks.rectByDesc(myString)) {
             return true;
         }
 
@@ -557,4 +557,4 @@ s.backToElementTextOrDesc = function (myString) {
     return false;
 };
 
-module.exports = s;
+module.exports = clicks;

@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.ss.android.article.lite';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.ss.android.article.lite';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -40,7 +40,7 @@ function taskCheckin() {
  * 任务-今日搜索任务
  */
 function taskSearch() {
-    log('----------', s.PACKAGE_NAME, 'taskSearch start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskSearch start ----------');
 
     if (!text('今日搜索任务').exists()) {
         return false;
@@ -65,7 +65,7 @@ function taskSearch() {
  * 任务-淘宝
  */
 function taskTaobao() {
-    log('----------', s.PACKAGE_NAME, 'taskTaobao start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskTaobao start ----------');
 
     if (!text('去淘宝抽购物红包').exists()) {
         return false;
@@ -82,7 +82,7 @@ function taskTaobao() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!clicks.centerXyByText('去抽奖') || !text('集齐碎片得手机').exists()) {
         return false;
@@ -111,7 +111,7 @@ function taskLottery() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskSleep start ----------');
 
     if (!clicks.text('睡觉赚钱')) {
         return false;
@@ -129,17 +129,17 @@ function taskSleep() {
 
 // 任务-小说
 function taskNovel() {
-    log('----------', s.PACKAGE_NAME, 'taskNovel start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNovel start ----------');
 
     var buttonClickTask = className('android.widget.Button').text('看小说');
     if (!buttonClickTask.exists()) {
         return false;
     }
-    log('----------', s.PACKAGE_NAME, 'click novel ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'click novel ----------');
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    log('----------', s.PACKAGE_NAME, 'click last novel ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'click last novel ----------');
     clicks.xy(264, 687);
 
     for (var i = 0; i < 50; i++) {
@@ -164,7 +164,7 @@ function taskNovel() {
 // 任务-宝箱
 // every 10m
 function taskTreasureBox() {
-    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (!text('任务中心').exists()) {
         return false;
@@ -197,7 +197,7 @@ function closeAd() {
 
 // 任务-新闻
 function taskNews() {
-    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
 
     others.back();
 
@@ -229,7 +229,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.right();
@@ -257,7 +257,7 @@ function taskVideo() {
 
 // 任务-小视频
 function taskLittleVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.refresh();
@@ -283,9 +283,9 @@ function taskLittleVideo() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         clicks.textIfExists('以后再说');
         if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
@@ -311,7 +311,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -320,8 +320,8 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     clicks.textIfExists('以后再说');
     if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
@@ -331,4 +331,4 @@ s.cron = function () {
     taskTreasureBox();
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -9,14 +9,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.starbaba.countstep';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.starbaba.countstep';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('高级签到').exists() && clicks.text('高级签到')) {
         if (!others.closeAdBackToElement(id('continue_btn'))) {
@@ -35,7 +35,7 @@ function taskCheckin() {
  * 任务-大转盘
  */
 function taskLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!others.backToElement(text('个人页'))) {
         return false;
@@ -61,7 +61,7 @@ function taskLottery() {
  * 任务-大转盘Ad
  */
 function taskLotteryAd() {
-    log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLotteryAd start ----------');
 
     for (var i = 0; i < id('scene_ad_sdk_rewardItem').find().size(); i++) {
         if (!clicks.element(id('scene_ad_sdk_rewardItem').find()[i])) {
@@ -84,9 +84,9 @@ function taskLotteryAd() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskLottery();
@@ -101,9 +101,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

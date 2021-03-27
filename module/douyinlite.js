@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -36,7 +36,7 @@ function taskCheckin() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -64,7 +64,7 @@ function taskTreasureBox() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -91,7 +91,7 @@ function taskLimit() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', s.PACKAGE_NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskSleep start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -116,7 +116,7 @@ function taskSleep() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -151,7 +151,7 @@ function taskCashout() {
 
 // 任务-小视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -178,9 +178,9 @@ function taskVideo() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 12; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         others.back();
 
@@ -205,7 +205,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -214,8 +214,8 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     others.back();
 
@@ -231,4 +231,4 @@ s.cron = function () {
     taskLimit();
 };
 
-module.exports = s;
+module.exports = currentAPP;

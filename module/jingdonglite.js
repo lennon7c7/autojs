@@ -9,14 +9,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.jd.jdlite';
-s.VERSION = '1.0.0';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/05/07/7/110_8ea7cfa54ea9714d64d0a1d96087a151.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.jd.jdlite';
+currentAPP.VERSION = '1.0.0';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/05/07/7/110_8ea7cfa54ea9714d64d0a1d96087a151.apk';
 
 // 任务-签到
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(desc('首页'))) {
         return false;
@@ -55,7 +55,7 @@ function taskCheckin() {
 
 // 任务-逛商品赚金币
 function taskProduct() {
-    log('----------', s.PACKAGE_NAME, 'taskProduct start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskProduct start ----------');
 
     if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
     } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
@@ -93,7 +93,7 @@ function taskProduct() {
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
-    log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskRandomPage start ----------');
 
     if (!others.backToElement(desc('我的'))) {
         return false;
@@ -127,7 +127,7 @@ function taskRandomPage() {
 
 // 任务-看视频赚金币
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(desc('我的'))) {
         return false;
@@ -160,7 +160,7 @@ function taskVideo() {
 
 // 任务-活动任务
 function taskActivity() {
-    log('----------', s.PACKAGE_NAME, 'taskActivity start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskActivity start ----------');
 
     if (!others.backToElement(desc('赚钱'))) {
         return false;
@@ -184,9 +184,9 @@ function taskActivity() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskProduct();
@@ -201,9 +201,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

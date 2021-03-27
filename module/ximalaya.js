@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.ximalaya.ting.lite';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.ximalaya.ting.lite';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -37,7 +37,7 @@ function taskCheckin() {
  * 任务-Ad
  */
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -70,7 +70,7 @@ function taskAd() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -101,7 +101,7 @@ function taskNews() {
  * 任务-抽奖
  */
 function taskLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!exists.backToElement(text('每日福利'))) {
         return false;
@@ -171,9 +171,9 @@ function closeAd() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status1 = taskCheckin();
         status2 = taskAd();
@@ -187,9 +187,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -7,8 +7,8 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.ss.android.ugc.aweme';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme';
 
 /**
  * 抓取用户数据
@@ -155,8 +155,8 @@ function getSaleData() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.start = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     storages.remove('tmp');
     others.back3();
@@ -188,4 +188,4 @@ s.start = function () {
     log(files.read(filename));
 }
 
-module.exports = s;
+module.exports = currentAPP;

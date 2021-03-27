@@ -8,14 +8,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -45,7 +45,7 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -75,7 +75,7 @@ function taskCashout() {
  * 任务-摸猫
  */
 function taskCat() {
-    log('----------', s.PACKAGE_NAME, 'taskCat start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCat start ----------');
 
     if (!others.backToElement(text('招财猫'))) {
         return false;
@@ -137,9 +137,9 @@ function taskCat() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskCashout();
@@ -152,9 +152,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

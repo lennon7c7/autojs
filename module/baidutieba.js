@@ -7,13 +7,13 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.baidu.tieba';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.baidu.tieba';
 
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -47,7 +47,7 @@ function taskLimit() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('领现金'))) {
         return false;
@@ -168,9 +168,9 @@ function closeAd() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskLimit();
         status1 = taskAd();
@@ -180,7 +180,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -189,10 +189,10 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     taskLimit();
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -7,16 +7,16 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.kugou.android.elder';
-s.VERSION = '1.9.1';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/11/24/7/120_64c8de54ecbe5b5f5874094150394abe.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.kugou.android.elder';
+currentAPP.VERSION = '1.9.1';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/24/7/120_64c8de54ecbe5b5f5874094150394abe.apk';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;
@@ -42,7 +42,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;
@@ -65,9 +65,9 @@ function taskAd() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 6; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskAd();
@@ -77,9 +77,9 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

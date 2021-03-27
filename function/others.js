@@ -4,14 +4,14 @@
 var clicks = require('./clicks.js');
 var sleeps = require('./sleeps.js');
 var swipes = require('./swipes.js');
-var s = {};
+var others = {};
 
 /**
  * 修复文件分类目录存放
  * 因为PC保存子目录有BUG，所以只能用那么low的方法
  * @returns {boolean}
  */
-s.fixDir = function () {
+others.fixDir = function () {
     oldDir = files.cwd() + '/';
 
     newDir = oldDir + 'function/';
@@ -56,7 +56,7 @@ s.fixDir = function () {
  * 初始化环境
  * @returns {boolean}
  */
-s.initEnv = function () {
+others.initEnv = function () {
     auto();
 
     setScreenMetrics(1080, 2340);
@@ -66,7 +66,7 @@ s.initEnv = function () {
     // 设置当前手动亮度为最暗
     device.setBrightness(0);
 
-    s.fixDir();
+    others.fixDir();
 };
 
 /**
@@ -74,14 +74,14 @@ s.initEnv = function () {
  * @param {string} packageName
  * @returns {boolean}
  */
-s.launch = function (packageName) {
-    s.initEnv();
+others.launch = function (packageName) {
+    others.initEnv();
 
     if (currentPackage() === packageName) {
         return true;
     }
 
-    s.clear();
+    others.clear();
     status = app.launch(packageName);
     sleep(15 * 1000);
     if (!status) {
@@ -95,7 +95,7 @@ s.launch = function (packageName) {
  * 返回
  * @returns {boolean}
  */
-s.back = function () {
+others.back = function () {
     back();
     sleep(3000);
 
@@ -106,7 +106,7 @@ s.back = function () {
  * 返回次数 2
  * @returns {boolean}
  */
-s.back2 = function () {
+others.back2 = function () {
     for (var i = 0; i < 2; i++) {
         back();
         sleep(3000);
@@ -119,7 +119,7 @@ s.back2 = function () {
  * 返回次数 3
  * @returns {boolean}
  */
-s.back3 = function () {
+others.back3 = function () {
     for (var i = 0; i < 3; i++) {
         back();
         sleep(3000);
@@ -132,7 +132,7 @@ s.back3 = function () {
  * 返回次数 4
  * @returns {boolean}
  */
-s.back4 = function () {
+others.back4 = function () {
     for (var i = 0; i < 5; i++) {
         back();
         sleep(3000);
@@ -145,7 +145,7 @@ s.back4 = function () {
  * 返回次数 6
  * @returns {boolean}
  */
-s.back6 = function () {
+others.back6 = function () {
     for (var i = 0; i < 7; i++) {
         back();
         sleep(3000);
@@ -159,7 +159,7 @@ s.back6 = function () {
  * @param {string} element 指定元素
  * @returns {boolean}
  */
-s.backToElement = function (element) {
+others.backToElement = function (element) {
     if (!element || element.exists === undefined) {
         return false;
     }
@@ -176,7 +176,7 @@ s.backToElement = function (element) {
             }
         }
 
-        s.back();
+        others.back();
     }
 
     return false;
@@ -187,7 +187,7 @@ s.backToElement = function (element) {
  * @param {string} packageName 指定包名
  * @returns {boolean}
  */
-s.backToPackageName = function (packageName) {
+others.backToPackageName = function (packageName) {
     if (packageName === '') {
         return false;
     }
@@ -212,8 +212,8 @@ s.backToPackageName = function (packageName) {
  * @param {string} element 指定元素
  * @returns {boolean}
  */
-s.closeAdBackToElement = function (element) {
-    s.muteMusicVolume();
+others.closeAdBackToElement = function (element) {
+    others.muteMusicVolume();
     if (id('tt_top_mute').exists()) {
         clicks.centerXyById('tt_top_mute');
     } else if (id('video_audio_btn').exists()) {
@@ -268,7 +268,7 @@ s.closeAdBackToElement = function (element) {
             return true;
         }
 
-        s.back();
+        others.back();
     }
 
     return false;
@@ -278,7 +278,7 @@ s.closeAdBackToElement = function (element) {
  * 清理应用
  * @returns {boolean}
  */
-s.clear = function () {
+others.clear = function () {
     if (!recents()) {
         toastLog('fail: clear');
         return false;
@@ -304,7 +304,7 @@ s.clear = function () {
  * @param {string} message
  * @returns {boolean}
  */
-s.send = function (message) {
+others.send = function (message) {
     url = 'https://oapi.dingtalk.com/robot/send?access_token=9189c02ffd38ffaf091bcc3a07558c83cf961780360e73ccbfcb24dd25db95fd';
     response = http.postJson(url, {
         'msgtype': 'markdown',
@@ -328,7 +328,7 @@ s.send = function (message) {
  * 退出脚本
  * @returns {boolean}
  */
-s.exit = function () {
+others.exit = function () {
     if (!recents()) {
         toastLog('fail: exit');
         return false;
@@ -347,7 +347,7 @@ s.exit = function () {
  * 一键锁屏
  * @returns {boolean}
  */
-s.lockScreen = function () {
+others.lockScreen = function () {
     if (!home()) {
         toastLog('fail: home');
         return false;
@@ -363,7 +363,7 @@ s.lockScreen = function () {
  * 设置当前媒体音量 为 静音
  * @returns {boolean}
  */
-s.muteMusicVolume = function () {
+others.muteMusicVolume = function () {
     if (device.getMusicVolume() === 0) {
         return true;
     }
@@ -373,4 +373,4 @@ s.muteMusicVolume = function () {
     return true;
 };
 
-module.exports = s;
+module.exports = others;

@@ -7,17 +7,17 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tencent.now';
-s.VERSION = '1.56.0.42';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400aead0ff3d2179fb76fb.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tencent.now';
+currentAPP.VERSION = '1.56.0.42';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400aead0ff3d2179fb76fb.apk';
 
 /**
  * 任务-登录
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLogin start ----------');
 
     if (!text('微信登录').exists()) {
         return true;
@@ -38,7 +38,7 @@ function taskLogin() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -72,8 +72,8 @@ function taskCheckin() {
 /**
  * 随机答题抢红包
  */
-s.redPackage = function () {
-    log('----------', s.PACKAGE_NAME, 'redPackage start ----------');
+currentAPP.redPackage = function () {
+    log('----------', currentAPP.PACKAGE_NAME, 'redPackage start ----------');
 
     others.back3();
 
@@ -135,9 +135,9 @@ s.redPackage = function () {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskLogin();
         status1 = taskCheckin();
@@ -149,9 +149,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

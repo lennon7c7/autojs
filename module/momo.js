@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.immomo.young';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.immomo.young';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('稍后更新').exists()) {
         clicks.centerXyByText('稍后更新');
@@ -48,7 +48,7 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('签到领现金'))) {
         return false;
@@ -86,9 +86,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 6; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskCashout();
@@ -98,9 +98,9 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

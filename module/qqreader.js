@@ -8,15 +8,15 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.qq.reader';
-s.VERSION = '7.5.3.888';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca153ea385c33783b1a588.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.qq.reader';
+currentAPP.VERSION = '7.5.3.888';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca153ea385c33783b1a588.apk';
 
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
@@ -46,7 +46,7 @@ function taskTreasureBox() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('今日已领').exists()) {
         return true;
@@ -67,7 +67,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
@@ -93,7 +93,7 @@ function taskAd() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('----------', s.PACKAGE_NAME, 'taskAddBook start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAddBook start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
@@ -124,7 +124,7 @@ function taskAddBook() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
@@ -153,9 +153,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
         status4 = taskCheckin();
@@ -170,7 +170,7 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -179,10 +179,10 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     taskTreasureBox();
 };
 
-module.exports = s;
+module.exports = currentAPP;

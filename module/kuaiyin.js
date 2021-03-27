@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.kuaiyin.player';
-s.VERSION = '4.00.01';
-s.APK = 'https://android-apps.pp.cn/fs08/2021/01/30/1/122_4b2b07f21638d3e320db17e5dbb7ce46.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.kuaiyin.player';
+currentAPP.VERSION = '4.00.01';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/30/1/122_4b2b07f21638d3e320db17e5dbb7ce46.apk';
 
 // 任务-Ad
 function taskAd10() {
-    log('----------', s.PACKAGE_NAME, 'taskAd10 start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd10 start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -43,7 +43,7 @@ function taskAd10() {
 
 // 任务-Ad
 function taskAd4() {
-    log('----------', s.PACKAGE_NAME, 'taskAd4 start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd4 start ----------');
 
     for (var i = 0; i < 5; i++) {
         if (!others.backToElement(text('福利'))) {
@@ -73,7 +73,7 @@ function taskAd4() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -102,9 +102,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskAd10();
         status1 = taskAd4();
@@ -117,9 +117,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

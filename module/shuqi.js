@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.shuqi.controller';
-s.VERSION = '11.2.4.122';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.shuqi.controller';
+currentAPP.VERSION = '11.2.4.122';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -43,7 +43,7 @@ function taskAd() {
 
 // 任务-分享
 function taskShare() {
-    log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskShare start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;
@@ -76,7 +76,7 @@ function taskShare() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;
@@ -108,9 +108,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskAd();
         status1 = taskShare();
@@ -122,9 +122,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

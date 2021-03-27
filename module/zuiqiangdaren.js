@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.lwhy.hltzs';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.lwhy.hltzs';
 
 /**
  * 任务-打卡提现
  */
 function taskCheckinWithdraw() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckinWithdraw start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckinWithdraw start ----------');
 
     log('---------- 提现 ----------');
     clicks.xy(445, 425);
@@ -37,7 +37,7 @@ function taskCheckinWithdraw() {
  * 任务-每日闯关
  */
 function taskDaily() {
-    log('----------', s.PACKAGE_NAME, 'taskDaily start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskDaily start ----------');
 
     log('---------- 每日闯关 ----------');
     clicks.xy(920, 560);
@@ -55,11 +55,11 @@ function taskDaily() {
     }
 
     for (var i = 0; i < 100000; i++) {
-        if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
+        if (currentPackage() !== currentAPP.PACKAGE_NAME && currentPackage() !== 'android') {
             log('---------- ', currentPackage(), ' ----------');
-            app.launch(s.PACKAGE_NAME);
+            app.launch(currentAPP.PACKAGE_NAME);
             sleeps.s3();
-            if (currentPackage() !== s.PACKAGE_NAME && currentPackage() !== 'android') {
+            if (currentPackage() !== currentAPP.PACKAGE_NAME && currentPackage() !== 'android') {
                 return false;
             }
         } else if (id('tt_insert_dislike_icon_img').exists()) {
@@ -97,7 +97,7 @@ function taskDaily() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -119,7 +119,7 @@ function taskCheckin() {
  * 任务-限时红包
  */
 function taskLimitRedPacket() {
-    log('----------', s.PACKAGE_NAME, 'taskLimitRedPacket start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLimitRedPacket start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -135,7 +135,7 @@ function taskLimitRedPacket() {
  * 任务-在线奖励
  */
 function taskOnLineReward() {
-    log('----------', s.PACKAGE_NAME, 'taskOnLineReward start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskOnLineReward start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -154,7 +154,7 @@ function taskOnLineReward() {
  * 任务-幸运转盘
  */
 function taskLuckLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLuckLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLuckLottery start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -223,9 +223,9 @@ function closeAd(x, y) {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status1 = taskDaily();
         // taskCheckinWithdraw();
@@ -239,9 +239,9 @@ s.start = function () {
         }
     }
 
-    // others.send(s.PACKAGE_NAME);
+    // others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

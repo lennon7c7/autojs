@@ -8,8 +8,8 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tencent.mm';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tencent.mm';
 
 /**
  * 任务-朋友圈-点赞
@@ -122,7 +122,7 @@ function closeAd() {
 
 // 任务-必看严选
 function taskReadBiKanYanXuan() {
-    log('----------', s.PACKAGE_NAME, 'taskRead start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskRead start ----------');
 
     if (!clicks.backToElement(text('必看严选'))) {
         return false;
@@ -152,9 +152,9 @@ function taskReadBiKanYanXuan() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskReadBiKanYanXuan();
         status1 = taskMomentLike();
@@ -164,7 +164,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -172,9 +172,9 @@ s.start = function () {
 /**
  * 任务-朋友圈-点赞
  */
-s.autoLike = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.autoLike = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
     taskMomentLike();
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -7,16 +7,16 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tmall.wireless';
-s.VERSION = '9.10.0';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728e6c4ad7c98e4d02e857.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tmall.wireless';
+currentAPP.VERSION = '9.10.0';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728e6c4ad7c98e4d02e857.apk';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('我'))) {
         return false;
@@ -49,9 +49,9 @@ function taskCheckin() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status = taskCheckin();
 
@@ -60,9 +60,9 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

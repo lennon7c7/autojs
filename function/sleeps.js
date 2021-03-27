@@ -1,121 +1,121 @@
 /**
- * 延迟执行
+ * 功能集合-延迟执行
  */
-var s = {};
+var sleeps = {};
 
 // x秒
-s.custom = function (time) {
+sleeps.custom = function (time) {
     sleep(time * 1000);
 };
 
 // 2 ~ 3 秒
-s.s2to3 = function () {
-    s.custom(random(2, 3));
+sleeps.s2to3 = function () {
+    sleeps.custom(random(2, 3));
 };
 
-s.s2to4 = function () {
-    s.custom(random(2, 4));
+sleeps.s2to4 = function () {
+    sleeps.custom(random(2, 4));
 };
 
-s.s2to5 = function () {
-    s.custom(random(2, 5));
+sleeps.s2to5 = function () {
+    sleeps.custom(random(2, 5));
 };
 
-s.s2to10 = function () {
-    s.custom(random(2, 10));
+sleeps.s2to10 = function () {
+    sleeps.custom(random(2, 10));
 };
 
-s.s5to10 = function () {
-    s.custom(random(5, 10));
+sleeps.s5to10 = function () {
+    sleeps.custom(random(5, 10));
 };
 
-s.s10to20 = function () {
-    s.custom(random(10, 20));
+sleeps.s10to20 = function () {
+    sleeps.custom(random(10, 20));
 };
 
-s.s10to30 = function () {
-    s.custom(random(10, 30));
+sleeps.s10to30 = function () {
+    sleeps.custom(random(10, 30));
 };
 
-s.s15to20 = function () {
-    s.custom(random(15, 30));
+sleeps.s15to20 = function () {
+    sleeps.custom(random(15, 30));
 };
 
-s.s20to25 = function () {
-    s.custom(random(20, 25));
+sleeps.s20to25 = function () {
+    sleeps.custom(random(20, 25));
 };
 
-s.s30to35 = function () {
-    s.custom(random(30, 35));
+sleeps.s30to35 = function () {
+    sleeps.custom(random(30, 35));
 };
 
-s.s35to40 = function () {
-    s.custom(random(35, 40));
+sleeps.s35to40 = function () {
+    sleeps.custom(random(35, 40));
 };
 
-s.s60to70 = function () {
-    s.custom(random(60, 70));
+sleeps.s60to70 = function () {
+    sleeps.custom(random(60, 70));
 };
 
-s.s120to130 = function () {
-    s.custom(random(120, 130));
+sleeps.s120to130 = function () {
+    sleeps.custom(random(120, 130));
 };
 
-s.s180to190 = function () {
-    s.custom(random(180, 190));
+sleeps.s180to190 = function () {
+    sleeps.custom(random(180, 190));
 };
 
 // 1秒
-s.s1 = function () {
+sleeps.s1 = function () {
     sleep(1 * 1000);
 };
 
-s.s3 = function () {
+sleeps.s3 = function () {
     sleep(3 * 1000);
 };
 
-s.s4 = function () {
+sleeps.s4 = function () {
     sleep(4 * 1000);
 };
 
-s.s5 = function () {
+sleeps.s5 = function () {
     sleep(5 * 1000);
 };
 
-s.s8 = function () {
+sleeps.s8 = function () {
     sleep(8 * 1000);
 };
 
-s.s10 = function () {
+sleeps.s10 = function () {
     sleep(10 * 1000);
 };
 
-s.s15 = function () {
+sleeps.s15 = function () {
     sleep(15 * 1000);
 };
 
-s.s20 = function () {
+sleeps.s20 = function () {
     sleep(20 * 1000);
 };
 
-s.s25 = function () {
+sleeps.s25 = function () {
     sleep(25 * 1000);
 };
 
-s.s30 = function () {
+sleeps.s30 = function () {
     sleep(30 * 1000);
 };
 
-s.s35 = function () {
+sleeps.s35 = function () {
     sleep(35 * 1000);
 };
 
-s.s50 = function () {
+sleeps.s50 = function () {
     sleep(50 * 1000);
 };
 
-s.s60 = function () {
+sleeps.s60 = function () {
     sleep(60 * 1000);
 };
 
-module.exports = s;
+module.exports = sleeps;

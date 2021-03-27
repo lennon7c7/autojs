@@ -7,13 +7,13 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.xs.fm';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.xs.fm';
 
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', s.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -48,7 +48,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -79,7 +79,7 @@ function taskAd() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -112,9 +112,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 9; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskTreasureBox();
         status1 = taskAd();
@@ -127,7 +127,7 @@ s.start = function () {
         others.clear();
    }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -136,10 +136,10 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     taskTreasureBox();
 };
 
-module.exports = s;
+module.exports = currentAPP;

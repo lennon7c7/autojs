@@ -4,15 +4,15 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.NAME = '考拉海购';
-s.PACKAGE_NAME = 'com.kaola';
-s.VERSION = '4.45.3';
-s.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482219920705de101a0d7d.apk';
+currentAPP = {};
+currentAPP.NAME = '考拉海购';
+currentAPP.PACKAGE_NAME = 'com.kaola';
+currentAPP.VERSION = '4.45.3';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482219920705de101a0d7d.apk';
 
 // 任务-考拉乐园
 function taskPlayground() {
-    log('----------', s.PACKAGE_NAME, 'taskPlayground start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskPlayground start ----------');
 
     if (!others.backToElement(text('我的考拉'))) {
         return false;
@@ -83,7 +83,7 @@ function taskPlayground() {
 
 // 任务-领考拉豆
 function taskRandomPage() {
-    log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskRandomPage start ----------');
 
     if (!others.backToElement(text('我的考拉'))) {
         return false;
@@ -141,7 +141,7 @@ function taskRandomPage() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!others.backToElement(text('天天抽奖'))) {
         return false;
@@ -172,9 +172,9 @@ function taskLottery() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status1 = taskPlayground();
         status0 = taskRandomPage();
@@ -187,9 +187,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

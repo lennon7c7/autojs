@@ -7,15 +7,15 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'cn.youth.news';
-s.VERSION = '2.4.6';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/09/04/3/120_f074497d052d75bf003c1f10f13e24c5.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'cn.youth.news';
+currentAPP.VERSION = '2.4.6';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/09/04/3/120_f074497d052d75bf003c1f10f13e24c5.apk';
 
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
 
     clicks.textIfExists('我知道了');
     sleeps.s10();
@@ -37,7 +37,7 @@ function taskLimit() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -70,7 +70,7 @@ function taskCheckin() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -117,7 +117,7 @@ function taskNews() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -162,7 +162,7 @@ function taskVideo() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -195,7 +195,7 @@ function taskAd() {
 
 // 任务-火爆转发
 function taskShare() {
-    log('----------', s.PACKAGE_NAME, 'taskShare start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskShare start ----------');
 
     if (!clicks.backToElement(text('我的'))) {
         return false;
@@ -241,7 +241,7 @@ function taskShare() {
 
     swipes.down();
 
-    app.launch(s.PACKAGE_NAME);
+    app.launch(currentAPP.PACKAGE_NAME);
     sleep(10 * 1000);
 
     return true
@@ -249,7 +249,7 @@ function taskShare() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -280,7 +280,7 @@ function taskLottery() {
 
 // 任务-抽奖ad
 function taskLotteryAd() {
-    log('----------', s.PACKAGE_NAME, 'taskLotteryAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLotteryAd start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -327,9 +327,9 @@ function taskLotteryAd() {
 
 // 任务-看看赚
 function taskKankanzhuang() {
-    log('----------', s.PACKAGE_NAME, 'taskKankanzhuang start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskKankanzhuang start ----------');
 
-    app.launch(s.PACKAGE_NAME);
+    app.launch(currentAPP.PACKAGE_NAME);
     sleep(10 * 1000);
 
     if (!others.backToElement(text('任务'))) {
@@ -373,7 +373,7 @@ function taskKankanzhuang() {
             clicks.xy(100, 1250);
         }
 
-        if (!others.backToPackageName(s.PACKAGE_NAME)) {
+        if (!others.backToPackageName(currentAPP.PACKAGE_NAME)) {
             return false;
         }
 
@@ -425,10 +425,10 @@ function taskKankanzhuang() {
 
 // 任务-点击小程序
 function taskClickMP() {
-    log('----------', s.PACKAGE_NAME, 'taskClickMP start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskClickMP start ----------');
 
     for (var i = 0; i < 5; i++) {
-        app.launch(s.PACKAGE_NAME);
+        app.launch(currentAPP.PACKAGE_NAME);
         sleep(10 * 1000);
 
         if (!clicks.backToElement(text('任务'))) {
@@ -510,7 +510,7 @@ function taskClickMP() {
 
 // 任务-点击任意6个内容
 function taskClick6() {
-    log('----------', s.PACKAGE_NAME, 'taskNews6 start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews6 start ----------');
 
     clicks.textIfExists('188');
     clicks.textIfExists('288');
@@ -551,7 +551,7 @@ function taskClick6() {
             clicks.xy(100, 1250);
         }
 
-        if (!others.backToPackageName(s.PACKAGE_NAME)) {
+        if (!others.backToPackageName(currentAPP.PACKAGE_NAME)) {
             return false;
         }
 
@@ -580,7 +580,7 @@ function taskClick6() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -609,9 +609,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 24; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status4 = taskLimit();
         status0 = taskCheckin();
@@ -633,7 +633,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -641,10 +641,10 @@ s.start = function () {
 /**
  * 定时入口调用
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     taskLimit();
 };
 
-module.exports = s;
+module.exports = currentAPP;

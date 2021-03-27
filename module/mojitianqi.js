@@ -7,12 +7,12 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.moji.mjweather.light';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.moji.mjweather.light';
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -49,7 +49,7 @@ function taskAd() {
 
 // 任务-看每日天气
 function taskEverydayWeather() {
-    log('----------', s.PACKAGE_NAME, 'taskEverydayWeather start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskEverydayWeather start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -83,7 +83,7 @@ function taskEverydayWeather() {
 
 // 任务-看短时天气
 function taskShortWeather() {
-    log('----------', s.PACKAGE_NAME, 'taskShortWeather start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskShortWeather start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -119,9 +119,9 @@ function taskShortWeather() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskAd();
         status1 = taskShortWeather();
@@ -134,9 +134,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

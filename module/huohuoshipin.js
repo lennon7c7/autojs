@@ -7,15 +7,15 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.jt.hanhan.video';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.jt.hanhan.video';
 
 /**
  * 任务-登录
  * 有时候被退出登录，所以保险一些
  */
- function taskLogin() {
-    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+function taskLogin() {
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLogin start ----------');
 
     if (text('日常任务').exists() && !text('登录领取最高28元红包').exists()) {
         return true;
@@ -44,7 +44,7 @@ s.PACKAGE_NAME = 'com.jt.hanhan.video';
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('金蛋大奖').exists()) {
         clicks.centerXyByText('金蛋大奖');
@@ -82,7 +82,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -117,9 +117,9 @@ function taskAd() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskAd();
@@ -131,9 +131,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

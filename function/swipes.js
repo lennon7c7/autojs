@@ -1,12 +1,12 @@
 /**
- * 滑动
+ * 功能集合-滑动
  */
-var s = {};
+var swipes = {};
 
 /**
  * 滑动-右到左
  */
-s.right = function () {
+swipes.right = function () {
     swipe(900, 1100, 100, 1100, 500);
     sleep(1 * 1000)
 };
@@ -14,7 +14,7 @@ s.right = function () {
 /**
  * 滑动-右到左
  */
-s.right200 = function () {
+swipes.right200 = function () {
     swipe(900, 200, 100, 200, 500);
     sleep(1 * 1000)
 };
@@ -22,7 +22,7 @@ s.right200 = function () {
 /**
  * 滑动-右到左
  */
-s.right300 = function () {
+swipes.right300 = function () {
     swipe(900, 300, 100, 300, 500);
     sleep(1 * 1000)
 };
@@ -30,7 +30,7 @@ s.right300 = function () {
 /**
  * 滑动-右到左
  */
-s.right2100 = function () {
+swipes.right2100 = function () {
     swipe(900, 2100, 100, 2100, 500);
     sleep(1 * 1000)
 };
@@ -38,7 +38,7 @@ s.right2100 = function () {
 /**
  * 滑动-刷新
  */
-s.refresh = function () {
+swipes.refresh = function () {
     swipe(500, 600, 500, 1000, 500);
     sleep(5 * 1000)
 };
@@ -46,7 +46,7 @@ s.refresh = function () {
 /**
  * 滑动-刷新
  */
-s.refresh400_100 = function () {
+swipes.refresh400_100 = function () {
     swipe(500, 600, 500, 1000, 100);
     sleep(5 * 1000)
 };
@@ -54,7 +54,7 @@ s.refresh400_100 = function () {
 /**
  * 滑动-刷新
  */
-s.refresh600 = function () {
+swipes.refresh600 = function () {
     swipe(500, 600, 500, 1200, 500);
     sleep(5 * 1000)
 };
@@ -62,7 +62,7 @@ s.refresh600 = function () {
 /**
  * 滑动-刷新
  */
-s.refresh1300 = function () {
+swipes.refresh1300 = function () {
     swipe(500, 600, 500, 1900, 500);
     sleep(5 * 1000)
 };
@@ -70,7 +70,7 @@ s.refresh1300 = function () {
 /**
  * 滑动-刷新
  */
-s.refresh1500 = function () {
+swipes.refresh1500 = function () {
     swipe(500, 400, 500, 1900, 500);
     sleep(5 * 1000)
 };
@@ -78,7 +78,7 @@ s.refresh1500 = function () {
 /**
  * 滑动-下到上
  */
-s.scrollDown = function () {
+swipes.scrollDown = function () {
     scrollDown();
     sleep(1 * 1000);
 };
@@ -86,25 +86,25 @@ s.scrollDown = function () {
 /**
  * 滑动-下到上
  */
-s.scrollDown2 = function () {
+swipes.scrollDown2 = function () {
     for (var i = 0; i < 2; i++) {
-        s.scrollDown();
+        swipes.scrollDown();
     }
 };
 
 /**
  * 滑动-下到上
  */
-s.scrollDown3 = function () {
+swipes.scrollDown3 = function () {
     for (var i = 0; i < 3; i++) {
-        s.scrollDown();
+        swipes.scrollDown();
     }
 };
 
 /**
  * 滑动-下到上
  */
-s.down = function () {
+swipes.down = function () {
     swipe(500, 1600, 500, 600, 500);
     sleep(1 * 1000)
 };
@@ -112,7 +112,7 @@ s.down = function () {
 /**
  * 滑动-下到上
  */
-s.down900 = function () {
+swipes.down900 = function () {
     swipe(500, 1000, 500, 100, 300);
     sleep(1 * 1000)
 };
@@ -120,7 +120,7 @@ s.down900 = function () {
 /**
  * 滑动-下到上
  */
-s.down1000_100 = function () {
+swipes.down1000_100 = function () {
     swipe(500, 1600, 500, 600, 100);
     sleep(1 * 1000)
 };
@@ -128,7 +128,7 @@ s.down1000_100 = function () {
 /**
  * 滑动-下到上
  */
-s.down1600 = function () {
+swipes.down1600 = function () {
     swipe(500, 1700, 500, 100, 500);
     sleep(1 * 1000)
 };
@@ -136,9 +136,9 @@ s.down1600 = function () {
 /**
  * 滑动-下到上
  */
-s.down2200 = function () {
+swipes.down2200 = function () {
     swipe(500, 2250, 500, 50, 500);
     sleep(1 * 1000)
 };
 
-module.exports = s;
+module.exports = swipes;

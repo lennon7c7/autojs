@@ -7,12 +7,12 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.ss.android.ugc.live';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.live';
 
 // 任务-视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     for (var i = 0; i < 10; i++) {
         if (text('点击进入直播间').exists()) {
@@ -30,7 +30,7 @@ function taskVideo() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -42,7 +42,7 @@ function taskCheckin() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', s.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
 
     if (!others.backToElement(text('火苗管理'))) {
         return false;
@@ -61,7 +61,7 @@ function taskLimit() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', s.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('火苗管理'))) {
         return false;
@@ -98,9 +98,9 @@ function taskCashout() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         clicks.textIfExists('以后再说');
 
@@ -125,7 +125,7 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
@@ -134,8 +134,8 @@ s.start = function () {
  * 定时入口调用
  * @returns {boolean}
  */
-s.cron = function () {
-    others.launch(s.PACKAGE_NAME);
+currentAPP.cron = function () {
+    others.launch(currentAPP.PACKAGE_NAME);
 
     clicks.textIfExists('以后再说');
 
@@ -152,4 +152,4 @@ s.cron = function () {
     taskLimit();
 };
 
-module.exports = s;
+module.exports = currentAPP;

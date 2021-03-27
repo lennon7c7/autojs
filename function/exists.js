@@ -1,7 +1,7 @@
 /**
  * 功能集合-元素存在判断
  */
-var s = {};
+var exists = {};
 
 /**
  * 查询 元素 列表，再根据 宽、高 去判断元素是否存在
@@ -10,7 +10,7 @@ var s = {};
  * @param {number} height
  * @returns {boolean}
  */
-s.elementWidthHeight = function (element, width, height) {
+exists.elementWidthHeight = function (element, width, height) {
     isOk = false;
     element.find().forEach(value => {
         if (value.bounds().width() !== width || value.bounds().height() !== height) {
@@ -28,7 +28,7 @@ s.elementWidthHeight = function (element, width, height) {
  * @param element
  * @returns {number}
  */
-s.money = function (element) {
+exists.money = function (element) {
     money = 0.0;
 
     if (!element.exists()) {
@@ -70,8 +70,8 @@ s.money = function (element) {
  * @param {number} currentMoney
  * @returns {number}
  */
-s.moneyEgt = function (element, currentMoney) {
-    money = s.money(element);
+exists.moneyEgt = function (element, currentMoney) {
+    money = exists.money(element);
 
     return money >= currentMoney;
 };
@@ -81,8 +81,8 @@ s.moneyEgt = function (element, currentMoney) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt001 = function (element) {
-    return s.moneyEgt(element, 0.01);
+exists.moneyEgt001 = function (element) {
+    return exists.moneyEgt(element, 0.01);
 };
 
 /**
@@ -90,8 +90,8 @@ s.moneyEgt001 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt002 = function (element) {
-    return s.moneyEgt(element, 0.02);
+exists.moneyEgt002 = function (element) {
+    return exists.moneyEgt(element, 0.02);
 };
 
 /**
@@ -99,8 +99,8 @@ s.moneyEgt002 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt01 = function (element) {
-    return s.moneyEgt(element, 0.1);
+exists.moneyEgt01 = function (element) {
+    return exists.moneyEgt(element, 0.1);
 };
 
 /**
@@ -108,8 +108,8 @@ s.moneyEgt01 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt02 = function (element) {
-    return s.moneyEgt(element, 0.2);
+exists.moneyEgt02 = function (element) {
+    return exists.moneyEgt(element, 0.2);
 };
 
 /**
@@ -117,8 +117,8 @@ s.moneyEgt02 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt1 = function (element) {
-    return s.moneyEgt(element, 1);
+exists.moneyEgt1 = function (element) {
+    return exists.moneyEgt(element, 1);
 };
 
 /**
@@ -126,8 +126,8 @@ s.moneyEgt1 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt5 = function (element) {
-    return s.moneyEgt(element, 5);
+exists.moneyEgt5 = function (element) {
+    return exists.moneyEgt(element, 5);
 };
 
 /**
@@ -135,8 +135,8 @@ s.moneyEgt5 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt10 = function (element) {
-    return s.moneyEgt(element, 10);
+exists.moneyEgt10 = function (element) {
+    return exists.moneyEgt(element, 10);
 };
 
 /**
@@ -144,8 +144,8 @@ s.moneyEgt10 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt15 = function (element) {
-    return s.moneyEgt(element, 15);
+exists.moneyEgt15 = function (element) {
+    return exists.moneyEgt(element, 15);
 };
 
 /**
@@ -153,8 +153,8 @@ s.moneyEgt15 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt100 = function (element) {
-    return s.moneyEgt(element, 100);
+exists.moneyEgt100 = function (element) {
+    return exists.moneyEgt(element, 100);
 };
 
 /**
@@ -162,8 +162,8 @@ s.moneyEgt100 = function (element) {
  * @param element
  * @returns {number}
  */
-s.moneyEgt50000 = function (element) {
-    return s.moneyEgt(element, 50000);
+exists.moneyEgt50000 = function (element) {
+    return exists.moneyEgt(element, 50000);
 };
 
 /**
@@ -172,7 +172,7 @@ s.moneyEgt50000 = function (element) {
  * @param {string} parentsElement
  * @returns {boolean}
  */
-s.parents = function (currentElement, parentsElement) {
+exists.parents = function (currentElement, parentsElement) {
     if (currentElement.find().size() === 0) {
         return false;
     }
@@ -191,7 +191,7 @@ s.parents = function (currentElement, parentsElement) {
  * @param {string} parentElement
  * @returns {boolean}
  */
-s.parent = function (currentElement, parentElement) {
+exists.parent = function (currentElement, parentElement) {
     if (currentElement.find().size() === 0) {
         return false;
     }
@@ -209,7 +209,7 @@ s.parent = function (currentElement, parentElement) {
  * @param {string} element 指定元素
  * @returns {boolean}
  */
-s.backToElement = function (element) {
+exists.backToElement = function (element) {
     if (!element || element.exists === undefined) {
         return false;
     }
@@ -226,4 +226,4 @@ s.backToElement = function (element) {
     return false;
 };
 
-module.exports = s;
+module.exports = exists;

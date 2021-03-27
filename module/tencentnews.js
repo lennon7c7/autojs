@@ -7,17 +7,17 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tencent.news';
-s.VERSION = '6.2.70';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a31ad9f63ef739b4f251.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tencent.news';
+currentAPP.VERSION = '6.2.70';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a31ad9f63ef739b4f251.apk';
 
 /**
  * 任务-登录
  * 有时候被退出登录，所以保险一些
  */
- function taskLogin() {
-    log('----------', s.PACKAGE_NAME, 'taskLogin start ----------');
+function taskLogin() {
+    log('----------', currentAPP.PACKAGE_NAME, 'taskLogin start ----------');
 
     if (text('我的红包').exists() && !desc('微信').exists()) {
         return true;
@@ -42,7 +42,7 @@ s.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a31ad9f63e
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     clicks.descIfExists('Tencent news');
 
@@ -75,7 +75,7 @@ function taskCheckin() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', s.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
@@ -123,7 +123,7 @@ function taskVideo() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
@@ -176,7 +176,7 @@ function taskNews() {
 
 // 任务-NOW直播红包
 function taskRedpackNow() {
-    log('----------', s.PACKAGE_NAME, 'taskRedpackNow start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskRedpackNow start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
@@ -205,9 +205,9 @@ function taskRedpackNow() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         clicks.descIfExists('Tencent news');
 
@@ -221,9 +221,9 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

@@ -7,12 +7,12 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.taobao.taobao';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.taobao.taobao';
 
 // 任务-逛店铺
 function taskShop() {
-    log('----------', s.PACKAGE_NAME, 'taskShop start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskShop start ----------');
 
     text('赚金币').exists() && clicks.xy(33, 1404);
 
@@ -67,7 +67,7 @@ function taskShop() {
 
 // 任务-帮好友
 function taskHelpFriend() {
-    log('----------', s.PACKAGE_NAME, 'taskHelpFriend start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskHelpFriend start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -122,7 +122,7 @@ function taskHelpFriend() {
 
 // 任务-金币能量
 function taskMoneyPower() {
-    log('----------', s.PACKAGE_NAME, 'taskMoneyPower start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskMoneyPower start ----------');
 
     if (!others.backToElement(text('赚金币'))) {
         return false;
@@ -402,7 +402,7 @@ function taskMoneyPower() {
 
 // 任务-取消关注店铺
 function taskCancelShop() {
-    log('----------', s.PACKAGE_NAME, 'taskCancelShop start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCancelShop start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -426,9 +426,9 @@ function taskCancelShop() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskHelpFriend();
         // status3 = taskShop();
@@ -441,9 +441,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

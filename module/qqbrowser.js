@@ -7,14 +7,14 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.tencent.mtt';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.tencent.mtt';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -43,7 +43,7 @@ function taskCheckin() {
  * 任务-清理
  */
 function taskClear() {
-    log('----------', s.PACKAGE_NAME, 'taskClear start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskClear start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -85,7 +85,7 @@ function taskClear() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', s.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -125,7 +125,7 @@ function taskAd() {
 
 // 任务-搜索
 function taskSearch() {
-    log('----------', s.PACKAGE_NAME, 'taskSearch start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskSearch start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -163,7 +163,7 @@ function taskSearch() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', s.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -220,9 +220,9 @@ function taskNews() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = taskClear();
@@ -235,9 +235,9 @@ s.start = function () {
         }
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;

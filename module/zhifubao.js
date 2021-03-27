@@ -7,16 +7,16 @@ var others = require('../function/others.js');
 var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
-var s = {};
-s.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
-s.VERSION = '10.1.99.7000';
-s.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk';
+currentAPP = {};
+currentAPP.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
+currentAPP.VERSION = '10.1.99.7000';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk';
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', s.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
 
     if (text('Later').exists()) {
         clicks.centerXyByText('Later');
@@ -55,7 +55,7 @@ function taskCheckin() {
  * 任务-逛15秒赚积分
  */
 function task15s() {
-    log('----------', s.PACKAGE_NAME, 'task15s start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'task15s start ----------');
 
     if (!clicks.text('逛15秒赚积分')) {
         return false;
@@ -78,7 +78,7 @@ function task15s() {
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
-    log('----------', s.PACKAGE_NAME, 'taskEverydayLottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'taskEverydayLottery start ----------');
 
     if (!clicks.backToElement(text('Home'))) {
         return false;
@@ -147,7 +147,7 @@ function taskEverydayLottery() {
  * 任务-0元抽奖
  */
 function task0Lottery() {
-    log('----------', s.PACKAGE_NAME, 'task0Lottery start ----------');
+    log('----------', currentAPP.PACKAGE_NAME, 'task0Lottery start ----------');
 
     back();
     back();
@@ -179,7 +179,7 @@ function task0Lottery() {
             if (text('关注').exists()) {
                 clicks.centerXyByText('关注');
             }
-         
+
             if (clicks.centerXyByText('今日抽奖机会已用完')) {
                 return true;
             }
@@ -199,9 +199,9 @@ function task0Lottery() {
  * 入口-开始调用
  * @returns {boolean}
  */
-s.start = function () {
+currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(s.PACKAGE_NAME);
+        others.launch(currentAPP.PACKAGE_NAME);
 
         status0 = taskCheckin();
         status1 = task15s();
@@ -215,9 +215,9 @@ s.start = function () {
         others.clear();
     }
 
-    others.send(s.PACKAGE_NAME);
+    others.send(currentAPP.PACKAGE_NAME);
 
     return false;
 };
 
-module.exports = s;
+module.exports = currentAPP;
