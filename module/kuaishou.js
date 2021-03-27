@@ -152,7 +152,7 @@ function taskLive() {
             return true
         });
 
-        sleeps.s35();
+        sleeps.s60();
         others.back();
         clicks.idIfExists('exit_btn');
     }
