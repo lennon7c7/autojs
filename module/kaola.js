@@ -1,6 +1,3 @@
-/**
- * 考拉海购-任务
- */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
 var others = require('../function/others.js');
@@ -8,13 +5,20 @@ var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
 var s = {};
+s.NAME = '考拉海购';
 s.PACKAGE_NAME = 'com.kaola';
+s.VERSION = '4.45.3';
+s.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482219920705de101a0d7d.apk';
 
 // 任务-考拉乐园
 function taskPlayground() {
     log('----------', s.PACKAGE_NAME, 'taskPlayground start ----------');
 
-    if (!others.backToElement(text('考拉乐园'))) {
+    if (!others.backToElement(text('我的考拉'))) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('考拉乐园')) {
         return false;
     }
 
@@ -81,7 +85,11 @@ function taskPlayground() {
 function taskRandomPage() {
     log('----------', s.PACKAGE_NAME, 'taskRandomPage start ----------');
 
-    if (!others.backToElement(text('领考拉豆'))) {
+    if (!others.backToElement(text('我的考拉'))) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('领考拉豆')) {
         return false;
     }
 
@@ -170,9 +178,9 @@ s.start = function () {
 
         status1 = taskPlayground();
         status0 = taskRandomPage();
-        status2 = taskLottery();
+        // status2 = taskLottery();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status1) {
             return true;
         }
 
