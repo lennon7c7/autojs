@@ -173,7 +173,11 @@ function closeAd() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status1 = taskCheckin();
         status2 = taskAd();

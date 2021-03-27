@@ -611,7 +611,11 @@ function taskCashout() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 24; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status4 = taskLimit();
         status0 = taskCheckin();
@@ -642,7 +646,11 @@ currentAPP.start = function () {
  * 定时入口调用
  */
 currentAPP.cron = function () {
-    others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return true;
+    }
+
 
     taskLimit();
 };

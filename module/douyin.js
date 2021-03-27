@@ -156,7 +156,11 @@ function getSaleData() {
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return true;
+    }
+
 
     storages.remove('tmp');
     others.back3();

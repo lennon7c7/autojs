@@ -154,7 +154,11 @@ function taskReadBiKanYanXuan() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status0 = taskReadBiKanYanXuan();
         status1 = taskMomentLike();
@@ -173,7 +177,11 @@ currentAPP.start = function () {
  * 任务-朋友圈-点赞
  */
 currentAPP.autoLike = function () {
-    others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return true;
+    }
+
     taskMomentLike();
 };
 

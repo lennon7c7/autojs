@@ -160,7 +160,11 @@ function taskCashout() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 12; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status0 = taskTreasureBox();
         status1 = taskAd();
@@ -184,7 +188,11 @@ currentAPP.start = function () {
  * @returns {boolean}
  */
 currentAPP.cron = function () {
-    others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return true;
+    }
+
 
     taskTreasureBox();
 };

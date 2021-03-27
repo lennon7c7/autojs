@@ -75,6 +75,11 @@ others.initEnv = function () {
  * @returns {boolean}
  */
 others.launch = function (packageName) {
+    if (!getAppName(packageName)) {
+        log('----------', packageName, '!getAppName ----------');
+        return false;
+    }
+
     others.initEnv();
 
     if (currentPackage() === packageName) {
@@ -82,11 +87,8 @@ others.launch = function (packageName) {
     }
 
     others.clear();
-    status = app.launch(packageName);
+    app.launch(packageName);
     sleep(15 * 1000);
-    if (!status) {
-        return false;
-    }
 
     return true;
 };

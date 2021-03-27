@@ -285,7 +285,11 @@ function taskLittleVideo() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         clicks.textIfExists('以后再说');
         if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {
@@ -321,7 +325,11 @@ currentAPP.start = function () {
  * @returns {boolean}
  */
 currentAPP.cron = function () {
-    others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return true;
+    }
+
 
     clicks.textIfExists('以后再说');
     if (!clicks.centerXyByText('任务') || !text('任务中心').exists()) {

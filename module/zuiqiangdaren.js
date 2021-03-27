@@ -225,7 +225,11 @@ function closeAd(x, y) {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 3; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status1 = taskDaily();
         // taskCheckinWithdraw();

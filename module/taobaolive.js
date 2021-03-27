@@ -34,7 +34,11 @@ function taskCheckin() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        if (!status0) {
+            return true;
+        }
+
 
         status0 = taskCheckin();
 
