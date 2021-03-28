@@ -12,18 +12,24 @@ var others = {};
  * @returns {boolean}
  */
 others.fixDir = function () {
-    oldDir = files.cwd() + '/';
+    var oldDir = files.cwd() + '/';
 
-    newDir = oldDir + 'function/';
-    filename = ['clicks.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js'];
+    var newDir = oldDir + 'function/';
+    var filename = ['clicks.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js'];
     filename.forEach((value, key) => {
-        if (!files.exists(oldDir + value)) {
+        var oldPath = oldDir + value;
+        var newPath = newDir + value;
+        if (!files.exists(oldPath)) {
             return false;
         }
 
-        status = files.move(oldDir + value, newDir + value);
+        if (!files.exists(newPath)) {
+            return false;
+        }
+
+        var status = files.move(oldPath, newPath);
         if (!status) {
-            log('files.move error: ' + value);
+            log('---------- files.move error: oldPath =', oldPath, ' newPath =', newPath, ' ----------');
         }
     });
 
@@ -41,13 +47,19 @@ others.fixDir = function () {
         'uc.js',
         'weishi.js', 'weixin.js', 'ximalaya.js', 'zhifubao.js', 'zhongqingkandian.js', 'zuiqiangdaren.js'];
     filename.forEach((value, key) => {
-        if (!files.exists(oldDir + value)) {
+        var oldPath = oldDir + value;
+        var newPath = newDir + value;
+        if (!files.exists(oldPath)) {
             return false;
         }
 
-        status = files.move(oldDir + value, newDir + value);
+        if (!files.exists(newPath)) {
+            return false;
+        }
+
+        var status = files.move(oldPath, newPath);
         if (!status) {
-            log('files.move error: ' + value);
+            log('---------- files.move error: oldPath =', oldPath, ' newPath =', newPath, ' ----------');
         }
     });
 };
