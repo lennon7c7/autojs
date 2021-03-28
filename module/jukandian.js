@@ -56,6 +56,34 @@ function taskAd() {
     return true;
 }
 
+// 任务-看新闻
+function taskNews() {
+    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+
+    if (!others.backToElement(text('看点'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        clicks.textIfExists('忽略');
+        if (!others.backToElement(text('刷新'))) {
+            return false;
+        }
+        clicks.textIfExists('忽略');
+
+        clicks.xy(608, 944);
+
+        for (var j = 0; j < 5; j++) {
+            sleeps.s2to3();
+            swipes.down1000_100();
+            sleeps.s2to3();
+            swipes.refresh400_100();
+        }
+    }
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -70,8 +98,9 @@ currentAPP.start = function () {
 
         status0 = taskCheckin();
         status1 = taskAd();
+        status2 = taskNews();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
     }
