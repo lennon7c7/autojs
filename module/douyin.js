@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 抓取用户数据

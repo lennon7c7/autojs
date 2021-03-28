@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tencent.mtt';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -43,7 +44,7 @@ function taskCheckin() {
  * 任务-清理
  */
 function taskClear() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskClear start ----------');
+    log('----------', currentAPP.NAME, 'taskClear start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -85,7 +86,7 @@ function taskClear() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -125,7 +126,7 @@ function taskAd() {
 
 // 任务-搜索
 function taskSearch() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskSearch start ----------');
+    log('----------', currentAPP.NAME, 'taskSearch start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -163,7 +164,7 @@ function taskSearch() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, 'taskNews start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;

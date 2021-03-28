@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.immomo.young';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (text('稍后更新').exists()) {
         clicks.centerXyByText('稍后更新');
@@ -48,7 +49,7 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('签到领现金'))) {
         return false;

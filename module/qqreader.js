@@ -10,13 +10,14 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.qq.reader';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '7.5.3.888';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca153ea385c33783b1a588.apk';
 
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
@@ -46,7 +47,7 @@ function taskTreasureBox() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (text('今日已领').exists()) {
         return true;
@@ -67,7 +68,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
@@ -93,7 +94,7 @@ function taskAd() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAddBook start ----------');
+    log('----------', currentAPP.NAME, 'taskAddBook start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
@@ -124,7 +125,7 @@ function taskAddBook() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;

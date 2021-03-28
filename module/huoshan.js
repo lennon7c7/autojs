@@ -9,11 +9,12 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.livelite';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -55,7 +56,7 @@ function taskTreasureBox() {
 
 // 任务-20次广告
 function taskAd20() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd20 start ----------');
+    log('----------', currentAPP.NAME, 'taskAd20 start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -78,7 +79,7 @@ function taskAd20() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.NAME, 'taskSleep start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -101,7 +102,7 @@ function taskSleep() {
 
 // 任务-晒收入
 function taskShare() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskShare start ----------');
+    log('----------', currentAPP.NAME, 'taskShare start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -142,7 +143,7 @@ function taskShare() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -175,7 +176,7 @@ function taskCashout() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(text('首页'))) {
         return false;

@@ -5,14 +5,14 @@ var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
 currentAPP = {};
-currentAPP.NAME = '考拉海购';
 currentAPP.PACKAGE_NAME = 'com.kaola';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '4.45.3';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482219920705de101a0d7d.apk';
 
 // 任务-考拉乐园
 function taskPlayground() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskPlayground start ----------');
+    log('----------', currentAPP.NAME, 'taskPlayground start ----------');
 
     if (!others.backToElement(text('我的考拉'))) {
         return false;
@@ -83,7 +83,7 @@ function taskPlayground() {
 
 // 任务-领考拉豆
 function taskRandomPage() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskRandomPage start ----------');
+    log('----------', currentAPP.NAME, 'taskRandomPage start ----------');
 
     if (!others.backToElement(text('我的考拉'))) {
         return false;
@@ -141,7 +141,7 @@ function taskRandomPage() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, 'taskLottery start ----------');
 
     if (!others.backToElement(text('天天抽奖'))) {
         return false;

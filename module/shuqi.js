@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.shuqi.controller';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '11.2.4.122';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -43,7 +44,7 @@ function taskAd() {
 
 // 任务-分享
 function taskShare() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskShare start ----------');
+    log('----------', currentAPP.NAME, 'taskShare start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;
@@ -76,7 +77,7 @@ function taskShare() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;

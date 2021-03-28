@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ximalaya.ting.lite';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -37,7 +38,7 @@ function taskCheckin() {
  * 任务-Ad
  */
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -70,7 +71,7 @@ function taskAd() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -101,7 +102,7 @@ function taskNews() {
  * 任务-抽奖
  */
 function taskLottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, 'taskLottery start ----------');
 
     if (!exists.backToElement(text('每日福利'))) {
         return false;

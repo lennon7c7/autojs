@@ -9,10 +9,11 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.live';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     for (var i = 0; i < 10; i++) {
         if (text('点击进入直播间').exists()) {
@@ -30,7 +31,7 @@ function taskVideo() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -42,7 +43,7 @@ function taskCheckin() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, 'taskLimit start ----------');
 
     if (!others.backToElement(text('火苗管理'))) {
         return false;
@@ -61,7 +62,7 @@ function taskLimit() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('火苗管理'))) {
         return false;

@@ -10,6 +10,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tencent.mm';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-朋友圈-点赞
@@ -122,7 +123,7 @@ function closeAd() {
 
 // 任务-必看严选
 function taskReadBiKanYanXuan() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskRead start ----------');
+    log('----------', currentAPP.NAME, 'taskRead start ----------');
 
     if (!clicks.backToElement(text('必看严选'))) {
         return false;

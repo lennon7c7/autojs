@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme.lite';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -36,7 +37,7 @@ function taskCheckin() {
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (text('开宝箱得金币').find().size() === 1) {
         return true;
@@ -64,7 +65,7 @@ function taskTreasureBox() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, 'taskLimit start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -91,7 +92,7 @@ function taskLimit() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.NAME, 'taskSleep start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -116,7 +117,7 @@ function taskSleep() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!exists.backToElement(text('现金收益'))) {
         return false;
@@ -151,7 +152,7 @@ function taskCashout() {
 
 // 任务-小视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;

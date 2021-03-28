@@ -9,10 +9,11 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.jifen.qukan';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-文章
 function taskNews() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -50,7 +51,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -84,7 +85,7 @@ function taskVideo() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -109,7 +110,7 @@ function taskAd() {
 
 // 任务-视频滑动
 function taskVideoSwipe() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideoSwipe start ----------');
+    log('----------', currentAPP.NAME, 'taskVideoSwipe start ----------');
 
     if (!others.backToElement(text('小视频'))) {
         return false;

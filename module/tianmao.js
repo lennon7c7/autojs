@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tmall.wireless';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '9.10.0';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728e6c4ad7c98e4d02e857.apk';
 
@@ -16,7 +17,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('我'))) {
         return false;

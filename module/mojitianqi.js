@@ -9,10 +9,11 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.moji.mjweather.light';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -49,7 +50,7 @@ function taskAd() {
 
 // 任务-看每日天气
 function taskEverydayWeather() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskEverydayWeather start ----------');
+    log('----------', currentAPP.NAME, 'taskEverydayWeather start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -83,7 +84,7 @@ function taskEverydayWeather() {
 
 // 任务-看短时天气
 function taskShortWeather() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskShortWeather start ----------');
+    log('----------', currentAPP.NAME, 'taskShortWeather start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

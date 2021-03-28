@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ss.android.article.lite';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (text('明日签到').exists()) {
         return true;
@@ -40,7 +41,7 @@ function taskCheckin() {
  * 任务-今日搜索任务
  */
 function taskSearch() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskSearch start ----------');
+    log('----------', currentAPP.NAME, 'taskSearch start ----------');
 
     if (!text('今日搜索任务').exists()) {
         return false;
@@ -65,7 +66,7 @@ function taskSearch() {
  * 任务-淘宝
  */
 function taskTaobao() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTaobao start ----------');
+    log('----------', currentAPP.NAME, 'taskTaobao start ----------');
 
     if (!text('去淘宝抽购物红包').exists()) {
         return false;
@@ -82,7 +83,7 @@ function taskTaobao() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, 'taskLottery start ----------');
 
     if (!clicks.centerXyByText('去抽奖') || !text('集齐碎片得手机').exists()) {
         return false;
@@ -111,7 +112,7 @@ function taskLottery() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.NAME, 'taskSleep start ----------');
 
     if (!clicks.text('睡觉赚钱')) {
         return false;
@@ -129,17 +130,17 @@ function taskSleep() {
 
 // 任务-小说
 function taskNovel() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNovel start ----------');
+    log('----------', currentAPP.NAME, 'taskNovel start ----------');
 
     var buttonClickTask = className('android.widget.Button').text('看小说');
     if (!buttonClickTask.exists()) {
         return false;
     }
-    log('----------', currentAPP.PACKAGE_NAME, 'click novel ----------');
+    log('----------', currentAPP.NAME, 'click novel ----------');
     buttonClickTask.findOne().parent().click();
     sleeps.s3();
 
-    log('----------', currentAPP.PACKAGE_NAME, 'click last novel ----------');
+    log('----------', currentAPP.NAME, 'click last novel ----------');
     clicks.xy(264, 687);
 
     for (var i = 0; i < 50; i++) {
@@ -164,7 +165,7 @@ function taskNovel() {
 // 任务-宝箱
 // every 10m
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (!text('任务中心').exists()) {
         return false;
@@ -197,7 +198,7 @@ function closeAd() {
 
 // 任务-新闻
 function taskNews() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, 'taskNews start ----------');
 
     others.back();
 
@@ -229,7 +230,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.right();
@@ -257,7 +258,7 @@ function taskVideo() {
 
 // 任务-小视频
 function taskLittleVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     swipes.right();
     swipes.refresh();

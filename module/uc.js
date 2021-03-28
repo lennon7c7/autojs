@@ -10,10 +10,11 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.UCMobile';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-宝箱
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (!others.backToElement(text('我 的'))) {
         return false;
@@ -56,7 +57,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(desc('明天预计可领'))) {
         return false;
@@ -85,7 +86,7 @@ function taskAd() {
 
 // 任务-Game
 function taskGame() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskGame start ----------');
+    log('----------', currentAPP.NAME, 'taskGame start ----------');
 
     for (var i = 0; i < 6; i++) {
         if (desc('领取').exists()) {
@@ -117,7 +118,7 @@ function taskGame() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(desc('提现'))) {
         return false;

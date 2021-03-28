@@ -9,12 +9,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.kuaiyin.player';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '4.00.01';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/30/1/122_4b2b07f21638d3e320db17e5dbb7ce46.apk';
 
 // 任务-Ad
 function taskAd10() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd10 start ----------');
+    log('----------', currentAPP.NAME, 'taskAd10 start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -43,7 +44,7 @@ function taskAd10() {
 
 // 任务-Ad
 function taskAd4() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd4 start ----------');
+    log('----------', currentAPP.NAME, 'taskAd4 start ----------');
 
     for (var i = 0; i < 5; i++) {
         if (!others.backToElement(text('福利'))) {
@@ -73,7 +74,7 @@ function taskAd4() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

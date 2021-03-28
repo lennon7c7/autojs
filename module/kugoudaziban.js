@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.kugou.android.elder';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '1.9.1';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/24/7/120_64c8de54ecbe5b5f5874094150394abe.apk';
 
@@ -16,7 +17,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/24/7/120_64c8de54ecbe5
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;
@@ -42,7 +43,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;

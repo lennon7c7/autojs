@@ -9,11 +9,12 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.baidu.searchbox.lite';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, 'taskLimit start ----------');
 
     others.back();
 
@@ -38,7 +39,7 @@ function taskLimit() {
 
 // 任务-打开应用
 function taskOpenApp() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskOpenApp start ----------');
+    log('----------', currentAPP.NAME, 'taskOpenApp start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -79,7 +80,7 @@ function taskOpenApp() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -201,7 +202,7 @@ function taskAd() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -238,7 +239,7 @@ function taskVideo() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, 'taskNews start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;

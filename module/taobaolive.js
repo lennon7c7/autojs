@@ -5,8 +5,8 @@ var sleeps = require('../function/sleeps.js');
 var swipes = require('../function/swipes.js');
 
 currentAPP = {};
-currentAPP.NAME = '淘宝直播';
 currentAPP.PACKAGE_NAME = 'com.taobao.live';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '1.8.29';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/20/0/110_fcec802603327179a881f6c77cd315de.apk';
 
@@ -14,7 +14,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/20/0/110_fcec802603327
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!clicks.backToElement(id('homepage2_anchor_guard_entry'))) {
         return false;

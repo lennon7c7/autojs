@@ -11,6 +11,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.kuaishou.nebula';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '3.0.40.619';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b7323978560407c768984d.apk';
 
@@ -18,7 +19,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b73
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(id('redFloat'))) {
         return false;
@@ -43,7 +44,7 @@ function taskCheckin() {
 
 // 任务-0元抽奖
 function task0Lottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'task0Lottery start ----------');
+    log('----------', currentAPP.NAME, 'task0Lottery start ----------');
 
     others.back3();
 
@@ -105,7 +106,7 @@ function task0Lottery() {
 
 // 任务-10次广告
 function taskAd10() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd10 start ----------');
+    log('----------', currentAPP.NAME, 'taskAd10 start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -132,7 +133,7 @@ function taskAd10() {
 
 // 任务-直播
 function taskLive() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLive start ----------');
+    log('----------', currentAPP.NAME, 'taskLive start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -162,7 +163,7 @@ function taskLive() {
 
 // 任务-打开小程序
 function taskOpenMP() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLive start ----------');
+    log('----------', currentAPP.NAME, 'taskLive start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -189,7 +190,7 @@ function taskOpenMP() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     others.back3();
 

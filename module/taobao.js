@@ -9,10 +9,11 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.taobao.taobao';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-逛店铺
 function taskShop() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskShop start ----------');
+    log('----------', currentAPP.NAME, 'taskShop start ----------');
 
     text('赚金币').exists() && clicks.xy(33, 1404);
 
@@ -67,7 +68,7 @@ function taskShop() {
 
 // 任务-帮好友
 function taskHelpFriend() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskHelpFriend start ----------');
+    log('----------', currentAPP.NAME, 'taskHelpFriend start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -122,7 +123,7 @@ function taskHelpFriend() {
 
 // 任务-金币能量
 function taskMoneyPower() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskMoneyPower start ----------');
+    log('----------', currentAPP.NAME, 'taskMoneyPower start ----------');
 
     if (!others.backToElement(text('赚金币'))) {
         return false;
@@ -402,7 +403,7 @@ function taskMoneyPower() {
 
 // 任务-取消关注店铺
 function taskCancelShop() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCancelShop start ----------');
+    log('----------', currentAPP.NAME, 'taskCancelShop start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;

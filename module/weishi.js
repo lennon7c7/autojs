@@ -9,6 +9,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tencent.weishi';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '8.6.0.588';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db983efb3cead37706774.apk';
 
@@ -17,7 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, 'taskLogin start ----------');
 
     others.back();
 
@@ -42,7 +43,7 @@ function taskLogin() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
     status = checkVideo();
     if (status) {
@@ -108,7 +109,7 @@ function checkVideo() {
 
 // 任务-领红包
 function taskRedpack() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskRedpack start ----------');
+    log('----------', currentAPP.NAME, 'taskRedpack start ----------');
 
     others.back2();
 
@@ -155,7 +156,7 @@ function taskRedpack() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     others.back2();
 

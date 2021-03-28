@@ -9,11 +9,12 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.xs.fm';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -48,7 +49,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -79,7 +80,7 @@ function taskAd() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

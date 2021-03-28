@@ -10,12 +10,13 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -45,7 +46,7 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -75,7 +76,7 @@ function taskCashout() {
  * 任务-摸猫
  */
 function taskCat() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCat start ----------');
+    log('----------', currentAPP.NAME, 'taskCat start ----------');
 
     if (!others.backToElement(text('招财猫'))) {
         return false;

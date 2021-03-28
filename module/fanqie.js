@@ -9,13 +9,14 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.dragon.read';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '3.1.1';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/19/8/120_187f19f4e3c69034c128773d04bf5382.apk';
 
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -56,7 +57,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -85,7 +86,7 @@ function taskAd() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskAddBook start ----------');
+    log('----------', currentAPP.NAME, 'taskAddBook start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -124,7 +125,7 @@ function taskAddBook() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
