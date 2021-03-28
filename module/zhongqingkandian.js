@@ -12,6 +12,22 @@ currentAPP.PACKAGE_NAME = 'cn.youth.news';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '2.4.6';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/09/04/3/120_f074497d052d75bf003c1f10f13e24c5.apk';
+currentAPP.WECHAT_GROUP_NAME = 'share-' + getPhoneSuffix();
+
+// 获取手机号后缀
+// 从桌面的目录获取
+function getPhoneSuffix() {
+    home();
+    sleeps.s3();
+    var phoneSuffix = '';
+    id('folder_icon_name').find().forEach(function (element) {
+        if (element.text() > 1000) {
+            phoneSuffix = element.text();
+        }
+    });
+
+    return phoneSuffix;
+}
 
 // 任务-限时
 // every 20m
@@ -211,7 +227,7 @@ function taskShare() {
         return false;
     }
 
-    if (!clicks.rectByText('share-4327')) {
+    if (!clicks.rectByText(currentAPP.WECHAT_GROUP_NAME)) {
         return false;
     }
 
@@ -223,18 +239,18 @@ function taskShare() {
         return false;
     }
 
-    if (text('share-4327').exists() && !clicks.rectByText('share-4327')) {
+    if (text(currentAPP.WECHAT_GROUP_NAME).exists() && !clicks.rectByText(currentAPP.WECHAT_GROUP_NAME)) {
         return false;
     } else {
         // 因为无法查询元素，所以用土办法
-        !text('中青看点').exists() && clicks.xy(500, 250) && !text('中青看点').exists() && others.back();
-        !text('中青看点').exists() && clicks.xy(500, 500) && !text('中青看点').exists() && others.back();
-        !text('中青看点').exists() && clicks.xy(500, 750) && !text('中青看点').exists() && others.back();
-        !text('中青看点').exists() && clicks.xy(500, 900) && !text('中青看点').exists() && others.back();
-        !text('中青看点').exists() && clicks.xy(500, 1050) && !text('中青看点').exists() && others.back();
+        !text(currentAPP.NAME).exists() && clicks.xy(500, 250) && !text(currentAPP.NAME).exists() && others.back();
+        !text(currentAPP.NAME).exists() && clicks.xy(500, 500) && !text(currentAPP.NAME).exists() && others.back();
+        !text(currentAPP.NAME).exists() && clicks.xy(500, 750) && !text(currentAPP.NAME).exists() && others.back();
+        !text(currentAPP.NAME).exists() && clicks.xy(500, 900) && !text(currentAPP.NAME).exists() && others.back();
+        !text(currentAPP.NAME).exists() && clicks.xy(500, 1050) && !text(currentAPP.NAME).exists() && others.back();
     }
 
-    if (!clicks.rectByLastText('中青看点')) {
+    if (!clicks.rectByLastText(currentAPP.NAME)) {
         return false;
     }
 
