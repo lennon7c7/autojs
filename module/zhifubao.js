@@ -1,6 +1,3 @@
-/**
- * 支付宝-任务
- */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
 var others = require('../function/others.js');
@@ -9,6 +6,7 @@ var swipes = require('../function/swipes.js');
 
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '10.1.99.7000';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk';
 
@@ -16,23 +14,32 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d6
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
-    if (text('Later').exists()) {
-        clicks.centerXyByText('Later');
+    if (text('稍后').exists()) {
+        clicks.centerXyByText('稍后');
     }
 
-    if (!others.backToElement(text('Me'))) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
-    if (!clicks.centerXyByText('Membership')) {
+    if (!clicks.centerXyByText('支付宝会员')) {
         return false;
     }
 
-    sleeps.s2to3();
-    clicks.textIfExists('全部领取');
-    if (!clicks.centerXyByText('每日赚积分')) {
+    sleeps.s5to10();
+
+    if (text('全部领取').exists()) {
+        clicks.centerXyByText('全部领取');
+    }
+
+    clicks.textIfExists('每日赚积分');
+    if (text('每日赚积分').exists() && !clicks.centerXyByText('每日赚积分')) {
+        return false;
+    }
+
+    if (text('每日赚积分').exists() && !clicks.centerXyByText('每日赚积分')) {
         return false;
     }
 
@@ -55,7 +62,7 @@ function taskCheckin() {
  * 任务-逛15秒赚积分
  */
 function task15s() {
-    log('----------', currentAPP.PACKAGE_NAME, 'task15s start ----------');
+    log('----------', currentAPP.NAME, 'task15s start ----------');
 
     if (!clicks.text('逛15秒赚积分')) {
         return false;
@@ -78,7 +85,7 @@ function task15s() {
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'taskEverydayLottery start ----------');
+    log('----------', currentAPP.NAME, 'taskEverydayLottery start ----------');
 
     if (!clicks.backToElement(text('Home'))) {
         return false;
@@ -147,21 +154,21 @@ function taskEverydayLottery() {
  * 任务-0元抽奖
  */
 function task0Lottery() {
-    log('----------', currentAPP.PACKAGE_NAME, 'task0Lottery start ----------');
+    log('----------', currentAPP.NAME, 'task0Lottery start ----------');
 
     back();
     back();
 
-    if (!clicks.backToElement(text('Home'))) {
+    if (!clicks.backToElement(text('首页'))) {
         return false;
     }
 
-    if (!clicks.centerXyByText("Yu'E Bao")) {
+    if (!clicks.centerXyByText('余额宝')) {
         return false;
     }
     others.back();
 
-    if (!clicks.centerXyByText("Yu'E Bao")) {
+    if (!clicks.centerXyByText('余额宝')) {
         return false;
     }
 
@@ -208,11 +215,13 @@ currentAPP.start = function () {
 
 
         status0 = taskCheckin();
-        status1 = task15s();
+        if (status0) {
+            status0 = task15s();
+        }
         task0Lottery();
         taskEverydayLottery();
 
-        if (status0 && status1) {
+        if (status0) {
             return true;
         }
 
