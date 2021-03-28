@@ -20,8 +20,6 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db
 function taskLogin() {
     log('----------', currentAPP.NAME, 'taskLogin start ----------');
 
-    others.back();
-
     toPageMe();
 
     if (text('编辑资料').exists()) {
@@ -111,8 +109,6 @@ function checkVideo() {
 function taskRedpack() {
     log('----------', currentAPP.NAME, 'taskRedpack start ----------');
 
-    others.back2();
-
     toPageMe();
 
     if (!clicks.centerXyByText('福利中心')) {
@@ -124,8 +120,8 @@ function taskRedpack() {
     for (var i = 0; i < desc('查看').find().size(); i++) {
         clicks.element(desc('查看').find()[i]);
         sleeps.s3();
-        if (desc('前往腾讯新闻领取').exists()) {
-            clicks.centerXyByDesc('前往腾讯新闻领取');
+        if (desc('下载腾讯新闻').exists()) {
+            clicks.centerXyByDesc('下载腾讯新闻');
             sleeps.s3();
             others.back3();
             back();
@@ -138,8 +134,8 @@ function taskRedpack() {
     for (var i = 0; i < text('查看').find().size(); i++) {
         clicks.element(text('查看').find()[i]);
         sleeps.s3();
-        if (text('前往腾讯新闻领取').exists()) {
-            clicks.centerXyByText('前往腾讯新闻领取');
+        if (text('下载腾讯新闻').exists()) {
+            clicks.centerXyByText('下载腾讯新闻');
             sleeps.s3();
             others.back3();
             back();
@@ -158,15 +154,13 @@ function taskRedpack() {
 function taskCashout() {
     log('----------', currentAPP.NAME, 'taskCashout start ----------');
 
-    others.back2();
-
     toPageMe();
 
     if (!clicks.centerXyByText('福利中心')) {
         return false;
     }
 
-    if (clicks.textIfExists('提现') && clicks.textIfExists('去提现')) {
+    if (clicks.textIfExists('提现') && clicks.textIfExists('去提现') && clicks.textIfExists('立即提现')) {
         return true;
     }
 
@@ -177,6 +171,8 @@ function taskCashout() {
  * 跳转页面-我
  */
 function toPageMe() {
+    others.back2();
+
     // 页面-我
     className('android.widget.LinearLayout').find().forEach((value, key) => {
         if (value.childCount() !== 5) {
@@ -200,6 +196,9 @@ currentAPP.start = function () {
 
 
         status0 = taskLogin();
+        if (!status0) {
+            continue;
+        }
         status1 = taskVideo();
         status2 = taskRedpack();
         status3 = taskCashout();
