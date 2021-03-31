@@ -23,9 +23,12 @@ function taskCheckin() {
         return false;
     }
 
+    swipes.refresh();
+    swipes.refresh();
+    swipes.refresh();
     swipes.down();
 
-    if (text('明天签到').exists()) {
+    if (text('明天签到').exists() || text('明天来拿').exists()) {
         return true;
     }
 
@@ -34,7 +37,7 @@ function taskCheckin() {
     }
     others.back();
 
-    if (text('明天签到').exists()) {
+    if (text('明天签到').exists() || text('明天来拿').exists()) {
         return true;
     }
 
@@ -49,7 +52,7 @@ function taskAd() {
         return false;
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 10; i++) {
         if (!clicks.textIfExists('去赚钱')) {
             break;
         }
@@ -67,7 +70,7 @@ function taskAd() {
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 10; i++) {
         status0 = others.launch(currentAPP.PACKAGE_NAME);
         if (!status0) {
             return true;
@@ -80,6 +83,8 @@ currentAPP.start = function () {
         if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(currentAPP.PACKAGE_NAME);
