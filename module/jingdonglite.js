@@ -1,7 +1,6 @@
 /**
  * 京东极速版-任务
- * 当前存在问题
- * 1. 使用高版本的可能会被制裁了，刷视频只能获得1金币，使用v1.0.0能正常刷
+ * 1. v1.0.0版本已无法使用
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -12,7 +11,7 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.jd.jdlite';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
-currentAPP.VERSION = '1.0.0';
+currentAPP.VERSION = '3.0.0';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/05/07/7/110_8ea7cfa54ea9714d64d0a1d96087a151.apk';
 
 // 任务-签到
@@ -84,8 +83,8 @@ function taskProduct() {
             sleeps.s2to4();
         }
 
-        if (!clicks.centerXyByText('看商品继续')) {
-            break;
+        if (!clicks.centerXyById('ll_task_bottom_next')) {
+            return false;
         }
     }
 
@@ -142,6 +141,8 @@ function taskVideo() {
         return false;
     }
 
+    clicks.descIfExists('关闭');
+   
     // first video into
     clicks.xy(469, 1373);
 
@@ -168,8 +169,9 @@ function taskActivity() {
     }
 
     swipes.scrollDown();
+    swipes.scrollDown();
 
-    activityArray = ['免费领', '去赚钱', '去参加', '去抽奖', '去签到'];
+    activityArray = ['免费领', '去赚钱', '去参加', '去抽奖', '去签到', '去砍价'];
     for (var i = 0; i < activityArray.length; i++) {
         if (clicks.textIfExists([activityArray[i]])) {
             others.back();
