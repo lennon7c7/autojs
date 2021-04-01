@@ -16,8 +16,8 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d6
 function taskCheckin() {
     log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
-    if (text('稍后').exists()) {
-        clicks.centerXyByText('稍后');
+    if (idContains('update_cancel_tv').exists()) {
+        clicks.element(idContains('update_cancel_tv'));
     }
 
     if (!others.backToElement(text('我的'))) {
@@ -39,6 +39,7 @@ function taskCheckin() {
         return false;
     }
 
+    sleeps.s2to3();
     if (text('每日赚积分').exists() && !clicks.centerXyByText('每日赚积分')) {
         return false;
     }
@@ -217,9 +218,9 @@ currentAPP.start = function () {
         status0 = taskCheckin();
         if (status0) {
             status0 = task15s();
-        }
-        task0Lottery();
-        taskEverydayLottery();
+            task0Lottery();
+            taskEverydayLottery();
+       }
 
         if (status0) {
             return true;
