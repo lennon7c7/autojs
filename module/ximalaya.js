@@ -10,6 +10,8 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.ximalaya.ting.lite';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP.VERSION = '2.0.12.3';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/21/6/110_89f2af74ad33a10022824656a22f1ead.apk';
 
 /**
  * 任务-签到
@@ -17,7 +19,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 function taskCheckin() {
     log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
@@ -40,7 +42,7 @@ function taskCheckin() {
 function taskAd() {
     log('----------', currentAPP.NAME, 'taskAd start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
@@ -73,7 +75,7 @@ function taskAd() {
 function taskNews() {
     log('----------', currentAPP.NAME, 'taskNews start ----------');
 
-    if (!others.backToElement(text('福利'))) {
+    if (!others.backToElement(text('我的'))) {
         return false;
     }
 
