@@ -179,7 +179,13 @@ function toPageMe() {
             return
         }
 
-        clicks.element(value.child(4));
+        value.children().forEach((value2, key2) => {
+            if (key2 !== 4) {
+                return
+            }
+
+            clicks.element(value2);
+        });
     });
 }
 
