@@ -13,6 +13,33 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '11.2.4.122';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
 
+// 任务-福利转转转
+function taskLottery() {
+    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+
+    if (!clicks.backToElement(text('书架'))) {
+        return false;
+    }
+
+    swipes.right300();
+    clicks.centerXyByText('福利转转转');
+    for (var i = 0; i < 10; i++) {
+        if (text('您还有0次抽奖机会').exists() || desc('您还有0次抽奖机会').exists()) {
+            return true;
+        }
+
+        if (!clicks.centerXyByTextOrDesc('161233723098511')) {
+            continue;
+        }
+        sleeps.s10();
+        if (!clicks.centerXyByTextOrDesc('收下奖励')) {
+            continue;
+        }
+    }
+
+    return false;
+}
+
 // 任务-Ad
 function taskAd() {
     log('----------', currentAPP.NAME, 'taskAd start ----------');
@@ -117,6 +144,7 @@ currentAPP.start = function () {
         }
 
 
+        taskLottery();
         status0 = taskAd();
         status1 = taskShare();
 
