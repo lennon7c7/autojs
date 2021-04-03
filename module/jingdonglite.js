@@ -12,7 +12,7 @@ currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.jd.jdlite';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '3.0.0';
-currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/05/07/7/110_8ea7cfa54ea9714d64d0a1d96087a151.apk';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/02/01/2/120_0b3410dfd1b5b561503a600d1683f21a.apk';
 
 // 任务-签到
 function taskCheckin() {
