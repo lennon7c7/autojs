@@ -121,6 +121,33 @@ function taskAddBook() {
     return false;
 }
 
+// 任务-Ad
+function taskAd2() {
+    log('----------', currentAPP.NAME, 'taskAd2 start ----------');
+
+    if (clicks.textIfExists('再领200') && !text('再领200').exists()) {
+        others.closeAdBackToElement(text('日常福利'));
+    }
+
+    if (clicks.textIfExists('再领300') && !text('再领300').exists()) {
+        others.closeAdBackToElement(text('日常福利'));
+    }
+
+    if (clicks.textIfExists('再领300') && !text('再领300').exists()) {
+        others.closeAdBackToElement(text('日常福利'));
+    }
+
+    if (clicks.textIfExists('再领500') && !text('再领500').exists()) {
+        others.closeAdBackToElement(text('日常福利'));
+    }
+
+    if (clicks.textIfExists('看视频') && !text('看视频').exists()) {
+        others.closeAdBackToElement(text('日常福利'));
+    }
+
+    return true;
+}
+
 /**
  * 任务-提现
  */
@@ -166,6 +193,7 @@ currentAPP.start = function () {
         status4 = taskCheckin();
         status1 = taskAd();
         status2 = taskAddBook();
+        taskAd2();
         status3 = taskCashout();
 
         if (status0 && status1 && status2 && status3 && status4) {
