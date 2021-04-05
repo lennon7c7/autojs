@@ -445,6 +445,39 @@ function taskCancelShop() {
     return true;
 }
 
+// 切换账户
+function switchAccount() {
+    log('----------', currentAPP.NAME, 'switchAccount start ----------');
+
+    if (!others.backToElement(desc('我的淘宝'))) {
+        return false;
+    }
+
+    if (!clicks.desc('设置')) {
+        return false;
+    }
+
+    if (!clicks.text('切换账户')) {
+        return false;
+    }
+
+    idContains('aliuser_account_item_userinput').find().forEach((value, key) => {
+        if (key !== 2) {
+            return false;
+        }
+
+        if (value.clickable() === false) {
+            click(value.bounds().centerX(), value.bounds().centerY());
+        } else {
+            value.click();
+        }
+
+        sleep(3 * 1000);
+    });
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -460,8 +493,9 @@ currentAPP.start = function () {
         status0 = taskHelpFriend();
         // status3 = taskShop();
         status1 = taskMoneyPower();
+        status2 = switchAccount();
 
-        if (status0 && status1) {
+        if (status0 && status1 && status2) {
             return true;
         }
 
