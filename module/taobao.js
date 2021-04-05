@@ -281,8 +281,73 @@ function taskMoneyPower() {
         others.back2();
     }
 
+    if (clicks.textIfExists('逛省钱消消乐拿红包(0/1)')) {
+        sleeps.s10();
+        clicks.xiaoxiao(102, 1702, 110, 9);
+        others.back();
+        clicks.xy(700, 1500);
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('逛蚂蚁庄园喂小鸡(0/1)')) {
+        others.back2();
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
+        sleeps.s10();
+        others.back();
+        back();
+        back();
+        sleeps.s3();
+        others.back();
+
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('欢乐造1212元大红包(0/1)')) {
+        sleeps.s15();
+        others.back2();
+
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('逛支付宝会员频道(0/1)')) {
+        sleeps.s10();
+        if (!exists.backToElement('今日任务')) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
+    if (clicks.textIfExists('去蚂蚁森林收能量(0/1)')) {
+        sleeps.s10();
+        app.launch(currentAPP.PACKAGE_NAME);
+        sleeps.s3();
+        if (!exists.backToElement('今日任务')) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
+    }
+
     for (var i = 0; i < 15; i++) {
         buttonClick = null;
+        if (buttonClick == null && text('点击前往 立得').exists()) {
+            buttonClick = text('点击前往 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        }
+
         if (text('逛好店即领').exists()) {
             buttonClick = text('逛好店即领').findOne().parent().parent().parent().findOne(text('去完成'));
         }
@@ -349,49 +414,6 @@ function taskMoneyPower() {
             }
             clicks.centerXyByText('领取奖励');
         }
-    }
-
-    if (clicks.textIfExists('逛省钱消消乐拿红包(0/1)')) {
-        sleeps.s10();
-        clicks.xiaoxiao(102, 1702, 110, 9);
-        others.back();
-        clicks.xy(700, 1500);
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
-    }
-
-    if (clicks.textIfExists('逛蚂蚁庄园喂小鸡(0/1)')) {
-        others.back2();
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
-    }
-
-    if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
-        sleeps.s10();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
-        others.back();
-
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
-    }
-
-    if (clicks.textIfExists('欢乐造1212元大红包(0/1)')) {
-        sleeps.s15();
-        others.back2();
-
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
     }
 
     if (text('领取奖励').exists()) {
