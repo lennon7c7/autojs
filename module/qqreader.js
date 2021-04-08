@@ -1,6 +1,5 @@
 /**
  * QQ阅读-任务
- * @version 7.5.3
  */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
@@ -19,6 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca1
 function taskTreasureBox() {
     log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
 
+    others.back();
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
