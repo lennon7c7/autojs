@@ -10,6 +10,31 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tencent.mtt';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP.VERSION = '10.8.6';
+currentAPP.APK = '';
+
+/**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+ function taskLogin() {
+    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+
+    if (!clicks.backToElement(text('我的'))) {
+        return false;
+    }
+
+    if (text('更多任务').exists() && !desc('微信登录').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByDesc('微信登录')) {
+        return false;
+    }
+    sleeps.s10();
+
+    return true;
+}
 
 /**
  * 任务-签到
@@ -229,6 +254,11 @@ currentAPP.start = function () {
         }
 
 
+        status0 = taskLogin();
+        if (!status0) {
+            continue;
+        }
+
         status0 = taskCheckin();
         status1 = taskClear();
         status3 = taskAd();
@@ -238,6 +268,8 @@ currentAPP.start = function () {
         if (status0 && status1 && status2 && status3 && status4) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(currentAPP.PACKAGE_NAME);
