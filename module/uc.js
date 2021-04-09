@@ -179,7 +179,7 @@ currentAPP.start = function () {
         }
     }
 
-    others.send(currentAPP.PACKAGE_NAME);
+    others.send(currentAPP.NAME);
 
     return false;
 };

@@ -194,7 +194,7 @@ currentAPP.start = function () {
         others.clear();
     }
 
-    others.send(currentAPP.PACKAGE_NAME);
+    others.send(currentAPP.NAME);
 
     return false;
 };
