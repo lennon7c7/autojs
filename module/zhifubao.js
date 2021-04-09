@@ -88,7 +88,7 @@ function task15s() {
 function taskEverydayLottery() {
     log('----------', currentAPP.NAME, 'taskEverydayLottery start ----------');
 
-    if (!clicks.backToElement(text('Home'))) {
+    if (!clicks.backToElement(text('首页'))) {
         return false;
     }
 
@@ -152,7 +152,7 @@ function taskEverydayLottery() {
 }
 
 /**
- * 任务-0元抽奖
+ * 任务-余额宝-0元抽奖
  */
 function task0Lottery() {
     log('----------', currentAPP.NAME, 'task0Lottery start ----------');
@@ -186,6 +186,10 @@ function task0Lottery() {
         if (clicks.centerXyByText('0元抽奖')) {
             if (text('关注').exists()) {
                 clicks.centerXyByText('关注');
+            }
+
+            if (text('确认使用').exists()) {
+                clicks.centerXyByText('确认使用');
             }
 
             if (clicks.centerXyByText('今日抽奖机会已用完')) {
