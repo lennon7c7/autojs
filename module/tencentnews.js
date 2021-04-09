@@ -24,6 +24,11 @@ function taskLogin() {
         return true;
     }
 
+    sleeps.s3();
+    if (text('我的红包').exists() && !desc('微信').exists()) {
+        return true;
+    }
+
     if (!clicks.centerXyByDesc('微信')) {
         return false;
     }
@@ -193,13 +198,21 @@ function taskRedpackNow() {
         return false;
     }
     sleeps.s5();
-    others.back2();
-    back();
-    back();
-    sleeps.s3();
-    others.back();
 
-    return true;
+    app.launch(currentAPP.PACKAGE_NAME);
+    sleeps.s3();
+
+    if (text('正在派发红包').exists() && !clicks.centerXyByText('正在派发红包')) {
+        return false;
+    } else if (text('下载NOW直播提现').exists() && !clicks.centerXyByText('下载NOW直播提现')) {
+        return false;
+    }
+
+    if(desc('红包已领取').exists()) {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -207,7 +220,7 @@ function taskRedpackNow() {
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 10; i++) {
         status0 = others.launch(currentAPP.PACKAGE_NAME);
         if (!status0) {
             return true;
