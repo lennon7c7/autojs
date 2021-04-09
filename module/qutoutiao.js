@@ -10,6 +10,8 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.jifen.qukan';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP.VERSION = '3.9.93';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/31/11/106_032c57ae8893524f3ce9245b26f65114.apk';
 
 // 任务-文章
 function taskNews() {
