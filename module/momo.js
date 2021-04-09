@@ -25,11 +25,12 @@ function taskCheckin() {
         return false;
     }
 
+    sleeps.s3();
     if (!clicks.centerXyById('ad_banner_page')) {
         return false;
     }
 
-    if (text('已签').exists()) {
+    if (text('已签').exists() && !text('立即签到领现金').exists()) {
         return true;
     }
 
@@ -38,7 +39,7 @@ function taskCheckin() {
     }
     sleeps.s2to3();
 
-    if (text('已签').exists()) {
+    if (text('已签').exists() && !text('立即签到领现金').exists()) {
         return true;
     }
 
@@ -101,6 +102,8 @@ currentAPP.start = function () {
         if (status0 && status1) {
             return true;
         }
+
+        others.clear();
     }
 
     others.send(currentAPP.NAME);
