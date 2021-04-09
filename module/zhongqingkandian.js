@@ -29,6 +29,18 @@ function getPhoneSuffix() {
     return phoneSuffix;
 }
 
+// 获取领奖励
+function getReward() {
+    clicks.textIfExists('188');
+    clicks.textIfExists('288');
+    clicks.textIfExists('368');
+
+    if (text('领奖励').exists()) {
+        clicks.centerXyByText('领奖励');
+        others.back();
+    }
+}
+
 // 任务-限时
 // every 20m
 function taskLimit() {
@@ -93,9 +105,7 @@ function taskNews() {
         return false;
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     if (text('幸运奖励').exists()) {
         clicks.centerXyByText('幸运奖励');
@@ -140,9 +150,7 @@ function taskVideo() {
         return false;
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     if (text('每日任务').exists() && !text('去观看').exists()) {
         return true;
@@ -170,9 +178,7 @@ function taskVideo() {
         return false;
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     return true;
 }
@@ -185,9 +191,7 @@ function taskAd() {
         return false;
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     for (var i = 0; i < 5; i++) {
         if (text('看福利视频 (5 /5)').exists()) {
@@ -203,9 +207,7 @@ function taskAd() {
         }
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     return true;
 }
@@ -433,9 +435,7 @@ function taskKankanzhuang() {
         }
     }
 
-    if (text('领奖励').exists()) {
-        clicks.centerXyByText('领奖励');
-    }
+    getReward();
 
     return false;
 }
@@ -452,9 +452,7 @@ function taskClickMP() {
             return false;
         }
 
-        if (text('领奖励').exists()) {
-            clicks.centerXyByText('领奖励');
-        }
+        getReward();
 
         if (text('任务').exists() && !exists.parent(text('完成4次新闻赚任务，额外奖励120青豆'), text('去阅读'))) {
             return true;
@@ -529,9 +527,6 @@ function taskClickMP() {
 function taskClick6() {
     log('----------', currentAPP.NAME, 'taskNews6 start ----------');
 
-    clicks.textIfExists('188');
-    clicks.textIfExists('288');
-    clicks.textIfExists('368');
     clicks.textIfExists('展开');
 
     for (var i = 0; i < 66; i++) {
@@ -539,7 +534,7 @@ function taskClick6() {
             return false;
         }
 
-        clicks.textIfExists('领奖励');
+        getReward();
 
         if (text('任务').exists() && !exists.parent(text('点击任意6个内容，阅读完成即可领取青豆'), text('去完成'))) {
             return true;
