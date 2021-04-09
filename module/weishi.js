@@ -32,6 +32,14 @@ function taskLogin() {
         clicks.centerXyByText('Confirm Login');
     }
 
+    if (text('Agree').exists() && !clicks.text('Agree')) {
+        return false;
+    }
+
+    if (text('同意').exists() && !clicks.text('同意')) {
+        return false;
+    }
+
     if (text('编辑资料').exists()) {
         return true;
     }
