@@ -129,12 +129,10 @@ function taskAd2() {
         others.closeAdBackToElement(text('日常福利'));
     }
 
-    if (clicks.textIfExists('再领300') && !text('再领300').exists()) {
-        others.closeAdBackToElement(text('日常福利'));
-    }
-
-    if (clicks.textIfExists('再领300') && !text('再领300').exists()) {
-        others.closeAdBackToElement(text('日常福利'));
+    for (var i = 0; i < 3; i++) {
+        if (clicks.textIfExists('再领300') && !text('再领300').exists()) {
+            others.closeAdBackToElement(text('日常福利'));
+        }
     }
 
     if (clicks.textIfExists('再领500') && !text('再领500').exists()) {
