@@ -73,12 +73,18 @@ others.initEnv = function () {
 
     setScreenMetrics(1080, 2340);
 
+    if (!others.isInternetOk()) {
+        return false;
+    }
+
     // 设置当前亮度模式为手动亮度
     device.setBrightnessMode(0);
     // 设置当前手动亮度为最暗
     device.setBrightness(0);
 
     others.fixDir();
+
+    return true;
 };
 
 /**
@@ -386,5 +392,20 @@ others.muteMusicVolume = function () {
 
     return true;
 };
+
+/**
+ * 是否网络正常
+ * @returns {boolean}
+ */
+others.isInternetOk = function () {
+    var url = 'www.baidu.com';
+    var res = http.get(url);
+    if (res.statusCode !== 200) {
+        toastLog('网络断开');
+        return false;
+    }
+
+    return true;
+}
 
 module.exports = others;
