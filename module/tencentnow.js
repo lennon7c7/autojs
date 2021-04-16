@@ -57,6 +57,11 @@ function taskCheckin() {
         return true;
     }
 
+    if (text('进入直播间完成签到').exists() && clicks.textIfExists('进入直播间完成签到')) {
+        sleeps.s10();
+        exists.backToElement(text('活动规则'));
+    }
+
     if (!clicks.textIfExists('签到领取红包')) {
         return false;
     } else if (!clicks.textIfExists('签到') || !clicks.textIfExists('签到领取红包')) {
