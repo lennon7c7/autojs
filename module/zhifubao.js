@@ -222,8 +222,8 @@ currentAPP.start = function () {
         status0 = taskCheckin();
         if (status0) {
             status0 = task15s();
-            task0Lottery();
-            taskEverydayLottery();
+            // task0Lottery();
+            // taskEverydayLottery();
        }
 
         if (status0) {
