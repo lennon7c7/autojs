@@ -11,7 +11,7 @@ currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.tencent.mtt';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '10.8.6';
-currentAPP.APK = '';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/22/11/120_47515e8bc6545e47651495ab8270bc9d.apk';
 
 /**
  * 任务-登录
@@ -166,7 +166,7 @@ function taskSearch() {
     }
 
     swipes.down();
-    if (text('去搜索').exists() && clicks.centerXyByText('去搜索')) {
+    if (clicks.text('去搜索')) {
         sleeps.s10();
     }
 
@@ -242,6 +242,23 @@ function taskNews() {
     return false;
 }
 
+// 任务-NOW直播红包
+function taskRedpackNow() {
+    log('----------', currentAPP.NAME, 'taskRedpackNow start ----------');
+
+    app.startActivity({
+        data: 'mttbrowser://url=https://now.qq.com/activity/c-atmosphere-official/channel.html?_bid=4054&_wv=3&fromid=22452&pkgId=22452&channellink=CK1475153271485'
+    });
+    sleeps.s3();
+    if (!clicks.centerXyByText(currentAPP.NAME)) {
+        return false;
+    }
+
+    others.back();
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -259,13 +276,14 @@ currentAPP.start = function () {
             continue;
         }
 
+        status5 = taskRedpackNow();
         status0 = taskCheckin();
         status1 = taskClear();
         status3 = taskAd();
         status4 = taskSearch();
         status2 = taskNews();
 
-        if (status0 && status1 && status2 && status3 && status4) {
+        if (status0 && status1 && status2 && status3 && status4 && status5) {
             return true;
         }
 
