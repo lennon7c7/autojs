@@ -25,12 +25,12 @@ function taskCheckin() {
 
     if (textStartsWith('看视频再领').exists()) {
         clicks.element(textStartsWith('看视频再领'));
-        closeAd();
+        others.closeAdBackToElement(text('每日福利'));
     }
 
     if (text('立即补签').exists()) {
         clicks.centerXyByText('立即补签');
-        closeAd();
+        others.closeAdBackToElement(text('每日福利'));
     }
 
     return true;
@@ -51,7 +51,7 @@ function taskAd() {
             clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
         }
 
-        closeAd();
+        others.closeAdBackToElement(text('每日福利'));
     }
 
     for (var i = 0; i < 10; i++) {
@@ -63,7 +63,7 @@ function taskAd() {
             continue;
         }
 
-        closeAd();
+        others.closeAdBackToElement(text('每日福利'));
     }
 
     return false;
@@ -77,6 +77,10 @@ function taskNews() {
 
     if (!others.backToElement(text('我的'))) {
         return false;
+    }
+
+    if (text('每日福利').exists() && !text('去阅读').exists()) {
+        return true;
     }
 
     swipes.scrollDown();
@@ -137,33 +141,6 @@ function taskLottery() {
         for (var j = 0; j < 10; j++) {
             !text('trigger').exists() && others.back();
             !text('trigger').exists() && sleeps.s5to10();
-        }
-    }
-
-    return false;
-}
-
-/**
- * 关闭广告
- * @returns {boolean}
- */
-function closeAd() {
-    if (id('tt_top_mute').exists()) {
-        clicks.centerXyById('tt_top_mute');
-    }
-
-    sleeps.s30();
-    for (var j = 0; j < 10; j++) {
-        sleeps.s3();
-        others.back();
-
-        if (id('tt_video_ad_close_layout').exists()) {
-            clicks.centerXyById('tt_video_ad_close_layout');
-
-            sleeps.s2to3();
-            others.back();
-
-            return true;
         }
     }
 
