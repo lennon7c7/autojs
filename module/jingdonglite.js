@@ -32,6 +32,7 @@ function taskCheckin() {
         others.back();
         if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
         } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
+        } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
         }
 
         return true;
@@ -45,6 +46,7 @@ function taskCheckin() {
         others.back();
         if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
         } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
+        } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
         }
 
         return true;
@@ -59,6 +61,7 @@ function taskProduct() {
 
     if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
     } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
+    } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
     }
 
     if (!others.backToElement(desc('我的'))) {
@@ -155,6 +158,12 @@ function taskVideo() {
         }
 
         sleeps.s10();
+
+        if (id('com.jd.jdlite:id/task_float_fengkong_goon').find().size()) {
+            clicks.centerXyById('com.jd.jdlite:id/task_float_fengkong_goon');
+        }
+
+        swipes.down1600();
     }
 
     return false;
@@ -171,14 +180,20 @@ function taskActivity() {
     swipes.scrollDown();
     swipes.scrollDown();
 
-    activityArray = ['免费领', '去赚钱', '去参加', '去抽奖', '去签到', '去砍价'];
-    for (var i = 0; i < activityArray.length; i++) {
-        if (clicks.textIfExists([activityArray[i]])) {
-            others.back();
-            clicks.textIfExists('残忍拒绝');
-            clicks.textIfExists('残忍离开');
+    var element = id('com.jd.jdlite.lib.mission:id/lib_mission_active_button');
+    element.find().forEach((value2, key2) => {
+        if (value2.text() === '已完成' || value2.text().indexOf('继续') === 0) {
+            return;
         }
-    }
+
+        clicks.centerXyByText(value2.text());
+        others.back();
+
+        if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
+        } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
+        } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
+        }
+    });
 
     return true;
 }
