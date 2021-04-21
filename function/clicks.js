@@ -557,4 +557,35 @@ clicks.backToElementTextOrDesc = function (myString) {
     return false;
 };
 
+/**
+ * 点击下一个同级元素
+ * @example clicks.nextSibilingsNode(text('打开腾讯新闻就能领红包，100%中奖！'), text('查看'));
+ * @param {string} markElement 可识别的标记元素
+ * @param {string} clickElement 被点击的元素
+ * @returns {boolean}
+ */
+clicks.nextSibilingsNode = function (markElement, clickElement) {
+    if (markElement.find().size() === 0 || clickElement.find().size() === 0) {
+        return false;
+    }
+
+    var list = markElement.findOnce().parent();
+    var clickElementKeyOutput;
+    list.children().forEach(function (value, key) {
+        if (value.text() === markElement.findOnce().text()) {
+            clickElementKeyOutput = list.child(key + 1);
+            return true;
+        }
+    });
+
+    if (!clickElementKeyOutput || clickElement.findOnce().text() !== clickElementKeyOutput.text()) {
+        return false;
+    }
+
+    clickElementKeyOutput.click();
+    sleeps.s3();
+
+    return true;
+}
+
 module.exports = clicks;

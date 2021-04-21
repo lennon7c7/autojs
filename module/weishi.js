@@ -104,6 +104,12 @@ function checkVideo() {
         clicks.xy(750, 411);
     }
 
+    if (textStartsWith('领取 ').exists()) {
+        clicks.element(textStartsWith('领取 '));
+        others.back();
+        clicks.xy(750, 411);
+    }
+
     if (textStartsWith('明日再').exists()) {
         return true;
     }
@@ -123,37 +129,25 @@ function taskRedpack() {
         return false;
     }
 
-    swipes.scrollDown3();
-
-    for (var i = 0; i < desc('查看').find().size(); i++) {
-        clicks.element(desc('查看').find()[i]);
-        sleeps.s3();
-        if (desc('下载腾讯新闻').exists()) {
-            clicks.centerXyByDesc('下载腾讯新闻');
-            sleeps.s3();
-            others.back3();
-            back();
-            back();
-        }
-
-        exists.backToElement(desc('任务中心'));
+    if (!clicks.nextSibilingsNode(text('打开腾讯新闻就能领红包，100%中奖！'), text('查看'))) {
+        return false;
     }
 
-    for (var i = 0; i < text('查看').find().size(); i++) {
-        clicks.element(text('查看').find()[i]);
+    if (text('下载腾讯新闻').exists() || desc('下载腾讯新闻').exists()) {
+        clicks.centerXyByTextOrDesc('下载腾讯新闻');
         sleeps.s3();
-        if (text('下载腾讯新闻').exists()) {
-            clicks.centerXyByText('下载腾讯新闻');
-            sleeps.s3();
-            others.back3();
-            back();
-            back();
-        }
-
-        exists.backToElement(text('任务中心'));
     }
 
-    return true;
+    if (text('该账号今天已经领过红包了哦~').exists()) {
+        app.launch(currentAPP.PACKAGE_NAME);
+        sleeps.s3();
+        return true;
+    }
+
+    app.launch(currentAPP.PACKAGE_NAME);
+    sleeps.s3();
+
+    return false;
 }
 
 /**
@@ -168,9 +162,9 @@ function taskCashout() {
         return false;
     }
 
-    if (clicks.textIfExists('提现') && clicks.textIfExists('去提现') && clicks.textIfExists('立即提现')) {
-        return true;
-    }
+    clicks.textIfExists('提现');
+    clicks.textIfExists('去提现');
+    clicks.textIfExists('立即提现');
 
     return true;
 }
