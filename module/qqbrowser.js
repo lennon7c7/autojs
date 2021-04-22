@@ -20,7 +20,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/22/11/120_47515e8bc654
  function taskLogin() {
     log('----------', currentAPP.NAME, 'taskLogin start ----------');
 
-    if (!clicks.backToElement(text('我的'))) {
+    if (!clicks.backToElement(className('android.widget.TextView').depth(10).text('我的'))) {
         return false;
     }
 
@@ -42,7 +42,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/22/11/120_47515e8bc654
 function taskCheckin() {
     log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
-    if (!others.backToElement(text('我的'))) {
+    if (!clicks.backToElement(className('android.widget.TextView').depth(10).text('我的'))) {
         return false;
     }
 
@@ -121,11 +121,11 @@ function taskAd() {
         clicks.centerXyByText('知道了');
     }
 
-    if (text('福利中心').exists() && !textStartsWith('观看2个视频得').exists()) {
+    if (text('福利中心').exists() && !textStartsWith('观看3个视频得').exists()) {
         return true;
     }
 
-    if (text('观看2个视频得10金币（2/2）').exists()) {
+    if (text('观看3个视频得300金币（3/3）').exists()) {
         return true;
     }
 
@@ -142,7 +142,7 @@ function taskAd() {
         clicks.centerXyByText('知道了');
     }
 
-    if (text('观看2个视频得10金币（2/2）').exists()) {
+    if (text('观看3个视频得300金币（3/3）').exists()) {
         return true;
     }
 
