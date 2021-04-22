@@ -30,7 +30,7 @@ function taskTreasureBox() {
         }
     }
 
-    if (!clicks.text('图片')) {
+    if (text('图片').exists() && !clicks.text('图片')) {
         return false;
     }
 
