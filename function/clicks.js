@@ -1,6 +1,7 @@
 /**
  * 功能集合-点击
  */
+var sleeps = require('./sleeps.js');
 var clicks = {};
 
 /**
