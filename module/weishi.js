@@ -152,6 +152,7 @@ function taskRedpack() {
 
 /**
  * 任务-提现
+ * 因为需要扫脸，没有对应的技术应付，所以只能关闭了
  */
 function taskCashout() {
     log('----------', currentAPP.NAME, 'taskCashout start ----------');
@@ -182,7 +183,7 @@ function toPageMe() {
         }
 
         value.children().forEach((value2, key2) => {
-            if (key2 !== 4) {
+            if (key2 !== 4 || !value2) {
                 return
             }
 
@@ -209,9 +210,9 @@ currentAPP.start = function () {
         }
         status1 = taskVideo();
         status2 = taskRedpack();
-        status3 = taskCashout();
+        // status3 = taskCashout();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status2) {
             return true;
         }
 
