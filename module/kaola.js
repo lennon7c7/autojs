@@ -7,22 +7,32 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.kaola';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
-currentAPP.VERSION = '4.45.3';
+currentAPP.VERSION = '4.46.3';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482219920705de101a0d7d.apk';
 
 // 任务-考拉乐园
 function taskPlayground() {
     log('----------', currentAPP.NAME, 'taskPlayground start ----------');
 
-    if (!others.backToElement(text('我的考拉'))) {
+    if (!clicks.backToElement(text('首页'))) {
         return false;
     }
 
-    if (!clicks.centerXyByText('考拉乐园')) {
-        return false;
-    }
+    className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1, key1) => {
+        if (value1.childCount() !== 5) {
+            return;
+        }
 
-    sleeps.s2to3();
+        value1.children().forEach((value2, key1) => {
+            if (key1 !== 1) {
+                return;
+            }
+
+            value2.click();
+            sleeps.s3();
+        });
+    });
+    sleeps.s15();
 
     clicks.textIfExists('知道了');
 
@@ -85,25 +95,48 @@ function taskPlayground() {
 function taskRandomPage() {
     log('----------', currentAPP.NAME, 'taskRandomPage start ----------');
 
-    if (!others.backToElement(text('我的考拉'))) {
+    if (!clicks.backToElement(text('首页'))) {
         return false;
     }
 
-    if (!clicks.centerXyByText('领考拉豆')) {
-        return false;
-    }
+    className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1, key1) => {
+        if (value1.childCount() !== 5) {
+            return;
+        }
 
-    sleeps.s2to3();
+        value1.children().forEach((value2, key1) => {
+            if (key1 !== 2) {
+                return;
+            }
+
+            value2.click();
+            sleeps.s3();
+        });
+    });
+    sleeps.s15();
 
     clicks.textIfExists('下单购物');
     clicks.textIfExists('关注店铺');
     clicks.textIfExists('浏览商品');
     clicks.textIfExists('今日签到');
 
-    text('10豆免费抽').exists() && clicks.xy(930, 1030);
+    className('android.view.View').depth(8).find().forEach((value1, key1) => {
+        if (value1.childCount() !== 3 && value1.childCount() !== 5) {
+            return;
+        }
+
+        value1.children().forEach((value2, key1) => {
+            if (key1 !== 0 || value2.bounds().width() < 100 || value2.bounds().height() < 100) {
+                return;
+            }
+
+            value2.child(0).click();
+            sleeps.s3();
+        });
+    });
 
     for (var i = 0; i < 20; i++) {
-        if (!others.backToElement(text('每日赚豆'))) {
+        if (!exists.backToElement(text('每日赚豆'))) {
             return false;
         }
 
@@ -122,6 +155,8 @@ function taskRandomPage() {
         } else if (clicks.textIfExists('去看看')) {
             clicks.textIfExists('快打开看看吧~');
         }
+        clicks.textIfExists('快打开看看吧~');
+        clicks.textIfExists('快打开看看吧~');
 
         if (text('考拉海购-404错误页').exists()) {
             clicks.textIfExists('返回首页');
