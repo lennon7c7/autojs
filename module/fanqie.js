@@ -168,10 +168,10 @@ currentAPP.start = function () {
 
         status0 = taskTreasureBox();
         status1 = taskAd();
-        status2 = taskAddBook();
+        // status2 = taskAddBook();
         status3 = taskCashout();
 
-        if (status0 && status1 && status2 && status3) {
+        if (status0 && status1 && status3) {
             return true;
         }
     }
