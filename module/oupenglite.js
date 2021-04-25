@@ -22,6 +22,13 @@ function taskCheckin() {
     clicks.textIfExists('忽略');
     clicks.textIfExists('忽略');
     clicks.textIfExists('签到');
+    clicks.textIfExists('签到');
+    clicks.idIfExists('close_dialog');
+    clicks.idIfExists('close_dialog');
+    clicks.textIfExists('忽略');
+    clicks.textIfExists('忽略');
+    clicks.textIfExists('签到');
+    clicks.textIfExists('签到');
     clicks.idIfExists('close_dialog');
     clicks.idIfExists('close_dialog');
 
@@ -47,20 +54,16 @@ function taskAd() {
     log('----------', currentAPP.NAME, 'taskAd start ----------');
 
     for (var i = 0; i < 10; i++) {
-        if (!clicks.id('bottom_navigation_bar_task')) {
-            continue;
-        }
-
         clicks.idIfExists('close_dialog');
         if (clicks.textIfExists('取消')) {
             others.closeAdBackToElement(id('close_dialog'));
-            sleeps.s3();
+            sleeps.s5();
             clicks.textIfExists('取消');
         }
 
         if (clicks.textIfExists('双倍奖励')) {
             others.closeAdBackToElement(id('close_dialog'));
-            sleeps.s3();
+            sleeps.s5();
             clicks.textIfExists('取消');
         }
 
