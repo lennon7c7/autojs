@@ -1,7 +1,3 @@
-/**
- * 拼多多-任务
- * @version 5.45.0
- */
 var clicks = require('../function/clicks.js');
 var exists = require('../function/exists.js');
 var others = require('../function/others.js');
@@ -11,6 +7,8 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.xunmeng.pinduoduo';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP.VERSION = '5.45.0';
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/06/5/120_37a8dc91f1db36e36a85bd4e71c65fa0.apk';
 
 /**
  * 任务-签到
@@ -20,10 +18,6 @@ function taskCheckin() {
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
-    }
-
-    if (text('今日已提').exists() || text('去解锁').exists()) {
-        return true;
     }
 
     if (text('立即签到').exists()) {
@@ -36,10 +30,9 @@ function taskCheckin() {
 
     if (textStartsWith('签到成功').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
         clicks.textIfExists('稍后再提');
-        return true;
     }
 
-    return false;
+    return true;
 }
 
 /**
@@ -134,6 +127,27 @@ function taskCat() {
     return true;
 }
 
+// 任务-视频
+function taskVideo() {
+    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+
+    if (!clicks.backToElement(text('大视频'))) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        swipes.down1600();
+        sleeps.s2to5();
+        swipes.refresh1500();
+
+        if (!text('说点什么吧...').exists()) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -147,10 +161,11 @@ currentAPP.start = function () {
 
 
         status0 = taskCheckin();
-        status1 = taskCashout();
+        // status1 = taskCashout();
         // status2 = taskCat();
+        taskVideo();
 
-        if (status0 && status1) {
+        if (status0) {
             return true;
         }
 
