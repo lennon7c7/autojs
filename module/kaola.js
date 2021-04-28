@@ -18,20 +18,25 @@ function taskPlayground() {
         return false;
     }
 
+    isClick = false;
     className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1, key1) => {
-        if (value1.childCount() !== 5) {
+        if (isClick || value1.childCount() !== 5) {
             return;
         }
 
-        value1.children().forEach((value2, key1) => {
-            if (key1 !== 1) {
+        value1.children().forEach((value2, key2) => {
+            if (isClick || key2 !== 1) {
                 return;
             }
 
             value2.click();
             sleeps.s3();
+            isClick = true;
         });
     });
+    if (!isClick) {
+        return false;
+    }
     sleeps.s15();
 
     clicks.textIfExists('知道了');
@@ -99,20 +104,25 @@ function taskRandomPage() {
         return false;
     }
 
+    isClick = false;
     className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1, key1) => {
-        if (value1.childCount() !== 5) {
+        if (isClick || value1.childCount() !== 5) {
             return;
         }
 
-        value1.children().forEach((value2, key1) => {
-            if (key1 !== 2) {
+        value1.children().forEach((value2, key2) => {
+            if (isClick || key2 !== 2) {
                 return;
             }
 
             value2.click();
             sleeps.s3();
+            isClick = true;
         });
     });
+    if (!isClick) {
+        return false;
+    }
     sleeps.s15();
 
     clicks.textIfExists('下单购物');
@@ -120,20 +130,25 @@ function taskRandomPage() {
     clicks.textIfExists('浏览商品');
     clicks.textIfExists('今日签到');
 
+    isClick = false;
     className('android.view.View').depth(8).find().forEach((value1, key1) => {
-        if (value1.childCount() !== 3 && value1.childCount() !== 5) {
+        if (isClick || value1.childCount() !== 3 && value1.childCount() !== 5) {
             return;
         }
 
-        value1.children().forEach((value2, key1) => {
-            if (key1 !== 0 || value2.bounds().width() < 100 || value2.bounds().height() < 100) {
+        value1.children().forEach((value2, key2) => {
+            if (isClick || key2 !== 0 || value2.bounds().width() < 100 || value2.bounds().height() < 100) {
                 return;
             }
 
             value2.child(0).click();
             sleeps.s3();
+            isClick = true;
         });
     });
+    if (!isClick) {
+        return false;
+    }
 
     for (var i = 0; i < 20; i++) {
         if (!exists.backToElement(text('每日赚豆'))) {
