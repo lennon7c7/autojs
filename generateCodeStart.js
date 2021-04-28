@@ -34,12 +34,19 @@ function generate() {
         return;
     }
 
+    var allJsPath = targetDir + 'all.js';
+    var allJsContent = '';
     sourceFile.forEach((value) => {
         var path = targetDir + value;
         var content = 'var module = require(\'../module/' + value + '\');\n' +
             'module.start();';
         files.write(path, content);
+
+        allJsContent += content + '\n\n';
     });
+
+    // 该脚本内容包含所有的模块
+    files.write(allJsPath, allJsContent);
 
     return isOk;
 }
