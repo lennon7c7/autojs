@@ -111,7 +111,7 @@ clicks.xiaoxiao = function (x, y, offset, step) {
  * 元素
  */
 clicks.element = function (e) {
-    if (e === undefined) {
+    if (!e) {
         return false;
     } else if (e.exists !== undefined && !e.exists()) {
         log('---------- fail: param ', e, ' none exist ----------');
@@ -126,6 +126,30 @@ clicks.element = function (e) {
     } else {
         e.click();
     }
+    sleep(3 * 1000);
+
+    return true;
+};
+
+/**
+ * 只点击 可点击的元素
+ */
+clicks.clickableElement = function (e) {
+    if (!e) {
+        return false;
+    } else if (e.exists !== undefined && !e.exists()) {
+        log('---------- fail: param ', e, ' none exist ----------');
+        return false;
+    } else if (e.size !== undefined && e.size() === 0) {
+        log('---------- fail: param ', e, ' none exist ----------');
+        return false;
+    }
+
+    if (!e.clickable()) {
+        return false;
+    }
+
+    e.click();
     sleep(3 * 1000);
 
     return true;
@@ -192,7 +216,7 @@ clicks.rectByLastText = function (myString) {
     elementAll = text(myString).find();
     lastOne = elementAll.size();
     elementAll.forEach((value, key) => {
-        if ((key + 1) != lastOne) {
+        if ((key + 1) !== lastOne) {
             return;
         }
 

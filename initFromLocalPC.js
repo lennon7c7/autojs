@@ -46,7 +46,7 @@ function configHttp() {
         'module/fanqie.js', 'module/fanqiechangting.js',
         'module/huohuoshipin.js', 'module/huoshan.js',
         'module/jibubao.js', 'module/jingdonglite.js', 'module/jukandian.js',
-        'module/kaola.js', 'module/kuaishou.js', 'module/kuaiyin.js', 'module/kugoudaziban.js',
+        'module/kaola.js', 'module/kuaikandian.js', 'module/kuaishou.js', 'module/kuaiyin.js', 'module/kugoudaziban.js',
         'module/mojitianqi.js', 'module/momo.js',
         'module/oupenglite.js', 'module/pinduoduo.js',
         'module/qqbrowser.js', 'module/qqreader.js', 'module/qutoutiao.js', 'module/shuqi.js', 'module/tianmao.js',

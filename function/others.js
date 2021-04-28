@@ -39,7 +39,7 @@ others.fixDir = function () {
         'fanqie.js', 'fanqiechangting.js',
         'huohuoshipin.js', 'huoshan.js',
         'jibubao.js', 'jingdonglite.js', 'jukandian.js',
-        'kaola.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js',
+        'kaola.js', 'kuaikandian.js', 'kuaishou.js', 'kuaiyin.js', 'kugoudaziban.js',
         'mojitianqi.js', 'momo.js',
         'oupenglite.js', 'pinduoduo.js',
         'qqbrowser.js', 'qqreader.js', 'qutoutiao.js', 'shuqi.js', 'tianmao.js',
@@ -286,6 +286,9 @@ others.closeAdBackToElement = function (element) {
             clicks.centerXyById('video_countdown');
             break;
         } else if (id('video_close_icon').exists()) {
+            clicks.centerXyById('video_close_icon');
+            break;
+        } else if (id(currentAPP.PACKAGE_NAME + ':id/video_close_icon').exists()) {
             clicks.centerXyById('video_close_icon');
             break;
         }
