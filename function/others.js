@@ -106,6 +106,16 @@ others.launch = function (packageName) {
 
     others.clear();
     app.launch(packageName);
+    sleep(3 * 1000);
+
+    // 如果应用被锁，就输入密码解锁
+    if (clicks.idIfExists('app_lock_change_to_pin_btn')) {
+        for (var i = 0; i < 6; i++) {
+            id('app_lock_password_num0').click();
+            sleep(100);
+        }
+    }
+
     sleep(15 * 1000);
 
     return true;
