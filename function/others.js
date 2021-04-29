@@ -15,7 +15,7 @@ others.fixDir = function () {
     var oldDir = files.cwd() + '/';
 
     var newDir = oldDir + 'function/';
-    var filename = ['clicks.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js'];
+    var filename = ['clicks.js', 'debugs.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js'];
     filename.forEach((value, key) => {
         var oldPath = oldDir + value;
         var newPath = newDir + value;

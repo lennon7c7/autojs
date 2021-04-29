@@ -39,7 +39,7 @@ function configHttp() {
 
     domain = 'http://192.168.25.222:9999/';
     filenameList = [
-        'function/clicks.js', 'function/exists.js', 'function/others.js', 'function/sleeps.js', 'function/swipes.js',
+        'function/clicks.js', 'function/debugs.js', 'function/exists.js', 'function/others.js', 'function/sleeps.js', 'function/swipes.js',
 
         'module/baidu.js', 'module/baiduhaokan.js', 'module/baidutieba.js',
         'module/diandiancaige.js', 'module/douyin.js', 'module/douyinlite.js', 'module/douyinhuoshan.js',
