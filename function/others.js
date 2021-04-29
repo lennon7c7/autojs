@@ -288,7 +288,7 @@ others.closeAdBackToElement = function (element) {
         } else if (id('video_close_icon').exists()) {
             clicks.centerXyById('video_close_icon');
             break;
-        } else if (id(currentAPP.PACKAGE_NAME + ':id/video_close_icon').exists()) {
+        } else if (typeof currentAPP !== 'undefined' && id(currentAPP.PACKAGE_NAME + ':id/video_close_icon').exists()) {
             clicks.centerXyById('video_close_icon');
             break;
         }
