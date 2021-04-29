@@ -41,7 +41,7 @@ function taskCheckin() {
     swipes.down();
     swipes.down();
 
-    if (text('立即签到').exists()) {
+    if (text('明日签到').exists()) {
         return true;
     }
 
@@ -56,7 +56,7 @@ function taskAd() {
         return true;
     }
 
-    for (var i = 1; i <= 10; i++) {
+    for (var i = 0; i < 10; i++) {
         if (!text('广告任务50金币/次，今日 ' + i + '/10次').exists()) {
             continue;
         }
