@@ -55,7 +55,8 @@ function taskCheckin() {
     }
 
     if (clicks.textIfExists('立即签到')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('已签到').exists()) {
@@ -76,7 +77,8 @@ function taskClear() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('完成1次手机空间清理（1/1）').exists()) {
@@ -99,7 +101,8 @@ function taskClear() {
     }
 
     if (clicks.centerXyByText('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('完成1次手机空间清理（1/1）').exists()) {
@@ -118,7 +121,8 @@ function taskAd() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('福利中心').exists() && !textStartsWith('观看3个视频得').exists()) {
@@ -139,7 +143,8 @@ function taskAd() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('观看3个视频得300金币（3/3）').exists()) {
@@ -158,7 +163,8 @@ function taskSearch() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('逛5秒或点击任意内容（1/1）').exists()) {
@@ -175,7 +181,8 @@ function taskSearch() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('逛5秒或点击任意内容（1/1）').exists()) {
@@ -196,7 +203,8 @@ function taskNews() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
@@ -232,7 +240,8 @@ function taskNews() {
     }
 
     if (clicks.textIfExists('领奖励')) {
-        clicks.centerXyByText('知道了');
+        text('知道了').exists() && clicks.centerXyByText('知道了');
+        text('继续赚钱').exists() && clicks.centerXyByText('继续赚钱');
     }
 
     if (text('完整阅读5篇资讯文章（5/5）').exists()) {
