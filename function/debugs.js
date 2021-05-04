@@ -90,6 +90,33 @@ debugs.printElementTreeAll = function () {
 }
 
 /**
+ * 打印命中条件元素
+ */
+debugs.printElementTreeBy = function (condition) {
+    var output = '\n\n';
+    output += '------------------------------------------------------------------------------------------\n';
+
+    function printElement(element, level) {
+        var spaceCount = '';
+        for (var i = 0; i < level; i++) {
+            spaceCount += ' ';
+        }
+
+        element.children().forEach((value, key) => {
+            if (debugs.isFilterConditionEqElement(condition, value)) {
+                output += (spaceCount + debugs.getElementAttr(value) + '\n');
+            }
+
+            printElement(value, level + 1);
+        });
+    }
+
+    printElement(debugs.getElementTop(className('android.widget.FrameLayout').findOne(3000)), 0);
+    output += '------------------------------------------------------------------------------------------\n';
+    log(output);
+}
+
+/**
  * 递归遍历获取第一级元素
  * @param {string} element 父元素
  * @return {string} 第一级元素
@@ -112,7 +139,9 @@ debugs.getElementAttr = function (element) {
 
     output += element.className();
     output += ' indexInParent = ' + element.indexInParent();
+    output += ' depth = ' + element.depth();
     output += ' childCount = ' + element.childCount();
+    output += ' clickable = ' + element.clickable();
     output += ' width = ' + element.bounds().width() + ' height = ' + element.bounds().height();
     output += ' centerX = ' + element.bounds().centerX() + ' centerY = ' + element.bounds().centerY();
 
@@ -127,6 +156,22 @@ debugs.getElementAttr = function (element) {
     }
 
     return output;
+}
+
+/**
+ * 是否 过滤条件 等于 元素
+ * @param {object} filterCondition 过滤条件
+ * @param {string} element 元素
+ * @return {boolean}
+ */
+debugs.isFilterConditionEqElement = function (filterCondition, element) {
+    for (var key in filterCondition) {
+        if (filterCondition[key] !== element[key]()) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 module.exports = debugs;
