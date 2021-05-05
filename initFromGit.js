@@ -36,19 +36,44 @@ function httpGet() {
         return;
     }
 
-    var ignoreFile = ['.gitignore', 'README.md', 'action-all.js', 'action-every-20-min.js', 'action-temp.js', 'test-click.js', 'test-exists.js', 'test-swipe.js'];
+    var rawUrlPrefix = 'https://gitee.com/lennon7/autojs/raw/master/';
+    var ignoreFile = ['apk', '.gitignore', 'README.md', 'action-all.js', 'action-every-20-min.js', 'action-temp.js', 'test-click.js', 'test-exists.js', 'test-swipe.js'];
     content.tree.forEach((value1, key1) => {
         // 有些文件真的需要过滤
         if (ignoreFile.indexOf(value1.path) !== -1) {
             return;
         }
 
-        var url = 'https://gitee.com/lennon7/autojs/raw/master/';
         if (value1.type === 'tree') {
             // 文件夹目录
+            var url = value1.url;
+            var content = http.get(url).body.json();
+            if (!content) {
+                toastLog(url + ': !content');
+                return;
+            }
+
+            content.tree.forEach((value2, key2) => {
+                var url = rawUrlPrefix + value1.path + '/' + value2.path;
+                var content = http.get(url).body.string();
+                if (!content) {
+                    toastLog(value2.path + ': !content');
+                    return;
+                }
+
+                returnList[key1 + key2] = {
+                    'path': value2.path,
+                    'content': content,
+                }
+
+                toastLog('http.get: ' + url);
+
+                // 防止请求速度过快，触发风控被404
+                sleep(random(3, 5) * 1000);
+            });
         } else {
             // 文件
-            var url = url + value1.path;
+            var url = rawUrlPrefix + value1.path;
             var content = http.get(url).body.string();
             if (!content) {
                 toastLog(value1.path + ': !content');
@@ -60,6 +85,11 @@ function httpGet() {
                 'content': content,
             }
         }
+
+        toastLog('http.get: ' + url);
+
+        // 防止请求速度过快，触发风控被404
+        sleep(random(3, 5) * 1000);
     });
 
     return returnList;
