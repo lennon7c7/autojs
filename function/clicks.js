@@ -322,7 +322,7 @@ clicks.rectByTextOrDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
-clicks.text = function (myString) {
+ clicks.text = function (myString) {
     if (myString === '') {
         log('---------- fail: param ', myString, ' none exist ----------');
         return false;
@@ -334,6 +334,28 @@ clicks.text = function (myString) {
     }
 
     text(myString).click();
+    sleep(3 * 1000);
+
+    return true;
+};
+
+/**
+ * 文本的父元素
+ * @param {string} myString
+ * @returns {boolean}
+ */
+ clicks.textParent = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------');
+        return false;
+    }
+
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------');
+        return false;
+    }
+
+    text(myString).findOne(3000).parent().click();
     sleep(3 * 1000);
 
     return true;
