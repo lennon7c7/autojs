@@ -338,6 +338,8 @@ others.clear = function () {
  * @returns {boolean}
  */
 others.send = function (message) {
+    return true;
+
     url = 'https://oapi.dingtalk.com/robot/send?access_token=9189c02ffd38ffaf091bcc3a07558c83cf961780360e73ccbfcb24dd25db95fd';
     response = http.postJson(url, {
         'msgtype': 'markdown',
