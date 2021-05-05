@@ -148,10 +148,10 @@ debugs.getElementAttr = function (element) {
     if (element.id()) {
         output += ' id = ' + element.id();
     }
-    if (element.text()) {
+    if (element.text() && element.text().indexOf('http') === -1) {
         output += ' text = ' + element.text();
     }
-    if (element.desc()) {
+    if (element.desc() && element.desc().indexOf('http') === -1) {
         output += ' desc = ' + element.desc();
     }
 
