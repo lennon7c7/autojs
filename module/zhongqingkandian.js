@@ -589,6 +589,29 @@ function taskClick6() {
 }
 
 /**
+ * 定时宝箱
+ */
+ function taskTimerBox() {
+    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+
+    if (!others.backToElement(text('任务'))) {
+        return false;
+    }
+
+    clicks.textIfExists('定时宝箱');
+
+    for (var i = 0; i < 24; i++) {
+        if (clicks.textIfExists('分享到群')) {
+            others.back();
+        }
+    }
+
+    clicks.textIfExists('开宝箱');
+    others.back();
+    return true;
+}
+
+/**
  * 任务-提现
  */
 function taskCashout() {
@@ -638,6 +661,7 @@ currentAPP.start = function () {
         if (status2) {
             taskLotteryAd();
         }
+        taskTimerBox();
         status2 = taskShare();
         taskKankanzhuang();
         taskClickMP();
