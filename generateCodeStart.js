@@ -34,6 +34,9 @@ function generate() {
         return;
     }
 
+    // 按文件名排序，方便查看
+    sourceFile.sort();
+
     var allJsPath = targetDir + 'all.js';
     var allJsContent = '';
     sourceFile.forEach((value) => {
