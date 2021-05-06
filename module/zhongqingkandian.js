@@ -527,12 +527,12 @@ function taskClickMP() {
 function taskClick6() {
     log('----------', currentAPP.NAME, 'taskNews6 start ----------');
 
-    clicks.textIfExists('展开');
-
     for (var i = 0; i < 66; i++) {
         if (!clicks.backToElement(text('任务'))) {
             return false;
         }
+
+        clicks.textIfExists('展开');
 
         getReward();
 
@@ -591,7 +591,7 @@ function taskClick6() {
 /**
  * 定时宝箱
  */
- function taskTimerBox() {
+function taskTimerBox() {
     log('----------', currentAPP.NAME, 'taskCheckin start ----------');
 
     if (!others.backToElement(text('任务'))) {
@@ -663,9 +663,9 @@ currentAPP.start = function () {
         }
         taskTimerBox();
         status2 = taskShare();
-        taskKankanzhuang();
-        taskClickMP();
         taskClick6();
+        taskClickMP();
+        taskKankanzhuang();
         status3 = taskCashout();
 
         if (status0 && status1 && status2 && status3 && status4) {
