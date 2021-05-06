@@ -54,7 +54,8 @@ function httpGet() {
             }
 
             content.tree.forEach((value2, key2) => {
-                var url = rawUrlPrefix + value1.path + '/' + value2.path;
+                var path = value1.path + '/' + value2.path
+                var url = rawUrlPrefix + path;
                 var content = http.get(url).body.string();
                 if (!content) {
                     toastLog(value2.path + ': !content');
@@ -62,7 +63,7 @@ function httpGet() {
                 }
 
                 returnList[key1 + key2] = {
-                    'path': value2.path,
+                    'path': path,
                     'content': content,
                 }
 
