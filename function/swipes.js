@@ -141,4 +141,26 @@ swipes.down2200 = function () {
     sleep(1 * 1000)
 };
 
+/**
+ * 滑动-下到上，直到元素出现在屏幕里
+ * @param {string} text('完成4次新闻赚任务，额外奖励120青豆')
+ * @returns {boolean}
+ */
+ swipes.downUntilElementShow = function (element) {
+    if (!element || !element.exists()) {
+        return false;
+    }
+
+    for (var i = 0; i < 10; i++) {
+        var elementY = element.findOne(3000).bounds().centerY();
+        if (200 < elementY && elementY < (device.height - 200)) {
+            return true;
+        }
+
+        swipes.down();
+    }
+
+    return false;
+};
+
 module.exports = swipes;
