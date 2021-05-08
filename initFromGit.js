@@ -29,16 +29,16 @@ function main() {
 function httpGet() {
     var returnList = [];
 
-    var url = 'https://gitee.com/api/v5/repos/lennon7/autojs/git/trees/master';
-    var content = http.get(url).body.json();
-    if (!content) {
-        toastLog(url + ': !content');
+    var masterUrl = 'https://gitee.com/api/v5/repos/lennon7/autojs/git/trees/master';
+    var masterContent = http.get(masterUrl).body.json();
+    if (!masterContent) {
+        toastLog(masterUrl + ': !masterContent');
         return;
     }
 
     var rawUrlPrefix = 'https://gitee.com/lennon7/autojs/raw/master/';
     var ignoreFile = ['apk', '.gitignore', 'README.md', 'action-all.js', 'action-every-20-min.js', 'action-temp.js', 'test-click.js', 'test-exists.js', 'test-swipe.js'];
-    content.tree.forEach((value1, key1) => {
+    masterContent.tree.forEach((value1, key1) => {
         // 有些文件真的需要过滤
         if (ignoreFile.indexOf(value1.path) !== -1) {
             return;
@@ -47,13 +47,13 @@ function httpGet() {
         if (value1.type === 'tree') {
             // 文件夹目录
             var url = value1.url;
-            var content = http.get(url).body.json();
-            if (!content) {
-                toastLog(url + ': !content');
+            var treeContent = http.get(url).body.json();
+            if (!treeContent) {
+                toastLog(url + ': !treeContent');
                 return;
             }
 
-            content.tree.forEach((value2, key2) => {
+            treeContent.tree.forEach((value2, key2) => {
                 var path = value1.path + '/' + value2.path
                 var url = rawUrlPrefix + path;
                 var content = http.get(url).body.string();
@@ -70,7 +70,7 @@ function httpGet() {
                 toastLog('http.get: ' + url);
 
                 // 防止请求速度过快，触发风控被404
-                sleep(random(3, 5) * 1000);
+                sleep(random(1, 2) * 1000);
             });
         } else {
             // 文件
@@ -85,12 +85,12 @@ function httpGet() {
                 'path': value1.path,
                 'content': content,
             }
+
+            toastLog('http.get: ' + url);
+
+            // 防止请求速度过快，触发风控被404
+            sleep(random(1, 2) * 1000);
         }
-
-        toastLog('http.get: ' + url);
-
-        // 防止请求速度过快，触发风控被404
-        sleep(random(3, 5) * 1000);
     });
 
     return returnList;
