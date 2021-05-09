@@ -24,6 +24,7 @@ function taskCheckin() {
     if (!clicks.textParent('领京豆')) {
         return false;
     }
+    sleeps.s5()
 
     if (text('签到领京豆').exists()) {
         clicks.centerXyByText('签到领京豆');
@@ -91,16 +92,14 @@ function taskSJZJD() {
         sleeps.s2to3();
 
         exists.backToElement(text('去完成'));
-        // others.back();
     }
+    sleeps.s5();
 
-
-    for (var i = 0; i < text('去完成').find().size(); i++) {
-        if (clicks.centerXyByText('去完成')) {
+    for (var i = 0; i < 50; i++) {
+        if (text('去完成').exists() && clicks.centerXyByText('去完成')) {
             sleeps.s2to3();
             others.back();
         }
-
     }
 
     return true;
