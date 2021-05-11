@@ -21,6 +21,10 @@ function taskNews() {
         return false;
     }
 
+    if (text('领取奖励').exists()) {
+        clicks.centerXyByText('领取奖励');
+    }
+
     if (text('点击展开更多').exists()) {
         clicks.centerXyByText('点击展开更多');
     }
@@ -31,6 +35,10 @@ function taskNews() {
 
     if (!clicks.centerXyByText('立即阅读')) {
         return false;
+    }
+
+    if (text('120').exists()) {
+        clicks.centerXyByText('120');
     }
 
     for (var i = 0; i < 10; i++) {
