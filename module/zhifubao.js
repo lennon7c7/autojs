@@ -208,32 +208,105 @@ function task0Lottery() {
 }
 
 /**
+ * 获取账户数量
+ * @returns {int}
+ */
+function getAccountCount() {
+    log('----------', currentAPP.NAME, 'getAccountCount start ----------');
+
+    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    if (!status0) {
+        return 1;
+    }
+
+    if (idContains('update_cancel_tv').exists()) {
+        clicks.element(idContains('update_cancel_tv'));
+    }
+
+    if (!others.backToElement(text('我的'))) {
+        return 1;
+    }
+
+    if (!clicks.centerXyByDesc('设置')) {
+        return 1;
+    }
+
+    if (!clicks.centerXyByText('换账号登录')) {
+        return 1;
+    }
+
+    var element = className('android.widget.LinearLayout')
+    var accountCount = element.find().size();
+
+    return accountCount;
+}
+
+/**
+ * 切换账户
+ * @returns {boolean}
+ */
+function switchAccount() {
+    log('----------', currentAPP.NAME, 'switchAccount start ----------');
+
+    if (idContains('update_cancel_tv').exists()) {
+        clicks.element(idContains('update_cancel_tv'));
+    }
+
+    if (!others.backToElement(text('我的'))) {
+        return false;
+    }
+
+    if (!clicks.centerXyByDesc('设置')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('换账号登录')) {
+        return false;
+    }
+
+    var element = className('android.widget.LinearLayout')
+    var accountCount = element.find().size();
+    if (!clicks.clickableElement(element.findOnce(accountCount - 1))) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    for (var i = 0; i < 10; i++) {
-        status0 = others.launch(currentAPP.PACKAGE_NAME);
-        if (!status0) {
-            return true;
+    var accountCount = getAccountCount()
+    for (var i = 0; i < accountCount; i++) {
+        for (var j = 0; j < 10; j++) {
+            status0 = others.launch(currentAPP.PACKAGE_NAME);
+            if (!status0) {
+                continue;
+            }
+
+
+            status0 = taskCheckin();
+            if (status0) {
+                status0 = task15s();
+                // task0Lottery();
+                // taskEverydayLottery();
+            }
+
+            if (status0) {
+                break;
+            }
         }
 
-
-        status0 = taskCheckin();
-        if (status0) {
-            status0 = task15s();
-            // task0Lottery();
-            // taskEverydayLottery();
-       }
-
-        if (status0) {
-            return true;
-        }
+        switchAccount()
 
         others.clear();
     }
 
-    others.send(currentAPP.NAME);
+    if (!status0) {
+        others.send(currentAPP.NAME);
+    }
 
     return false;
 };
