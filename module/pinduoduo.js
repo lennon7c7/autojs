@@ -135,7 +135,21 @@ function taskVideo() {
         return false;
     }
 
+    sleeps.s10()
+
     for (var i = 0; i < 10; i++) {
+        if (i === 9) {
+            others.back()
+        }
+
+        clicks.textIfExists('领取并关闭')
+        element = className('android.view.View').depth(10).indexInParent(4);
+        if (element.exists()) {
+            clicks.clickableElement(element)
+        }
+        clicks.textIfExists('我知道了')
+        clicks.textIfExists('去领金币')
+
         swipes.down1600();
         sleeps.s2to5();
         swipes.refresh1500();
