@@ -14,6 +14,36 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '3.0.0';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/02/01/2/120_0b3410dfd1b5b561503a600d1683f21a.apk';
 
+/**
+ * 任务-登录
+ * 有时候被退出登录，所以保险一些
+ */
+function taskLogin() {
+    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+
+    if (desc('首页').exists() && !text('立即登录').exists()) {
+        return true;
+    }
+
+    if (!clicks.centerXyByText('立即登录')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('京东授权登录')) {
+        return false;
+    }
+
+    if (!clicks.centerXyByText('确认登录')) {
+        return false;
+    }
+
+    if (desc('首页').exists() && !text('立即登录').exists()) {
+        return true;
+    }
+
+    return false;
+}
+
 // 任务-签到
 function taskCheckin() {
     log('----------', currentAPP.NAME, 'taskCheckin start ----------');
@@ -210,6 +240,10 @@ currentAPP.start = function () {
         }
 
 
+        status0 = taskLogin();
+        if (!status0) {
+            continue;
+        }
         status0 = taskCheckin();
         status1 = taskProduct();
         status2 = taskRandomPage();
