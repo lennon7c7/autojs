@@ -14,6 +14,7 @@ currentAPP.VERSION = '11.2.4.122';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a403106f257a7b22c9009c9d1.apk';
 
 // 任务-福利转转转
+// 已下架
 function taskLottery() {
     log('----------', currentAPP.NAME, 'taskLottery start ----------');
 
@@ -144,7 +145,7 @@ currentAPP.start = function () {
         }
 
 
-        taskLottery();
+        // taskLottery();
         status0 = taskAd();
         status1 = taskShare();
 
