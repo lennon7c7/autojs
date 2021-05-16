@@ -9,6 +9,7 @@ currentAPP.PACKAGE_NAME = 'com.eg.android.AlipayGphone';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 currentAPP.VERSION = '10.1.99.7000';
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk';
+currentAPP.MP_URL = 'alipays://platformapi/startapp?appId=';
 
 /**
  * 任务-签到
@@ -208,6 +209,907 @@ function task0Lottery() {
 }
 
 /**
+ * 小程序
+ * @returns {bool}
+ */
+ function taskMP() {
+    log('----------', currentAPP.NAME, 'taskMP start ----------');
+
+    function taskTTZB() {
+        log('----------', currentAPP.NAME, 'taskTTZB start ----------');
+
+        MP_TITLE = '签到赢豪礼';
+        MP_APPID = '2021002109688508&page=pages%2Fsign%2Findex';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        if (clicks.textIfExists('立即签到')) {
+            clicks.xy(device.width / 2, device.height / 2);
+            sleeps.s15();
+        }
+
+        swipes.down();
+
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            // 过滤任务: 不要金币，只要集分宝
+            // if (value1.parent().parent().child(0).child(0).text() !== '+1') {
+            //     return;
+            // }
+
+            // 过滤任务: 已完成的
+
+            clicks.clickableElement(element.findOne(3000));
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskYLKF() {
+        log('----------', currentAPP.NAME, 'taskYLKF start ----------');
+
+        MP_TITLE = '医鹿康福';
+        MP_APPID = '2021002102665060';
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s15();
+
+
+        return false;
+    }
+
+    function taskBBNC() {
+        log('----------', currentAPP.NAME, 'taskBBNC start ----------');
+
+        MP_TITLE = '芭芭农场';
+        MP_APPID = '68687599';
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s15();
+
+        clicks.xy(device.width / 2 + 250, device.height / 2 + 230);
+        clicks.clickableElement(className('android.view.View').depth(7).indexInParent(3));
+        clicks.textIfExists('领取');
+        clicks.textIfExists('取消');
+
+        return false;
+    }
+
+    function taskNNDK() {
+        log('----------', currentAPP.NAME, 'taskNNDK start ----------');
+
+        MP_TITLE = '牛牛打卡';
+        MP_APPID = '2021002103658796';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        // swipes.down();
+
+        var element = className('android.view.View').depth(12).indexInParent(1);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()
+                || (value1.parent() && value1.parent().parent() && value1.parent().parent().parent() && value1.parent().parent().parent().childCount() !== 1)) {
+                return;
+            }
+
+            if (!clicks.clickableElement(value1)) {
+                return;
+            }
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskTTBH() {
+        log('----------', currentAPP.NAME, 'taskTTBH start ----------');
+
+        MP_TITLE = '天天宝盒';
+        MP_APPID = '2021002133663694';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        if (clicks.textIfExists('立即签到')) {
+            clicks.xy(device.width / 2, device.height / 2);
+            sleeps.s15();
+        }
+
+        swipes.down();
+
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskCJXQ() {
+        log('----------', currentAPP.NAME, 'taskCJXQ start ----------');
+
+        MP_TITLE = '超级星球';
+        MP_APPID = '2021002133621816';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        if (clicks.textIfExists('签到')) {
+            clicks.xy(device.width / 2, device.height / 2);
+            sleeps.s15();
+        }
+
+        swipes.down();
+
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            // 过滤已完成的
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskHXQ() {
+        log('----------', currentAPP.NAME, 'taskHXQ start ----------');
+
+        MP_TITLE = '花小钱';
+        MP_APPID = '2021001167673032';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskXQDB() {
+        log('----------', currentAPP.NAME, 'taskXQDB start ----------');
+
+        MP_TITLE = '星球夺宝';
+        MP_APPID = '2021002133642751';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        className('android.widget.Button').depth(15).indexInParent(0).find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskTTLHM() {
+        log('----------', currentAPP.NAME, 'taskTTLHM start ----------');
+
+        MP_TITLE = '天天领红包';
+        MP_APPID = '2021001140664847';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 3; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (text('今日红包已领完').exists()) {
+                break;
+            }
+
+            clicks.clickableElement(className('android.widget.Button').text('点我领红包 （剩余3次）').findOne(3000));
+            clicks.clickableElement(className('android.widget.Button').text('点我领红包 （剩余2次）').findOne(3000));
+            clicks.clickableElement(className('android.widget.Button').text('点我领红包 （剩余1次）').findOne(3000));
+
+            if (clicks.element(className('android.widget.Image').depth(10).indexInParent(3).findOne(3000))) {
+
+            } else if (clicks.clickableElement(className('android.widget.RelativeLayout').depth(2).findOne(3000))) {
+
+            } else if (clicks.element(className('android.view.View').text('关注店铺领券').findOne(3000))) {
+
+            }
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskTTZD() {
+        log('----------', currentAPP.NAME, 'taskTTZD start ----------');
+
+        MP_TITLE = '天天赚点';
+        MP_APPID = '2021002126672567';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            clicks.clickableElement(className('android.widget.Button').depth(16).findOne(3000));
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskKXZB() {
+        log('----------', currentAPP.NAME, 'taskKXZB start ----------');
+
+        MP_TITLE = '开心赚宝';
+        MP_APPID = '2021002124678299';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            clicks.clickableElement(className('android.widget.Button').depth(15).findOne(3000));
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskLMYQ() {
+        log('----------', currentAPP.NAME, 'taskLMYQ start ----------');
+
+        MP_TITLE = '连码有钱';
+        MP_APPID = '2021002102658614';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        if (clicks.textIfExists('签到赚钱')) {
+            clicks.xy(device.width / 2, device.height / 2);
+            sleeps.s15();
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            clicks.clickableElement(className('android.view.View').depth(14).text('+ 100 金币').findOne(3000));
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskDDCJ() {
+        log('----------', currentAPP.NAME, 'taskDDCJ start ----------');
+
+        MP_TITLE = '点点成金';
+        MP_APPID = '2021002120694820';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        clicks.textIfExists('立即签到');
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            clicks.clickableElement(className('android.view.View').depth(10).text('+0.01').findOne(3000));
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskJJXQ() {
+        log('----------', currentAPP.NAME, 'taskJJXQ start ----------');
+
+        MP_TITLE = '集集星球';
+        MP_APPID = '2019101668433279';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        if (clicks.textIfExists('签到赚钱')) {
+            clicks.xy(device.width / 2, device.height / 2);
+            sleeps.s15();
+        }
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!clicks.element(className('android.widget.Image').depth(16).findOne(3000))) {
+                break;
+            }
+
+            maybeMore()
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            clicks.clickableElement(className('android.widget.Button').depth(8).findOne(3000));
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskYMLQ_XZKJ() {
+        log('----------', currentAPP.NAME, 'taskYMLQ_XZKJ start ----------');
+
+        MP_TITLE = '一秒领钱-小卒科技';
+        MP_APPID = '2019112869484442';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        className('android.widget.Button').text('+0.01元').depth(11).indexInParent(2).find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!clicks.clickableElement(value1)) {
+                return;
+            }
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    /**
+     * 任务-做任务领红包
+     */
+    function taskZRWLHB() {
+        log('----------', currentAPP.NAME, 'taskZRWLHB start ----------');
+
+        MP_TITLE = '做任务赢红包';
+        MP_APPID = '2021001199601580';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        for (var i = 0; i < 3; i++) {
+            var element = className('android.view.View').text('立即关注');
+            // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+            element.find().size();
+            sleeps.s1();
+            element.find().size();
+            sleeps.s1();
+            element.find().forEach((value1, key1) => {
+                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+                value1.click();
+
+                maybeMore();
+            });
+
+            var element = className('android.widget.Image');
+            // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+            element.find().size();
+            sleeps.s1();
+            element.find().size();
+            sleeps.s1();
+            element.find().forEach((value1, key1) => {
+                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+                if (!value1 || value1.bounds().width() < 100 || value1.bounds().height() < 100) {
+                    return;
+                }
+
+                if (value1.parent() && value1.parent().findOne(text('已完成'))) {
+                    return;
+                }
+
+                value1.click();
+
+                maybeMore();
+            });
+
+            swipes.down();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskZDD() {
+        log('----------', currentAPP.NAME, 'taskZDD start ----------');
+
+        MP_TITLE = '赚多多';
+        MP_APPID = '2021002127667862';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        className('android.widget.Button').depth(15).indexInParent(0).find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    /**
+     * 任务-天天夺宝
+     */
+    function taskTTDB() {
+        log('----------', currentAPP.NAME, 'taskTTDB start ----------');
+
+        MP_TITLE = '天天夺宝';
+        MP_APPID = '2021001167652345';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        className('android.widget.Button').depth(8).indexInParent(0).find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            if (!value1.text()) {
+                return;
+            }
+
+            clicks.clickableElement(value1);
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    /**
+     * 任务-开心签到
+     */
+    function taskKXQD() {
+        log('----------', currentAPP.NAME, 'taskKXQD start ----------');
+
+        MP_TITLE = '开心签到';
+        MP_APPID = '2021001167643261';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 5; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            className('android.widget.Image').depth(12).drawingOrder(0).indexInParent(0).find().forEach((value1, key1) => {
+                if (isClick || !value1.clickable() || value1.bounds().width() < 50 || value1.bounds().height() < 50
+                    || value1.childCount() !== 0 || (value1.parent() && value1.parent().childCount() !== 1)) {
+                    return;
+                }
+
+                clicks.clickableElement(value1);
+                isClick = true;
+            });
+
+            isClick = false;
+            className('android.view.View').depth(11).indexInParent(1).find().forEach((value1, key1) => {
+                if (isClick || !value1.clickable() || value1.bounds().width() < 100 || value1.bounds().height() < 50
+                    || (value1.parent() && value1.parent().parent() && value1.parent().parent().childCount() === 3)) {
+                    return;
+                }
+
+                clicks.clickableElement(value1);
+                isClick = true;
+            });
+            if (!isClick) {
+                break;
+            }
+
+            if (className('android.widget.RelativeLayout').depth(2).drawingOrder(4).indexInParent(4).exists()) {
+                className('android.widget.RelativeLayout').depth(2).drawingOrder(4).indexInParent(4).click();
+                sleeps.s3();
+            }
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    function taskFXM() {
+        log('----------', currentAPP.NAME, 'taskFXM start ----------');
+
+        MP_TITLE = '分小萌';
+        MP_APPID = '2021001195607086';
+
+        if (!text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        var element = className('android.view.View').text('访问领取');
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            value1.click();
+
+            maybeMore();
+        });
+
+        var element = className('android.view.View').text('立即领取');
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            value1.click();
+
+            maybeMore();
+        });
+
+        others.clear();
+
+        return false;
+    }
+
+    /**
+     * 任务-走路钱多多
+     */
+    function taskZLQDD() {
+        log('----------', currentAPP.NAME, 'taskZLQDD start ----------');
+
+        MP_TITLE = '走路钱多多';
+        MP_APPID = '2021001167680229';
+
+        if (!text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        for (var i = 0; i < 10; i++) {
+            backToElement(text(MP_TITLE))
+
+            if (!clicks.clickableElement(className('android.widget.Button').depth(16).findOne(3000))) {
+                break;
+            }
+
+            maybeMore();
+        }
+
+        others.clear();
+
+        return false;
+    }
+
+    // 取消关注生活号
+    function cancelLifeSubscript() {
+        log('----------', currentAPP.NAME, 'cancelLifeSubscript start ----------');
+
+        app.startActivity({ data: 'alipays://platformapi/startapp?appId=20000166' });
+        sleeps.s15();
+
+        if (!clicks.centerXyByText('生活号')) {
+            return false;
+        }
+
+        var element = id('com.alipay.mobile.pubsvc:id/publicName');
+        var ignoreFile = ['菜鸟', '花呗', '考拉海购'];
+        element.find().forEach((value1, key1) => {
+            if (ignoreFile.indexOf(value1.text()) !== -1) {
+                return;
+            }
+
+            clicks.centerXyByText(value1.text());
+            clicks.descIfExists('取消');
+            clicks.desc('更多');
+            clicks.text('取消关注');
+            clicks.text('不再关注');
+            others.back();
+        });
+    }
+
+    /**
+     * 点击后，可能出现其它任务
+     * 不是单纯的看广告，比如关注、签到等
+     */
+    function maybeMore() {
+        sleeps.s3();
+
+        if (clicks.textIfExists('关注生活号')) {
+            if (clicks.textIfExists('立即关注')) {
+                clicks.textIfExists('我知道了');
+            }
+        } else if (clicks.textIfExists('关注店铺领券')) {
+            clicks.textIfExists('关注店铺领券')
+        } else if (clicks.textIfExists('立即领取')) {
+            sleeps.s3();
+            clicks.textIfExists('确认授权并入会');
+        } else if (clicks.textIfExists('签到赚钱')) {
+            clicks.xy(device.width / 2, device.height / 2 + 100);
+            sleeps.s5();
+            others.back();
+        } else if (clicks.textIfExists('点击关注店铺')) {
+            clicks.textIfExists('点击关注店铺');
+        } else if (!text('打开方式').exists()) {
+            clicks.xy(device.width / 2, device.height / 2 - 100);
+            clicks.xy(device.width / 2, device.height / 2);
+            clicks.xy(device.width / 2, device.height / 2 + 150);
+        }
+
+        sleeps.s20();
+    }
+
+    /**
+     * 回到指定元素存在的页面
+     * @param {string} element 
+     * @returns 
+     */
+    function backToElement(element) {
+        if (exists.backToElement(element)) {
+            clicks.textIfExists('取消');
+            clicks.textIfExists('我知道了');
+            clicks.textIfExists('知道了，继续赚钱');
+
+            return true;
+        }
+
+        // 如果元素不存在，就重新打开小程序
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+
+        return true;
+    }
+
+    // temp
+    // taskYLKF();
+
+    // taskKXQD();
+    // return;
+
+    // cash
+    taskDDCJ();
+    taskFXM();
+    taskZRWLHB();
+    taskYMLQ_XZKJ();
+    taskTTLHM();
+
+    // jifenbao
+    taskZLQDD();
+    taskKXQD();
+    taskTTDB();
+    taskZDD();
+    taskJJXQ();
+    taskKXZB();
+    taskTTZD();
+    taskXQDB();
+    taskHXQ();
+    taskCJXQ();
+    taskNNDK();
+    taskTTZB();
+
+    // coin
+    taskLMYQ();
+
+    // other
+    taskBBNC();
+    // taskYLKF();
+    cancelLifeSubscript();
+}
+
+/**
  * 获取账户数量
  * @returns {int}
  */
@@ -293,6 +1195,8 @@ currentAPP.start = function () {
                 // task0Lottery();
                 // taskEverydayLottery();
             }
+
+            taskMP();
 
             if (status0) {
                 break;
