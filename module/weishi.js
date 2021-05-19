@@ -47,7 +47,11 @@ function taskLogin() {
     return false;
 }
 
-// 任务-视频
+/**
+ * 任务-视频
+ * 因为刷完所有的红包时间花费不值得，所以只刷前面的几个红包即可
+ * @returns {boolean}
+ */
 function taskVideo() {
     log('----------', currentAPP.NAME, 'taskVideo start ----------');
 
@@ -208,11 +212,11 @@ currentAPP.start = function () {
         if (!status0) {
             continue;
         }
-        status1 = taskVideo();
+        taskVideo();
         status2 = taskRedpack();
         // status3 = taskCashout();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status2) {
             return true;
         }
 
