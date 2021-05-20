@@ -212,7 +212,7 @@ function task0Lottery() {
  * 小程序
  * @returns {bool}
  */
- function taskMP() {
+function taskMP() {
     log('----------', currentAPP.NAME, 'taskMP start ----------');
 
     function taskJifenbao() {
@@ -450,6 +450,7 @@ function task0Lottery() {
 
         swipes.down();
 
+        var elementCount = 0
         var element = className('android.widget.Button').depth(15).indexInParent(0);
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size();
@@ -457,19 +458,55 @@ function task0Lottery() {
         element.find().size();
         sleeps.s1();
         element.find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+            if (!value1 || !value1.text()) {
+                return;
+            }
 
-            if (!value1.text()) {
+            // 过滤任务: 不要金币，只要集分宝
+            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
                 return;
             }
 
             // 过滤已完成的
 
-            clicks.clickableElement(value1);
-
-            maybeMore();
+            elementCount++;
         });
 
+        for (var i = 0; i < elementCount; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+
+                // 过滤任务: 不要金币，只要集分宝
+                if (value1.parent().parent().child(0).child(0).text() !== '+1') {
+                    return;
+                }
+
+                // 过滤已完成的
+
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
+            }
+
+            maybeMore();
+        }
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
         others.clear();
 
         return false;
@@ -1109,6 +1146,10 @@ function task0Lottery() {
      * @returns 
      */
     function backToElement(element) {
+        // 如果元素不存在，就重新打开小程序
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+
         if (exists.backToElement(element)) {
             clicks.textIfExists('取消');
             clicks.textIfExists('我知道了');
@@ -1116,10 +1157,6 @@ function task0Lottery() {
 
             return true;
         }
-
-        // 如果元素不存在，就重新打开小程序
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
-        sleeps.s3();
 
         return true;
     }
