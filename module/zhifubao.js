@@ -1022,7 +1022,7 @@ function taskMP() {
     /**
      * 任务-开心签到
      */
-    function taskKXQD() {
+     function taskKXQD() {
         log('----------', currentAPP.NAME, 'taskKXQD start ----------');
 
         MP_TITLE = '开心签到';
@@ -1037,42 +1037,71 @@ function taskMP() {
 
         swipes.down();
 
-        for (var i = 0; i < 5; i++) {
+        var elementCount = 0
+        var element = className('android.view.View').depth(11).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            if (value1.childCount() !== 0) {
+                return;
+            }
+
+            // 过滤任务: 不要金币，只要集分宝
+            if (value1.text().search('集分宝') === -1) {
+                return;
+            }
+
+            // 过滤已完成的
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
 
             isClick = false;
-            className('android.widget.Image').depth(12).drawingOrder(0).indexInParent(0).find().forEach((value1, key1) => {
-                if (isClick || !value1.clickable() || value1.bounds().width() < 50 || value1.bounds().height() < 50
-                    || value1.childCount() !== 0 || (value1.parent() && value1.parent().childCount() !== 1)) {
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
                     return;
                 }
 
-                clicks.clickableElement(value1);
-                isClick = true;
-            });
-
-            isClick = false;
-            className('android.view.View').depth(11).indexInParent(1).find().forEach((value1, key1) => {
-                if (isClick || !value1.clickable() || value1.bounds().width() < 100 || value1.bounds().height() < 50
-                    || (value1.parent() && value1.parent().parent() && value1.parent().parent().childCount() === 3)) {
+                if (!value1 || !value1.text()) {
                     return;
                 }
 
-                clicks.clickableElement(value1);
+                if (value1.childCount() !== 0) {
+                    return;
+                }
+
+                // 过滤任务: 不要金币，只要集分宝
+                if (value1.text().search('集分宝') === -1) {
+                    return;
+                }
+
+                // 过滤已完成的
+
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
                 isClick = true;
             });
+
             if (!isClick) {
-                break;
-            }
-
-            if (className('android.widget.RelativeLayout').depth(2).drawingOrder(4).indexInParent(4).exists()) {
-                className('android.widget.RelativeLayout').depth(2).drawingOrder(4).indexInParent(4).click();
-                sleeps.s3();
+                continue;
             }
 
             maybeMore();
         }
 
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
         others.clear();
 
         return false;
