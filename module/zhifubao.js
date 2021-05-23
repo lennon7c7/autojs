@@ -246,7 +246,7 @@ function taskMP() {
                 return
             }
 
-            if (!value1.parent().findOne(text('+2'))) {
+            if (!value1.parent() || !value1.parent().findOne(text('+2'))) {
                 return
             }
 
