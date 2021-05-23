@@ -121,6 +121,55 @@ function closeAd() {
     return false;
 }
 
+/**
+ * 关闭插屏广告
+ * 插屏广告组件，用户可以随时关闭插屏广告
+ * @returns {boolean}
+ */
+function closeInterstitialAd() {
+    if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103)) {
+        clicks.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103);
+    }
+}
+
+/**
+ * 关闭激励广告
+ * 激励式广告组件，完整播放视频广告，并手动点击“关闭广告”按钮），将获得该小程序下发的奖励
+ * @returns {boolean}
+ */
+function closeRewardedAd() {
+    closeInterstitialAd();
+
+    if (!text('广告').exists()) {
+        return true;
+    }
+
+    sleeps.s30();
+
+    if (exists.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103)) {
+        clicks.elementWidthHeight(className('android.widget.FrameLayout'), 103, 103);
+    } else if (exists.elementWidthHeight(className('android.widget.ImageView'), 96, 96)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 96, 96);
+    } else if (exists.elementWidthHeight(className('android.widget.ImageView'), 86, 86)) {
+        clicks.elementWidthHeight(className('android.widget.ImageView'), 86, 86);
+    } else if (text('关闭').exists()) {
+        text('关闭').find().forEach((value2, key2) => {
+            if (value2.text() !== '关闭') {
+                return;
+            }
+
+            clicks.element(value2);
+        });
+    }
+
+    if (text('暂未获得奖励').exists() || text('继续').exists()) {
+        clicks.centerXyByText('继续');
+        closeRewardedAd();
+    }
+
+    closeInterstitialAd();
+}
+
 // 任务-必看严选
 function taskReadBiKanYanXuan() {
     log('----------', currentAPP.NAME, 'taskRead start ----------');
@@ -150,6 +199,318 @@ function taskReadBiKanYanXuan() {
 }
 
 /**
+ * 小程序
+ * @returns {bool}
+ */
+function taskMP() {
+    log('----------', currentAPP.NAME, 'taskMP start ----------');
+
+    /**
+     * 任务-五福小财神
+     */
+    function taskWFXCS() {
+        log('----------', currentAPP.NAME, 'taskWFXCS start ----------');
+
+        /**
+         * 出征
+         */
+        function chuZheng() {
+            log('----------', currentAPP.NAME, 'chuZheng start ----------');
+
+            startDeskApp();
+
+            // open dialog
+            if (device.height === 1920) {
+                clicks.xy(device.width - 100, 1800);
+            } else {
+                clicks.xy(device.width - 100, 1900);
+            }
+
+            // for (var i = 0; i < 10; i++) {
+            //     closeInterstitialAd();
+            //
+            //     // open video
+            //     if (device.height === 1920) {
+            //         clicks.xy(700, 700);
+            //     } else {
+            //         clicks.xy(700, 850);
+            //     }
+            //
+            //     closeRewardedAd();
+            //
+            //     // 可能获得：贡献
+            //     if (device.height === 1920) {
+            //         clicks.xy(device.width / 2, 1300);
+            //     } else {
+            //         clicks.xy(device.width / 2, 1500);
+            //     }
+            //
+            //     closeInterstitialAd();
+            //
+            //     // 可能被攻击
+            //     if (device.height === 1920) {
+            //         clicks.xy(device.width / 2 + 100, device.height / 2 + 200);
+            //     } else {
+            //         clicks.xy(device.width / 2 + 100, device.height / 2 + 200);
+            //     }
+            // }
+
+            for (var i = 0; i < 5; i++) {
+                closeInterstitialAd();
+
+                // 攻打
+                if (device.height === 1920) {
+                    clicks.xy(900, 1000);
+                } else {
+                    clicks.xy(device.width - 100, device.height / 2);
+                }
+
+                closeInterstitialAd();
+
+                // 开始对战
+                clicks.xy(device.width / 2, device.height / 2);
+
+                closeInterstitialAd();
+
+                // 跳过
+                if (device.height === 1920) {
+                    clicks.xy(device.width - 100, device.height - 100);
+                } else {
+                    clicks.xy(device.width - 100, device.height - 300);
+                }
+
+                closeInterstitialAd();
+
+                // 领取
+                clicks.xy(device.width / 2, device.height / 2 + 100);
+
+                closeInterstitialAd();
+
+                // 可能获得：金币、红包
+                clicks.xy(device.width / 2, device.height / 2 + 400);
+            }
+
+            return false;
+        }
+
+        /**
+         * Lottery
+         */
+        function lottery() {
+            log('----------', currentAPP.NAME, 'lottery start ----------');
+
+            startDeskApp();
+
+            // open dialog
+            if (device.height === 1920) {
+                clicks.xy(100, 1100);
+            } else {
+                clicks.xy(100, 1200);
+            }
+
+            for (var i = 0; i < 20; i++) {
+                closeInterstitialAd();
+
+                // button 抽奖：可能需要看广告、可能不需要
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1500);
+                } else {
+                    clicks.xy(device.width / 2, 1600);
+                }
+
+                closeRewardedAd();
+
+                // 可能获得：贡献
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1300);
+                } else {
+                    clicks.xy(device.width / 2, 1500);
+                }
+
+                closeInterstitialAd();
+
+                // 可能获得：奖励x10，需要看广告
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1000);
+                } else {
+                    clicks.xy(device.width / 2, 1200);
+                }
+
+                closeInterstitialAd();
+
+                // 可能获得：金币、红包
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1200);
+                } else {
+                    clicks.xy(device.width / 2, 1300);
+                }
+                sleeps.s10();
+            }
+
+            return false;
+        }
+
+        /**
+         * 贡献红包
+         */
+        function GXHB() {
+            log('----------', currentAPP.NAME, 'GXHB start ----------');
+
+            startDeskApp();
+
+            // open dialog
+            if (device.height === 1920) {
+                clicks.xy(100, 1800);
+            } else {
+                clicks.xy(100, 1900);
+            }
+
+            for (var i = 0; i < 50; i++) {
+                // open dialog
+                clicks.xy(device.width / 2, 500);
+
+                // open video
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1300);
+                } else {
+                    clicks.xy(device.width / 2, 1400);
+                }
+
+                closeRewardedAd();
+
+                // lingqu
+                if (device.height === 1920) {
+                    clicks.xy(device.width / 2, 1300);
+                } else {
+                    clicks.xy(device.width / 2, 1500);
+                }
+                sleeps.s5();
+
+                // 当贡献到达100时，获得提现余额
+                // clicks.xy(device.width / 2, device.height / 2 + 100);
+            }
+
+            return false;
+        }
+
+        /**
+         * 小程序
+         */
+        function MP() {
+            log('----------', currentAPP.NAME, 'MP start ----------');
+
+            startDeskApp();
+
+            // open dialog
+            clicks.xy(100, device.height / 2 - 150);
+
+            for (var i = 0; i < 15; i++) {
+                closeInterstitialAd();
+
+                // 试玩
+                clicks.xy(device.width - 200, device.height / 2 - 250);
+
+                closeInterstitialAd();
+
+                if (!text('允许').exists()) {
+                    clicks.xy(device.width - 200, device.height / 2 - 250);
+                    sleeps.s3();
+
+                    closeInterstitialAd();
+
+                    // 领取金币
+                    clicks.xy(device.width / 2, device.height / 2 + 400);
+
+                    closeInterstitialAd();
+
+                    clicks.xy(500, 1500);
+
+                    closeInterstitialAd();
+
+                    clicks.xy(device.width - 200, device.height / 2 - 250);
+                }
+
+                closeInterstitialAd();
+
+                if (text('允许').exists()) {
+                    clicks.centerXyByText('允许');
+                }
+
+                sleeps.s20();
+
+                others.back();
+            }
+
+            // 领取财神宝箱
+            clicks.xy(device.width - 200, device.height / 2 - 600);
+
+            return false;
+        }
+
+        /**
+         * 任务-提现
+         */
+        function cashout() {
+            log('----------', currentAPP.NAME, 'cashout start ----------');
+
+            startDeskApp();
+
+            // 兑换页面
+            if (device.height === 1920) {
+                clicks.xy(device.width / 2, device.height / 2 - 600);
+            } else {
+                clicks.xy(device.width / 2, device.height / 2 - 700);
+            }
+
+            // // 提现
+            clicks.xy(device.width - 200, device.height / 2 + 400);
+
+            // 立即提现
+            clicks.xy(device.width / 2, device.height / 2 + 250);
+
+        }
+
+        /**
+         * 启用桌面应用
+         * @returns {boolean}
+         */
+        function startDeskApp() {
+            for (var i = 0; i < 3; i++) {
+                others.clear();
+                home();
+                sleeps.s3();
+
+                if (!clicks.text('五福小财神')) {
+                    return false;
+                }
+                sleeps.s20();
+
+                // 防止未自动开始游戏
+                if (className('android.widget.FrameLayout').find().size() === 3) {
+                    clicks.xy(device.width / 2, device.height - 400);
+                    sleeps.s20();
+                }
+            }
+        }
+
+        // MP();
+
+        // 金币不足
+        // clicks.xy(device.width / 2, device.height / 2 + 750);
+        // clicks.xy(device.width / 2, device.height / 2 + 450);
+        // clicks.xy(device.width / 2, device.height / 2 + 350);
+        // clicks.xy(device.width / 2, device.height / 2 + 350);
+
+        GXHB();
+        // lottery();
+        // chuZheng();
+        cashout();
+    }
+
+    taskWFXCS()
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -161,10 +522,11 @@ currentAPP.start = function () {
         }
 
 
-        status0 = taskReadBiKanYanXuan();
-        status1 = taskMomentLike();
+        // status0 = taskReadBiKanYanXuan();
+        // status1 = taskMomentLike();
+        taskMP();
 
-        if (status0 && status1) {
+        if (status0) {
             return true;
         }
     }
