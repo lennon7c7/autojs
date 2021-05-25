@@ -19,7 +19,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/02/6/120_9573752bb7b73
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(id('redFloat'))) {
         return false;
@@ -133,7 +133,7 @@ function taskAd10() {
 
 // 任务-直播
 function taskLive() {
-    log('----------', currentAPP.NAME, 'taskLive start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -163,7 +163,7 @@ function taskLive() {
 
 // 任务-打开小程序
 function taskOpenMP() {
-    log('----------', currentAPP.NAME, 'taskLive start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('日常任务'))) {
         return false;
@@ -190,7 +190,7 @@ function taskOpenMP() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     others.back3();
 

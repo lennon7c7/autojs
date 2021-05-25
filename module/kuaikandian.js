@@ -14,7 +14,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/04/08/10/110_28d2db204691
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('福利'))) {
         return false;
@@ -50,7 +50,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('广告任务50金币/次，今日 10/10次').exists()) {
         return true;
@@ -75,7 +75,7 @@ function taskAd() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     clicks.idIfExists(currentAPP.PACKAGE_NAME + 'id/time_reward_root');
     if (clicks.idIfExists(currentAPP.PACKAGE_NAME + 'id/button')) {

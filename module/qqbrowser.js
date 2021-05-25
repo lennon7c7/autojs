@@ -18,7 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/22/11/120_47515e8bc654
  * 有时候被退出登录，所以保险一些
  */
  function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(className('android.widget.TextView').depth(10).text('我的'))) {
         return false;
@@ -40,7 +40,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/22/11/120_47515e8bc654
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(className('android.widget.TextView').depth(10).text('我的'))) {
         return false;
@@ -70,7 +70,7 @@ function taskCheckin() {
  * 任务-清理
  */
 function taskClear() {
-    log('----------', currentAPP.NAME, 'taskClear start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -114,7 +114,7 @@ function taskClear() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -156,7 +156,7 @@ function taskAd() {
 
 // 任务-搜索
 function taskSearch() {
-    log('----------', currentAPP.NAME, 'taskSearch start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -196,7 +196,7 @@ function taskSearch() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利中心'))) {
         return false;
@@ -253,7 +253,7 @@ function taskNews() {
 
 // 任务-NOW直播红包
 function taskRedpackNow() {
-    log('----------', currentAPP.NAME, 'taskRedpackNow start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     app.startActivity({
         data: 'mttbrowser://url=https://now.qq.com/activity/c-atmosphere-official/channel.html?_bid=4054&_wv=3&fromid=22452&pkgId=22452&channellink=CK1475153271485'

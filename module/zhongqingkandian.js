@@ -44,7 +44,7 @@ function getReward() {
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     clicks.textIfExists('我知道了');
     sleeps.s10();
@@ -66,7 +66,7 @@ function taskLimit() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -99,7 +99,7 @@ function taskCheckin() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -144,7 +144,7 @@ function taskNews() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -185,7 +185,7 @@ function taskVideo() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -214,7 +214,7 @@ function taskAd() {
 
 // 任务-火爆转发
 function taskShare() {
-    log('----------', currentAPP.NAME, 'taskShare start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('我的'))) {
         return false;
@@ -268,7 +268,7 @@ function taskShare() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -299,7 +299,7 @@ function taskLottery() {
 
 // 任务-抽奖ad
 function taskLotteryAd() {
-    log('----------', currentAPP.NAME, 'taskLotteryAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -346,7 +346,7 @@ function taskLotteryAd() {
 
 // 任务-看看赚
 function taskKankanzhuang() {
-    log('----------', currentAPP.NAME, 'taskKankanzhuang start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     app.launch(currentAPP.PACKAGE_NAME);
     sleep(10 * 1000);
@@ -442,7 +442,7 @@ function taskKankanzhuang() {
 
 // 任务-点击小程序
 function taskClickMP() {
-    log('----------', currentAPP.NAME, 'taskClickMP start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < 5; i++) {
         app.launch(currentAPP.PACKAGE_NAME);
@@ -592,7 +592,7 @@ function taskClick6() {
  * 定时宝箱
  */
 function taskTimerBox() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -615,7 +615,7 @@ function taskTimerBox() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;

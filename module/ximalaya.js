@@ -17,7 +17,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/21/6/110_89f2af74ad33a
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -40,7 +40,7 @@ function taskCheckin() {
  * 任务-Ad
  */
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -73,7 +73,7 @@ function taskAd() {
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -108,7 +108,7 @@ function taskNews() {
  * 任务-抽奖
  */
 function taskLottery() {
-    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('每日福利'))) {
         return false;

@@ -17,7 +17,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('高级签到').exists() && clicks.text('高级签到')) {
         if (!others.closeAdBackToElement(id('continue_btn'))) {
@@ -36,7 +36,7 @@ function taskCheckin() {
  * 任务-大转盘
  */
 function taskLottery() {
-    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('个人页'))) {
         return false;
@@ -62,7 +62,7 @@ function taskLottery() {
  * 任务-大转盘Ad
  */
 function taskLotteryAd() {
-    log('----------', currentAPP.NAME, 'taskLotteryAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < id('scene_ad_sdk_rewardItem').find().size(); i++) {
         if (!clicks.element(id('scene_ad_sdk_rewardItem').find()[i])) {

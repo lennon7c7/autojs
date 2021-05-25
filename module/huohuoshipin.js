@@ -16,7 +16,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('日常任务').exists() && !text('登录领取最高28元红包').exists()) {
         return true;
@@ -45,7 +45,7 @@ function taskLogin() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('金蛋大奖').exists()) {
         clicks.centerXyByText('金蛋大奖');
@@ -83,7 +83,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;

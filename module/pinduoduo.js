@@ -14,7 +14,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/06/5/120_37a8dc91f1db3
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -39,7 +39,7 @@ function taskCheckin() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(id('name').text('签到'))) {
         return false;
@@ -69,7 +69,7 @@ function taskCashout() {
  * 任务-摸猫
  */
 function taskCat() {
-    log('----------', currentAPP.NAME, 'taskCat start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('招财猫'))) {
         return false;
@@ -129,7 +129,7 @@ function taskCat() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('大视频'))) {
         return false;

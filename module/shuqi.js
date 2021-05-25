@@ -16,7 +16,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/19/7/110_edc4659a40310
 // 任务-福利转转转
 // 已下架
 function taskLottery() {
-    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('书架'))) {
         return false;
@@ -43,7 +43,7 @@ function taskLottery() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -72,7 +72,7 @@ function taskAd() {
 
 // 任务-分享
 function taskShare() {
-    log('----------', currentAPP.NAME, 'taskShare start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;
@@ -105,7 +105,7 @@ function taskShare() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(text('福利'))) {
         return false;

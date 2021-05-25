@@ -14,7 +14,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-宝箱
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我 的'))) {
         return false;
@@ -57,7 +57,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('明天预计可领'))) {
         return false;
@@ -86,7 +86,7 @@ function taskAd() {
 
 // 任务-Game
 function taskGame() {
-    log('----------', currentAPP.NAME, 'taskGame start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < 6; i++) {
         if (desc('领取').exists()) {
@@ -118,7 +118,7 @@ function taskGame() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('提现'))) {
         return false;

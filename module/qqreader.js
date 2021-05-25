@@ -16,7 +16,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/12/19/4/120_f797e486ddca1
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     others.back();
     clicks.textIfExists('取消');
@@ -47,7 +47,7 @@ function taskTreasureBox() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('今日已领').exists()) {
         return true;
@@ -68,7 +68,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     clicks.textIfExists('取消');
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
@@ -94,7 +94,7 @@ function taskAd() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('----------', currentAPP.NAME, 'taskAddBook start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;
@@ -150,7 +150,7 @@ function taskAd2() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(id('main_tab_free_text').text('免费'))) {
         return false;

@@ -19,7 +19,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/02/01/2/120_0b3410dfd1b5b
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (desc('首页').exists() && !text('立即登录').exists()) {
         return true;
@@ -46,7 +46,7 @@ function taskLogin() {
 
 // 任务-签到
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('首页'))) {
         return false;
@@ -87,7 +87,7 @@ function taskCheckin() {
 
 // 任务-逛商品赚金币
 function taskProduct() {
-    log('----------', currentAPP.NAME, 'taskProduct start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
     } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
@@ -126,7 +126,7 @@ function taskProduct() {
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
-    log('----------', currentAPP.NAME, 'taskRandomPage start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的'))) {
         return false;
@@ -160,7 +160,7 @@ function taskRandomPage() {
 
 // 任务-看视频赚金币
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的'))) {
         return false;
@@ -201,7 +201,7 @@ function taskVideo() {
 
 // 任务-活动任务
 function taskActivity() {
-    log('----------', currentAPP.NAME, 'taskActivity start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('赚钱'))) {
         return false;

@@ -18,7 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/05/7/120_0a998714be1db
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     toPageMe();
 
@@ -53,7 +53,7 @@ function taskLogin() {
  * @returns {boolean}
  */
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     status = checkVideo();
     if (status) {
@@ -125,7 +125,7 @@ function checkVideo() {
 
 // 任务-领红包
 function taskRedpack() {
-    log('----------', currentAPP.NAME, 'taskRedpack start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     toPageMe();
 
@@ -159,7 +159,7 @@ function taskRedpack() {
  * 因为需要扫脸，没有对应的技术应付，所以只能关闭了
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     toPageMe();
 

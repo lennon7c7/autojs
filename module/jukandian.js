@@ -15,7 +15,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (id('v2_sign_sign_button').exists() && !clicks.centerXyById('v2_sign_sign_button')) {
         return false;
@@ -42,7 +42,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < 3; i++) {
         if (clicks.textIfExists('视频赚') && !text('视频赚').exists()) {
@@ -59,7 +59,7 @@ function taskAd() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('看点'))) {
         return false;

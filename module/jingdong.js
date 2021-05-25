@@ -15,7 +15,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/04/06/7/120_da18100cae7d7
 
 // 任务-签到
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(desc('首页'))) {
         return false;
@@ -73,7 +73,7 @@ function taskProduuct3() {
 
 // 任务-升级赚京豆
 function taskSJZJD() {
-    log('----------', currentAPP.NAME, 'taskSJZJD start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < 1; i++) {
         isClick = false;
@@ -107,7 +107,7 @@ function taskSJZJD() {
 
 // 任务-抽京豆
 function taskCJD() {
-    log('----------', currentAPP.NAME, 'taskCJD start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(desc('首页'))) {
         return false;
@@ -146,7 +146,7 @@ function taskCJD() {
 
 // 任务-摇京豆
 function taskYJD() {
-    log('----------', currentAPP.NAME, 'taskYJD start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!exists.backToElement(desc('首页'))) {
         return false;

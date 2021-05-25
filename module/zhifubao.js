@@ -15,7 +15,7 @@ currentAPP.MP_URL = 'alipays://platformapi/startapp?appId=';
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (idContains('update_cancel_tv').exists()) {
         clicks.element(idContains('update_cancel_tv'));
@@ -87,7 +87,7 @@ function task15s() {
  * 任务-天天抽奖
  */
 function taskEverydayLottery() {
-    log('----------', currentAPP.NAME, 'taskEverydayLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -213,10 +213,10 @@ function task0Lottery() {
  * @returns {bool}
  */
 function taskMP() {
-    log('----------', currentAPP.NAME, 'taskMP start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     function taskHDYM() {
-        log('----------', currentAPP.NAME, 'taskCJYM start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '薅点羊毛';
         MP_APPID = '2021002138699035';
@@ -293,7 +293,7 @@ function taskMP() {
     }
 
     function taskCJYM() {
-        log('----------', currentAPP.NAME, 'taskCJYM start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '超级羊毛';
         MP_APPID = '2021002135601662';
@@ -421,7 +421,7 @@ function taskMP() {
     }
 
     function taskTTZB() {
-        log('----------', currentAPP.NAME, 'taskTTZB start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '签到赢豪礼';
         MP_APPID = '2021002109688508&page=pages%2Fsign%2Findex';
@@ -471,7 +471,7 @@ function taskMP() {
     }
 
     function taskYLKF() {
-        log('----------', currentAPP.NAME, 'taskYLKF start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '医鹿康福';
         MP_APPID = '2021002102665060';
@@ -484,7 +484,7 @@ function taskMP() {
     }
 
     function taskBBNC() {
-        log('----------', currentAPP.NAME, 'taskBBNC start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '芭芭农场';
         MP_APPID = '68687599';
@@ -501,7 +501,7 @@ function taskMP() {
     }
 
     function taskNNDK() {
-        log('----------', currentAPP.NAME, 'taskNNDK start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '牛牛打卡';
         MP_APPID = '2021002103658796';
@@ -542,7 +542,7 @@ function taskMP() {
     }
 
     function taskTTBH() {
-        log('----------', currentAPP.NAME, 'taskTTBH start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '天天宝盒';
         MP_APPID = '2021002133663694';
@@ -585,7 +585,7 @@ function taskMP() {
     }
 
     function taskCJXQ() {
-        log('----------', currentAPP.NAME, 'taskCJXQ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '超级星球';
         MP_APPID = '2021002133621816';
@@ -667,7 +667,7 @@ function taskMP() {
     }
 
     function taskHXQ() {
-        log('----------', currentAPP.NAME, 'taskHXQ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '花小钱';
         MP_APPID = '2021001167673032';
@@ -703,7 +703,7 @@ function taskMP() {
     }
 
     function taskXQDB() {
-        log('----------', currentAPP.NAME, 'taskXQDB start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '星球夺宝';
         MP_APPID = '2021002133642751';
@@ -735,7 +735,7 @@ function taskMP() {
     }
 
     function taskTTLHM() {
-        log('----------', currentAPP.NAME, 'taskTTLHM start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '天天领红包';
         MP_APPID = '2021001140664847';
@@ -777,7 +777,7 @@ function taskMP() {
     }
 
     function taskTTZD() {
-        log('----------', currentAPP.NAME, 'taskTTZD start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '天天赚点';
         MP_APPID = '2021002126672567';
@@ -854,7 +854,7 @@ function taskMP() {
     }
 
     function taskKXZB() {
-        log('----------', currentAPP.NAME, 'taskKXZB start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '开心赚宝';
         MP_APPID = '2021002124678299';
@@ -882,7 +882,7 @@ function taskMP() {
     }
 
     function taskLMYQ() {
-        log('----------', currentAPP.NAME, 'taskLMYQ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '连码有钱';
         MP_APPID = '2021002102658614';
@@ -915,7 +915,7 @@ function taskMP() {
     }
 
     function taskDDCJ() {
-        log('----------', currentAPP.NAME, 'taskDDCJ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '点点成金';
         MP_APPID = '2021002120694820';
@@ -945,7 +945,7 @@ function taskMP() {
     }
 
     function taskJJXQ() {
-        log('----------', currentAPP.NAME, 'taskJJXQ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '集集星球';
         MP_APPID = '2019101668433279';
@@ -1021,7 +1021,7 @@ function taskMP() {
      * 任务-做任务领红包
      */
     function taskZRWLHB() {
-        log('----------', currentAPP.NAME, 'taskZRWLHB start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '做任务赢红包';
         MP_APPID = '2021001199601580';
@@ -1079,7 +1079,7 @@ function taskMP() {
     }
 
     function taskZDD() {
-        log('----------', currentAPP.NAME, 'taskZDD start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '赚多多';
         MP_APPID = '2021002127667862';
@@ -1114,7 +1114,7 @@ function taskMP() {
      * 任务-天天夺宝
      */
     function taskTTDB() {
-        log('----------', currentAPP.NAME, 'taskTTDB start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '天天夺宝';
         MP_APPID = '2021001167652345';
@@ -1149,7 +1149,7 @@ function taskMP() {
      * 任务-开心签到
      */
     function taskKXQD() {
-        log('----------', currentAPP.NAME, 'taskKXQD start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '开心签到';
         MP_APPID = '2021001167643261';
@@ -1234,7 +1234,7 @@ function taskMP() {
     }
 
     function taskFXM() {
-        log('----------', currentAPP.NAME, 'taskFXM start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '分小萌';
         MP_APPID = '2021001195607086';
@@ -1285,7 +1285,7 @@ function taskMP() {
      * 任务-走路钱多多
      */
     function taskZLQDD() {
-        log('----------', currentAPP.NAME, 'taskZLQDD start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '走路钱多多';
         MP_APPID = '2021001167680229';
@@ -1373,7 +1373,7 @@ function taskMP() {
 
     // 取消关注生活号
     function cancelLifeSubscript() {
-        log('----------', currentAPP.NAME, 'cancelLifeSubscript start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         app.startActivity({data: 'alipays://platformapi/startapp?appId=20000166'});
         sleeps.s15();
@@ -1451,7 +1451,7 @@ function taskMP() {
     }
 
     function taskTTWK() {
-        log('----------', currentAPP.NAME, 'taskCJYM start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         MP_TITLE = '天天挖矿';
         MP_APPID = '2021002134695694';
@@ -1572,7 +1572,7 @@ function taskMP() {
  * @returns {int}
  */
 function getAccountCount() {
-    log('----------', currentAPP.NAME, 'getAccountCount start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     status0 = others.launch(currentAPP.PACKAGE_NAME);
     if (!status0) {
@@ -1606,7 +1606,7 @@ function getAccountCount() {
  * @returns {boolean}
  */
 function switchAccount() {
-    log('----------', currentAPP.NAME, 'switchAccount start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (idContains('update_cancel_tv').exists()) {
         clicks.element(idContains('update_cancel_tv'));

@@ -15,7 +15,7 @@ currentAPP.APK = '';
 
 // 任务-逛店铺
 function taskShop() {
-    log('----------', currentAPP.NAME, 'taskShop start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -54,7 +54,7 @@ function taskShop() {
 
 // 任务-帮好友
 function taskHelpFriend() {
-    log('----------', currentAPP.NAME, 'taskHelpFriend start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -115,7 +115,7 @@ function taskHelpFriend() {
 
 // 任务-金币能量
 function taskMoneyPower() {
-    log('----------', currentAPP.NAME, 'taskMoneyPower start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('赚金币'))) {
         return false;
@@ -417,7 +417,7 @@ function taskMoneyPower() {
 
 // 任务-取消关注店铺
 function taskCancelShop() {
-    log('----------', currentAPP.NAME, 'taskCancelShop start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;
@@ -439,7 +439,7 @@ function taskCancelShop() {
 
 // 切换账户
 function switchAccount() {
-    log('----------', currentAPP.NAME, 'switchAccount start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(desc('我的淘宝'))) {
         return false;

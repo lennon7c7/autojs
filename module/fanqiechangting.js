@@ -14,7 +14,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -49,7 +49,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -80,7 +80,7 @@ function taskAd() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

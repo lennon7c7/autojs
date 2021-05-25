@@ -15,7 +15,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
  * 任务-打卡提现
  */
 function taskCheckinWithdraw() {
-    log('----------', currentAPP.NAME, 'taskCheckinWithdraw start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 提现 ----------');
     clicks.xy(445, 425);
@@ -38,7 +38,7 @@ function taskCheckinWithdraw() {
  * 任务-每日闯关
  */
 function taskDaily() {
-    log('----------', currentAPP.NAME, 'taskDaily start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 每日闯关 ----------');
     clicks.xy(920, 560);
@@ -98,7 +98,7 @@ function taskDaily() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -120,7 +120,7 @@ function taskCheckin() {
  * 任务-限时红包
  */
 function taskLimitRedPacket() {
-    log('----------', currentAPP.NAME, 'taskLimitRedPacket start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -136,7 +136,7 @@ function taskLimitRedPacket() {
  * 任务-在线奖励
  */
 function taskOnLineReward() {
-    log('----------', currentAPP.NAME, 'taskOnLineReward start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);
@@ -155,7 +155,7 @@ function taskOnLineReward() {
  * 任务-幸运转盘
  */
 function taskLuckLottery() {
-    log('----------', currentAPP.NAME, 'taskLuckLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     log('---------- 每日红包 ----------');
     clicks.xy(300, 1500);

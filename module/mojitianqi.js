@@ -13,7 +13,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -50,7 +50,7 @@ function taskAd() {
 
 // 任务-看每日天气
 function taskEverydayWeather() {
-    log('----------', currentAPP.NAME, 'taskEverydayWeather start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -84,7 +84,7 @@ function taskEverydayWeather() {
 
 // 任务-看短时天气
 function taskShortWeather() {
-    log('----------', currentAPP.NAME, 'taskShortWeather start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

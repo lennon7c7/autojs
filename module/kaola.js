@@ -12,7 +12,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/03/04/3/110_a24e95aa1f482
 
 // 任务-考拉乐园
 function taskPlayground() {
-    log('----------', currentAPP.NAME, 'taskPlayground start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -98,7 +98,7 @@ function taskPlayground() {
 
 // 任务-领考拉豆
 function taskRandomPage() {
-    log('----------', currentAPP.NAME, 'taskRandomPage start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -191,7 +191,7 @@ function taskRandomPage() {
 
 // 任务-抽奖
 function taskLottery() {
-    log('----------', currentAPP.NAME, 'taskLottery start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('天天抽奖'))) {
         return false;

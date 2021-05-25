@@ -14,7 +14,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     others.back();
 
@@ -39,7 +39,7 @@ function taskLimit() {
 
 // 任务-打开应用
 function taskOpenApp() {
-    log('----------', currentAPP.NAME, 'taskOpenApp start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -80,7 +80,7 @@ function taskOpenApp() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -202,7 +202,7 @@ function taskAd() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -239,7 +239,7 @@ function taskVideo() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;

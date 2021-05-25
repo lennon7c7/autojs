@@ -16,7 +16,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/19/8/120_187f19f4e3c69
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -57,7 +57,7 @@ function taskTreasureBox() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -86,7 +86,7 @@ function taskAd() {
 
 // 任务-添加书籍
 function taskAddBook() {
-    log('----------', currentAPP.NAME, 'taskAddBook start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;
@@ -125,7 +125,7 @@ function taskAddBook() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('福利'))) {
         return false;

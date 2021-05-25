@@ -14,7 +14,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.NAME, 'taskLimit start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的'))) {
         return false;
@@ -48,7 +48,7 @@ function taskLimit() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('领现金'))) {
         return false;

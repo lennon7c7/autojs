@@ -17,7 +17,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/07/23/6/110_7db33a7cba728
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我'))) {
         return false;

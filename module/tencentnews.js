@@ -18,7 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/10/20/2/120_fc38b86dace4a
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (text('我的红包').exists() && !desc('微信').exists()) {
         return true;
@@ -48,7 +48,7 @@ function taskLogin() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     clicks.descIfExists('Tencent news');
 
@@ -81,7 +81,7 @@ function taskCheckin() {
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
@@ -129,7 +129,7 @@ function taskVideo() {
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;
@@ -182,7 +182,7 @@ function taskNews() {
 
 // 任务-NOW直播红包
 function taskRedpackNow() {
-    log('----------', currentAPP.NAME, 'taskRedpackNow start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('我的 '))) {
         return false;

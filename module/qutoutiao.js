@@ -15,7 +15,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/31/11/106_032c57ae8893
 
 // 任务-文章
 function taskNews() {
-    log('----------', currentAPP.NAME, 'taskNews start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -61,7 +61,7 @@ function taskNews() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -95,7 +95,7 @@ function taskVideo() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('任务'))) {
         return false;
@@ -120,7 +120,7 @@ function taskAd() {
 
 // 任务-视频滑动
 function taskVideoSwipe() {
-    log('----------', currentAPP.NAME, 'taskVideoSwipe start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('小视频'))) {
         return false;

@@ -18,7 +18,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/23/0/120_d596d531e1400
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, 'taskLogin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!text('微信登录').exists()) {
         return true;
@@ -39,7 +39,7 @@ function taskLogin() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('首页'))) {
         return false;
@@ -79,7 +79,7 @@ function taskCheckin() {
  * 随机答题抢红包
  */
 currentAPP.redPackage = function () {
-    log('----------', currentAPP.NAME, 'redPackage start ----------');
+    log('----------', currentAPP.NAME, ' redPackage start ----------');
 
     others.back3();
 

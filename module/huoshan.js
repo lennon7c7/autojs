@@ -14,7 +14,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 // 任务-宝箱
 // every 20m
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, 'taskTreasureBox start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -79,7 +79,7 @@ function taskAd20() {
 
 // 任务-睡觉赚钱
 function taskSleep() {
-    log('----------', currentAPP.NAME, 'taskSleep start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -102,7 +102,7 @@ function taskSleep() {
 
 // 任务-晒收入
 function taskShare() {
-    log('----------', currentAPP.NAME, 'taskShare start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -143,7 +143,7 @@ function taskShare() {
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, 'taskCashout start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('红包'))) {
         return false;
@@ -176,7 +176,7 @@ function taskCashout() {
 
 // 任务-视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, 'taskVideo start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('首页'))) {
         return false;

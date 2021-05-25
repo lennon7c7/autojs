@@ -17,7 +17,7 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/11/24/7/120_64c8de54ecbe5
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;
@@ -46,7 +46,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!others.backToElement(text('赚钱'))) {
         return false;

@@ -172,7 +172,7 @@ function closeRewardedAd() {
 
 // 任务-必看严选
 function taskReadBiKanYanXuan() {
-    log('----------', currentAPP.NAME, 'taskRead start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     if (!clicks.backToElement(text('必看严选'))) {
         return false;
@@ -203,19 +203,19 @@ function taskReadBiKanYanXuan() {
  * @returns {bool}
  */
 function taskMP() {
-    log('----------', currentAPP.NAME, 'taskMP start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     /**
      * 任务-五福小财神
      */
     function taskWFXCS() {
-        log('----------', currentAPP.NAME, 'taskWFXCS start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
         /**
          * 出征
          */
         function chuZheng() {
-            log('----------', currentAPP.NAME, 'chuZheng start ----------');
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
             startDeskApp();
 
@@ -297,7 +297,7 @@ function taskMP() {
          * Lottery
          */
         function lottery() {
-            log('----------', currentAPP.NAME, 'lottery start ----------');
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
             startDeskApp();
 
@@ -354,7 +354,7 @@ function taskMP() {
          * 贡献红包
          */
         function GXHB() {
-            log('----------', currentAPP.NAME, 'GXHB start ----------');
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
             startDeskApp();
 
@@ -397,7 +397,7 @@ function taskMP() {
          * 小程序
          */
         function MP() {
-            log('----------', currentAPP.NAME, 'MP start ----------');
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
             startDeskApp();
 
@@ -451,7 +451,7 @@ function taskMP() {
          * 任务-提现
          */
         function cashout() {
-            log('----------', currentAPP.NAME, 'cashout start ----------');
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
             startDeskApp();
 

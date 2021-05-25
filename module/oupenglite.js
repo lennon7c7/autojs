@@ -17,7 +17,7 @@ currentAPP.APK = 'https://ip4046033783.mobgslb.tbcache.com/fs08/2021/02/03/8/122
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, 'taskCheckin start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     clicks.textIfExists('忽略');
     clicks.textIfExists('忽略');
@@ -51,7 +51,7 @@ function taskCheckin() {
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, 'taskAd start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     for (var i = 0; i < 10; i++) {
         clicks.idIfExists('close_dialog');
