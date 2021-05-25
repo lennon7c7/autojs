@@ -223,7 +223,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -285,7 +285,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -300,7 +300,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -362,7 +362,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -377,7 +377,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear()
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID})
             sleeps.s15()
             clicks.textIfExists('取消')
         }
@@ -428,7 +428,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -476,7 +476,7 @@ function taskMP() {
         MP_TITLE = '医鹿康福';
         MP_APPID = '2021002102665060';
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s15();
 
 
@@ -489,7 +489,7 @@ function taskMP() {
         MP_TITLE = '芭芭农场';
         MP_APPID = '68687599';
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s15();
 
         clicks.xy(device.width / 2 + 250, device.height / 2 + 230);
@@ -508,7 +508,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -549,7 +549,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -592,7 +592,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -659,7 +659,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -674,7 +674,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -710,7 +710,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -742,7 +742,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -784,7 +784,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -846,7 +846,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -861,7 +861,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -889,7 +889,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -922,7 +922,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -952,7 +952,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -995,7 +995,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1028,7 +1028,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1086,7 +1086,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1121,7 +1121,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1148,7 +1148,7 @@ function taskMP() {
     /**
      * 任务-开心签到
      */
-     function taskKXQD() {
+    function taskKXQD() {
         log('----------', currentAPP.NAME, 'taskKXQD start ----------');
 
         MP_TITLE = '开心签到';
@@ -1156,7 +1156,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1226,7 +1226,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -1241,7 +1241,7 @@ function taskMP() {
 
         if (!text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1292,7 +1292,7 @@ function taskMP() {
 
         if (!text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1318,7 +1318,7 @@ function taskMP() {
     function cancelLifeSubscript() {
         log('----------', currentAPP.NAME, 'cancelLifeSubscript start ----------');
 
-        app.startActivity({ data: 'alipays://platformapi/startapp?appId=20000166' });
+        app.startActivity({data: 'alipays://platformapi/startapp?appId=20000166'});
         sleeps.s15();
 
         if (!clicks.centerXyByText('生活号')) {
@@ -1374,12 +1374,12 @@ function taskMP() {
 
     /**
      * 回到指定元素存在的页面
-     * @param {string} element 
-     * @returns 
+     * @param {string} element
+     * @returns
      */
     function backToElement(element) {
         // 如果元素不存在，就重新打开小程序
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
 
         if (exists.backToElement(element)) {
@@ -1401,7 +1401,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -1463,7 +1463,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
         sleeps.s3();
         others.clear();
 
@@ -1475,13 +1475,6 @@ function taskMP() {
 
     // taskKXQD();
     // return;
-
-    // cash
-    taskDDCJ();
-    taskFXM();
-    taskZRWLHB();
-    taskYMLQ_XZKJ();
-    taskTTLHM();
 
     // jifenbao
     taskTTWK();
@@ -1500,6 +1493,13 @@ function taskMP() {
     taskTTZB();
     taskCJYM()
     taskJifenbao()
+
+    // cash
+    taskDDCJ();
+    taskFXM();
+    taskZRWLHB();
+    taskYMLQ_XZKJ();
+    taskTTLHM();
 
     // coin
     taskLMYQ();
