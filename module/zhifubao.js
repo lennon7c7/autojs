@@ -1299,16 +1299,73 @@ function taskMP() {
 
         swipes.down();
 
-        for (var i = 0; i < 10; i++) {
+        var elementCount = 0
+        var element = className('android.widget.Button').depth(16).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            // 过滤任务: 过滤第一个
+            if (key1 === 0) {
+                return;
+            }
+
+            // 过滤任务: 不要金币，只要集分宝
+            if (!value1.parent() || !value1.parent().parent() || !value1.parent().parent().parent() || !value1.parent().parent().parent().findOne(text('+1集分宝'))) {
+                return;
+            }
+
+            // 过滤已完成的
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
             backToElement(text(MP_TITLE))
 
-            if (!clicks.clickableElement(className('android.widget.Button').depth(16).findOne(3000))) {
-                break;
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+
+                // 过滤任务: 过滤第一个
+                if (key1 === 0) {
+                    return;
+                }
+
+                // 过滤任务: 不要金币，只要集分宝
+                if (!value1.parent() || !value1.parent().parent() || !value1.parent().parent().parent() || !value1.parent().parent().parent().findOne(text('+1集分宝'))) {
+                    return;
+                }
+
+                // 过滤已完成的
+
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
             }
 
             maybeMore();
         }
 
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+        sleeps.s3();
         others.clear();
 
         return false;
