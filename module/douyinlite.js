@@ -158,7 +158,7 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         if (!text('关注').exists() || !text('推荐').exists() || !text('首页').exists()) {
             return false;
         }
@@ -201,7 +201,7 @@ currentAPP.start = function () {
         status0 = taskCheckin();
         status1 = taskTreasureBox();
         status2 = taskLimit();
-        taskSleep();
+        // taskSleep();
         taskCashout();
         taskVideo();
 

@@ -311,12 +311,12 @@ currentAPP.start = function () {
 
 
         status0 = taskLimit();
-        status1 = taskOpenApp();
-        status2 = taskAd();
-        status3 = taskNews();
-        status4 = taskVideo();
+        // status1 = taskOpenApp();
+        // status2 = taskAd();
+        // status3 = taskNews();
+        // status4 = taskVideo();
 
-        if (status0 && status1 && status2 && status3 && status4) {
+        if (status0) {
             return true;
         }
     }

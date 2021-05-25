@@ -182,7 +182,7 @@ function taskVideo() {
         return false;
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         swipes.down1600();
 
         if (text('15S').exists() || text('14S').exists() || text('13S').exists() || text('12S').exists() || text('11S').exists()
@@ -218,7 +218,7 @@ currentAPP.start = function () {
 
         status0 = taskTreasureBox();
         taskAd20();
-        taskSleep();
+        // taskSleep();
         taskShare();
         taskCashout();
         taskVideo();

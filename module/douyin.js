@@ -157,6 +157,14 @@ function getSaleData() {
  * @returns {boolean}
  */
 currentAPP.start = function () {
+
+}
+
+/**
+ * 爬虫-开始调用
+ * @returns {boolean}
+ */
+currentAPP.spider = function () {
     status0 = others.launch(currentAPP.PACKAGE_NAME);
     if (!status0) {
         return true;

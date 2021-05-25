@@ -15,7 +15,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
 function taskVideo() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         if (text('点击进入直播间').exists()) {
             continue;
         }
