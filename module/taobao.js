@@ -10,58 +10,44 @@ var swipes = require('../function/swipes.js');
 currentAPP = {};
 currentAPP.PACKAGE_NAME = 'com.taobao.taobao';
 currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP.VERSION = '';
+currentAPP.APK = '';
 
 // 任务-逛店铺
 function taskShop() {
     log('----------', currentAPP.NAME, 'taskShop start ----------');
 
-    text('赚金币').exists() && clicks.xy(33, 1404);
+    if (!others.backToElement(desc('我的淘宝'))) {
+        return false;
+    }
 
+    if (!clicks.centerXyByDesc('淘金币')) {
+        return false;
+    }
     sleeps.s5to10();
-    if (desc('已完成').find().size() > 6) {
-        others.back();
-        return true;
-    }
 
-    for (var i = 0; i < 4; i++) {
-        if (desc('逛10秒+10').exists()) {
-            clicks.centerXyByDesc('逛10秒+10');
-            sleeps.s15to20();
-            clicks.centerXyByText('关注+10');
-            !desc('金币好店').exists() && others.back();
+    if (!className('android.widget.Button').depth(12).indexInParent(0).findOne(3000)) {
+        return false;
+    }
+    className('android.widget.Button').depth(12).indexInParent(0).findOne(3000).click();
+    sleeps.s3();
+
+    desc('逛10秒+10').find().forEach((value1, key1) => {
+        if (!exists.backToElement(desc('金币好店')) || !value1.parent()) {
+            return;
         }
-    }
 
-    desc('金币好店').exists() && swipes.down();
-    desc('金币好店').exists() && swipes.down();
+        value1.parent().click();
+        sleeps.s15to20();
 
-    for (var i = 0; i < 3; i++) {
-        if (desc('逛10秒+10').exists()) {
-            clicks.centerXyByDesc('逛10秒+10');
-            sleeps.s15to20();
+        if (text('关注+10').exists()) {
             clicks.centerXyByText('关注+10');
-            !desc('金币好店').exists() && others.back();
         }
-    }
-
-    desc('金币好店').exists() && swipes.down();
-    desc('金币好店').exists() && swipes.down();
-
-    for (var i = 0; i < 3; i++) {
-        if (desc('逛10秒+10').exists()) {
-            clicks.centerXyByDesc('逛10秒+10');
-            sleeps.s15to20();
-            clicks.centerXyByText('关注+10');
-            !desc('金币好店').exists() && others.back();
-        }
-    }
+    });
 
     if (desc('已完成').find().size() > 6) {
-        others.back();
         return true;
     }
-
-    desc('金币好店').exists() && others.back();
 
     return false;
 }
@@ -77,30 +63,36 @@ function taskHelpFriend() {
     if (!clicks.centerXyByDesc('淘金币')) {
         return false;
     }
+    sleeps.s15();
 
-    sleeps.s5to10();
-
-    if (text('签到领金币').exists()) {
-        clicks.centerXyByText('签到领金币');
-    }
-
-    if (text('签到领淘金币').exists()) {
-        clicks.centerXyByText('签到领淘金币');
-        others.back();
-        clicks.centerXyByDesc('淘金币');
-    }
-
-    if (text('购后返 ').exists()) {
-        clicks.centerXyByText('购后返 ');
-    }
+    clicks.textIfExists('签到领金币');
+    clicks.textIfExists('我知道了');
+    clicks.textIfExists('购后返 ');
 
     for (var i = 0; i < 3; i++) {
         clicks.textIfExists('合力');
     }
 
-    text('赚金币').exists() && clicks.xy(912, 1203);
+    isClick = false;
+    className('android.widget.Button').depth(12).indexInParent(0).find().forEach((value1, key1) => {
+        if (isClick || !value1.clickable()
+            || value1.parent().className() !== 'android.view.View' || value1.parent().childCount() !== 1
+            || value1.parent().parent().className() !== 'android.widget.ListView' || value1.parent().parent().childCount() !== 2
+        ) {
+            return;
+        }
 
+        if (key1 === 5) {
+            value1.click();
+            sleeps.s3();
+            isClick = true;
+        }
+    });
     sleeps.s5to10();
+    if (!isClick) {
+        return false;
+    }
+
     for (var i = 0; i < 6; i++) {
         if (text('去助力').exists()) {
             clicks.centerXyByText('去助力');
@@ -491,11 +483,11 @@ currentAPP.start = function () {
 
 
         status0 = taskHelpFriend();
-        // status3 = taskShop();
+        status3 = taskShop();
         status1 = taskMoneyPower();
         status2 = switchAccount();
 
-        if (status0 && status1 && status2) {
+        if (status0 && status3 && status1 && status2) {
             return true;
         }
 
