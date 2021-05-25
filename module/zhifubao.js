@@ -1344,6 +1344,83 @@ function taskMP() {
         return true;
     }
 
+    function taskTTWK() {
+        log('----------', currentAPP.NAME, 'taskCJYM start ----------');
+
+        MP_TITLE = '天天挖矿';
+        MP_APPID = '2021002134695694';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        var elementCount = 0
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            // 过滤任务: 不要金币，只要集分宝
+            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                return;
+            }
+
+            // 过滤已完成的
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+
+                // 过滤任务: 不要金币，只要集分宝
+                if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                    return;
+                }
+
+                // 过滤已完成的
+
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
+            }
+
+            maybeMore();
+        }
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+        others.clear();
+
+        return false;
+    }
+
     // temp
     // taskYLKF();
 
@@ -1358,6 +1435,7 @@ function taskMP() {
     taskTTLHM();
 
     // jifenbao
+    taskTTWK();
     taskHDYM();
     taskZLQDD();
     taskKXQD();
