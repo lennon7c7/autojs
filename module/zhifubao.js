@@ -796,6 +796,79 @@ function taskMP() {
         return false;
     }
 
+    function taskJXB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+        MP_TITLE = '集小宝';
+        MP_APPID = '2021001168619324';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        var elementCount = 0
+        var element = className('android.widget.Button').depth(15).text('+1集分宝');
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            if (key1 === 0 || key1 === 1 || key1 === 2) {
+                return
+            }
+
+            // 过滤已完成的
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+    
+                if (key1 === 0 || key1 === 1 || key1 === 2) {
+                    return
+                }
+    
+                // 过滤已完成的
+
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
+            }
+
+            maybeMore();
+        }
+
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+        sleeps.s3();
+        others.clear();
+
+        return false;
+    }
+
     function taskXQDB() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
@@ -1751,6 +1824,7 @@ function taskMP() {
     taskTTZD();
     taskXQDB();
     taskHXQ();
+    taskJXB()
     taskCJXQ();
     taskNNDK();
     taskTTZB();
