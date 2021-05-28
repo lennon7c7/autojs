@@ -1878,6 +1878,8 @@ function taskMP() {
         return false;
     }
 
+    cancelLifeSubscript();
+
     // temp
     // taskYLKF();
 
@@ -1918,7 +1920,6 @@ function taskMP() {
     // other
     taskBBNC();
     // taskYLKF();
-    cancelLifeSubscript();
 }
 
 /**
