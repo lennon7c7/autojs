@@ -248,6 +248,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -271,7 +274,10 @@ function taskMP() {
                 }
 
                 // 过滤已完成的
-
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -325,6 +331,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -348,7 +357,10 @@ function taskMP() {
                 }
 
                 // 过滤已完成的
-
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -459,6 +471,9 @@ function taskMP() {
             // }
 
             // 过滤任务: 已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             clicks.clickableElement(element.findOne(3000));
 
@@ -609,7 +624,15 @@ function taskMP() {
                 return;
             }
 
+            // 过滤任务: 不要金币，只要集分宝
+            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                return;
+            }
+
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -627,7 +650,15 @@ function taskMP() {
                     return;
                 }
 
+                // 过滤任务: 不要金币，只要集分宝
+                if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                    return;
+                }
+
                 // 过滤已完成的
+                if (value1.text() === '去看看') {
+                    return;
+                }
 
                 if (!clicks.clickableElement(value1)) {
                     return;
@@ -687,6 +718,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -710,7 +744,10 @@ function taskMP() {
                 }
 
                 // 过滤已完成的
-
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -757,6 +794,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -804,7 +844,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -826,6 +866,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -842,13 +885,16 @@ function taskMP() {
                 if (!value1 || !value1.text()) {
                     return;
                 }
-    
+
                 if (key1 === 0 || key1 === 1 || key1 === 2) {
                     return
                 }
-    
-                // 过滤已完成的
 
+                // 过滤已完成的
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -862,7 +908,7 @@ function taskMP() {
             maybeMore();
         }
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
         sleeps.s3();
         others.clear();
 
@@ -1048,6 +1094,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -1455,12 +1504,19 @@ function taskMP() {
                 return;
             }
 
+            if (!value1.parent() || value1.parent().childCount() !== 2) {
+                return;
+            }
+
             // 过滤任务: 不要金币，只要集分宝
             if (value1.text().search('集分宝') === -1) {
                 return;
             }
 
             // 过滤已完成的
+            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().childCount() === 3) {
+                return;
+            }
 
             elementCount++;
         });
@@ -1482,13 +1538,20 @@ function taskMP() {
                     return;
                 }
 
+                if (!value1.parent() || value1.parent().childCount() !== 2) {
+                    return;
+                }
+        
                 // 过滤任务: 不要金币，只要集分宝
                 if (value1.text().search('集分宝') === -1) {
                     return;
                 }
 
                 // 过滤已完成的
-
+                if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().childCount() === 3) {
+                    return;
+                }
+    
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -1598,6 +1661,9 @@ function taskMP() {
             }
 
             // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
 
             elementCount++;
         });
@@ -1623,6 +1689,249 @@ function taskMP() {
                 // 过滤任务: 不要金币，只要集分宝
                 if (!value1.parent() || !value1.parent().parent() || !value1.parent().parent().parent() || !value1.parent().parent().parent().findOne(text('+1集分宝'))) {
                     return;
+                }
+
+                // 过滤已完成的
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
+            }
+
+            maybeMore();
+        }
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+        others.clear();
+
+        return false;
+    }
+
+    // 取消关注生活号
+    function cancelLifeSubscript() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+        app.startActivity({ data: 'alipays://platformapi/startapp?appId=20000166' });
+        sleeps.s15();
+
+        if (!clicks.centerXyByText('生活号')) {
+            return false;
+        }
+
+        var element = id('com.alipay.mobile.pubsvc:id/publicName');
+        var ignoreFile = ['菜鸟', '花呗', '考拉海购'];
+        element.find().forEach((value1, key1) => {
+            if (ignoreFile.indexOf(value1.text()) !== -1) {
+                return;
+            }
+
+            clicks.centerXyByText(value1.text());
+            clicks.descIfExists('取消');
+            clicks.desc('更多');
+            clicks.text('取消关注');
+            clicks.text('不再关注');
+            others.back();
+        });
+    }
+
+    /**
+     * 点击后，可能出现其它任务
+     * 不是单纯的看广告，比如关注、签到等
+     */
+    function maybeMore() {
+        sleeps.s3();
+
+        if (clicks.textIfExists('关注生活号')) {
+            if (clicks.textIfExists('立即关注')) {
+                clicks.textIfExists('我知道了');
+            }
+        } else if (clicks.textIfExists('关注店铺领券')) {
+            clicks.textIfExists('关注店铺领券')
+        } else if (clicks.textIfExists('立即领取')) {
+            sleeps.s3();
+            clicks.textIfExists('确认授权并入会');
+        } else if (clicks.textIfExists('签到赚钱')) {
+            clicks.xy(device.width / 2, device.height / 2 + 100);
+            sleeps.s5();
+            others.back();
+        } else if (clicks.textIfExists('点击关注店铺')) {
+            clicks.textIfExists('点击关注店铺');
+        } else if (clicks.textIfExists('亲点关注有奖励哦')) {
+            clicks.textIfExists('亲点关注有奖励哦');
+        } else if (!text('打开方式').exists()) {
+            clicks.xy(device.width / 2, device.height / 2 - 100);
+            clicks.xy(device.width / 2, device.height / 2);
+            clicks.xy(device.width / 2, device.height / 2 + 150);
+        }
+
+        sleeps.s20();
+    }
+
+    /**
+     * 回到指定元素存在的页面
+     * @param {string} element
+     * @returns
+     */
+    function backToElement(element) {
+        // 如果元素不存在，就重新打开小程序
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+
+        if (exists.backToElement(element)) {
+            clicks.textIfExists('取消');
+            clicks.textIfExists('我知道了');
+            clicks.textIfExists('知道了，继续赚钱');
+
+            return true;
+        }
+
+        return true;
+    }
+
+    function taskTTWK() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+        MP_TITLE = '天天挖矿';
+        MP_APPID = '2021002134695694';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        swipes.down();
+
+        var elementCount = 0
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            // 过滤任务: 不要金币，只要集分宝
+            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                return;
+            }
+
+            // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+
+                // 过滤任务: 不要金币，只要集分宝
+                if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
+                    return;
+                }
+
+                // 过滤已完成的
+                if (value1.text() === '去看看') {
+                    return;
+                }
+    
+                if (!clicks.clickableElement(value1)) {
+                    return;
+                }
+                isClick = true;
+            });
+
+            if (!isClick) {
+                continue;
+            }
+
+            maybeMore();
+        }
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+        sleeps.s3();
+        others.clear();
+
+        return false;
+    }
+
+    function taskKLB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+        MP_TITLE = '快领宝';
+        MP_APPID = '2021002131611079';
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear();
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
+            sleeps.s15();
+            clicks.textIfExists('取消');
+        }
+
+        var elementCount = 0
+        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size();
+        sleeps.s1();
+        element.find().size();
+        sleeps.s1();
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return;
+            }
+
+            if (key1 === 0 || key1 === 1 || key1 === 2) {
+                return
+            }
+
+            // 过滤已完成的
+            if (value1.text() === '去看看') {
+                return;
+            }
+
+            elementCount++;
+        });
+
+        for (var i = 0; i < elementCount; i++) {
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+
+            isClick = false;
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return;
+                }
+
+                if (!value1 || !value1.text()) {
+                    return;
+                }
+
+                if (key1 === 0 || key1 === 1 || key1 === 2) {
+                    return
                 }
 
                 // 过滤已完成的
