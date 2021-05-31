@@ -66,6 +66,32 @@ function taskAd() {
 }
 
 /**
+ * 任务-提现
+ */
+ function taskCashout() {
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+    if (!others.backToElement(text('赚钱'))) {
+        return false;
+    }
+
+    element = className('android.widget.TextView').depth(15).textStartsWith('约')
+    if (!exists.moneyEgt(element, 2)) {
+        return false;
+    }
+
+    if (!clicks.textIfExists('提现')) {
+        return false;
+    }
+
+    if (!clicks.textIfExists('确认提现')) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 入口-开始调用
  * @returns {boolean}
  */
@@ -79,6 +105,7 @@ currentAPP.start = function () {
 
         status0 = taskCheckin();
         status1 = taskAd();
+        taskCashout()
 
         if (status0 && status1) {
             return true;
