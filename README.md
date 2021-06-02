@@ -28,3 +28,6 @@ AutoJs-Docs：https://hyb1996.github.io/AutoJs-Docs
 Q：这玩意赚钱不？
 
 A：赚钱是不可能的，想啥呢你
+
+## 交流群
+![](https://wework.qpic.cn/wwpic/810551_8PWlabTITUaQdbd_1622611321/0)
