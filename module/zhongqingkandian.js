@@ -233,11 +233,11 @@ function taskShare() {
         return false;
     }
 
-    if (!clicks.rectByText('Share')) {
+    if (!clicks.rectByText('分享')) {
         return false;
     }
 
-    if (!clicks.rectByText('Stay in WeChat')) {
+    if (!clicks.rectByText('留在微信')) {
         return false;
     }
 
