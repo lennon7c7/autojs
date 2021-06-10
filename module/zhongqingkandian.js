@@ -524,68 +524,31 @@ function taskClickMP() {
 }
 
 // 任务-点击任意6个内容
+// 只为获取宝箱奖励
 function taskClick6() {
-    log('----------', currentAPP.NAME, 'taskNews6 start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
-    for (var i = 0; i < 66; i++) {
+    if (!others.backToElement(text('任务'))) {
+        return false;
+    }
+
+    clicks.textIfExists('展开')
+
+    text('去完成').find().forEach((value1) => {
         if (!clicks.backToElement(text('任务'))) {
             return false;
         }
 
-        clicks.textIfExists('展开');
-
-        getReward();
-
-        if (text('任务').exists() && !exists.parent(text('点击任意6个内容，阅读完成即可领取青豆'), text('去完成'))) {
-            return true;
+        if (!clicks.clickableElement(value1)) {
+            return false
         }
 
-        if (!clicks.parent(text('点击任意6个内容，阅读完成即可领取青豆'), text('去完成'))) {
-            return false;
-        }
+        clicks.textIfExists('CANCEL')
+    })
 
-        if (id('pop_close').exists()) {
-            clicks.id('pop_close');
-        } else if (text('closebtn').exists()) {
-            clicks.centerXyByText('closebtn');
-        } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
-            clicks.elementWidthHeight(className('android.view.View'), 90, 90);
-        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
-            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
-        }
+    getReward()
 
-        randomClick = random();
-        if (randomClick > 0.7) {
-            clicks.xy(100, 350);
-        } else if (randomClick > 0.3) {
-            clicks.xy(100, 850);
-        } else {
-            clicks.xy(100, 1250);
-        }
-
-        if (!others.backToPackageName(currentAPP.PACKAGE_NAME)) {
-            return false;
-        }
-
-        sleeps.s3();
-        if (id('pop_close').exists()) {
-            clicks.id('pop_close');
-        } else if (text('closebtn').exists()) {
-            clicks.centerXyByText('closebtn');
-        } else if (exists.elementWidthHeight(className('android.view.View'), 90, 90)) {
-            clicks.elementWidthHeight(className('android.view.View'), 90, 90);
-        } else if (exists.elementWidthHeight(className('android.view.View'), 120, 120)) {
-            clicks.elementWidthHeight(className('android.view.View'), 120, 120);
-        }
-
-        clicks.textIfExists('展开全文');
-        clicks.textIfExists('点击阅读全文');
-        swipes.down();
-        clicks.textIfExists('加载更多');
-        sleeps.s10();
-    }
-
-    return false;
+    return false
 }
 
 /**
@@ -654,6 +617,7 @@ currentAPP.start = function () {
 
         status4 = taskLimit();
         status0 = taskCheckin();
+        status2 = taskShare();
         taskNews();
         taskVideo();
         status1 = taskAd();
@@ -662,7 +626,6 @@ currentAPP.start = function () {
             taskLotteryAd();
         }
         taskTimerBox();
-        status2 = taskShare();
         taskClick6();
         taskClickMP();
         taskKankanzhuang();
