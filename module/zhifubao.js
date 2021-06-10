@@ -2187,6 +2187,197 @@ function taskMP() {
         return false;
     }
 
+    // 青团社兼职
+    function taskQTSJZ() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '天天赚零花'
+        MP_APPID = '2018082861168647'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear()
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s15()
+
+            if (text('获取你的位置信息').exists() && text('拒绝').exists() && text('总是保持以上选择，不再询问').exists()) {
+                clicks.text('总是保持以上选择，不再询问')
+                clicks.text('拒绝')
+            }
+
+            clicks.textIfExists('取消')
+        }
+
+        if (!clicks.textParent('赚零花')) {
+            return false
+        }
+        sleeps.s10()
+
+        if (clicks.textIfExists('登录后领取')) {
+            sleeps.s3()
+            clicks.textIfExists('同意')
+            clicks.textIfExists('同意')
+        }
+
+        var element = className('android.view.View').text('领100金币')
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
+        var elementCount = element.find().size()
+        element.find().forEach((value1, key1) => {
+            if (!clicks.clickableElement(value1)) {
+                return false
+            }
+
+            sleeps.s5()
+            swipes.down()
+
+            sleeps.s5()
+            swipes.down()
+
+            sleeps.s5()
+            swipes.down()
+
+            others.back()
+            swipes.down()
+        })
+
+        if (elementCount !== 0) {
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s15()
+
+            if (!clicks.textParent('赚零花')) {
+                return false
+            }
+        }
+
+        // 答题赚
+        var element = className('android.widget.Image').depth(9).indexInParent(1)
+        element.find().forEach((value1, key1) => {
+            if (key1 === 1) {
+                clicks.clickableElement(value1)
+            }
+        })
+        sleeps.s10()
+
+        var element = text('答题奖励：')
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
+        if (element.find().size() > 0) {
+            for (var j = 0; j < 10; j++) {
+                swipes.down()
+            }
+        }
+
+        element.find().forEach((value1, key1) => {
+            if (!clicks.textParent('答题奖励：')) {
+                return false
+            }
+
+            var element = className('android.view.View').depth(10).indexInParent(0).textStartsWith('A、')
+            if (!clicks.clickableElement(element)) {
+                return false
+            }
+
+            if (!clicks.clickableElement(text('提交'))) {
+                return false
+            }
+
+            if (text('浏览3个兼职解锁').exists()) {
+                if (!clicks.text('浏览3个兼职解锁')) {
+                    return false
+                }
+                sleeps.s3()
+
+                for (var j = 0; j < 3; j++) {
+                    if (!clicks.element(text('去查看').findOne(3000))) {
+                        return false
+                    }
+
+                    sleeps.s15()
+                    others.back()
+                }
+
+                if (!clicks.backToElement(text('提交'))) {
+                    return false
+                }
+            }
+
+            if (clicks.clickableElement(text('继续答题'))) {
+                return false
+            } else {
+                others.back()
+            }
+        })
+
+
+
+        // 问卷赚
+        if (!exists.backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))) {
+            return false
+        }
+        var element = className('android.widget.Image').depth(9).indexInParent(2)
+        element.find().forEach((value1, key1) => {
+            if (key1 === 1) {
+                clicks.clickableElement(value1)
+            }
+        })
+        sleeps.s10()
+
+        var element = className('android.view.View').text('领100金币')
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
+        log(element.find().size())
+        element.find().forEach(() => {
+            if (!clicks.clickableElement(className('android.view.View').text('领100金币').findOne(3000))) {
+                return false
+            }
+
+            var element = className('android.view.View').text('是的')
+            if (!clicks.clickableElement(element)) {
+                return false
+            }
+
+            if (!clicks.clickableElement(text('提交'))) {
+                return false
+            }
+
+            if (text('浏览3个兼职解锁').exists()) {
+                if (!clicks.text('浏览3个兼职解锁')) {
+                    return false
+                }
+                sleeps.s3()
+
+                for (var j = 0; j < 3; j++) {
+                    if (!clicks.element(text('去查看').findOne(3000))) {
+                        return false
+                    }
+
+                    sleeps.s15()
+                    others.back()
+                }
+
+                if (!clicks.backToElement(text('提交'))) {
+                    return false
+                }
+            }
+
+            if (!exists.backToElement(text('领100金币'))) {
+                return false
+            }
+        })
+
+
+        return false
+    }
+
     cancelLifeSubscript();
 
     // temp
@@ -2227,6 +2418,7 @@ function taskMP() {
     taskLMYQ();
 
     // other
+    taskQTSJZ()
     taskBBNC();
     // taskYLKF();
 }
