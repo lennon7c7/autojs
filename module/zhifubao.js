@@ -256,8 +256,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -289,6 +287,8 @@ function taskMP() {
             }
 
             maybeMore();
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -339,8 +339,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -372,6 +370,8 @@ function taskMP() {
             }
 
             maybeMore();
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -406,8 +406,6 @@ function taskMP() {
         element.find().size()
         sleeps.s1()
         element.find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (!value1) {
                 return
             }
@@ -425,6 +423,8 @@ function taskMP() {
             clicks.textIfExists('更多')
             clicks.textIfExists('取消关注')
             clicks.textIfExists('不再关注')
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         })
 
         others.clear()
@@ -459,8 +459,6 @@ function taskMP() {
         element.find().size();
         sleeps.s1();
         element.find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (!value1.text()) {
                 return;
             }
@@ -478,6 +476,8 @@ function taskMP() {
             clicks.clickableElement(element.findOne(3000));
 
             maybeMore();
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
         others.clear();
@@ -553,8 +553,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -583,6 +581,8 @@ function taskMP() {
             }
 
             maybeMore();
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -638,8 +638,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -671,6 +669,8 @@ function taskMP() {
             }
 
             maybeMore();
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -726,8 +726,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -759,6 +757,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -802,8 +802,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -827,6 +825,8 @@ function taskMP() {
             }
 
             maybeMore();
+   
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -874,8 +874,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -906,6 +904,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -931,8 +931,6 @@ function taskMP() {
         swipes.down();
 
         className('android.widget.Button').depth(15).indexInParent(0).find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (!value1.text()) {
                 return;
             }
@@ -940,6 +938,8 @@ function taskMP() {
             clicks.clickableElement(value1);
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
         others.clear();
@@ -963,8 +963,6 @@ function taskMP() {
         swipes.down();
 
         for (var i = 0; i < 3; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (text('今日红包已领完').exists()) {
                 break;
             }
@@ -982,6 +980,8 @@ function taskMP() {
             }
 
             maybeMore();
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         others.clear();
@@ -1027,8 +1027,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1057,6 +1055,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1102,8 +1102,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1127,6 +1125,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1157,11 +1157,11 @@ function taskMP() {
         swipes.down();
 
         for (var i = 0; i < 5; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             clicks.clickableElement(className('android.view.View').depth(14).text('+ 100 金币').findOne(3000));
 
             maybeMore();
+
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         others.clear();
@@ -1187,11 +1187,11 @@ function taskMP() {
         clicks.textIfExists('立即签到');
 
         for (var i = 0; i < 5; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             clicks.clickableElement(className('android.view.View').depth(10).text('+0.01').findOne(3000));
 
             maybeMore();
+   
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         others.clear();
@@ -1218,23 +1218,23 @@ function taskMP() {
         }
 
         for (var i = 0; i < 5; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (!clicks.element(className('android.widget.Image').depth(16).findOne(3000))) {
                 break;
             }
 
             maybeMore()
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         swipes.down();
 
         for (var i = 0; i < 5; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             clicks.clickableElement(className('android.widget.Button').depth(8).findOne(3000));
 
             maybeMore();
+  
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         others.clear();
@@ -1258,13 +1258,13 @@ function taskMP() {
         swipes.down();
 
         className('android.widget.Button').text('+0.01元').depth(11).indexInParent(2).find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             if (!clicks.clickableElement(value1)) {
                 return;
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
         others.clear();
@@ -1296,11 +1296,11 @@ function taskMP() {
             element.find().size();
             sleeps.s1();
             element.find().forEach((value1, key1) => {
-                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
                 value1.click();
 
                 maybeMore();
+
+                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
             });
 
             var element = className('android.widget.Image');
@@ -1310,8 +1310,6 @@ function taskMP() {
             element.find().size();
             sleeps.s1();
             element.find().forEach((value1, key1) => {
-                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
                 if (!value1 || value1.bounds().width() < 100 || value1.bounds().height() < 100) {
                     return;
                 }
@@ -1323,6 +1321,8 @@ function taskMP() {
                 value1.click();
 
                 maybeMore();
+      
+                backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
             });
 
             swipes.down();
@@ -1366,8 +1366,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1391,6 +1389,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1436,8 +1436,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1461,6 +1459,8 @@ function taskMP() {
             }
 
             maybeMore();
+   
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1522,8 +1522,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1563,6 +1561,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1594,11 +1594,11 @@ function taskMP() {
         element.find().size();
         sleeps.s1();
         element.find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             value1.click();
 
             maybeMore();
+
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
         var element = className('android.view.View').text('立即领取');
@@ -1608,11 +1608,11 @@ function taskMP() {
         element.find().size();
         sleeps.s1();
         element.find().forEach((value1, key1) => {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             value1.click();
 
             maybeMore();
+
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
         others.clear();
@@ -1669,8 +1669,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1707,6 +1705,8 @@ function taskMP() {
             }
 
             maybeMore();
+     
+            backToElement(text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1838,8 +1838,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1871,6 +1869,8 @@ function taskMP() {
             }
 
             maybeMore();
+    
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -1918,8 +1918,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -1947,6 +1945,8 @@ function taskMP() {
             }
 
             maybeMore();
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -2075,8 +2075,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -2105,6 +2103,8 @@ function taskMP() {
             }
 
             maybeMore();
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
@@ -2149,8 +2149,6 @@ function taskMP() {
         });
 
         for (var i = 0; i < elementCount; i++) {
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-
             isClick = false;
             element.find().forEach((value1, key1) => {
                 if (isClick) {
@@ -2178,6 +2176,8 @@ function taskMP() {
             }
 
             maybeMore();
+      
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
         app.startActivity({data: currentAPP.MP_URL + MP_APPID});
