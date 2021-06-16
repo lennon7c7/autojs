@@ -391,11 +391,11 @@ function taskMoneyPower() {
         if (text('今日任务').exists() && buttonClick != null) {
             clicks.element(buttonClick);
 
-            for (var j = 0; j < 8; j++) {
+            for (var j = 0; j < 16; j++) {
                 if (!id('taolive_frame_video_layout').exists()) {
                     swipes.down();
                 }
-                sleeps.s2to3();
+                sleeps.s1();
             }
 
             others.back();
