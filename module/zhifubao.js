@@ -275,7 +275,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -287,7 +287,7 @@ function taskMP() {
             }
 
             maybeMore();
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -358,7 +358,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -370,7 +370,7 @@ function taskMP() {
             }
 
             maybeMore();
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -423,7 +423,7 @@ function taskMP() {
             clicks.textIfExists('更多')
             clicks.textIfExists('取消关注')
             clicks.textIfExists('不再关注')
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         })
 
@@ -476,7 +476,7 @@ function taskMP() {
             clicks.clickableElement(element.findOne(3000));
 
             maybeMore();
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
@@ -581,7 +581,7 @@ function taskMP() {
             }
 
             maybeMore();
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -669,7 +669,7 @@ function taskMP() {
             }
 
             maybeMore();
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -745,7 +745,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -757,7 +757,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -825,7 +825,7 @@ function taskMP() {
             }
 
             maybeMore();
-   
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -892,7 +892,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -904,7 +904,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -938,7 +938,7 @@ function taskMP() {
             clicks.clickableElement(value1);
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
@@ -980,7 +980,7 @@ function taskMP() {
             }
 
             maybeMore();
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1055,7 +1055,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1125,7 +1125,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1190,7 +1190,7 @@ function taskMP() {
             clicks.clickableElement(className('android.view.View').depth(10).text('+0.01').findOne(3000));
 
             maybeMore();
-   
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1223,7 +1223,7 @@ function taskMP() {
             }
 
             maybeMore()
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1233,7 +1233,7 @@ function taskMP() {
             clicks.clickableElement(className('android.widget.Button').depth(8).findOne(3000));
 
             maybeMore();
-  
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1263,7 +1263,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         });
 
@@ -1321,7 +1321,7 @@ function taskMP() {
                 value1.click();
 
                 maybeMore();
-      
+
                 backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
             });
 
@@ -1389,7 +1389,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1459,7 +1459,7 @@ function taskMP() {
             }
 
             maybeMore();
-   
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1470,106 +1470,101 @@ function taskMP() {
         return false;
     }
 
-    /**
-     * 任务-开心签到
-     */
     function taskKXQD() {
-        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-        MP_TITLE = '开心签到';
-        MP_APPID = '2021001167643261';
+        MP_TITLE = '开心签到'
+        MP_APPID = '2021001167643261'
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
-            others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
-            sleeps.s15();
-            clicks.textIfExists('取消');
+            others.clear()
+            app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+            sleeps.s15()
+            clicks.textIfExists('取消')
         }
 
-        swipes.down();
-
         var elementCount = 0
-        var element = className('android.view.View').depth(11).indexInParent(0);
+        var element = className('android.view.View').depth(11).indexInParent(1)
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
-        element.find().size();
-        sleeps.s1();
-        element.find().size();
-        sleeps.s1();
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
         element.find().forEach((value1, key1) => {
             if (!value1 || !value1.text()) {
-                return;
+                return
             }
 
             if (value1.childCount() !== 0) {
-                return;
+                return
             }
 
             if (!value1.parent() || value1.parent().childCount() !== 2) {
-                return;
+                return
             }
 
             // 过滤任务: 不要金币，只要集分宝
-            if (value1.text().search('集分宝') === -1) {
-                return;
+            if (!value1.parent() || !value1.parent().findOne(textContains('+1集分宝'))) {
+                return
             }
 
             // 过滤已完成的
             if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().childCount() === 3) {
-                return;
+                return
             }
 
-            elementCount++;
-        });
+            elementCount++
+        })
 
         for (var i = 0; i < elementCount; i++) {
-            isClick = false;
+            isClick = false
             element.find().forEach((value1, key1) => {
                 if (isClick) {
-                    return;
+                    return
                 }
 
                 if (!value1 || !value1.text()) {
-                    return;
+                    return
                 }
 
                 if (value1.childCount() !== 0) {
-                    return;
+                    return
                 }
 
                 if (!value1.parent() || value1.parent().childCount() !== 2) {
-                    return;
+                    return
                 }
-        
+
                 // 过滤任务: 不要金币，只要集分宝
-                if (value1.text().search('集分宝') === -1) {
-                    return;
+                if (!value1.parent() || !value1.parent().findOne(textContains('+1集分宝'))) {
+                    return
                 }
 
                 // 过滤已完成的
                 if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().childCount() === 3) {
-                    return;
+                    return
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
-                    return;
+                    return
                 }
-                isClick = true;
-            });
+                isClick = true
+            })
 
             if (!isClick) {
-                continue;
+                continue
             }
 
-            maybeMore();
-     
+            maybeMore()
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
-        sleeps.s3();
-        others.clear();
+        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        sleeps.s3()
+        others.clear()
 
-        return false;
+        return false
     }
 
     function taskFXM() {
@@ -1693,7 +1688,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -1705,7 +1700,7 @@ function taskMP() {
             }
 
             maybeMore();
-     
+
             backToElement(text(MP_TITLE))
         }
 
@@ -1857,7 +1852,7 @@ function taskMP() {
                 if (value1.text() === '去看看') {
                     return;
                 }
-    
+
                 if (!clicks.clickableElement(value1)) {
                     return;
                 }
@@ -1869,7 +1864,7 @@ function taskMP() {
             }
 
             maybeMore();
-    
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -1945,7 +1940,7 @@ function taskMP() {
             }
 
             maybeMore();
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -2103,7 +2098,7 @@ function taskMP() {
             }
 
             maybeMore();
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
@@ -2158,11 +2153,11 @@ function taskMP() {
                 if (!value1 || !value1.text()) {
                     return;
                 }
-    
+
                 if (key1 === 0 || key1 === 1 || key1 === 2) {
                     return
                 }
-    
+
                 // 过滤已完成的
 
                 if (!clicks.clickableElement(value1)) {
@@ -2176,7 +2171,7 @@ function taskMP() {
             }
 
             maybeMore();
-      
+
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
