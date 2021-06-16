@@ -2213,6 +2213,8 @@ function taskMP() {
             clicks.textIfExists('同意')
         }
 
+
+        // 查看岗位领金币
         var element = className('android.view.View').text('领100金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
@@ -2221,7 +2223,7 @@ function taskMP() {
         sleeps.s1()
         var elementCount = element.find().size()
         element.find().forEach((value1, key1) => {
-            if (!clicks.clickableElement(value1)) {
+            if (!clicks.clickableElement(element.findOne(3000))) {
                 return false
             }
 
@@ -2234,7 +2236,8 @@ function taskMP() {
             sleeps.s5()
             swipes.down()
 
-            others.back()
+            exists.backToElement(text('赚零花'))
+            swipes.down()
             swipes.down()
         })
 
@@ -2246,6 +2249,7 @@ function taskMP() {
                 return false
             }
         }
+
 
         // 答题赚
         var element = className('android.widget.Image').depth(9).indexInParent(1)
@@ -2310,7 +2314,6 @@ function taskMP() {
         })
 
 
-
         // 问卷赚
         if (!exists.backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))) {
             return false
@@ -2329,7 +2332,6 @@ function taskMP() {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        log(element.find().size())
         element.find().forEach(() => {
             if (!clicks.clickableElement(className('android.view.View').text('领100金币').findOne(3000))) {
                 return false
@@ -2368,7 +2370,6 @@ function taskMP() {
                 return false
             }
         })
-
 
         return false
     }
