@@ -782,7 +782,7 @@ function taskMP() {
         }
 
         var elementCount = 0
-        var element = className('android.widget.Button').depth(15).indexInParent(0);
+        var element = className('android.widget.Button').depth(15).indexInParent(0).text('+0.01元');
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size();
         sleeps.s1();
