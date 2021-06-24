@@ -70,7 +70,6 @@ others.fixDir = function () {
  */
 others.initEnv = function () {
     auto.waitFor()
-    auto.setMode('fast')
 
     setScreenMetrics(1080, 2340);
 
