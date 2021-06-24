@@ -21,10 +21,10 @@ function taskShop() {
         return false;
     }
 
-    if (!clicks.centerXyByDesc('淘金币')) {
+    if (!clicks.centerXyByDesc('淘金币') && !clicks.centerXyByDesc('领淘金币')) {
         return false;
     }
-    sleeps.s5to10();
+    sleeps.s15();
 
     if (!className('android.widget.Button').depth(12).indexInParent(0).findOne(3000)) {
         return false;
@@ -60,7 +60,7 @@ function taskHelpFriend() {
         return false;
     }
 
-    if (!clicks.centerXyByDesc('淘金币')) {
+    if (!clicks.centerXyByDesc('淘金币') && !clicks.centerXyByDesc('领淘金币')) {
         return false;
     }
     sleeps.s15();
@@ -273,17 +273,6 @@ function taskMoneyPower() {
         others.back2();
     }
 
-    if (clicks.textIfExists('逛省钱消消乐拿红包(0/1)')) {
-        sleeps.s10();
-        clicks.xiaoxiao(102, 1702, 110, 9);
-        others.back();
-        clicks.xy(700, 1500);
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
-    }
-
     if (clicks.textIfExists('逛蚂蚁庄园喂小鸡(0/1)')) {
         others.back2();
         if (!text('今日任务').exists()) {
@@ -406,6 +395,17 @@ function taskMoneyPower() {
             }
             clicks.centerXyByText('领取奖励');
         }
+    }
+
+    if (clicks.textIfExists('逛省钱消消乐拿红包(0/1)')) {
+        sleeps.s10();
+        clicks.xiaoxiao(102, 1702, 110, 9);
+        others.back();
+        clicks.xy(700, 1500);
+        if (!text('今日任务').exists()) {
+            return false;
+        }
+        clicks.centerXyByText('领取奖励');
     }
 
     if (text('领取奖励').exists()) {
