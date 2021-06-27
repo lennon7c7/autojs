@@ -17,19 +17,11 @@ currentAPP.MP_URL = 'alipays://platformapi/startapp?appId=';
 function taskCheckin() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
-    if (idContains('update_cancel_tv').exists()) {
-        clicks.element(idContains('update_cancel_tv'));
-    }
+    MP_TITLE = '支付宝会员'
+    MP_APPID = '20000160'
 
-    if (!others.backToElement(text('我的'))) {
-        return false;
-    }
-
-    if (!clicks.centerXyByText('支付宝会员')) {
-        return false;
-    }
-
-    sleeps.s5to10();
+    app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+    sleeps.s15()
 
     if (text('全部领取').exists()) {
         clicks.centerXyByText('全部领取');
@@ -1711,33 +1703,6 @@ function taskMP() {
         return false;
     }
 
-    // 取消关注生活号
-    function cancelLifeSubscript() {
-        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
-
-        app.startActivity({ data: 'alipays://platformapi/startapp?appId=20000166' });
-        sleeps.s15();
-
-        if (!clicks.centerXyByText('生活号')) {
-            return false;
-        }
-
-        var element = id('com.alipay.mobile.pubsvc:id/publicName');
-        var ignoreFile = ['菜鸟', '花呗', '考拉海购'];
-        element.find().forEach((value1, key1) => {
-            if (ignoreFile.indexOf(value1.text()) !== -1) {
-                return;
-            }
-
-            clicks.centerXyByText(value1.text());
-            clicks.descIfExists('取消');
-            clicks.desc('更多');
-            clicks.text('取消关注');
-            clicks.text('不再关注');
-            others.back();
-        });
-    }
-
     /**
      * 点击后，可能出现其它任务
      * 不是单纯的看广告，比如关注、签到等
@@ -1954,9 +1919,12 @@ function taskMP() {
     // 取消关注生活号
     function cancelLifeSubscript() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
-
-        app.startActivity({ data: 'alipays://platformapi/startapp?appId=20000166' });
-        sleeps.s15();
+  
+        MP_TITLE = '通讯录'
+        MP_APPID = '20000166'
+    
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+        sleeps.s15()
 
         if (!clicks.centerXyByText('生活号')) {
             return false;
