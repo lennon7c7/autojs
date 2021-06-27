@@ -28,7 +28,7 @@ function taskCheckin() {
     swipes.refresh();
     swipes.down();
 
-    if (text('明天签到').exists() || text('明天来拿').exists()) {
+    if (text('明天签到').exists() || text('明天来拿').exists() || text('打开提醒').exists()) {
         return true;
     }
 
@@ -37,7 +37,7 @@ function taskCheckin() {
     }
     others.back();
 
-    if (text('明天签到').exists() || text('明天来拿').exists()) {
+    if (text('明天签到').exists() || text('明天来拿').exists() || text('打开提醒').exists()) {
         return true;
     }
 
