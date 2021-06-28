@@ -62,15 +62,12 @@ function httpGet() {
                     return;
                 }
 
-                returnList[key1 + key2] = {
+                returnList.push({
                     'path': path,
                     'content': content,
-                }
+                })
 
                 toastLog('http.get: ' + url);
-
-                // 防止请求速度过快，触发风控被404
-                sleep(random(1, 2) * 1000);
             });
         } else {
             // 文件
@@ -81,15 +78,12 @@ function httpGet() {
                 return;
             }
 
-            returnList[key1] = {
+            returnList.push({
                 'path': value1.path,
                 'content': content,
-            }
+            })
 
             toastLog('http.get: ' + url);
-
-            // 防止请求速度过快，触发风控被404
-            sleep(random(1, 2) * 1000);
         }
     });
 
