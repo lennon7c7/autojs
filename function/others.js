@@ -316,24 +316,30 @@ others.closeAdBackToElement = function (element) {
  */
 others.clear = function () {
     if (!recents()) {
-        toastLog('fail: clear');
-        return false;
+        toastLog('fail: clear')
+        return false
     }
 
-    sleep(2000);
+    sleep(2000)
 
     if (id('clear_all').exists()) {
-        clicks.centerXyById('clear_all');
-    } else if (id('clear_all_recents_image_button').exists()) {
-        clicks.centerXyById('clear_all_recents_image_button');
-    } else if (id('recent_igmbutton_clear_all').exists()) {
-        clicks.centerXyById('recent_igmbutton_clear_all');
-    } else if (id('stack_clear_all').exists()) {
-        clicks.centerXyById('stack_clear_all');
+        clicks.centerXyById('clear_all')
+    } 
+     
+    if (id('recent_igmbutton_clear_all').exists()) {
+        clicks.centerXyById('recent_igmbutton_clear_all')
+    } 
+   
+    if (id('clear_all_recents_image_button').exists()) {
+        clicks.centerXyById('clear_all_recents_image_button')
+    } 
+    
+    if (id('stack_clear_all').exists()) {
+        clicks.centerXyById('stack_clear_all')
     }
 
-    return true;
-};
+    return true
+}
 
 /**
  * 发送报警信息
