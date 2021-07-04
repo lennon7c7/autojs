@@ -615,23 +615,14 @@ currentAPP.start = function () {
         }
 
 
-        status4 = taskLimit();
-        status0 = taskCheckin();
-        status2 = taskShare();
         taskNews();
         taskVideo();
         status1 = taskAd();
-        status2 = taskLottery();
-        if (status2) {
-            taskLotteryAd();
-        }
-        taskTimerBox();
-        taskClick6();
         taskClickMP();
         taskKankanzhuang();
         status3 = taskCashout();
 
-        if (status0 && status1 && status2 && status3 && status4) {
+        if (status0 && status1 && status3) {
             return true;
         }
     }
