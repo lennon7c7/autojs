@@ -315,6 +315,9 @@ others.closeAdBackToElement = function (element) {
  * @returns {boolean}
  */
 others.clear = function () {
+    home()
+    sleeps.s3()
+
     if (!recents()) {
         toastLog('fail: clear')
         return false
