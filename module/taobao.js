@@ -281,19 +281,20 @@ function taskMoneyPower() {
         clicks.centerXyByText('领取奖励');
     }
 
-    if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
-        sleeps.s10();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
-        others.back();
+    // 禁用原因：因为多个淘宝账号不一定对应上天猫账号，所以还是禁用掉吧
+    // if (clicks.textIfExists('去天猫APP领红包(0/1)')) {
+    //     sleeps.s10();
+    //     others.back();
+    //     back();
+    //     back();
+    //     sleeps.s3();
+    //     others.back();
 
-        if (!text('今日任务').exists()) {
-            return false;
-        }
-        clicks.centerXyByText('领取奖励');
-    }
+    //     if (!text('今日任务').exists()) {
+    //         return false;
+    //     }
+    //     clicks.centerXyByText('领取奖励');
+    // }
 
     if (clicks.textIfExists('欢乐造1212元大红包(0/1)')) {
         sleeps.s15();
@@ -325,8 +326,8 @@ function taskMoneyPower() {
 
     for (var i = 0; i < 15; i++) {
         buttonClick = null;
-        if (buttonClick == null && text('点击前往 立得').exists()) {
-            buttonClick = text('点击前往 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('点击前往 最高立得').exists()) {
+            buttonClick = text('点击前往 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (text('逛好店即领').exists()) {
@@ -337,44 +338,47 @@ function taskMoneyPower() {
             buttonClick = text('边逛边领大额金币').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览页面立得').exists()) {
-            buttonClick = text('浏览页面立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览10s 最高立得').exists()) {
+            buttonClick = text('浏览10s 最高立得').findOne().parent().parent().parent().findOne(text('去助力'));
         }
 
-        if (buttonClick == null && text('浏览10s立得').exists()) {
-            buttonClick = text('浏览10s立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览页面最高立得').exists()) {
+            buttonClick = text('浏览页面最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览10s 立得').exists()) {
-            buttonClick = text('浏览10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览10s最高立得').exists()) {
+            buttonClick = text('浏览10s最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览10s 立得').exists()) {
-            buttonClick = text('浏览10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览10s 最高立得').exists()) {
+            buttonClick = text('浏览10s 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
+            if (buttonClick !== null && buttonClick.parent().findOne(text('去天猫app领红包(0/1)')) !== null) {
+                buttonClick = null
+            }
         }
 
-        if (buttonClick == null && text('浏览10秒立得').exists()) {
-            buttonClick = text('浏览10秒立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览10s 秒最高立得').exists()) {
+            buttonClick = text('浏览10s 秒最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览10秒 立得').exists()) {
-            buttonClick = text('浏览10秒 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览10秒 最高立得').exists()) {
+            buttonClick = text('浏览10秒 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('逛10s立得').exists()) {
-            buttonClick = text('逛10s立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('逛10s 最高立得').exists()) {
+            buttonClick = text('逛10s 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('逛10s 立得').exists()) {
-            buttonClick = text('逛10s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('逛10s 最高立得').exists()) {
+            buttonClick = text('逛10s 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览15s 立得').exists()) {
-            buttonClick = text('浏览15s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览15s 最高立得').exists()) {
+            buttonClick = text('浏览15s 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
-        if (buttonClick == null && text('浏览15s 立得').exists()) {
-            buttonClick = text('浏览15s 立得').findOne().parent().parent().parent().findOne(text('去完成'));
+        if (buttonClick == null && text('浏览15s 最高立得').exists()) {
+            buttonClick = text('浏览15s 最高立得').findOne().parent().parent().parent().findOne(text('去完成'));
         }
 
         if (text('今日任务').exists() && buttonClick != null) {
