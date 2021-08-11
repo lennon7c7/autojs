@@ -204,7 +204,7 @@ function task0Lottery() {
  * 小程序
  * @returns {bool}
  */
-function taskMP() {
+currentAPP.taskMP = function () {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
     function taskHDYM() {
@@ -1470,7 +1470,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear()
-            app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
             sleeps.s15()
             clicks.textIfExists('取消')
         }
@@ -1552,7 +1552,7 @@ function taskMP() {
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s3()
         others.clear()
 
@@ -1919,10 +1919,10 @@ function taskMP() {
     // 取消关注生活号
     function cancelLifeSubscript() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
-  
+
         MP_TITLE = '通讯录'
         MP_APPID = '20000166'
-    
+
         app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s15()
 
@@ -2085,7 +2085,7 @@ function taskMP() {
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             others.clear();
-            app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
             sleeps.s15();
             clicks.textIfExists('取消');
         }
@@ -2143,7 +2143,7 @@ function taskMP() {
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         }
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID});
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
         sleeps.s3();
         others.clear();
 
@@ -3458,7 +3458,7 @@ currentAPP.start = function () {
                 // taskEverydayLottery();
             }
 
-            taskMP();
+            currentAPP.taskMP()
 
             if (status0) {
                 break;
