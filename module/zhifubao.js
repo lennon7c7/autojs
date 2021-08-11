@@ -3202,6 +3202,119 @@ function taskMP() {
         return false
     }
 
+    function taskJKFLH() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '健康福利汇'
+        MP_APPID = '2018091361395351&page=pages/punch/index'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear()
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s15()
+
+            if (text('获取你的位置信息').exists() && text('拒绝').exists() && text('总是保持以上选择，不再询问').exists()) {
+                clicks.text('总是保持以上选择，不再询问')
+                clicks.text('拒绝')
+            }
+
+            clicks.textIfExists('取消')
+        }
+
+        if (text('福利汇').exists()) {
+            if (!clicks.centerXyByText('福利汇')) {
+                return false
+            }
+        }
+
+        if (!clicks.element(className('android.view.View').depth(8).indexInParent(2).findOne(3000))) {
+            return false
+        }
+        clicks.textIfExists('同意')
+
+        clicks.textIfExists('领健康币')
+
+        if (text('添加医疗健康到首页').exists() && desc('添加到首页').exists()) {
+            clicks.centerXyByDesc('添加到首页')
+            clicks.centerXyByText('确定')
+
+            clicks.centerXyByDesc('更多')
+            clicks.centerXyByText('从首页移除')
+            clicks.centerXyByText('确定移除')
+        }
+
+        var elementCount = 0
+        var element = text('去完成')
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
+        element.find().forEach((value1, key1) => {
+            if (key1 === 0 || key1 === 1) {
+                return
+            }
+
+            elementCount++
+        })
+
+        for (var i = 0; i < elementCount; i++) {
+            isClick = false
+            element.find().forEach((value1, key1) => {
+                if (key1 === 0 || key1 === 1) {
+                    return
+                }
+
+                if (isClick) {
+                    return
+                }
+
+                if (!value1 || !value1.text()) {
+                    return
+                }
+
+                if (!clicks.clickableElement(value1)) {
+                    return
+                }
+                isClick = true
+            })
+
+            if (!isClick) {
+                continue
+            }
+
+            // 答题
+            clicks.clickableElement(className('android.view.View').depth(10).indexInParent(1).findOne(3000))
+
+            if (text('获取你的位置信息').exists() && text('拒绝').exists() && text('总是保持以上选择，不再询问').exists()) {
+                clicks.text('总是保持以上选择，不再询问')
+                clicks.text('拒绝')
+            }
+
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10()
+
+            if (text('福利汇').exists()) {
+                if (!clicks.centerXyByText('福利汇')) {
+                    return false
+                }
+                sleeps.s5()
+            }
+
+            if (i > 1 && !text('赚健康币').exists()) {
+                others.back()
+            }
+
+            if (!clicks.element(className('android.view.View').depth(8).indexInParent(2).findOne(3000))) {
+                return false
+            }
+
+            clicks.textIfExists('领健康币')
+        }
+
+        return false
+    }
+
     cancelLifeSubscript();
 
     // temp
@@ -3254,6 +3367,7 @@ function taskMP() {
     // other
     taskQTSJZ()
     taskBBNC();
+    taskJKFLH()
     // taskYLKF();
 }
 
