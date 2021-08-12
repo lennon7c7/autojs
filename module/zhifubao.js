@@ -1235,33 +1235,33 @@ currentAPP.taskMP = function () {
     }
 
     function taskYMLQ_XZKJ() {
-        log('----------', currentAPP.NAME, 'taskYMLQ_XZKJ start ----------');
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-        MP_TITLE = '一秒领钱-小卒科技';
-        MP_APPID = '2019112869484442';
+        MP_TITLE = '一秒领钱-小卒科技'
+        MP_APPID = '2019112869484442'
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
-            others.clear();
-            app.startActivity({ data: currentAPP.MP_URL + MP_APPID });
-            sleeps.s15();
-            clicks.textIfExists('取消');
+            others.clear()
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s30()
+            clicks.textIfExists('取消')
         }
 
-        swipes.down();
-
-        className('android.widget.Button').text('+0.01元').depth(11).indexInParent(2).find().forEach((value1, key1) => {
+        className('android.widget.Button').text('去领钱').find().forEach((value1, key1) => {
             if (!clicks.clickableElement(value1)) {
-                return;
+                return
             }
 
-            maybeMore();
+            maybeMore()
 
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-        });
+            backToElement(text('去领钱'))
+        })
 
-        others.clear();
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+        sleeps.s15()
+        others.clear()
 
-        return false;
+        return false
     }
 
     /**
