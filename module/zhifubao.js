@@ -3315,6 +3315,68 @@ currentAPP.taskMP = function () {
         return false
     }
 
+    function taskJBXQ() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '集宝星球'
+        MP_APPID = '2021002145698012'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            others.clear()
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s15()
+            clicks.textIfExists('取消')
+            clicks.textIfExists('确定')
+        }
+
+        var elementCount = 0
+        var element = className('android.view.View').depth(14).text('立即领取')
+        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
+        element.find().size()
+        sleeps.s1()
+        element.find().size()
+        sleeps.s1()
+        element.find().forEach((value1, key1) => {
+            if (!value1 || !value1.text()) {
+                return
+            }
+
+            elementCount++
+        })
+
+        for (var i = 0; i < elementCount; i++) {
+            isClick = false
+            element.find().forEach((value1, key1) => {
+                if (isClick) {
+                    return
+                }
+
+                if (!value1 || !value1.text()) {
+                    return
+                }
+
+                if (!clicks.clickableElement(value1)) {
+                    return
+                }
+                isClick = true
+            })
+
+            if (!isClick) {
+                continue
+            }
+
+            maybeMore()
+
+            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
+        }
+
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+        sleeps.s3()
+        others.clear()
+
+        return false
+    }
+
     cancelLifeSubscript();
 
     // temp
@@ -3352,6 +3414,7 @@ currentAPP.taskMP = function () {
     taskTTZB();
     taskCJYM()
     taskKLB()
+    taskJBXQ()
     taskJifenbao()
 
     // cash
