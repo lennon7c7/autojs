@@ -1727,6 +1727,26 @@ currentAPP.taskMP = function () {
             clicks.textIfExists('点击关注店铺');
         } else if (clicks.textIfExists('亲点关注有奖励哦')) {
             clicks.textIfExists('亲点关注有奖励哦');
+        } else if (text('浏览找红包').exists()) {
+            for (var i = 0; i < 5; i++) {
+                clicks.textIfExists('继续寻找')
+
+                if (text('包邮').exists()) {
+                    text('包邮').click()
+                    sleeps.s5to10()
+                } else if (text('正品保证').exists()) {
+                    text('正品保证').click()
+                    sleeps.s5to10()
+                }
+
+                if (clicks.textIfExists('我知道了')) {
+                    break
+                }
+
+                if (!text('浏览找红包').exists()) {
+                    others.back()
+                }
+            }
         } else if (!text('打开方式').exists()) {
             clicks.xy(device.width / 2, device.height / 2 - 100);
             clicks.xy(device.width / 2, device.height / 2);
