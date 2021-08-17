@@ -1710,8 +1710,11 @@ currentAPP.taskMP = function () {
     function maybeMore() {
         sleeps.s5()
 
-        text('浏览找红包').exists()
+        text('浏览找红包').find().size()
         sleeps.s1()
+        text('浏览找红包').find().size()
+        sleeps.s1()
+        log('浏览找红包: ', text('浏览找红包').exists())
         if (text('浏览找红包').exists()) {
             for (var i = 0; i < 10; i++) {
                 clicks.textIfExists('继续寻找')
