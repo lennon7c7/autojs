@@ -14,9 +14,7 @@ function main() {
 
     log('---------- start ----------')
 
-    while(true){
-        zhifubao.taskMP()
+    while (true) {
+        zhifubao.start()
     }
-
-    log('---------- end ----------')
 }
