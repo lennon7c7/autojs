@@ -1,12 +1,12 @@
 /**
  * 功能集合-调试代码
  */
-var clicks = require('./clicks.js');
-var exists = require('./exists.js');
-var others = require('./others.js');
-var sleeps = require('./sleeps.js');
-var swipes = require('./swipes.js');
-var debugs = {};
+var clicks = require('./clicks.js')
+var exists = require('./exists.js')
+var others = require('./others.js')
+var sleeps = require('./sleeps.js')
+var swipes = require('./swipes.js')
+var debugs = {}
 
 /**
  * 获取指定应用、或者当前应用的版本号
@@ -16,17 +16,17 @@ var debugs = {};
 debugs.getPackageVersion = function (packageName) {
     if (!packageName) {
         if (typeof currentAPP !== 'undefined' && currentAPP.PACKAGE_NAME) {
-            packageName = currentAPP.PACKAGE_NAME;
+            packageName = currentAPP.PACKAGE_NAME
         } else {
-            return '';
+            return ''
         }
     }
 
-    importPackage(android.content);
-    var pckMan = context.getPackageManager();
-    var packageInfo = pckMan.getPackageInfo(packageName, 0);
+    importPackage(android.content)
+    var pckMan = context.getPackageManager()
+    var packageInfo = pckMan.getPackageInfo(packageName, 0)
 
-    return packageInfo.versionName;
+    return packageInfo.versionName
 }
 
 /**
@@ -35,14 +35,14 @@ debugs.getPackageVersion = function (packageName) {
  * @returns {string}
  */
 debugs.getJsFileContent = function (path) {
-    filename = files.cwd() + '/' + path + '.js';
+    filename = files.cwd() + '/' + path + '.js'
 
     if (!files.exists(filename)) {
-        toastLog('shit happen');
-        return '';
+        toastLog('shit happen')
+        return ''
     }
 
-    return files.read(filename);
+    return files.read(filename)
 }
 
 /**
@@ -51,69 +51,69 @@ debugs.getJsFileContent = function (path) {
  * @returns {string}
  */
 debugs.getListDir = function (dirName) {
-    var sourceDir = files.cwd() + '/' + dirName;
+    var sourceDir = files.cwd() + '/' + dirName
     var sourceFile = files.listDir(sourceDir, function (name) {
-        return name.endsWith('.js') && files.isFile(files.join(sourceDir, name));
-    });
+        return name.endsWith('.js') && files.isFile(files.join(sourceDir, name))
+    })
 
-    var list = '';
+    var list = ''
     sourceFile.forEach((value) => {
-        list += value + '\n';
-    });
+        list += value + '\n'
+    })
 
-    return list;
+    return list
 }
 
 /**
  * 打印所有元素
  */
 debugs.printElementTreeAll = function () {
-    var output = '\n\n';
-    output += '------------------------------------------------------------------------------------------\n';
+    var output = '\n\n'
+    output += '------------------------------------------------------------------------------------------\n'
 
     function printElement(element, level) {
-        var spaceCount = '';
+        var spaceCount = ''
         for (var i = 0; i < level; i++) {
-            spaceCount += ' ';
+            spaceCount += ' '
         }
 
         element.children().forEach((value, key) => {
-            output += (spaceCount + debugs.getElementAttr(value) + '\n');
+            output += (spaceCount + debugs.getElementAttr(value) + '\n')
 
-            printElement(value, level + 1);
-        });
+            printElement(value, level + 1)
+        })
     }
 
-    printElement(debugs.getElementTop(className('android.widget.FrameLayout').findOne(3000)), 0);
-    output += '------------------------------------------------------------------------------------------\n';
-    log(output);
+    printElement(debugs.getElementTop(className('android.widget.FrameLayout').findOne(3000)), 0)
+    output += '------------------------------------------------------------------------------------------\n'
+    log(output)
 }
 
 /**
  * 打印命中条件元素
  */
 debugs.printElementTreeBy = function (condition) {
-    var output = '\n\n';
-    output += '------------------------------------------------------------------------------------------\n';
+    var output = '\n\n'
+    output += '------------------------------------------------------------------------------------------\n'
 
     function printElement(element, level) {
-        var spaceCount = '';
+        var spaceCount = ''
         for (var i = 0; i < level; i++) {
-            spaceCount += ' ';
+            spaceCount += ' '
         }
 
         element.children().forEach((value, key) => {
             if (debugs.isFilterConditionEqElement(condition, value)) {
-                output += (spaceCount + debugs.getElementAttr(value) + '\n');
+                output += (spaceCount + debugs.getElementAttr(value) + '\n')
             }
 
-            printElement(value, level + 1);
-        });
+            printElement(value, level + 1)
+        })
     }
 
-    printElement(debugs.getElementTop(className('android.widget.FrameLayout').findOne(3000)), 0);
-    output += '------------------------------------------------------------------------------------------\n';
-    log(output);
+    printElement(debugs.getElementTop(className('android.widget.FrameLayout').findOne(3000)), 0)
+    output += '------------------------------------------------------------------------------------------\n'
+    log(output)
 }
 
 /**
@@ -123,7 +123,7 @@ debugs.printElementTreeBy = function (condition) {
  */
 debugs.getElementTop = function (element) {
     if (element && element.parent() && element.parent()) {
-        return getElementTop(element.parent());
+        return getElementTop(element.parent())
     } else {
         return element
     }
@@ -135,27 +135,27 @@ debugs.getElementTop = function (element) {
  * @returns {string} output
  */
 debugs.getElementAttr = function (element) {
-    var output = '';
+    var output = ''
 
-    output += element.className();
-    output += ' indexInParent = ' + element.indexInParent();
-    output += ' depth = ' + element.depth();
-    output += ' childCount = ' + element.childCount();
-    output += ' clickable = ' + element.clickable();
-    output += ' width = ' + element.bounds().width() + ' height = ' + element.bounds().height();
-    output += ' centerX = ' + element.bounds().centerX() + ' centerY = ' + element.bounds().centerY();
+    output += element.className()
+    output += ' indexInParent = ' + element.indexInParent()
+    output += ' depth = ' + element.depth()
+    output += ' childCount = ' + element.childCount()
+    output += ' clickable = ' + element.clickable()
+    output += ' width = ' + element.bounds().width() + ' height = ' + element.bounds().height()
+    output += ' centerX = ' + element.bounds().centerX() + ' centerY = ' + element.bounds().centerY()
 
     if (element.id()) {
-        output += ' id = ' + element.id();
+        output += ' id = ' + element.id()
     }
     if (element.text() && element.text().indexOf('http') === -1) {
-        output += ' text = ' + element.text();
+        output += ' text = ' + element.text()
     }
     if (element.desc() && element.desc().indexOf('http') === -1) {
-        output += ' desc = ' + element.desc();
+        output += ' desc = ' + element.desc()
     }
 
-    return output;
+    return output
 }
 
 /**
@@ -167,11 +167,11 @@ debugs.getElementAttr = function (element) {
 debugs.isFilterConditionEqElement = function (filterCondition, element) {
     for (var key in filterCondition) {
         if (filterCondition[key] !== element[key]()) {
-            return false;
+            return false
         }
     }
 
-    return true;
+    return true
 }
 
-module.exports = debugs;
+module.exports = debugs

@@ -1,57 +1,55 @@
+var clicks = require('./function/clicks.js')
+var exists = require('./function/exists.js')
+var others = require('./function/others.js')
+var sleeps = require('./function/sleeps.js')
+var swipes = require('./function/swipes.js')
 
-// baidu = require('module/baidu.js');
-// baidu.start();
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.shuqi.controller'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
+currentAPP.VERSION = ''
+currentAPP.APK = ''
 
-// douyin = require('module/douyin.js');
-// douyin.start();
+main()
 
-// douyinhuoshan = require('module/douyinhuoshan.js');
-// douyinhuoshan.start();
+function main() {
+    others.fixDir()
+    others.fixDir()
 
-// fanqie = require('module/fanqie.js');
-// fanqie.start();
+    log('---------- start ----------')
 
-// huoshan = require('module/huoshan.js');
-// huoshan.start();
+    baidu = require('module/baidu.js')
+    // baidu.start()
 
-// kaola = require('module/kaola.js');
-// kaola.start();
+    kugoudaziban = require('module/kugoudaziban.js')
+    // kugoudaziban.start()
 
-mojitianqi = require('module/mojitianqi.js');
-// mojitianqi.start();
+    taobao = require('module/taobao.js')
+    taobao.start()
 
-// momo = require('module/momo.js');
-// momo.start();
+    // tencentnews = require('module/tencentnews.js')
+    // tencentnews.start()
 
-// pinduoduo = require('module/pinduoduo.js');
-// pinduoduo.start();
+    // tencentnow = require('module/tencentnow.js')
+    // tencentnow.start()
 
-// qqbrowser = require('module/qqbrowser.js');
-// qqbrowser.start();
+    // toutiao = require('module/toutiao.js')
+    // toutiao.start()
 
-// qutoutiao = require('module/qutoutiao.js');
-// qutoutiao.start();
+    // weishi = require('module/weishi.js')
+    // weishi.start()
 
-// tianmao = require('module/tianmao.js');
-// tianmao.start();
+    // weixin = require('module/weixin.js')
+    // weixin.start()
 
-taobao = require('module/taobao.js');
-// taobao.start();
+    ximalaya = require('module/ximalaya.js')
+    // ximalaya.start()
 
-// tencentnews = require('module/tencentnews.js');
-// tencentnews.start();
+    zhifubao = require('module/zhifubao.js')
+    // zhifubao.start()
 
-// toutiao = require('module/toutiao.js');
-// toutiao.start();
+    zhongqingkandian = require('module/zhongqingkandian.js')
+    // zhongqingkandian.start()
 
-// weishi = require('module/weishi.js');
-// weishi.start();
-
-// ximalaya = require('module/ximalaya.js');
-// ximalaya.start();
-
-// weixin = require('module/weixin.js');
-// weixin.start();
-
-zuiqiangdaren = require('module/zuiqiangdaren.js');
-zuiqiangdaren.start();
+    log('---------- end ----------')
+}

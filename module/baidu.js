@@ -1,48 +1,48 @@
 /**
  * 百度-任务
  */
-var clicks = require('../function/clicks.js');
-var exists = require('../function/exists.js');
-var others = require('../function/others.js');
-var sleeps = require('../function/sleeps.js');
-var swipes = require('../function/swipes.js');
+var clicks = require('../function/clicks.js')
+var exists = require('../function/exists.js')
+var others = require('../function/others.js')
+var sleeps = require('../function/sleeps.js')
+var swipes = require('../function/swipes.js')
 
-currentAPP = {};
-currentAPP.PACKAGE_NAME = 'com.baidu.searchbox.lite';
-currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.baidu.searchbox.lite'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
 
 // 任务-限时
 // every 20m
 function taskLimit() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-    others.back();
+    others.back()
 
     if (desc('关闭').exists()) {
-        clicks.centerXyByDesc('关闭');
+        clicks.centerXyByDesc('关闭')
     }
 
     if (!clicks.centerXyByText('任务') && !clicks.centerXyByText('去签到')) {
-        return false;
+        return false
     }
 
     if (text('看视频领金币').exists() && clicks.x1y1x2y2(99, 468, 234, 603) && !text('看视频领金币').exists()) {
-        closeAd();
+        closeAd()
     }
 
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81)
     }
 
-    return true;
+    return true
 }
 
 // 任务-打开应用
 function taskOpenApp() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('任务'))) {
-        return false;
+        return false
     }
 
     if (text('日常任务').exists() && !text('限时专享').exists()) {
@@ -50,252 +50,252 @@ function taskOpenApp() {
     }
 
     if (clicks.textIfExists('打开好看视频')) {
-        clicks.textIfExists('取消');
-        sleeps.s3();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
+        clicks.textIfExists('取消')
+        sleeps.s3()
+        others.back()
+        back()
+        back()
+        sleeps.s3()
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81)
         }
     }
 
     if (clicks.textIfExists('打开全民小视频')) {
-        clicks.textIfExists('取消');
-        clicks.text('redpack_haokan');
-        sleeps.s3();
-        others.back();
-        back();
-        back();
-        sleeps.s3();
-        others.back();
+        clicks.textIfExists('取消')
+        clicks.text('redpack_haokan')
+        sleeps.s3()
+        others.back()
+        back()
+        back()
+        sleeps.s3()
+        others.back()
         if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-            clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+            clicks.elementWidthHeight(className('android.view.View'), 84, 81)
         }
     }
 
-    return true;
+    return true
 }
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('任务'))) {
-        return false;
+        return false
     }
 
     for (var i = 0; i < 5; i++) {
-        clicks.textIfExists('看视频赚金币');
-        clicks.textIfExists('看视频再赚60金币');
-        clicks.textIfExists('看视频最高再赚60金币');
-        clicks.textIfExists('看视频奖励翻倍');
-        clicks.textIfExists('赚更多金币');
+        clicks.textIfExists('看视频赚金币')
+        clicks.textIfExists('看视频再赚60金币')
+        clicks.textIfExists('看视频最高再赚60金币')
+        clicks.textIfExists('看视频奖励翻倍')
+        clicks.textIfExists('赚更多金币')
 
         if (text('任务').exists()) {
-            break;
+            break
         }
 
         if (textStartsWith('恭喜您').exists()) {
-            break;
+            break
         }
 
-        closeAd();
+        closeAd()
     }
 
     if (!others.backToElement(text('任务'))) {
-        return false;
+        return false
     }
     if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-        clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+        clicks.elementWidthHeight(className('android.view.View'), 84, 81)
     }
 
     if (text('看视频赚金币').exists()) {
         for (var i = 0; i < 5; i++) {
-            clicks.text('看视频赚金币');
+            clicks.text('看视频赚金币')
 
             if (text('任务').exists()) {
-                break;
+                break
             }
 
             if (textStartsWith('恭喜您').exists()) {
-                others.back();
-                break;
+                others.back()
+                break
             }
 
-            closeAd();
+            closeAd()
 
             if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81)
             }
         }
 
         if (!others.backToElement(text('任务'))) {
-            return false;
+            return false
         }
     }
 
     if (text('轻松赚金币').exists() && clicks.text('轻松赚金币')) {
-        sleeps.s2to3();
+        sleeps.s2to3()
         for (var i = 0; i < 5; i++) {
-            clicks.centerXyByText('看视频赚金币');
+            clicks.centerXyByText('看视频赚金币')
 
             if (text('看视频赚金币').exists()) {
-                break;
+                break
             }
 
             if (textStartsWith('恭喜您').exists()) {
-                break;
+                break
             }
 
-            closeAd();
+            closeAd()
         }
 
         if (!others.backToElement(text('任务'))) {
-            return false;
+            return false
         }
     }
 
     if (text('免费送金币').exists()) {
         for (var i = 0; i < 5; i++) {
-            clicks.text('免费送金币');
+            clicks.text('免费送金币')
 
             if (text('任务').exists()) {
-                break;
+                break
             }
 
             if (textStartsWith('恭喜您').exists()) {
-                break;
+                break
             }
 
-            closeAd();
+            closeAd()
 
             if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81)
             }
         }
     }
 
     if (text('疯狂领金币').exists()) {
         for (var i = 0; i < 5; i++) {
-            clicks.text('疯狂领金币');
+            clicks.text('疯狂领金币')
 
             if (text('任务').exists()) {
-                break;
+                break
             }
 
             if (textStartsWith('恭喜您').exists()) {
-                break;
+                break
             }
 
-            closeAd();
+            closeAd()
 
             if (exists.elementWidthHeight(className('android.view.View'), 84, 81)) {
-                clicks.elementWidthHeight(className('android.view.View'), 84, 81);
+                clicks.elementWidthHeight(className('android.view.View'), 84, 81)
             }
         }
     }
 
-    return true;
+    return true
 }
 
 // 任务-观看视频
 function taskVideo() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('任务'))) {
-        return false;
+        return false
     }
 
     if (!exists.parents(text('观看视频'), text('已完成'))) {
-        return true;
+        return true
     }
 
     if (!clicks.text('观看视频')) {
-        return false;
+        return false
     }
 
     for (var i = 0; i < 10; i++) {
         if (!text('推荐').exists() || !text('小视频').exists()) {
-            log('---------- error ----------');
-            return false;
+            log('---------- error ----------')
+            return false
         }
 
         if (!clicks.centerXyByText('好看视频')) {
-            return false;
+            return false
         }
 
-        clicks.xy(477, 577);
-        sleeps.s30to35();
+        clicks.xy(477, 577)
+        sleeps.s30to35()
     }
 
     if (!clicks.centerXyByText('任务')) {
-        return false;
+        return false
     }
 
-    return true;
+    return true
 }
 
 // 任务-看新闻
 function taskNews() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('任务'))) {
-        return false;
+        return false
     }
 
     if (!exists.parents(text('阅读资讯'), text('已完成'))) {
-        return true;
+        return true
     }
 
     if (!clicks.text('阅读资讯')) {
-        return false;
+        return false
     }
 
     if (text('128金币').exists() && clicks.centerXyByText('128金币')) {
-        others.back();
+        others.back()
     }
 
     for (var i = 0; i < 10; i++) {
         if (!others.backToElement(text('百度'))) {
-            return false;
+            return false
         }
 
-        clicks.xy(345, 1345);
+        clicks.xy(345, 1345)
 
         if (!text('关注').exists()) {
             continue
         }
 
-        sleeps.s8();
-        swipes.down();
-        sleeps.s10();
-        swipes.refresh();
-        sleeps.s10();
+        sleeps.s8()
+        swipes.down()
+        sleeps.s10()
+        swipes.refresh()
+        sleeps.s10()
     }
 
     if (!clicks.centerXyByText('任务')) {
-        return false;
+        return false
     }
 
-    return true;
+    return true
 }
 
 // 关闭Ad
 function closeAd() {
-    sleeps.s20();
-    clicks.textIfExists('取消');
-    clicks.textIfExists('拒绝');
+    sleeps.s20()
+    clicks.textIfExists('取消')
+    clicks.textIfExists('拒绝')
     for (var j = 0; j < 15; j++) {
-        sleeps.s3();
+        sleeps.s3()
         if (text('恭喜已得金币').exists() || text('请稍后尝试再次观看').exists()) {
-            others.back();
-            return true;
+            others.back()
+            return true
         }
     }
 
-    return false;
+    return false
 }
 
 /**
@@ -304,40 +304,40 @@ function closeAd() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 15; i++) {
-        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
-            return true;
+            return true
         }
 
 
-        status0 = taskLimit();
-        // status1 = taskOpenApp();
-        // status2 = taskAd();
-        // status3 = taskNews();
-        // status4 = taskVideo();
+        status0 = taskLimit()
+        // status1 = taskOpenApp()
+        // status2 = taskAd()
+        // status3 = taskNews()
+        // status4 = taskVideo()
 
         if (status0) {
-            return true;
+            return true
         }
     }
 
-    others.send(currentAPP.NAME);
+    others.send(currentAPP.NAME)
 
-    return false;
-};
+    return false
+}
 
 /**
  * 定时入口调用
  * @returns {boolean}
  */
 currentAPP.cron = function () {
-    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME)
     if (!status0) {
-        return true;
+        return true
     }
 
 
-    taskLimit();
-};
+    taskLimit()
+}
 
-module.exports = currentAPP;
+module.exports = currentAPP

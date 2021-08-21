@@ -2,92 +2,92 @@
  * 京东极速版-任务
  * 1. v1.0.0版本已无法使用
  */
-var clicks = require('../function/clicks.js');
-var exists = require('../function/exists.js');
-var others = require('../function/others.js');
-var sleeps = require('../function/sleeps.js');
-var swipes = require('../function/swipes.js');
+var clicks = require('../function/clicks.js')
+var exists = require('../function/exists.js')
+var others = require('../function/others.js')
+var sleeps = require('../function/sleeps.js')
+var swipes = require('../function/swipes.js')
 
-currentAPP = {};
-currentAPP.PACKAGE_NAME = 'com.jd.jdlite';
-currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
-currentAPP.VERSION = '3.0.0';
-currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/02/01/2/120_0b3410dfd1b5b561503a600d1683f21a.apk';
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.jd.jdlite'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
+currentAPP.VERSION = '3.0.0'
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/02/01/2/120_0b3410dfd1b5b561503a600d1683f21a.apk'
 
 /**
  * 任务-登录
  * 有时候被退出登录，所以保险一些
  */
 function taskLogin() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (desc('首页').exists() && !text('立即登录').exists()) {
-        return true;
+        return true
     }
 
     if (!clicks.centerXyByText('立即登录')) {
-        return false;
+        return false
     }
 
     if (!clicks.centerXyByText('京东授权登录')) {
-        return false;
+        return false
     }
 
     if (!clicks.centerXyByText('确认登录')) {
-        return false;
+        return false
     }
 
     if (desc('首页').exists() && !text('立即登录').exists()) {
-        return true;
+        return true
     }
 
-    return false;
+    return false
 }
 
 // 任务-签到
 function taskCheckin() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(desc('首页'))) {
-        return false;
+        return false
     }
 
     if (text('现金签到').exists() && !clicks.centerXyByText('现金签到')) {
-        return false;
+        return false
     } else if (text('签到领现金').exists() && !clicks.centerXyByText('签到领现金')) {
-        return false;
+        return false
     }
 
     if (text('邀好友解锁额外红包').exists()) {
-        others.back();
+        others.back()
         if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
         } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
         } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
         }
 
-        return true;
+        return true
     }
 
     if (text('立即签到').exists() && !clicks.centerXyByText('立即签到')) {
-        return false;
+        return false
     }
 
     if (text('邀好友解锁额外红包').exists()) {
-        others.back();
+        others.back()
         if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
         } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
         } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
         }
 
-        return true;
+        return true
     }
 
-    return false;
+    return false
 }
 
 // 任务-逛商品赚金币
 function taskProduct() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
     } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
@@ -95,137 +95,137 @@ function taskProduct() {
     }
 
     if (!others.backToElement(desc('我的'))) {
-        return false;
+        return false
     }
 
     if (exists.parent(text('逛商品赚金币'), text('已完成'))) {
-        return true;
+        return true
     }
 
     if (!clicks.centerXyByText('逛商品赚金币')) {
-        return false;
+        return false
     }
 
     for (var i = 0; i < 60; i++) {
         if (text('今日已完成').exists()) {
-            return true;
+            return true
         }
 
         for (var j = 0; j < 4; j++) {
-            swipes.down1600();
-            sleeps.s2to4();
+            swipes.down1600()
+            sleeps.s2to4()
         }
 
         if (!clicks.centerXyById('ll_task_bottom_next')) {
-            return false;
+            return false
         }
     }
 
-    return false;
+    return false
 }
 
 // 任务-逛活动赚金币
 function taskRandomPage() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(desc('我的'))) {
-        return false;
+        return false
     }
 
     if (exists.parent(text('逛活动赚金币'), text('已完成'))) {
-        return true;
+        return true
     }
 
     if (!clicks.centerXyByText('逛活动赚金币')) {
-        return false;
+        return false
     }
 
     for (var i = 0; i < 20; i++) {
         if (text('今日已完成').exists()) {
-            return true;
+            return true
         }
 
         for (var j = 0; j < 4; j++) {
-            swipes.down1600();
-            sleeps.s2to4();
+            swipes.down1600()
+            sleeps.s2to4()
         }
 
         if (!clicks.centerXyById('ll_task_bottom_next')) {
-            return false;
+            return false
         }
     }
 
-    return false;
+    return false
 }
 
 // 任务-看视频赚金币
 function taskVideo() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(desc('我的'))) {
-        return false;
+        return false
     }
 
     if (exists.parent(text('看视频赚金币'), text('已完成'))) {
-        return true;
+        return true
     }
 
     if (!clicks.centerXyByText('看视频赚金币')) {
-        return false;
+        return false
     }
 
-    clicks.descIfExists('关闭');
+    clicks.descIfExists('关闭')
 
     // first video into
-    clicks.xy(469, 1373);
+    clicks.xy(469, 1373)
 
     for (var i = 0; i < 100; i++) {
         if (text('今日已完成').exists()) {
-            return true;
+            return true
         } else if (id('vi_btn_close').exists() && !text('分享').exists()) {
-            log('---------- shit happen: video ----------');
-            return false;
+            log('---------- shit happen: video ----------')
+            return false
         }
 
-        sleeps.s10();
+        sleeps.s10()
 
         if (id('com.jd.jdlite:id/task_float_fengkong_goon').find().size()) {
-            clicks.centerXyById('com.jd.jdlite:id/task_float_fengkong_goon');
+            clicks.centerXyById('com.jd.jdlite:id/task_float_fengkong_goon')
         }
 
-        swipes.down1600();
+        swipes.down1600()
     }
 
-    return false;
+    return false
 }
 
 // 任务-活动任务
 function taskActivity() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(desc('赚钱'))) {
-        return false;
+        return false
     }
 
-    swipes.scrollDown();
-    swipes.scrollDown();
+    swipes.scrollDown()
+    swipes.scrollDown()
 
-    var element = id('com.jd.jdlite.lib.mission:id/lib_mission_active_button');
+    var element = id('com.jd.jdlite.lib.mission:id/lib_mission_active_button')
     element.find().forEach((value2, key2) => {
         if (value2.text() === '已完成' || value2.text().indexOf('继续') === 0) {
-            return;
+            return
         }
 
-        clicks.centerXyByText(value2.text());
-        others.back();
+        clicks.centerXyByText(value2.text())
+        others.back()
 
         if (text('残忍拒绝').exists() && clicks.centerXyByText('残忍拒绝')) {
         } else if (text('残忍离开').exists() && clicks.centerXyByText('残忍离开')) {
         } else if (text('不想开启').exists() && clicks.centerXyByText('不想开启')) {
         }
-    });
+    })
 
-    return true;
+    return true
 }
 
 /**
@@ -234,32 +234,32 @@ function taskActivity() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
-            return true;
+            return true
         }
 
 
-        status0 = taskLogin();
+        status0 = taskLogin()
         if (!status0) {
-            continue;
+            continue
         }
-        status0 = taskCheckin();
-        status1 = taskProduct();
-        status2 = taskRandomPage();
-        status3 = taskVideo();
-        status4 = taskActivity();
+        status0 = taskCheckin()
+        status1 = taskProduct()
+        status2 = taskRandomPage()
+        status3 = taskVideo()
+        status4 = taskActivity()
 
         if (status0 && status1 && status2 && status3 && status4) {
-            return true;
+            return true
         }
 
-        others.clear();
+        others.clear()
     }
 
-    others.send(currentAPP.NAME);
+    others.send(currentAPP.NAME)
 
-    return false;
-};
+    return false
+}
 
-module.exports = currentAPP;
+module.exports = currentAPP

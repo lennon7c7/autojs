@@ -2,13 +2,13 @@
  * 初始化代码
  * 从 PC端 到 手机端
  */
-main();
+main()
 
 /**
  * 入口
  */
 function main() {
-    toastLog('---------- start ----------');
+    toastLog('---------- start ----------')
 
     // step1: 手机连接PC
 
@@ -16,18 +16,18 @@ function main() {
     // php -S 192.168.25.222:9999
 
     // step3: 配置同步的文件
-    var fileList = configHttp();
+    var fileList = configHttp()
 
     // step4: 获取文件
-    var codeList = httpGet(fileList);
+    var codeList = httpGet(fileList)
 
     // step5: 写入手机端，会强行覆盖文件
-    var isOk = overWriteFile(codeList);
+    var isOk = overWriteFile(codeList)
     if (!isOk) {
-        toastLog('shit happen');
+        toastLog('shit happen')
     }
 
-    toastLog('---------- end ----------');
+    toastLog('---------- end ----------')
 }
 
 /**
@@ -35,9 +35,9 @@ function main() {
  * @returns {array} 代码内容列表
  */
 function configHttp() {
-    var returnList = [];
+    var returnList = []
 
-    domain = 'http://192.168.25.222:9999/';
+    domain = 'http://192.168.25.222:9999/'
     filenameList = [
         'function/clicks.js', 'function/debugs.js', 'function/exists.js', 'function/others.js', 'function/sleeps.js', 'function/swipes.js',
 
@@ -55,16 +55,16 @@ function configHttp() {
         'module/weishi.js', 'module/weixin.js', 'module/ximalaya.js', 'module/zhifubao.js', 'module/zhongqingkandian.js', 'module/zuiqiangdaren.js',
 
         'action-all.js', 'action-every-20-min.js', 'test-swipe.js',
-    ];
+    ]
 
     filenameList.forEach((value, key) => {
         returnList[key] = {
             'url': domain + value,
             'path': files.cwd() + '/' + value,
         }
-    });
+    })
 
-    return returnList;
+    return returnList
 }
 
 /**
@@ -72,39 +72,39 @@ function configHttp() {
  * @returns {array} 代码内容列表
  */
 function httpGet(fileList) {
-    var returnList = [];
+    var returnList = []
 
     fileList.forEach((value, key) => {
-        var content = http.get(value.url).body.string();
+        var content = http.get(value.url).body.string()
         if (!content) {
-            toastLog('!content');
-            return;
+            toastLog('!content')
+            return
         }
 
         returnList[key] = {
             'path': value.path,
             'content': content,
         }
-    });
+    })
 
-    return returnList;
+    return returnList
 }
 
 /**
  * 写入手机端，会强行覆盖文件
  */
 function overWriteFile(codeList) {
-    var isOk = false;
+    var isOk = false
 
     codeList.forEach((value) => {
-        isOk = files.ensureDir(value.path);
+        isOk = files.ensureDir(value.path)
         if (!isOk) {
-            toastLog('!isOk');
-            return;
+            toastLog('!isOk')
+            return
         }
 
-        files.write(value.path, value.content);
-    });
+        files.write(value.path, value.content)
+    })
 
-    return isOk;
+    return isOk
 }

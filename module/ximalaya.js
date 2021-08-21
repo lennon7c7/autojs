@@ -1,150 +1,150 @@
 /**
  * 喜马拉雅-任务
  */
-var clicks = require('../function/clicks.js');
-var exists = require('../function/exists.js');
-var others = require('../function/others.js');
-var sleeps = require('../function/sleeps.js');
-var swipes = require('../function/swipes.js');
+var clicks = require('../function/clicks.js')
+var exists = require('../function/exists.js')
+var others = require('../function/others.js')
+var sleeps = require('../function/sleeps.js')
+var swipes = require('../function/swipes.js')
 
-currentAPP = {};
-currentAPP.PACKAGE_NAME = 'com.ximalaya.ting.lite';
-currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
-currentAPP.VERSION = '2.0.12.3';
-currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/21/6/110_89f2af74ad33a10022824656a22f1ead.apk';
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.ximalaya.ting.lite'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
+currentAPP.VERSION = '2.0.12.3'
+currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/21/6/110_89f2af74ad33a10022824656a22f1ead.apk'
 
 /**
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('我的'))) {
-        return false;
+        return false
     }
 
     if (textStartsWith('看视频再领').exists()) {
-        clicks.element(textStartsWith('看视频再领'));
-        others.closeAdBackToElement(text('每日福利'));
+        clicks.element(textStartsWith('看视频再领'))
+        others.closeAdBackToElement(text('每日福利'))
     }
 
     if (text('立即补签').exists()) {
-        clicks.centerXyByText('立即补签');
-        others.closeAdBackToElement(text('每日福利'));
+        clicks.centerXyByText('立即补签')
+        others.closeAdBackToElement(text('每日福利'))
     }
 
-    return true;
+    return true
 }
 
 /**
  * 任务-Ad
  */
 function taskAd() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('我的'))) {
-        return false;
+        return false
     }
 
     if (text('看视频').exists() && clicks.centerXyByText('看视频')) {
         if (exists.elementWidthHeight(className('android.widget.ImageView'), 90, 90)) {
-            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90)
         }
 
-        others.closeAdBackToElement(text('每日福利'));
+        others.closeAdBackToElement(text('每日福利'))
     }
 
     for (var i = 0; i < 10; i++) {
         if (exists.parent(text('看一次赚50金币'), text('已完成'))) {
-            return true;
+            return true
         }
 
         if (!clicks.centerXyByText('看一次赚50金币')) {
-            continue;
+            continue
         }
 
-        others.closeAdBackToElement(text('每日福利'));
+        others.closeAdBackToElement(text('每日福利'))
     }
 
-    return false;
+    return false
 }
 
 /**
  * 任务-新闻
  */
 function taskNews() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('我的'))) {
-        return false;
+        return false
     }
 
     if (text('每日福利').exists() && !text('去阅读').exists()) {
-        return true;
+        return true
     }
 
-    swipes.scrollDown();
+    swipes.scrollDown()
 
     for (var i = 0; i < 5; i++) {
         if (!clicks.backToElement(text('去阅读'))) {
-            return false;
+            return false
         }
 
-        sleeps.s50();
+        sleeps.s50()
         for (var j = 0; j < 10; j++) {
             if (textStartsWith('今日奖励已领取').exists() || text('今日任务已全部完成9次，明天再来吧~').exists()) {
-                return true;
+                return true
             }
 
-            clicks.xy(500, 800);
-            others.back();
+            clicks.xy(500, 800)
+            others.back()
         }
     }
 
-    return false;
+    return false
 }
 
 /**
  * 任务-抽奖
  */
 function taskLottery() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!exists.backToElement(text('每日福利'))) {
-        return false;
+        return false
     }
 
-    swipes.scrollDown();
+    swipes.scrollDown()
 
     if (!text('幸运大转盘').exists() || text('幸运大转盘').findOne().parent().findOne(text('去抽奖')) == null) {
-        return false;
+        return false
     }
 
-    clicks.centerXyByText('幸运大转盘');
+    clicks.centerXyByText('幸运大转盘')
     for (var i = 0; i < 10; i++) {
         if (text('今日剩余抽奖次数：0').exists()) {
-            return true;
+            return true
         }
 
         if (!text('trigger').exists()) {
-            continue;
+            continue
         }
 
-        clicks.centerXyByText('trigger');
+        clicks.centerXyByText('trigger')
 
         if (!text('trigger').exists() && exists.elementWidthHeight(className('android.widget.ImageView'), 90, 90)) {
-            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90);
+            clicks.elementWidthHeight(className('android.widget.ImageView'), 90, 90)
         }
 
-        !text('trigger').exists() && clicks.xy(780, 246);
-        !text('trigger').exists() && sleeps.s10();
+        !text('trigger').exists() && clicks.xy(780, 246)
+        !text('trigger').exists() && sleeps.s10()
         for (var j = 0; j < 10; j++) {
-            !text('trigger').exists() && others.back();
-            !text('trigger').exists() && sleeps.s5to10();
+            !text('trigger').exists() && others.back()
+            !text('trigger').exists() && sleeps.s5to10()
         }
     }
 
-    return false;
+    return false
 }
 
 /**
@@ -153,27 +153,27 @@ function taskLottery() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 10; i++) {
-        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
-            return true;
+            return true
         }
 
 
-        status1 = taskCheckin();
-        status2 = taskAd();
-        status3 = taskNews();
-        status4 = taskLottery();
+        status1 = taskCheckin()
+        status2 = taskAd()
+        status3 = taskNews()
+        status4 = taskLottery()
 
         if (status1 && status2 && status3 && status4) {
-            return true;
+            return true
         }
 
-        others.clear();
+        others.clear()
     }
 
-    others.send(currentAPP.NAME);
+    others.send(currentAPP.NAME)
 
-    return false;
-};
+    return false
+}
 
-module.exports = currentAPP;
+module.exports = currentAPP

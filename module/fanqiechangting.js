@@ -1,112 +1,112 @@
 /**
  * 番茄畅听-任务
  */
-var clicks = require('../function/clicks.js');
-var exists = require('../function/exists.js');
-var others = require('../function/others.js');
-var sleeps = require('../function/sleeps.js');
-var swipes = require('../function/swipes.js');
+var clicks = require('../function/clicks.js')
+var exists = require('../function/exists.js')
+var others = require('../function/others.js')
+var sleeps = require('../function/sleeps.js')
+var swipes = require('../function/swipes.js')
 
-currentAPP = {};
-currentAPP.PACKAGE_NAME = 'com.xs.fm';
-currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.xs.fm'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
 
 // 任务-宝箱
 // every 1h
 function taskTreasureBox() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('福利'))) {
-        return false;
+        return false
     }
 
     if (textStartsWith('看视频再领').exists()) {
         if (!clicks.element(textStartsWith('看视频再领'))) {
-            return false;
+            return false
         }
 
         if (!others.closeAdBackToElement(text('福利'))) {
-            return false;
+            return false
         }
     }
 
     if (text('图片').exists() && !clicks.text('图片')) {
-        return false;
+        return false
     }
 
     if (textStartsWith('看视频领取').exists()) {
         if (!clicks.element(textStartsWith('看视频领取'))) {
-            return false;
+            return false
         }
 
         if (!others.closeAdBackToElement(text('福利'))) {
-            return false;
+            return false
         }
     }
 
-    return true;
+    return true
 }
 
 // 任务-Ad
 function taskAd() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('福利'))) {
-        return false;
+        return false
     }
 
     if (exists.parents(text('看视频赚金币'), text('已完成'))) {
-        return true;
+        return true
     }
 
     for (var i = 0; i < 11; i++) {
         if (!clicks.textIfExists('立即观看')) {
-            return false;
+            return false
         }
 
         if (!others.closeAdBackToElement(text('福利'))) {
-            return false;
+            return false
         }
     }
 
     if (exists.parents(text('看视频赚金币'), text('已完成'))) {
-        return true;
+        return true
     }
 
-    return false;
+    return false
 }
 
 /**
  * 任务-提现
  */
 function taskCashout() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     if (!others.backToElement(text('福利'))) {
-        return false;
+        return false
     }
 
     if (!exists.moneyEgt15(textContains('.'))) {
-        return true;
+        return true
     }
 
     if (!clicks.text('现金金额：')) {
-        return false;
+        return false
     }
 
     if (!clicks.text('去提现')) {
-        return false;
+        return false
     }
 
     if (textStartsWith('当前余额不足').exists()) {
-        return true;
+        return true
     }
 
     if (!clicks.centerXyByText('15.00')) {
-        return false;
+        return false
     }
 
-    return true;
+    return true
 }
 
 /**
@@ -115,40 +115,40 @@ function taskCashout() {
  */
 currentAPP.start = function () {
     for (var i = 0; i < 9; i++) {
-        status0 = others.launch(currentAPP.PACKAGE_NAME);
+        status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
-            return true;
+            return true
         }
 
 
-        status0 = taskTreasureBox();
-        status1 = taskAd();
-        status2 = taskCashout();
+        status0 = taskTreasureBox()
+        status1 = taskAd()
+        status2 = taskCashout()
 
         if (status0 && status1 && status2) {
-            return true;
+            return true
         }
 
-        others.clear();
-   }
+        others.clear()
+    }
 
-    others.send(currentAPP.NAME);
+    others.send(currentAPP.NAME)
 
-    return false;
-};
+    return false
+}
 
 /**
  * 定时入口调用
  * @returns {boolean}
  */
 currentAPP.cron = function () {
-    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME)
     if (!status0) {
-        return true;
+        return true
     }
 
 
-    taskTreasureBox();
-};
+    taskTreasureBox()
+}
 
-module.exports = currentAPP;
+module.exports = currentAPP

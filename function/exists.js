@@ -1,7 +1,7 @@
 /**
  * 功能集合-元素存在判断
  */
-var exists = {};
+var exists = {}
 
 /**
  * 查询 元素 列表，再根据 宽、高 去判断元素是否存在
@@ -11,17 +11,17 @@ var exists = {};
  * @returns {boolean}
  */
 exists.elementWidthHeight = function (element, width, height) {
-    isOk = false;
+    isOk = false
     element.find().forEach(value => {
         if (value.bounds().width() !== width || value.bounds().height() !== height) {
-            return false;
+            return false
         }
 
-        isOk = true;
-    });
+        isOk = true
+    })
 
-    return isOk;
-};
+    return isOk
+}
 
 /**
  * 查询 金额 元素的值
@@ -29,40 +29,40 @@ exists.elementWidthHeight = function (element, width, height) {
  * @returns {number}
  */
 exists.money = function (element) {
-    money = 0.0;
+    money = 0.0
 
     if (!element.exists()) {
-        return money;
+        return money
     }
 
-    currentMoney = element.findOne(300).contentDescription;
+    currentMoney = element.findOne(300).contentDescription
     if (currentMoney !== "" && currentMoney !== null) {
-        currentMoney = currentMoney.toString();
-        currentMoney = currentMoney.replace(/¥/, '');
-        currentMoney = currentMoney.replace(/￥/, '');
-        currentMoney = currentMoney.replace(/约/, '');
-        currentMoney = currentMoney.replace(/元/, '');
-        currentMoney = currentMoney.trim();
+        currentMoney = currentMoney.toString()
+        currentMoney = currentMoney.replace(/¥/, '')
+        currentMoney = currentMoney.replace(/￥/, '')
+        currentMoney = currentMoney.replace(/约/, '')
+        currentMoney = currentMoney.replace(/元/, '')
+        currentMoney = currentMoney.trim()
         if (currentMoney > 0) {
-            money = currentMoney;
-            return money;
+            money = currentMoney
+            return money
         }
     }
 
-    currentMoney = element.findOne(300).text();
+    currentMoney = element.findOne(300).text()
     if (currentMoney === "" || currentMoney === null) {
-        return money;
+        return money
     }
-    currentMoney = currentMoney.toString();
-    currentMoney = currentMoney.replace(/¥/, '');
-    currentMoney = currentMoney.replace(/￥/, '');
-    currentMoney = currentMoney.replace(/约/, '');
-    currentMoney = currentMoney.replace(/元/, '');
-    currentMoney = currentMoney.trim();
-    money = currentMoney;
+    currentMoney = currentMoney.toString()
+    currentMoney = currentMoney.replace(/¥/, '')
+    currentMoney = currentMoney.replace(/￥/, '')
+    currentMoney = currentMoney.replace(/约/, '')
+    currentMoney = currentMoney.replace(/元/, '')
+    currentMoney = currentMoney.trim()
+    money = currentMoney
 
-    return money;
-};
+    return money
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ money
@@ -71,10 +71,10 @@ exists.money = function (element) {
  * @returns {number}
  */
 exists.moneyEgt = function (element, currentMoney) {
-    money = exists.money(element);
+    money = exists.money(element)
 
-    return money >= currentMoney;
-};
+    return money >= currentMoney
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 0.01
@@ -82,8 +82,8 @@ exists.moneyEgt = function (element, currentMoney) {
  * @returns {number}
  */
 exists.moneyEgt001 = function (element) {
-    return exists.moneyEgt(element, 0.01);
-};
+    return exists.moneyEgt(element, 0.01)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 0.02
@@ -91,8 +91,8 @@ exists.moneyEgt001 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt002 = function (element) {
-    return exists.moneyEgt(element, 0.02);
-};
+    return exists.moneyEgt(element, 0.02)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 0.1
@@ -100,8 +100,8 @@ exists.moneyEgt002 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt01 = function (element) {
-    return exists.moneyEgt(element, 0.1);
-};
+    return exists.moneyEgt(element, 0.1)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 0.2
@@ -109,8 +109,8 @@ exists.moneyEgt01 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt02 = function (element) {
-    return exists.moneyEgt(element, 0.2);
-};
+    return exists.moneyEgt(element, 0.2)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 1
@@ -118,8 +118,8 @@ exists.moneyEgt02 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt1 = function (element) {
-    return exists.moneyEgt(element, 1);
-};
+    return exists.moneyEgt(element, 1)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 5
@@ -127,8 +127,8 @@ exists.moneyEgt1 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt5 = function (element) {
-    return exists.moneyEgt(element, 5);
-};
+    return exists.moneyEgt(element, 5)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 10
@@ -136,8 +136,8 @@ exists.moneyEgt5 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt10 = function (element) {
-    return exists.moneyEgt(element, 10);
-};
+    return exists.moneyEgt(element, 10)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 15
@@ -145,8 +145,8 @@ exists.moneyEgt10 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt15 = function (element) {
-    return exists.moneyEgt(element, 15);
-};
+    return exists.moneyEgt(element, 15)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 100
@@ -154,8 +154,8 @@ exists.moneyEgt15 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt100 = function (element) {
-    return exists.moneyEgt(element, 100);
-};
+    return exists.moneyEgt(element, 100)
+}
 
 /**
  * 查询 金额 元素的值是否 ≥ 50000
@@ -163,8 +163,8 @@ exists.moneyEgt100 = function (element) {
  * @returns {number}
  */
 exists.moneyEgt50000 = function (element) {
-    return exists.moneyEgt(element, 50000);
-};
+    return exists.moneyEgt(element, 50000)
+}
 
 /**
  * 根据 当前元素 的 祖先级元素 去判断元素是否存在
@@ -174,16 +174,16 @@ exists.moneyEgt50000 = function (element) {
  */
 exists.parents = function (currentElement, parentsElement) {
     if (currentElement.find().size() === 0) {
-        return false;
+        return false
     }
 
-    element = currentElement.findOne(300).parent().parent().findOne(parentsElement);
+    element = currentElement.findOne(300).parent().parent().findOne(parentsElement)
     if (element == null) {
-        return false;
+        return false
     }
 
-    return true;
-};
+    return true
+}
 
 /**
  * 根据 当前元素 的 父级元素 去判断元素是否存在
@@ -193,16 +193,16 @@ exists.parents = function (currentElement, parentsElement) {
  */
 exists.parent = function (currentElement, parentElement) {
     if (currentElement.find().size() === 0) {
-        return false;
+        return false
     }
 
-    element = currentElement.findOne(300).parent().findOne(parentElement);
+    element = currentElement.findOne(300).parent().findOne(parentElement)
     if (element == null) {
-        return false;
+        return false
     }
 
-    return true;
-};
+    return true
+}
 
 /**
  * 回到指定元素存在的页面
@@ -211,19 +211,19 @@ exists.parent = function (currentElement, parentElement) {
  */
 exists.backToElement = function (element) {
     if (!element || element.exists === undefined) {
-        return false;
+        return false
     }
 
     for (var i = 0; i < 10; i++) {
         if (element.exists()) {
-            return true;
+            return true
         }
 
-        back();
-        sleep(3 * 1000);
+        back()
+        sleep(3 * 1000)
     }
 
-    return false;
-};
+    return false
+}
 
-module.exports = exists;
+module.exports = exists

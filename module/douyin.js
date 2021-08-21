@@ -1,155 +1,155 @@
 /**
  * 抖音-任务
  */
-var clicks = require('../function/clicks.js');
-var exists = require('../function/exists.js');
-var others = require('../function/others.js');
-var sleeps = require('../function/sleeps.js');
-var swipes = require('../function/swipes.js');
+var clicks = require('../function/clicks.js')
+var exists = require('../function/exists.js')
+var others = require('../function/others.js')
+var sleeps = require('../function/sleeps.js')
+var swipes = require('../function/swipes.js')
 
-currentAPP = {};
-currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme';
-currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME);
+currentAPP = {}
+currentAPP.PACKAGE_NAME = 'com.ss.android.ugc.aweme'
+currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
 
 /**
  * 抓取用户数据
  * 因为无法解决接口解密，所以只能用那么low的方法
  */
 function intoDetailPage() {
-    isOk = false;
+    isOk = false
     className('android.view.ViewGroup').find().forEach((value, key) => {
         if (value.bounds().width() !== 240 || value.bounds().height() != 84) {
-            return false;
+            return false
         }
 
-        element = value.bounds();
-        x = element.centerX() - 200;
-        y = element.centerY();
+        element = value.bounds()
+        x = element.centerX() - 200
+        y = element.centerY()
         if (y > 2200) {
-            return false;
+            return false
         }
 
         if (x >= 0 && y >= 0) {
             click(x, y)
-            sleep(3 * 1000);
+            sleep(3 * 1000)
         }
 
-        isOk = getDetailData();
-    });
+        isOk = getDetailData()
+    })
 
-    return isOk;
+    return isOk
 }
 
 function getDetailData() {
     if (textStartsWith('抖音号').find().size() != 1) {
-        log('textStartsWith error');
-        others.back();
-        return false;
+        log('textStartsWith error')
+        others.back()
+        return false
     }
 
-    account = textStartsWith('抖音号').findOne().text();
+    account = textStartsWith('抖音号').findOne().text()
     if (account == '') {
-        log('account empty');
-        others.back();
-        return false;
+        log('account empty')
+        others.back()
+        return false
     }
 
-    var storage = storages.create('tmp');
+    var storage = storages.create('tmp')
     if (storage.contains(account)) {
-        log('exists ', storage.get(account));
-        log('next');
-        others.back();
-        return true;
+        log('exists ', storage.get(account))
+        log('next')
+        others.back()
+        return true
     }
 
-    likeData = '';
+    likeData = ''
     if (text('获赞').find().size() === 1 && text('获赞').findOne().parent().childCount() === 2) {
         text('获赞').findOnce().parent().children().forEach(function (child) {
             if (child.text() == '获赞') {
-                return false;
+                return false
             }
-            likeData = '获赞：' + child.text();
-        });
+            likeData = '获赞：' + child.text()
+        })
     }
 
-    watchData = '';
+    watchData = ''
     if (text('关注').find().size() === 2 && text('关注').findOne().parent().childCount() === 2) {
         text('关注').findOnce().parent().children().forEach(function (child) {
             if (child.text() == '关注') {
-                return false;
+                return false
             }
-            watchData = '关注：' + child.text();
-        });
+            watchData = '关注：' + child.text()
+        })
     }
 
-    fansData = '';
+    fansData = ''
     if (text('粉丝').find().size() === 1 && text('粉丝').findOne().parent().childCount() === 2) {
         text('粉丝').findOnce().parent().children().forEach(function (child) {
             if (child.text() == '粉丝') {
-                return false;
+                return false
             }
-            fansData = '粉丝：' + child.text();
-        });
+            fansData = '粉丝：' + child.text()
+        })
     }
 
-    accountMoreData = getAccountMoreData();
-    saleData = getSaleData();
+    accountMoreData = getAccountMoreData()
+    saleData = getSaleData()
 
-    filename = files.cwd() + '/douyin.txt';
-    appendContent = '';
-    appendContent += accountMoreData;
-    appendContent += likeData + ', ';
-    appendContent += watchData + ', ';
-    appendContent += fansData + ', ';
-    appendContent += saleData;
-    appendContent += "\n";
-    files.append(filename, appendContent);
+    filename = files.cwd() + '/douyin.txt'
+    appendContent = ''
+    appendContent += accountMoreData
+    appendContent += likeData + ', '
+    appendContent += watchData + ', '
+    appendContent += fansData + ', '
+    appendContent += saleData
+    appendContent += "\n"
+    files.append(filename, appendContent)
 
-    storage.put(account, appendContent);
+    storage.put(account, appendContent)
 
-    log(appendContent);
+    log(appendContent)
 
-    others.back();
-    return true;
+    others.back()
+    return true
 }
 
 function getAccountMoreData() {
-    accountMoreData = '';
+    accountMoreData = ''
     if (!clicks.desc('更多')) {
-        return accountMoreData;
+        return accountMoreData
     }
 
     if (className('android.widget.LinearLayout').find().size() === 1) {
         className('android.widget.LinearLayout').findOne().children().forEach(function (child) {
-            accountMoreData += child.text() + ', ';
-        });
+            accountMoreData += child.text() + ', '
+        })
     }
 
-    others.back();
+    others.back()
 
-    return accountMoreData;
+    return accountMoreData
 }
 
 function getSaleData() {
-    saleData = '';
+    saleData = ''
     if (text('商品橱窗').exists()) {
-        sleeps.s2to3();
-        clicks.centerXyByText('商品橱窗');
+        sleeps.s2to3()
+        clicks.centerXyByText('商品橱窗')
     } else if (text('商品').exists()) {
-        swipes.down();
-        swipes.down();
-        swipes.down();
-        swipes.down();
-        clicks.centerXyByText('进入商品橱窗');
+        swipes.down()
+        swipes.down()
+        swipes.down()
+        swipes.down()
+        clicks.centerXyByText('进入商品橱窗')
     }
 
     if (textStartsWith('已售 ').find().size() == 1) {
-        saleData = textStartsWith('已售 ').findOne().text();
+        saleData = textStartsWith('已售 ').findOne().text()
     }
 
-    text('我的橱窗').exists() && others.back();
+    text('我的橱窗').exists() && others.back()
 
-    return saleData;
+    return saleData
 }
 
 /**
@@ -165,40 +165,40 @@ currentAPP.start = function () {
  * @returns {boolean}
  */
 currentAPP.spider = function () {
-    status0 = others.launch(currentAPP.PACKAGE_NAME);
+    status0 = others.launch(currentAPP.PACKAGE_NAME)
     if (!status0) {
-        return true;
+        return true
     }
 
 
-    storages.remove('tmp');
-    others.back3();
+    storages.remove('tmp')
+    others.back3()
 
     if (!clicks.elementWidthHeight(className('android.widget.FrameLayout'), 126, 132)) {
-        return false;
+        return false
     }
 
-    setText('翡翠');
-    sleeps.s2to3();
-    clicks.xy(144, 306);
+    setText('翡翠')
+    sleeps.s2to3()
+    clicks.xy(144, 306)
 
-    swipes.scrollDown2();
+    swipes.scrollDown2()
 
     for (var i = 0; i < 30; i++) {
         if (!text('用户').exists()) {
-            log('用户 not exists');
-            break;
+            log('用户 not exists')
+            break
         }
 
-        intoDetailPage();
+        intoDetailPage()
 
-        swipes.down2200();
-        sleeps.s3();
+        swipes.down2200()
+        sleeps.s3()
     }
 
     // 用户, 抖音号, 获赞, 关注, 粉丝, 已售
-    filename = files.cwd() + '/douyin.txt';
-    log(files.read(filename));
+    filename = files.cwd() + '/douyin.txt'
+    log(files.read(filename))
 }
 
-module.exports = currentAPP;
+module.exports = currentAPP
