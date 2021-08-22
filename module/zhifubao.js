@@ -2210,7 +2210,7 @@ currentAPP.taskMP = function () {
 
 
         // 查看岗位领金币
-        var element = className('android.view.View').text('领100金币')
+        var element = className('android.view.View').text('领50金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()
@@ -2218,18 +2218,16 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         var elementCount = element.find().size()
         element.find().forEach((value1, key1) => {
-            if (!clicks.clickableElement(element.findOne(3000))) {
+            value1 && value1.click()
+
+            if (!text('兼职详情').exists()) {
                 return false
             }
 
-            sleeps.s5()
-            swipes.down()
-
-            sleeps.s5()
-            swipes.down()
-
-            sleeps.s5()
-            swipes.down()
+            for (var j = 0; j < 10; j++) {
+                sleeps.s3()
+                swipes.down()
+            }
 
             exists.backToElement(text('赚零花'))
             swipes.down()
@@ -2247,15 +2245,13 @@ currentAPP.taskMP = function () {
 
 
         // 答题赚
-        var element = className('android.widget.Image').depth(9).indexInParent(1)
-        element.find().forEach((value1, key1) => {
-            if (key1 === 1) {
-                clicks.clickableElement(value1)
-            }
-        })
+        element = className('android.widget.Image').depth(6).indexInParent(1)
+        if (element.find().size() > 0) {
+            element.findOne(3000).click()
+        }
         sleeps.s10()
 
-        var element = text('答题奖励：')
+        var element = text('答题奖励：50金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()
@@ -2268,16 +2264,16 @@ currentAPP.taskMP = function () {
         }
 
         element.find().forEach((value1, key1) => {
-            if (!clicks.textParent('答题奖励：')) {
+            if (!clicks.textParent('答题奖励：50金币')) {
                 return false
             }
 
-            var element = className('android.view.View').depth(10).indexInParent(0).textStartsWith('A、')
-            if (!clicks.clickableElement(element)) {
+            var element = className('android.view.View').textStartsWith('A、')
+            if (!clicks.element(element.findOne(3000))) {
                 return false
             }
 
-            if (!clicks.clickableElement(text('提交'))) {
+            if (!clicks.element(text('提交').findOne(3000))) {
                 return false
             }
 
@@ -2296,12 +2292,12 @@ currentAPP.taskMP = function () {
                     others.back()
                 }
 
-                if (!clicks.backToElement(text('提交'))) {
+                if (!clicks.backToElement(text('提交').findOne(3000))) {
                     return false
                 }
             }
 
-            if (clicks.clickableElement(text('继续答题'))) {
+            if (clicks.clickableElement(text('继续答题').findOne(3000))) {
                 return false
             } else {
                 others.back()
@@ -2313,31 +2309,32 @@ currentAPP.taskMP = function () {
         if (!exists.backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))) {
             return false
         }
-        var element = className('android.widget.Image').depth(9).indexInParent(2)
-        element.find().forEach((value1, key1) => {
-            if (key1 === 1) {
-                clicks.clickableElement(value1)
-            }
-        })
+
+        element = className('android.widget.Image').depth(6).indexInParent(2)
+        if (element.find().size() > 0) {
+            element.findOne(3000).click()
+        }
         sleeps.s10()
 
-        var element = className('android.view.View').text('领100金币')
+        var element = className('android.view.View').text('领50金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()
         element.find().size()
         sleeps.s1()
         element.find().forEach(() => {
-            if (!clicks.clickableElement(className('android.view.View').text('领100金币').findOne(3000))) {
+            if (!clicks.element(className('android.view.View').text('领50金币').findOne(3000))) {
                 return false
             }
 
             var element = className('android.view.View').text('是的')
-            if (!clicks.clickableElement(element)) {
+            if (!clicks.element(element.findOne(3000))) {
                 return false
             }
 
-            if (!clicks.clickableElement(text('提交'))) {
+            swipes.down()
+
+            if (!clicks.element(text('提交').findOne(3000))) {
                 return false
             }
 
@@ -2356,15 +2353,16 @@ currentAPP.taskMP = function () {
                     others.back()
                 }
 
-                if (!clicks.backToElement(text('提交'))) {
+                if (!clicks.backToElement(text('提交').findOne(3000))) {
                     return false
                 }
             }
 
-            if (!exists.backToElement(text('领100金币'))) {
+            if (!exists.backToElement(text('领50金币'))) {
                 return false
             }
         })
+
 
         return false
     }

@@ -105,7 +105,11 @@ swipes.scrollDown3 = function () {
  * 滑动-下到上
  */
 swipes.down = function () {
-    swipe(500, 1600, 500, 600, 500)
+    if (device.height < 1600) {
+        swipe(500, device.height - 200, 500, 600, 500)
+    } else {
+        swipe(500, 1600, 500, 600, 500)
+    }
     sleep(1 * 1000)
 }
 
@@ -146,21 +150,21 @@ swipes.down2200 = function () {
  * @param {string} element
  * @returns {boolean}
  */
- swipes.downUntilElementShow = function (element) {
-     if (!element || !element.exists()) {
-         return false
-     }
+swipes.downUntilElementShow = function (element) {
+    if (!element || !element.exists()) {
+        return false
+    }
 
-     for (var i = 0; i < 10; i++) {
-         var elementY = element.findOne(3000).bounds().centerY()
-         if (200 < elementY && elementY < (device.height - 200)) {
-             return true
-         }
+    for (var i = 0; i < 10; i++) {
+        var elementY = element.findOne(3000).bounds().centerY()
+        if (200 < elementY && elementY < (device.height - 200)) {
+            return true
+        }
 
-         swipes.down()
-     }
+        swipes.down()
+    }
 
-     return false
- }
+    return false
+}
 
 module.exports = swipes
