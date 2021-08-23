@@ -3500,6 +3500,8 @@ function getAccountCount() {
 function switchAccount() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
+    others.launch(currentAPP.PACKAGE_NAME)
+
     if (idContains('update_cancel_tv').exists()) {
         clicks.element(idContains('update_cancel_tv'))
     }
