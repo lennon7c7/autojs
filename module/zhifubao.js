@@ -3466,6 +3466,7 @@ currentAPP.taskMP = function () {
 function getAccountCount() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
+    others.clear()
     status0 = others.launch(currentAPP.PACKAGE_NAME)
     if (!status0) {
         return 1
