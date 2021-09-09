@@ -414,49 +414,33 @@ currentAPP.taskMP = function () {
     function taskTTZB() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-        MP_TITLE = '签到赢豪礼'
-        MP_APPID = '2021002109688508&page=pages%2Fsign%2Findex'
+        MP_TITLE = '天天直播'
+        MP_APPID = '2021002109688508'
 
         if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
             startActivity()
         }
 
-        if (clicks.textIfExists('立即签到')) {
-            clicks.xy(device.width / 2, device.height / 2)
-            sleeps.s15()
-        }
+        clicks.textIfExists('跳过')
 
-        swipes.down()
+        className('android.view.View').depth(7).indexInParent(3).find().size()
+        sleeps.s1()
+        className('android.view.View').depth(7).indexInParent(3).find().size()
+        sleeps.s1()
+        for (var i = 0; i < 10; i++) {
+            clicks.elementWidthHeight(className('android.view.View').depth(7).indexInParent(3), 540, 243)
 
-        var element = className('android.widget.Button').depth(15).indexInParent(0)
-        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
-        element.find().size()
-        sleeps.s1()
-        element.find().size()
-        sleeps.s1()
-        element.find().forEach((value1, key1) => {
-            if (!value1.text()) {
+            if (!clicks.text('做任务拿奖励')) {
                 return
             }
-
-            // 过滤任务: 不要金币，只要集分宝
-            // if (value1.parent().parent().child(0).child(0).text() !== '+1') {
-            //     return
-            // }
-
-            // 过滤任务: 已完成的
-            if (value1.text() === '去看看') {
-                return
-            }
-
-            clicks.clickableElement(element.findOne(3000))
 
             maybeMore()
 
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-        })
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10to20()
+        }
 
-        others.clear()
+        exitActivity()
 
         return false
     }
@@ -1611,7 +1595,7 @@ currentAPP.taskMP = function () {
      * 不是单纯的看广告，比如关注、签到等
      */
     function maybeMore() {
-        sleeps.s5()
+        sleeps.s5to10()
 
         text('浏览找红包').find().size()
         sleeps.s1()
@@ -1674,7 +1658,7 @@ currentAPP.taskMP = function () {
     function backToElement(element) {
         // 如果元素不存在，就重新打开小程序
         app.startActivity({data: currentAPP.MP_URL + MP_APPID})
-        sleeps.s3()
+        sleeps.s5to10()
 
         if (exists.backToElement(element)) {
             clicks.textIfExists('取消')
