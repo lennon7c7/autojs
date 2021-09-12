@@ -445,13 +445,155 @@ currentAPP.taskMP = function () {
         return false
     }
 
+    function taskCJZB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '超级直播'
+        MP_APPID = '2021001168621237'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            startActivity()
+        }
+
+        clicks.textIfExists('跳过')
+        clicks.textIfExists('跳过')
+
+        className('android.view.View').depth(7).indexInParent(3).find().size()
+        sleeps.s1()
+        className('android.view.View').depth(7).indexInParent(3).find().size()
+        sleeps.s1()
+        for (var i = 0; i < 10; i++) {
+            clicks.element(className('android.view.View').depth(7).indexInParent(3).findOne(3000))
+
+            if (!clicks.element(className('android.view.View').depth(12).indexInParent(3).findOne(3000))) {
+                return
+            }
+
+            maybeMore()
+
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10to20()
+        }
+
+        exitActivity()
+
+        return false
+    }
+
+    function taskQMZB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '全民直播'
+        MP_APPID = '2021002127659648'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            startActivity()
+        }
+
+        clicks.textIfExists('跳过')
+        clicks.textIfExists('跳过')
+
+        className('android.view.View').depth(8).indexInParent(1).find().size()
+        sleeps.s1()
+        className('android.view.View').depth(8).indexInParent(1).find().size()
+        sleeps.s1()
+        for (var i = 0; i < 10; i++) {
+            clicks.element(className('android.view.View').depth(8).indexInParent(1).find()[2])
+
+            if (!clicks.text('做任务拿奖励')) {
+                return
+            }
+
+            maybeMore()
+
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10to20()
+        }
+
+        exitActivity()
+
+        return false
+    }
+
+    function taskAZB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '爱直播'
+        MP_APPID = '2021002127629756'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            startActivity()
+        }
+
+        clicks.textIfExists('跳过')
+        clicks.textIfExists('跳过')
+
+        className('android.view.View').depth(8).indexInParent(1).find().size()
+        sleeps.s1()
+        className('android.view.View').depth(8).indexInParent(1).find().size()
+        sleeps.s1()
+        for (var i = 0; i < 10; i++) {
+            clicks.element(className('android.view.View').depth(8).indexInParent(1).find()[2])
+
+            if (!clicks.text('做任务拿奖励')) {
+                return
+            }
+
+            maybeMore()
+
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10to20()
+        }
+
+        exitActivity()
+
+        return false
+    }
+
+    function taskQZB() {
+        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+        MP_TITLE = '趣直播'
+        MP_APPID = '2021002106640001'
+
+        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
+            startActivity()
+        }
+
+        clicks.textIfExists('跳过')
+        clicks.textIfExists('跳过')
+
+        className('android.view.View').depth(7).indexInParent(1).find().size()
+        sleeps.s1()
+        className('android.view.View').depth(7).indexInParent(1).find().size()
+        sleeps.s1()
+        for (var i = 0; i < 10; i++) {
+            clicks.element(className('android.view.View').depth(7).indexInParent(1).findOne(3000))
+
+            if (className('android.view.View').depth(12).indexInParent(3).find().size() === 2 && !clicks.element(className('android.view.View').depth(12).indexInParent(3).find()[1])) {
+                return
+            } else if (!clicks.element(className('android.view.View').depth(12).indexInParent(3).findOne(3000))) {
+                return
+            }
+
+            maybeMore()
+
+            app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+            sleeps.s10to20()
+        }
+
+        exitActivity()
+
+        return false
+    }
+
     function taskYLKF() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
         MP_TITLE = '医鹿康福'
         MP_APPID = '2021002102665060'
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s15()
 
 
@@ -464,7 +606,7 @@ currentAPP.taskMP = function () {
         MP_TITLE = '芭芭农场'
         MP_APPID = '68687599'
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s15()
 
         clicks.xy(device.width / 2 + 250, device.height / 2 + 230)
@@ -1657,7 +1799,7 @@ currentAPP.taskMP = function () {
      */
     function backToElement(element) {
         // 如果元素不存在，就重新打开小程序
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s5to10()
 
         if (exists.backToElement(element)) {
@@ -1827,7 +1969,7 @@ currentAPP.taskMP = function () {
         MP_TITLE = '通讯录'
         MP_APPID = '20000166'
 
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s15()
 
         if (!clicks.centerXyByText('生活号')) {
@@ -1890,7 +2032,7 @@ currentAPP.taskMP = function () {
      */
     function backToElement(element) {
         // 如果元素不存在，就重新打开小程序
-        app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
         sleeps.s5to10()
 
         if (exists.backToElement(element)) {
@@ -3154,6 +3296,12 @@ currentAPP.taskMP = function () {
     // return
 
     // jifenbao
+    taskAZB()
+    taskCJZB()
+    taskQMZB()
+    taskQZB()
+    taskTTZB()
+
     taskDDZ()
     taskRRZ()
     taskDDLB()
@@ -3179,7 +3327,6 @@ currentAPP.taskMP = function () {
     taskJXB()
     taskCJXQ()
     taskNNDK()
-    taskTTZB()
     taskCJYM()
     taskKLB()
     taskJBXQ()
@@ -3276,7 +3423,7 @@ function switchAccount() {
  */
 function startActivity() {
     others.clear()
-    app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+    app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
     sleeps.s30to35()
 
     if (text('获取你的位置信息').exists() && text('拒绝').exists() && text('总是保持以上选择，不再询问').exists()) {
@@ -3297,7 +3444,7 @@ function startActivity() {
  * 退出Activity
  */
 function exitActivity() {
-    app.startActivity({data: currentAPP.MP_URL + MP_APPID})
+    app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
     sleeps.s10to20()
     others.clear()
 }
