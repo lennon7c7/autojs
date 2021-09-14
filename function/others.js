@@ -318,12 +318,8 @@ others.clear = function () {
     home()
     sleeps.s3()
 
-    if (!recents()) {
-        toastLog('fail: clear')
-        return false
-    }
-
-    sleep(2000)
+    recents()
+    sleeps.s3()
 
     if (id('clear_all').exists()) {
         clicks.centerXyById('clear_all')
@@ -340,6 +336,8 @@ others.clear = function () {
     if (id('stack_clear_all').exists()) {
         clicks.centerXyById('stack_clear_all')
     }
+
+    sleeps.s5to10()
 
     return true
 }
