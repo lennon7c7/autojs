@@ -13,6 +13,83 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
 currentAPP.VERSION = ''
 currentAPP.APK = ''
 
+
+/**
+ * 成就中心
+ */
+function taskLife() {
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.fqgCv8Z?sm=dcc4ef'
+    app.startActivity({ data: MP_URL })
+    sleeps.s20()
+
+    clicks.element(textEndsWith('/100成就点'))
+    sleeps.s3()
+
+
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+
+    if (text('抽套装').exists()) {
+        clicks.text('抽套装')
+        sleeps.s10()
+        clicks.textIfExists('每12小时免费抽 免费抽一次')
+
+        others.back()
+        clicks.textIfExists('领取奖励')
+    }
+
+    if (text('收阳光').exists()) {
+        clicks.text('收阳光')
+        sleeps.s10()
+        clicks.textIfExists('立即去收')
+        clicks.xy(550, 641)
+        clicks.xy(550, 850)
+        clicks.xy(450, 1000)
+        clicks.xy(700, 1000)
+
+        // 立即领取升级阳光
+        clicks.xy(device.width / 2, 1700)
+
+        others.back()
+        clicks.textIfExists('领取奖励')
+    }
+
+    if (text('去消除').exists()) {
+        clicks.text('去消除')
+        sleeps.s10()
+
+        clicks.xy(device.width / 2, device.height - 100)
+        sleeps.s5()
+
+        clicks.xy(device.width / 2, device.height - 300)
+
+        clicks.xy(device.width / 2, device.height - 800)
+    }
+
+
+    if (text('去下单').exists()) {
+        // 淘宝 - 自动下0元单
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.fLsfsEG?sm=0ad556'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+
+        clicks.xy(device.width / 2, device.height / 2)
+        sleeps.s10()
+
+        clicks.centerXyByText('同意')
+        sleeps.s10()
+
+        clicks.centerXyByText('免费领取')
+
+        others.back4()
+        clicks.textIfExists('领取奖励')
+    }
+}
+
 // 任务-逛店铺
 function taskShop() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
@@ -486,12 +563,9 @@ currentAPP.start = function () {
         }
 
 
-        status0 = taskHelpFriend()
-        status3 = taskShop()
-        status1 = taskMoneyPower()
-        status2 = switchAccount()
+        status0 = taskLife()
 
-        if (status0 && status3 && status1 && status2) {
+        if (status0) {
             return true
         }
 
