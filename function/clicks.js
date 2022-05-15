@@ -322,44 +322,44 @@ clicks.rectByTextOrDesc = function (myString) {
  * @param {string} myString
  * @returns {boolean}
  */
- clicks.text = function (myString) {
-     if (myString === '') {
-         log('---------- fail: param ', myString, ' none exist ----------')
-         return false
-     }
+clicks.text = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------')
+        return false
+    }
 
-     if (!text(myString).exists()) {
-         log('---------- fail: element ', myString, ' none exist ----------')
-         return false
-     }
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------')
+        return false
+    }
 
-     text(myString).click()
-     sleep(3 * 1000)
+    text(myString).click()
+    sleep(3 * 1000)
 
-     return true
- }
+    return true
+}
 
 /**
  * 文本的父元素
  * @param {string} myString
  * @returns {boolean}
  */
- clicks.textParent = function (myString) {
-     if (myString === '') {
-         log('---------- fail: param ', myString, ' none exist ----------')
-         return false
-     }
+clicks.textParent = function (myString) {
+    if (myString === '') {
+        log('---------- fail: param ', myString, ' none exist ----------')
+        return false
+    }
 
-     if (!text(myString).exists()) {
-         log('---------- fail: element ', myString, ' none exist ----------')
-         return false
-     }
+    if (!text(myString).exists()) {
+        log('---------- fail: element ', myString, ' none exist ----------')
+        return false
+    }
 
-     text(myString).findOne(3000).parent().click()
-     sleep(3 * 1000)
+    text(myString).findOne(3000).parent().click()
+    sleep(3 * 1000)
 
-     return true
- }
+    return true
+}
 
 /**
  * 文本-元素存在则点击
@@ -631,6 +631,48 @@ clicks.nextSibilingsNode = function (markElement, clickElement) {
 
     clickElementKeyOutput.click()
     sleeps.s3()
+
+    return true
+}
+
+/**
+ * 点击下面第x个同级元素的子元素
+ * @param {string} markElement 可识别的标记元素
+ * @param {int} nextKey 第x个同级元素的偏移（距离标记元素）
+ * @param {string} clickElement 被点击的元素
+ * @returns {boolean}
+ */
+clicks.nextXSibilingsNode = function (markElement, nextKey, clickElement) {
+    if (markElement.find().size() === 0 || clickElement.find().size() === 0) {
+        return false
+    }
+
+    var list = markElement.findOne(3000).parent()
+    var clickElementParentOutput
+    list.children().forEach(function (value, key) {
+        if (value.text() === markElement.findOne(3000).text()) {
+            clickElementParentOutput = list.child(key + nextKey)
+            return true
+        }
+    })
+
+    if (!clickElementParentOutput) {
+        return false
+    }
+
+    if (clickElementParentOutput.text() === clickElement.findOne(3000).text()) {
+        clickElementParentOutput.click()
+        sleeps.s3()
+        return true
+    }
+
+    clickElementParentOutput.children().forEach(function (value) {
+        if (value.text() === clickElement.findOne(3000).text()) {
+            value.click()
+            sleeps.s3()
+            return true
+        }
+    })
 
     return true
 }
