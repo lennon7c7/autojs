@@ -11,6 +11,61 @@ currentAPP.VERSION = '10.1.99.7000'
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk'
 currentAPP.MP_URL = 'alipays://platformapi/startapp?appId='
 
+// 芭芭农场
+function taskBBNC() {
+    stepShareHelp()
+
+    // lennon1991
+    MP_URL = 'alipays://platformapi/startapp?appId=68687599'
+    app.startActivity({ data: MP_URL })
+    sleeps.s20()
+
+    clicks.xy(device.width / 2 + 300, device.height - 300)
+
+    if (text('逛逛淘宝芭芭农场 (0/1)').exists() && clicks.textIfExists('去逛逛')) {
+        sleeps.s10()
+        MP_URL = 'alipays://platformapi/startapp?appId=68687599'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+    }
+
+    for (var i = 0; i < 3; i++) {
+        clicks.textIfExists('领取')
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.textIfExists('去完成')) {
+            for (var k = 0; k < 10; k++) {
+                swipes.down()
+                sleeps.s2to3()
+            }
+            others.back()
+        }
+    }
+
+    // 助力
+    function stepShareHelp() {
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f714080ldeefiyqtepew6c'
+        app.startActivity({ data: MP_URL })
+        sleeps.s3()
+        clicks.textIfExists('打开')
+        sleeps.s10()
+        clicks.textIfExists('为Ta助力')
+
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f717078v6mxyljgl2gcc69'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('为Ta助力')
+
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f717384gaipvethzkvgq7b'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('为Ta助力')
+
+        others.clear()
+    }
+}
+
 /**
  * 任务-签到
  */
@@ -3463,6 +3518,7 @@ currentAPP.start = function () {
             }
 
 
+            taskBBNC()
             status0 = taskCheckin()
             if (status0) {
                 status0 = task15s()
