@@ -224,6 +224,7 @@ function taskLife() {
         sleeps.s10()
 
         clicks.centerXyByText('今日签到')
+        clicks.xy(400, 700)
 
         others.back()
         clicks.textIfExists('领取奖励')
