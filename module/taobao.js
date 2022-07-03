@@ -230,23 +230,23 @@ function taskLife() {
         clicks.textIfExists('领取奖励')
     }
 
-    if (text('去下单').exists()) {
-        // 淘宝 - 自动下0元单
-        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fminiapp-biz%2Fqrcode%2Findex.html%3F_ariver_appid%3D3000000059554605%26ad_type%3D1.0%26x_object_type%3Dminiapp%26adScene%3Dxxl-news-pop%26hd_ad_includeIds%3D126087874%26sp_abtk%3Dcommon_1115_miniapp_commonInfo%26suid%3D5e757595-ddb2-47a9-b941-35444b33f7ee%26prismChannel%3Dpoplayer%26adTrace%3D272326504420001__user_define__21207b9016482542051316081e563f__I__C__0%26_mp_code%3Dtb%26bxsign%3Dscdk8OFIxRqfHtCG16Dbju-GH169kzt7kD7etPRCIReNfLmkxJJYTMqSZPqosS-JXhbgIRU-ZnPZH7h3e0-Evvsmmiw_U0Hn5qEU0rTxU3Uekpx0wUw58YZnJRK_nNa-YG6%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26shareurl%3Dtrue%26share_crt_v%3D1%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.1115_miniapp%26app%3Dchrome%26cpp%3D1%26settleTime%3D0%26epid%3Dmm_12852562_1778064_110736900105%26clickid%3DA17_24435877416482542137673135%26transition%3Dpresent%26shortTfs%3D149dff41288eea4dfcc913cc7c687c23%26spm%3D0.0.c1.d1%26ffs%3Dhttps%253A%252F%252Fifsk2.tanx.com%252Fffsback%253Fname%253Dminteract%2526pid%253Dmm_12852562_1778064_110736900105%2526pvid%253D4b9e1821d37fe700623e5cfd26139e65%2526biz%253DVfBUCgMKATESEgj9ufmRBjIKbGVubm9uMTk5MRo6CjgKJTI3MjMyNjUwNDQyMDAwMV8zMzAwMTg5MDYyXzMzMDMxMzk3NzIYwuWPPCoBSTIBQ5ABwuWPPA__%26un_site%3D0%26sourceType%3DminiApp%26x_miniapp_id%3D3000000059554605%26short_name%3Dh.fr9fiA3%26page%3Dpages%252Findex%252Findex%26settleType%3DafterTime'
-        app.startActivity({ data: MP_URL })
-        sleeps.s10()
-
-        clicks.xy(device.width / 2, device.height / 2)
-        sleeps.s10()
-
-        clicks.centerXyByText('同意')
-        sleeps.s10()
-
-        clicks.centerXyByText('免费领取')
-
-        others.back4()
-        clicks.textIfExists('领取奖励')
-    }
+    // if (text('去下单').exists()) {
+    //     // 淘宝 - 自动下0元单
+    //     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fminiapp-biz%2Fqrcode%2Findex.html%3F_ariver_appid%3D3000000059554605%26ad_type%3D1.0%26x_object_type%3Dminiapp%26adScene%3Dxxl-news-pop%26hd_ad_includeIds%3D126087874%26sp_abtk%3Dcommon_1115_miniapp_commonInfo%26suid%3D5e757595-ddb2-47a9-b941-35444b33f7ee%26prismChannel%3Dpoplayer%26adTrace%3D272326504420001__user_define__21207b9016482542051316081e563f__I__C__0%26_mp_code%3Dtb%26bxsign%3Dscdk8OFIxRqfHtCG16Dbju-GH169kzt7kD7etPRCIReNfLmkxJJYTMqSZPqosS-JXhbgIRU-ZnPZH7h3e0-Evvsmmiw_U0Hn5qEU0rTxU3Uekpx0wUw58YZnJRK_nNa-YG6%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26shareurl%3Dtrue%26share_crt_v%3D1%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.1115_miniapp%26app%3Dchrome%26cpp%3D1%26settleTime%3D0%26epid%3Dmm_12852562_1778064_110736900105%26clickid%3DA17_24435877416482542137673135%26transition%3Dpresent%26shortTfs%3D149dff41288eea4dfcc913cc7c687c23%26spm%3D0.0.c1.d1%26ffs%3Dhttps%253A%252F%252Fifsk2.tanx.com%252Fffsback%253Fname%253Dminteract%2526pid%253Dmm_12852562_1778064_110736900105%2526pvid%253D4b9e1821d37fe700623e5cfd26139e65%2526biz%253DVfBUCgMKATESEgj9ufmRBjIKbGVubm9uMTk5MRo6CjgKJTI3MjMyNjUwNDQyMDAwMV8zMzAwMTg5MDYyXzMzMDMxMzk3NzIYwuWPPCoBSTIBQ5ABwuWPPA__%26un_site%3D0%26sourceType%3DminiApp%26x_miniapp_id%3D3000000059554605%26short_name%3Dh.fr9fiA3%26page%3Dpages%252Findex%252Findex%26settleType%3DafterTime'
+    //     app.startActivity({ data: MP_URL })
+    //     sleeps.s10()
+    //
+    //     clicks.xy(device.width / 2, device.height / 2)
+    //     sleeps.s10()
+    //
+    //     clicks.centerXyByText('同意')
+    //     sleeps.s10()
+    //
+    //     clicks.centerXyByText('免费领取')
+    //
+    //     others.back4()
+    //     clicks.textIfExists('领取奖励')
+    // }
 }
 
 // 任务-逛店铺
