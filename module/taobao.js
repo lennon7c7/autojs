@@ -18,7 +18,7 @@ currentAPP.APK = ''
 function taskShouJinBi() {
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s10()
 
     if (!className('android.widget.Button').depth(13).indexInParent(0).findOne(3000)) {
@@ -34,11 +34,11 @@ function taskShouJinBi() {
 
 // 任务-赚金币
 function taskZhuanJinBi() {
-     // 淘宝 - 金币小镇
-     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-     app.startActivity({ data: MP_URL })
-     sleeps.s10()
- 
+    // 淘宝 - 金币小镇
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
+    app.startActivity({data: MP_URL})
+    sleeps.s10()
+
     if (!clicks.element(className('android.widget.Button').depth(11).indexInParent(3))) {
         return false
     }
@@ -153,7 +153,7 @@ function taskZhuanJinBi() {
  */
 function taskLife() {
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/achievement/nfcFHNzbzbAcJ8CBm3Am?disableNav=YES&from=share&sourceType=other&suid=d25bf0e4-aeda-4b2f-b0e6-0c68b94ed547&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1652493645168.DingTalk.TBLife-1&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_TBLife-1_commonInfo&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1392565422159&short_name=h.fIX1X0P&app=chrome#/'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s20()
 
     clicks.element(textEndsWith('/100成就点'))
@@ -255,7 +255,7 @@ function taskShop() {
 
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s10()
 
     if (!className('android.widget.Button').depth(12).indexInParent(0).findOne(3000)) {
@@ -295,7 +295,7 @@ function taskHelpFriend() {
 
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s10()
 
     clicks.textIfExists('签到领金币')
@@ -352,7 +352,7 @@ function taskMoneyPower() {
 
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s10()
 
     if (!clicks.element(className('android.widget.Button').depth(11).indexInParent(3))) {
@@ -720,6 +720,96 @@ function switchAccount() {
     return true
 }
 
+// 斗地主
+function taskDDZ() {
+    for (var i = 0; i < 10; i++) {
+        // 淘宝 - 金币小镇
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
+        app.startActivity({data: MP_URL})
+        sleeps.s10()
+
+        clicks.element(textStartsWith('斗地主'))
+        sleeps.s10()
+
+        if (i === 9) {
+            sleeps.s180to190()
+            for (var j = 0; j < 2; j++) {
+                for (var k = 0; k < 4; k++) {
+                    clicks.textIfExists('领取')
+                }
+
+                clicks.textIfExists('去抽奖')
+                sleeps.s10()
+            }
+
+            stepSearch()
+
+            // 做任务
+            clicks.xy(800, 2000)
+            for (var j = 0; j < 2; j++) {
+                clicks.element(className('android.widget.Button').text('').findOne(3000))
+            }
+
+            for (var j = 0; j < 3; j++) {
+                clicks.textIfExists('领取')
+            }
+
+            for (var j = 0; j < 3; j++) {
+                clicks.textIfExists('领取奖励')
+            }
+
+            // stepShareHelp()
+        }
+
+        others.clear()
+        sleeps.s180to190()
+
+        if (i <= 5) {
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Fdoudizhu%2FsX78ziQH2ar7ax6DKZF2-doudizhu'
+            app.startActivity({data: MP_URL})
+            sleeps.s10()
+
+            clicks.xy(800, 2000)
+            for (var j = 0; j < 2; j++) {
+                clicks.element(className('android.widget.Button').text('').findOne(3000))
+            }
+
+            for (var j = 0; j < 3; j++) {
+                clicks.textIfExists('领取')
+            }
+
+            for (var j = 0; j < 3; j++) {
+                clicks.textIfExists('领取奖励')
+            }
+
+            others.clear()
+        }
+    }
+
+    // 搜索
+    function stepSearch() {
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=http%3A%2F%2Fs.m.taobao.com%2Fh5%3F_navigation_params%3D%257B%2522needdismiss%2522%253A%25220%2522%252C%2522animated%2522%253A%25220%2522%252C%2522needpoptoroot%2522%253A%25220%2522%257D%26ad_type%3D1.0%26index%3D1%26sp_abtk%3Dcommon_shoutaosearch_commonInfo%26suid%3Ddf7ac064-9e95-402e-9e03-d7696ebd4552%26q%3D%25E6%25B7%2598%25E5%25AE%259D%25E6%2596%2597%25E5%259C%25B0%25E4%25B8%25BB%26spm%3Da2141.1.searchbar.searchbox%26__mp_source%3Dchat%26layeredSrp%3Dtrue%26search_action%3Dinitiative%26un_site%3D0%26sugg%3D_1_1%26sourceType%3Dother%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26from%3Dnt_history%26scm%3D1007.home_topbar.searchbox.d%26share_crt_v%3D1%26datasource_token%3D1651413398851%26sourceType%3Dother%26suid%3Df008c708-a1c5-4c84-998a-5fb7b8610568%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1651413387411.Copy.shoutaosearch%26sp_tk%3D5a2Q5Lul5b%252BD5aSa5pyJ5Zyw552A5Lmf552A5Liq5aW9%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fI5HWKY%26app%3Dmacos_safari'
+        app.startActivity({data: MP_URL})
+        sleeps.s10()
+    }
+
+    // 助力
+    function stepShareHelp() {
+        // lennon1991
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.frmiqIl'
+
+        // 7181-2
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.fKpMgsQ'
+        app.startActivity({data: MP_URL})
+        sleeps.s10()
+
+        // 4306-1
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.frpCUkl'
+        app.startActivity({data: MP_URL})
+        sleeps.s10()
+    }
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -736,6 +826,7 @@ currentAPP.start = function () {
         taskShouJinBi()
         taskZhuanJinBi()
         status0 = taskLife()
+        taskDDZ()
 
         if (status0) {
             return true
