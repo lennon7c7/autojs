@@ -897,6 +897,96 @@ function taskTBRS() {
     }
 }
 
+// 消消乐
+function taskXXX() {
+    stepFormHomePage()
+    stepSignin()
+    stepRandomPage()
+    stepGetCoin()
+
+    // 领取消消币
+    function stepGetCoin() {
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fzelda%2Fxxl%2Findex_tbqyy.html'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+
+        clicks.xy(200, 400)
+        clicks.xy(800, 1700)
+    }
+
+    // 浏览页面
+    function stepRandomPage() {
+        // coin
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Ftmfarm%2Fsrhtml%3FadScene%3Dxxl-earn-coin%26adTrace%3D125400501040001__k2feeds__21203fa116521068841168631ed61c__J__5__0%26deliveryId%3D13592%26epid%3Dmm_12852562_1778064_110740950032%26etype%3D3%26eurl%3Dhttp%253A%252F%252Fclick.mz.simba.taobao.com%252Ftecpm%253Feadt%253D%2526e%253DuwExL1wAgMsSXnZCiezO6hsQmLP5zomMbtlPF%25252FOGxPwxaQSJCXwwsP7UXCcF9qbcCfoMQoeL%25252F4jd0tK6oUlrbwLky8iRKNq2LkfU0NcJTpOE87OgIF%25252B%25252Bn1todFekq6toaMlY95NFw8Y3y69E8O9AsH6YktNHismgKsN%25252FFXO1JcovyiTBBXW0JlY75Z9%25252BcHnFWjKZLms0NIQareEDsmnBqQZrAQNKNWSnjyY6z097DvtsEJPOhDBUgX6vzzv6GCHbrzYXkfmEZ9ECOtbDrEf%25252FcnZhQDHKGVsDBbUDSvx64EMwTD3UEHhquq0%25252FVwS40ZvmEX4G5TfzAIHgAwE4Dbc41yEXBaXGaMNxA%25252FFcL%25252B6Q06RYfz4I%25252FH2M70iYP63hN2dLIw8RGE%25252F9zWCLZTsE%25252F3NwmCrlbjdOkXvmPGK%25252FVb%25252FrvOOIJGgsVizHVJvSUiKQzxnt6ytVNPQ3hbhJhJR6H5pRysMiPJ87JNaY3AiJHAsUFOnJR1pkE07fMlPIIl%25252BoyIg29H7JvX8%25252BH38MzpyWykoySv%25252FweN83QqN2Du8FnL9SN%25252FGVeAuYSmOx98jAYhrohaRtd2b7EzZrXO06b4ogNKFP3v%25252F8WI732Uv7VIZlU1wz5BWQFgRgazTUq0B4agAfsNe%25252Fg8WbVgnQ4QJXVKd79P53aRsQmLP5zomM%2526u%253Dhttps%25253A%25252F%25252Fshop.m.taobao.com%25252Fshop%25252Fshop_index.htm%25253Fshop_id%25253D113925482%2526k%253D673%26ffs%3D%26fromToken%3DrdOQnjesoKr1EQbvIaJFn26fgUBUPUrUn%26hd_from_id%3D100092%26implId%3Dcloudsail_385_125400501040001_13592_0%26jumpfrom%3Dgame%26pid%3D431508_1007%252C431510_1007%26sappid%3D%26sceneId%3D1813%26settleTime%3D0%26settleType%3DafterNoSettle%26shortTfs%3D2b8a89565385b6a4a3a76dbf07c73f45%26spm%3Dtbaxc.home.0.i0.ecb8WzkjWzkj2X%26xxlTaskId%3D100000013592%26xxlTaskStatus%3D0%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3D50ee5b68-7d2c-486c-b8d3-775664c14412%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652105888133.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fr9cKiy%26app%3Dchrome&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndd8e6ba_1652107163529&slk_t=1652107167698&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        // 15
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fhuodong.taobao.com%2Fwow%2Fa%2Fact%2Ftao%2Fdailygroup%2F2165%2Fwupr%3FdeliveryId%3D22442%26fromToken%3DqgzenP5cwMdRBovRFXWf9EnSVUKUPU9U6%26hd_from_id%3D100092%26implId%3Dother_143_404022_22442_0%26jumpfrom%3Dgame%26sappid%3D%26sceneId%3D1188%26spm%3Dtbaxc.home.0.i0.408dV55qV55q5o%26wh_pid%3Ddaily-262876%26xxlTaskId%3D100000022442%26xxlTaskStatus%3D0%26xxltag%3Dx7%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3D18a21a0d-e700-4b5c-8c17-1e7e31367386%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fs8JNjj%26app%3Dchrome%26slk_gid%3Dgid_er_normal&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndea3da6_1652107607961&slk_t=1652107610030&slk_gid=gid_er_normal&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        // 30
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fhuodong.taobao.com%2Fwow%2Fa%2Fact%2Ftao%2Fdailygroup%2F2165%2Fwupr%3FdeliveryId%3D22443%26fromToken%3Dv57LnBeCadEqAxZRHOxc9j1FrUlUvUxUL%26hd_from_id%3D100092%26implId%3Dother_143_404022_22443_0%26jumpfrom%3Dgame%26sappid%3D%26sceneId%3D1188%26spm%3Dtbaxc.home.0.i0.408dV55qV55q5o%26wh_pid%3Ddaily-262876%26xxlTaskId%3D100000022443%26xxlTaskStatus%3D0%26xxltag%3Dx7%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3Dd736461b-25f2-4213-b1c0-f924efb07267%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fr9WGV9%26app%3Dchrome%26slk_gid%3Dgid_er_normal&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndfb2bf9_1652107660337&slk_t=1652107662465&slk_gid=gid_er_normal&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        // 60
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fhuodong.taobao.com%2Fwow%2Fa%2Fact%2Ftao%2Fdailygroup%2F2165%2Fwupr%3FdeliveryId%3D22444%26fromToken%3DMPplgBasEgDX6vNBiPYcYebfbU6UPUpU2%26hd_from_id%3D100092%26implId%3Dother_143_404022_22444_0%26jumpfrom%3Dgame%26sappid%3D%26sceneId%3D1188%26spm%3Dtbaxc.home.0.i0.408dV55qV55q5o%26wh_pid%3Ddaily-262876%26xxlTaskId%3D100000022444%26xxlTaskStatus%3D0%26xxltag%3Dx7%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3D752948ae-1a22-47b3-89a5-e511436c159d%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fs8rncJ%26app%3Dchrome%26slk_gid%3Dgid_er_normal&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndde70d4_1652107739022&slk_t=1652107741116&slk_gid=gid_er_normal&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        sleeps.s60to70()
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Ftmfarm%2Fsrhtml%3FadScene%3Dxxl-task-list%26adTrace%3D125400501040001__k2feeds__212d26b516521077829871456ea0eb__J__5__0%26deliveryId%3D10165%26epid%3Dmm_12852562_1778064_110388950288%26etype%3D3%26eurl%3Dhttp%253A%252F%252Fclick.mz.simba.taobao.com%252Ftecpm%253Feadt%253D%2526e%253DuwExL1wAgMsSXnZCiezO6hsQmLP5zomMbtlPF%25252FOGxPwxaQSJCXwwsP7UXCcF9qbcCfoMQoeL%25252F4jd0tK6oUlrbwLky8iRKNq2LkfU0NcJTpOE87OgIF%25252B%25252Bn1todFekq6toaMlY95NFw8Y3y69E8O9AsH6YktNHismgKsN%25252FFXO1JcovyiTBBXW0JlY75Z9%25252BcHnFWjKZLms0NIQareEDsmnBqQZrAQNKNWSnjyY6z097DvtsEJPOhDBUgX6vzzv6GCHbrzYXkfmEZ9ECOtbDrEf%25252FcnZhQDHKGVsDBbUDSvx64EMwTD3UEHhquq0%25252FVwS40ZvmEX4G5TfzAIHgAwE4Dbc41yEXBaXGaMNxA%25252FFcL%25252B6Q06RYfz4I%25252FH2M70iYP63hN2dLIw8RGE%25252F9zWCLZTsE%25252F3NwmCrlbjdOkXvmPGK%25252FVb%25252FrvOOIJGgsVizHVJvSUiKQzxnt6ytVNPQ3hbhJhJR6H5pRysMiPJ87JNaY3AiJHAsUFOnJR1pkE07fMlPIIl%25252BoyIg29H7JvX8%25252BH38MzpyWykoySv%25252FweN83QqN2Du8FnL9SN%25252FGVeAuYSmOx98jAYhrohaRtd2b7EzZrXO06b4ogNKFP3v%25252F8WI732Uv7VIZlU1wz5BWQFgRgazTUq0B4agAfsNe%25252Fg8WbVgnQ4QJXVKd79P53aRsQmLP5zomM%2526u%253Dhttps%25253A%25252F%25252Fshop.m.taobao.com%25252Fshop%25252Fshop_index.htm%25253Fshop_id%25253D113925482%2526k%253D673%26ffs%3D%26fromToken%3DzRb1n2EfWDp0b1DKszNSo8liMUOU6UQU0%26hd_from_id%3D100092%26implId%3Dcloudsail_493_125400501040001_10165_0%26jumpfrom%3Dgame%26pid%3D431499_1007%252C431498_1007%26sappid%3D%26sceneId%3D1188%26settleTime%3D0%26settleType%3DafterNoSettle%26shortTfs%3D2b8a89565385b6a4a3a76dbf07c73f45%26spm%3Dtbaxc.home.0.i0.408dV55qV55q5o%26xxlTaskId%3D100000010165%26xxlTaskStatus%3D0%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3D87510e52-7cc3-44f0-809d-cad8655d8784%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fI8nLt2%26app%3Dchrome&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rnd71c70a_1652107985757&slk_t=1652107988153&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Ftmfarm%2Fsrhtml%3FadScene%3Dxxl-task-list-live%26adTrace%3D125400501040001__k2feeds__212d26b516521078224754152ea0eb__J__5__0%26deliveryId%3D19239%26epid%3Dmm_12852562_1778064_110388950288%26etype%3D3%26eurl%3Dhttp%253A%252F%252Fclick.mz.simba.taobao.com%252Ftecpm%253Feadt%253D%2526e%253DuwExL1wAgMsSXnZCiezO6hsQmLP5zomMbtlPF%25252FOGxPwxaQSJCXwwsP7UXCcF9qbcCfoMQoeL%25252F4jd0tK6oUlrbwLky8iRKNq2LkfU0NcJTpOE87OgIF%25252B%25252Bn1todFekq6toaMlY95NFw8Y3y69E8O9AsH6YktNHismgKsN%25252FFXO1JcovyiTBBXW0JlY75Z9%25252BcHnFWjKZLms0NIQareEDsmnBqQZrAQNKNWSnjyY6z097DvtsEJPOhDBUgX6vzzv6GCHbrzYXkfmEZ9ECOtbDrEf%25252FcnZhQDHKGVsDBbUDSvx64EMwTD3UEHhquq0%25252FVwS40ZvmEX4G5TfzAIHgAwE4Dbc41yEXBaXGaMNxA%25252FFcL%25252B6Q06RYfz4I%25252FH2M70iYP63hN2dLIw8RGE%25252F9zWCLZTsE%25252F3NwmCrlbjdOkXvmPGK%25252FVb%25252FrvOOIJGgsVizHVJvSUiKQzxnt6ytVNPQ3hbhJhJR6H5pRysMiPJ87JNaY3AiJHAsUFOnJR1pkE07fMlPIIl%25252BoyIg29H7JvX8%25252BH38MzpyWykoySv%25252FweN83QqN2Du8FnL9SN%25252FGVeAuYSmOx98jAYhrohaRtd2b7EzZrXO06b4ogNKFP3v%25252F8WI732Uv7VIZlU1wz5BWQFgRgazTUq0B4agAfsNe%25252Fg8WbVgnQ4QJXVKd79P53aRsQmLP5zomM%2526u%253Dhttps%25253A%25252F%25252Fshop.m.taobao.com%25252Fshop%25252Fshop_index.htm%25253Fshop_id%25253D113925482%2526k%253D673%26ffs%3D%26fromToken%3D8NVzrqLUdpAMwrvDc0WteJRiAUnUkU6UV%26hd_from_id%3D100092%26implId%3Dcloudsail_223_125400501040001_19239_0%26jumpfrom%3Dgame%26pid%3D431499_1007%252C431498_1007%26sappid%3D%26sceneId%3D1188%26settleTime%3D0%26settleType%3DafterNoSettle%26shortTfs%3D2b8a89565385b6a4a3a76dbf07c73f45%26spm%3Dtbaxc.home.0.i0.408dV55qV55q5o%26xxlTaskId%3D100000019239%26xxlTaskStatus%3D0%26xxlversion%3D4.3.17%26sourceType%3Dother%26suid%3D3384f7ac-fd3d-4d19-9040-4b6237e10dd8%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1652107397885.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fs8H1R4%26app%3Dchrome&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rnd7924f4_1652108023293&slk_t=1652108025602&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        // 额外
+        others.clear()
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Ftmfarm%2Fsrhtml%3FadScene%3Dxxl-start-scene%26adTrace%3D125400501040001__k2feeds__212d25ab16531104489032930ed2f2__J__5__0%26deliveryId%3D13468%26epid%3Dmm_12852562_1778064_110740950028%26etype%3D3%26eurl%3Dhttp%253A%252F%252Fclick.mz.simba.taobao.com%252Ftecpm%253Feadt%253D%2526e%253DuwExL1wAgMsSXnZCiezO6hsQmLP5zomMbtlPF%25252FOGxPwxaQSJCXwwsP7UXCcF9qbcCfoMQoeL%25252F4jd0tK6oUlrbwLky8iRKNq2LkfU0NcJTpOE87OgIF%25252B%25252Bn1todFekq6toaMlY95NFw8Y3y69E8O9AsH6YktNHismgKsN%25252FFXO1JcovyiTBBXW0JlY75Z9%25252BcHnFWjKZLms0NIQareEDsmnBqQZrAQNKNWSnjyY6z097DvtsEJPOhDBUgX6vzzv6GCHbrzYXkfmEZ9ECOtbDrEf%25252FcnZhQDHKGVsDBbUDSvx64EMwTD3UEHhquq0%25252FVwS40ZvmEX4G5TfzAIHgAwE4Dbc41yEXBaXGaMNxA%25252FFcL%25252B6Q06RYfz4I%25252FH2M70iYP63hN2dLIw8RGE%25252F9zWCLZTsE%25252F3NwmCrlbjdOkXvmPGK%25252FVb%25252FrvOOIJGgsVizHVJvSUiKQzxnt6ytVNPQ3hbhJhJR6H5pRysMiPJ87JNaY3AiJHAsUFOnJR1pkE07fMlPIIl%25252BoyIg29H7JvX8%25252BH38MzpyWykoySv%25252FweN83QqN2Du8FnL9SN%25252FGVeAuYSmOx98jAYhrohaRtd2b7EzZrXO06b4ogNKFP3v%25252F8WI732Uv7VIZlU1wz5BWQFgRgazTUq0B4agAfsNe%25252Fg8WbVgnQ4QJXVKd79P53aRsQmLP5zomM%2526u%253Dhttps%25253A%25252F%25252Fshop.m.taobao.com%25252Fshop%25252Fshop_index.htm%25253Fshop_id%25253D113925482%2526k%253D673%26ffs%3D%26fromToken%3Dp8jAn0GtVBXwElVeCvZsNKgsDUgUJUXUl%26hd_from_id%3D100092%26implId%3Dcloudsail_394_125400501040001_13468_0%26jumpfrom%3Dgame%26pid%3D431504_1007%252C431507_1007%26sappid%3D%26sceneId%3D1786%26settleTime%3D0%26settleType%3DafterNoSettle%26shortTfs%3D2b8a89565385b6a4a3a76dbf07c73f45%26spm%3Dtbaxc.home.0.i1.3c15uPwcuPwcxY%26xxlTaskId%3D100000013468%26xxlTaskStatus%3D0%26xxlversion%3D4.3.19%26sourceType%3Dother%26suid%3D1d798518-b0d1-4072-8ebb-bc3b03350d41%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1653110446826.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fH2Aaia%26app%3Dchrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        // 额外
+        others.clear()
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Ftmfarm%2Fsrhtml%3FadScene%3Dxxl-end-scene%26adTrace%3D125400501040001__k2feeds__2120634216531398543366530e1381__J__5__0%26deliveryId%3D13591%26epid%3Dmm_12852562_1778064_110746950044%26etype%3D3%26eurl%3Dhttp%253A%252F%252Fclick.mz.simba.taobao.com%252Ftecpm%253Feadt%253D%2526e%253DuwExL1wAgMsSXnZCiezO6hsQmLP5zomMbtlPF%25252FOGxPwxaQSJCXwwsP7UXCcF9qbcCfoMQoeL%25252F4jd0tK6oUlrbwLky8iRKNq2LkfU0NcJTpOE87OgIF%25252B%25252Bn1todFekq6toaMlY95NFw8Y3y69E8O9AsH6YktNHismgKsN%25252FFXO1JcovyiTBBXW0JlY75Z9%25252BcHnFWjKZLms0NIQareEDsmnBqQZrAQNKNWSnjyY6z097DvtsEJPOhDBUgX6vzzv6GCHbrzYXkfmEZ9ECOtbDrEf%25252FcnZhQDHKGVsDBbUDSvx64EMwTD3UEHhquq0%25252FVwS40ZvmEX4G5TfzAIHgAwE4Dbc41yEXBaXGaMNxA%25252FFcL%25252B6Q06RYfz4I%25252FH2M70iYP63hN2dLIw8RGE%25252F9zWCLZTsE%25252F3NwmCrlbjdOkXvmPGK%25252FVb%25252FrvOOIJGgsVizHVJvSUiKQzxnt6ytVNPQ3hbhJhJR6H5pRysMiPJ87JNaY3AiJHAsUFOnJR1pkE07fMlPIIl%25252BoyIg29H7JvX8%25252BH38MzpyWykoySv%25252FweN83QqN2Du8FnL9SN%25252FGVeAuYSmOx98jAYhrohaRtd2b7EzZrXO06b4ogNKFP3v%25252F8WI732Uv7VIZlU1wz5BWQFgRgazTUq0B4agAfsNe%25252Fg8WbVgnQ4QJXVKd79P53aRsQmLP5zomM%2526u%253Dhttps%25253A%25252F%25252Fshop.m.taobao.com%25252Fshop%25252Fshop_index.htm%25253Fshop_id%25253D113925482%2526k%253D673%26ffs%3D%26fromToken%3DPa51exrcB7aBPw92hOgSR7eIjUrU6U8Ue%26hd_from_id%3D100092%26implId%3Dcloudsail_397_125400501040001_13591_0%26jumpfrom%3Dgame%26pid%3D431497_1007%252C431506_1007%26sappid%3D%26sceneId%3D1812%26settleTime%3D0%26settleType%3DafterNoSettle%26shortTfs%3D2b8a89565385b6a4a3a76dbf07c73f45%26spm%3Dtbaxc.game.0.i0.4895uWPJuWPJw2%26xxlTaskId%3D100000013591%26xxlTaskStatus%3D0%26xxlversion%3D4.3.19%26sourceType%3Dother%26suid%3Df7ca178f-5098-4d7b-9a54-747ffb9771c9%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1653138819542.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fsfj6ki%26app%3Dchrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s30()
+
+        others.clear()
+    }
+
+    // 星星兑好礼
+    function stepSignin() {
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fzelda%2Fxxl-activities%2Findex.html'
+        app.startActivity({ data: MP_URL })
+        sleeps.s15()
+
+        clicks.textIfExists('x2')
+
+        others.clear()
+    }
+
+    // 从我的页面进入
+    function stepFormHomePage() {
+        others.launch(currentAPP.PACKAGE_NAME)
+        if (!others.backToElement(desc('我的淘宝'))) {
+            return false
+        }
+
+        if (desc('省钱连连消').exists()) {
+            clicks.centerXyByDesc('省钱连连消')
+            sleeps.s15()
+        }
+
+        others.clear()
+    }
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -915,6 +1005,7 @@ currentAPP.start = function () {
         status0 = taskLife()
         taskDDZ()
         taskTBRS()
+        taskXXX()
 
         if (status0) {
             return true
