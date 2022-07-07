@@ -21,10 +21,11 @@ function taskShouJinBi() {
     app.startActivity({data: MP_URL})
     sleeps.s10()
 
-    if (!className('android.widget.Button').depth(13).indexInParent(0).findOne(3000)) {
-        return false
-    }
-    className('android.widget.Button').depth(13).indexInParent(0).findOne(3000).click()
+    // if (!className('android.widget.Button').depth(13).indexInParent(0).findOne(3000)) {
+    //     return false
+    // }
+    // className('android.widget.Button').depth(13).indexInParent(0).findOne(3000).click()
+    clicks.xy(900, 900)
     sleeps.s3()
 
     clicks.textIfExists('收金币')
