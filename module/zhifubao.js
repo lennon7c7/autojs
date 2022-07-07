@@ -24,7 +24,6 @@ function taskBBNC() {
 
     if (text('逛逛淘宝芭芭农场 (0/1)').exists() && clicks.textIfExists('去逛逛')) {
         sleeps.s10()
-        MP_URL = 'alipays://platformapi/startapp?appId=68687599'
         app.startActivity({ data: MP_URL })
         sleeps.s10()
     }
@@ -42,6 +41,13 @@ function taskBBNC() {
             others.back()
         }
     }
+
+
+    others.clear()
+    app.startActivity({ data: MP_URL })
+    sleeps.s10()
+    clicks.xy(800, 1500)
+
 
     // 助力
     function stepShareHelp() {
