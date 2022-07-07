@@ -40,9 +40,8 @@ function taskZhuanJinBi() {
     app.startActivity({data: MP_URL})
     sleeps.s10()
 
-    if (!clicks.element(className('android.widget.Button').depth(11).indexInParent(3))) {
-        return false
-    }
+    clicks.xy(590, 890)
+    sleeps.s10()
 
     for (var i = 0; i < 3; i++) {
         clicks.textIfExists('领取奖励')
@@ -70,6 +69,19 @@ function taskZhuanJinBi() {
 
         exists.backToElement(text('今日任务'))
         clicks.textIfExists('领取奖励')
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.textIfExists('去完成')) {
+
+            for (var k = 0; k < 15; k++) {
+                swipes.down()
+                sleeps.s1()
+            }
+
+            exists.backToElement(text('今日任务'))
+            clicks.textIfExists('领取奖励')
+        }
     }
 
     for (var i = 0; i < 3; i++) {
