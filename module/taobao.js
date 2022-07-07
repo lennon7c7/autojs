@@ -810,6 +810,93 @@ function taskDDZ() {
     }
 }
 
+// 淘宝人生
+function taskTBRS() {
+    others.clear()
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftblife%2Fsolution2%2Fgame-tblife%3FdisableNav%3DYES%26uniqueTag%3Dhdtblife%26from%3Dxyxgc%26route_hash%3D_home%26spm%3Da21l99.home.games.order_8&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndc96698_1653972853848&slk_t=1653972854348&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+    app.startActivity({ data: MP_URL })
+    sleeps.s10()
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('领取奖励')
+    clicks.textIfExists('立即领取')
+    clicks.textIfExists('立即领取')
+    clicks.textIfExists('立即领取')
+    clicks.textIfExists('立即领取')
+
+    stepDice()
+    stepShareHelp()
+
+    // 助力
+    function stepShareHelp() {
+        others.clear()
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftblife%2Fsolution2%2Fgame-tblife%3FdisableNav%3DYES%26uniqueTag%3Dhdtblife%26from%3Dxyxgc%26route_hash%3D_home%26spm%3Da21l99.home.games.order_8&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndc96698_1653972853848&slk_t=1653972854348&afcPromotionOpen=false&afc_route=1&source=slk_dp'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        if (clicks.textIfExists('立即签到 ')) {
+            clicks.xy(230, 1030)
+            clicks.textIfExists('确认')
+        }
+
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/default/VE7W8V2S27I?pentaprism=eyJkZWxpdmVyeUlkIjoiMjQ3MjIiLCJoZF9mcm9tX2lkIjoiMTAwMDc4IiwiaW1wbElkIjoib3RoZXJfMTU5XzBfMjQ3MjJfMCIsImZyb21Ub2tlbiI6IlFhODB3eGJzYTBsMFBHSnpmYjhOY2FsMHNFVVdVclV2aFciLCJzY2VuZUlkIjoiMjc0MCJ9&sourceType=other&suid=9b63f8ef-10d6-4c14-a4a9-5e3c23c59184&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_2ndlife_commonInfo&sourceType=other&suid=c8f28f6b-be5d-4806-b002-4ef9acabc230'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('帮TA助力')
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/default/VE7W8V2S27I?pentaprism=eyJkZWxpdmVyeUlkIjoiMjQ3MjIiLCJoZF9mcm9tX2lkIjoiMTAwMDc4IiwiaW1wbElkIjoib3RoZXJfMTU5XzBfMjQ3MjJfMCIsImZyb21Ub2tlbiI6IkFKR0xrRzB0S0Q3RFlwemxISk92Zmxxd3RZVTFVYVVXaGoiLCJzY2VuZUlkIjoiMjc0MCJ9&sourceType=other&suid=5ac4deef-d2bd-4c73-b427-419f5aa3ca0d&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_2ndlife_commonInfo&sourceType=other&suid=1bb4585d-c930-4095-a840-d353f3b73e87&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1653540961171.DingTalk.2688&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1397482275778&short_name=h.fHDhBIq&app=chrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('帮TA助力')
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/default/VE7W8V2S27I?pentaprism=eyJkZWxpdmVyeUlkIjoiMjQ3MjIiLCJoZF9mcm9tX2lkIjoiMTAwMDc4IiwiaW1wbElkIjoib3RoZXJfMTU5XzBfMjQ3MjJfMCIsImZyb21Ub2tlbiI6IlpYZHgxMVpQMEhCWVdZd2xYR3RwQlBmWmpnSGRVd1V4VVdoTyIsInNjZW5lSWQiOiIyNzQwIn0&sourceType=other&suid=e0c9d2ca-0e0b-4ffb-befe-d2bd72c033e3&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_2ndlife_commonInfo&sourceType=other&suid=5000dabe-23cc-48e1-b537-655799d61e58&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1653540961171.DingTalk.2688&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1393225325145&short_name=h.fGDNFWo&app=chrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('帮TA助力')
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/default/VE7W8V2S27I?pentaprism=eyJkZWxpdmVyeUlkIjoiMjQ3MjIiLCJoZF9mcm9tX2lkIjoiMTAwMDc4IiwiaW1wbElkIjoib3RoZXJfMTU5XzBfMjQ3MjJfMCIsImZyb21Ub2tlbiI6Ik9uNjFWampTYkdORzVLYXFpS3hsRlBBeGhWVUpVclVkaG8iLCJzY2VuZUlkIjoiMjc0MCJ9&sourceType=other&suid=f32a52c1-7feb-4d9d-ad60-29ec55127e26&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_2ndlife_commonInfo&sourceType=other&suid=6d920293-3314-4d8b-9adb-6ff2df1107ed&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1653540961171.DingTalk.2688&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1396250821489&short_name=h.ftDZSHg&app=chrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('帮TA助力')
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/default/VE7W8V2S27I?pentaprism=eyJkZWxpdmVyeUlkIjoiMjQ3MjIiLCJoZF9mcm9tX2lkIjoiMTAwMDc4IiwiaW1wbElkIjoib3RoZXJfMTU5XzBfMjQ3MjJfMCIsImZyb21Ub2tlbiI6IkxYUWx6dm9ha0Y5a1FralZHbGZWRTdjYmpOc3pVUVVYVXpobyIsInNjZW5lSWQiOiIyNzQwIn0&sourceType=other&suid=5931491d-ccb4-469e-a9ff-318067fb38db&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_2ndlife_commonInfo&sourceType=other&suid=557a444e-05b1-4e72-8cfa-6e7477168b4e&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1653540961171.DingTalk.2688&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1396250145322&short_name=h.ftD03D5&app=chrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s10()
+        clicks.textIfExists('帮TA助力')
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftblife%2Fdefault%2FaPMsNtB3dXhXBtYm7iwn%3Fwh_biz%3Dtm%26pid%3D431457_1007%26prismTrace%3D23142%26hd_from_id%3D100078%26deliveryId%3D23142%26prismFrom%3D%26fromToken%3DdRW61knf9aXJKNbMTEPlUXe5UqUpULUNU7%26implId%3Dother_277_701028_23142_0%26sceneId%3D2740%26spm%3Da213hw.22740928.tasklist-pentaprism.23142%26sourceType%3Dother%26suid%3D56fda7bc-b1de-44fc-977f-72b785fa3d8b%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1653883622629.Copy.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26sp_tk%3D5aW95piv5a625b6X5pyJ55Sf5Lul6L%252BZ5LmI5a2Q5a2m%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.fHntkVi%26app%3Dchrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s20()
+
+        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fa%2Fact%2Ftmall%2Fdailygroup%2F2137%2Fwupr%3Fwh_pid%3Ddaily-274265%26prismChannel%3Dpoplayer%26epid%3Dmm_12852562_1778064_111006600400%26adTrace%3D319135500360001__user_define.browse__212802a016540600421282639ebb84__I__H__0%26settleType%3DafterTime%26settleTime%3D0%26shortTfs%3D394ef2f4b8154d14236f0db84c017321%26ffs%3Dhttps%253A%252F%252Fifsk2.tanx.com%252Fffsback%253Fname%253Dminteract%2526pid%253Dmm_12852562_1778064_111006600400%2526pvid%253D025e0e0bb8fe97006296f40a14e4a665%2526biz%253DV.BWCgMKATESEgiK6NuUBjIKbGVubm9uMTk5MRo8CjoKJTMxOTEzNTUwMDM2MDAwMV8zNDQ5Mjk1MzAwXzM0Mzc3NDgxOTEYrp.u2AoqAUkyAUiQAa6f7tgK%26adScene%3Dtaobao-life-power-task-list%26prismTrace%3D24894%26hd_from_id%3D100078%26deliveryId%3D24894%26prismFrom%3D%26fromToken%3Dp8jAn0GtVBwYJJvXhwOasMoJUDUgUJUXUl%26implId%3Dcloudsail_555_319135500360001_24894_0%26sceneId%3D2740%26spm%3Da213hw.22740928.tasklist-pentaprism.24894%26clickid%3DA17_203_24435877416540600469587852%26ad_type%3D1.0%26sourceType%3Dother%26suid%3D19f34a90-d5da-4d01-9411-8dc02f47659e%26ut_sk%3D1.XXeQ2K0gRm8DAD%252FUgoGHfv2o_21646297_1654059874745.DingTalk.2688%26un%3D2bf412b10649e7d5bbeeeafdb2768e28%26share_crt_v%3D1%26un_site%3D0%26sp_abtk%3Dcommon_2688_commonInfo%26cpp%3D1%26shareurl%3Dtrue%26short_name%3Dh.ft02Lvs%26app%3Dchrome'
+        app.startActivity({ data: MP_URL })
+        sleeps.s20()
+    }
+
+    // 骰子
+    function stepDice() {
+        clicks.xy(440, 1770)
+        sleeps.s3()
+        for (var i = 0; i < 20; i++) {
+            clicks.element(textStartsWith('骰子图像 '))
+            clicks.textIfExists('开心收下')
+            clicks.textIfExists('放弃奖励')
+            clicks.textIfExists('立即抽套装')
+            clicks.textIfExists('就选它了')
+        }
+
+        clicks.textIfExists('领取奖励')
+        clicks.textIfExists('领取奖励')
+        clicks.textIfExists('领取奖励')
+        clicks.textIfExists('领取奖励')
+
+        if (clicks.textIfExists('去农场')) {
+            others.back()
+        }
+    }
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
@@ -827,6 +914,7 @@ currentAPP.start = function () {
         taskZhuanJinBi()
         status0 = taskLife()
         taskDDZ()
+        taskTBRS()
 
         if (status0) {
             return true
