@@ -79,39 +79,11 @@ function taskBBNC() {
 function taskCheckin() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-    MP_TITLE = '支付宝会员'
-    MP_APPID = '20000160'
-
-    app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
+    MP_URL = 'alipays://platformapi/startapp?appId=20000160&chInfo=taojinbiqiandao&url=/www/pointSignIn.html?source=taojinbiqiandao&__webview_options__%3Dttb%253Dauto&shouhuanbackup=BG_STtaojinbitask'
+    app.startActivity({ data: MP_URL })
     sleeps.s15()
 
-    if (text('全部领取').exists()) {
-        clicks.centerXyByText('全部领取')
-    }
-
-    clicks.textIfExists('每日赚积分')
-    if (text('每日赚积分').exists() && !clicks.centerXyByText('每日赚积分')) {
-        return false
-    }
-
-    sleeps.s2to3()
-    if (text('每日赚积分').exists() && !clicks.centerXyByText('每日赚积分')) {
-        return false
-    }
-
-    if (text('每日赚积分').exists() && !text('签到领积分').exists()) {
-        return true
-    }
-
-    if (!clicks.centerXyByText('签到领积分')) {
-        return false
-    }
-
-    if (text('每日赚积分').exists() && !text('签到领积分').exists()) {
-        return true
-    }
-
-    return false
+    return true
 }
 
 /**
