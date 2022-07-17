@@ -12,3 +12,6 @@ pinduoduo.start()
 
 taobao = require('module/taobao.js')
 taobao.start()
+
+zhifubao = require('module/zhifubao.js')
+zhifubao.start()

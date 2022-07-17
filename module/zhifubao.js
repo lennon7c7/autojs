@@ -33,12 +33,13 @@ function taskBBNC() {
     }
 
     for (var i = 0; i < 3; i++) {
-        if (clicks.textIfExists('去完成')) {
+        if (clicks.textIfExists('去完成') || clicks.textIfExists('去逛逛')) {
             for (var k = 0; k < 10; k++) {
                 swipes.down()
                 sleeps.s2to3()
             }
-            others.back()
+            others.backToElement(text('去分享'))
+            clicks.textIfExists('领取')
         }
     }
 
