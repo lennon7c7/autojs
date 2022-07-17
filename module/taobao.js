@@ -275,29 +275,12 @@ function taskShop() {
         return false
     }
     className('android.widget.Button').depth(12).indexInParent(0).findOne(3000).click()
-    sleeps.s3()
+    sleeps.s10()
 
-    desc('逛10秒+10').find().forEach((value1, key1) => {
-        if (!exists.backToElement(desc('金币好店')) || !value1.parent()) {
-            return
-        }
-
-        value1.parent().click()
+    text('逛店铺').find().forEach((value1, key1) => {
+        value1.click()
         sleeps.s15to20()
-
-        if (text('关注+10').exists()) {
-            clicks.centerXyByText('关注+10')
-        }
-
-        if (text('立即领5淘金币').exists()) {
-            clicks.textIfExists('立即领5淘金币')
-            exists.backToElement(text('浏览送金币'))
-        }
     })
-
-    if (desc('已完成').find().size() > 6) {
-        return true
-    }
 
     return false
 }
