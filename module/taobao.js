@@ -1104,38 +1104,78 @@ function taskBBNC() {
 
     // 阳光
     function stepYangGuang() {
+        stepRandomPage()
         stepCaiYangGuang()
+        stepShouYangGuang()
 
-        // 采阳光
-        function stepCaiYangGuang() {
-            // tmall
-            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fmit%2Fact%2Fnewtmapp%3Ftype%3Dweb%26key%3Dhttps%253A%252F%252Fmarket.m.taobao.com%252Fapp%252Ftmall-wireless%252Ftmallfarm%252Findex.html%253FdisableNav%253DYES%2526inviteCode%253D85c1e0243059ccdebb04fa5c271d5583%2526spm%253Dfarm.newfarm.task.share%2526sourceType%253Dother%2526suid%253Dc0660d17-e1bf-4800-935f-f17bc85b927f%2526ut_sk%253D1.XXeQ2K0gRm8DAD%25252FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm%2526un%253D2bf412b10649e7d5bbeeeafdb2768e28%2526share_crt_v%253D1%2526un_site%253D0%2526sp_abtk%253Dcommon_tmall_farm_commonInfo%2526cpp%253D1%2526shareurl%253Dtrue%2526short_name%253Dh.fIVq9dg%2526bxsign%253Dscdi3sD-WgRrU2xq28iQtLROKA0JIvmjX4YMLoAIKy45oW1eqswDv4GkmJlq62s8z1FaSjMpmdb1Y7B-dIShuxhRF47slUvZjCbyUf-ekkg_SBOctRuSioLMMnzRRhs4r6U%2526app%253Dchrome%26mmstat%3Dtmfarm%26src%3Dtmfarm%26dl_ttid%3Dtmfarm'
-            // taobao
-            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
+        // 浏览页面
+        function stepRandomPage() {
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+            others.clear()
+
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+            MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
             app.startActivity({ data: MP_URL })
             sleeps.s10()
 
             clicks.textIfExists('立即去收')
-            clicks.xy(550, 641)
-            clicks.xy(550, 850)
-            clicks.xy(450, 1000)
-            clicks.xy(700, 1000)
 
-            // 立即领取升级阳光
-            clicks.xy(device.width / 2, 1700)
+            clicks.xy(1000, 1800)
 
-            clicks.xy(800, 1800)
+            if (clicks.textIfExists('去浏览')) {
+                sleeps.s15to20()
+                others.back()
+            }
+        }
+
+        // 采阳光
+        function stepCaiYangGuang() {
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+            others.clear()
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+            MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
+            app.startActivity({ data: MP_URL })
+            sleeps.s10()
+
+            clicks.textIfExists('立即去收')
+
+            clicks.xy(750, 1750)
+            sleeps.s5()
 
             if (!clicks.textIfExists('推荐采集') && !clicks.textIfExists('去采阳光')) {
                 return
             }
             sleeps.s10()
+            clicks.textIfExists('立刻采集')
+        }
 
-            for (var i = 0; i < 8; i++) {
-                if (clicks.textIfExists('立刻采集')) {
-                    others.back()
-                }
-            }
+        // 收阳光
+        function stepShouYangGuang() {
+            log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+            others.clear()
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+            MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
+            app.startActivity({ data: MP_URL })
+            sleeps.s10()
+
+            clicks.textIfExists('立即去收')
+            clicks.xy(device.width / 2, 641)
+            clicks.xy(device.width / 2, 850)
+            clicks.xy(450, 1000)
+            clicks.xy(700, 1000)
+            clicks.xy(device.width / 2, 1100)
+            clicks.xy(device.width / 2 - 200, 1100)
+            clicks.xy(device.width / 2 + 200, 1100)
+
+            clicks.xy(device.width / 2, 1200)
+            clicks.xy(device.width / 2 - 200, 1300)
+            clicks.xy(device.width / 2, 1500)
+
+            // 立即领取升级阳光
+            clicks.xy(device.width / 2, 1700)
         }
     }
 }
@@ -1156,10 +1196,10 @@ currentAPP.start = function () {
         taskShouJinBi()
         taskZhuanJinBi()
         status0 = taskLife()
-        taskDDZ()
         taskTBRS()
         taskXXX()
         taskBBNC()
+        taskDDZ()
 
         if (status0) {
             return true
