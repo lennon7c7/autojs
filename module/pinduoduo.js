@@ -16,21 +16,9 @@ currentAPP.APK = 'https://android-apps.pp.cn/fs08/2021/01/06/5/120_37a8dc91f1db3
 function taskCheckin() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-    if (!others.backToElement(id('name').text('签到'))) {
-        return false
-    }
-
-    if (text('立即签到').exists()) {
-        clicks.centerXyByText('立即签到')
-    } else if (text('签到领现金').exists()) {
-        clicks.elementWidthHeight(text('签到领现金'), 264, 123)
-    } else if (text('签到领钱').exists()) {
-        clicks.centerXyByText('签到领钱')
-    }
-
-    if (textStartsWith('签到成功').exists() || textEndsWith('现金未领取').exists() || text('提现').exists()) {
-        clicks.textIfExists('稍后再提')
-    }
+    MP_URL = 'pinduoduo://com.xunmeng.pinduoduo/https://mobile.yangkeduo.com/pythagoras_ctc_ca.html'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
 
     return true
 }
@@ -167,7 +155,7 @@ function taskVideo() {
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 2; i++) {
         status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
             return true
@@ -177,7 +165,7 @@ currentAPP.start = function () {
         status0 = taskCheckin()
         // status1 = taskCashout()
         // status2 = taskCat()
-        taskVideo()
+        // taskVideo()
 
         if (status0) {
             return true
