@@ -719,13 +719,21 @@ function switchAccount() {
 // 斗地主
 function taskDDZ() {
     for (var i = 0; i < 10; i++) {
-        // 淘宝 - 金币小镇
-        MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-        app.startActivity({data: MP_URL})
-        sleeps.s10()
+        if (i === 9) {
+            // 淘宝 - 金币小镇
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
+            app.startActivity({data: MP_URL})
+            sleeps.s10()
 
-        clicks.element(textStartsWith('斗地主'))
+            clicks.element(textStartsWith('斗地主'))
+        } else {
+            MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Fdoudizhu%2FsX78ziQH2ar7ax6DKZF2-doudizhu'
+            app.startActivity({data: MP_URL})
+        }
+
         sleeps.s10()
+        clicks.xy(700, 1000)
+        clicks.xy(device.width / 2, device.height / 2 - 100)
 
         if (i === 9) {
             sleeps.s180to190()
