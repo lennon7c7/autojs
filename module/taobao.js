@@ -977,11 +977,13 @@ function taskXXX() {
 
     // 从我的页面进入
     function stepFormHomePage() {
+        others.clear()
         others.launch(currentAPP.PACKAGE_NAME)
         if (!others.backToElement(desc('我的淘宝'))) {
             return false
         }
 
+        swipes.down()
         if (desc('省钱连连消').exists()) {
             clicks.centerXyByDesc('省钱连连消')
             sleeps.s15()
