@@ -92,21 +92,39 @@ function taskCheckin() {
 function task15s() {
     log('----------', currentAPP.NAME, 'task15s start ----------')
 
-    if (!clicks.text('逛15秒赚积分')) {
-        return false
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛精选好物'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
     }
 
-    if (text('每日赚积分').exists() && textContains('已完成浏览任务').exists()) {
-        return true
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛红包会场'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
     }
 
-    sleeps.s15()
-
-    if (text('每日赚积分').exists() && textContains('已完成浏览任务').exists()) {
-        return true
+    if (clicks.parent(textEndsWith('电影红包'), text('去完成'))) {
+        sleeps.s20()
+        others.backToElement(text('签到赚积分'))
+    }
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛一逛'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
     }
 
-    return false
+    if (!text('限时福利：已完成浏览任务，得 3 积分').exists()) {
+        for (var i = 0; i < 3; i++) {
+            swipes.down()
+        }
+        sleeps.s20()
+    }
+
+    return true
 }
 
 /**
