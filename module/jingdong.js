@@ -28,6 +28,23 @@ function taskSJZJD() {
     clicks.xy(700, 1320)
     sleeps.s5()
 
+    if (text('点击东东农场入口(0/1)').exists() && clicks.centerXyByText('点击东东农场入口(0/1)')) {
+        sleeps.s5()
+        clicks.centerXyByText('免费水果')
+        sleeps.s5()
+        clicks.centerXyByText('去领取')
+        clicks.centerXyByText('收下水滴')
+
+        others.back()
+        if (!clicks.textParent('领京豆')) {
+            return false
+        }
+        sleeps.s15()
+
+        clicks.xy(700, 1320)
+        sleeps.s5()
+    }
+
     for (var i = 0; i < 50; i++) {
         if (text('去完成').exists() && clicks.centerXyByText('去完成')) {
             sleeps.s15to20()
