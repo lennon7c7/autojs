@@ -253,6 +253,34 @@ function task0Lottery() {
 }
 
 /**
+ * 任务-转账得积分
+ */
+currentAPP.taskTransfer = function () {
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
+
+    for (var i = 0; i < 35; i++) {
+        toastLog(i)
+
+        // 直接给人lennon转账
+        MP_URL = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=0.01&userId=2088702103550702&memo='
+        // 直接给人june转账
+        MP_URL = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=0.01&userId=2088502549113538&memo=么么哒'
+        app.startActivity({ data: MP_URL })
+        sleeps.s5to10()
+
+        clicks.element(id('com.alipay.mobile.antui:id/au_key_confirm'))
+        clicks.centerXyByText('Pay now')
+
+        text('9').click()
+        text('3').click()
+        text('2').click()
+        text('4').click()
+        text('2').click()
+        clicks.centerXyByText('8')
+    }
+}
+
+/**
  * 小程序
  * @returns {bool}
  */
