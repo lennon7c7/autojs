@@ -718,6 +718,16 @@ function switchAccount() {
 
 // 斗地主
 function taskDDZ() {
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Fdoudizhu%2FsX78ziQH2ar7ax6DKZF2-doudizhu'
+    app.startActivity({data: MP_URL})
+    sleeps.s15to20()
+    clicks.xy(device.width - 200, device.height - 200)
+    captcha()
+
+    if (text('当前进度 10/10').exists()) {
+        return true;
+    }
+
     for (var i = 0; i < 10; i++) {
         if (i === 9) {
             // 淘宝 - 金币小镇
@@ -1188,6 +1198,15 @@ function taskBBNC() {
             clicks.xy(device.width / 2, 1700)
         }
     }
+}
+
+function captcha() {
+    if (text('Sorry, we have detected unusual traffic from your network.').exists()) {
+        swipe(100, 1550, 900, 1550, 900)
+        sleep(3000)
+    }
+
+    clicks.textIfExists('我知道了')
 }
 
 /**
