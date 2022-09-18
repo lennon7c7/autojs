@@ -824,6 +824,18 @@ function taskDDZ() {
     }
 }
 
+// 橙狮健身房
+function taskCSJSF() {
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+    MP_URL += 'https://huodong.taobao.com/wow/z/alisports/page-config/8X7971GOVM8'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+    captcha()
+  
+    clicks.textIfExists('直接领取')
+    others.clear()
+}
+
 // 淘宝人生
 function taskTBRS() {
     others.clear()
@@ -1229,6 +1241,7 @@ currentAPP.start = function () {
         taskXXX()
         taskBBNC()
         taskDDZ()
+        taskCSJSF()
 
         if (status0) {
             return true
