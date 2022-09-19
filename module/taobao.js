@@ -1221,6 +1221,57 @@ function captcha() {
     clicks.textIfExists('我知道了')
 }
 
+// 消消乐-云上精英赛-领取幸运星星
+currentAPP.XXX_YSJYS = function () {
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fmarket.m.taobao.com%2Fapp%2Fzelda%2Fxxl%2Findex_tbqyy.html'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+
+    clicks.xy(device.width / 2, 300)
+
+    clicks.xy(device.width - 100, device.height / 2 - 500)
+
+    clicks.xy(device.width - 100, device.height / 2 - 500)
+
+
+    click(device.width / 2 - 200, device.height / 2 - 200)
+    sleep(5 * 1000)
+    click(device.width / 2 - 100, device.height / 2 - 200)
+    sleep(5 * 1000)
+    click(device.width / 2 + 100, device.height / 2 - 200)
+    sleep(5 * 1000)
+    click(device.width / 2 + 100, device.height / 2 - 200)
+    sleep(5 * 1000)
+
+    click(device.width / 2 - 200, device.height / 2 - 100)
+    sleep(5 * 1000)
+    click(device.width / 2 - 100, device.height / 2 - 100)
+    sleep(5 * 1000)
+    click(device.width / 2 + 100, device.height / 2 - 100)
+    sleep(5 * 1000)
+    click(device.width / 2 + 250, device.height / 2 - 100)
+    sleep(5 * 1000)
+
+
+    click(device.width / 2 - 200, device.height / 2 + 200)
+    sleep(5 * 1000)
+    click(device.width / 2 - 100, device.height / 2 + 200)
+    sleep(5 * 1000)
+    click(device.width / 2 + 100, device.height / 2 + 200)
+    sleep(5 * 1000)
+    click(device.width / 2 + 250, device.height / 2 + 200)
+    sleep(5 * 1000)
+
+    click(device.width / 2 - 200, device.height / 2 + 400)
+    sleep(5 * 1000)
+    click(device.width / 2 - 100, device.height / 2 + 400)
+    sleep(5 * 1000)
+    click(device.width / 2 + 100, device.height / 2 + 400)
+    sleep(5 * 1000)
+    click(device.width / 2 + 250, device.height / 2 + 400)
+    sleep(5 * 1000)
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
