@@ -1272,6 +1272,106 @@ currentAPP.XXX_YSJYS = function () {
     sleep(5 * 1000)
 }
 
+// 消消乐-闯关卡1
+currentAPP.XXX_LEVEL1 = function () {
+    // 淘宝 - 金币小镇
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+
+    if (!clicks.element(textStartsWith('消消消'))) {
+        return false
+    }
+    sleeps.s15to20()
+
+    for (var i = 0; i < 250; i++) {
+        swipe(500, 2000, 1900, 50, 300)
+        sleep(300)
+    }
+
+    for (var i = 0; i < 2; i++) {
+        // 第一关
+        clicks.xy(device.width / 2 - 200, device.height / 2 + 100)
+
+        // 开始
+        clicks.xy(device.width / 2, device.height / 2 + 300)
+        sleeps.s10to20()
+
+        // 1: top to bottom
+        var offsetWidth = device.width / 2 - 200;
+        var offsetHeight = device.height / 2 + 100
+        swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
+        sleeps.s5to10()
+
+        // 2: continue
+        clicks.xy(device.width / 2, device.height / 2)
+
+        // 3: left to right
+        var offsetWidth = device.width / 2 + 0;
+        var offsetHeight = device.height / 2 + 100
+        swipe(offsetWidth, offsetHeight, offsetWidth + 100, offsetHeight, 500)
+        sleeps.s5to10()
+
+        // 4: top to bottom
+        var offsetWidth = device.width / 2;
+        var offsetHeight = device.height / 2 + 300
+        swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
+        sleeps.s5to10()
+
+        clicks.textIfExists('我知道了')
+
+        clicks.xy(device.width / 2, device.height / 2 + 400)
+        sleeps.s10to20()
+    }
+
+    // 加体力
+    clicks.xy(device.width / 2 + 200, device.height - 100)
+    sleeps.s5to10()
+
+    // // 去邀请
+    // clicks.xy(device.width - 100, device.height / 2 + 100)
+    // clicks.textIfExists('我知道了')
+
+    // 领奖励
+    // clicks.xy(device.width - 100, device.height / 2 + 400)
+    // clicks.textIfExists('我知道了')
+    // clicks.xy(device.width - 100, device.height / 2 + 600)
+    // clicks.textIfExists('我知道了')
+    // 闯2次关
+    // for (var i = 0; i < 3; i++) {
+    //     clicks.xy(device.width - 100, device.height / 2 + 750)
+    //     clicks.textIfExists('我知道了')
+    // }
+    // 浏览3次
+    // for (var i = 0; i < 3; i++) {
+    //     clicks.xy(device.width - 100, device.height / 2 + 950)
+    //     clicks.textIfExists('我知道了')
+    // }
+
+    clicks.xy(device.width - 100, device.height / 2 + 250)
+    clicks.textIfExists('我知道了')
+
+    clicks.xy(device.width - 100, device.height / 2 + 450)
+    clicks.textIfExists('我知道了')
+
+    clicks.xy(device.width - 100, device.height / 2 + 650)
+    clicks.textIfExists('我知道了')
+
+    clicks.xy(device.width - 100, device.height / 2 + 850)
+    clicks.textIfExists('我知道了')
+
+    // 浏览3次
+    for (var i = 0; i < 3; i++) {
+        clicks.xy(device.width - 100, device.height / 2 + 1050)
+        clicks.textIfExists('我知道了')
+    }
+
+    // 每日额外奖励
+    clicks.xy(device.width / 2 - 100, device.height / 2 - 100)
+    clicks.xy(device.width / 2 + 100, device.height / 2 - 100)
+    clicks.xy(device.width - 100, device.height / 2 - 100)
+}
+
 /**
  * 入口-开始调用
  * @returns {boolean}
