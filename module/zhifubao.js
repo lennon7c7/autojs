@@ -79,9 +79,60 @@ function taskBBNC() {
 function taskCheckin() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
+    others.clear()
     MP_URL = 'alipays://platformapi/startapp?appId=20000160&chInfo=taojinbiqiandao&url=/www/pointSignIn.html?source=taojinbiqiandao&__webview_options__%3Dttb%253Dauto&shouhuanbackup=BG_STtaojinbitask'
     app.startActivity({ data: MP_URL })
     sleeps.s15()
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛精选'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛红包'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
+    }
+
+    if (clicks.parent(textEndsWith('逛蚂蚁庄园喂小鸡'), text('去完成'))) {
+        sleeps.s20()
+        others.backToElement(text('签到赚积分'))
+    }
+
+    if (clicks.parent(textEndsWith('电影红包'), text('去完成'))) {
+        sleeps.s20()
+        others.backToElement(text('签到赚积分'))
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛一逛'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
+            sleeps.s20to25()
+            others.backToElement(text('签到赚积分'))
+        }
+    }
+
+    if (!text('限时福利：已完成浏览任务，得 3 积分').exists()) {
+        for (var i = 0; i < 3; i++) {
+            swipes.down()
+        }
+        sleeps.s20()
+    }
+
+    MP_URL = 'alipays://platformapi/startapp?appId=20000160'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+    clicks.textIfExists('全部领取')
 
     return true
 }
@@ -3546,7 +3597,7 @@ currentAPP.start = function () {
             taskBBNC()
             status0 = taskCheckin()
             if (status0) {
-                status0 = task15s()
+                // status0 = task15s()
                 // task0Lottery()
                 // taskEverydayLottery()
             }
