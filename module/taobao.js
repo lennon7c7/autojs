@@ -1017,6 +1017,7 @@ function taskXXX() {
 
 // 芭芭农场
 function taskBBNC() {
+    captcha()
     stepGuoShu()
     stepYangGuang()
 
@@ -1137,14 +1138,12 @@ function taskBBNC() {
     // 阳光
     function stepYangGuang() {
         stepRandomPage()
-        stepCaiYangGuang()
         stepShouYangGuang()
+        stepBee()
 
         // 浏览页面
         function stepRandomPage() {
             log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
-
-            others.clear()
 
             MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
             MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
@@ -1152,8 +1151,6 @@ function taskBBNC() {
             sleeps.s10()
 
             clicks.textIfExists('立即去收')
-
-            clicks.xy(1000, 1800)
 
             if (clicks.textIfExists('去浏览')) {
                 sleeps.s15to20()
@@ -1161,8 +1158,8 @@ function taskBBNC() {
             }
         }
 
-        // 采阳光
-        function stepCaiYangGuang() {
+        // 蜜蜂采阳光
+        function stepBee() {
             log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
             others.clear()
@@ -1173,6 +1170,7 @@ function taskBBNC() {
 
             clicks.textIfExists('立即去收')
 
+            clicks.xy(750, 1750)
             clicks.xy(750, 1750)
             sleeps.s5()
 
@@ -1193,21 +1191,50 @@ function taskBBNC() {
             app.startActivity({ data: MP_URL })
             sleeps.s10()
 
+            // bee package
+            // clicks.xy(850, 1050)
+            // clicks.textIfExists('图片')
+
             clicks.textIfExists('立即去收')
-            clicks.xy(device.width / 2, 641)
+
+            clicks.xy(550, 641)
+            clicks.textIfExists('立即去收')
+
+            clicks.xy(device.width / 2 - 200, 800)
+            clicks.textIfExists('立即去收')
+            clicks.xy(device.width / 2 + 200, 800)
+            clicks.textIfExists('立即去收')
+
             clicks.xy(device.width / 2, 850)
+            clicks.textIfExists('立即去收')
+            clicks.xy(device.width / 2, 850)
+            clicks.textIfExists('立即去收')
+
             clicks.xy(450, 1000)
+            clicks.textIfExists('立即去收')
+            clicks.xy(450, 1000)
+            clicks.textIfExists('立即去收')
             clicks.xy(700, 1000)
+            clicks.textIfExists('立即去收')
+            clicks.xy(700, 1000)
+            clicks.textIfExists('立即去收')
+
             clicks.xy(device.width / 2, 1100)
+            clicks.textIfExists('立即去收')
             clicks.xy(device.width / 2 - 200, 1100)
+            clicks.textIfExists('立即去收')
             clicks.xy(device.width / 2 + 200, 1100)
+            clicks.textIfExists('立即去收')
 
             clicks.xy(device.width / 2, 1200)
+            clicks.textIfExists('立即去收')
             clicks.xy(device.width / 2 - 200, 1300)
+            clicks.textIfExists('立即去收')
             clicks.xy(device.width / 2, 1500)
+            clicks.textIfExists('立即去收')
 
             // 立即领取升级阳光
-            clicks.xy(device.width / 2, 1700)
+            clicks.xy(device.width / 2, 1650)
         }
     }
 }
