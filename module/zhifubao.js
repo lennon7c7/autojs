@@ -3587,7 +3587,7 @@ function exitActivity() {
 currentAPP.start = function () {
     var accountCount = getAccountCount()
     for (var i = 0; i < accountCount; i++) {
-        for (var j = 0; j < 10; j++) {
+        for (var j = 0; j < 2; j++) {
             status0 = others.launch(currentAPP.PACKAGE_NAME)
             if (!status0) {
                 continue

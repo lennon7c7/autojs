@@ -1404,7 +1404,7 @@ currentAPP.XXX_LEVEL1 = function () {
  * @returns {boolean}
  */
 currentAPP.start = function () {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 2; i++) {
         status0 = others.launch(currentAPP.PACKAGE_NAME)
         if (!status0) {
             return true
