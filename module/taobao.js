@@ -1301,8 +1301,25 @@ currentAPP.XXX_YSJYS = function () {
 
 // 消消乐-闯关卡1
 currentAPP.XXX_LEVEL1 = function () {
+    others.clear()
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+    MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+
+    clicks.textIfExists('立即去收')
+
+    if (clicks.textIfExists('去消除')) {
+        sleeps.s15to20()
+        gotoLevel1()
+    }
+
+
+
+
     // 淘宝 - 金币小镇
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
+    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+    MP_URL += 'https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
     app.startActivity({ data: MP_URL })
     sleeps.s15to20()
 
@@ -1311,45 +1328,7 @@ currentAPP.XXX_LEVEL1 = function () {
     }
     sleeps.s15to20()
 
-    for (var i = 0; i < 250; i++) {
-        swipe(500, 2000, 1900, 50, 300)
-        sleep(300)
-    }
-
-    for (var i = 0; i < 2; i++) {
-        // 第一关
-        clicks.xy(device.width / 2 - 200, device.height / 2 + 100)
-
-        // 开始
-        clicks.xy(device.width / 2, device.height / 2 + 300)
-        sleeps.s10to20()
-
-        // 1: top to bottom
-        var offsetWidth = device.width / 2 - 200;
-        var offsetHeight = device.height / 2 + 100
-        swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
-        sleeps.s5to10()
-
-        // 2: continue
-        clicks.xy(device.width / 2, device.height / 2)
-
-        // 3: left to right
-        var offsetWidth = device.width / 2 + 0;
-        var offsetHeight = device.height / 2 + 100
-        swipe(offsetWidth, offsetHeight, offsetWidth + 100, offsetHeight, 500)
-        sleeps.s5to10()
-
-        // 4: top to bottom
-        var offsetWidth = device.width / 2;
-        var offsetHeight = device.height / 2 + 300
-        swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
-        sleeps.s5to10()
-
-        clicks.textIfExists('我知道了')
-
-        clicks.xy(device.width / 2, device.height / 2 + 400)
-        sleeps.s10to20()
-    }
+    gotoLevel1()    
 
     // 加体力
     clicks.xy(device.width / 2 + 200, device.height - 100)
@@ -1397,6 +1376,48 @@ currentAPP.XXX_LEVEL1 = function () {
     clicks.xy(device.width / 2 - 100, device.height / 2 - 100)
     clicks.xy(device.width / 2 + 100, device.height / 2 - 100)
     clicks.xy(device.width - 100, device.height / 2 - 100)
+
+    function gotoLevel1() {
+        for (var i = 0; i < 250; i++) {
+            swipe(500, 2000, 1900, 50, 300)
+            sleep(300)
+        }
+    
+        for (var i = 0; i < 1; i++) {
+            // 第一关
+            clicks.xy(device.width / 2 - 200, device.height / 2 + 100)
+    
+            // 开始
+            clicks.xy(device.width / 2, device.height / 2 + 300)
+            sleeps.s10to20()
+    
+            // 1: top to bottom
+            var offsetWidth = device.width / 2 - 200;
+            var offsetHeight = device.height / 2 + 100
+            swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
+            sleeps.s5to10()
+    
+            // 2: continue
+            clicks.xy(device.width / 2, device.height / 2)
+    
+            // 3: left to right
+            var offsetWidth = device.width / 2 + 0;
+            var offsetHeight = device.height / 2 + 100
+            swipe(offsetWidth, offsetHeight, offsetWidth + 100, offsetHeight, 500)
+            sleeps.s5to10()
+    
+            // 4: top to bottom
+            var offsetWidth = device.width / 2;
+            var offsetHeight = device.height / 2 + 300
+            swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
+            sleeps.s5to10()
+    
+            clicks.textIfExists('我知道了')
+    
+            clicks.xy(device.width / 2, device.height / 2 + 400)
+            sleeps.s10to20()
+        }
+    }
 }
 
 /**
