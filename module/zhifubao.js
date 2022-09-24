@@ -116,6 +116,13 @@ function taskCheckin() {
     }
 
     for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textEndsWith('逛一逛'), text('去完成'))) {
+            sleeps.s20()
+            others.backToElement(text('签到赚积分'))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
             sleeps.s20to25()
             others.backToElement(text('签到赚积分'))
