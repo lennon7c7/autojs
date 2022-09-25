@@ -1267,7 +1267,7 @@ currentAPP.XXX_YSJYS = function () {
     sleep(5 * 1000)
     click(device.width / 2 + 100, device.height / 2 - 200)
     sleep(5 * 1000)
-    click(device.width / 2 + 100, device.height / 2 - 200)
+    click(device.width / 2 + 250, device.height / 2 - 200)
     sleep(5 * 1000)
 
     click(device.width / 2 - 200, device.height / 2 - 100)
