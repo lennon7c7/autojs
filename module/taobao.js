@@ -1246,6 +1246,8 @@ function captcha() {
     }
 
     clicks.textIfExists('我知道了')
+
+    clicks.textIfExists('取消')
 }
 
 // 消消乐-云上精英赛-领取幸运星星
@@ -1306,11 +1308,13 @@ currentAPP.XXX_LEVEL1 = function () {
     MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
     app.startActivity({ data: MP_URL })
     sleeps.s15to20()
+    captcha()
 
     clicks.textIfExists('立即去收')
 
     if (clicks.textIfExists('去消除')) {
         sleeps.s15to20()
+        captcha()
         gotoLevel1()
     }
 
