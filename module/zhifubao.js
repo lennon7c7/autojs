@@ -129,11 +129,8 @@ function taskCheckin() {
         }
     }
 
-    if (!text('限时福利：已完成浏览任务，得 3 积分').exists()) {
-        for (var i = 0; i < 3; i++) {
-            swipes.down()
-        }
-        sleeps.s20()
+    if (!text('限时福利：已完成浏览任务，得 3 积分').exists() && clicks.text('逛15秒赚3积分')) {
+        sleeps.s20to25()
     }
 
     MP_URL = 'alipays://platformapi/startapp?appId=20000160'
