@@ -26,10 +26,10 @@ function taskSJZJD() {
     sleeps.s15()
 
     clicks.xy(700, 1320)
-    sleeps.s5()
+    sleeps.s10to20()
 
     if (text('点击东东农场入口(0/1)').exists() && clicks.centerXyByText('点击东东农场入口(0/1)')) {
-        sleeps.s5()
+        sleeps.s10to20()
         clicks.centerXyByText('免费水果')
         sleeps.s5()
         clicks.centerXyByText('去领取')
