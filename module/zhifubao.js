@@ -52,19 +52,19 @@ function taskBBNC() {
 
     // 助力
     function stepShareHelp() {
-        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f714080ldeefiyqtepew6c'
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/1m407037lrkp0u2l5k23'
         app.startActivity({ data: MP_URL })
         sleeps.s3()
         clicks.textIfExists('打开')
         sleeps.s10()
         clicks.textIfExists('为Ta助力')
 
-        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f717078v6mxyljgl2gcc69'
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/1m40385tzdxwmbyrgh55'
         app.startActivity({ data: MP_URL })
         sleeps.s10()
         clicks.textIfExists('为Ta助力')
 
-        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0f717384gaipvethzkvgq7b'
+        MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/1m40533zd4hdo00l4td5'
         app.startActivity({ data: MP_URL })
         sleeps.s10()
         clicks.textIfExists('为Ta助力')
