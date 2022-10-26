@@ -3580,7 +3580,7 @@ function startActivity() {
  */
 function exitActivity() {
     app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
-    sleeps.s10to20()
+    sleeps.s20to25()
     others.clear()
 }
 
