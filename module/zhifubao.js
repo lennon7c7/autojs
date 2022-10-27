@@ -84,34 +84,57 @@ function taskCheckin() {
     app.startActivity({ data: MP_URL })
     sleeps.s15()
 
+    if (text('会员签到赚积分').exists()) {
+        MP_TITLE = '会员签到赚积分'
+    } else {
+        MP_TITLE = '签到赚积分'
+    }
+    
+    if (clicks.parent(textStartsWith('逛双11'), text('去完成'))) {
+        sleeps.s20()
+        others.backToElement(text(MP_TITLE))
+    }
+
+    if (clicks.parent(textStartsWith('逛支付宝双11'), text('去完成'))) {
+        sleeps.s20()
+        others.backToElement(text(MP_TITLE))
+    }
+
     for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛精选'), text('去完成'))) {
             sleeps.s20()
-            others.backToElement(text('签到赚积分'))
+            others.backToElement(text(MP_TITLE))
         }
     }
 
     for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛红包'), text('去完成'))) {
             sleeps.s20()
-            others.backToElement(text('签到赚积分'))
+            others.backToElement(text(MP_TITLE))
         }
     }
 
     if (clicks.parent(textEndsWith('逛蚂蚁庄园喂小鸡'), text('去完成'))) {
         sleeps.s20()
-        others.backToElement(text('签到赚积分'))
+        others.backToElement(text(MP_TITLE))
     }
 
     if (clicks.parent(textEndsWith('电影红包'), text('去完成'))) {
         sleeps.s20()
-        others.backToElement(text('签到赚积分'))
+        others.backToElement(text(MP_TITLE))
     }
 
     for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛一逛'), text('去完成'))) {
             sleeps.s20()
-            others.backToElement(text('签到赚积分'))
+            others.backToElement(text(MP_TITLE))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
+            sleeps.s20to25()
+            others.backToElement(text(MP_TITLE))
         }
     }
 
@@ -122,17 +145,11 @@ function taskCheckin() {
         }
     }
 
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
-            sleeps.s20to25()
-            others.backToElement(text('签到赚积分'))
-        }
-    }
-
     if (!text('限时福利：已完成浏览任务，得 3 积分').exists() && clicks.text('逛15秒赚3积分')) {
         sleeps.s20to25()
     }
-
+    
+    others.clear()
     MP_URL = 'alipays://platformapi/startapp?appId=20000160'
     app.startActivity({ data: MP_URL })
     sleeps.s15to20()
