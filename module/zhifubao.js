@@ -11,6 +11,66 @@ currentAPP.VERSION = '10.1.99.7000'
 currentAPP.APK = 'https://android-apps.pp.cn/fs08/2020/08/21/3/120_bc32c342295d63e6980102fc3505d414.apk'
 currentAPP.MP_URL = 'alipays://platformapi/startapp?appId='
 
+/**
+ * 蚂蚁庄园
+ * @returns {bool}
+ */
+currentAPP.taskMYZY = function () {
+    function stepQuestion() {
+        if (!clicks.centerXyByText('去答题')) {
+            return
+        }
+        sleeps.s5to10()
+
+        var url = 'https://m.ali213.net/news/gl2102/562121.html'
+        var tempString = http.get(url).body.string()
+        var reg = /<span style="color:#ff0000;"><strong>(.*)<\/strong><\/span>/g;
+        var tempArray = tempString.match(reg)
+        if (!tempArray) {
+            return
+        }
+
+        var answerArray = []
+        for (var i = 0; i < 3; i++) {
+            var reg2 = /<span style="color:#ff0000;"><strong>(.*)<\/strong><\/span>/;
+            var tempArray2 = reg2.exec(tempArray[i])
+            if (tempArray2.length < 2) {
+                continue
+            }
+
+            answerArray.push(tempArray2[1])
+        }
+
+        if (answerArray.length === 0) {
+            return
+        }
+
+        className('android.view.View').depth(11).find().forEach((value1, key1) => {
+            if (answerArray.indexOf(value1.text()) !== -1) {
+                value1.click()
+                others.back()
+            }
+        })
+    }
+
+    MP_URL = 'alipays://platformapi/startapp?appId=66666674'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+
+    // 喂鸡
+    clicks.xy(device.width - 100, device.height - 200)
+
+    // 领饲料
+    clicks.xy(300, device.height - 200)
+
+    clicks.centerXyByText('领取')
+    clicks.centerXyByText('领取')
+    clicks.centerXyByText('领取')
+    clicks.centerXyByText('领取')
+
+    stepQuestion()
+}
+
 // 芭芭农场
 function taskBBNC() {
     stepShareHelp()
