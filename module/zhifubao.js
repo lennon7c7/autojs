@@ -75,6 +75,14 @@ currentAPP.taskMYZY = function () {
 function taskBBNC() {
     stepShareHelp()
 
+    // 助农
+    MP_URL = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https://qr.alipay.com/0vs0700cpk9sy0ezg211'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+    swipes.refresh()
+    sleeps.s15to20()
+    others.clear()
+
     // lennon1991
     MP_URL = 'alipays://platformapi/startapp?appId=68687599'
     app.startActivity({ data: MP_URL })
@@ -109,6 +117,7 @@ function taskBBNC() {
     sleeps.s10()
     clicks.xy(800, 1500)
 
+    stepShiFei()
 
     // 助力
     function stepShareHelp() {
@@ -130,6 +139,23 @@ function taskBBNC() {
         clicks.textIfExists('为Ta助力')
 
         others.clear()
+    }
+
+    function stepShiFei() {
+        others.clear()
+        MP_URL = 'alipays://platformapi/startapp?appId=68687599'
+        app.startActivity({ data: MP_URL })
+            sleeps.s15()
+
+        for (var i = 0; i < 10; i++) {
+            clicks.textIfExists('收下去施肥')
+            clicks.textIfExists('点击领取')
+            clicks.textIfExists('立即领取')
+            clicks.textIfExists('关闭')
+
+            click(device.width / 2, device.height - 300)
+            sleeps.s1()
+        }
     }
 }
 
