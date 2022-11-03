@@ -1382,9 +1382,9 @@ currentAPP.XXX_LEVEL1 = function () {
     clicks.xy(device.width - 100, device.height / 2 - 100)
 
     function gotoLevel1() {
-        for (var i = 0; i < 250; i++) {
+        for (var i = 0; i < 300; i++) {
             swipe(500, 2000, 1900, 50, 300)
-            sleep(300)
+            sleep(500)
         }
     
         for (var i = 0; i < 1; i++) {
