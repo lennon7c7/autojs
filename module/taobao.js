@@ -833,6 +833,11 @@ function taskCSJSF() {
     captcha()
   
     clicks.textIfExists('直接领取')
+
+    clicks.xy(100, device.height - 200)
+    clicks.xy(700, 1600)
+    clicks.textIfExists('关闭')
+
     others.clear()
 }
 
