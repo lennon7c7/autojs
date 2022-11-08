@@ -176,6 +176,21 @@ function taskCheckin() {
         MP_TITLE = '签到赚积分'
     }
     
+    if (clicks.parent(textStartsWith('逛天猫'), text('去完成'))) {
+        sleeps.s20to25()
+        others.backToElement(text(MP_TITLE))
+    }
+    
+    if (clicks.parent(textStartsWith('逛网商'), text('去完成'))) {
+        sleeps.s20to25()
+        others.backToElement(text(MP_TITLE))
+    }
+    
+    if (clicks.parent(textStartsWith('逛信用卡'), text('去完成'))) {
+        sleeps.s20to25()
+        others.backToElement(text(MP_TITLE))
+    }
+
     if (clicks.parent(textStartsWith('逛双11'), text('去完成'))) {
         sleeps.s20()
         others.backToElement(text(MP_TITLE))
@@ -219,6 +234,13 @@ function taskCheckin() {
 
     for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
+            sleeps.s20to25()
+            others.backToElement(text(MP_TITLE))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛15s').depth(7), text('去完成'))) {
             sleeps.s20to25()
             others.backToElement(text(MP_TITLE))
         }
