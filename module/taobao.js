@@ -349,13 +349,18 @@ function taskMoneyPower() {
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
     app.startActivity({data: MP_URL})
-    sleeps.s10()
+    sleeps.s15to20()
 
     if (!clicks.element(className('android.widget.Button').depth(11).indexInParent(3))) {
         return false
     }
 
-    sleeps.s5to10()
+    sleeps.s15to20()
+
+    for (var i = 0; i < 3; i++) {
+        clicks.textIfExists('立即领取')
+    }
+
     if (text('领取奖励').exists()) {
         clicks.centerXyByText('领取奖励')
     }
