@@ -1324,8 +1324,6 @@ currentAPP.XXX_LEVEL1 = function () {
     }
 
 
-
-
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
     MP_URL += 'https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
@@ -1343,26 +1341,6 @@ currentAPP.XXX_LEVEL1 = function () {
     clicks.xy(device.width / 2 + 200, device.height - 100)
     sleeps.s5to10()
 
-    // // 去邀请
-    // clicks.xy(device.width - 100, device.height / 2 + 100)
-    // clicks.textIfExists('我知道了')
-
-    // 领奖励
-    // clicks.xy(device.width - 100, device.height / 2 + 400)
-    // clicks.textIfExists('我知道了')
-    // clicks.xy(device.width - 100, device.height / 2 + 600)
-    // clicks.textIfExists('我知道了')
-    // 闯2次关
-    // for (var i = 0; i < 3; i++) {
-    //     clicks.xy(device.width - 100, device.height / 2 + 750)
-    //     clicks.textIfExists('我知道了')
-    // }
-    // 浏览3次
-    // for (var i = 0; i < 3; i++) {
-    //     clicks.xy(device.width - 100, device.height / 2 + 950)
-    //     clicks.textIfExists('我知道了')
-    // }
-
     clicks.xy(device.width - 100, device.height / 2 + 250)
     clicks.textIfExists('我知道了')
 
@@ -1372,8 +1350,11 @@ currentAPP.XXX_LEVEL1 = function () {
     clicks.xy(device.width - 100, device.height / 2 + 650)
     clicks.textIfExists('我知道了')
 
-    clicks.xy(device.width - 100, device.height / 2 + 850)
-    clicks.textIfExists('我知道了')
+    // 浏览2次
+    for (var i = 0; i < 2; i++) {
+        clicks.xy(device.width - 100, device.height / 2 + 850)
+        clicks.textIfExists('我知道了')
+    }
 
     // 浏览3次
     for (var i = 0; i < 3; i++) {
@@ -1398,7 +1379,7 @@ currentAPP.XXX_LEVEL1 = function () {
     
             // 开始
             clicks.xy(device.width / 2, device.height / 2 + 300)
-            sleeps.s10to20()
+            sleeps.s20to25()
     
             // 1: top to bottom
             var offsetWidth = device.width / 2 - 200;
