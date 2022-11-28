@@ -63,12 +63,16 @@ currentAPP.taskMYZY = function () {
     // 领饲料
     clicks.xy(300, device.height - 200)
 
-    clicks.centerXyByText('领取')
-    clicks.centerXyByText('领取')
-    clicks.centerXyByText('领取')
-    clicks.centerXyByText('领取')
-
     stepQuestion()
+  
+    if (clicks.parent(text('庄园小视频'), text('去完成'))) {
+        sleeps.s20to25()
+        others.backToElement(text(MP_TITLE))
+        clicks.centerXyByText('领取')
+    }
+
+    clicks.centerXyByText('领取')
+    clicks.centerXyByText('领取')
 }
 
 // 芭芭农场
