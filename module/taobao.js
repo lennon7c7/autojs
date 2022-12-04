@@ -1252,8 +1252,10 @@ function taskBBNC() {
 
     // 阳光
     function stepYangGuang() {
-        stepRandomPage()
-        stepShouYangGuang()
+        isShouYangGuang = stepRandomPage()
+        if (isShouYangGuang) {
+            stepShouYangGuang()
+        }
         stepBee()
 
         // 浏览页面
@@ -1270,7 +1272,11 @@ function taskBBNC() {
             if (clicks.textIfExists('去浏览')) {
                 sleeps.s15to20()
                 others.back()
+     
+                return true
             }
+
+            return false
         }
 
         // 蜜蜂采阳光
