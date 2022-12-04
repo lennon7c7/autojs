@@ -71,6 +71,20 @@ currentAPP.taskMYZY = function () {
         clicks.centerXyByText('领取')
     }
 
+    if (clicks.parent(text('线上支付'), text('去完成'))) {
+        zhifubao = require('module/zhifubao.js')
+        zhifubao.taskTransfer(1)
+
+        others.clear()
+        MP_URL = 'alipays://platformapi/startapp?appId=66666674'
+        app.startActivity({ data: MP_URL })
+        sleeps.s15to20()
+    
+        // 领饲料
+        clicks.xy(300, device.height - 200)
+    }
+
+
     clicks.centerXyByText('领取')
     clicks.centerXyByText('领取')
 }
@@ -434,10 +448,14 @@ function task0Lottery() {
 /**
  * 任务-转账得积分
  */
-currentAPP.taskTransfer = function () {
+currentAPP.taskTransfer = function (maxCount) {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------');
 
-    for (var i = 0; i < 35; i++) {
+    if (maxCount < 0) {
+        maxCount = 35
+    }
+
+    for (var i = 0; i < maxCount; i++) {
         toastLog(i)
 
         // 直接给人lennon转账
@@ -448,7 +466,9 @@ currentAPP.taskTransfer = function () {
         sleeps.s5to10()
 
         clicks.element(id('com.alipay.mobile.antui:id/au_key_confirm'))
+        sleeps.s5to10()
         clicks.centerXyByText('Pay now')
+        sleeps.s5to10()
 
         text('9').click()
         text('3').click()
@@ -456,6 +476,7 @@ currentAPP.taskTransfer = function () {
         text('4').click()
         text('2').click()
         clicks.centerXyByText('8')
+        sleeps.s5to10()
     }
 }
 
