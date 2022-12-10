@@ -16,7 +16,9 @@ currentAPP.MP_URL = 'alipays://platformapi/startapp?appId='
  * @returns {bool}
  */
 currentAPP.taskMYZY = function () {
-    function stepQuestion() {
+	MP_TITLE = '蚂蚁庄园'
+  
+	function stepQuestion() {
         if (!clicks.centerXyByText('去答题')) {
             return
         }
@@ -68,6 +70,20 @@ currentAPP.taskMYZY = function () {
     if (clicks.parent(text('庄园小视频'), text('去完成'))) {
         sleeps.s20to25()
         others.backToElement(text(MP_TITLE))
+        clicks.centerXyByText('领取')
+    }
+  
+    if (clicks.parent(text('雇佣小鸡拿饲料'), text('去完成'))) {
+        sleeps.s5to10()
+		clicks.textIfExists('雇佣并通知')
+		clicks.textIfExists('雇佣并通知')
+		others.backToElement(text(MP_TITLE))
+        clicks.centerXyByText('领取')
+    }
+  
+    if (clicks.parent(text('去逛一逛淘金币小镇'), text('去完成'))) {
+        sleeps.s5to10()
+		others.backToElement(text(MP_TITLE))
         clicks.centerXyByText('领取')
     }
 
