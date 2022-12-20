@@ -192,7 +192,7 @@ function taskBBNC() {
  * 任务-签到
  */
 function taskCheckin() {
-    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
     others.clear()
     MP_URL = 'alipays://platformapi/startapp?appId=20000160&chInfo=taojinbiqiandao&url=/www/pointSignIn.html?source=taojinbiqiandao&__webview_options__%3Dttb%253Dauto&shouhuanbackup=BG_STtaojinbitask'
@@ -203,6 +203,11 @@ function taskCheckin() {
         MP_TITLE = '会员签到赚积分'
     } else {
         MP_TITLE = '签到赚积分'
+    }
+	    
+    if (clicks.parent(textStartsWith('逛淘金币'), text('去完成'))) {
+        sleeps.s20to25()
+        others.backToElement(text(MP_TITLE))
     }
     
     if (clicks.parent(textStartsWith('逛天猫'), text('去完成'))) {
@@ -269,11 +274,30 @@ function taskCheckin() {
     }
 
     for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛15秒').depth(8), text('去完成'))) {
+            sleeps.s20to25()
+            others.backToElement(text(MP_TITLE))
+        }
+    }
+
+    for (var i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛15s').depth(7), text('去完成'))) {
             sleeps.s20to25()
             others.backToElement(text(MP_TITLE))
         }
     }
+
+    for (var i = 0; i < 3; i++) {
+        if (clicks.parent(textStartsWith('逛15s').depth(8), text('去完成'))) {
+            sleeps.s20to25()
+            others.backToElement(text(MP_TITLE))
+        }
+    }
+
+	if (clicks.parents(textStartsWith('搜一搜').depth(9), text('去完成'))) {
+		sleeps.s20()
+		others.backToElement(text('签到赚积分'))
+	}
 
     for (var i = 0; i < 3; i++) {
         if (clicks.parent(textEndsWith('逛一逛'), text('去完成'))) {
