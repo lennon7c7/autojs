@@ -57,33 +57,33 @@ function taskSJZJD() {
 
 // 金融双签
 function stepCheckinJR() {
-    others.clear()
-    URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
-    MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
-    app.startActivity({ data: MP_URL })
-    sleeps.s10()
-    if (clicks.textIfExists('去签到')) {
-        sleeps.s10()
-        clicks.textIfExists('签到领金贴')
-        clicks.textIfExists('立即获得')
-    }
+	others.clear()
+	URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
+	MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
+	app.startActivity({ data: MP_URL })
+	sleeps.s20to25()
+	clicks.textIfExists('签到领金贴')
 
-    others.clear()
-    URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
-    MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
-    app.startActivity({ data: MP_URL })
-    sleeps.s10()
-    if (clicks.textIfExists('去签到')) {
-        sleeps.s10()
-        clicks.centerXyByText('签到领京豆')
-    }
+	if (clicks.textIfExists('去签到')) {
+		sleeps.s15to20()
+	}
 
-    others.clear()
-    URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
-    MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
-    app.startActivity({ data: MP_URL })
-    sleeps.s10()
-    clicks.textIfExists('完成双签领取')
+	others.clear()
+	URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
+	MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
+	app.startActivity({ data: MP_URL })
+	sleeps.s15to20()
+	if (clicks.textIfExists('去签到')) {
+		sleeps.s15to20()
+		clicks.centerXyByText('签到领京豆')
+	}
+
+	others.clear()
+	URL_OLD = 'https://m1.jr.jd.com/integrate/signin/index.html'
+	MP_URL = 'openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22m%22%2C%22sourceValue%22%3A%22babel-act%22%2C%22sourceType%22%3A%22babel%22%2C%22M_sourceFrom%22%3A%22h5auto%22%2C%22msf_type%22%3A%22auto%22%2C%22url%22%3A%22' + encodeURIComponent(URL_OLD) + '%22%7D%0A'
+	app.startActivity({ data: MP_URL })
+	sleeps.s15to20()
+	clicks.textIfExists('点击领奖')
 }
 
 // 京喜双签
@@ -127,6 +127,11 @@ currentAPP.start = function () {
         if (!status0) {
             return true
         }
+			
+		clicks.centerXyByText('免费水果')
+		sleeps.s10to20()
+		clicks.textIfExists('去签到')
+		others.back()
 
         stepCheckinJR()
         stepCJD()
