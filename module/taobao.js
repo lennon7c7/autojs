@@ -1004,14 +1004,22 @@ function taskXXX() {
 
     // 闯关卡1
     function gotoLevel1() {
-        for (var i = 0; i < 300; i++) {
-            swipe(500, 2000, 1900, 50, 300)
-            sleep(500)
-        }
+		// 日记
+		clicks.xy(100, device.height - 100)
+		sleeps.s5to10()
+
+		for (var i = 0; i < 50; i++) {
+			swipe(500, 2000, 1900, 50, 300)
+			sleep(500)
+		}
+
+		// 前往
+		clicks.xy(device.width - 100, device.height - 200)
+		sleeps.s15to20()
 
         for (var i = 0; i < 1; i++) {
             // 第一关
-            clicks.xy(device.width / 2 - 200, device.height / 2 + 100)
+            clicks.xy(device.width / 2 - 200, device.height / 2 + 200)
 
             // 开始
             clicks.xy(device.width / 2, device.height / 2 + 300)
@@ -1121,8 +1129,8 @@ function taskXXX() {
         }
 
         swipes.down()
-        if (desc('省钱连连消').exists()) {
-            clicks.centerXyByDesc('省钱连连消')
+        if (desc('火爆连连消').exists()) {
+            clicks.centerXyByDesc('火爆连连消')
             sleeps.s15()
         }
 
@@ -1420,110 +1428,6 @@ currentAPP.XXX_YSJYS = function () {
     sleep(5 * 1000)
     click(device.width / 2 + 250, device.height / 2 + 400)
     sleep(5 * 1000)
-}
-
-// 消消乐-闯关卡1
-currentAPP.XXX_LEVEL1 = function () {
-    others.clear()
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
-    MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
-    app.startActivity({ data: MP_URL })
-    sleeps.s15to20()
-    captcha()
-
-    clicks.textIfExists('立即去收')
-
-    if (clicks.textIfExists('去消除')) {
-        sleeps.s15to20()
-        captcha()
-        gotoLevel1()
-    }
-
-
-    // 淘宝 - 金币小镇
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
-    MP_URL += 'https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
-    app.startActivity({ data: MP_URL })
-    sleeps.s15to20()
-
-    if (!clicks.element(textStartsWith('消消消'))) {
-        return false
-    }
-    sleeps.s15to20()
-
-    gotoLevel1()    
-
-    // 加体力
-    clicks.xy(device.width / 2 + 200, device.height - 100)
-    sleeps.s5to10()
-
-    clicks.xy(device.width - 100, device.height / 2 + 250)
-    clicks.textIfExists('我知道了')
-
-    clicks.xy(device.width - 100, device.height / 2 + 450)
-    clicks.textIfExists('我知道了')
-
-    clicks.xy(device.width - 100, device.height / 2 + 650)
-    clicks.textIfExists('我知道了')
-
-    // 浏览2次
-    for (var i = 0; i < 2; i++) {
-        clicks.xy(device.width - 100, device.height / 2 + 850)
-        clicks.textIfExists('我知道了')
-    }
-
-    // 浏览3次
-    for (var i = 0; i < 3; i++) {
-        clicks.xy(device.width - 100, device.height / 2 + 1050)
-        clicks.textIfExists('我知道了')
-    }
-
-    // 每日额外奖励
-    clicks.xy(device.width / 2 - 100, device.height / 2 - 100)
-    clicks.xy(device.width / 2 + 100, device.height / 2 - 100)
-    clicks.xy(device.width - 100, device.height / 2 - 100)
-
-    function gotoLevel1() {
-        for (var i = 0; i < 300; i++) {
-            swipe(500, 2000, 1900, 50, 300)
-            sleep(500)
-        }
-    
-        for (var i = 0; i < 1; i++) {
-            // 第一关
-            clicks.xy(device.width / 2 - 200, device.height / 2 + 100)
-    
-            // 开始
-            clicks.xy(device.width / 2, device.height / 2 + 300)
-            sleeps.s20to25()
-    
-            // 1: top to bottom
-            var offsetWidth = device.width / 2 - 200;
-            var offsetHeight = device.height / 2 + 100
-            swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
-            sleeps.s5to10()
-    
-            // 2: continue
-            clicks.xy(device.width / 2, device.height / 2)
-    
-            // 3: left to right
-            var offsetWidth = device.width / 2 + 0;
-            var offsetHeight = device.height / 2 + 100
-            swipe(offsetWidth, offsetHeight, offsetWidth + 100, offsetHeight, 500)
-            sleeps.s5to10()
-    
-            // 4: top to bottom
-            var offsetWidth = device.width / 2;
-            var offsetHeight = device.height / 2 + 300
-            swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
-            sleeps.s5to10()
-    
-            clicks.textIfExists('我知道了')
-    
-            clicks.xy(device.width / 2, device.height / 2 + 400)
-            sleeps.s10to20()
-        }
-    }
 }
 
 /**
