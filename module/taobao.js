@@ -49,13 +49,13 @@ function taskZhuanJinBi() {
 
     clicks.textIfExists('去签到')
 
-    if (clicks.textIfExists('找答案')) {
-        className('android.widget.Button').depth(7).indexInParent(7).findOne(3000).click()
-        sleeps.s3()
+    // if (clicks.textIfExists('找答案')) {
+    //     className('android.widget.Button').depth(7).indexInParent(7).findOne(3000).click()
+    //     sleeps.s3()
 
-        exists.backToElement(text('今日任务'))
-        clicks.textIfExists('领取奖励')
-    }
+    //     exists.backToElement(text('今日任务'))
+    //     clicks.textIfExists('领取奖励')
+    // }
 
     if (clicks.textIfExists('去蚂蚁庄园逛一逛(0/1)')) {
         sleeps.s10()
