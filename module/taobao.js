@@ -952,6 +952,11 @@ function taskXXX() {
     captcha()
     gotoLevel1()
 
+	// desk card
+	MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://market.m.taobao.com/app/zelda/xxl/index.html?referer=widget&afcflow=unkown&cpp=1&sp_abtk=common_windvane_commonInfo&imsi=460017810670980&suid=4e2d31c9-e32e-4bcd-a119-5f272c42f66c&surge_ssr=true&ttid=600000%40taobao_android_10.19.0&spm=a2159r.13376460.0.0&sp_tk=Vlk0a2Q0a2trOGM%3D&un_site=0&isNeedHome=0&_afc_link=1&sourceType=other&bxsign=scd4OX51VonGpMj8Lm-bJJaYmpyXsstQ2hNCdc8SNr3iPFJbK5OKQsGp0D-Fol_y34mhWar9xSR5rPTpM6f1wiBtwv3V9qKFQZNxq9vAJPHiqapt17Rbln07ACvoQoGjHRO&imei=868026049427582&un=2bf412b10649e7d5bbeeeafdb2768e28&disableNav=YES&from=tb&short_name=h.UQbVXfn&shareurl=true&share_crt_v=1&utparamcnt=%7B%22_afc_link%22%3A%221%22%7D&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1672321781627.Copy.windvane&app=chrome'
+    app.startActivity({ data: MP_URL })
+    sleeps.s15to20()
+
     stepFormHomePage()
     stepSignin()
     stepRandomPage()
@@ -1060,7 +1065,7 @@ function taskXXX() {
         sleeps.s10()
 
         clicks.xy(200, 400)
-        clicks.xy(800, 1700)
+        clicks.xy(800, 1600)
     }
 
     // 浏览页面
