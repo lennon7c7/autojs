@@ -204,110 +204,9 @@ function taskCheckin() {
     } else {
         MP_TITLE = '签到赚积分'
     }
-	    
-    if (clicks.parent(textStartsWith('逛淘金币'), text('去完成'))) {
-        sleeps.s20to25()
-        others.backToElement(text(MP_TITLE))
-    }
-    
-    if (clicks.parent(textStartsWith('逛天猫'), text('去完成'))) {
-        sleeps.s20to25()
-        others.backToElement(text(MP_TITLE))
-    }
-    
-    if (clicks.parent(textStartsWith('逛网商'), text('去完成'))) {
-        sleeps.s20to25()
-        others.backToElement(text(MP_TITLE))
-    }
-    
-    if (clicks.parent(textStartsWith('逛信用卡'), text('去完成'))) {
-        sleeps.s20to25()
-        others.backToElement(text(MP_TITLE))
-    }
-
-    if (clicks.parent(textStartsWith('逛双11'), text('去完成'))) {
-        sleeps.s20()
-        others.backToElement(text(MP_TITLE))
-    }
-
-    if (clicks.parent(textStartsWith('逛支付宝双11'), text('去完成'))) {
-        sleeps.s20()
-        others.backToElement(text(MP_TITLE))
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛精选'), text('去完成'))) {
-            sleeps.s20()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛红包'), text('去完成'))) {
-            sleeps.s20()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    if (clicks.parent(textEndsWith('逛蚂蚁庄园喂小鸡'), text('去完成'))) {
-        sleeps.s20()
-        others.backToElement(text(MP_TITLE))
-    }
-
-    if (clicks.parent(textEndsWith('电影红包'), text('去完成'))) {
-        sleeps.s20()
-        others.backToElement(text(MP_TITLE))
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛一逛'), text('去完成'))) {
-            sleeps.s20()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛15秒').depth(7), text('去完成'))) {
-            sleeps.s20to25()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛15秒').depth(8), text('去完成'))) {
-            sleeps.s20to25()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛15s').depth(7), text('去完成'))) {
-            sleeps.s20to25()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textStartsWith('逛15s').depth(8), text('去完成'))) {
-            sleeps.s20to25()
-            others.backToElement(text(MP_TITLE))
-        }
-    }
-
-	if (clicks.parents(textStartsWith('搜一搜').depth(9), text('去完成'))) {
-		sleeps.s20()
-		others.backToElement(text('签到赚积分'))
-	}
-
-    for (var i = 0; i < 3; i++) {
-        if (clicks.parent(textEndsWith('逛一逛'), text('去完成'))) {
-            sleeps.s20()
-            others.backToElement(text('签到赚积分'))
-        }
-    }
 
 	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(textStartsWith('+3').depth(9).indexInParent(1), text('去完成'))) {
+		if (clicks.parents(textStartsWith('+5').depth(9).indexInParent(1), text('去完成'))) {
 			sleeps.s20to25()
 			others.backToElement(text(MP_TITLE))
 		}
@@ -319,6 +218,14 @@ function taskCheckin() {
 			others.backToElement(text(MP_TITLE))
 		}
 	}
+
+	for (var i = 0; i < 5; i++) {
+		if (clicks.parents(textStartsWith('+3').depth(9).indexInParent(1), text('去完成'))) {
+			sleeps.s20to25()
+			others.backToElement(text(MP_TITLE))
+		}
+	}
+
 
     if (!text('限时福利：已完成浏览任务，得 3 积分').exists() && clicks.text('逛15秒赚3积分')) {
         sleeps.s20to25()
