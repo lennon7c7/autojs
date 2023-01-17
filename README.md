@@ -33,6 +33,8 @@
 
 AutoJs-Docs：https://hyb1996.github.io/AutoJs-Docs
 
+VS Code插件：https://marketplace.visualstudio.com/items?itemName=710850609.auto-js-vscodeext-fixed
+
 ## FAQ
 
 Q：这玩意赚钱不？
