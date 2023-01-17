@@ -206,21 +206,21 @@ function taskCheckin() {
     }
 
 	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(textStartsWith('+5').depth(9).indexInParent(1), text('去完成'))) {
+		if (clicks.parents(text('+5').depth(9).indexInParent(1), text('去完成'))) {
 			sleeps.s20to25()
 			others.backToElement(text(MP_TITLE))
 		}
 	}
 
 	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(textStartsWith('+1').depth(9).indexInParent(1), text('去完成'))) {
+		if (clicks.parents(text('+1').depth(9).indexInParent(1), text('去完成'))) {
 			sleeps.s20to25()
 			others.backToElement(text(MP_TITLE))
 		}
 	}
 
 	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(textStartsWith('+3').depth(9).indexInParent(1), text('去完成'))) {
+		if (clicks.parents(text('+3').depth(9).indexInParent(1), text('去完成'))) {
 			sleeps.s20to25()
 			others.backToElement(text(MP_TITLE))
 		}
