@@ -35,6 +35,16 @@ AutoJs-Docs：https://hyb1996.github.io/AutoJs-Docs
 
 VS Code插件：https://marketplace.visualstudio.com/items?itemName=710850609.auto-js-vscodeext-fixed
 
+
+## 贡献
+
+1. Fork
+2. 创建功能分支 (git checkout -b my-new-feature)
+3. 提交更改 (git commit -am 'Add some feature')
+4. 推送到分支 (git push origin my-new-feature)
+5. 创建Pull Request
+
+
 ## FAQ
 
 Q：这玩意赚钱不？
