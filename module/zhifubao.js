@@ -205,27 +205,12 @@ function taskCheckin() {
         MP_TITLE = '签到赚积分'
     }
 
-	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(text('+5').depth(9).indexInParent(1), text('去完成'))) {
+	for (var i = 1; i < 6; i++) {
+		if (clicks.parents(text('+' + i).depth(9).indexInParent(1), text('去完成'))) {
 			sleeps.s20to25()
 			others.backToElement(text(MP_TITLE))
 		}
 	}
-
-	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(text('+1').depth(9).indexInParent(1), text('去完成'))) {
-			sleeps.s20to25()
-			others.backToElement(text(MP_TITLE))
-		}
-	}
-
-	for (var i = 0; i < 5; i++) {
-		if (clicks.parents(text('+3').depth(9).indexInParent(1), text('去完成'))) {
-			sleeps.s20to25()
-			others.backToElement(text(MP_TITLE))
-		}
-	}
-
 
     if (!text('限时福利：已完成浏览任务，得 3 积分').exists() && clicks.text('逛15秒赚3积分')) {
         sleeps.s20to25()
