@@ -16,7 +16,9 @@ currentAPP.APK = ''
 
 // 任务-收金币
 function taskShouJinBi() {
-    // 淘宝 - 金币小镇
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	// 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
     app.startActivity({data: MP_URL})
     sleeps.s10()
@@ -35,6 +37,8 @@ function taskShouJinBi() {
 
 // 任务-赚金币
 function taskZhuanJinBi() {
+    log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
     // 淘宝 - 金币小镇
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftmtjb%2Ftown%2Fhome%3Fwh_biz%3Dtm%26disableNav%3DYES%26hd_from%3Dalipayjf%26remind%3Dtrue&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndb5fbc2_1641359630456&slk_t=1641359630900&afcPromotionOpen=false&source=slk_dp'
     app.startActivity({data: MP_URL})
@@ -165,7 +169,9 @@ function taskZhuanJinBi() {
  * 成就中心
  */
 function taskLife() {
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/achievement/nfcFHNzbzbAcJ8CBm3Am?disableNav=YES&from=share&sourceType=other&suid=d25bf0e4-aeda-4b2f-b0e6-0c68b94ed547&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1652493645168.DingTalk.TBLife-1&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_TBLife-1_commonInfo&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1392565422159&short_name=h.fIX1X0P&app=chrome#/'
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https://pages.tmall.com/wow/z/tblife/achievement/nfcFHNzbzbAcJ8CBm3Am?disableNav=YES&from=share&sourceType=other&suid=d25bf0e4-aeda-4b2f-b0e6-0c68b94ed547&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_21646297_1652493645168.DingTalk.TBLife-1&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_TBLife-1_commonInfo&cpp=1&shareurl=true&spm=a313p.22.ce8hnk.1392565422159&short_name=h.fIX1X0P&app=chrome#/'
     app.startActivity({data: MP_URL})
     sleeps.s20()
 
@@ -723,7 +729,9 @@ function switchAccount() {
 
 // 斗地主
 function taskDDZ() {
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Fdoudizhu%2FsX78ziQH2ar7ax6DKZF2-doudizhu'
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Fhdwk%2Fdoudizhu%2FsX78ziQH2ar7ax6DKZF2-doudizhu'
     app.startActivity({data: MP_URL})
     sleeps.s15to20()
     clicks.xy(device.width - 200, device.height - 200)
@@ -831,7 +839,9 @@ function taskDDZ() {
 
 // 橙狮健身房
 function taskCSJSF() {
-    MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
     MP_URL += 'https://huodong.taobao.com/wow/z/alisports/page-config/8X7971GOVM8'
     app.startActivity({ data: MP_URL })
     sleeps.s15to20()
@@ -848,7 +858,9 @@ function taskCSJSF() {
 
 // 淘宝人生
 function taskTBRS() {
-    others.clear()
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	others.clear()
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fpages.tmall.com%2Fwow%2Fz%2Ftblife%2Fsolution2%2Fgame-tblife%3FdisableNav%3DYES%26uniqueTag%3Dhdtblife%26from%3Dxyxgc%26route_hash%3D_home%26spm%3Da21l99.home.games.order_8&action=ali.open.nav&module=h5&bootImage=0&slk_sid=rndc96698_1653972853848&slk_t=1653972854348&afcPromotionOpen=false&afc_route=1&source=slk_dp'
     app.startActivity({ data: MP_URL })
     sleeps.s10()
@@ -935,7 +947,9 @@ function taskTBRS() {
 
 // 消消乐
 function taskXXX() {
-    others.clear()
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	others.clear()
     MP_URL = 'tbopen://m.taobao.com/tbopen/index.html?h5Url='
     MP_URL += 'https://market.m.taobao.com/app/tmall-wireless/tmallfarm/index.html?disableNav=YES&inviteCode=85c1e0243059ccdebb04fa5c271d5583&spm=farm.newfarm.task.share&sourceType=other&suid=c0660d17-e1bf-4800-935f-f17bc85b927f&ut_sk=1.XXeQ2K0gRm8DAD%2FUgoGHfv2o_23181017_1651994199505.DingTalk.tmall_farm&un=2bf412b10649e7d5bbeeeafdb2768e28&share_crt_v=1&un_site=0&sp_abtk=common_tmall_farm_commonInfo&cpp=1&shareurl=true&short_name=h.fIVq9dg&bxsign=scdf7KzwvJmTm0QgGlOi22m_hJyyoHJulEp_ftuok3pXgHp_wIt41c_YO9QOr1adFuXg6MRA2NJnwBpIyspT_pwcUjDu6-4xZwtIH11pe-OtyeHX6kJpojfgA9aNyNds6XZ&app=macos_safari'
     app.startActivity({ data: MP_URL })
@@ -1145,7 +1159,9 @@ function taskXXX() {
 
 // 芭芭农场
 function taskBBNC() {
-    captcha()
+	log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
+
+	captcha()
     stepGuoShu()
     stepYangGuang()
 
