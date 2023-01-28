@@ -179,7 +179,7 @@ function taskLife() {
     sleeps.s3()
 
 
-    textString = '淘金币 +64';
+    textString = '阳光 +20';
     if (text(textString).exists()) {
         text(textString).findOnce().parent().children().forEach(function (child) {
             if (child.text() == '选TA') {
@@ -248,6 +248,21 @@ function taskLife() {
         others.back()
         clicks.textIfExists('领取奖励')
     }
+
+    if (clicks.text('去查看')) {
+        sleeps.s10()
+        others.back()
+        clicks.textIfExists('领取奖励')
+    }
+
+	if (clicks.text('去喂粮')) {
+		sleeps.s20to25()
+		clicks.xy(device.width - 300, device.height - 400)
+		clicks.text('道具详情图 免费')
+		clicks.text('购买并投喂')
+		others.back()
+		clicks.textIfExists('领取奖励')
+	}
 
     // if (text('去下单').exists()) {
     //     // 淘宝 - 自动下0元单
