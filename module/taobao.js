@@ -752,7 +752,7 @@ function taskDDZ() {
     clicks.xy(device.width - 200, device.height - 200)
     captcha()
 
-    if (text('当前进度 10/10').exists()) {
+    if (text('斗地主对局10次(10/10)').exists()) {
         return true;
     }
 
@@ -785,6 +785,7 @@ function taskDDZ() {
             }
 
             stepSearch()
+            stepFormHomePage()
 
             // 做任务
             clicks.xy(800, 2000)
@@ -800,6 +801,30 @@ function taskDDZ() {
                 clicks.textIfExists('领取奖励')
             }
 
+            if (clicks.textIfExists('搜一搜你心仪的宝贝(0/1)')) {
+                sleeps.s5to10()
+                clicks.xy(200, 1200)
+                sleeps.s20to25()
+        
+                others.back2()
+                clicks.textIfExists('领取奖励')
+            }
+        
+            if (clicks.textIfExists('浏览薅羊毛赚话费(0/1)')) {
+                sleeps.s15to20()
+        
+                others.back()
+                clicks.textIfExists('领取奖励')
+            }
+        
+            if (clicks.textIfExists('逛农场领免费水果(0/1)')) {
+                sleeps.s15to20()
+                clicks.xy(device.width / 2, device.height - 300)
+        
+                others.back()
+                clicks.textIfExists('领取奖励')
+            }
+        
             // stepShareHelp()
         }
 
@@ -826,6 +851,23 @@ function taskDDZ() {
 
             others.clear()
         }
+    }
+   
+    // 从我的页面进入
+    function stepFormHomePage() {
+        others.clear()
+        others.launch(currentAPP.PACKAGE_NAME)
+        if (!others.backToElement(desc('我的淘宝'))) {
+            return false
+        }
+
+        swipes.down()
+        if (desc('斗地主').exists()) {
+            clicks.centerXyByDesc('斗地主')
+            sleeps.s15()
+        }
+
+        others.clear()
     }
 
     // 搜索
