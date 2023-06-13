@@ -178,11 +178,8 @@ exists.parents = function (currentElement, parentsElement) {
     }
 
     element = currentElement.findOne(300).parent().parent().findOne(parentsElement)
-    if (element == null) {
-        return false
-    }
 
-    return true
+    return element != null;
 }
 
 /**
@@ -197,11 +194,8 @@ exists.parent = function (currentElement, parentElement) {
     }
 
     element = currentElement.findOne(300).parent().findOne(parentElement)
-    if (element == null) {
-        return false
-    }
 
-    return true
+    return element != null;
 }
 
 /**
