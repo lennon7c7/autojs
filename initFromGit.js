@@ -29,16 +29,16 @@ function main() {
 function httpGet() {
     var returnList = []
 
-    var masterUrl = 'https://gitee.com/api/v5/repos/lennon7/autojs/git/trees/master'
+    var masterUrl = 'https://gitee.com/api/v5/repos/lennon7c7/autojs/git/trees/master'
     var masterContent = http.get(masterUrl).body.json()
     if (!masterContent) {
         toastLog(masterUrl + ': !masterContent')
         return
     }
 
-    var rawUrlPrefix = 'https://gitee.com/lennon7/autojs/raw/master/'
+    var rawUrlPrefix = 'https://gitee.com/lennon7c7/autojs/raw/master/'
     var ignoreFile = ['apk', '.gitignore', 'README.md', 'action-all.js', 'action-every-20-min.js', 'action-temp.js', 'test-click.js', 'test-exists.js', 'test-swipe.js']
-    masterContent.tree.forEach((value1, key1) => {
+    masterContent.tree.forEach((value1) => {
         // 有些文件真的需要过滤
         if (ignoreFile.indexOf(value1.path) !== -1) {
             return
@@ -46,14 +46,13 @@ function httpGet() {
 
         if (value1.type === 'tree') {
             // 文件夹目录
-            var url = value1.url
-            var treeContent = http.get(url).body.json()
+            var treeContent = http.get(value1.url).body.json()
             if (!treeContent) {
-                toastLog(url + ': !treeContent')
+                toastLog(value1.url + ': !treeContent')
                 return
             }
 
-            treeContent.tree.forEach((value2, key2) => {
+            treeContent.tree.forEach((value2) => {
                 var path = value1.path + '/' + value2.path
                 var url = rawUrlPrefix + path
                 var content = http.get(url).body.string()
