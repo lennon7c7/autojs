@@ -2018,27 +2018,6 @@ currentAPP.taskMP = function () {
         sleeps.s20()
     }
 
-    /**
-     * 回到指定元素存在的页面
-     * @param {string} element
-     * @returns
-     */
-    function backToElement(element) {
-        // 如果元素不存在，就重新打开小程序
-        app.startActivity({ data: currentAPP.MP_URL + MP_APPID })
-        sleeps.s5to10()
-
-        if (exists.backToElement(element)) {
-            clicks.textIfExists('取消')
-            clicks.textIfExists('我知道了')
-            clicks.textIfExists('知道了，继续赚钱')
-
-            return true
-        }
-
-        return true
-    }
-
     function taskTTWK() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
@@ -2272,78 +2251,6 @@ currentAPP.taskMP = function () {
         return true
     }
 
-    function taskTTWK() {
-        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
-
-        MP_TITLE = '天天挖矿'
-        MP_APPID = '2021002134695694'
-
-        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
-            startActivity()
-        }
-
-        swipes.down()
-
-        var elementCount = 0
-        var element = className('android.widget.Button').depth(15).indexInParent(0)
-        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
-        element.find().size()
-        sleeps.s1()
-        element.find().size()
-        sleeps.s1()
-        element.find().forEach((value1) => {
-            if (!value1 || !value1.text()) {
-                return
-            }
-
-            // 过滤任务: 不要金币，只要集分宝
-            if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
-                return
-            }
-
-            // 过滤已完成的
-
-            elementCount++
-        })
-
-        for (var i = 0; i < elementCount; i++) {
-            isClick = false
-            element.find().forEach((value1) => {
-                if (isClick) {
-                    return
-                }
-
-                if (!value1 || !value1.text()) {
-                    return
-                }
-
-                // 过滤任务: 不要金币，只要集分宝
-                if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
-                    return
-                }
-
-                // 过滤已完成的
-
-                if (!clicks.clickableElement(value1)) {
-                    return
-                }
-                isClick = true
-            })
-
-            if (!isClick) {
-                continue
-            }
-
-            maybeMore()
-
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-        }
-
-        exitActivity()
-
-        return false
-    }
-
     // 青团社兼职
     function taskQTSJZ() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
@@ -2409,7 +2316,7 @@ currentAPP.taskMP = function () {
         }
         sleeps.s10()
 
-        var element = text('答题奖励：50金币')
+        element = text('答题奖励：50金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()
@@ -2474,7 +2381,7 @@ currentAPP.taskMP = function () {
         }
         sleeps.s10()
 
-        var element = className('android.view.View').text('领50金币')
+        element = className('android.view.View').text('领50金币')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()

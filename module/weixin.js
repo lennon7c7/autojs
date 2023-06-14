@@ -5,7 +5,6 @@ var clicks = require('../function/clicks.js')
 var exists = require('../function/exists.js')
 var others = require('../function/others.js')
 var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.tencent.mm'
@@ -22,7 +21,7 @@ function taskMomentLike() {
         // 子控件
         var scroll_thing = scroll.children()
         // 遍历子控件
-        scroll_thing.forEach((item, position) => {
+        scroll_thing.forEach((item) => {
             var comment = item.findOne(desc('评论'))
             if (comment) {
                 comment.click()
@@ -151,7 +150,7 @@ function closeRewardedAd() {
     } else if (exists.elementWidthHeight(className('android.widget.ImageView'), 86, 86)) {
         clicks.elementWidthHeight(className('android.widget.ImageView'), 86, 86)
     } else if (text('关闭').exists()) {
-        text('关闭').find().forEach((value2, key2) => {
+        text('关闭').find().forEach((value2) => {
             if (value2.text() !== '关闭') {
                 return
             }
@@ -198,7 +197,6 @@ function taskReadBiKanYanXuan() {
 
 /**
  * 小程序
- * @returns {bool}
  */
 function taskMP() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
