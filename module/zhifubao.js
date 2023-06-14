@@ -13,7 +13,6 @@ currentAPP.MP_URL = 'alipays://platformapi/startapp?appId='
 
 /**
  * 蚂蚁庄园
- * @returns {bool}
  */
 currentAPP.taskMYZY = function () {
 	MP_TITLE = '蚂蚁庄园'
@@ -47,7 +46,7 @@ currentAPP.taskMYZY = function () {
             return
         }
 
-        className('android.view.View').depth(11).find().forEach((value1, key1) => {
+        className('android.view.View').depth(11).find().forEach((value1) => {
             if (answerArray.indexOf(value1.text()) !== -1) {
                 value1.click()
                 others.back()
@@ -128,7 +127,7 @@ function taskBBNC() {
         clicks.textIfExists('领取')
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.textIfExists('去完成') || clicks.textIfExists('去逛逛') || clicks.textIfExists('去看看')) {
             for (var k = 0; k < 10; k++) {
                 swipes.down()
@@ -240,7 +239,7 @@ function task15s() {
         }
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛红包会场'), text('去完成'))) {
             sleeps.s20()
             others.backToElement(text('签到赚积分'))
@@ -251,7 +250,7 @@ function task15s() {
         sleeps.s20()
         others.backToElement(text('签到赚积分'))
     }
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.parent(textStartsWith('逛一逛'), text('去完成'))) {
             sleeps.s20()
             others.backToElement(text('签到赚积分'))
@@ -259,7 +258,7 @@ function task15s() {
     }
 
     if (!text('限时福利：已完成浏览任务，得 3 积分').exists()) {
-        for (var i = 0; i < 3; i++) {
+        for (i = 0; i < 3; i++) {
             swipes.down()
         }
         sleeps.s20()
@@ -314,7 +313,7 @@ function taskEverydayLottery() {
         })
     }
 
-    for (var i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         if (!clicks.backToElement(text('天天抽奖-每日领免费福利'))) {
             return false
         }
@@ -430,7 +429,6 @@ currentAPP.taskTransfer = function (maxCount) {
 
 /**
  * 小程序
- * @returns {bool}
  */
 currentAPP.taskMP = function () {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
@@ -454,7 +452,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -474,7 +472,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -532,7 +530,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -552,7 +550,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -612,7 +610,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1) {
                 return
             }
@@ -864,7 +862,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -881,7 +879,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -941,7 +939,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -961,7 +959,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1024,7 +1022,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1044,7 +1042,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1100,7 +1098,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1115,7 +1113,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1232,7 +1230,7 @@ currentAPP.taskMP = function () {
 
         swipes.down()
 
-        className('android.widget.Button').depth(15).indexInParent(0).find().forEach((value1, key1) => {
+        className('android.widget.Button').depth(15).indexInParent(0).find().forEach((value1) => {
             if (!value1.text()) {
                 return
             }
@@ -1307,7 +1305,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1324,7 +1322,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1379,7 +1377,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1394,7 +1392,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1509,7 +1507,7 @@ currentAPP.taskMP = function () {
 
         swipes.down()
 
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.clickableElement(className('android.widget.Button').depth(8).findOne(3000))
 
             maybeMore()
@@ -1532,7 +1530,7 @@ currentAPP.taskMP = function () {
             startActivity()
         }
 
-        className('android.widget.Button').text('去领钱').find().forEach((value1, key1) => {
+        className('android.widget.Button').text('去领钱').find().forEach((value1) => {
             if (!clicks.clickableElement(value1)) {
                 return
             }
@@ -1567,7 +1565,7 @@ currentAPP.taskMP = function () {
             sleeps.s1()
             element.find().size()
             sleeps.s1()
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 value1.click()
 
                 maybeMore()
@@ -1575,13 +1573,13 @@ currentAPP.taskMP = function () {
                 backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
             })
 
-            var element = className('android.widget.Image')
+            element = className('android.widget.Image')
             // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
             element.find().size()
             sleeps.s1()
             element.find().size()
             sleeps.s1()
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (!value1 || value1.bounds().width() < 100 || value1.bounds().height() < 100) {
                     return
                 }
@@ -1624,7 +1622,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1636,7 +1634,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1689,7 +1687,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1701,7 +1699,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1749,7 +1747,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -1777,7 +1775,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -1842,7 +1840,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             value1.click()
 
             maybeMore()
@@ -1850,13 +1848,13 @@ currentAPP.taskMP = function () {
             backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
         })
 
-        var element = className('android.view.View').text('立即领取')
+        element = className('android.view.View').text('立即领取')
         // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
         element.find().size()
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             value1.click()
 
             maybeMore()
@@ -2060,7 +2058,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2080,7 +2078,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2206,7 +2204,7 @@ currentAPP.taskMP = function () {
 
         var element = id('com.alipay.mobile.pubsvc:id/publicName')
         var ignoreFile = ['菜鸟', '花呗', '考拉海购']
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (ignoreFile.indexOf(value1.text()) !== -1) {
                 return
             }
@@ -2293,7 +2291,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2310,7 +2308,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2321,74 +2319,6 @@ currentAPP.taskMP = function () {
 
                 // 过滤任务: 不要金币，只要集分宝
                 if (!value1.parent() || !value1.parent().parent() || value1.parent().parent().child(0).child(0).text() !== '+1') {
-                    return
-                }
-
-                // 过滤已完成的
-
-                if (!clicks.clickableElement(value1)) {
-                    return
-                }
-                isClick = true
-            })
-
-            if (!isClick) {
-                continue
-            }
-
-            maybeMore()
-
-            backToElement(id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE))
-        }
-
-        exitActivity()
-
-        return false
-    }
-
-    function taskKLB() {
-        log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
-
-        MP_TITLE = '快领宝'
-        MP_APPID = '2021002131611079'
-
-        if (!id('com.alipay.mobile.nebula:id/h5_tv_title').text(MP_TITLE).exists()) {
-            startActivity()
-        }
-
-        var elementCount = 0
-        var element = className('android.widget.Button').depth(15).indexInParent(0)
-        // 注意：因为有些手机要多查询几次才会获取到元素，所以不能删除
-        element.find().size()
-        sleeps.s1()
-        element.find().size()
-        sleeps.s1()
-        element.find().forEach((value1, key1) => {
-            if (!value1 || !value1.text()) {
-                return
-            }
-
-            if (key1 === 0 || key1 === 1 || key1 === 2) {
-                return
-            }
-
-            // 过滤已完成的
-
-            elementCount++
-        })
-
-        for (var i = 0; i < elementCount; i++) {
-            isClick = false
-            element.find().forEach((value1, key1) => {
-                if (isClick) {
-                    return
-                }
-
-                if (!value1 || !value1.text()) {
-                    return
-                }
-
-                if (key1 === 0 || key1 === 1 || key1 === 2) {
                     return
                 }
 
@@ -2445,7 +2375,7 @@ currentAPP.taskMP = function () {
         element.find().size()
         sleeps.s1()
         var elementCount = element.find().size()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             value1 && value1.click()
 
             if (!text('兼职详情').exists()) {
@@ -2491,7 +2421,7 @@ currentAPP.taskMP = function () {
             }
         }
 
-        element.find().forEach((value1, key1) => {
+        element.find().forEach(() => {
             if (!clicks.textParent('答题奖励：50金币')) {
                 return false
             }
@@ -2612,7 +2542,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2632,7 +2562,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2688,7 +2618,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2708,7 +2638,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2764,7 +2694,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2784,7 +2714,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2840,7 +2770,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2860,7 +2790,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2916,7 +2846,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -2936,7 +2866,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -2992,7 +2922,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3012,7 +2942,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -3068,7 +2998,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3088,7 +3018,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -3144,7 +3074,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3164,7 +3094,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -3220,7 +3150,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3240,7 +3170,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -3296,7 +3226,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3316,7 +3246,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }
@@ -3476,7 +3406,7 @@ currentAPP.taskMP = function () {
         sleeps.s1()
         element.find().size()
         sleeps.s1()
-        element.find().forEach((value1, key1) => {
+        element.find().forEach((value1) => {
             if (!value1 || !value1.text()) {
                 return
             }
@@ -3486,7 +3416,7 @@ currentAPP.taskMP = function () {
 
         for (var i = 0; i < elementCount; i++) {
             isClick = false
-            element.find().forEach((value1, key1) => {
+            element.find().forEach((value1) => {
                 if (isClick) {
                     return
                 }

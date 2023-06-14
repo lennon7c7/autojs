@@ -75,7 +75,7 @@ function taskZhuanJinBi() {
         clicks.textIfExists('领取奖励')
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.textIfExists('去完成')) {
 
             for (var k = 0; k < 15; k++) {
@@ -88,7 +88,7 @@ function taskZhuanJinBi() {
         }
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.textIfExists('去逛逛')) {
 
             for (var k = 0; k < 15; k++) {
@@ -101,7 +101,7 @@ function taskZhuanJinBi() {
         }
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (clicks.textIfExists('逛一下')) {
 
             for (var k = 0; k < 15; k++) {
@@ -298,7 +298,7 @@ function taskShop() {
     className('android.widget.Button').depth(12).indexInParent(0).findOne(3000).click()
     sleeps.s10()
 
-    text('逛店铺').find().forEach((value1, key1) => {
+    text('逛店铺').find().forEach((value1) => {
         value1.click()
         sleeps.s15to20()
     })
@@ -451,7 +451,7 @@ function taskMoneyPower() {
             clicks.xy(500, 1000 + (i * 100))
         }
 
-        for (var i = 1; i < 8; i++) {
+        for (i = 1; i < 8; i++) {
             others.back()
             clicks.xy(500, 1000 + (i * 100))
             if (text('今日任务').exists()) {
@@ -789,15 +789,15 @@ function taskDDZ() {
 
             // 做任务
             clicks.xy(800, 2000)
-            for (var j = 0; j < 2; j++) {
+            for (j = 0; j < 2; j++) {
                 clicks.element(className('android.widget.Button').text('').findOne(3000))
             }
 
-            for (var j = 0; j < 3; j++) {
+            for (j = 0; j < 3; j++) {
                 clicks.textIfExists('领取')
             }
 
-            for (var j = 0; j < 3; j++) {
+            for (j = 0; j < 3; j++) {
                 clicks.textIfExists('领取奖励')
             }
 
@@ -841,11 +841,11 @@ function taskDDZ() {
                 clicks.element(className('android.widget.Button').text('').findOne(3000))
             }
 
-            for (var j = 0; j < 3; j++) {
+            for (j = 0; j < 3; j++) {
                 clicks.textIfExists('领取')
             }
 
-            for (var j = 0; j < 3; j++) {
+            for (j = 0; j < 3; j++) {
                 clicks.textIfExists('领取奖励')
             }
 
@@ -1068,7 +1068,7 @@ function taskXXX() {
     }
 
     // 浏览3次
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         clicks.xy(device.width - 100, device.height / 2 + 1050)
         clicks.textIfExists('我知道了')
     }
@@ -1093,7 +1093,7 @@ function taskXXX() {
 		clicks.xy(device.width - 100, device.height - 200)
 		sleeps.s15to20()
 
-        for (var i = 0; i < 1; i++) {
+        for (i = 0; i < 1; i++) {
             // 第一关
             clicks.xy(device.width / 2 - 200, device.height / 2 + 200)
 
@@ -1111,14 +1111,14 @@ function taskXXX() {
             clicks.xy(device.width / 2, device.height / 2)
 
             // 3: left to right
-            var offsetWidth = device.width / 2 + 0;
-            var offsetHeight = device.height / 2 + 100
+            offsetWidth = device.width / 2;
+            offsetHeight = device.height / 2 + 100
             swipe(offsetWidth, offsetHeight, offsetWidth + 100, offsetHeight, 500)
             sleeps.s5to10()
 
             // 4: top to bottom
-            var offsetWidth = device.width / 2;
-            var offsetHeight = device.height / 2 + 300
+            offsetWidth = device.width / 2;
+            offsetHeight = device.height / 2 + 300
             swipe(offsetWidth, offsetHeight, offsetWidth, offsetHeight + 100, 500)
             sleeps.s5to10()
 
