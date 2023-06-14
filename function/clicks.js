@@ -9,7 +9,7 @@ var clicks = {}
  */
 clicks.elementWidthHeight = function (element, width, height) {
     isOk = false
-    element.find().forEach((value, key) => {
+    element.find().forEach((value) => {
         if (value.bounds().width() !== width || value.bounds().height() !== height) {
             return false
         }

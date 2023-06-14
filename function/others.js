@@ -16,7 +16,7 @@ others.fixDir = function () {
 
     var newDir = oldDir + 'function/'
     var filename = ['clicks.js', 'debugs.js', 'exists.js', 'others.js', 'sleeps.js', 'swipes.js']
-    filename.forEach((value, key) => {
+    filename.forEach((value) => {
         var oldPath = oldDir + value
         var newPath = newDir + value
         if (!files.exists(oldPath)) {
@@ -46,7 +46,7 @@ others.fixDir = function () {
         'taobao.js', 'taobaolive.js', 'tencentnews.js', 'tencentnow.js', 'toutiao.js',
         'uc.js',
         'weishi.js', 'weixin.js', 'ximalaya.js', 'zhifubao.js', 'zhongqingkandian.js', 'zuiqiangdaren.js']
-    filename.forEach((value, key) => {
+    filename.forEach((value) => {
         var oldPath = oldDir + value
         var newPath = newDir + value
         if (!files.exists(oldPath)) {

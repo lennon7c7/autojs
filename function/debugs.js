@@ -77,7 +77,7 @@ debugs.printElementTreeAll = function () {
             spaceCount += ' '
         }
 
-        element.children().forEach((value, key) => {
+        element.children().forEach((value) => {
             output += (spaceCount + debugs.getElementAttr(value) + '\n')
 
             printElement(value, level + 1)
@@ -102,7 +102,7 @@ debugs.printElementTreeBy = function (condition) {
             spaceCount += ' '
         }
 
-        element.children().forEach((value, key) => {
+        element.children().forEach((value) => {
             if (debugs.isFilterConditionEqElement(condition, value)) {
                 output += (spaceCount + debugs.getElementAttr(value) + '\n')
             }
