@@ -1,11 +1,6 @@
 /**
  * 功能集合-调试代码
  */
-var clicks = require('./clicks.js')
-var exists = require('./exists.js')
-var others = require('./others.js')
-var sleeps = require('./sleeps.js')
-var swipes = require('./swipes.js')
 var debugs = {}
 
 /**
