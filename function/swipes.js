@@ -8,7 +8,7 @@ var swipes = {}
  */
 swipes.right = function () {
     swipe(900, 1100, 100, 1100, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -16,7 +16,7 @@ swipes.right = function () {
  */
 swipes.right200 = function () {
     swipe(900, 200, 100, 200, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -24,7 +24,7 @@ swipes.right200 = function () {
  */
 swipes.right300 = function () {
     swipe(900, 300, 100, 300, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -32,7 +32,7 @@ swipes.right300 = function () {
  */
 swipes.right2100 = function () {
     swipe(900, 2100, 100, 2100, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -80,7 +80,7 @@ swipes.refresh1500 = function () {
  */
 swipes.scrollDown = function () {
     scrollDown()
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -110,7 +110,7 @@ swipes.down = function () {
     } else {
         swipe(500, 1600, 500, 600, 500)
     }
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -118,7 +118,7 @@ swipes.down = function () {
  */
 swipes.down900 = function () {
     swipe(500, 1000, 500, 100, 300)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -126,7 +126,7 @@ swipes.down900 = function () {
  */
 swipes.down1000_100 = function () {
     swipe(500, 1600, 500, 600, 100)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -134,7 +134,7 @@ swipes.down1000_100 = function () {
  */
 swipes.down1600 = function () {
     swipe(500, 1700, 500, 100, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
@@ -142,7 +142,7 @@ swipes.down1600 = function () {
  */
 swipes.down2200 = function () {
     swipe(500, 2250, 500, 50, 500)
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 /**
