@@ -112,7 +112,7 @@ function taskAd() {
     }
 
     if (text('看视频赚金币').exists()) {
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.text('看视频赚金币')
 
             if (text('任务').exists()) {
@@ -138,7 +138,7 @@ function taskAd() {
 
     if (text('轻松赚金币').exists() && clicks.text('轻松赚金币')) {
         sleeps.s2to3()
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.centerXyByText('看视频赚金币')
 
             if (text('看视频赚金币').exists()) {
@@ -158,7 +158,7 @@ function taskAd() {
     }
 
     if (text('免费送金币').exists()) {
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.text('免费送金币')
 
             if (text('任务').exists()) {
@@ -178,7 +178,7 @@ function taskAd() {
     }
 
     if (text('疯狂领金币').exists()) {
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.text('疯狂领金币')
 
             if (text('任务').exists()) {
@@ -230,11 +230,7 @@ function taskVideo() {
         sleeps.s30to35()
     }
 
-    if (!clicks.centerXyByText('任务')) {
-        return false
-    }
-
-    return true
+    return clicks.centerXyByText('任务');
 }
 
 // 任务-看新闻
@@ -275,11 +271,7 @@ function taskNews() {
         sleeps.s10()
     }
 
-    if (!clicks.centerXyByText('任务')) {
-        return false
-    }
-
-    return true
+    return clicks.centerXyByText('任务');
 }
 
 // 关闭Ad

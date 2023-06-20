@@ -4,10 +4,7 @@
  * 1. 当金额大于17元时，可能会被制裁，只能获得1金币
  */
 var clicks = require('../function/clicks.js')
-var exists = require('../function/exists.js')
 var others = require('../function/others.js')
-var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.starbaba.countstep'
@@ -25,11 +22,7 @@ function taskCheckin() {
         }
     }
 
-    if (text('继续赚钱').exists() && !clicks.text('继续赚钱')) {
-        return false
-    }
-
-    return true
+    return !(text('继续赚钱').exists() && !clicks.text('继续赚钱'));
 }
 
 /**

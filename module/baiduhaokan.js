@@ -5,7 +5,6 @@ var clicks = require('../function/clicks.js')
 var exists = require('../function/exists.js')
 var others = require('../function/others.js')
 var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.baidu.haokan'
@@ -133,7 +132,7 @@ function taskAd() {
 
     if (text('轻松赚金币').exists() && clicks.text('轻松赚金币')) {
         sleeps.s2to3()
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.centerXyByText('看视频赚金币')
 
             if (text('看视频赚金币').exists()) {
@@ -159,7 +158,7 @@ function taskAd() {
     }
 
     if (text('免费送金币').exists()) {
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.text('免费送金币')
 
             if (text('领现金').exists()) {
@@ -183,7 +182,7 @@ function taskAd() {
     }
 
     if (text('疯狂领金币').exists()) {
-        for (var i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             clicks.text('疯狂领金币')
 
             if (text('领现金').exists()) {

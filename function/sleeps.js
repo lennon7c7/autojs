@@ -67,7 +67,7 @@ sleeps.s180to190 = function () {
 
 // 1秒
 sleeps.s1 = function () {
-    sleep(1 * 1000)
+    sleep(1000)
 }
 
 sleeps.s3 = function () {

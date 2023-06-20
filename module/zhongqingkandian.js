@@ -424,7 +424,7 @@ function taskKankanzhuang() {
         return false
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         if (!text('点击领取').exists()) {
             break
         }

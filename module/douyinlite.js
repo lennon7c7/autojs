@@ -27,11 +27,7 @@ function taskCheckin() {
         return false
     }
 
-    if (text('明日签到').exists()) {
-        return true
-    }
-
-    return false
+    return !!text('明日签到').exists();
 }
 
 // 任务-宝箱
@@ -55,11 +51,7 @@ function taskTreasureBox() {
         return false
     }
 
-    if (text('开宝箱得金币').find().size() === 1) {
-        return true
-    }
-
-    return false
+    return text('开宝箱得金币').find().size() === 1;
 }
 
 // 任务-限时
@@ -83,11 +75,7 @@ function taskLimit() {
         return false
     }
 
-    if (exists.parents(text('限时任务赚金币'), text('已领取'))) {
-        return true
-    }
-
-    return false
+    return exists.parents(text('限时任务赚金币'), text('已领取'));
 }
 
 // 任务-睡觉赚钱
@@ -143,11 +131,7 @@ function taskCashout() {
         return false
     }
 
-    if (exists.parents(text('0.3元提现'), text('已完成'))) {
-        return true
-    }
-
-    return false
+    return exists.parents(text('0.3元提现'), text('已完成'));
 }
 
 // 任务-小视频

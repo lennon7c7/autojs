@@ -37,11 +37,7 @@ function taskLogin() {
         return false
     }
 
-    if (desc('首页').exists() && !text('立即登录').exists()) {
-        return true
-    }
-
-    return false
+    return !!(desc('首页').exists() && !text('立即登录').exists());
 }
 
 // 任务-签到
@@ -211,7 +207,7 @@ function taskActivity() {
     swipes.scrollDown()
 
     var element = id('com.jd.jdlite.lib.mission:id/lib_mission_active_button')
-    element.find().forEach((value2, key2) => {
+    element.find().forEach((value2) => {
         if (value2.text() === '已完成' || value2.text().indexOf('继续') === 0) {
             return
         }

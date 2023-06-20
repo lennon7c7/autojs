@@ -2,7 +2,6 @@
  * 微视-任务
  */
 var clicks = require('../function/clicks.js')
-var exists = require('../function/exists.js')
 var others = require('../function/others.js')
 var sleeps = require('../function/sleeps.js')
 var swipes = require('../function/swipes.js')
@@ -181,7 +180,7 @@ function toPageMe() {
     others.back2()
 
     // 页面-我
-    className('android.widget.LinearLayout').find().forEach((value, key) => {
+    className('android.widget.LinearLayout').find().forEach((value) => {
         if (value.childCount() !== 5) {
             return
         }

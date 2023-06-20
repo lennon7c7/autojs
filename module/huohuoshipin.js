@@ -4,8 +4,6 @@
 var clicks = require('../function/clicks.js')
 var exists = require('../function/exists.js')
 var others = require('../function/others.js')
-var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.jt.hanhan.video'
@@ -34,11 +32,7 @@ function taskLogin() {
         return false
     }
 
-    if (text('日常任务').exists() && !text('登录领取最高28元红包').exists()) {
-        return true
-    }
-
-    return false
+    return !!(text('日常任务').exists() && !text('登录领取最高28元红包').exists());
 }
 
 /**
@@ -74,11 +68,7 @@ function taskCheckin() {
         }
     }
 
-    if (text('已签到').exists()) {
-        return true
-    }
-
-    return false
+    return !!text('已签到').exists();
 }
 
 // 任务-Ad

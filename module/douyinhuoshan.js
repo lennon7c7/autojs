@@ -33,11 +33,7 @@ function taskVideo() {
 function taskCheckin() {
     log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
-    if (text('明日签到').exists()) {
-        return true
-    }
-
-    return false
+    return !!text('明日签到').exists();
 }
 
 // 任务-限时
@@ -88,11 +84,7 @@ function taskCashout() {
         return true
     }
 
-    if (!clicks.centerXyByText('立即提现')) {
-        return false
-    }
-
-    return true
+    return clicks.centerXyByText('立即提现');
 }
 
 /**

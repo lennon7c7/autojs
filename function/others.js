@@ -299,7 +299,7 @@ others.closeAdBackToElement = function (element) {
 
     clicks.xy(944, 188)
 
-    for (var i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i++) {
         if (element.exists()) {
             return true
         }

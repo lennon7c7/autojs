@@ -4,8 +4,6 @@
 var clicks = require('../function/clicks.js')
 var exists = require('../function/exists.js')
 var others = require('../function/others.js')
-var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.xs.fm'
@@ -69,11 +67,7 @@ function taskAd() {
         }
     }
 
-    if (exists.parents(text('看视频赚金币'), text('已完成'))) {
-        return true
-    }
-
-    return false
+    return exists.parents(text('看视频赚金币'), text('已完成'));
 }
 
 /**
@@ -102,11 +96,7 @@ function taskCashout() {
         return true
     }
 
-    if (!clicks.centerXyByText('15.00')) {
-        return false
-    }
-
-    return true
+    return clicks.centerXyByText('15.00');
 }
 
 /**

@@ -5,7 +5,6 @@ var clicks = require('../function/clicks.js')
 var exists = require('../function/exists.js')
 var others = require('../function/others.js')
 var sleeps = require('../function/sleeps.js')
-var swipes = require('../function/swipes.js')
 
 currentAPP = {}
 currentAPP.PACKAGE_NAME = 'com.dragon.read'
@@ -48,11 +47,7 @@ function taskTreasureBox() {
         return false
     }
 
-    if (text('开宝箱得金币').find().size() === 1) {
-        return true
-    }
-
-    return false
+    return text('开宝箱得金币').find().size() === 1;
 }
 
 // 任务-Ad
@@ -77,11 +72,7 @@ function taskAd() {
         }
     }
 
-    if (exists.parents(text('看视频赚海量金币'), text('已完成'))) {
-        return true
-    }
-
-    return false
+    return exists.parents(text('看视频赚海量金币'), text('已完成'));
 }
 
 // 任务-添加书籍
@@ -147,11 +138,7 @@ function taskCashout() {
         return true
     }
 
-    if (!clicks.centerXyByText('提现15.00元')) {
-        return false
-    }
-
-    return true
+    return clicks.centerXyByText('提现15.00元');
 }
 
 /**

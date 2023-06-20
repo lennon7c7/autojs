@@ -38,7 +38,7 @@ function taskPlayground() {
     }
 
     isClick = false
-    className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1, key1) => {
+    className('android.support.v7.widget.RecyclerView').depth(4).find().forEach((value1) => {
         if (isClick || value1.childCount() !== 5) {
             return
         }
@@ -81,7 +81,7 @@ function taskPlayground() {
         clicks.text('去评论')
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (i = 0; i < 20; i++) {
         if (!exists.backToElement(text('今日'))) {
             return false
         }
@@ -143,11 +143,11 @@ function taskRandomPage() {
     // 赚豆
     clicks.xy(870, 1470)
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         clicks.textIfExists('立即领取')
     }
 
-    for (var i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
         clicks.textIfExists('可领取')
     }
 
@@ -222,7 +222,7 @@ function taskRandomPage() {
         clicks.textIfExists('立即领取')
     }
 
-    for (var i = 0; i < 20; i++) {
+    for (i = 0; i < 20; i++) {
         if (!clicks.textIfExists('去逛逛') && !clicks.textIfExists('逛一逛') && !clicks.textIfExists('去看看') && !clicks.textIfExists('去完成') && !clicks.textIfExists('去领取')) {
             continue
         }

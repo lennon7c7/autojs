@@ -2,7 +2,6 @@
  * 抖音-任务
  */
 var clicks = require('../function/clicks.js')
-var exists = require('../function/exists.js')
 var others = require('../function/others.js')
 var sleeps = require('../function/sleeps.js')
 var swipes = require('../function/swipes.js')
@@ -17,7 +16,7 @@ currentAPP.NAME = getAppName(currentAPP.PACKAGE_NAME)
  */
 function intoDetailPage() {
     isOk = false
-    className('android.view.ViewGroup').find().forEach((value, key) => {
+    className('android.view.ViewGroup').find().forEach((value) => {
         if (value.bounds().width() !== 240 || value.bounds().height() != 84) {
             return false
         }

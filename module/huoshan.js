@@ -47,11 +47,7 @@ function taskTreasureBox() {
     }
     clicks.textIfExists('javascript:;')
 
-    if (text('开宝箱得金币').find().size() === 1) {
-        return true
-    }
-
-    return false
+    return text('开宝箱得金币').find().size() === 1;
 }
 
 // 任务-20次广告
@@ -132,11 +128,7 @@ function taskShare() {
 
     clicks.textIfExists('javascript:;')
 
-    if (exists.parent(text('晒收入'), text('已完成'))) {
-        return true
-    }
-
-    return false
+    return exists.parent(text('晒收入'), text('已完成'));
 }
 
 /**
@@ -167,11 +159,7 @@ function taskCashout() {
 
     others.back2()
 
-    if (exists.parent(text('0.2元提现'), text('已完成'))) {
-        return true
-    }
-
-    return false
+    return exists.parent(text('0.2元提现'), text('已完成'));
 }
 
 // 任务-视频

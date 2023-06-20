@@ -82,7 +82,7 @@ function taskCat() {
     if (exists.parents(text('浏览活动得猫粮免费领'), text('去完成'))) {
         clicks.parents(text('浏览活动得猫粮免费领'), text('去完成'))
 
-        for (var i = 0; i < 66; i++) {
+        for (i = 0; i < 66; i++) {
             swipes.down()
             if (exists.elementWidthHeight(className('android.widget.Button'), 90, 87)) {
                 clicks.elementWidthHeight(className('android.widget.Button'), 90, 87)

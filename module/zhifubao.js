@@ -1958,66 +1958,6 @@ currentAPP.taskMP = function () {
         return false
     }
 
-    /**
-     * 点击后，可能出现其它任务
-     * 不是单纯的看广告，比如关注、签到等
-     */
-    function maybeMore() {
-        sleeps.s5to10()
-
-        text('浏览找红包').find().size()
-        sleeps.s1()
-        text('浏览找红包').find().size()
-        sleeps.s1()
-        log('浏览找红包: ', text('浏览找红包').exists())
-        if (text('浏览找红包').exists()) {
-            for (var i = 0; i < 10; i++) {
-                clicks.textIfExists('继续寻找')
-
-                if (text('包邮').exists()) {
-                    text('包邮').click()
-                    sleeps.s5to10()
-                } else if (text('正品保证').exists()) {
-                    text('正品保证').click()
-                    sleeps.s5to10()
-                }
-
-                if (clicks.textIfExists('我知道了')) {
-                    break
-                }
-
-                if (!text('浏览找红包').exists()) {
-                    others.back()
-                }
-            }
-
-            return
-        } else if (clicks.textIfExists('关注生活号')) {
-            if (clicks.textIfExists('立即关注')) {
-                clicks.textIfExists('我知道了')
-            }
-        } else if (clicks.textIfExists('关注店铺领券')) {
-            clicks.textIfExists('关注店铺领券')
-        } else if (clicks.textIfExists('立即领取')) {
-            sleeps.s3()
-            clicks.textIfExists('确认授权并入会')
-        } else if (clicks.textIfExists('签到赚钱')) {
-            clicks.xy(device.width / 2, device.height / 2 + 100)
-            sleeps.s5()
-            others.back()
-        } else if (clicks.textIfExists('点击关注店铺')) {
-            clicks.textIfExists('点击关注店铺')
-        } else if (clicks.textIfExists('亲点关注有奖励哦')) {
-            clicks.textIfExists('亲点关注有奖励哦')
-        } else if (!text('打开方式').exists()) {
-            clicks.xy(device.width / 2, device.height / 2 - 100)
-            clicks.xy(device.width / 2, device.height / 2)
-            clicks.xy(device.width / 2, device.height / 2 + 150)
-        }
-
-        sleeps.s20()
-    }
-
     function taskTTWK() {
         log('----------', currentAPP.NAME, arguments.callee.name, 'start ----------')
 
