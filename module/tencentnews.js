@@ -36,11 +36,7 @@ function taskLogin() {
         return false
     }
 
-    if (text('我的红包').exists() && !desc('微信').exists()) {
-        return true
-    }
-
-    return false
+    return !!(text('我的红包').exists() && !desc('微信').exists());
 }
 
 /**
@@ -71,11 +67,7 @@ function taskCheckin() {
         return false
     }
 
-    if (text('我的日签卡').exists()) {
-        return true
-    }
-
-    return false
+    return !!text('我的日签卡').exists();
 }
 
 // 任务-观看视频
@@ -207,11 +199,7 @@ function taskRedpackNow() {
         return false
     }
 
-    if (desc('红包已领取').exists()) {
-        return true
-    }
-
-    return false
+    return !!desc('红包已领取').exists();
 }
 
 /**

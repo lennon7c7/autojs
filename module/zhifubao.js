@@ -3384,9 +3384,7 @@ function getAccountCount() {
     }
 
     var element = className('android.widget.LinearLayout')
-    var accountCount = element.find().size()
-
-    return accountCount
+    return element.find().size()
 }
 
 /**
@@ -3416,11 +3414,7 @@ function switchAccount() {
 
     var element = className('android.widget.LinearLayout')
     var accountCount = element.find().size()
-    if (!clicks.clickableElement(element.findOnce(accountCount - 1))) {
-        return false
-    }
-
-    return true
+    return clicks.clickableElement(element.findOnce(accountCount - 1));
 }
 
 /**

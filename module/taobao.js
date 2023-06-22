@@ -594,7 +594,7 @@ function taskMoneyPower() {
 
     for (var i = 0; i < 15; i++) {
         buttonClick = null
-        if (buttonClick == null && text('点击前往 最高立得').exists()) {
+        if (text('点击前往 最高立得').exists()) {
             buttonClick = text('点击前往 最高立得').findOne().parent().parent().parent().findOne(text('去完成'))
         }
 
