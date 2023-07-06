@@ -182,7 +182,7 @@ function taskLife() {
     textString = '阳光 +20';
     if (text(textString).exists()) {
         text(textString).findOnce().parent().children().forEach(function (child) {
-            if (child.text() == '选TA') {
+            if (child.text() === '选TA') {
                 child.click()
                 sleeps.s3()
                 clicks.textIfExists('继续去集成就点')

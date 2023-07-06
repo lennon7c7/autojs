@@ -47,7 +47,7 @@ function getDetailData() {
     }
 
     account = textStartsWith('抖音号').findOne().text()
-    if (account == '') {
+    if (account === '') {
         log('account empty')
         others.back()
         return false
@@ -64,7 +64,7 @@ function getDetailData() {
     likeData = ''
     if (text('获赞').find().size() === 1 && text('获赞').findOne().parent().childCount() === 2) {
         text('获赞').findOnce().parent().children().forEach(function (child) {
-            if (child.text() == '获赞') {
+            if (child.text() === '获赞') {
                 return false
             }
             likeData = '获赞：' + child.text()
@@ -74,7 +74,7 @@ function getDetailData() {
     watchData = ''
     if (text('关注').find().size() === 2 && text('关注').findOne().parent().childCount() === 2) {
         text('关注').findOnce().parent().children().forEach(function (child) {
-            if (child.text() == '关注') {
+            if (child.text() === '关注') {
                 return false
             }
             watchData = '关注：' + child.text()
@@ -84,7 +84,7 @@ function getDetailData() {
     fansData = ''
     if (text('粉丝').find().size() === 1 && text('粉丝').findOne().parent().childCount() === 2) {
         text('粉丝').findOnce().parent().children().forEach(function (child) {
-            if (child.text() == '粉丝') {
+            if (child.text() === '粉丝') {
                 return false
             }
             fansData = '粉丝：' + child.text()
