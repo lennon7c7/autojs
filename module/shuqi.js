@@ -33,9 +33,7 @@ function taskLottery() {
             continue
         }
         sleeps.s10()
-        if (!clicks.centerXyByTextOrDesc('收下奖励')) {
-            continue
-        }
+        clicks.centerXyByTextOrDesc('收下奖励')
     }
 
     return false
