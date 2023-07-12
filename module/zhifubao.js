@@ -16,7 +16,7 @@ currentAPP.MP_URL = 'alipays://platformapi/startapp?appId='
  */
 currentAPP.taskMYZY = function () {
 	MP_TITLE = '蚂蚁庄园'
-  
+
 	function stepQuestion() {
         if (!clicks.centerXyByText('去答题')) {
             return
@@ -65,13 +65,13 @@ currentAPP.taskMYZY = function () {
     clicks.xy(300, device.height - 200)
 
     stepQuestion()
-  
+
     if (clicks.parent(text('庄园小视频'), text('去完成'))) {
         sleeps.s20to25()
         others.backToElement(text(MP_TITLE))
         clicks.centerXyByText('领取')
     }
-  
+
     if (clicks.parent(text('雇佣小鸡拿饲料'), text('去完成'))) {
         sleeps.s5to10()
 		clicks.textIfExists('雇佣并通知')
@@ -79,7 +79,7 @@ currentAPP.taskMYZY = function () {
 		others.backToElement(text(MP_TITLE))
         clicks.centerXyByText('领取')
     }
-  
+
     if (clicks.parent(text('去逛一逛淘金币小镇'), text('去完成'))) {
         sleeps.s5to10()
 		others.backToElement(text(MP_TITLE))
@@ -94,7 +94,7 @@ currentAPP.taskMYZY = function () {
         MP_URL = 'alipays://platformapi/startapp?appId=66666674'
         app.startActivity({ data: MP_URL })
         sleeps.s15to20()
-    
+
         // 领饲料
         clicks.xy(300, device.height - 200)
     }
@@ -112,14 +112,16 @@ function taskBBNC() {
 
     // lennon1991
     MP_URL = 'alipays://platformapi/startapp?appId=68687599'
-    app.startActivity({ data: MP_URL })
+    app.startActivity({data: MP_URL})
     sleeps.s20()
+
+    clicks.textIfExists('领肥料')
 
     clicks.xy(device.width / 2 + 300, device.height - 300)
 
     if (text('逛逛淘宝芭芭农场 (0/1)').exists() && clicks.textIfExists('去逛逛')) {
         sleeps.s10()
-        app.startActivity({ data: MP_URL })
+        app.startActivity({data: MP_URL})
         sleeps.s10()
     }
 
@@ -171,8 +173,8 @@ function taskBBNC() {
     function stepShiFei() {
         others.clear()
         MP_URL = 'alipays://platformapi/startapp?appId=68687599'
-        app.startActivity({ data: MP_URL })
-            sleeps.s15()
+        app.startActivity({data: MP_URL})
+        sleeps.s15()
 
         for (var i = 0; i < 10; i++) {
             clicks.textIfExists('收下去施肥')
@@ -216,7 +218,7 @@ function taskCheckin() {
     if (!text('限时福利：已完成浏览任务，得 3 积分').exists() && clicks.text('逛15秒赚3积分')) {
         sleeps.s20to25()
     }
-    
+
     others.clear()
     MP_URL = 'alipays://platformapi/startapp?appId=20000160'
     app.startActivity({ data: MP_URL })
