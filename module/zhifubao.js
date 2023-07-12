@@ -115,9 +115,11 @@ function taskBBNC() {
     app.startActivity({data: MP_URL})
     sleeps.s20()
 
+    // 签到 - 领肥料
     clicks.textIfExists('领肥料')
 
-    clicks.xy(device.width / 2 + 300, device.height - 300)
+    // 做任务集肥料
+    clicks.textIfExists('任务列表')
 
     if (text('逛逛淘宝芭芭农场 (0/1)').exists() && clicks.textIfExists('去逛逛')) {
         sleeps.s10()
