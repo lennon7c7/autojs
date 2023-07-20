@@ -167,4 +167,15 @@ swipes.downUntilElementShow = function (element) {
     return false
 }
 
+/**
+ * 在25秒内重复下滑、上滑
+ */
+swipes.downAndUp25s = function () {
+    for (var i = 0; i < 10; i++) {
+        swipes.down()
+        swipes.scrollDown()
+    }
+}
+
 module.exports = swipes
+
