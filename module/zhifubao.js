@@ -225,7 +225,7 @@ function taskCheckin() {
     MP_URL = 'alipays://platformapi/startapp?appId=20000160'
     app.startActivity({ data: MP_URL })
     sleeps.s15to20()
-    clicks.textIfExists('全部领取')
+    clicks.textIfExists('Get All')
 
     return true
 }
@@ -410,15 +410,16 @@ currentAPP.taskTransfer = function (maxCount) {
         toastLog(i)
 
         // 直接给人lennon转账
-        MP_URL = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=0.01&userId=2088702103550702&memo='
+        MP_URL = 'alipays://platformapi/startapp?appId=20000116&actionType=toAccount&goBack=NO&amount=0.01&userId=2088702103550702&memo='
         // 直接给人june转账
-        MP_URL = 'alipays://platformapi/startapp?appId=09999988&actionType=toAccount&goBack=NO&amount=0.01&userId=2088502549113538&memo=么么哒'
+        MP_URL = 'alipays://platformapi/startapp?appId=20000116&actionType=toAccount&goBack=NO&amount=0.01&userId=2088502549113538&memo=么么哒'
         app.startActivity({ data: MP_URL })
         sleeps.s5to10()
 
         clicks.element(id('com.alipay.mobile.antui:id/au_key_confirm'))
         sleeps.s5to10()
-        clicks.centerXyByText('Pay now')
+
+        clicks.centerXyByText('Confirm')
         sleeps.s5to10()
 
         text('9').click()
